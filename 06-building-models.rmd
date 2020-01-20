@@ -1,4 +1,4 @@
-# Building models
+# Building models 1
 
 ### In brief
 
@@ -486,15 +486,3 @@ A general goal of regression is to identify the fewest predictor variables neces
 - **Multicolinearity** exists when predictors are very highly correlated (_r_ above 0.9) and should be avoided.
 
 
-
-
-
-
-
-
-
-## Session 2: ANOVA and Bayes Factor
-
-
-> In this session we discuss model selection in the context of ANOVA and the use
-> of Bayes Factors to choose between theoretically interesting models.

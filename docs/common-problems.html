@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Common problems | Data Fluency</title>
-  <meta name="description" content="Common problems | Data Fluency" />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <title>Common problems | PSYC753 Data Fluency</title>
+  <meta name="description" content="Common problems | PSYC753 Data Fluency" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Common problems | Data Fluency" />
+  <meta property="og:title" content="Common problems | PSYC753 Data Fluency" />
   <meta property="og:type" content="book" />
   
   
@@ -16,12 +16,12 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Common problems | Data Fluency" />
+  <meta name="twitter:title" content="Common problems | PSYC753 Data Fluency" />
   
   
   
 
-<meta name="author" content="Ben Whalley and Chris Berry" />
+<meta name="author" content="" />
 
 
 
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="keyboard-shortcuts.html">
-<link rel="next" href="cheatsheet.html">
+<link rel="prev" href="summary-of-key-points.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -66,9 +66,10 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -78,13 +79,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -144,107 +143,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li><a href="index.html#section"></a></li>
-<li class="chapter" data-level="" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i>Overview</a><ul>
-<li class="chapter" data-level="" data-path="approach-of-this-course.html"><a href="approach-of-this-course.html"><i class="fa fa-check"></i>Approach of this course</a></li>
-<li class="chapter" data-level="" data-path="format-of-the-sessions.html"><a href="format-of-the-sessions.html"><i class="fa fa-check"></i>Format of the sessions</a></li>
-<li class="chapter" data-level="" data-path="the-most-important-thing-of-all.html"><a href="the-most-important-thing-of-all.html"><i class="fa fa-check"></i>The most important thing of all</a></li>
-<li class="chapter" data-level="" data-path="list-of-sessions.html"><a href="list-of-sessions.html"><i class="fa fa-check"></i>List of sessions</a></li>
-<li class="chapter" data-level="" data-path="access-to-r.html"><a href="access-to-r.html"><i class="fa fa-check"></i>Access to R</a></li>
-<li class="chapter" data-level="" data-path="reasons-to-use-r.html"><a href="reasons-to-use-r.html"><i class="fa fa-check"></i>Why do we use R?</a></li>
-<li class="chapter" data-level="" data-path="teachers-notes.html"><a href="teachers-notes.html"><i class="fa fa-check"></i>Teachers’ notes</a></li>
-<li class="chapter" data-level="" data-path="week-by-week-resources.html"><a href="week-by-week-resources.html"><i class="fa fa-check"></i>Week-by-week resources</a></li>
-</ul></li>
 <li class="chapter" data-level="" data-path="assessments.html"><a href="assessments.html"><i class="fa fa-check"></i>Assessments</a><ul>
-<li class="chapter" data-level="" data-path="core-skills-test.html"><a href="core-skills-test.html"><i class="fa fa-check"></i>Core skills test</a></li>
-<li class="chapter" data-level="" data-path="analysis-and-visualisation-task.html"><a href="analysis-and-visualisation-task.html"><i class="fa fa-check"></i>Analysis and visualisation task</a></li>
-<li class="chapter" data-level="" data-path="assessment-authentic-analysis.html"><a href="assessment-authentic-analysis.html"><i class="fa fa-check"></i>Authentic analysis assessment</a></li>
+<li class="chapter" data-level="" data-path="data-analysis-and-visualisation-task.html"><a href="data-analysis-and-visualisation-task.html"><i class="fa fa-check"></i>Data analysis and visualisation task</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="beginners.html"><a href="beginners.html"><i class="fa fa-check"></i>BeginneRs</a><ul>
-<li class="chapter" data-level="" data-path="getting-started-rstudio.html"><a href="getting-started-rstudio.html"><i class="fa fa-check"></i>Getting started with RStudio</a></li>
-<li class="chapter" data-level="" data-path="exploring-data-brief.html"><a href="exploring-data-brief.html"><i class="fa fa-check"></i>Exploring data (in brief)</a></li>
-<li class="chapter" data-level="" data-path="inspecting-data.html"><a href="inspecting-data.html"><i class="fa fa-check"></i>Inspecting data</a></li>
-<li class="chapter" data-level="" data-path="missing-data.html"><a href="missing-data.html"><i class="fa fa-check"></i>Missing data</a></li>
-<li class="chapter" data-level="" data-path="group-differences-briefly.html"><a href="group-differences-briefly.html"><i class="fa fa-check"></i>Group differences (briefly)</a></li>
-<li class="chapter" data-level="" data-path="undergraduate-stats-in-r.html"><a href="undergraduate-stats-in-r.html"><i class="fa fa-check"></i>Undergraduate stats in R</a></li>
-<li class="chapter" data-level="" data-path="sequences-and-designs.html"><a href="sequences-and-designs.html"><i class="fa fa-check"></i>Sequences and designs</a></li>
-<li class="chapter" data-level="" data-path="more-reading-data.html"><a href="more-reading-data.html"><i class="fa fa-check"></i>Reading data</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="visualisation.html"><a href="visualisation.html"><i class="fa fa-check"></i>Visualisation and plotting</a><ul>
-<li class="chapter" data-level="" data-path="session1.html"><a href="session1.html"><i class="fa fa-check"></i>Session 1</a></li>
-<li class="chapter" data-level="" data-path="countries-200-years.html"><a href="countries-200-years.html"><i class="fa fa-check"></i>200 countries, 200 years…</a></li>
-<li class="chapter" data-level="" data-path="into-the-third-and-fourth-and-fifth-dimension.html"><a href="into-the-third-and-fourth-and-fifth-dimension.html"><i class="fa fa-check"></i>Into the third (and fourth, and fifth…) dimension</a></li>
-<li class="chapter" data-level="" data-path="layers.html"><a href="layers.html"><i class="fa fa-check"></i>Layers</a></li>
-<li class="chapter" data-level="" data-path="facets.html"><a href="facets.html"><i class="fa fa-check"></i>Facets</a></li>
-<li class="chapter" data-level="" data-path="ggplot-scales.html"><a href="ggplot-scales.html"><i class="fa fa-check"></i>Scales</a></li>
-<li class="chapter" data-level="" data-path="comparing-categories.html"><a href="comparing-categories.html"><i class="fa fa-check"></i>Comparing categories</a></li>
-<li class="chapter" data-level="" data-path="spit-and-polish.html"><a href="spit-and-polish.html"><i class="fa fa-check"></i>Spit and polish</a></li>
-<li class="chapter" data-level="" data-path="session-2-real-world-plots.html"><a href="session-2-real-world-plots.html"><i class="fa fa-check"></i>Session 2: Real world plots</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="data-handling.html"><a href="data-handling.html"><i class="fa fa-check"></i>Data handling</a><ul>
-<li class="chapter" data-level="" data-path="overview-1.html"><a href="overview-1.html"><i class="fa fa-check"></i>Overview</a></li>
-<li class="chapter" data-level="" data-path="making-new-variables.html"><a href="making-new-variables.html"><i class="fa fa-check"></i>Making new variables</a></li>
-<li class="chapter" data-level="" data-path="reshaping-melting.html"><a href="reshaping-melting.html"><i class="fa fa-check"></i>Reshaping (melting)</a></li>
-<li class="chapter" data-level="" data-path="reshaping-wide-casting.html"><a href="reshaping-wide-casting.html"><i class="fa fa-check"></i>Reshaping wide (casting)</a></li>
-<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i>RMarkdown</a></li>
-<li class="chapter" data-level="" data-path="final-task-to-be-completed-as-homework.html"><a href="final-task-to-be-completed-as-homework.html"><i class="fa fa-check"></i>Final task (to be completed as homework)</a></li>
-<li class="chapter" data-level="" data-path="extension-exercises-and-reading.html"><a href="extension-exercises-and-reading.html"><i class="fa fa-check"></i>Extension exercises and reading</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i>Regression</a><ul>
-<li class="chapter" data-level="" data-path="session-1.html"><a href="session-1.html"><i class="fa fa-check"></i>Session 1</a></li>
-<li class="chapter" data-level="" data-path="how-useful-are-the-lines.html"><a href="how-useful-are-the-lines.html"><i class="fa fa-check"></i>How useful are the lines?</a></li>
-<li class="chapter" data-level="" data-path="using-r-for-regression.html"><a href="using-r-for-regression.html"><i class="fa fa-check"></i>Using R for regression</a></li>
-<li><a href="the-first-step-is-always-plotting.html#the-first-step-is-always-plotting">The first step is <strong>always</strong> plotting</a></li>
-<li class="chapter" data-level="" data-path="automatic-line-fitting.html"><a href="automatic-line-fitting.html"><i class="fa fa-check"></i>Automatic line-fitting</a></li>
-<li class="chapter" data-level="" data-path="first-lm.html"><a href="first-lm.html"><i class="fa fa-check"></i>Putting numbers to lines</a></li>
-<li class="chapter" data-level="" data-path="regresion-hand-predictions.html"><a href="regresion-hand-predictions.html"><i class="fa fa-check"></i>Making predictions (by hand)</a></li>
-<li class="chapter" data-level="" data-path="regression-thinking-causes.html"><a href="regression-thinking-causes.html"><i class="fa fa-check"></i>Thinking about causes</a></li>
-<li class="chapter" data-level="" data-path="moderation-intro.html"><a href="moderation-intro.html"><i class="fa fa-check"></i>‘Effect modification’</a></li>
-<li class="chapter" data-level="" data-path="tricky-relationships.html"><a href="tricky-relationships.html"><i class="fa fa-check"></i>‘Tricky’ relationships</a></li>
-<li class="chapter" data-level="" data-path="diagrams-and-models.html"><a href="diagrams-and-models.html"><i class="fa fa-check"></i>Diagrams and models</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="multiple-regression.html"><a href="multiple-regression.html"><i class="fa fa-check"></i>Multiple regression</a><ul>
-<li class="chapter" data-level="" data-path="why-multiple-regression.html"><a href="why-multiple-regression.html"><i class="fa fa-check"></i>Why use multiple regression?</a></li>
-<li class="chapter" data-level="" data-path="regression-interaction.html"><a href="regression-interaction.html"><i class="fa fa-check"></i>Different relationships?</a></li>
-<li><a href="fit-multiple-regression.html#fit-multiple-regression">Using <code>lm</code> for multiple regression</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="uncertainty.html"><a href="uncertainty.html"><i class="fa fa-check"></i>Uncertainty</a><ul>
-<li class="chapter" data-level="" data-path="overview-3.html"><a href="overview-3.html"><i class="fa fa-check"></i>Overview</a></li>
-<li class="chapter" data-level="" data-path="calculating-intervals.html"><a href="calculating-intervals.html"><i class="fa fa-check"></i>Calculating intervals</a></li>
-<li class="chapter" data-level="" data-path="recap-on-intervals.html"><a href="recap-on-intervals.html"><i class="fa fa-check"></i>Recap on intervals</a></li>
-<li class="chapter" data-level="" data-path="beyond-intervals-extension-exercises.html"><a href="beyond-intervals-extension-exercises.html"><i class="fa fa-check"></i>Beyond intervals (extension exercises)</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="fitting-curves.html"><a href="fitting-curves.html"><i class="fa fa-check"></i>Fitting curves</a><ul>
-<li class="chapter" data-level="" data-path="session-1-1.html"><a href="session-1-1.html"><i class="fa fa-check"></i>Session 1</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="building-models.html"><a href="building-models.html"><i class="fa fa-check"></i>Building models</a><ul>
+<li class="chapter" data-level="" data-path="building-models-1.html"><a href="building-models-1.html"><i class="fa fa-check"></i>Building models 1</a><ul>
 <li class="chapter" data-level="" data-path="session-1-multiple-regression.html"><a href="session-1-multiple-regression.html"><i class="fa fa-check"></i>Session 1: Multiple regression</a></li>
-<li class="chapter" data-level="" data-path="session-2-anova-and-bayes-factor.html"><a href="session-2-anova-and-bayes-factor.html"><i class="fa fa-check"></i>Session 2: Anova and Bayes Factor</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i>Testing</a><ul>
-<li><a href="session-1-planned-contrasts-with-emmeans.html#session-1-planned-contrasts-with-emmeans">Session 1: Planned contrasts with <code>emmeans</code></a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html"><i class="fa fa-check"></i>Communicating results</a><ul>
-<li class="chapter" data-level="" data-path="session-1-communicating-anova-and-regression.html"><a href="session-1-communicating-anova-and-regression.html"><i class="fa fa-check"></i>Session 1: Communicating Anova and Regression</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="real-world-data.html"><a href="real-world-data.html"><i class="fa fa-check"></i>Real world data</a><ul>
-<li class="chapter" data-level="" data-path="session-1-reproducing-a-real-paper.html"><a href="session-1-reproducing-a-real-paper.html"><i class="fa fa-check"></i>Session 1: Reproducing a real paper</a></li>
-<li class="chapter" data-level="" data-path="session-2-reproducing-a-real-paper.html"><a href="session-2-reproducing-a-real-paper.html"><i class="fa fa-check"></i>Session 2: Reproducing a real paper</a></li>
-<li class="chapter" data-level="" data-path="session-3-reproducing-a-real-paper.html"><a href="session-3-reproducing-a-real-paper.html"><i class="fa fa-check"></i>Session 3: Reproducing a real paper</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="extras.html"><a href="extras.html"><i class="fa fa-check"></i>Extras</a><ul>
-<li class="chapter" data-level="" data-path="keyboard-shortcuts.html"><a href="keyboard-shortcuts.html"><i class="fa fa-check"></i>Keyboard shortcuts</a></li>
+<li class="chapter" data-level="" data-path="analysis-of-regression.html"><a href="analysis-of-regression.html"><i class="fa fa-check"></i>Analysis of regression</a></li>
+<li class="chapter" data-level="" data-path="conceptualising-the-variance-explained-by-predictors.html"><a href="conceptualising-the-variance-explained-by-predictors.html"><i class="fa fa-check"></i>Conceptualising the variance explained by predictors</a></li>
+<li class="chapter" data-level="" data-path="adding-predictor-variables-to-the-model.html"><a href="adding-predictor-variables-to-the-model.html"><i class="fa fa-check"></i>Adding predictor variables to the model</a></li>
+<li class="chapter" data-level="" data-path="multicolinearity.html"><a href="multicolinearity.html"><i class="fa fa-check"></i>Multicolinearity</a></li>
+<li class="chapter" data-level="" data-path="final-exercise.html"><a href="final-exercise.html"><i class="fa fa-check"></i>Final exercise</a></li>
+<li class="chapter" data-level="" data-path="summary-of-key-points.html"><a href="summary-of-key-points.html"><i class="fa fa-check"></i>Summary of key points</a></li>
 <li class="chapter" data-level="" data-path="common-problems.html"><a href="common-problems.html"><i class="fa fa-check"></i>Common problems</a></li>
-<li class="chapter" data-level="" data-path="cheatsheet.html"><a href="cheatsheet.html"><i class="fa fa-check"></i>Cheatsheet</a></li>
-<li class="chapter" data-level="" data-path="sample-n.html"><a href="sample-n.html"><i class="fa fa-check"></i>More sampling</a></li>
-<li class="chapter" data-level="" data-path="more-on-tibbles.html"><a href="more-on-tibbles.html"><i class="fa fa-check"></i>More on Tibbles</a></li>
-<li class="chapter" data-level="" data-path="regression-extra-explanations.html"><a href="regression-extra-explanations.html"><i class="fa fa-check"></i>Regression - extra explanations</a></li>
-<li class="chapter" data-level="" data-path="bayesian-estimation-of-the.html"><a href="bayesian-estimation-of-the.html"><i class="fa fa-check"></i>Bayesian estimation of the</a></li>
-<li class="chapter" data-level="" data-path="confidence-intervals-explanation.html"><a href="confidence-intervals-explanation.html"><i class="fa fa-check"></i>What do confidence intervals mean?</a></li>
-<li class="chapter" data-level="" data-path="bayesian-estimation-of-the-1.html"><a href="bayesian-estimation-of-the-1.html"><i class="fa fa-check"></i>Bayesian estimation of the</a></li>
-<li class="chapter" data-level="" data-path="other-tips.html"><a href="other-tips.html"><i class="fa fa-check"></i>Other tips</a></li>
-<li class="chapter" data-level="" data-path="wider-reading.html"><a href="wider-reading.html"><i class="fa fa-check"></i>Wider reading</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="./LICENCE" target="blank">Licence: CC BY-SA 4</a></li>
 
@@ -257,7 +168,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Fluency</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSYC753 Data Fluency</a>
           </h1>
         </div>
 
@@ -267,23 +178,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="common-problems" class="section level2">
 <h2>Common problems</h2>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<pre><code>## ── Attaching packages ────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
-<pre><code>## ✔ ggplot2 3.2.0           ✔ purrr   0.3.2      
-## ✔ tibble  2.1.3           ✔ dplyr   0.8.3      
-## ✔ tidyr   0.8.99.9000     ✔ stringr 1.4.0      
-## ✔ readr   1.3.1           ✔ forcats 0.4.0</code></pre>
-<pre><code>## ── Conflicts ───────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages -------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## v ggplot2 3.2.0     v purrr   0.3.3
+## v tibble  2.1.1     v dplyr   0.8.1
+## v tidyr   0.8.3     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.4.0</code></pre>
+<pre><code>## -- Conflicts ----------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
 <p>Some of this material was adapted from
 <a href="https://ajwills72.github.io/rminr/using_rstudio.html">Andy Wills’ RminR</a>.</p>
 <div id="try-these-things-first" class="section level3">
 <h3>Try these things first…</h3>
 <p><strong>Check your typing</strong> - The command has to be exactly as it appears on the
 worksheet. In particular, check your brackets <code>( )</code>, and check that you haven’t
-missed off the speech marks <code>&quot; &quot;</code>. Check you haven’t missed out any commas <code>,</code>.
-Check you have typed captial letters as shown, e.g. <code>bayesfactor</code> is not the
+missed off the speech marks <code>" "</code>. Check you haven’t missed out any commas <code>,</code>.
+Check you have typed captial letters as shown, e.g. <code>bayesfactor</code> is not the
 same as <code>BayesFactor</code>. Check whether your command uses <code>=</code> or <code>==</code>, these are
 not the same thing (see below for explanation).</p>
 <p><strong>Restart R</strong> - If the output you get is very different to what is shown in this
@@ -301,7 +212,7 @@ see the <a href="https://ajwills72.github.io/rminr/cheat-sheet.html">cheat sheet
 <div id="errors-when-loading-data" class="section level3">
 <h3>Errors when loading data</h3>
 <p>If you get a message like:</p>
-<p><code>Error in open.connection(con, &quot;rb&quot;) : Could not resolve host: www.willslab.org.uk</code></p>
+<p><code>Error in open.connection(con, "rb") : Could not resolve host: www.willslab.org.uk</code></p>
 <p>Check your internet connection (e.g. by using the web browser to look at your
 Twitter feed). If you have an internet connection, try the command again.</p>
 </div>
@@ -309,7 +220,7 @@ Twitter feed). If you have an internet connection, try the command again.</p>
 <h3>Is it <code>=</code> or <code>==</code> ?</h3>
 <p>In R, <code>=</code> means the same as <code>&lt;-</code>. Computers don’t cope well with situations were
 the same symbol means two different things, so we use <code>==</code> to mean “equal to”.
-For example <code>filter(education == &quot;master&quot;)</code> in our income data set means keep
+For example <code>filter(education == "master")</code> in our income data set means keep
 the people whose education level equal to “master”.</p>
 </div>
 <div id="common-rmd-problems" class="section level3">
@@ -329,7 +240,7 @@ is used in the code.</p></li>
 <h3>My variables have spaces of other special characters in their names!!!</h3>
 <p>Try to avoid spaces or punctuation in your variable names if possible. If you do end up with spaces in your column names, you can still access them by putting ‘backticks’ around the name.</p>
 <p>Our annoying dataframe might be like this:</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1">annoying_dataframe  <span class="op">%&gt;%</span><span class="st"> </span>head</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">annoying_dataframe  <span class="op">%&gt;%</span><span class="st"> </span>head</code></pre>
 <pre><code>## # A tibble: 3 x 1
 ##   `What is your favourite colour?`
 ##   &lt;chr&gt;                           
@@ -337,9 +248,9 @@ is used in the code.</p></li>
 ## 2 Blue                            
 ## 3 Green</code></pre>
 <p>We can rename the column:</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1">annoying_dataframe <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb200-2" data-line-number="2"><span class="st">  </span><span class="kw">rename</span>(<span class="st">&#39;favourite_colour&#39;</span> =<span class="st"> `</span><span class="dt">What is your favourite colour?</span><span class="st">`</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb200-3" data-line-number="3"><span class="st">  </span>head</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">annoying_dataframe <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">rename</span>(<span class="st">&#39;favourite_colour&#39;</span> =<span class="st"> `</span><span class="dt">What is your favourite colour?</span><span class="st">`</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>head</code></pre>
 <pre><code>## # A tibble: 3 x 1
 ##   favourite_colour
 ##   &lt;chr&gt;           
@@ -347,26 +258,16 @@ is used in the code.</p></li>
 ## 2 Blue            
 ## 3 Green</code></pre>
 
-<!--
-
-## Glossary
-
-
-### Aesthetics and `aes` in ggplot
-
-Aesthetics means how things look. In ggplot the `aes` command creates a mapping between variables in
-a dataset and the visual features (aesthetics) of the plot
-
- -->
 </div>
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="keyboard-shortcuts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="cheatsheet.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="summary-of-key-points.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

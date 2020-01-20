@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Session 2: ANOVA and Bayes Factor | PSYC753 Data Fluency</title>
-  <meta name="description" content="Session 2: ANOVA and Bayes Factor | PSYC753 Data Fluency" />
+  <title>Common rmd problems | PSYC753 Data Fluency</title>
+  <meta name="description" content="Common rmd problems | PSYC753 Data Fluency" />
   <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Session 2: ANOVA and Bayes Factor | PSYC753 Data Fluency" />
+  <meta property="og:title" content="Common rmd problems | PSYC753 Data Fluency" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Session 2: ANOVA and Bayes Factor | PSYC753 Data Fluency" />
+  <meta name="twitter:title" content="Common rmd problems | PSYC753 Data Fluency" />
   
   
   
@@ -154,7 +154,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="multicolinearity.html"><a href="multicolinearity.html"><i class="fa fa-check"></i>Multicolinearity</a></li>
 <li class="chapter" data-level="" data-path="final-exercise.html"><a href="final-exercise.html"><i class="fa fa-check"></i>Final exercise</a></li>
 <li class="chapter" data-level="" data-path="summary-of-key-points.html"><a href="summary-of-key-points.html"><i class="fa fa-check"></i>Summary of key points</a></li>
-<li class="chapter" data-level="" data-path="session-2-anova-and-bayes-factor.html"><a href="session-2-anova-and-bayes-factor.html"><i class="fa fa-check"></i>Session 2: ANOVA and Bayes Factor</a></li>
+<li class="chapter" data-level="" data-path="common-rmd-problems.html"><a href="common-rmd-problems.html"><i class="fa fa-check"></i>Common rmd problems</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="./LICENCE" target="blank">Licence: CC BY-SA 4</a></li>
@@ -176,13 +176,89 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="session-2-anova-and-bayes-factor" class="section level2">
-<h2>Session 2: ANOVA and Bayes Factor</h2>
-<blockquote>
-<p>In this session we discuss model selection in the context of ANOVA and the use
-of Bayes Factors to choose between theoretically interesting models.</p>
-</blockquote>
+<div id="common-rmd-problems" class="section level2">
+<h2>Common rmd problems</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages -------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## v ggplot2 3.2.0     v purrr   0.3.3
+## v tibble  2.1.1     v dplyr   0.8.1
+## v tidyr   0.8.3     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.4.0</code></pre>
+<pre><code>## -- Conflicts ----------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<p>Some of this material was adapted from
+<a href="https://ajwills72.github.io/rminr/using_rstudio.html">Andy Wills’ RminR</a>.</p>
+<div id="try-these-things-first" class="section level3">
+<h3>Try these things first…</h3>
+<p><strong>Check your typing</strong> - The command has to be exactly as it appears on the
+worksheet. In particular, check your brackets <code>( )</code>, and check that you haven’t
+missed off the speech marks <code>" "</code>. Check you haven’t missed out any commas <code>,</code>.
+Check you have typed captial letters as shown, e.g. <code>bayesfactor</code> is not the
+same as <code>BayesFactor</code>. Check whether your command uses <code>=</code> or <code>==</code>, these are
+not the same thing (see below for explanation).</p>
+<p><strong>Restart R</strong> - If the output you get is very different to what is shown in this
+worksheet, go to “Session” on the RStudio menu, and select “Restart R”. If that
+doesn’t fix your problem, see below.</p>
+</div>
+<div id="errors-when-loading-a-package" class="section level3">
+<h3>Errors when loading a package</h3>
+<p>If you’ve installed R on your own machine, and you get a message like:</p>
+<p><code>Error in library(tidyverse) : there is no package called ‘tidyverse’</code></p>
+<p>Have you installed this package? You need to install it before you can use it,
+see the <a href="https://ajwills72.github.io/rminr/cheat-sheet.html">cheat sheet</a>.
+<!-- TODO fix this and replace with datafluency cheat sheet --></p>
+</div>
+<div id="errors-when-loading-data" class="section level3">
+<h3>Errors when loading data</h3>
+<p>If you get a message like:</p>
+<p><code>Error in open.connection(con, "rb") : Could not resolve host: www.willslab.org.uk</code></p>
+<p>Check your internet connection (e.g. by using the web browser to look at your
+Twitter feed). If you have an internet connection, try the command again.</p>
+</div>
+<div id="is-it-or" class="section level3">
+<h3>Is it <code>=</code> or <code>==</code> ?</h3>
+<p>In R, <code>=</code> means the same as <code>&lt;-</code>. Computers don’t cope well with situations were
+the same symbol means two different things, so we use <code>==</code> to mean “equal to”.
+For example <code>filter(education == "master")</code> in our income data set means keep
+the people whose education level equal to “master”.</p>
+</div>
+<div id="common-rmd-problems" class="section level3">
+<h3>When trying to knit Rmd files</h3>
+<ul>
+<li><p>Check you have the right number of backticks?</p></li>
+<li><p>Have you used the <code>View()</code> function in your code? This only works when
+inside RStudio, not when knitting documents.</p></li>
+<li><p>Have you loaded your packages at the top of the file? If you try to call
+functions from tidyverse or other packages without loading them first you
+will get errors. Sometimes this is not apparent when working in an
+interactive session, but creates an error when a package is loaded after it
+is used in the code.</p></li>
+</ul>
+</div>
+<div id="my-variables-have-spaces-of-other-special-characters-in-their-names" class="section level3">
+<h3>My variables have spaces of other special characters in their names!!!</h3>
+<p>Try to avoid spaces or punctuation in your variable names if possible. If you do end up with spaces in your column names, you can still access them by putting ‘backticks’ around the name.</p>
+<p>Our annoying dataframe might be like this:</p>
+<pre class="sourceCode r"><code class="sourceCode r">annoying_dataframe  <span class="op">%&gt;%</span><span class="st"> </span>head</code></pre>
+<pre><code>## # A tibble: 3 x 1
+##   `What is your favourite colour?`
+##   &lt;chr&gt;                           
+## 1 Red                             
+## 2 Blue                            
+## 3 Green</code></pre>
+<p>We can rename the column:</p>
+<pre class="sourceCode r"><code class="sourceCode r">annoying_dataframe <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">rename</span>(<span class="st">&#39;favourite_colour&#39;</span> =<span class="st"> `</span><span class="dt">What is your favourite colour?</span><span class="st">`</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>head</code></pre>
+<pre><code>## # A tibble: 3 x 1
+##   favourite_colour
+##   &lt;chr&gt;           
+## 1 Red             
+## 2 Blue            
+## 3 Green</code></pre>
 
+</div>
 </div>
 <!-- </div> -->
             </section>

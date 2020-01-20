@@ -9,7 +9,9 @@ rmd_files:
     "assessment.rmd",
 
     # PART
-    
     "06-building-models.rmd",
+    
+    # PART
+    "FAQ-assessment.rmd",
 
 ]

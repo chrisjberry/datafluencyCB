@@ -1,0 +1,16 @@
+# FAQ Data Analysis and Visualisation Task
+
+
+```{r, echo=F, include=F}
+knitr::opts_chunk$set(echo = TRUE, collapse=TRUE, cache=TRUE, comment=">", message=FALSE)
+library(tidyverse)
+library(webex)
+library(pander)
+theme_set(theme_minimal())
+```
+
+
+
+### 
+
+Frequently asked questions will appear here.
