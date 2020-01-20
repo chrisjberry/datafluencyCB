@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE, collapse=TRUE, cache=TRUE, comment=NA, messag
 
 # {-}
 
-This workbook contains details of the following PSYC753 sessions given by **Chris Berry**:
+This workbook contains details of the three sessions given by **Chris Berry**:
 
 - Building models 1  - 21/1/20
  

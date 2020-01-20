@@ -36,9 +36,10 @@ the knitted PDF file you submitted (i.e. there won't be any errors or missing da
 If you work on your own computer at home, you should check your rmd file 'knits' correctly on the
 online Rstudio server.
 
-**Responses to frequently asked questions will be posted at this [FAQ link](#FAQ Data Analysis and Visualisation Task)**
+**Responses to frequently asked questions will be posted at this [FAQ link](#FAQ-assessment)**
 
-
+\
+\
 ### Questions
 
 The number of marks each question is worth [out of 50] is given below.
