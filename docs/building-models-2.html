@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Conceptualising the variance explained by predictors | PSYC753 Data Fluency</title>
-  <meta name="description" content="Conceptualising the variance explained by predictors | PSYC753 Data Fluency" />
+  <title>Building models 2 | PSYC753 Data Fluency</title>
+  <meta name="description" content="Building models 2 | PSYC753 Data Fluency" />
   <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Conceptualising the variance explained by predictors | PSYC753 Data Fluency" />
+  <meta property="og:title" content="Building models 2 | PSYC753 Data Fluency" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Conceptualising the variance explained by predictors | PSYC753 Data Fluency" />
+  <meta name="twitter:title" content="Building models 2 | PSYC753 Data Fluency" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="analysing-the-model.html">
-<link rel="next" href="adding-predictor-variables-to-the-model.html">
+<link rel="prev" href="summary-of-key-points.html">
+<link rel="next" href="fitting-curves.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -178,24 +178,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="conceptualising-the-variance-explained-by-predictors" class="section level2">
-<h2>Conceptualising the variance explained by predictors</h2>
-<p>Venn diagrams are useful for understanding the variance that predictors explain in the outcome variable. They are especially useful for understanding what’s going on in multiple regression.</p>
-<p>Suppose the rectangle below represents all of the <em>variance</em> in <code>finalex</code> to be explained.</p>
-<p><img src="images/Venn1.jpg" /></p>
-<p>The area of the circle below represents the variance in <code>finalex</code> explained by <code>entrex</code> in the first simple regression we did. If this diagram were drawn to scale (it’s not), the area of the circle would be equal to the value of <span class="math inline">\(R^2\)</span> (i.e., 53.1% of the rectangle).</p>
-<p><img src="images/Venn2.jpg" /></p>
-<p>The part of the rectangle not inside the circle represents the variance in <code>finalex</code> that is <em>not</em> explained by the model (i.e., the unexplained or <em>residual</em> variance).</p>
-<p>To <em>improve</em> the model, we can explore whether adding in other predictors to the model explains additional variance, thereby increasing the total <span class="math inline">\(R^2\)</span> of the model.</p>
-<p>You might think that we can simply add in variables (circles, above) to the model as we wish, until all the residual variance has been explained. This seems fine to do until we learn that if we were to add as many predictors to the model as there are rows in our data (33 individuals in our <code>ExamData</code>), then we’d perfectly predict the outcome variable, and have an <span class="math inline">\(R^2\)</span> of 100%! This would be true even if the predictors consisted of random values. Our model would clearly be meaningless though. We ideally want to explain the outcome variable with relatively few predictors.</p>
+<div id="building-models-2" class="section level1">
+<h1>Building models 2</h1>
+<div id="in-brief-1" class="section level3">
+<h3>In brief</h3>
+<blockquote>
+<p>In this session we discuss model selection in the context of ANOVA and the use
+of Bayes Factors to choose between theoretically interesting models.</p>
+</blockquote>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="analysing-the-model.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="adding-predictor-variables-to-the-model.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="summary-of-key-points.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="fitting-curves.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

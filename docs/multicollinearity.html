@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Multicolinearity | PSYC753 Data Fluency</title>
-  <meta name="description" content="Multicolinearity | PSYC753 Data Fluency" />
+  <title>Multicollinearity | PSYC753 Data Fluency</title>
+  <meta name="description" content="Multicollinearity | PSYC753 Data Fluency" />
   <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Multicolinearity | PSYC753 Data Fluency" />
+  <meta property="og:title" content="Multicollinearity | PSYC753 Data Fluency" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Multicolinearity | PSYC753 Data Fluency" />
+  <meta name="twitter:title" content="Multicollinearity | PSYC753 Data Fluency" />
   
   
   
@@ -147,11 +147,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="data-analysis-and-visualisation-task.html"><a href="data-analysis-and-visualisation-task.html"><i class="fa fa-check"></i>Data analysis and visualisation task</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="building-models-1.html"><a href="building-models-1.html"><i class="fa fa-check"></i>Building models 1</a><ul>
-<li class="chapter" data-level="" data-path="session-1-multiple-regression.html"><a href="session-1-multiple-regression.html"><i class="fa fa-check"></i>Session 1: Multiple regression</a></li>
-<li class="chapter" data-level="" data-path="analysis-of-regression.html"><a href="analysis-of-regression.html"><i class="fa fa-check"></i>Analysis of regression</a></li>
+<li class="chapter" data-level="" data-path="multiple-regression-with-multiple-continuous-predictors.html"><a href="multiple-regression-with-multiple-continuous-predictors.html"><i class="fa fa-check"></i>Multiple Regression with Multiple Continuous Predictors</a></li>
+<li class="chapter" data-level="" data-path="analysing-the-model.html"><a href="analysing-the-model.html"><i class="fa fa-check"></i>Analysing the model</a></li>
 <li class="chapter" data-level="" data-path="conceptualising-the-variance-explained-by-predictors.html"><a href="conceptualising-the-variance-explained-by-predictors.html"><i class="fa fa-check"></i>Conceptualising the variance explained by predictors</a></li>
 <li class="chapter" data-level="" data-path="adding-predictor-variables-to-the-model.html"><a href="adding-predictor-variables-to-the-model.html"><i class="fa fa-check"></i>Adding predictor variables to the model</a></li>
-<li class="chapter" data-level="" data-path="multicolinearity.html"><a href="multicolinearity.html"><i class="fa fa-check"></i>Multicolinearity</a></li>
+<li class="chapter" data-level="" data-path="multicollinearity.html"><a href="multicollinearity.html"><i class="fa fa-check"></i>Multicollinearity</a></li>
 <li class="chapter" data-level="" data-path="final-exercise.html"><a href="final-exercise.html"><i class="fa fa-check"></i>Final exercise</a></li>
 <li class="chapter" data-level="" data-path="summary-of-key-points.html"><a href="summary-of-key-points.html"><i class="fa fa-check"></i>Summary of key points</a></li>
 </ul></li>
@@ -178,11 +178,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="multicolinearity" class="section level2">
-<h2>Multicolinearity</h2>
-<p>If the correlation between predictors is very high (greater than <em>r</em> = 0.9), this is known as <strong>multicolinearity</strong>. On a Venn diagram, the circles representing the predictors would almost completely overlap. Multicolinearity can be a problem in multiple regression. Predictors may explain a large amount of variance in the outcome variable, but their ‘unique’ contribution in a multiple regression may be small. A situation can arise where <em>neither</em> predictor may be statistically significant even though the overall regression is significant!</p>
+<div id="multicollinearity" class="section level2">
+<h2>Multicollinearity</h2>
+<p>If the correlation between predictors is very high (greater than <em>r</em> = 0.9), this is known as <strong>multicollinearity</strong>. On a Venn diagram, the circles representing the predictors would almost completely overlap. Multicollinearity can be a problem in multiple regression. Predictors may explain a large amount of variance in the outcome variable, but their ‘unique’ contribution in a multiple regression may be small. A situation can arise where <em>neither</em> predictor may be statistically significant even though the overall regression is significant!</p>
 <p><img src="images/Venn_multi.jpg" /></p>
-<p>An example of multicolinearity in the <code>ExamData</code> dataset can be seen with the variables <code>project</code> and <code>proposal</code>.</p>
+<p>An example of multicollinearity in the <code>ExamData</code> dataset can be seen with the variables <code>project</code> and <code>proposal</code>.</p>
 <div class="exercise">
 <p>Obtain the correlation between <code>project</code> and <code>proposal</code>:</p>
 <div class="solution">
@@ -197,7 +197,7 @@ Show me
 <span class="op">&gt;</span><span class="st"> </span>proposal <span class="fl">0.9371487</span> <span class="fl">1.0000000</span></code></pre>
 </div>
 <p>The correlation between <code>project</code> and <code>proposal</code> is <em>r</em> = <input class='solveme nospaces' size='4' data-answer='["0.94",".94"]'/>.</p>
-<p>To see the effects of multicolinearity, conduct a regression with <code>finalex</code> as the outcome variable and <code>project</code> and <code>proposal</code> as the predictor variables.</p>
+<p>To see the effects of multicollinearity, conduct a regression with <code>finalex</code> as the outcome variable and <code>project</code> and <code>proposal</code> as the predictor variables.</p>
 <div class="solution">
 <button>
 Show me

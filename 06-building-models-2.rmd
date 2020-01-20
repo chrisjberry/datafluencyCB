@@ -1,0 +1,16 @@
+# Building models 2
+
+
+### In brief
+
+> In this session we discuss model selection in the context of ANOVA and the use
+> of Bayes Factors to choose between theoretically interesting models.
+
+
+```{r, echo=F, include=F}
+knitr::opts_chunk$set(echo = TRUE, collapse=TRUE, cache=TRUE, comment=">", message=FALSE)
+library(tidyverse)
+library(webex)
+library(pander)
+theme_set(theme_minimal())
+```

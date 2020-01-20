@@ -25,4 +25,4 @@ This workbook contains details of the following PSYC753 sessions given by **Chri
 
 
 \
-Materials for sessions by Ben Whalley can be found at https://benwhalley.github.io/datafluency/
+(Materials for sessions by Ben Whalley can be found at https://benwhalley.github.io/datafluency/)

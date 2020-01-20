@@ -1,4 +1,4 @@
-# Assessments
+# Assessment
 
 ```{r, echo=FALSE, message=FALSE, include=F, warnings=F}
 library(knitr)
@@ -10,7 +10,7 @@ library(pander)
 
 ## Data analysis and visualisation task
 
-This assignment is due in week 31 and counts 50% towards your module grade.
+This assignment is due on 27th February and counts 50% towards your module grade.
 
 Your task is to answer the questions below.
 
@@ -36,9 +36,7 @@ the knitted PDF file you submitted (i.e. there won't be any errors or missing da
 If you work on your own computer at home, you should check your rmd file 'knits' correctly on the
 online Rstudio server.
 
-See [common problems when trying to knit Rmd files](#common-rmd-problems)
-
-**Responses to frequently asked questions will be posted at this [FAQ link](#faq-assess2)**
+**Responses to frequently asked questions will be posted at this [FAQ link](#FAQ Data Analysis and Visualisation Task)**
 
 
 ### Questions

@@ -10,6 +10,8 @@ rmd_files:
 
     # PART
     "06-building-models.rmd",
+    "06-building-models-2.rmd",
+    "07-fitting-curves.rmd",
     
     # PART
     "FAQ-assessment.rmd",

@@ -18,7 +18,7 @@ theme_set(theme_minimal())
 ```
 
 
-## Session 1: Multiple regression
+## Multiple Regression with Multiple Continuous Predictors
 
 
 ### Overview
@@ -54,7 +54,7 @@ Today, we will:
 
 
 
-## Analysis of regression
+## Analysing the model
 
 Suppose we want to construct a model to predict final university exam scores. This is the task faced by some admissions tutors!  We'll start off with a simple regression model, then work up to multiple regression.  
 
@@ -344,15 +344,15 @@ It is possible to think of the _F_-statistic and _t_-value in multiple regressio
 :::
 
 
-## Multicolinearity
+## Multicollinearity
 
-If the correlation between predictors is very high (greater than _r_ = 0.9), this is known as **multicolinearity**. On a Venn diagram, the circles representing the predictors would almost completely overlap. Multicolinearity can be a problem in multiple regression. Predictors may explain a large amount of variance in the outcome variable, but their 'unique' contribution in a multiple regression may be small. A situation can arise where _neither_ predictor may be statistically significant even though the overall regression is significant!
+If the correlation between predictors is very high (greater than _r_ = 0.9), this is known as **multicollinearity**. On a Venn diagram, the circles representing the predictors would almost completely overlap. Multicollinearity can be a problem in multiple regression. Predictors may explain a large amount of variance in the outcome variable, but their 'unique' contribution in a multiple regression may be small. A situation can arise where _neither_ predictor may be statistically significant even though the overall regression is significant!
 
 ![](images\Venn_multi.jpg)
 
 
 
-An example of multicolinearity in the `ExamData` dataset can be seen with the variables `project` and `proposal`. 
+An example of multicollinearity in the `ExamData` dataset can be seen with the variables `project` and `proposal`. 
 
 :::{.exercise}
 
@@ -369,7 +369,7 @@ ExamData %>%
 
 The correlation between `project` and `proposal` is _r_ = `r fitb(answer="0.94",  num=TRUE)`.
 
-To see the effects of multicolinearity, conduct a regression with `finalex` as the outcome variable and `project` and `proposal` as the predictor variables.
+To see the effects of multicollinearity, conduct a regression with `finalex` as the outcome variable and `project` and `proposal` as the predictor variables.
 
 `r hide("Show me")`
 ```{r}
@@ -483,6 +483,6 @@ A general goal of regression is to identify the fewest predictor variables neces
 
 - In multiple regression, it's important to understand that the statistical significance of individual predictors only holds **after taking into account the other predictors in the model**.
 
-- **Multicolinearity** exists when predictors are very highly correlated (_r_ above 0.9) and should be avoided.
+- **Multicollinearity** exists when predictors are very highly correlated (_r_ above 0.9) and should be avoided.
 
 
