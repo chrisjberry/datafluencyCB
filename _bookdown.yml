@@ -11,6 +11,5 @@ rmd_files:
     # PART
     
     "06-building-models.rmd",
-    "07-fitting-curves.rmd",
 
 ]
