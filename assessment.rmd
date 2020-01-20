@@ -38,8 +38,9 @@ online Rstudio server.
 
 **Responses to frequently asked questions will be posted at this [FAQ link](#FAQ-assessment)**
 
+
 \
-\
+
 ### Questions
 
 The number of marks each question is worth [out of 50] is given below.
