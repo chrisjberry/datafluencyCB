@@ -1,0 +1,32 @@
+/* styles for solveme */
+.solveme {
+    border: 2px dotted red;
+}
+
+.solveme.correct {
+    border: 2px solid blue;
+}
+
+/* styles for hidden solutions */
+.solution {
+    height: 2em;
+    overflow-y: hidden;
+}
+.solution.open {
+    height: auto;
+    padding: 2em;
+    border-radius: 5px;
+    background-color: #FEFF9C;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.solution button {
+    height: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.solution pre.sourceCode {
+    border-color: green;
+}

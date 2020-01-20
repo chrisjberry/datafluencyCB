@@ -1,0 +1,5 @@
+Package: datafluency
+Type: Book
+Title: Data Fluency: Masters course in data handling and analysis.
+Version: 0.0.1
+Imports: arm, BayesFactor, bookdown, corrgram, cowplot, DiagrammeR, gapminder, pander, psych, skimr, tidyverse

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Why do we use R? | Data Fluency</title>
+  <meta name="description" content="Why do we use R? | Data Fluency" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Why do we use R? | Data Fluency" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Why do we use R? | Data Fluency" />
+  
+  
+  
+
+<meta name="author" content="Ben Whalley and Chris Berry" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="access-to-r.html">
+<link rel="next" href="assessments.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<link href="media/webex.css" rel="stylesheet" />
+<link href="media/psystats.css" rel="stylesheet" />
+<script src="media/webex.js"></script>
+<script src="media/psystats.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118343766-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-118343766-4');
+</script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Fluency</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section"></a></li>
+<li class="chapter" data-level="" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i>Overview</a><ul>
+<li class="chapter" data-level="" data-path="approach-of-this-course.html"><a href="approach-of-this-course.html"><i class="fa fa-check"></i>Approach of this course</a></li>
+<li class="chapter" data-level="" data-path="format-of-the-sessions.html"><a href="format-of-the-sessions.html"><i class="fa fa-check"></i>Format of the sessions</a></li>
+<li class="chapter" data-level="" data-path="the-most-important-thing-of-all.html"><a href="the-most-important-thing-of-all.html"><i class="fa fa-check"></i>The most important thing of all</a></li>
+<li class="chapter" data-level="" data-path="list-of-sessions.html"><a href="list-of-sessions.html"><i class="fa fa-check"></i>List of sessions</a></li>
+<li class="chapter" data-level="" data-path="access-to-r.html"><a href="access-to-r.html"><i class="fa fa-check"></i>Access to R</a></li>
+<li class="chapter" data-level="" data-path="reasons-to-use-r.html"><a href="reasons-to-use-r.html"><i class="fa fa-check"></i>Why do we use R?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="assessments.html"><a href="assessments.html"><i class="fa fa-check"></i>Assessments</a><ul>
+<li class="chapter" data-level="" data-path="core-skills-test.html"><a href="core-skills-test.html"><i class="fa fa-check"></i>Core skills test</a></li>
+<li class="chapter" data-level="" data-path="data-analysis-and-visualisation-task.html"><a href="data-analysis-and-visualisation-task.html"><i class="fa fa-check"></i>Data analysis and visualisation task</a></li>
+<li class="chapter" data-level="" data-path="assessment-authentic-analysis.html"><a href="assessment-authentic-analysis.html"><i class="fa fa-check"></i>Authentic analysis assessment</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="building-models.html"><a href="building-models.html"><i class="fa fa-check"></i>Building models</a><ul>
+<li class="chapter" data-level="" data-path="session-1-multiple-regression.html"><a href="session-1-multiple-regression.html"><i class="fa fa-check"></i>Session 1: Multiple regression</a></li>
+<li class="chapter" data-level="" data-path="analysis-of-regression.html"><a href="analysis-of-regression.html"><i class="fa fa-check"></i>Analysis of regression</a></li>
+<li class="chapter" data-level="" data-path="conceptualising-the-variance-explained-by-predictors.html"><a href="conceptualising-the-variance-explained-by-predictors.html"><i class="fa fa-check"></i>Conceptualising the variance explained by predictors</a></li>
+<li class="chapter" data-level="" data-path="adding-predictor-variables-to-the-model.html"><a href="adding-predictor-variables-to-the-model.html"><i class="fa fa-check"></i>Adding predictor variables to the model</a></li>
+<li class="chapter" data-level="" data-path="multicolinearity.html"><a href="multicolinearity.html"><i class="fa fa-check"></i>Multicolinearity</a></li>
+<li class="chapter" data-level="" data-path="final-exercise.html"><a href="final-exercise.html"><i class="fa fa-check"></i>Final exercise</a></li>
+<li class="chapter" data-level="" data-path="summary-of-key-points.html"><a href="summary-of-key-points.html"><i class="fa fa-check"></i>Summary of key points</a></li>
+<li class="chapter" data-level="" data-path="session-2-anova-and-bayes-factor.html"><a href="session-2-anova-and-bayes-factor.html"><i class="fa fa-check"></i>Session 2: ANOVA and Bayes Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="fitting-curves.html"><a href="fitting-curves.html"><i class="fa fa-check"></i>Fitting curves</a><ul>
+<li class="chapter" data-level="" data-path="session-1.html"><a href="session-1.html"><i class="fa fa-check"></i>Session 1</a></li>
+<li class="chapter" data-level="" data-path="learning-outcomes.html"><a href="learning-outcomes.html"><i class="fa fa-check"></i>Learning outcomes</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i>Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="polynomials.html"><a href="polynomials.html"><i class="fa fa-check"></i>Polynomials</a></li>
+<li class="chapter" data-level="" data-path="constant.html"><a href="constant.html"><i class="fa fa-check"></i>Constant</a></li>
+<li class="chapter" data-level="" data-path="linear.html"><a href="linear.html"><i class="fa fa-check"></i>Linear</a></li>
+<li class="chapter" data-level="" data-path="constant-linear-component.html"><a href="constant-linear-component.html"><i class="fa fa-check"></i>Constant + linear component</a></li>
+<li class="chapter" data-level="" data-path="quadratic.html"><a href="quadratic.html"><i class="fa fa-check"></i>Quadratic</a></li>
+<li class="chapter" data-level="" data-path="linear-plus-quadratic-components.html"><a href="linear-plus-quadratic-components.html"><i class="fa fa-check"></i>Linear plus quadratic components</a></li>
+<li class="chapter" data-level="" data-path="identifying-components.html"><a href="identifying-components.html"><i class="fa fa-check"></i>Identifying components</a><ul>
+<li class="chapter" data-level="" data-path="linear-first-order-components.html"><a href="linear-first-order-components.html"><i class="fa fa-check"></i>Linear (first-order) components</a></li>
+<li class="chapter" data-level="" data-path="quadratic-second-order-components.html"><a href="quadratic-second-order-components.html"><i class="fa fa-check"></i>Quadratic (second-order) components</a></li>
+<li class="chapter" data-level="" data-path="cubic-third-order-components.html"><a href="cubic-third-order-components.html"><i class="fa fa-check"></i>Cubic (third) order components</a></li>
+<li class="chapter" data-level="" data-path="quartic-fourth-order-components.html"><a href="quartic-fourth-order-components.html"><i class="fa fa-check"></i>Quartic (fourth) order components</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="fitting-curves-to-data-rather-than-straight-lines.html"><a href="fitting-curves-to-data-rather-than-straight-lines.html"><i class="fa fa-check"></i>Fitting curves to data rather than straight lines</a><ul>
+<li class="chapter" data-level="" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i>Linear regression</a></li>
+<li class="chapter" data-level="" data-path="adding-a-quadratic-component.html"><a href="adding-a-quadratic-component.html"><i class="fa fa-check"></i>Adding a quadratic component</a></li>
+<li class="chapter" data-level="" data-path="adding-a-cubic-component.html"><a href="adding-a-cubic-component.html"><i class="fa fa-check"></i>Adding a cubic component</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bayesian-approach.html"><a href="bayesian-approach.html"><i class="fa fa-check"></i>Bayesian approach</a></li>
+<li class="chapter" data-level="" data-path="exercise.html"><a href="exercise.html"><i class="fa fa-check"></i>Exercise</a><ul>
+<li><a href="does-age-predict-anxiety.html#does-age-predict-anxiety">Does <code>age</code> predict <code>anxiety</code>?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i>Summary</a></li>
+<li class="divider"></li>
+<li><a href="./LICENCE" target="blank">Licence: CC BY-SA 4</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Fluency</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="reasons-to-use-r" class="section level2">
+<h2>Why do we use R?</h2>
+<p>This material copied from
+<a href="https://ajwills72.github.io/rminr/">Andy Wills’ RminR</a>.</p>
+<p><strong>This document covers some of the reasons we use R in this course. It’s not
+“required reading”, but take a look if you’re interested.</strong></p>
+<div id="introduction" class="section level3">
+<h3>Introduction</h3>
+<p>R is a piece of software for handling data. It’s the one used on this course,
+but it’s not the only option available, others include: <a href="https://products.office.com/en-gb/compare-all-microsoft-office-products?tab=2">Excel</a>, <a href="https://www.jamovi.org">Jamovi</a>,
+<a href="https://jasp-stats.org/">JASP</a>, <a href="https://uk.mathworks.com/pricing-licensing.html?prodcode=ML">MATLAB</a>,<a href="https://www.stata.com/order/new/bus/single-user-licenses/">Stata</a> and, perhaps the most talked-about
+alternative, <a href="https://www.ibm.com/products/spss-statistics/pricing">SPSS</a>.</p>
+</div>
+<div id="student-experience" class="section level3">
+<h3>Student experience</h3>
+<p>Students prefer R. In a recent study, undergraduate psychology students at
+Glasgow University were given a choice between R and SPSS, having experienced
+both. Two-thirds of the students chose R. Those who chose R did better in the
+final assessments and showed lower stats anxiety. R is being used to teach
+Plymouth University undergraduates (and visiting Year 10 students) across a
+range of different courses.
+<a href="https://github.com/gupsych/trdair_workshop/blob/master/LTC_workshop.pdf">Read more</a>.</p>
+</div>
+<div id="employability" class="section level3">
+<h3>Employability</h3>
+<p><a href="https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century">Data science</a> is a graduate skill in high demand, and using R is a key skill
+in that market. In contrast, demand for SPSS skills has been declining
+dramatically for a decade. At SPSS’s current rate of decline, it’ll be gone by
+the time you graduate. <a href="http://r4stats.com/articles/popularity/">Read more</a>.</p>
+</div>
+<div id="free" class="section level3">
+<h3>Free</h3>
+<p>R is free. You don’t need to pay anything to download or use it, and never will.
+In contrast, once you leave university, SPSS would cost you or your employer
+around
+<a href="https://www.ibm.com/products/spss-statistics/pricing">£6000 per person per year</a>.</p>
+</div>
+<div id="never-out-of-date" class="section level3">
+<h3>Never out of date</h3>
+<p>Every analysis you can think of is already available in R, thanks to over
+<a href="https://cran.rstudio.com/">12,000 free packages</a>. As new analyses are
+developed, they become available in R first. In 2013, SPSS realised it couldn’t
+keep up with R, and
+<a href="https://www.ibm.com/developerworks/library/ba-call-r-spss/index.html">admitted defeat</a>.</p>
+</div>
+<div id="real" class="section level3">
+<h3>Real</h3>
+<p>Real data analysis is mainly preprocessing – scientists spend around <a href="https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/#5e7ed02f6f63">80% of
+their analysis time</a> getting the data into a format where they can apply
+statistical tests. R is fantastically good at preprocessing. Our course focusses
+on realistic data analysis, making R the perfect tool for the job.</p>
+</div>
+<div id="accurate" class="section level3">
+<h3>Accurate</h3>
+<p>The alternatives to R for real data analysis are either kludgy, error prone and
+have poor reproducibility (e.g. preprocessing in Excel, followed by statistics
+in SPSS), or are more niche in the graduate jobs market (e.g. MATLAB). In
+particular, Excel is famously error prone with, for example,
+<a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7">1 in 5 experiments in genetics having been screwed up by Excel</a>
+and
+<a href="https://arstechnica.com/tech-policy/2013/04/microsoft-excel-the-ruiner-of-global-economies/">the case for the UK government’s policy of financial austerity being based on an Excel screwup</a>.</p>
+</div>
+<div id="reproducible" class="section level3">
+<h3>Reproducible</h3>
+<p>R’s use of scripts means that, if you have done the analysis completely in R,
+you already have a full, reproducible record of your analysis path. Anyone with
+an internet connection can download R, and reproduce your analysis using your
+script. Making your analyses reproducible is an essential skill in many areas of
+research.</p>
+</div>
+<div id="free-as-in-freedom" class="section level3">
+<h3>Free as in freedom</h3>
+<p>R is “free as in freedom” because all the source code is available to everyone
+(it’s “open source”). Some reasons this is important:</p>
+<ol style="list-style-type: decimal">
+<li><p>All software has bugs; making the source code available means it’s more
+likely that these bugs are found and fixed. In contrast, no one outside of
+IBM can look at the source code for SPSS, and it’s entirely up to IBM whether
+they fix, or tell you about, the bugs it has.</p></li>
+<li><p>All software is eventually abandoned by the people who wrote it (if for no
+other reason than their death). Open source software only dies if no one in
+the world cares enough about it to maintain it. In contrast, closed-source
+software (e.g. SPSS) dies as soon as the current owners decide to kill it.</p></li>
+</ol>
+</div>
+<div id="supported-by-plymouth-university" class="section level3">
+<h3>Supported by Plymouth University</h3>
+<p>R is already installed on many public machines at the University of Plymouth.</p>
+</div>
+<div id="runs-inside-a-browser" class="section level3">
+<h3>Runs inside a browser</h3>
+<p>You can use R without having to install it, e.g.
+<a href="https://rstudio.plymouth.ac.uk">RStudio Plymouth</a>.</p>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="access-to-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="assessments.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,258 @@
+---
+title: 'Data Fluency'
+author: 'Ben Whalley and Chris Berry'
+site: bookdown::bookdown_site
+bibliography: [references.bib]
+biblio-style: apa6
+link-citations: yes
+---
+
+
+```{r, include=F, echo=F}
+knitr::opts_chunk$set(echo = TRUE, collapse=TRUE, cache=TRUE, comment=NA, message=FALSE)
+```
+
+# {-}
+
+<!-- ![Image via [archive.org](https://archive.org/details/cu31924074275912/page/n131)](media/cow-small.png) -->
+
+![](media/bunny.jpg){width=40%}
+
+# Overview {-}
+
+From the module aims:
+
+> The module aims to foster fluency and confidence in the handling,
+> visualisation and communication of quantitative data, alongside skills and
+> techniques for working with larger corpuses of textual and other data. Data
+> visualisation is taught as a foundational technique for exploring and
+> communicating insights from quantitative data. Existing knowledge of linear
+> models is extended with the introduction of the generalised linear model, and
+> a contemporary approach, emphasising prediction and model evaluation is
+> introduced.
+
+In a nutshell: we want to give you the skills to analyse your data as independent
+researchers, and to give you confidence in working with data which will stand
+you in good stead in your future careers.
+
+## Approach of this course
+
+Sometimes, psychology students learn statistics through a "bag of tricks"
+approach: Workshops might teach how to "do an Anova", or "how run a multiple
+regression". Or you might be given a checklist of things to do when analysing
+data of a particular type, but all without any bigger picture of what we are
+trying to achieve when we collect and analyse data.
+
+To provide a common thread to our teaching, research methods modules at Plymouth
+adopt the model for the work of data scientists proposed by
+[Wickham, 2017](http://r4ds.had.co.nz/introduction.html) (see figure):
+
+![Wickham's model of a data science workflow](media/data-science.png)
+
+In this module we do cover specific skills, but we hope you will also learn
+about this general approach to working with data, and integrate it into your own
+research.
+
+## Format of the sessions
+
+We have 16 sessions, which work as follows:
+
+-   We avoid extended lectures. This doesn't work well with this subject matter.
+-   The focus is on learning by doing (this is more like cooking than chemisty).
+-   In the first hour of each session we will (often) work together.
+-   In the second hour your work will be self-paced, or in pairs or small
+    groups.
+-   Activities in the workshops are variable in length, sometimes you will
+    finish early, other times you may be expected to complete the activities
+    outside of class.
+
+## The most important thing of all
+
+The most important thing of all is to **practice**.
+
+These materials provide lots of practice tasks. You **NEED** to work through them
+all to be able to pass the course effectively.
+
+### Lab diary/R project archive
+
+It's recommended that you keep a running note of all the work you do in class.
+This can take for form of a notebook in Word, a blog, or an R script (see first
+session).
+
+Without a running record of what you have/haven't done it's much harder for
+teaching staff to help you. The record also allows us to review your progress
+and make suggestions/improvements.
+
+<!-- TODO EXPLAIN BLOG TASK -->
+
+## List of sessions
+
+Don't worry if all the terms in this list don't make sense yet ... they will
+soon!
+
+-   BeginneRs 1: Getting started with RStudio
+
+-   BeginneRs 2: Basic skills in R
+
+-   Visualisation and plotting: Relationships, group differences, color.
+
+-   Real world plotting
+
+-   Data handling: Working with multiple files; Rmarkdown.
+
+-   Regression 1: Core concepts.
+
+-   Regression 2: Causes/Multiple regression.
+
+-   Regression 3: Tests and variable/effect coding.
+
+-   Uncertainty and intervals: Confidence and prediction intervals.
+
+(CHRISTMAS BREAK)
+
+-   Fitting curves: Using polynomials.
+
+-   Building models 1: Choosing variables in multiple regression
+
+-   Building models 2: Anova and Bayes Factors
+
+-   Contrasts and tests: Using `emmeans`
+
+-   Communicating regression and Anova
+
+-   Reproducing an analysis 1: groups work on example, start to finish.
+
+-   Reproducing an analysis 2: finding a suitable paper, data handling.
+
+-   Reproducing an analysis 3: reproducing the analysis.
+
+A catchup/revision session then follows, but no new material is introduced.
+
+## Access to R
+
+Throughout the module we use R for data processing and analysis.
+
+If you are taking this course at Plymouth University, the easiest way to run the
+code examples here is to the school's RStudio Server.
+
+-   [Login to your account on the server here](https://rstudio.plymouth.ac.uk)
+-   To get an account on the server, or reset a password,
+    [contact the Psychology technical office](http://www.psy.plymouth.ac.uk/home/)
+
+#### Installing at home
+
+If you want to install R on your own machine, instructions are available here:
+
+-   <https://github.com/plymouthPsychology/installR/>
+
+Be sure to install the recommended packages or the examples given here won't
+work.
+
+## Why do we use R? {#reasons-to-use-r}
+
+This material copied from
+[Andy Wills' RminR](https://ajwills72.github.io/rminr/).
+
+**This document covers some of the reasons we use R in this course. It's not
+"required reading", but take a look if you're interested.**
+
+### Introduction
+
+R is a piece of software for handling data. It's the one used on this course,
+but it's not the only option available, others include: [Excel][2], [Jamovi][1],
+[JASP][6], [MATLAB][3],[Stata][5] and, perhaps the most talked-about
+alternative, [SPSS][4].
+
+[1]: https://www.jamovi.org
+[2]:
+    https://products.office.com/en-gb/compare-all-microsoft-office-products?tab=2
+[3]: https://uk.mathworks.com/pricing-licensing.html?prodcode=ML
+[4]: https://www.ibm.com/products/spss-statistics/pricing
+[5]: https://www.stata.com/order/new/bus/single-user-licenses/
+[6]: https://jasp-stats.org/
+
+### Student experience
+
+Students prefer R. In a recent study, undergraduate psychology students at
+Glasgow University were given a choice between R and SPSS, having experienced
+both. Two-thirds of the students chose R. Those who chose R did better in the
+final assessments and showed lower stats anxiety. R is being used to teach
+Plymouth University undergraduates (and visiting Year 10 students) across a
+range of different courses.
+[Read more](https://github.com/gupsych/trdair_workshop/blob/master/LTC_workshop.pdf).
+
+### Employability
+
+[Data science][7] is a graduate skill in high demand, and using R is a key skill
+in that market. In contrast, demand for SPSS skills has been declining
+dramatically for a decade. At SPSS's current rate of decline, it'll be gone by
+the time you graduate. [Read more](http://r4stats.com/articles/popularity/).
+
+[7]: https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century
+
+### Free
+
+R is free. You don't need to pay anything to download or use it, and never will.
+In contrast, once you leave university, SPSS would cost you or your employer
+around
+[£6000 per person per year](https://www.ibm.com/products/spss-statistics/pricing).
+
+### Never out of date
+
+Every analysis you can think of is already available in R, thanks to over
+[12,000 free packages](https://cran.rstudio.com/). As new analyses are
+developed, they become available in R first. In 2013, SPSS realised it couldn't
+keep up with R, and
+[admitted defeat](https://www.ibm.com/developerworks/library/ba-call-r-spss/index.html).
+
+### Real
+
+Real data analysis is mainly preprocessing -- scientists spend around [80% of
+their analysis time][8] getting the data into a format where they can apply
+statistical tests. R is fantastically good at preprocessing. Our course focusses
+on realistic data analysis, making R the perfect tool for the job.
+
+[8]:
+    https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/#5e7ed02f6f63
+
+### Accurate
+
+The alternatives to R for real data analysis are either kludgy, error prone and
+have poor reproducibility (e.g. preprocessing in Excel, followed by statistics
+in SPSS), or are more niche in the graduate jobs market (e.g. MATLAB). In
+particular, Excel is famously error prone with, for example,
+[1 in 5 experiments in genetics having been screwed up by Excel](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7)
+and
+[the case for the UK government's policy of financial austerity being based on an Excel screwup](https://arstechnica.com/tech-policy/2013/04/microsoft-excel-the-ruiner-of-global-economies/).
+
+### Reproducible
+
+R's use of scripts means that, if you have done the analysis completely in R,
+you already have a full, reproducible record of your analysis path. Anyone with
+an internet connection can download R, and reproduce your analysis using your
+script. Making your analyses reproducible is an essential skill in many areas of
+research.
+
+### Free as in freedom
+
+R is "free as in freedom" because all the source code is available to everyone
+(it's "open source"). Some reasons this is important:
+
+1. All software has bugs; making the source code available means it's more
+   likely that these bugs are found and fixed. In contrast, no one outside of
+   IBM can look at the source code for SPSS, and it's entirely up to IBM whether
+   they fix, or tell you about, the bugs it has.
+
+2. All software is eventually abandoned by the people who wrote it (if for no
+   other reason than their death). Open source software only dies if no one in
+   the world cares enough about it to maintain it. In contrast, closed-source
+   software (e.g. SPSS) dies as soon as the current owners decide to kill it.
+
+### Supported by Plymouth University
+
+R is already installed on many public machines at the University of Plymouth.
+
+### Runs inside a browser
+
+You can use R without having to install it, e.g.
+[RStudio Plymouth](https://rstudio.plymouth.ac.uk).

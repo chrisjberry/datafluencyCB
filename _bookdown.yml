@@ -1,0 +1,16 @@
+book_filename: 'datafluencyCB'
+output_dir: docs
+delete_merged_file: true
+link-citations: true
+new_session: yes
+rmd_files:
+  [
+    "index.rmd",
+    "assessment.rmd",
+
+    # PART
+    
+    "06-building-models.rmd",
+    "07-fitting-curves.rmd",
+
+]

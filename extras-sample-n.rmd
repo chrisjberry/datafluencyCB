@@ -1,0 +1,35 @@
+## More sampling {#sample_n}
+
+In the beginner session we used `sample` to shuffle a sequence of numbers, and make random samples:
+
+```{r}
+sample(1:10, size=5)
+sample(1:2, size=10, replace=TRUE)
+```
+
+We also saw how to use `expand.grid` to create experimental designs:
+
+```{r}
+colours=c("Red", "Green")
+positions=c("Top", "Bottom")
+words = c("Nobble", "Wobble", "Hobble")
+expand.grid(colour=colours, position=positions, words = words)
+```
+
+---
+
+Tidyverse contains a function which lets us sample raws from our design dataframe directly. First we make sure tidyverse is loaded:
+
+```{r, echo=T}
+library(tidyverse)
+```
+
+And then we can use `sample_n`
+
+```{r}
+design <- expand.grid(colour=colours, position=positions, words = words)
+design %>% sample_n(100, replace=TRUE) %>% head
+```
+
+
+**Explanation**: `sample_n` has randomly sampled rows from our design. In this case we sampled 100, but show only the first 6 (by using `head`).

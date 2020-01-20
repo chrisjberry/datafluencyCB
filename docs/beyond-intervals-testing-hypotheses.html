@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Beyond intervals - testing hypotheses | Data Fluency</title>
+  <meta name="description" content="Beyond intervals - testing hypotheses | Data Fluency" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Beyond intervals - testing hypotheses | Data Fluency" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Beyond intervals - testing hypotheses | Data Fluency" />
+  
+  
+  
+
+<meta name="author" content="Ben Whalley and Chris Berry" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="recap-on-intervals.html">
+<link rel="next" href="fitting-curves.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<link href="media/webex.css" rel="stylesheet" />
+<link href="media/psystats.css" rel="stylesheet" />
+<script src="media/webex.js"></script>
+<script src="media/psystats.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118343766-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-118343766-4');
+</script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Fluency</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section"></a><ul>
+<li class="chapter" data-level="" data-path="approach-of-this-course.html"><a href="approach-of-this-course.html"><i class="fa fa-check"></i>Approach of this course</a></li>
+<li class="chapter" data-level="" data-path="format-of-the-sessions.html"><a href="format-of-the-sessions.html"><i class="fa fa-check"></i>Format of the sessions</a></li>
+<li class="chapter" data-level="" data-path="the-most-important-thing-of-all.html"><a href="the-most-important-thing-of-all.html"><i class="fa fa-check"></i>The most important thing of all</a></li>
+<li class="chapter" data-level="" data-path="list-of-sessions.html"><a href="list-of-sessions.html"><i class="fa fa-check"></i>List of sessions</a></li>
+<li class="chapter" data-level="" data-path="access-to-r.html"><a href="access-to-r.html"><i class="fa fa-check"></i>Access to R</a></li>
+<li class="chapter" data-level="" data-path="reasons-to-use-r.html"><a href="reasons-to-use-r.html"><i class="fa fa-check"></i>Why do we use R?</a></li>
+<li class="chapter" data-level="" data-path="teachers-notes.html"><a href="teachers-notes.html"><i class="fa fa-check"></i>Teachers’ notes</a></li>
+<li class="chapter" data-level="" data-path="week-by-week-resources.html"><a href="week-by-week-resources.html"><i class="fa fa-check"></i>Week-by-week resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="assessments.html"><a href="assessments.html"><i class="fa fa-check"></i>Assessments</a><ul>
+<li class="chapter" data-level="" data-path="core-skills-test.html"><a href="core-skills-test.html"><i class="fa fa-check"></i>Core skills test</a></li>
+<li class="chapter" data-level="" data-path="analysis-and-visualisation-task.html"><a href="analysis-and-visualisation-task.html"><i class="fa fa-check"></i>Analysis and visualisation task</a></li>
+<li class="chapter" data-level="" data-path="assessment-authentic-analysis.html"><a href="assessment-authentic-analysis.html"><i class="fa fa-check"></i>Authentic analysis assessment</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="beginners.html"><a href="beginners.html"><i class="fa fa-check"></i>BeginneRs</a><ul>
+<li class="chapter" data-level="" data-path="getting-started-rstudio.html"><a href="getting-started-rstudio.html"><i class="fa fa-check"></i>Getting started with RStudio</a></li>
+<li class="chapter" data-level="" data-path="exploring-data-brief.html"><a href="exploring-data-brief.html"><i class="fa fa-check"></i>Exploring data (in brief)</a></li>
+<li class="chapter" data-level="" data-path="inspecting-data.html"><a href="inspecting-data.html"><i class="fa fa-check"></i>Inspecting data</a></li>
+<li class="chapter" data-level="" data-path="missing-data.html"><a href="missing-data.html"><i class="fa fa-check"></i>Missing data</a></li>
+<li class="chapter" data-level="" data-path="group-differences-briefly.html"><a href="group-differences-briefly.html"><i class="fa fa-check"></i>Group differences (briefly)</a></li>
+<li class="chapter" data-level="" data-path="undergraduate-stats-in-r.html"><a href="undergraduate-stats-in-r.html"><i class="fa fa-check"></i>Undergraduate stats in R</a></li>
+<li class="chapter" data-level="" data-path="sequences-and-designs.html"><a href="sequences-and-designs.html"><i class="fa fa-check"></i>Sequences and designs</a></li>
+<li class="chapter" data-level="" data-path="more-reading-data.html"><a href="more-reading-data.html"><i class="fa fa-check"></i>Reading data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualisation.html"><a href="visualisation.html"><i class="fa fa-check"></i>Visualisation and plotting</a><ul>
+<li class="chapter" data-level="" data-path="session1.html"><a href="session1.html"><i class="fa fa-check"></i>Session 1</a></li>
+<li class="chapter" data-level="" data-path="learning-outcomes.html"><a href="learning-outcomes.html"><i class="fa fa-check"></i>Learning outcomes</a></li>
+<li class="chapter" data-level="" data-path="countries-200-years.html"><a href="countries-200-years.html"><i class="fa fa-check"></i>200 countries, 200 years…</a></li>
+<li class="chapter" data-level="" data-path="into-the-third-and-fourth-and-fifth-dimension.html"><a href="into-the-third-and-fourth-and-fifth-dimension.html"><i class="fa fa-check"></i>Into the third (and fourth, and fifth…) dimension</a></li>
+<li class="chapter" data-level="" data-path="layers.html"><a href="layers.html"><i class="fa fa-check"></i>Layers</a></li>
+<li class="chapter" data-level="" data-path="facets.html"><a href="facets.html"><i class="fa fa-check"></i>Facets</a></li>
+<li class="chapter" data-level="" data-path="ggplot-scales.html"><a href="ggplot-scales.html"><i class="fa fa-check"></i>Scales</a></li>
+<li class="chapter" data-level="" data-path="comparing-categories.html"><a href="comparing-categories.html"><i class="fa fa-check"></i>Comparing categories</a></li>
+<li class="chapter" data-level="" data-path="spit-and-polish.html"><a href="spit-and-polish.html"><i class="fa fa-check"></i>Spit and polish</a></li>
+<li class="chapter" data-level="" data-path="session-2-real-world-plots.html"><a href="session-2-real-world-plots.html"><i class="fa fa-check"></i>Session 2: Real world plots</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-handling.html"><a href="data-handling.html"><i class="fa fa-check"></i>Data handling</a><ul>
+<li class="chapter" data-level="" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="" data-path="making-new-variables.html"><a href="making-new-variables.html"><i class="fa fa-check"></i>Making new variables</a></li>
+<li class="chapter" data-level="" data-path="reshaping-melting.html"><a href="reshaping-melting.html"><i class="fa fa-check"></i>Reshaping (melting)</a></li>
+<li class="chapter" data-level="" data-path="reshaping-wide-casting.html"><a href="reshaping-wide-casting.html"><i class="fa fa-check"></i>Reshaping wide (casting)</a></li>
+<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i>RMarkdown</a></li>
+<li class="chapter" data-level="" data-path="final-task-to-be-completed-as-homework.html"><a href="final-task-to-be-completed-as-homework.html"><i class="fa fa-check"></i>Final task (to be completed as homework)</a></li>
+<li class="chapter" data-level="" data-path="extension-exercises-and-reading.html"><a href="extension-exercises-and-reading.html"><i class="fa fa-check"></i>Extension exercises and reading</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i>Regression</a><ul>
+<li class="chapter" data-level="" data-path="session-1.html"><a href="session-1.html"><i class="fa fa-check"></i>Session 1</a></li>
+<li class="chapter" data-level="" data-path="how-useful-are-the-lines.html"><a href="how-useful-are-the-lines.html"><i class="fa fa-check"></i>How useful are the lines?</a></li>
+<li class="chapter" data-level="" data-path="using-r-for-regression.html"><a href="using-r-for-regression.html"><i class="fa fa-check"></i>Using R for regression</a></li>
+<li><a href="the-first-step-is-always-plotting.html#the-first-step-is-always-plotting">The first step is <strong>always</strong> plotting</a></li>
+<li class="chapter" data-level="" data-path="automatic-line-fitting.html"><a href="automatic-line-fitting.html"><i class="fa fa-check"></i>Automatic line-fitting</a></li>
+<li class="chapter" data-level="" data-path="first-lm.html"><a href="first-lm.html"><i class="fa fa-check"></i>Putting numbers to lines</a></li>
+<li class="chapter" data-level="" data-path="regresion-hand-predictions.html"><a href="regresion-hand-predictions.html"><i class="fa fa-check"></i>Making predictions (by hand)</a></li>
+<li class="chapter" data-level="" data-path="regression-thinking-causes.html"><a href="regression-thinking-causes.html"><i class="fa fa-check"></i>Thinking about causes</a></li>
+<li class="chapter" data-level="" data-path="moderation-intro.html"><a href="moderation-intro.html"><i class="fa fa-check"></i>‘Effect modification’</a></li>
+<li class="chapter" data-level="" data-path="tricky-relationships.html"><a href="tricky-relationships.html"><i class="fa fa-check"></i>‘Tricky’ relationships</a></li>
+<li class="chapter" data-level="" data-path="diagrams-and-models.html"><a href="diagrams-and-models.html"><i class="fa fa-check"></i>Diagrams and models</a></li>
+<li class="chapter" data-level="" data-path="why-multiple-regression.html"><a href="why-multiple-regression.html"><i class="fa fa-check"></i>Why use multiple regression?</a></li>
+<li class="chapter" data-level="" data-path="regression-interaction.html"><a href="regression-interaction.html"><i class="fa fa-check"></i>Different relationships?</a></li>
+<li><a href="fit-multiple-regression.html#fit-multiple-regression">Using <code>lm</code> for multiple regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="uncertainty.html"><a href="uncertainty.html"><i class="fa fa-check"></i>Uncertainty</a><ul>
+<li class="chapter" data-level="" data-path="overview-2.html"><a href="overview-2.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="" data-path="calculating-intervals.html"><a href="calculating-intervals.html"><i class="fa fa-check"></i>Calculating intervals</a></li>
+<li class="chapter" data-level="" data-path="recap-on-intervals.html"><a href="recap-on-intervals.html"><i class="fa fa-check"></i>Recap on intervals</a></li>
+<li class="chapter" data-level="" data-path="beyond-intervals-testing-hypotheses.html"><a href="beyond-intervals-testing-hypotheses.html"><i class="fa fa-check"></i>Beyond intervals - testing hypotheses</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="fitting-curves.html"><a href="fitting-curves.html"><i class="fa fa-check"></i>Fitting curves</a><ul>
+<li class="chapter" data-level="" data-path="session-1-1.html"><a href="session-1-1.html"><i class="fa fa-check"></i>Session 1</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="building-models.html"><a href="building-models.html"><i class="fa fa-check"></i>Building models</a><ul>
+<li class="chapter" data-level="" data-path="session-1-multiple-regression.html"><a href="session-1-multiple-regression.html"><i class="fa fa-check"></i>Session 1: Multiple regression</a></li>
+<li class="chapter" data-level="" data-path="session-2-anova-and-bayes-factor.html"><a href="session-2-anova-and-bayes-factor.html"><i class="fa fa-check"></i>Session 2: Anova and Bayes Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i>Testing</a><ul>
+<li><a href="session-1-planned-contrasts-with-emmeans.html#session-1-planned-contrasts-with-emmeans">Session 1: Planned contrasts with <code>emmeans</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html"><i class="fa fa-check"></i>Communicating results</a><ul>
+<li class="chapter" data-level="" data-path="session-1-communicating-anova-and-regression.html"><a href="session-1-communicating-anova-and-regression.html"><i class="fa fa-check"></i>Session 1: Communicating Anova and Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="real-world-data.html"><a href="real-world-data.html"><i class="fa fa-check"></i>Real world data</a><ul>
+<li class="chapter" data-level="" data-path="session-1-reproducing-a-real-paper.html"><a href="session-1-reproducing-a-real-paper.html"><i class="fa fa-check"></i>Session 1: Reproducing a real paper</a></li>
+<li class="chapter" data-level="" data-path="session-2-reproducing-a-real-paper.html"><a href="session-2-reproducing-a-real-paper.html"><i class="fa fa-check"></i>Session 2: Reproducing a real paper</a></li>
+<li class="chapter" data-level="" data-path="session-3-reproducing-a-real-paper.html"><a href="session-3-reproducing-a-real-paper.html"><i class="fa fa-check"></i>Session 3: Reproducing a real paper</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="extras.html"><a href="extras.html"><i class="fa fa-check"></i>Extras</a><ul>
+<li class="chapter" data-level="" data-path="keyboard-shortcuts.html"><a href="keyboard-shortcuts.html"><i class="fa fa-check"></i>Keyboard shortcuts</a></li>
+<li class="chapter" data-level="" data-path="common-problems.html"><a href="common-problems.html"><i class="fa fa-check"></i>Common problems</a></li>
+<li class="chapter" data-level="" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i>Glossary</a></li>
+<li class="chapter" data-level="" data-path="cheatsheet.html"><a href="cheatsheet.html"><i class="fa fa-check"></i>Cheatsheet</a></li>
+<li class="chapter" data-level="" data-path="sample-n.html"><a href="sample-n.html"><i class="fa fa-check"></i>More sampling</a></li>
+<li class="chapter" data-level="" data-path="more-on-tibbles.html"><a href="more-on-tibbles.html"><i class="fa fa-check"></i>More on Tibbles</a></li>
+<li class="chapter" data-level="" data-path="regression-extra-explanations.html"><a href="regression-extra-explanations.html"><i class="fa fa-check"></i>Regression - extra explanations</a></li>
+<li class="chapter" data-level="" data-path="cause-and-effect.html"><a href="cause-and-effect.html"><i class="fa fa-check"></i>Cause and effect</a></li>
+<li class="chapter" data-level="" data-path="confidence-intervals-explanation.html"><a href="confidence-intervals-explanation.html"><i class="fa fa-check"></i>What do confidence intervals mean?</a></li>
+<li class="chapter" data-level="" data-path="other-tips.html"><a href="other-tips.html"><i class="fa fa-check"></i>Other tips</a></li>
+<li class="chapter" data-level="" data-path="wider-reading.html"><a href="wider-reading.html"><i class="fa fa-check"></i>Wider reading</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="./LICENCE" target="blank">Licence: CC BY-SA 4</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Fluency</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="beyond-intervals---testing-hypotheses" class="section level2">
+<h2>Beyond intervals - testing hypotheses</h2>
+<p>One of the nice things about modern Bayesian methods is that we don’t have to pick just a single
+number to represent our estimate, or a single interval to represent our uncertainty.</p>
+<p>As mentioned above, to fit the model, the computer runs a simulation thousands of time. On each run,
+it can make a prediction.</p>
+<p>Because of the way the method works, predictions from the simulation are made <em>in proportion</em> to
+their probability.</p>
+<!-- TODO ADD link to JustEnoughR explanation). -->
+<p>This means that:</p>
+<ol style="list-style-type: decimal">
+<li><p>If we plot the simulation results, we can see what is the most likely <em>distribution</em> of outcomes.</p></li>
+<li><p>By counting different outcomes within the simulation, and doing simple arithmetic, we can
+calculate the <em>probability</em> of different outcomes occurring.</p></li>
+</ol>
+<div id="visualising-the-posterior-distribution" class="section level3">
+<h3>Visualising the posterior distribution</h3>
+<p>Many experts in Bayesian methods recommend avoiding single-number summaries rather than trying to
+summarise the simulation results as a single value or range (e.g. see
+<a href="https://arxiv.org/abs/1709.01449">Gabry et al</a>, although this covers many more advanced topics
+too).</p>
+<p>In the code above we used <code>mean_qi</code> to calculate the mean and percentile intervals of the
+predictions from the simulations. But we can also use <code>ggplot</code> to look at the <em>distribution</em> of
+simulated predictions directly:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">add_fitted_draws</span>(iqmodel.bayes, <span class="dt">newdata=</span>new.mother) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(.value)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">15</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Probability in simulation&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb34-5" data-line-number="5"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Predicted kid_score&quot;</span>)</a></code></pre></div>
+<p><img src="05-uncertainty_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<div class="exercise">
+<p>Make new predictions (using <code>add_fitted_samples</code>) for the <em>average</em> <code>kid_score</code> for a mother with an
+IQ of 120 who completed school.</p>
+<p>Visualise these predictions using <code>ggplot</code>. It should look something like this if you use a density
+plot (<code>geom_density</code>) instead of a histogram:</p>
+<p><img src="05-uncertainty_files/figure-html/unnamed-chunk-22-1.png" width="480" /></p>
+<p>Now make predictions for new <em>individuals</em>, who have the same IQ and who completed school (i.e. use
+the <code>add_predicted_samples</code> function). Plot the predictions; they should look something like this:</p>
+<p><img src="05-uncertainty_files/figure-html/unnamed-chunk-23-1.png" width="480" /></p>
+<p>Are you more certain about the future <em>average</em> prediction, or the future <em>individual</em> prediction?
+How is this shown in your plots?</p>
+</div>
+</div>
+<div id="more-predictions-extension-task" class="section level3">
+<h3>More predictions (extension task)</h3>
+<div class="exercise">
+<p>Using <code>iqmodel.bayes</code>, predict <em>average</em> IQs for children of different mothers with an IQ of 100,
+with or without high school education.</p>
+<p>Create a boxplot to compare <em>average</em> outcomes. It should look something like this:</p>
+<p><img src="05-uncertainty_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+</div>
+</div>
+<div id="being-a-bookie-extension-task" class="section level3">
+<h3>Being a Bookie (extension task)</h3>
+<p>In applied work (or if you really did want to set up as a bookmaker) we might also want to make
+probability statements about particular examples or cases, based on our data.</p>
+<p>For example clinicians or policy makers might want to hear statements like:</p>
+<ul>
+<li>“There’s a 65% chance CBT will reduce your depression by more than 10 points.”</li>
+<li>“If you have an IQ of 100, there’s a 5% chance your child’s IQ will be &lt; 90.”</li>
+</ul>
+<p>To do this we just <strong><em>count</em></strong> the number of times each outcome happened within the simulation. For
+example:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">new.mother =<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">mom_iq=</span><span class="dv">97</span>, <span class="dt">mom_hs=</span><span class="st">&quot;Completed&quot;</span>)</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="kw">add_predicted_draws</span>(iqmodel.bayes, <span class="dt">newdata=</span>new.mother) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="kw">mean</span>(.prediction <span class="op">&lt;</span><span class="st"> </span><span class="dv">60</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 4
+## # Groups:   mom_iq, mom_hs [1]
+##   mom_iq mom_hs     .row `mean(.prediction &lt; 60)`
+##    &lt;dbl&gt; &lt;chr&gt;     &lt;int&gt;                    &lt;dbl&gt;
+## 1     97 Completed     1                    0.076</code></pre>
+<div class="solution">
+<button>
+Explain that code in detail…
+</button>
+<p>In the code above, <code>add_predicted_draw</code> makes many predictions for <code>new.mother</code>… that is a new
+mother which an IQ = 100, and who completed high school.</p>
+<p>Rather than just one prediction, this makes many (thousands) of predictions for this new mother, one
+for each run of the model simulation.</p>
+<p>It returns a dataframe, with a <code>.prediction</code> column, which is the predicted value in each simulation
+run.</p>
+<p>We then use <code>summarise</code> to count how many times <code>.prediction &lt; 60</code>. We do this within the
+<code>mean(...)</code> function; this converts the <code>TRUE</code> and <code>FALSE</code> values to <code>0</code> and <code>1</code> first, so the
+average of <code>c(TRUE, FALSE)</code> is 0.5.</p>
+<p>In short, <code>mean(pred &lt; 60)</code> gives us the <strong><em>probability</em></strong> that <code>.prediction</code> was less than 60
+across all of the simulation runs.</p>
+</div>
+<p>So that’s about 8% of cases where the <code>mom_iq</code> was 97 and <code>kid_score</code> is predicted to be less than
+60 (your numbers might vary a little because of the way the software works).</p>
+<div class="exercise">
+<p>If you were running a bookmaker, what bet should we offer a mother with an IQ of 70 who wants to
+wager her child will be highligh intelligent and have an IQ &gt; 120.</p>
+<p>Using <code>iqmodel.bayes</code>, make predictions (<code>add_predicted_draws</code>) for a new mother who has an IQ of 70
+and who completed high school.</p>
+<p>What is the probability that her child will have an IQ &gt; 120? (or even &gt; 100?)</p>
+</div>
+<!--
+
+
+```r
+# Nits!
+
+expand.grid(pnits = seq(.001,.999, .001), pscratchifnits = c(.2,.5,.8)) %>%
+  mutate(oddsnits = pnits/(1-pnits),
+         oddscratchifnits = (1-pscratchifnits)/pscratchifnits,
+         oddsnitsifscratch = oddsnits / oddscratchifnits,
+         pnitsifscratch = oddsnitsifscratch/(1+oddsnitsifscratch)
+         ) %>%
+  ggplot(aes(pnits, pnitsifscratch, color=factor(pscratchifnits), group=pscratchifnits)) + geom_point() +
+  scale_color_discrete("p(scratching if you have nits)") +
+  xlab("Proportion of all children with nits.") +
+  ylab("Probability your child has nits (if scratching)")
+```
+
+<img src="05-uncertainty_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+
+-->
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="recap-on-intervals.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="fitting-curves.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

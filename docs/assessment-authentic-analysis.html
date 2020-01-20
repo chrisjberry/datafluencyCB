@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Authentic analysis assessment | Data Fluency</title>
+  <meta name="description" content="Authentic analysis assessment | Data Fluency" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Authentic analysis assessment | Data Fluency" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Authentic analysis assessment | Data Fluency" />
+  
+  
+  
+
+<meta name="author" content="Ben Whalley and Chris Berry" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-analysis-and-visualisation-task.html">
+<link rel="next" href="building-models.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<link href="media/webex.css" rel="stylesheet" />
+<link href="media/psystats.css" rel="stylesheet" />
+<script src="media/webex.js"></script>
+<script src="media/psystats.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118343766-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-118343766-4');
+</script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Fluency</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section"></a></li>
+<li class="chapter" data-level="" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i>Overview</a><ul>
+<li class="chapter" data-level="" data-path="approach-of-this-course.html"><a href="approach-of-this-course.html"><i class="fa fa-check"></i>Approach of this course</a></li>
+<li class="chapter" data-level="" data-path="format-of-the-sessions.html"><a href="format-of-the-sessions.html"><i class="fa fa-check"></i>Format of the sessions</a></li>
+<li class="chapter" data-level="" data-path="the-most-important-thing-of-all.html"><a href="the-most-important-thing-of-all.html"><i class="fa fa-check"></i>The most important thing of all</a></li>
+<li class="chapter" data-level="" data-path="list-of-sessions.html"><a href="list-of-sessions.html"><i class="fa fa-check"></i>List of sessions</a></li>
+<li class="chapter" data-level="" data-path="access-to-r.html"><a href="access-to-r.html"><i class="fa fa-check"></i>Access to R</a></li>
+<li class="chapter" data-level="" data-path="reasons-to-use-r.html"><a href="reasons-to-use-r.html"><i class="fa fa-check"></i>Why do we use R?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="assessments.html"><a href="assessments.html"><i class="fa fa-check"></i>Assessments</a><ul>
+<li class="chapter" data-level="" data-path="core-skills-test.html"><a href="core-skills-test.html"><i class="fa fa-check"></i>Core skills test</a></li>
+<li class="chapter" data-level="" data-path="data-analysis-and-visualisation-task.html"><a href="data-analysis-and-visualisation-task.html"><i class="fa fa-check"></i>Data analysis and visualisation task</a></li>
+<li class="chapter" data-level="" data-path="assessment-authentic-analysis.html"><a href="assessment-authentic-analysis.html"><i class="fa fa-check"></i>Authentic analysis assessment</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="building-models.html"><a href="building-models.html"><i class="fa fa-check"></i>Building models</a><ul>
+<li class="chapter" data-level="" data-path="session-1-multiple-regression.html"><a href="session-1-multiple-regression.html"><i class="fa fa-check"></i>Session 1: Multiple regression</a></li>
+<li class="chapter" data-level="" data-path="analysis-of-regression.html"><a href="analysis-of-regression.html"><i class="fa fa-check"></i>Analysis of regression</a></li>
+<li class="chapter" data-level="" data-path="conceptualising-the-variance-explained-by-predictors.html"><a href="conceptualising-the-variance-explained-by-predictors.html"><i class="fa fa-check"></i>Conceptualising the variance explained by predictors</a></li>
+<li class="chapter" data-level="" data-path="adding-predictor-variables-to-the-model.html"><a href="adding-predictor-variables-to-the-model.html"><i class="fa fa-check"></i>Adding predictor variables to the model</a></li>
+<li class="chapter" data-level="" data-path="multicolinearity.html"><a href="multicolinearity.html"><i class="fa fa-check"></i>Multicolinearity</a></li>
+<li class="chapter" data-level="" data-path="final-exercise.html"><a href="final-exercise.html"><i class="fa fa-check"></i>Final exercise</a></li>
+<li class="chapter" data-level="" data-path="summary-of-key-points.html"><a href="summary-of-key-points.html"><i class="fa fa-check"></i>Summary of key points</a></li>
+<li class="chapter" data-level="" data-path="session-2-anova-and-bayes-factor.html"><a href="session-2-anova-and-bayes-factor.html"><i class="fa fa-check"></i>Session 2: ANOVA and Bayes Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="fitting-curves.html"><a href="fitting-curves.html"><i class="fa fa-check"></i>Fitting curves</a><ul>
+<li class="chapter" data-level="" data-path="session-1.html"><a href="session-1.html"><i class="fa fa-check"></i>Session 1</a></li>
+<li class="chapter" data-level="" data-path="learning-outcomes.html"><a href="learning-outcomes.html"><i class="fa fa-check"></i>Learning outcomes</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i>Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="polynomials.html"><a href="polynomials.html"><i class="fa fa-check"></i>Polynomials</a></li>
+<li class="chapter" data-level="" data-path="constant.html"><a href="constant.html"><i class="fa fa-check"></i>Constant</a></li>
+<li class="chapter" data-level="" data-path="linear.html"><a href="linear.html"><i class="fa fa-check"></i>Linear</a></li>
+<li class="chapter" data-level="" data-path="constant-linear-component.html"><a href="constant-linear-component.html"><i class="fa fa-check"></i>Constant + linear component</a></li>
+<li class="chapter" data-level="" data-path="quadratic.html"><a href="quadratic.html"><i class="fa fa-check"></i>Quadratic</a></li>
+<li class="chapter" data-level="" data-path="linear-plus-quadratic-components.html"><a href="linear-plus-quadratic-components.html"><i class="fa fa-check"></i>Linear plus quadratic components</a></li>
+<li class="chapter" data-level="" data-path="identifying-components.html"><a href="identifying-components.html"><i class="fa fa-check"></i>Identifying components</a><ul>
+<li class="chapter" data-level="" data-path="linear-first-order-components.html"><a href="linear-first-order-components.html"><i class="fa fa-check"></i>Linear (first-order) components</a></li>
+<li class="chapter" data-level="" data-path="quadratic-second-order-components.html"><a href="quadratic-second-order-components.html"><i class="fa fa-check"></i>Quadratic (second-order) components</a></li>
+<li class="chapter" data-level="" data-path="cubic-third-order-components.html"><a href="cubic-third-order-components.html"><i class="fa fa-check"></i>Cubic (third) order components</a></li>
+<li class="chapter" data-level="" data-path="quartic-fourth-order-components.html"><a href="quartic-fourth-order-components.html"><i class="fa fa-check"></i>Quartic (fourth) order components</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="fitting-curves-to-data-rather-than-straight-lines.html"><a href="fitting-curves-to-data-rather-than-straight-lines.html"><i class="fa fa-check"></i>Fitting curves to data rather than straight lines</a><ul>
+<li class="chapter" data-level="" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i>Linear regression</a></li>
+<li class="chapter" data-level="" data-path="adding-a-quadratic-component.html"><a href="adding-a-quadratic-component.html"><i class="fa fa-check"></i>Adding a quadratic component</a></li>
+<li class="chapter" data-level="" data-path="adding-a-cubic-component.html"><a href="adding-a-cubic-component.html"><i class="fa fa-check"></i>Adding a cubic component</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bayesian-approach.html"><a href="bayesian-approach.html"><i class="fa fa-check"></i>Bayesian approach</a></li>
+<li class="chapter" data-level="" data-path="exercise.html"><a href="exercise.html"><i class="fa fa-check"></i>Exercise</a><ul>
+<li><a href="does-age-predict-anxiety.html#does-age-predict-anxiety">Does <code>age</code> predict <code>anxiety</code>?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i>Summary</a></li>
+<li class="divider"></li>
+<li><a href="./LICENCE" target="blank">Licence: CC BY-SA 4</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Fluency</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="assessment-authentic-analysis" class="section level2">
+<h2>Authentic analysis assessment</h2>
+<p>This task will be due around week 40.</p>
+<hr />
+<p>Find an empirical paper for which the authors have freely-shared the dataset but not their analysis
+scripts. Ideally this will link to your research interests, or be similar to your project analysis,
+but this is not required.</p>
+<ul>
+<li><p>A good way of finding a suitable paper would be to look through a journal known for publishing
+papers with open-source datasets, for example PlosOne. Another would be to search Zenodo or a
+similar repository for recently-published datasets, and look for where the articles reporting
+thse data were published.</p></li>
+<li><p>To keep the assignment simple, choose a paper which uses statistical methods taught as part of
+the module, or which can be approximated by them. For example: a multiple regression,
+between-subjects Anova, or repeated measures Anova or mixed model.</p></li>
+<li><p>Some papers report many studies, or many different analyses, and may have technical details with
+which you are not familiar. If this is the case then you do NOT need to deal with the whole
+paper: Simply <strong>focus on one of the primary analyses</strong>. For example, if one of the main study
+hypotheses can be answered by a 2x2 Anova or mixed model, but there are lots of other analyses
+included in the paper, then focus on just this one analysis.</p></li>
+</ul>
+<p><strong>If you are unsure about the scope of this assignment (e.g. don’t know how much of a paper to try
+and replicate) then please check with the module leader early in the process.</strong></p>
+<p>Your task is to:</p>
+<ol style="list-style-type: decimal">
+<li><p>Imagine you were the author of the paper, just prior to collecting data for this study. Complete
+the form on ‘aspredicted.org’. You don’t actually need to use the aspredicted website for this —
+simply copy the heading structure from the form, and include your answers in your submitted
+manuscript. Comment on whether it is possible and/or straightforward to reconstruct what would
+have been in the pre-registration from what is written in the journal article.</p></li>
+<li><p>Using <code>ggplot</code>, make at least one plot of the data which illustrate the main findings. Explain
+your design decisions for these plots: what features of the data were you trying to highlight,
+and how?</p></li>
+<li><p>Replicate the statistical analysis using methods which are appropriate to the data. You do not
+need to use the <em>exact</em> method used in the original paper: For example, it’s fine to use a mixed
+model in place of a repeated-measures Anova. Report your findings in APA format. Compare/contrast
+your results with the published manuscript.</p></li>
+<li><p>Document your responses and version of the analysis in an Rmd file with accompanying dataset,
+suitable for upload to Zenodo or OSF.io.</p></li>
+<li><p>Reflect on the extent to which the concept of ‘reseacher degrees of freedom’ should influence our
+understanding of your chosen study.</p></li>
+</ol>
+<p>Important notes:</p>
+<ul>
+<li><p>Don’t assume that a published dataset and manuscript can be easily replicated simply because
+they have been shared: <strong><em>It may well be the case that it is hard to replicate the findings and
+this is OK (and interesting!) You will not lose marks simply because you cannot replicate the
+published findings.</em></strong></p></li>
+<li><p>You do not need to use the <em>exact</em> method used in the original paper; the point of the exercise
+is to apply methods we have learned in an appropriate way.</p></li>
+<li><p>Your mark will be based on how appropriate the analysis you propose is, and the range of skill
+and understanding you demonstrate in answering the questions.</p></li>
+</ul>
+<div id="submitting-your-answers-1" class="section level3">
+<h3>Submitting your answers</h3>
+<p>You should submit exactly 5 files:</p>
+<ol style="list-style-type: decimal">
+<li>An Rmd file and</li>
+<li>datafile which when ‘knitted’ produce</li>
+<li>An HTML or PDF document.</li>
+<li>As a separate document, upload a copy of the standard CW coversheet (and complete the feedback
+section).</li>
+<li>Also include a pdf copy of the study you chose to replicate.</li>
+</ol>
+<p>Within the Rmd file you should:</p>
+<ul>
+<li>Label each question clearly</li>
+<li>Where necessary, include comments explaining what specific lines of code do.</li>
+<li>Intersperse explanatory text with code chunks (don’t put everything in the same code chunk).</li>
+</ul>
+<p>Your Rmd file should “Just Work” when the marker opens and runs it, and produce the same output as
+the knitted HTML or PDF file you submitted (i.e. there won’t be any errors or missing datafiles).</p>
+<p>If you work on your own computer at home, you should check your Rmd file ‘knits’ correctly on the
+online Rstudio server.</p>
+<p>See <a href="#common-rmd-problems">common problems when trying to knit Rmd files</a></p>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-analysis-and-visualisation-task.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="building-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

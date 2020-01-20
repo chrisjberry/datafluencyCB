@@ -1,0 +1,1299 @@
+# BeginneRs {#beginners}
+
+![Photo:  [1ksmiles.com](http://www.1ksmiles.com/wp-content/uploads/2014/03/standing-up-first-time-giraffe.jpg)](media/leggy.jpg)
+
+### In brief
+
+> A big part of psychology is collecting data about people, visualizing it (graphs etc.), and
+> drawing conclusions. Working with data is a core skill for researchers, and increasingly important
+> in many professions.
+
+> RStudio, like Excel, is computer software that helps us to do that. RStudio is rapidly becoming
+> the standard tool for serious data analysis in psychology and other sciences, because it's
+> powerful, relatively easy to use, and free.
+
+> In this course [we'll learn R](#reasons-to-use-r) as we go, building a little at a time. This and
+> the next session covers the basics (things you would learn as part of an undergraduate statistics
+> course at Plymouth). If some of this is familiar, there will be extension exercises to enhance
+> your knowledge.
+
+```{r, echo=F, include=F}
+knitr::opts_chunk$set(echo = TRUE, collapse=TRUE, cache=TRUE, comment=">", message=FALSE)
+library(tidyverse)
+library(webex)
+library(pander)
+theme_set(theme_minimal())
+```
+
+---
+
+This material was adapted from
+[Andy Wills' RminR](https://ajwills72.github.io/rminr/using_rstudio.html).
+
+All content on this site distributed under a [Creative Commons](https://creativecommons.org/)
+licence. CC-BY-SA 4.0.
+
+## Getting started with RStudio {#getting-started-rstudio}
+
+Open a web browser (e.g. [Firefox](https://www.mozilla.org/en-US/firefox/new/), Safari, Chrome,
+_not_ Edge) and go to an
+[RStudio server, like the one at: https://rstudio.plymouth.ac.uk](https://rstudio.plymouth.ac.uk).
+Log on, using the username and password you have been given.
+
+If that works, you should see something like this:
+
+![RStudio on first opening](media/rstudio-new.png)
+
+We'll go through what it all means in a bit. But, first, we're going to...
+
+#### Create a new project
+
+RStudio uses **_projects_** to help you keep your work organized, and to make sure you have a record
+of your analyses. You should start a new project each time you start a new module in your degree
+(possibly more frequently, but we'll come back to that later). Here's how to create a new project:
+
+1. At the top right of RStudio, you will see a little blue cube, with the text "Project: (none)".
+   Click on this, and select "New project".
+
+![RStudio without a project open](media/rstudio-new.png)
+
+2. Now click "New Directory"
+
+![Project dialog #1](media/create1.png)
+
+3. Now click "New Project"
+
+![Project dialog #2](media/create2.png)
+
+4. Next, type in a name for the project that makes sense to you in the "Directory name" box. I've
+   typed _psyc411_, but you should pick something more meaningful to you (e.g. _beginning-r_). Then
+   click "Create project".
+
+![Project dialog #3](media/create3.png)
+
+5. Now, create a _R script_. An R script is a record of the analyses you have done. You create an R
+   Script by clicking on the white plus sign on a green background (see below), and then clicking on
+   "R Script".
+
+![Script menu](media/script1.png)
+
+If everything worked well, your screen should now look like this:
+
+![Project created](media/project-made.png)
+
+You should be able to see four parts:
+
+1. The **Script** window - This is the rectangle on the top left. This is where you will tell R what
+   to do. It only does what you tell it.
+
+2. The **Console** window - This is the rectangle on the bottom left. This is where R prints the
+   answers to your questions.
+
+3. The **Environment** window - This is the rectangle on the top right. It's where R keeps a list of
+   the data it knows about. It's empty at the moment, because we haven't given R any data yet.
+
+4. The **Files** - This is the rectangle on the bottom right. This is a bit like the _File Explorer_
+   in Windows, or the _Finder_ on a Mac. It shows you what files are in your R project.
+
+That's it! You're all set to start learning how to analyse data in R.
+
+<!--
+
+
+
+
+
+
+ -->
+
+## Exploring data (in brief) {#exploring-data-brief}
+
+::: {.exercise}
+
+Before starting this exercise, you should have had a brief introduction to using RStudio. If not,
+take a look at the [Using RStudio](#getting-started-rstudio) worksheet.
+
+:::
+
+### Contents
+
+-   [How to use these worksheets](#worksheets-how-to)
+-   [Loading a package](#loading-a-package)
+-   [Loading data](#loading-data)
+-   [Inspecting data](#inspecting-data)
+-   [Calculating a mean](#calculating-a-mean)
+-   [Dealing with missing data](#missing-data)
+
+### How to use these worksheets. {#worksheets-how-to}
+
+Throughout this worksheet (and others on the course), you'll see the commands you should type into
+RStudio inside a grey box, followed by the output you should expect to see in one or more white
+boxes. Any differences in the colour of the text in these boxes can be ignored.
+
+New commands in the worksheets are followed by one or more _explanation_ sections - those are there
+to help you understand how the commands work and how to read the output they produce.
+
+In some cases there will also be hidden answers or additiona explanations. To see these, you can see
+
+`r hide("Click the boxes like this")`
+
+And text will appear!
+
+`r unhide()`
+
+---
+
+In other places you will see sections in blue, like this:
+
+:::{.exercise}
+
+These sections are exercises for you to complete. The are the most important sections in the
+worksheet, and you should always work through all of these problems.
+
+:::
+
+---
+
+Finally, sometimes you will see questions with text boxes next to them. You just need to type in the
+right answer ([42](https://www.urbandictionary.com/define.php?term=42)), and the box outline will go
+blue:
+
+**The answer to life, the universe and everything is:**
+`r fitb(answer="42", num=TRUE, calculator=F)`
+
+Other questions might ask you to make calculations. For these the text box acts like a mini
+calculator. Try typing `1000 * 1024` into this box: `r fitb(answer=1000*1024, num=TRUE)`
+
+[Why do we use `*` and not $\times$?](#compoperators)).
+
+:::{#compoperators .sidenote}
+
+In most computer languages (and also in Excel) the arithmetic operators are:
+
+-   `*` for multiplication
+-   `/` for division
+-   `^` for powers (e.g. `2^4` = $2^4$ = 16)
+
+:::
+
+### Loading a package {#loading-a-package}
+
+First, we need to load a [package](https://www.datacamp.com/community/tutorials/r-packages-guide)
+called `tidyverse`. A package is an extension to R that adds new commands. Nearly everything we'll
+do in this course uses the tidyverse package, so pretty much every project starts with this
+instruction.
+
+**Type (or copy and paste) the command in the grey box into line 1 of the _Script_ window of
+RStudio**. Now, with your cursor still on line 1, press CTRL+ENTER (i.e. press the key marked 'Ctrl'
+and the RETURN or ENTER key together).
+
+```{r}
+library(tidyverse)
+```
+
+When you do this, line 1 is automatically copied to your _Console_ window and run. Then, RStudio
+will print some text to the Console (shown in the white box, above). This text tells you that the
+_tidyverse_ package has loaded ("attached") some other pacakges (e.g. _dplyr_). It also tells you
+that the _dplyr_ package changes the way some commands in R work ("conflicts"). That's OK.
+
+If you get an output that includes the word 'error', please see the
+[common problems](#common-problems) section.
+
+### Saving your script {#saving-your-script}
+
+You should notice that the name `Untitled1` on the _Script_ window has now gone red. This is to
+remind you that your script has changed since the last time you saved it. So, click on the "Save"
+icon (the little floppy disk) and save your R script with some kind of meaningful name, for example
+`briefguide.R`.
+
+The `.R` indicates that it is an R script.
+
+Re-save your script each time you change something in it; that way, you won't lose any of your work.
+
+### Loading data {#loading-data}
+
+Now, we're going to load some data on the income of 10,000 people in the United States of America.
+I've made up this dataset for teaching purposes, but it's somewhat similar to large open data sets
+available on the web, such as
+[US Current Population Survey](https://thedataweb.rm.census.gov/ftp/cps_ftp.html). Here's how you
+get a copy of this data into RStudio so you can start looking at it.
+
+This video runs through the steps described below:
+
+<iframe src="https://player.vimeo.com/video/361993933" width="640" height="500" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
+1. Download a copy of the data, by clicking [here](http://www.willslab.org.uk/cps2.csv) and saving
+   it to the Downloads folder of your computer.
+
+2. Go to RStudio in your web browser.
+
+3. Click on the 'Files' tab in RStudio (bottom right rectangle)
+
+4. Click the 'Upload' button.
+
+5. Click 'Browse...'
+
+6. Go to your Downloads folder, and select the file you just saved there.
+
+7. Click "OK".
+
+8. Copy or type the following command into your RStudio script window, and run it (i.e. press
+   CTRL+ENTER while your cursor is on that line)
+
+```{r}
+cpsdata <- read_csv("cps2.csv")
+```
+
+#### Explanation of the command
+
+There are three parts to the command `cpsdata <- read_csv("cps2.csv")`:
+
+1. The first part of the command is `cpsdata`. This gives a name to the data we are going to load.
+   We'll use this name to refer to it later, so it's worth using a name that is both short and
+   meaningful. I've called it `cpsdata` because it's somewhat similar to data from the US Current
+   Population Survey, but you can give data pretty much any name you choose (e.g. _fart_).
+
+2. The bit in the middle, `<-`, is an arrow and is typed by pressing `<` and then `-`, without a
+   space. This arrow means "put the thing on the right of the arrow into the thing on the left of
+   the arrow". In Rstudio
+
+3. The last part of the command is `read_csv("cps2.csv")`. It loads the data file into `cpsdata`.
+   The part inside the speech marks, `cps2.csv`, is the name of the file you just uploaded to your
+   RStudio project. This command can also download data directly from the web, for example
+   `read_csv("http://www.willslab.org.uk/cps2.csv")`. This would have been a quicker way to do it in
+   this case, but of course not all data is on a web page.
+
+#### Explanation of the output
+
+R likes to print things in red sometimes -- this does not mean there's a problem. If there's a
+problem, it will actually say 'error'. The output here tells us that R has loaded the data, which
+has eight parts (columns, or `cols`). It gives us the name of the columns (`ID, sex, ...`) and tells
+us what sort of data each column contains: `character` means the data is words (e.g. 'female'),
+`double` means the data is a number (e.g. '42.78')
+([more about the different types of variables](#more-on-tibbles)).
+
+If you get an error here, please see [common errors](#common-problems).
+
+## Inspecting data {#inspecting-data}
+
+:::{.exercise}
+
+Make sure you have just completed the [loading data](#loading-data) worksheet and have the `cps2`
+dataset loaded.
+
+:::
+
+Next, we'll take a peek at these data. You can do this by clicking on the data in the _Environment_
+tab of RStudio, see [here](#rstudio-environment-pane).
+
+We can now see the data set (also known as a _data frame_). We can see that this data frame has 8
+columns and 10000 rows. Each row is one person, and each column provides some information about
+them. Below is a description of each of the columns. Where you see `NA` this means this piece of
+data is missing for this person -- quite common in some real datasets.
+
+Here's what each of the columns in the data set contains:
+
+| Column    | Description                         | Values                                              |
+| --------- | ----------------------------------- | --------------------------------------------------- |
+| ID        | Unique anonymous participant number | 1-10,000                                            |
+| sex       | Biological sex of participant       | male, female                                        |
+| native    | Participant born in the US?         | foreign, native                                     |
+| blind     | Participant blind?                  | yes, no                                             |
+| hours     | Number of hours worked per week     | a number                                            |
+| job       | Type of job held by participant:    | charity, nopay, private, public                     |
+| income    | Annual income in dollars            | a number                                            |
+| education | Highest qualification obtained      | grade-school, high-school, bachelor, master, doctor |
+
+### Calculating a mean {#calculating-a-mean}
+
+One question we can ask of these data is "what is the average income of people in the U.S.?" (or, at
+least, in this sample).
+
+In this first example, we're going to calculate the _mean_ income.
+
+As you know, you calculate a mean by adding up all the incomes and dividing by the number of
+incomes. Our sample has 10,000 participants, so this would be a long and tedious calculation -- and
+we'd probably make an error.
+
+It would also be a little bit tedious and error prone in a spreadsheet application (e.g. Excel,
+Libreoffice Calc). There are some very famous cases of these kinds of "Excel errors" in research,
+e.g. [genetics](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7),
+[economics](https://arstechnica.com/tech-policy/2013/04/microsoft-excel-the-ruiner-of-global-economies/).
+
+In R, we can calculate the mean instantly, and it's harder to make the
+[sorts of errors](https://www.economist.com/graphic-detail/2016/09/07/excel-errors-and-science-papers)
+that are common in Excel-based analysis.
+
+To calculate mean income in R, we add the following command to our script and press CTRL+ENTER:
+
+```{r mean}
+cpsdata %>%
+   summarise(mean(income))
+```
+
+Your output will tell you the mean income in this sample -- it's the last number on the bottom
+right, and it's approximately \$87,000.
+
+If you're happy with the output you've got, move on to the next section. If you would like a more
+detailed explanation of this output, see [more on tibbles](more-on-tibbles.html). We'll cover this
+later anyway.
+
+If you get an error here, please see [common errors](#common-problems).
+
+#### Explanation of the command
+
+This command has three components:
+
+1. The bit on the left, `cpsdata`, is our data frame, which we loaded and named earlier.
+
+2. The bit in the middle, `%>%`, is called a _pipe_. Its job is to send data from one part of your
+   command to another. It is typed by pressing `%` then `>` then `%`, without spaces. So
+   `cpsdata %>%` sends our data frame to the next part of our command. See how to
+   [type this quickly](#keyboard-shortcuts)
+
+3. The bit on the right, `summarise(mean(income))` is itself made up of parts. The command
+   `summarise` does as the name might suggest: it summarises a set of data (`cpsdata` in this case)
+   into a single number, e.g. a mean. The `mean` command indicates that the type of summary we want
+   is a mean (there are other summaries, as we will cover later). Finally, `income` is the name of
+   the column of `cpsdata` we want to take the mean of -- in this case, the income of each
+   individual.
+
+:::{.exercise}
+
+Make sure you are 100% clear about the difference between `<-` and `%>%`. If you're not, ask for an
+explanation in class now.
+
+The main clue is to look at the direction of the arrows:
+
+`%>%` sends data from left to right. We call this **_'piping'_**.
+
+`<-` sends results from the right hand side, to a variable named on the left. This is called
+**_assignment_**.
+
+---
+
+Watch out that `->` is not the same as `%>%`. The thin arrow is always for assignment. You won't see
+if often, because it's normally considered bad manners to use thin right arrows like this (they get
+confusing).
+
+---
+
+**It really is worth learning the [keyboard shortcuts for `<-` and `%>%`](#keyboard-shortcuts) ---
+you will be typing them a lot during the course.**
+
+:::
+
+## Missing data {#missing-data}
+
+:::{.exercise}
+
+Make sure you have recently completed the [loading data](#loading-data) worksheet and have the
+`cps2` dataset is loaded.
+
+:::
+
+To calculate the mean number of hours worked per week, we have to deal with the fact that there is
+some missing data - we don't know for all 10,000 people how many hours they work in a week, because
+they didn't all tell us.
+
+To get a mean of those who did tell us, we tell R to ignore the missing data, like this:
+
+```{r mean-hours-narm}
+cpsdata %>% summarise(mean(hours, na.rm = TRUE))
+```
+
+#### Explanation of the command
+
+`rm` is short for 'remove', but 'ignore' would be a more accurate description, as this command
+doesn't delete the `NA` entries in `cpsdata`, it just ignores them. So `na.rm = TRUE` means "ignore
+the missing data".
+
+If you get an error here, please see [common errors](#common-problems).
+
+### Patterns in missing data {#missing-data-patterns}
+
+Sometime we won't only want to ignore missing data. We might also want to **count** how how many
+variables are missing. The `mice` package has a useful command for doing this.
+
+First, we need to load `mice` like the did `tidyverse` above. Type (or copy and paste) the command
+below into your R script and run it:
+
+```{r}
+library(mice)
+```
+
+Then we can use the `md.pattern()` function to describe the patterns of missing data:
+
+```{r}
+cpsdata %>% mice::md.pattern()
+```
+
+#### Explanation of the output
+
+`md.pattern()` produces two outputs: a plot, and a table.
+
+In the plot we see
+
+-   The variables in the dataset listed along the top
+-   Squares indicating whether a variable is recorded (blue) or missing (purple/red)
+
+Each row in the plot is a missing data **_pattern_**. So:
+
+-   In the first row, the pattern is that all variables are recorded
+-   The pattern in the second row is that all variables bar `hours` were recorded
+-   The third pattern is that `job` and `hours` were missing, and so on.
+
+The numbers on the left of the plot indicate **_how many people fit the pattern_**. So:
+
+-   4483 people had complete data (pattern 1)
+-   515 people had complete data except for the `hours` variable (pattern 2)
+-   3102 people were missing `hours` and `job` (pattern 3, and so on
+
+This can be really helpful when checking whether data has been imported properly, or properly
+reporting missing data from our experiments [see @macpherson2010revised for current guidelines for
+clinical trials, which would also be good practice for experimental research].
+
+The numbers along the bottom of the plot show **_how many missing observations there were for the
+variable marked at the top_**. So:
+
+-   There were 5517 missing observations for `hours`, across all participants
+-   5002 for `job`, and so on.
+
+The table provides the same information as the plot, but is perhaps harder to read.
+
+### Task: Try this on another dataset {.exercise}
+
+The `mice` package includes example datasets with missing data. We can look at one of these like so:
+
+```{r}
+mice::boys %>% glimpse
+```
+
+Identify the patterns of missing dataset in the `mice::boys` dataset.
+
+1. How many participants provided complete data?
+
+<!-- mice::boys %>% mice::md.pattern()
+
+
+
+
+
+
+
+
+
+-->
+
+## Group differences (briefly) {#group-differences-briefly}
+
+### Before you start...
+
+Before starting this worksheet, you should have had a brief introduction to using RStudio --
+[Using RStudio](#getting-started-rstudio). You should also have also completed the worksheet
+[Exploring Data](#exploring-data). If not, take a look these earlier worksheets before continuing.
+
+If you have completed those worksheets, then you'll have set up an R project, and you'll have a
+script in it that looks something like this:
+
+```{r, message=FALSE, cache=TRUE, echo=TRUE, results='hide'}
+library(tidyverse)
+library(mice)
+cpsdata <- read_csv("cps2.csv")
+cpsdata %>% summarise(mean(income))
+cpsdata %>% summarise(mean(hours, na.rm = TRUE))
+```
+
+In this worksheet, we'll add some more commands to this script.
+
+#### Contents
+
+-   [Grouping data](#grouping-data)
+-   [Drawing a density plot](#group-density)
+-   [Filtering data](#filtering-data)
+-   [Exercise](#grouping-data-exercise-1)
+
+### Grouping data {#grouping-data}
+
+One of the most widely discussed issues concerning income is the difference between what men and
+women, on average, get paid. Let's have a look at that difference in our teaching sample of 10,000
+US participants.
+
+In order to do this, we need to split our data into two groups -- males and females. In R, the
+command `group_by` allows us to do this. In this case, we want to group the data by biological sex,
+so the command is `group_by(sex)`. We _pipe_ (`%>%`) the data in `cpsdata` to the `group_by` command
+in order to group it, and then we _pipe_ (`%>%`) it to `summarise` to get a summary for each group
+(a mean, in this case). So, the full command is:
+
+```{r group-mean}
+cpsdata %>% group_by(sex) %>% summarise(mean(income))
+```
+
+Copy it into your script and run it (CTRL+ENTER). Women in our made-up sample get paid, on average,
+around 9,000 (9k) less than men. Of course, not every male gets 92k a year in the US, and not every
+female gets 83k. It seems very likely that the range of incomes earned by men and women overlap --
+meaning that if you picked one man and one woman at random, there's a reasonable chance that the
+woman earns more than the man. We can look at this _variation_ in pay using a graph.
+
+### Looking at variation using a density plot {#group-density}
+
+The graph we're going to draw is a density plot. If you recall histograms from school, it's a lot
+like that. If not, don't worry. A density plot is a curve that shows how likely a range of incomes
+are. So, the higher the curve is at a particular income, the more people who have that income.
+
+We're going to produce what's called a _scaled_ density plot. The highest point on a scaled density
+plot is always one. This can make it easier to compare two groups, particularly if one group has
+fewer people in it than the other.
+
+So here's the command to do a scaled density plot for incomes, plotting men and women separately.
+Copy it into your script and run it (CTRL+ENTER).
+
+```{r group-density}
+cpsdata %>%
+   ggplot(aes(income, colour=sex)) +
+   geom_density(aes(y=..scaled..))
+```
+
+#### Explanation of command
+
+Here's what each part of this command means:
+
+-   `cpsdata` - The data frame containing the data. You created this in the last worksheet.
+
+-   `%>%` - A pipe. As in the last worksheet, this pipe carries the data in `cpsdata` to the next
+    part of the command, which does something with it.
+
+-   `ggplot()` - This means 'draw me a graph'. All graphs we use in these worksheets use the
+    _Grammar for Graphics_ (gg) plotting commands, so they'll all include the command `ggplot`.
+
+-   `aes()` - Short for _aesthetics_ (what things look like). It means 'This is the sort of graph I
+    want'.
+
+-   `income` - I want a graph of the data in the `income` column of `cpsdata`
+
+-   `color=sex` - I want you to give me two graphs on top of each other, in different colours. One
+    colour for men, a different color for women. Use the `sex` column of `cpsdata` to work out who
+    is male and who is female.
+
+-   `geom_density()` - I want this graph to be a _density_ plot.
+
+-   `aes(y=..scaled..)` - I want this density plot to be _scaled_ (see above).
+
+#### Discussion of output
+
+Your graph will appear in the bottom-right window, and should look like the one above. You'll notice
+that the two lines seem basically on top of each other ... but they can't be because we know the two
+groups differ in mean income by over nine thousand dollars! We have a problem to solve...
+
+### Dealing with extreme data points {#extreme-data}
+
+The problem is one of scale -- there are a small number of people who earn very high salaries. In
+fact, both the highest-paid man, and the highest-paid woman in our sample earn considerably more
+than one million dollars a year.
+
+#### Filtering data {#filtering-data}
+
+Somehow, we need to deal with the fact that a few people in our sample are very well paid, which
+makes the difference between men and women hard to see on our graph, despite the difference being
+over nine thousand dollars a year.
+
+One of the easiest ways around this is to exclude these very high salaries from our graph.
+
+The vast majority of people are paid less than 150k a year. So, let's restrict our plotting to just
+those people. We do this using the `filter` command. It's called _filter_ because it works a bit
+like the filter paper in a chemistry lab (or in your coffee machine) -- stopping some things, while
+letting other things pass through. We can filter our data by telling R _what data we want to keep_.
+Here, we want to keep all people who earn less than £150k, and filter out the rest. So the filter we
+need is `filter(income < 150000)`, where `<` means "less than".
+
+We'll be using this dataset of people with <\$150k incomes a few times, so we're going to give it a
+new name, `cpslow` (or any other name you want, e.g. _angelface_ )
+
+So, what we need to do is _pipe_ (`%>%`) our `cpsdata` data to our `filter(income < 150000)`, and
+use an arrow, `<-`, to send this data to our new _data frame_, `cpslow`. Recall that `<-` sends the
+thing on its right to the thing on its left, so the full command is:
+
+```{r group-filtered}
+cpslow <- cpsdata %>% filter(income < 150000)
+```
+
+We can take a look at this new _data frame_ by clicking on it in RStudio's _Environment_ window (see
+[video here](#rstudio-environment-pane) if you're not sure how). By looking at the ID numbers, you
+can see that some people in our original sample have been taken out, because they earned at least
+150k.
+
+Now, we can plot these filtered data in the same way as before, by changing the name of the
+dataframe from `cpsdata` to `cpslow`.
+
+**So start with the command**
+`cpsdata %>% ggplot(aes(income, colour=sex)) + geom_density(aes(y=..scaled..))`, copy it onto the
+next line in your script, **make that change, and press CTRL+RETURN.**
+
+If you've got it right, your graph will look like this:
+
+```{r group-density-filtered, echo = FALSE}
+cpslow %>% ggplot(aes(income, colour=sex)) + geom_density(aes(y=..scaled..))
+```
+
+At first glance, the two distributions of incomes still look similar. For example, the
+[_modal_](<https://en.wikipedia.org/wiki/Mode_(statistics)>) income is at quite a low income, and
+that income is quite similar for both men and women. However, on closer inspection, you'll also see
+that the red line (females) is above the blue line (men) until about 25-50k, and below the blue line
+from then on. This means that more women than men earn less than 50k, and more men than women earn
+more than 50k.
+
+So, the gender pay gap is visible in this graph. The graph also illustrates that the difference in
+this sample is small, relative to the range of incomes. This doesn't mean that the gender pay gap is
+less (or more) important than income inequality. These kinds of questions of importance are moral,
+philosophical, and political. Data cannot directly answer these kinds of questions, but they can
+provide information to inform the debate.
+
+As we'll see later, this type of graph is also crucial to inform our choice of statistical models
+(like regression or Anova): Without a clear sense of what the data _look_ like we can make bad
+decisions in our analyses.
+
+### Exercise {#grouping-data-exercise-1 .exercise}
+
+This exercise consolidates what you've learned so far.
+
+**The task is to further examine the sub-sample of participants who are living in the US, and
+earning less than \$150k (`cpslow`).**
+
+Specifically, the question to answer is whether people born in the US earn more. In order to do
+this, you should calculate the mean income for each group, and produce a density plot with one line
+for each group. Below are the answers you are aiming for:
+
+```{r ex1, echo=FALSE}
+cpsdata %>% group_by(native) %>% summarise(mean(income))
+cpslow %>% ggplot(aes(income, colour=factor(native))) + geom_density(aes(y=..scaled..))
+```
+
+```{r, echo=F, include=F}
+meds <- cpsdata %>% group_by(sex)%>% summarise(med=median(income))%>% arrange(sex) %>% pull(med)%>% round()
+```
+
+Previously, we calculated the mean salary of men and women.
+
+1. Why might it be a better idea to calculate the median?
+
+`r hide("Show answer")`
+
+Because the data are strongly skewed, the median may be a better summary of the central tendency
+(the middle).
+
+`r unhide()`
+
+2. Adapt the commands above to calculate the median instead. What is the median salary for women:
+   `r fitb(meds[1])`, and for men: `r fitb(meds[2])`.
+
+`r hide("Show answers")`
+
+```{r}
+cpsdata %>%
+  group_by(sex) %>%
+  summarise(med=median(income))
+```
+
+`r unhide()`
+
+### Extension exercise {.exercise}
+
+If you've some spare time and are looking for something a bit more challenging, try Exercise 2 on
+this slightly
+[more advanced worksheet](https://ajwills72.github.io/rminr/group-differences.html#ex2).
+
+<!--
+
+
+
+
+
+ -->
+
+## Undergraduate stats in R
+
+All of the statistics you will have learned at undergraduate level can be produced in R. Here we
+cover simple examples of:
+
+-   A t-test
+-   A correlation
+
+:::{.exercise}
+
+If you have no memory of t-tests or correlations, you might want to take time to work through these
+expanded guides from our undergraduate course at a later date:
+
+-   [Tests of group differences](https://ajwills72.github.io/rminr/group-differences.html)
+-   [Relationships](https://ajwills72.github.io/rminr/corr.html)
+
+:::
+
+We'll run these statistics on an example dataset which is built into R, called `mtcars`. We can look
+at this data using the glimpse function (this is loaded with `tidyverse`, so if you get an error
+make sure that is loaded too):
+
+```{r}
+mtcars %>% glimpse()
+```
+
+#### Explanation of the `glimpse` output
+
+`glimpse` produces a list of all variables in the dataset, tells us what type they are, and lists
+however many obserervations from the dataset that will fit on a single line.
+
+The type of all variables in `mtcars` is `dbl`. This is short for 'double-precision number'; for
+now, just know that `dbl` means a _number_.
+
+Other types include :
+
+-   `int` --- short for 'integer' variable, so only contains whole numbers (e.g. a participant id
+    number)
+-   `chr` --- short for 'character variable', which will contain text (e.g. an email address)
+-   `fct` --- short for 'factor'. i.e. a categorical variable (e.g. MCQ responses)
+-   `ord` --- short for 'ordered'. This is variant of categorical variable where the categories have
+    a particular order (responses like "Wost" < "Better" < "Best" could be stored as an `ord`)
+
+### Two sample t-test
+
+`mtcars` contains a variable called `mpg`, which is the miles per gallon each car will do, and
+another called `am` which is encodes whether it was a manual or automatic transmission (0=automatic,
+1=manual).
+
+We can test if `mpg` differs between auto and manual cars with `t.test`:
+
+```{r}
+t.test(mpg ~ am, data=mtcars)
+```
+
+### Explanation
+
+The command contains three parts:
+
+-   `t.test`: Says what we want to do
+-   `mpg ~ am`: This is a 'formula', which tells `t.test` which variables to analyse.
+-   `data=mtcars`: Which dataset we want to use for the analysis
+
+The formula is split into two parts by the [`~` symbol](#tilde). On the left is our outcome. On the
+right is the grouping variable, which we hope **predicts** the outcome.
+
+In the output you can see the test statistic, degrees of freedom and _p_ value.
+
+:::{#tilde .sidenote}
+
+The tilde symbol. Pronounced "tilder".
+
+In R, `~` almost always means **_"is predicted by"_**.
+
+:::
+
+### Correlations
+
+The `mtcars` data also contains variables for weight (`wt`) and power (`hp`, short for horsepower).
+
+We can select just these columns and save them to a smaller dataframe like this:
+
+```{r}
+carperformance <- mtcars %>% select(mpg, wt, hp)
+```
+
+#### Explanation of the commands
+
+On the far left we have the name of the new variable which we will create: `carperformance`.
+
+We can tell this will be a new variable because the `<-` symbol is just to the right, pointing at
+it.
+
+To work out what `carperformance` will contain, we look to the right of the `<-` There are two parts
+here, linked with the pipe symbol (`%>%`) which passes data from one command to the next, from left
+to right.
+
+First we see the `mtcars` data. Using a pipe we pass this to the `select` command, which selects the
+`mpg,`wt`, and`hp` columns.
+
+#### Explanation of the result
+
+When running the command you won't see any output --- but something **has** happened behind the
+scenes: A new object was created called `carperformance` which contained copies of the columns from
+`mtcars` we selected.
+
+We can see the first few rows of our new smaller dataframe like this:
+
+```{r}
+carperformance %>% head()
+```
+
+---
+
+To correlate the three columns in this dataset, we can use the `cor` function and round all the
+results to 2 decimal places:
+
+```{r}
+carperformance %>% cor() %>% round(2)
+```
+
+```{hint}
+Explain those commands...
+
+On the left we have the `carperformance` data.
+
+We pipe this to the `cor` function which calculates the correlation between each pair of columns and returns a special kind of table, called a matrix.
+
+To make the output simpler, we then pass the results to the `round` function, which rounds all the results to 2 decimal places.
+
+```
+
+The `cor` function is pretty bare-bones, and doesn't produce output we could easily use in a report
+or article. The `apaTables` package helps us with this:
+
+```{r}
+apaTables::apa.cor.table(carperformance, filename = "correlations.doc")
+```
+
+```{hint}
+Explain the double colons (`::`) in the code above
+
+Sometimes we load a whole package, as we did when we wrote `library(tidyverse)` above. This is a good idea when we want to use lots of functions from that package.
+
+When we only want to use one function from a package we can type `nameofpackage::nameoffunction` and this lets us use the function without loading the package.
+
+This can be a good idea if the package or function is less well known, and you want to be explicit about which package it comes from---it helps 'future-you' work out what your code is doing.
+
+```
+
+#### Explanation of the result
+
+We used the `apa.cor.table` function within the `apaTables` package to create a nicely-formatted
+correlation table, in APA format.
+
+We also specified a `filename`, and `apa.cor.table` created a
+[Word document with this name containing the formatted table (click to see the result)](correlations.doc).
+
+:::{.exercise}
+
+
+
+- Use one of the other [built-in](#builtin) datasets in R to run a correlation between 2 variables.
+
+- Use the built-in `sleep` data.  Compute a t-test comparing the `extra` variable between groups. Describe the results of the [t-test in APA format](https://www.youtube.com/watch?v=fQI3Xr9xMBI).
+
+:::
+
+
+#### Built in datasets {#builtin}
+
+Some examples of built-in data are:
+
+- `sleep`
+- `iris`
+- `airquality`
+- `ChickWeight`
+- `diamonds`
+
+If you have loaded tidyverse you can access these by name, just like the `mtcars` data. For example::
+
+```{r}
+diamonds %>% glimpse()
+```
+
+You can find out more about each of them by typing:
+
+```{r eval=F}
+help(iris)
+```
+
+
+## Sequences and designs
+
+One trick you will need later in the course is making **sequences** of numbers.
+
+There are a few ways to do this, but the simplest is to write: `1:10`. That is, the number to start
+from (`1`), a colon (`:`), and then the number to end with (`10`).
+
+Copy and paste these examples to see the output:
+
+```{r}
+1:10
+20:30
+```
+
+**Explanation**: The output shows that R has created a sequence of whole numbers between the start
+and finish number.
+
+To get a sequence with only even numbers, we can use the `seq` function, and set the `by` argument
+to 2:
+
+```{r}
+seq(from=2, to=10, by=2)
+```
+
+You can set `by` to any number, including a decimal:
+
+```{r}
+seq(0, 27, by=3)
+seq(0, 1, by=0.2)
+```
+
+If your sequence doesn't have a simple pattern, you can also write out the numbers by hand using the
+`c(..)` command:
+
+```{r}
+c(1,40,92,188)
+```
+
+**Explanation**: `c(...)` is short for `combine`, so this command combines the numbers 1, 40, 92,
+188 into a new sequence. This is sometimes called a **vector** in R-speak.
+
+:::{.exercise}
+
+Make some sequences which include:
+
+-   Even numbers from 10 to 20
+-   Numbers in the 8 times table less than 200
+-   20 evenly spaced numbers between zero and 1 (including zero and 1)
+-   The words "Wibble", "Wobble" and "Bobble"
+
+`r hide("Show answers")`
+
+We can use `seq` for numbers:
+
+```{r}
+seq(10,20,by=2)
+seq(0,200, 8)
+seq(0,1, by=1/19)
+```
+
+But we need to use c() for lists of words:
+
+```{r}
+c("Wibble", "Wobble", "Bobble")
+```
+
+`r unhide()`
+
+:::
+
+### Combinations of sequences {#expand-grid}
+
+In designing experiments we often want to create combinations of different categories which
+represent conditions or stimuli.
+
+Imagine a hypothetical study with a test phase where participants are presented with multiple words,
+in either red or green text, and shown at either the bottom or top of the computer screen.
+
+The combinations look something like this:
+
+```{r echo=F}
+expand.grid(
+   colour=c("Red", "Green"),
+   position=c("Top", "Bottom"),
+   word = c("Nobble", "Wobble", "Hobble")) %>%
+   as_tibble() %>%
+mutate(condition = row_number())%>% select(condition, everything())%>%
+pander()
+```
+
+R provides quick ways of creating combinations of variables, using a command called `expand.grid`.
+
+First, we need to create a sequence of each of the possible values for our categories:
+
+```{r}
+colours = c("Red", "Green")
+positions = c("Top", "Bottom")
+words = c("Nobble", "Wobble", "Hobble")
+```
+
+Then we can use `expand.grid` to give us all the possible combinations of these:
+
+```{r}
+expand.grid(colour=colours, position=positions, words = words)
+```
+
+**Explanation**: The `expand.grid` function has taken the items in the three input sequences
+(colours, positions and words) and created a dataframe which contains all the possible combinations. We could save these to a file if we wanted to use them as part of our experiment.
+
+#### Task: create some experimental designs of your own {.exercise}
+
+1. Reproduce the experiment design above by copying and pasting
+
+2. Adapt the commands to allow for an experiment where the word position could be either top,
+   bottom, left or right. How many different conditions would there be in this case?
+
+As an optional stretch task:
+
+1. How would you create a design where the order of presentation of each word is also balanced? That
+   is, where it's equally likely to see Nobble, Wobble or Bobble in the first, second or third
+   trial?
+
+### Random samples
+
+In our example, each of the experimental conditions is allocated between-participants, which (as
+you'll learn elsewhere in the programme) means we need recruit quite a large number of participants.
+In this case we can imagine we might need at least 250 participants.
+
+Allocating participants to condition is another boring task R can help with. The trick is to combine
+sequences with randomness and random sampling.
+
+For example, we might create a sequence of the numbers from 1:10:
+
+```{r}
+1:10
+```
+
+The `sample` function lets us take a random sample from this sequence:
+
+```{r}
+sample(1:10)
+```
+
+**Explanation** `sample` has shuffled the input sequence and gives us the original numbers (1...12)
+in a random order.
+
+---
+
+If we want to take a larger sample, longer than the input sequence, we have to add the text
+`replace=TRUE`:
+
+```{r}
+sample(1:10, size = 20, replace=TRUE)
+```
+
+**Explanation**: Using `replace=TRUE` is like picking a number from a hat, but then putting the
+chosen number back into the hat so it can be picked again. This allows us to make longer random
+sequences where numbers in the initial sequence are repeated.
+
+### In-use: Randomising participants to conditions/groups
+
+If we combine our experimental design from above with this idea of randomness we can randomise
+participants to conditions in our experiment.
+
+If we look again at our design we can see there are 12 possible combinations:
+
+```{r}
+expand.grid(colour=colours, position=positions, words = words)
+```
+
+We can use `sample` to make sure we allocate participants randomly to conditions, as they are
+recruited:
+
+```{r}
+sample(1:12, size=250, replace=TRUE)
+```
+
+So, we would allocate participants to their condition in this order as they are recruited.
+
+Alternatively, we could simply run this every time a new participant showed up:
+
+```{r}
+(new_allocation <- sample(1:12, size=1))
+```
+
+#### Task: Randomise your own participants {.exercise}
+
+1. Re-use the design you created above, and randomise 5 participants to conditions within it.
+
+2. Try and create a design which might work for your own study (either this year, based on your UG
+   project, or on any other study you might like to run).
+
+As an optional stretch task:
+
+1. [Read this extension, which shows how to sample from datasets as well as sequences](#sample_n)
+
+## Reading data {#more-reading-data}
+
+So far, we have read data from [CSV]() files. In this section we show how to import some other
+common types.
+
+### Reading CSV data directly from a URL (place on the web) {#read-data-from-url}
+
+When you find data on the web it can save time to read it straight into R, without worrying about
+downloading and uploading the files. If we do this, it's good to save a copy of the data in case the
+website disappears or the file is taken down.
+
+For example, [we previously](#loading-data) downloaded data from
+<http://www.willslab.org.uk/cps2.csv> and then used `read_csv()` on this downloaded copy. We can
+skip a few steps by loading it directly by writing:
+
+```{r}
+datafromtheweb <- read_csv('http://www.willslab.org.uk/cps2.csv')
+```
+
+**Explanation**: By providing `read_csv()` with a URL (a web address) R has automatically imported
+the data from <http://www.willslab.org.uk/cps2.csv>, and saved it to a new variable called
+`datafromtheweb`.
+
+---
+
+We might also want to save a copy of the data, in case the website disappears in future. In my code,
+I would typically write:
+
+```{r}
+# datafromtheweb <- read_csv('http://www.willslab.org.uk/cps2.csv')
+# write_csv(datafromtheweb, 'cps2.csv')
+datafromtheweb <- read_csv('cps2.csv')
+```
+
+##### Explanation of the code
+
+There are three lines in the code block above:
+
+-   The first two lines start with a `#` (pronounced hash). This means R **won't** run the line of
+    code. It is included only as a comment - for your reference in future.
+-   However, if we did run these lines manually (by copying the code to the console without the
+    `#`), this would download the data from the URL, and then save your own copy in a file in your
+    RStudio project directory.
+-   The third line reads data from `cps2.csv` to a variable called `datafromtheweb`.
+
+:::{.tip}
+
+In practice, if I was working on data available online, I would run the first two lines on one
+occasion (to save my own copy of the data). The third line is the only thing that is run when we
+execute the R script, so provided we have saved the data the script will run even when I'm not
+online.
+
+:::
+
+#### Task: Read data from the web {.exercise}
+
+1. Load the CPS data from Andy Wills' website, and save it to a file in your Rstudio project
+   directory.
+
+Optional extension tasks:
+
+1. Find another csv dataset on the web (hint: try searching for "Plosone .csv dataset") and read it
+   into R.
+
+1. Calculate the mean of a few of the variables in this file.
+
+### Reading SPSS files
+
+If you have old data stored in SPSS files, they are likely to have a `.sav` file extension. These
+can be read with the `haven` package.
+
+For example, this paper in PlosOne provides a number of SAV files for the experiments reported:
+<https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0209900#sec039>
+
+```{r echo=F}
+download.file("https://doi.org/10.1371/journal.pone.0209900.s001", 'journal.pone.0209900.s001.sav')
+```
+
+To use these files you should:
+
+-   Download the file you want
+-   Save it with a `.sav` extension
+-   Upload it to RStudio server (use Firefox --- not Edge or Explorer).
+
+You can then load it like this:
+
+```{r}
+library(haven)
+
+datafromspss <- read_spss('journal.pone.0209900.s001.sav')
+datafromspss %>% glimpse
+```
+
+:::{.tip}
+
+If your SPSS datafile has labels or other special features enabled then you can
+[check this guide for details of how to use them](https://cran.r-project.org/web/packages/haven/vignettes/semantics.html).
+You probably won't need to though.
+
+:::
+
+#### Task: Reading SPSS data {.exercise}
+
+1. Load one of the other datasets from this paper:
+   https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0209900#sec039
+
+Optional extension task:
+
+1. Plot a density graph of one of the variables in one of the datasets. Try adding colour to
+   distinguish another categorical variable (e.g. gender).
+
+2. Add some other comments to your code (using `#`) to describe what the code does.
+
+3. Read this forum discussion on how to add good comments to your code:
+   <https://www.reddit.com/r/rstats/comments/86cmj1/any_tips_on_best_practices_for_commenting_your/>
+
+### Reading from Excel
+
+There are two types of Excel documents, `.xls` and the newer `.xlsx` formats. You can read both with
+the `readxl` package.
+
+One important thing to note about Excel spreadsheets is that **each file can contain multiple
+'sheets'**. In R terms, each Excel file can contain multiple dataframes. So we need to specify which
+sheet we want to import.
+
+I've included an example of an Excel file here: [Excel example](simple-excel-example.xlsx)
+
+To use the example:
+
+-   Download the file to your computer (use Firefox, and definitely not Edge)
+-   Upload to RStudio, make sure the file extension is `xslx` or `xls`
+
+Then:
+
+```{r}
+library(readxl)
+
+# make sure the filename here matches yours
+xldata <- read_excel('simple-excel-example.xlsx')
+xldata
+```
+
+**Explanation**: `read_excel()` has read in the FIRST sheet (called 'Experiment 1') from the Excel
+file. To check this, open the file in Excel and see that there are actually two experiments included
+in the single file.
+
+---
+
+If we wanted to load both experiments, we would need to write:
+
+```{r}
+expt1 <- read_excel('simple-excel-example.xlsx', sheet="Experiment 1")
+expt2 <- read_excel('simple-excel-example.xlsx', sheet="Experiment 2")
+```
+
+**Explanation**: On each line we use `read_excel()` to load one of the sheets from the original file. The names of each sheet are shown in the Excel interface like this:
+
+![Sheet labels in Excel](media/xl-sheets.png)
+
+
+
+:::{.tip}
+
+The names of the sheets in the code which says `sheet="<SHEETNAME>"` need to match the names of the sheets in Excel exactly.
+
+:::
+
+
+
+We can check the second file like this:
+
+```{r}
+expt2  %>% glimpse
+```
+
+#### Task: Read Excel data {.exercise}
+
+1. Read both experiment 1 and 2 from the file [simple-excel-example.xlsx](simple-excel-example.xlsx)
+2. Use the [Environment pane](#rstudio-environment-pane) to check the data against the data in the
+   Excel file.
+
+Optional extension tasks:
+
+1. Plot the density of the RT variable in experiment 1.
+2. Describe the plot
+3. What pre-processing step might we want to use, before plotting (hint: in these experiments, most
+   responses should happen within a second).
+
+`r hide("Show answer")`
+
+Depending on the paradigm being used, we might want to filter very long RTs (e.g. over 1000ms):
+
+```{r}
+expt2  %>%
+  filter(RT < 1000)  %>%
+  ggplot(aes(RT)) + geom_density()
+```
+
+`r unhide()`

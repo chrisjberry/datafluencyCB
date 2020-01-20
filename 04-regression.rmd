@@ -1,0 +1,1535 @@
+# Regression {#regression}
+
+```{r include=F,echo=F}
+library(tidyverse)
+library(webex)
+library(cowplot)
+library(DiagrammeR)
+source('grvizpng.R')
+theme_set(theme_minimal())
+```
+
+![](media/duck.jpg){width=40%}
+
+#### In brief
+
+> Regression is just a fancy term for drawing the 'best-fitting' line through a scatter-plot, and
+> summarising how well the line describes the data.
+
+> When using regression in R, the relationship between an **_outcome_** and one or more
+> **_predictors_** is described using a **_formula_**. When a model is '**_fitted_**' to a sample it
+> becomes tool to make **_predictions_** for future samples. It also allows us to quantify our
+> **_uncertainty_** about those predictions.
+
+> **_Coefficients_** are numbers telling us how strong the relationships between predictors and
+> outcomes are. But the meaning of coefficients depend on the study **_design_**, and the
+> **_assumptions_** were are prepared to make. Causal diagrams can help us choose models and
+> interpret our results.
+
+> Multiple regression is a technique which can describe the relationship between **_one outcome_**
+> and **_two or more predictors_**. We can also use multiple regression to describe cases where two
+> variable **_interact_**. That is, when the effect of one predictor is increased or decreased by
+> another. Multiple regression is important because it allows us to make more realistic models and
+> better predictions.
+
+> Like any sharp tool, regression should be used carefully. If our statistical model doesn't match
+> the underlying network of causes and effects, or if we have used a biased sample, we can be
+> misled.
+
+## Session 1
+
+##### Overview
+
+In this session we will revise core concepts for selecting and interpreting linear models. Some of
+the material may have been covered in undergraduate courses, but we will emphasise understanding and
+mastery of core ideas before we develop these ideas to fit more complex models.
+
+### Fitting lines to data
+
+Regression (and most statistical modelling) is about 'fitting' lines to data. Our first exercise
+illustrates most of the key concepts without you needing to touch a computer.
+
+In this activity you will need to:
+
+-   Work in groups
+-   Use some example plots
+-   Decide how to draw lines on these plots which represent a 'good fit'
+
+### Study habits and academic outcomes
+
+For this activity I've provided some plots from a simulated dataset on study habits and academic
+outcomes.
+
+(If you're doing this exercise on your own at home, the example are available here:
+[example-plots.pdf](regression-example-plots.pdf).
+
+The data for the example include:
+
+-   MCQ test data (i.e. academic achievement)
+-   Responses to a study habits questionnaire (including a question on 'hours spent studying')
+
+In these examples, each plot only contains 10 of the data points from the larger sample (N=300).
+
+:::{.exercise}
+
+Your task is to describe the **_relationship between hours spent working and exam grades_** with
+lines (hand) drawn on the plots.
+
+1. In groups, take one of the printed graphs, and a plastic transparency.
+
+1. Put the transparency on top of the plot.
+
+As a group, draw 3 lines on the transparency in different colours:
+
+1. First, draw which you think is the 'best' line. That is, the line that describes the relationship
+   between study hours and exam grades the best.
+
+1. Second, discuss the pros and cons of fitting a straight vs. a curved line. If you initially drew
+   either a straight line, draw a curved line now in another colour (or vice versa).
+
+1. Finally, draw a **_really_** curvy line with multiple bends to get as close as you can to all the
+   data points in your sample scatter plot.
+
+---
+
+```{r, include=F, cache=T}
+studyhabits <- read_csv('https://benwhalley.github.io/rmip/data/studyhabitsandgrades.csv')
+```
+
+```{r, echo=F, fig.height=3, fig.width=6, fig.cap="Examples of straight and curved lines fit to the data."}
+set.seed(1234)
+ss <- studyhabits %>%
+    sample_n(10)
+
+a <- ss %>%
+    ggplot(aes(work_hours, grade)) + geom_point() + geom_smooth(se=F,  method="lm", formula = y~poly(x,5))
+
+b <- ss %>%
+    ggplot(aes(work_hours, grade)) + geom_point() + geom_smooth(se=F, method="lm", formula = y~poly(x,2))
+
+c <- ss %>%
+    ggplot(aes(work_hours, grade)) + geom_point() + geom_smooth(method="lm", se=F)
+
+plot_grid(c,b,a,
+          labels = c("Straight", "Curved", "Very curvy"),
+          ncol = 3, nrow = 1)
+```
+
+:::
+
+## How useful are the lines? {#how-useful-are-the-lines}
+
+You can think of the lines we drew in two ways: as **maps** and as **tools**:
+
+1. As a map, they **describe** the data we have, but they are also
+2. **tools** which **predict** new data we might collect
+
+In statistical language, the gaps between our line and the data points are called **_residuals_**.
+
+We can distinguish:
+
+1.  Residuals for the data we have now (how well does the line **_describe_** the data).
+2.  Residuals for new data we collect after drawing the line (how well does the line **_predict_**).
+
+Another common way to refer to residuals is as the **error** in a model. That is, the line describes
+a _model_ (idealised) relationship between variables. And if look at the residuals we have an
+estimate how how much _error_ there will be in our predictions when we use the model.
+
+:::{.exercise}
+
+In your group:
+
+-   Discuss how well/badly your lines 'fit' to the sample you have (in general terms)
+
+-   Using a ruler, measure (in mm) the residual for each datapoint on your current graph. Do this
+    separately for the straight and curvy lines. If you need to save time, only do this for the
+    first 5 data points.
+
+-   Add up the total length of the distances (residuals) for each line. Make a note of this for
+    later.
+
+-   Repeat the exercise at least 3 times, swapping your printout with another groups' plot. (Each
+    plots shows a different sample).
+
+When you have finished, discuss in your group:
+
+-   Do curved or straight lines have smaller residuals for the _original_ data that were used to
+    draw them?
+
+-   Do curved or straight lines have smaller residuals for _new_ data (i.e. after swapping?)
+
+-   What do you think is going on here? What can explain the pattern you see?
+
+---
+
+Only when you have discussed this thoroughly,
+[read an explanation of what is going on](#explanation-residuals).
+
+:::
+
+### Congratulations!
+
+You have successfully fit your first linear model! The next step is to formalise the process. We
+need a method that:
+
+-   Finds the line with the **_smallest_** residuals
+-   Is repeatable
+-   Is easy for computers to do (because we're lazy)
+
+For this we can use R!
+
+## Using R for regression
+
+Before we start, the study habits data are stored at this url:
+<https://benwhalley.github.io/rmip/data/studyhabitsandgrades.csv>
+
+Previously we have loaded data by:
+
+-   Downloading the csv to our computer
+-   Uploading it to RStudio server
+-   Opening it using `read_csv`
+
+##### A shortcut {#load-data-from-url}
+
+A quicker way is to combine these 3 steps: By providing `read_csv` with the url, we can open the
+data in a single step:
+
+```{r, eval=F}
+studyhabits <- read_csv('https://benwhalley.github.io/rmip/data/studyhabitsandgrades.csv')
+```
+
+**Explanation**: By providing a URL to `read_csv` we can open the data over the web.
+
+We should check the data look OK using `head` or `glimpse`:
+
+```{r, eval=F}
+studyhabits  %>% head()
+studyhabits  %>% glimpse()
+```
+
+**Explanation**: `head` shows the first 6 rows of the dataset. `glimpse` provides a list of all the
+columns and (if your window is wide enough) will also show the first few datapoints for each.
+
+## The first step is **always** plotting
+
+**Before** we start running analyses, we should always plot the data.
+
+:::{.exercise}
+
+Plot the `studyhabits` data in a few different ways to get a feel for the relationships between the
+variables. Specifically,
+
+1. Make a density plot to see the distribution of `grade` scores
+1. Add colour to this plot (or use another type of plot) to see how scores differ by gender
+1. Use a scatter plot to look at the relationship between `grade` and `work_hours`.
+1. Is the relationship between `grade` and `work_hours` the same for men and women?
+
+```{r, include=F, eval=F}
+studyhabits %>% ggplot(aes(grade, color=female)) + geom_density()
+studyhabits %>% ggplot(aes(work_hours, grade, color=female)) + geom_point( alpha=.3)
+```
+
+Interpret your plots:
+
+-   What relationship do we see between revision and grades?
+-   Do you estimate this a weak, moderate or strong relationship?
+
+:::
+
+## Automatic line-fitting {#automatic-line-fitting}
+
+To get R to fit a line to these data for us we will use a new function called `lm`. The letters l
+and m stand for _**l**inear **m**odel_.
+
+There are lots of ways to use `lm`, but the easiest to _picture_ is to get `ggplot` to do it for us:
+
+```{r, eval=F}
+studyhabits %>%
+  ggplot(aes(work_hours, grade)) +
+  geom_point() +
+  geom_smooth(method=lm)
+```
+
+```{r, echo=F}
+# cheat to add lines at zero
+studyhabits %>%
+  ggplot(aes(work_hours, grade)) +
+  geom_point() +
+  geom_smooth(method=lm) +
+  geom_vline(xintercept=0) +
+  geom_hline(yintercept=0)
+```
+
+**Explanation of the code**: We used `geom_point` to create a scatterplot. Then we used a plus
+symbol (`+`) and added `geom_smooth(method=lm)` to add the fitted line. By default, `geom_smooth`
+would try to fit a curvy line through your datapoints, but adding `method=lm` makes it a straight
+line.
+
+**Explanation of the resulting plot** The plot above is just like the scatter plots we drew before,
+but adds the blue fitted line. The blue line shows the 'line of best fit'. This is the line that
+**minimises the residuals** (the gaps between the line and the points). Ignore the shaded area for
+now [(explanation here if you are keen)](#explanation-shaded-area-geom-smooth).
+
+### {#plot-relationships .exercise}
+
+Try plotting a line graph like this for yourself, with:
+
+-   The same variables (i.e. reproduce the plot with `work_hours` and `grade`)
+-   Different variables (from the `studyhabits` dataset)
+-   Without the `method=lm` part (to see a curvy line instead of straight)
+
+Note whether the slope of the line is positive (upward sloping) or negative (downward sloping).
+
+Now, add the `colour=female` inside the part which says `aes(...)`. Before you run it, predict what
+will happen.
+
+`r hide("show answer")`
+
+It should plot different lines for men and women. Something like this:
+
+```{r, echo=F}
+studyhabits %>%
+  ggplot(aes(work_hours, grade, colour=female)) +
+  geom_point() +
+  geom_smooth(method=lm)
+```
+
+`r unhide()`
+
+## Putting numbers to lines {#first-lm}
+
+The plot we made in the previous section is helpful, because we can _see_ the best-fit line.
+
+However also want to have a _single number to say how steep the line is_. That is, _a number to say
+how closely related the variables are_.
+
+To do this we can use the `lm` function directly.
+
+:::{.exercise}
+
+Before we start make sure you have loaded the studyhabits dataset:
+
+```{r, eval=F}
+studyhabits <- read_csv('https://benwhalley.github.io/rmip/data/studyhabitsandgrades.csv')
+```
+
+:::
+
+In the next piece of code we fit the model. The first part is known as a model formula. The `~`
+symbol (it's called a 'tilde') just means "is predicted by", so you can read this part as saying
+"grade is predicted by work hours".
+
+```{r}
+first.model <- lm(grade ~ work_hours, data = studyhabits)
+first.model
+```
+
+**Explanation of the code**: We used the `lm` function to estimate the relation beteen grades and
+work hours.
+
+**Explanation of the output**: The output displays:
+
+-   The 'call' we made (i.e. what function we used, and what inputs we gave, so we can remember what
+    we did later on)
+-   The 'coefficients'. These are the numbers which represent the line on the graph above.
+
+##### Explanation of the coefficients {#lm-explain-coefs-1}
+
+```{r, include=F}
+cfs1 <- coefficients(first.model) %>% round(., 4)
+```
+
+In this example, we have two coefficients: the `(Intercept)` which is `r cfs1[1]` and the
+`work_hours` coefficient which is `r cfs1[2]`.
+
+**The best way to think about the coefficients is in relation to the plot we made**. In this version
+of the plot, however, I extended the line so it crosses zero on the x axis:
+
+```{r echo=F, fig.width=5, fig.height=4}
+
+source('extend-smooth-lines.R')
+
+studyhabits %>%
+  ggplot(aes(work_hours, grade)) +
+  geom_point(alpha=.8) +
+  geom_smooth(method="lm_left", fullrange=TRUE, se=F, linetype="dashed") +
+  geom_smooth(method=lm, se=F) +
+  geom_point(aes(x=0,y=0), alpha=0)
+
+```
+
+We can interpret the coefficients as points on the plot as follows:
+
+-   The `(Intercept)` is the point (on the y axis) where the blue dotted line crosses zero (on the
+    x-axis).
+-   The `work_hours` coefficient is how **steep** the slope of the line is. Specifically, is says
+    how many `grade` points the line will rise if we increase `work_hours` by 1.
+
+:::{.exercise}
+
+Before you move on:
+
+-   Compare the coefficients from the `lm` output to the plot above. Can you see how they relate? If
+    you're not 100% sure, ask now!
+
+:::
+
+## Making predictions (by hand) {#regresion-hand-predictions}
+
+A big advantage of using the coefficients alongside the plot is that we can easily **_make
+predictions for future cases_**.
+
+:::{.exercise}
+
+In a pair, do this now:
+
+Let's say we meet someone who works 30 hours per week. One way to predict would be by-eye, using the
+line on the plot.
+
+What grade would you expect them to get simply by 'eyeballing' the line?
+
+```{r echo=F}
+studyhabits %>%
+  ggplot(aes(work_hours, grade)) +
+  geom_point(alpha=.8) +
+  geom_smooth(method="lm_left", fullrange=TRUE, se=F, linetype="dashed") +
+  geom_smooth(method=lm, se=F) +
+  geom_point(aes(x=0,y=0), alpha=0)
+```
+
+:::
+
+We can do the same thing using the coefficients from `lm`, because we know that:
+
+<!-- see cfs1 definition above -->
+
+-   If someone worked for 0 hours per week then our prediction would be `r round(cfs1[1])`. We know
+    this because this is the intercept value (the point on the line when it is at zero on the
+    x-axis).
+-   For each extra hour we study the `work_hour`coefficient tells us that f, our `grade` will
+    increase by `r cfs1[2]`.
+
+-   So, if we study for 30 hours, our prediction is `r round(cfs1[1])` $+$ `r cfs1[2]` $\times$ 30
+
+:::{.exercise}
+
+In pairs again:
+
+-   Make predictions for people who study 5, 20 or 40 hours per week
+-   Compare these predictions to the plot above.
+-   Which of the predictions (for 5, 20 or 40 study hours) should we be most confident in? Why do
+    you think this is?
+
+:::
+
+[If you want to check your predictions, click here](#explanation-first-predictions)
+
+### Making predictions using code {#making-predictions-1}
+
+Rather than making predictions by hand, we save time by using the `predict()` function.
+
+If we run a regression, we can should save the fitted model with a named variable:
+
+```{r}
+first.model <- lm(grade ~ work_hours, data = studyhabits)
+```
+
+**Explanation**: As before, we ran a model and saved it to the named variable, `first.model`.
+
+If we feed this model to the predict function, we get a model prediction for each row in the
+original dataset:
+
+```{r}
+predict(first.model) %>% head(10)
+```
+
+**Explanation of the output**: We have one prediction (the point on the line) for each row in the
+original dataset.
+
+---
+
+We can also use the `augment` function in the `broom` package to do make the predictions, but return
+them _with_ the original data. This can make it easier to use:
+
+```{r}
+library(broom)
+augment(first.model) %>%
+ head()
+```
+
+**Explanation of the output**: `augment` has also made a prediction for each row, but returned it
+with the original data (`grade` and `work_hours`) that were used to fit the model. Alongside the
+`.fitted` value, and the `.resid` (residual) there are some other columns we can ignore for now.
+
+---
+
+Often though, we don't want a prediction for each row in the original dataset. Rather, we want
+predictions for specific values of the predictors.
+
+To do this, we can use the `newdata` argument to `predict` or `augment`.
+
+First, we create a new single-row dataframe which contains the new predictor values we want a
+prediction for:
+
+```{r}
+newsamples <- tibble(work_hours=30)
+newsamples
+```
+
+(note, the `tibble` command just makes a new dataframe for us)
+
+Then we can use this with augment:
+
+```{r}
+augment(first.model, newdata=newsamples)
+```
+
+**Explanation of the output**: We have a new data frame with predictions for a new sample who worked
+30 hours.
+
+### Extension exercises
+
+:::{.exercise}
+
+If you have time, try to answer the following questions based on other datasets built into R.
+
+Using the mtcars data:
+
+-   What do you predict the `mpg` would be for a car with 4 cylinders?
+-   What is the difference in `mpg` between a car with 4 and 5 cylinders?
+-   Is your prediction for a car with 4 cylinders the same as the _mean_ mpg for cars with 4
+    cylinders? Can you explain why/why not?
+
+*   Run a model using `wt` to predict `mpg`
+*   Using `augment` with the `newdata` argument, make a ggplot (using `geom_smooth`) showing the
+    prediction for all weight values between 1 and 6.
+
+Using the iris dataset:
+
+-   What is your prediction for `Sepal.Length` for specimens which are 2 or 4mm wide?
+-   What is your prediction for a specimen which was 8mm wide? How confident are you about this
+    prediction?
+
+Using the CPS data saved here <http://www.willslab.org.uk/cps2.csv>, what you
+
+-   Is hours a good predictor of income in this dataset?
+-   What is your predicted income for someone who works 40 hours per week?
+
+`r hide("Show answers")`
+
+The numeric answers for each question are shown below:
+
+```{r}
+library(broom)
+lm(mpg~cyl, data=mtcars)  %>%
+  augment(newdata=tibble(cyl=c(3,4,5,6)))
+```
+
+```{r}
+lm(Sepal.Length~Sepal.Width, data=iris) %>%
+  augment(newdata=tibble(Sepal.Width=c(2,4)))
+```
+
+```{r}
+cps<- read_csv('http://www.willslab.org.uk/cps2.csv')
+lm(income~hours, data=cps) %>%
+  augment(newdata=tibble(hours=40))
+```
+
+`r unhide()`
+
+:::
+
+### Summary of today's session
+
+So far we have:
+
+-   Seen that fitting straight lines to data can be a useful technique to:
+
+    -   **Describe** existing data we have and
+    -   **Predict** new data we collect
+
+*   We used `lm` to add a fitted line to a ggplot. We used this to make 'eyeball' predictions for
+    new data.
+
+*   Then we used `lm` directly, using one variable (i.e. a column in a dataframe) to predict another
+    variable.
+
+*   We saw how the coefficients from `lm` can be interpreted in relation to the fitted-line plot.
+
+*   We used the coefficients to make numeric predictions for new data.
+
+If you're not clear on any of these points it would be worth going over today's materials again, and
+attend the catchup session before the next workshop.
+
+In the next session we extend our use of `lm`, building more complex models, and using new R
+functions to make and visualise predictions from these models.
+
+<!--
+
+
+
+
+
+ -->
+
+## Thinking about causes {#regression-thinking-causes}
+
+#### In brief
+
+> Scientists develop **theoretical models** which aim to describe the true relationships between
+> variables. **Statistical models** are used to link their theories with data. They allow us to make
+> **predictions** about future events, and our confidence in these predictions. But accurate
+> predictions alone aren't enough: We also want to **_understand_** our data and the process that
+> generated it.
+
+> **Causal diagrams** are a useful tool for thinking about causes and effects. For psychological
+> phenomena the diagrams can become complicated. But good research simplifies: We focus on small
+> parts of a large network of causes and effects to make incremental progress.
+
+> The quality of evidence for different parts of a causal diagram can vary a lot. We are much more
+> sure about some links in the network than others. Causal diagrams can represent both our
+> **knowledge** and our **hypotheses** explicitly. This is useful as we build statistical models to
+> check how well our theories perform in the real world.
+
+### Drawing causal models {#causal-diagrams}
+
+-   [Additional ppt slides drawn from the materials presented on this website are here](slides/causes-slides.pptx)
+
+In this section we step back from learning specific techniques in R and think about _why_ we want to
+run statistical models at all.
+
+Our first job, as quantitative researchers, is to try and describe the network of _causes and
+effects_ between the phenomena we're interested in. At this point we can also notice any ambiguities
+or uncertainties in our thinking.
+
+To represent our model we can use a special type of diagram, called a _directed acyclic graph_.
+That's a fancy name for a boxes-and-arrows diagram, with a few special rules (we can come to those
+later).
+
+For the moment, make sure you understand the following diagrams.
+
+##### Simple cause and effect
+
+```{r, echo=F, cache=T}
+grVizPng('
+digraph mary {
+  {node [shape=box];}
+  Cause -> Effect
+  }
+', height=200) %>% knitr::include_graphics(.)
+
+```
+
+##### No causation
+
+This diagram says footwear and exam grades AREN'T related AT ALL, because we didn't draw a line
+between them.
+
+```{r, echo=F}
+grVizPng('
+digraph mary {
+    {node [shape=box];}
+    "Choice of footwear"
+    "Exam grade"
+  }
+', height=100, width=500)%>% knitr::include_graphics(.)
+
+
+```
+
+##### Causal sequences
+
+And can also describe how variables are related in a particular _causal sequence_. For example, we
+might ask:
+
+-   does childhood poverty reduce academic achievement by delaying brain development?
+-   does weaker childhood attachment reduce academic performance by reducing the motivation to
+    study?
+
+This pattern -- where variables are linked in a series -- is called **'mediation'**:
+
+```{r, echo=F}
+grVizPng("
+digraph mary {
+    {node [shape=box];}
+    Cause -> Mediator -> Effect
+  }
+", height=300)%>% knitr::include_graphics(.)
+```
+
+##### Correlation (as distinct from causation)
+
+Finally, if you don't know which **direction** the arrow should point --- that is, you don't know
+which is the cause and which is the effect --- we can (temporarily) draw an arrowhead at both ends
+like this:
+
+```{r, echo=F}
+grVizPng("
+digraph mary {
+    {node [shape=box];}
+    Sunshine:s -> Rainbows:s [dir=both]
+    {rank=same Sunshine, Rainbows}
+  }
+", height=100, width=500)%>% knitr::include_graphics(.)
+
+```
+
+This represents a correlation (see the
+[stage 1 notes on correlation and relationships](https://ajwills72.github.io/rminr/corr.html)).
+
+Our hope is that --- as we learn more, by collecting data or running experiments --- we can decide
+_which way_ the arrow should point.
+
+---
+
+**An aside: Why does the arrow _have_ to point in a particular direction?**
+
+When we draw a double headed arrow we are essentially expressing our ignorance about about the
+relationship. What we probably mean is one of two things:
+
+```{r, echo=F}
+grVizPng('
+digraph {
+    {node [shape=box];}
+    Sunshine -> Rainbows -> "Sunshine later" -> "Rainbows even later" -> "..."
+  }
+', height=400)%>% knitr::include_graphics(.)
+```
+
+Or, perhaps:
+
+```{r, echo=F}
+grVizPng('
+digraph {
+    Unicorns -> Sunshine
+     Unicorns -> Rainbows
+   }
+', height=200)%>% knitr::include_graphics(.)
+```
+
+That is, a correlation either implies:
+
+-   An unmapped sequence of reciprocal causes
+-   A common cause that is not explicitly in the model yet
+
+---
+
+### {#causes-task-make-a-diagram}
+
+:::{.exercise}
+
+In groups:
+
+1.  Pick one of the topics listed below. Try to think of at least 4 or 5 behaviours or psychological
+    constructs to include. Sketch this out with pen and paper.
+
+    -   Effectiveness of psychotherapy
+    -   Coping with chronic ill health
+    -   Student satisfaction
+
+2.  Discuss how strong you think each of the relationships (lines) are. What kinds of evidence do
+    you have (or know of) that make you think the diagram is correct?
+
+3.  If there are some boxes which don't have links between them, discuss if you think there is
+    really **no** relationship between these constructs.
+
+4.  Can you find examples of _mediation_ in your diagram? If you can't can you look more closely at
+    one of the links and think about whether it is a _direct_ effect, or if something else could
+    link these constructs.
+
+:::
+
+<!--
+
+
+
+
+
+
+ -->
+
+## 'Effect modification' {#moderation-intro}
+
+Another common question for researchers is whether relationships between variables are _true all the
+time_, or if they _vary depending on the context, individual or some other factor_.
+
+In concrete terms, we might ask questions like:
+
+-   does low self esteem hurt academic performance more for women than for men?
+-   are older therapists more effective than younger therapists?
+-   does social media use cause less anxiety for people with high emotional intelligence (EQ)?
+
+Relations like this can be represented in different ways in the diagram. For the moment, you should
+draw it like this:
+
+```{r, echo=F}
+grVizPng('
+    digraph {
+    A -> M [arrowhead=none];
+    M [style=invis fixedsize=true width=0 height=0]
+    B -> M
+    M -> Y
+    A -> B [style=invis];
+    A -> Y [style=invis];
+        subgraph{rank = same; A;M;Y }
+
+    A [label="Self esteem"]
+    B [label=Gender]
+    Y [label=Grades]
+    }
+', height=200)%>% knitr::include_graphics(.)
+```
+
+The arrow from gender points at the relationship between self esteem and grades. We mean that the
+_effect_ of self esteem on grades depends on whether you are a woman.
+
+This pattern is called **_moderation_** or **_effect modification_**. Checking to see if a
+relationship is the same for different groups is also called **_stratification_**.
+
+#### {#diagram-task-moderation-followup .exercise}
+
+In groups: Consider your diagram from the previous task:
+
+-   If gender is not already included, add a new box for it.
+
+-   Discuss in groups: could gender _moderate_ one of the other relationships in the diagram? If so,
+    draw this in now.
+
+-   Are there other examples in your model where one variable could affect the relationships between
+    two others?
+
+## 'Tricky' relationships {#tricky-relationships}
+
+![](media/names.png)
+
+---
+
+#### Using diagrams to think about models {#first-confounding-task .exercise}
+
+(In the previous section we said that to represent a correlation in a causal diagram we use a double
+headed arrow like this: $\longleftrightarrow$)
+
+Consider this [scatter plot](cancerplot.pdf):
+
+```{r, echo=F, include=F}
+set.seed(1234)
+cancer_data <- tibble(
+    cigarettes = rpois(100, 4)*3,
+    matches = rpois(100, cigarettes)*3,
+    cancer_risk = rbinom(100, 100, .1+cigarettes/max(cigarettes)),
+) %>% filter(complete.cases(.))
+```
+
+```{r, echo=F, message=F, warning=F}
+p <- cancer_data %>%
+    ggplot(aes(matches, cancer_risk)) +
+    geom_point() +
+    xlab("Matches used each day") +
+    ylab("Percent of people getting cancer < age 50")
+ggsave('cancerplot.pdf')
+p
+```
+
+1.  Draw the best causal diagram you can based ONLY on the data in this plot. Your diagram should
+    have 2 boxes, and either zero or one arrow.
+
+1.  Do you think the model is a good description of how the world works?
+
+1.  Redraw the diagram to make it **more plausible**, adding at least one extra variable (box) to
+    your diagram, and converting any double-headed arrows ($\leftrightarrow$) to single-headed
+    arrows.
+
+1.  Discuss in your group what you think is happening here. Have you come across this idea before?
+
+[Read an explanation](#confounding-explanation)
+
+### Correlations, causation and experiments {#correlations-and-experiments}
+
+![](media/correlation.png)
+
+How can we be sure we haven't missed anything and stop worrying about confounding? There are three
+main ways:
+
+1. Use experiments to make confounding _impossible_.
+
+2. Design our studies carefully, and use multiple sources of evidence, to convince ourselves that
+   confounding is _improbable_ in this case (see notes on why
+   [smoking is a good example of this](#explanation-assumptions-can-help)).
+
+3. Account for _all_ the possible confounders (this is virtually impossible, but sometimes trying
+   this is the best we can hope for).
+
+### Accounting for confounders {#second-confounding-task}
+
+:::{.exercise}
+
+In your groups, consider the original causal diagram you drew:
+
+1. Look at each of the boxes which has an arrow pointing away from it. Could you run an experiment
+   which _randomises_ people to have higher or lower scores on these variables? If not, why not?
+
+2. Is it possible that you missed any variables when you drew your diagram? Could confounding be
+   taking place? If so, update your diagram to make this possibility explicit.
+
+:::
+
+[Read more explanation/discussion on this point](#explanation-experiments-confounding)
+
+## Diagrams and models
+
+Researchers choose statistical models (e.g. t-tests, anova, regression) to test implications from
+causal models. These causal models may be implicit in their work (i.e. not drawn out as diagrams)
+but are there nonetheless.
+
+For example, if we use a t-test we are implying a model like this:
+
+```{r, echo=F}
+grVizPng('
+    digraph {
+    "hungover" -> grumpy [label=" + "]
+  }
+', height=200)%>% knitr::include_graphics(.)
+```
+
+In this case we would choose a t-test where 'hungover' is recorded as a binary variable. If
+'hungover' was recorded as categorical (e.g. not at all/a little/very) we might use Anova instead
+(which is a special type of regression), or if 'hungover' was recorded as continuous score (e.g.
+from 1 to 100) we might use regression.
+
+Different types of model are needed to test **moderation** (interactions in Anova or regression, as
+we will see in future sessions), and **causal sequences** (mediation analysis, or path analysis;
+[more on this here](https://benwhalley.github.io/just-enough-r/mediation.html)).
+
+> These are really 'implementation details' though; the important part is the causal model itself.
+> We should choose statistical models which are the most appropriate for our model, and for the data
+> we sampled.
+
+### Non-linear relationships
+
+One final point: In some cases you will want to indicate that a line on the graph implies a
+non-linear (e.g. curved relationship).
+
+There's no commonly agreed way to represent this in causal diagrams, but I like to mark the arrow
+with either a $+$, a $–$, a $\cup$ or a $\cap$.
+
+-   $+$ is a positive linear relationship
+-   $–$ is a negative linear relationship
+-   $\cap$ is a relationship that starts positive but reverses as the level of the predictor
+    increases
+-   $\cup$ is a relationship that starts negative but reverses as the level of the predictor
+    increases
+
+For example:
+
+```{r, echo=F}
+grVizPng('
+    digraph {
+    "Studying R" -> happiness [label=" U "]
+  }
+', height=200)%>% knitr::include_graphics(.)
+```
+
+### Application to real examples
+
+These papers present data and make inferences on the links between diet or alcohol consumption and
+risk of death:
+
+-   @doll1994mortality
+-   @seidelmann2018dietary
+
+:::{.exercise}
+
+Choose one of the papers above and:
+
+-   Draw out a causal diagram of all the variables mentioned in the paper
+-   Be sure to add possible confounders or unobserved variables — even if they are not measured or
+    considered by the authors.
+-   How has drawing out the diagram affected your understanding of the results?
+
+:::
+
+<!--
+
+
+
+```{r}
+grVizPng('
+digraph mary {
+  {node [shape=box];}
+  A -> Y
+  }
+')
+```
+
+```{r}
+grVizPng('
+digraph mary {
+  {node [shape=box];}
+  A -> Y
+  B -> Y
+  }
+')
+```
+
+```{r}
+grVizPng('
+digraph mary {
+  {node [shape=box];}
+  A -> Y
+  A -> B
+  B -> Y
+  }
+')
+```
+
+
+```{r}
+grVizPng('
+digraph mary {
+  {node [shape=box];}
+  A -> Y
+  A -> B
+  B -> Y
+  }
+')
+```
+
+
+```{r}
+grVizPng('
+    digraph {
+    A -> M [arrowhead=none];
+    M [style=invis fixedsize=true width=0 height=0]
+    B -> M
+    M -> Y
+    A -> B [style=invis];
+    A -> Y [style=invis];
+        subgraph{rank = same; A;M;Y }
+
+
+    }
+')
+```
+
+
+
+
+```{r}
+grVizPng('
+digraph mary {
+  {node [shape=box];}
+  A -> Y
+  U -> Y [style=dashed]
+  U -> A [style=dashed]
+  U [style=dashed]
+  }
+')
+```
+
+```{r}
+grVizPng('
+digraph mary {
+  {node [shape=box];}
+  A -> B -> A
+  }
+')
+```
+
+
+
+
+```{r, fig.width=3, height=2}
+mtcars %>% ggplot(aes(wt, mpg)) + geom_point() + geom_smooth()
+```
+
+
+
+
+```{r}
+grVizPng('
+digraph mary {
+  {node [shape=box];}
+  wt -> mpg [label=" U "]
+  }
+')
+```
+
+
+
+-->
+
+# Multiple regression
+
+#### In brief
+
+> Multiple regression is a technique which can describe the relationship between **_one outcome_**
+> and **_two or more predictors_**.
+
+> We can also use multiple regression to describe cases where two variable **_interact_**. That is,
+> when the effect of one predictor is increased or decreased by another (this is called moderation,
+> as we saw in the session on causal models).
+
+> Multiple regression is important because it allows us to make more realistic models and better
+> predictions. But, like any sharp tool, it should be used carefully. If our statistical model
+> doesn't match the underlying network of causes and effects, or if we have used a biased sample, we
+> can be misled.
+
+> When evaluating our models we can ask two useful questions: First, _how much of the variability in
+> the outcome do my predictors explain?_ The $R^2$ statistic answers this. Secondly: _does the model
+> make better predictions than just taking the **average** outcome_ (or using a simpler model with
+> fewer predictors)? For this we can compute a BayesFactor.
+
+## Why use multiple regression? {#why-multiple-regression}
+
+- [Slides here](slides/multipleregression.pptx)
+
+Think back to our [last session on causes and effects](#regression-thinking-causes). When we drew
+causal diagrams of our research question we found cases where there were:
+
+-   Multiple causes of a single outcome, and where
+-   One variable might [alter the effect of another](#effect-modification)
+
+We drew diagrams like this for those cases:
+
+```{r, echo=F}
+grVizPng('
+    digraph {
+        A -> Y
+        B -> Y
+    }
+', height=200)%>% knitr::include_graphics(.)
+```
+
+And
+
+```{r, echo=F}
+grVizPng("
+    digraph {
+    A -> M [arrowhead=none];
+    M [style=invis fixedsize=true width=0 height=0]
+    B -> M
+    M -> Y
+    A -> B [style=invis];
+    A -> Y [style=invis];
+        subgraph{rank = same; A;M;Y }
+
+    A [label=Expertise]
+    B [label=Gender]
+    Y [label=Salary]
+    }
+", height=200)%>% knitr::include_graphics(.)
+```
+
+Another way to think about the diagram we say that effect modification is taking place is to draw it
+like this:
+
+```{r, echo=F}
+grVizPng("
+    digraph {
+        A -> Y
+        B -> Y
+        'Expert and Male'  -> Y
+
+        A [label=Expert]
+        B [label=Male]
+        Y [label=Salary]
+    }
+", height=200)%>% knitr::include_graphics(.)
+```
+
+We also came across the idea of [confounding](#confounding-explanation). This is where we see a
+pattern like this:
+
+```{r, echo=F}
+grVizPng("
+    digraph {
+        Smoking [style=dashed]
+        Smoking -> Matches
+        Smoking -> Cancer
+        Matches -> Cancer [style=dashed]
+    }
+", height=300)%>% knitr::include_graphics(.)
+```
+
+As we discussed, the problem is that if smoking causes us to use matches _and_ it causes cancer then
+if we look at correlations of match-use and cancer we might get mislead. This would be an example of
+a spurious correlation.
+
+### Some benefits of using multiple regression
+
+There are a number of benefits to using multiple regression:
+
+1. If we think that the relationship between two variables might be changed by another (for example,
+   if a relationship between expertise and earnings were different for men and women), we can
+   **test** if that is the case. I.e. we can test if moderation is occuring.
+
+2. If we include extra variables (e.g. smoking as well as matches-used) we can reduce the effect of
+   confounding, and make better inferences about cause-effect relationships (although this isn't
+   guaranteed and we need to be careful).
+
+3. From a practical perspective, including extra variables can also reduce noise in our predictions
+   and increase statistical power.
+
+4. Multiple regression can also be used to fit curved lines to data and avoid the assumption that
+   all relationships can be described by a straight line (Chris  will cover this later in the course).
+
+---
+
+**For now we are going to focus on the first example.** If you are interested in the second case,
+[you can read more here](#explanation-causal-estimates-hard).
+
+
+:::{.tip}
+A warning! You will sometimes see people claim that multiple regression provides a way of
+choosing between different possible predictors of an outcome. This is basically untrue;
+[see here for why](#explanation-regression-model-selection-really-hard).
+
+:::
+<!--
+
+
+
+
+ -->
+
+## Different relationships? {#regression-interaction}
+
+If you have a hypothesis that a relationship might differ for two different groups, **the first
+thing you should do is plot the data**.
+
+First let's reload the example dataset on student grades and study habits:
+
+```{r, cache=T}
+library(tidyverse)
+studyhabits <- read_csv('https://benwhalley.github.io/rmip/data/studyhabitsandgrades.csv')
+```
+
+We know there is a link (in these data) between study hours and grades because we can see it in the
+plot, and we modelled it using `lm` in a previous session:
+
+```{r}
+studyhabits %>%
+  ggplot(aes(work_hours, grade)) +
+  geom_point() +
+  geom_smooth(se=F, method=lm)
+```
+
+We could also ask, is this relationship the same for men and women? To show the differences, we can
+use a coloured plot:
+
+```{r, echo=F}
+studyhabits %>%
+  ggplot(aes(work_hours, grade, color=female)) +
+  geom_point() +
+  geom_smooth(method="lm", se=F)
+```
+
+### What is the main pattern in the data? {#task-multiple-regression-overall-pattern}
+
+:::{.exercise}
+
+First load the data and reproduce the coloured plot from above.
+
+Second, agree within your groups:
+
+-   What is the overall pattern of these ([imagined](<(#explain-not-real-data)>)) results?
+-   Does extra time spent working benefit men and women equally?
+
+:::
+
+## Using `lm` for multiple regression {#fit-multiple-regression}
+
+If you don't already have it loaded in RStudio, load the example dataset:
+
+<!-- this not run but included to make path appear correct for students -->
+
+```{r eval=F}
+studyhabits <- read_csv('https://benwhalley.github.io/rmip/data/studyhabitsandgrades.csv')
+```
+
+As [we did for a single predictor regression](#first-lm), we can use `lm` to get numbers to describe the
+slopes of the lines.
+
+```{r}
+second.model <- lm(grade ~ work_hours * female, data = studyhabits)
+second.model
+```
+
+#### Explanation of the `lm` code above
+
+This time we have changed the [formula](#explain-formulae) and:
+
+-   Added `female` as a second predictor
+-   Used the `*` symbol between them, which allows the slope for `work_hours` to be *different* for
+    men and women.
+
+#### Explanation of the `lm` output
+
+The output looks similar, but this time, we have 4 coefficients:
+
+```{r echo=F, results="asis"}
+second.model %>%
+  coefficients() %>%
+  names %>%
+  sprintf("`%s`", .) %>%
+  as.list() %>%
+  pander::pandoc.list()
+```
+
+#### Interpreting the `lm` coefficients
+
+The coefficients have changed their meaning from model 1. But we can still think of them as either
+**points** or **slopes** on the graph with fitted lines. Again, I have extended the lines to the
+left to make things easier:
+
+```{r echo=F, fig.width=5, fig.height=4}
+
+source('extend-smooth-lines.R')
+
+studyhabits %>%
+    ggplot(aes(work_hours, grade, colour=female)) +
+    geom_point(alpha=.3) +
+    geom_smooth(method="lm_left", fullrange=TRUE, se=F, linetype="dotted") +
+    geom_smooth(method=lm, se=F) +
+    geom_point(aes(x=0,y=0), alpha=0)
+
+```
+
+-   `(Intercept)` is the point for men, where `work_hours` = 0 (where the red line crosses zero on
+    the x axis).
+-   `femaleTRUE` is the difference between men and women, when `work_hours` = 0 (the difference
+    between the blue and red lines, at the zero point on the x axis)
+-   `work_hours` is the slope (relationship) between `work_hours` and `grade` _for men_ (the
+    steepness of the red line)
+-   `work_hours:femaleTRUE` is the _difference in slopes_ for work hours, for women. So this is the
+    slope for women _minus_ the slope for men (that is, the difference in steepness between the red
+    and blue lines. It's NOT the slope of the blue line).
+
+:::{.exercise}
+
+```{r include=F}
+cf2 <- second.model %>%
+  coefficients()
+
+femslope <- unname(round(cf2[2]+cf2[4], 1))
+```
+
+Double check you understand how to interpret the `work_hours:femaleTRUE` coefficient. It's very
+common for regression coefficients to represent **differences** in this way. But in this example it
+does mean we have to know both `work_hours` (the slope for men) and `work_hours:femaleTRUE` (the
+difference in slopes for men and women) to be able to work out the slope for women.
+
+To test your knowledge:
+
+-   What is the slope for women in `second.model` above? `r fitb(femslope, num=T)`
+
+`r hide("Show answer")`
+
+To get the answer we need to add the slope for `work_hours` to the coefficient `work_hours:femaleTRUE`.
+
+- `work_hours` represents the slope for men
+- `work_hours:femaleTRUE` represents the difference in slopes between men and women
+
+So the slope for women = $`r cf2[2]` + `r cf2[4]` = `r cf2[2] + cf2[4]`$ (you can round this to `r femslope`).
+
+
+`r unhide()`
+
+
+:::
+
+
+
+
+### Linking coefficients with plots
+
+:::{.exercise}
+
+Compare the model output below with the plot:
+
+```{r, echo=F}
+second.model
+```
+
+```{r, echo=F}
+studyhabits %>%
+    ggplot(aes(work_hours, grade, colour=female)) +
+    geom_point(alpha=.3) +
+    geom_smooth(method="lm_left", fullrange=TRUE, se=F, linetype="dotted") +
+    geom_smooth(method=lm, se=F) +
+    geom_point(aes(x=0,y=0), alpha=0)
+```
+
+As a group:
+
+1. For each of the 4 coefficients, agree if it represents a point or a slope
+1. Find each of the points on the plot (i.e. which coefficient is it)
+1. Compare the slope coefficients to the lines on the plot - can you explain which coefficient
+   describes which slope?
+1. What would happen if the sign of each coefficient was reversed? E.g. if one of the coefficients
+   was now a negative number rather than positive? What would this mean for the plot?
+
+:::
+
+### Making predictions
+
+[As before](#making-predictions-1), we can use `augment` from the `broom` package to make
+predictions.
+
+The steps are the same:
+
+0. Fit the model we want
+1. Load the `broom` package
+1. Create a new dataframe with a small number of rows, including only the values of the predictor
+   variables we want predictions for
+1. Use `augment` with the model and new dataframe
+
+Optionally, we can then plot the results.
+
+---
+
+We have already fit the model we want to use, which was:
+
+```{r}
+second.model$call
+```
+
+Next we should load the broom package:
+
+```{r}
+library(broom)
+```
+
+And make a dataframe (a tibble is a kind of dataframe) with values of the predictor variables that would be of interest, or would provide good exemplars.
+
+For example, lets say we want predictions for men and women, who work either 20 or 40 hours each. We can write this out by hand:
+
+```{r}
+newdatatopredict = tibble(
+  female=c(TRUE,TRUE, FALSE,FALSE),
+  work_hours=c(20,40, 20,40)
+)
+
+newdatatopredict
+```
+
+The last step is to pass the model and the new dataframe to `augment`:
+
+```{r}
+second.model.predictions <- augment(second.model, newdata=newdatatopredict)
+second.model.predictions
+```
+
+And we can plot these new predictions using ggplot:
+
+```{r, fig.height=2, fig.width=3}
+second.model.predictions %>%
+  ggplot(aes(work_hours, .fitted, color=female)) +
+  geom_point()
+```
+
+----------------
+
+
+This basic plot is OK, but we can improve it by:
+
+-   Adding lines to emphasise the difference in slopes for men and women.
+-   Adding error bars.
+-   Tidying the axis labels.
+
+To add lines to the plot we can use `geom_line()`. We have to add an additional argument called
+`group` to the `aes()` section of the plot. This tells `ggplot` which points should be connected by
+the lines:
+
+```{r, fig.height=2, fig.width=3}
+second.model.predictions %>%
+  ggplot(aes(work_hours, .fitted, color=female, group=female)) +
+  geom_point() +
+  geom_line()
+```
+
+Next we can add error bars. If we look at the datafram that `augment` produced, there is a column
+called `.se.fit`. This is short for **standard error of the predicted value**:
+
+```{r}
+second.model.predictions
+```
+
+We can use a new `geom_` function with this column to add error bars to the plot. The
+`geom_errorbar` needs two additional bits of information inside the `aes()` section. These are
+`ymin` and `ymax`, which represent the bottom and top of the error bars, respectively:
+
+```{r, fig.height=2, fig.width=3}
+second.model.predictions %>%
+  ggplot(aes(
+    x=work_hours,
+    y=.fitted,
+    ymin =.fitted - .se.fit,
+    ymax =.fitted + .se.fit,
+    color=female,
+    group=female)) +
+  geom_point() +
+  geom_line() +
+  geom_errorbar(width=1)
+```
+
+**Explanation of the code**: We added the `geom_errorbar` function to our existing plot. We also
+added two new arguments to the `aes()` section: `ymin` and `ymax`. We set the `ymin` value to the
+fitted value, **_minus_** the standard error of the fitted value (and the same for `ymax`, except we
+added on the SE).
+
+**Explanation of the resulting plot**: The plot now includes error bars which represent the [standard
+error](https://en.wikipedia.org/wiki/Standard_error) of the fitted values. We will cover more on intervals, including standard errors, in a later workshop.
+
+### Extension exercises
+
+:::{.exercise}
+
+
+1. Tidy up the plot above by adding axis labels.
+
+1. In the example above we created a dataframe by hand to tell `augment` what predictions we wanted.
+   Now try using [`expand.grid`](#expand-grid) to make the new dataframe instead (we first used
+   `expand.grid` in the [first session](#expand-grid)). For example, try making predictions for men
+   and women who work 20, 25, 30, 35, or 40 hours per week.
+
+:::
+
+:::{.exercise}
+
+Data from a clinical trial of Functional Imagery Training [@solbrig2019functional, FIT] are
+available at <https://zenodo.org/record/1120364/files/blind_data.csv>. In this file, `group`
+represents the treatment group (FIT=2, motivational interviewing=1). The `kg1` and `kg3` variables
+represent the patients' weights in kilograms before and after treatment, respectively. Load these
+data and complete the following tasks:
+
+1. Plot the difference in weight between treatment groups at followup (`kg3`)
+
+2. Create a plot to show whether men or women benefitted most from the treatment (this will require
+   some thinking about what goes on the y-axis, and perhaps some pre-processing of the data).
+
+3. Create a plot to show whether older participants benefitted more or less than younger ones (again
+   this will require some thinking, and there are quite a number of different plot types which could
+   be used, each with different pros and cons).
+
+:::
+
+
+<!--
+
+```{r}
+fit <- read_csv('https://zenodo.org/record/1120364/files/blind_data.csv')
+fit %>% glimpse
+
+fit %>% ggplot(aes(gender, kg3-kg1, color=factor(group))) + stat_summary()
+fit %>% ggplot(aes(age>45, kg3-kg1, color=factor(group))) + stat_summary()
+
+m1 <- lm(kg3 ~ group*gender, data=fit)
+augment(m1, newdata=expand.grid(group=c(1,2), gender=c("f", "m"))) %>%
+  ggplot(aes(gender, .fitted, ymin=.fitted-.se.fit, ymax=.fitted+.se.fit, colour=factor(group))) +
+    geom_point() +
+    geom_errorbar(width=.5)
+```
+
+-->
