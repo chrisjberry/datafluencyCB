@@ -10,9 +10,6 @@
 > predicting new data. But for some models curved lines are essential to
 > describe the world as it really is.
 
-
-<!--
-
 ```{r, echo=F, include=F}
 knitr::opts_chunk$set(echo = TRUE, collapse=TRUE, cache=TRUE, comment=">", message=FALSE)
 library(tidyverse)
@@ -434,7 +431,7 @@ Load the data into R:
 
 
 ```{r}
-SurveyData <- read_csv("https://bit.ly/30HuHPE")
+SurveyData <- read_csv("data/SurveyData.csv")
 
 ```
 
@@ -929,4 +926,3 @@ Predicted Anxiety = 2.94 - 1.02Age - 1.98Age^2
 
 - A note: Although curves of any complexity can be fit, it may not always be meaningful or parsimonious to do so. Complex models may 'overfit' the data and may not necessarily generalise to new datasets well. It is also important not to extrapolate beyond the range of data used to generate the model when making predictions from the model, as the same relationship may not be present.
 
--->

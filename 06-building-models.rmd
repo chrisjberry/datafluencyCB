@@ -18,7 +18,9 @@ theme_set(theme_minimal())
 ```
 
 
-## Multiple Regression with Multiple Continuous Predictors
+## Multiple regression with several continuous predictors
+
+-   [Slides from the session](slides/regression1-chris.ppt)
 
 
 ### Overview
@@ -381,7 +383,7 @@ summary(multi1)
 
 - How much variance in `finalex` is explained by the model: $R^2$ = `r fitb(answer="16.41",  num=TRUE,tol=.02)` %.
 
-- Is the overall regression statistically significant? `r mcq(c(answer = "yes", "no"))`
+- Is the overall regression statistically significant? `r mcq(c("yes", answer= "no"))`
 
 - Is the coefficient for `project` statistically significant? `r mcq(c("yes", answer = "no"))`
 
@@ -441,9 +443,9 @@ As a final exercise, run a multiple regression to predict `finalex` from **three
 
 `r hide("Show me how")`
 ```{r}
-multi2 <- lm(finalex ~ entrex + project + iq, data = ExamData)
+multi4 <- lm(finalex ~ entrex + project + iq, data = ExamData)
 
-summary(multi2)
+summary(multi4)
 ```
 `r unhide()`
 

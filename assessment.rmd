@@ -45,79 +45,38 @@ online Rstudio server.
 
 The number of marks each question is worth [out of 50] is given below.
 
-#### 1. [10 marks]
+#### 1. Data handling [10 marks]
 
 Use `dplyr` functions like `group_by` and `summarise` to recreate the two tables below, from the `gapminder::gapminder` dataset.
 
-\
+Your tables should like the ones below once you've knitted your document to a PDF:
 
-----------------------
- year   mean(lifeExp) 
------- ---------------
- 1952       64.4      
-
- 1957       66.7      
-
- 1962       68.5      
-
- 1967       69.7      
-
- 1972       70.8      
-
- 1977       71.9      
-
- 1982       72.8      
-
- 1987       73.6      
-
- 1992       74.4      
-
- 1997       75.5      
-
- 2002       76.7      
-
- 2007       77.6      
-----------------------
-
-Table: Mean Life Expectancy in Europe by Year
+<center>
+![](images\q1a.PNG)
+</center>
 
 \
+
+<center>
+![](images\q1b.PNG)
+</center>
+
 \
 
 
----------------------------------------
- continent      country      gdpPercap 
------------ --------------- -----------
-  Africa         Gabon         13206   
-
-  Oceania      Australia       34435   
-
- Americas    United States     42952   
-
-   Asia         Kuwait         47307   
-
-  Europe        Norway         49357   
----------------------------------------
-
-Table: Country With the Highest GDP in 2007, by Continent
-
-\
-\
-
-
-#### 2. [10 marks]
+#### 2. Visualisation and plotting [10 marks]
 
 Recreate the plot below, using the `datasets::PlantGrowth` data:
 
+\
 
-<div class="figure">
-<img src="https://bit.ly/3al19eS" alt="Plant yield by treatment condition" width="672" />
-<p class="caption">(\#fig:q2)Plant yield by treatment condition</p>
-</div>
+<center>
+![](images\q2.PNG)
+</center>
 
+\
 
-
-#### 3. [20 marks]
+#### 3. Regression [20 marks]
 
 Use `read_csv` to load the `climate` dataset held at <https://bit.ly/3a1eF7w>. The data are responses to a survey concerning people's attitudes to climate change.
 
@@ -152,10 +111,11 @@ c. Does the addition of these variables to the model _improve_ the prediction of
 
 d. Using the model with `concern`, `nuclear`, `exagerate`, and `hedonism` as predictors, derive a prediction for a person who has scores of concern = 2, nuclear = 2.5, exagerate = 3, and hedonism = 3.5. 
 
+\
 
-#### 4. [10 marks]
+#### 4. Fitting curves [10 marks]
 
-Is there sufficient evidence for a linear, quadratic or cubic component of `age` in the prediction of `change`? Explain your answer.
+Again, using the `climate` dataset at <https://bit.ly/3a1eF7w>, is there sufficient evidence for a linear, quadratic or cubic component of `age` in the prediction of `change`? Explain your answer.
 
 
 

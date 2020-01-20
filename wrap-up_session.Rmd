@@ -1,0 +1,328 @@
+---
+title: Q/A Session
+output: webex::html_clean
+author: Chris Berry
+
+---
+
+
+```{r setup, include=F, echo=F, cache=F}
+source('_chunk_setup.R')
+source('utils.R')
+```
+
+
+```{r,include=F}
+library(tidyverse)
+```
+
+This final session of PSY556 is a wrap-up session.
+
+Below are some answers to questions that we've received - hopefully these will be helpful to all. 
+
+If you have further questions please feel free to contact Chris Berry or Ben Whalley.
+
+
+# How can I export tables to MS Word format?
+
+Suppose you have produced a table in RStudio that you want to include in a report.
+
+The method described below uses the `pander` package to achieve this. The `pander` package can be used to convert between different types of documents. 
+
+Load up the package:
+
+```{r}
+library(pander)
+```
+
+
+Look at the built-in data in `women`: 
+
+```{r}
+women
+```
+
+We used this data in session 3 on [Data Wrangling](https://plymouthpsychology.github.io/psystats/wrangling.html#mutating-to-make-new-variables).
+
+The following code creates a new document in the working directory called "women.docx" with the data in `women` neatly formatted in a table:
+
+```{r,eval=F}
+women %>% pandoc.table.return() %>% write_file('women.md')
+          rmarkdown::render(input = 'women.md', output_format = "word_document")
+```
+
+Locate "women.docx" in Files and look at the table.
+
+Here's how the code works:
+
+- The first line uses `pandoc.table.return()` to convert the data to "markdown" format. This is an intermediate step.  A new file "women.md" is created.
+- The second line then uses `rmarkdown::render()` to convert the markdown file to a word `.docx` file.
+
+
+To use the code to export data for your table, you simply need to change the three instances of `women` to whatever the name of your data is. 
+
+<div class='exercise'>
+For example, try exporting `women2` below (which stores data from the Data Wrangling session) to a word document.
+
+```{r}
+women2 <- women %>% 
+          mutate(height_m = height*0.0254, weight_kg= weight*0.45) %>% 
+          mutate(BMI = weight_kg / height_m^2)
+```
+
+`r hide("Show me")`
+```{r,eval=FALSE}
+women2 %>% pandoc.table.return() %>% write_file('women2.md')
+    rmarkdown::render(input = 'women2.md', output_format = "word_document")
+```
+`r unhide()`
+</div>
+
+If you have a very long table, `pandoc.table.return()` automatically splits it across multiple pages for you:
+
+
+```{r,eval=F}
+mtcars %>% pandoc.table.return() %>% write_file('mtcars.md')
+    rmarkdown::render(input = 'mtcars.md', output_format = "word_document")
+```
+
+The code above automatically splits the data in mtcars across two pages of "mtcars.docx".
+
+To stop the function from automatically splitting long tables, use `pandoc.table.return(split.table = Inf)`. This tells the function that tables can be of any (i.e., infinite or `Inf`) length.
+
+```{r,eval=F}
+mtcars %>% pandoc.table.return(split.table=Inf) %>% write_file('mtcars.md')
+    rmarkdown::render(input = 'mtcars.md', output_format = "word_document")
+```
+
+Now the table in "mtcars.docx" is nicely all on one page.
+
+
+# How can I export figures as separate files?
+
+You've probably discovered that you can do this manually by clicking on "Export" in the "Plots" window for a given plot. It's possible to do this automatically with code too.
+
+Suppose we had created the following boxplot from the `attitudes` dataset, as we did in the [Data Wrangling](https://plymouthpsychology.github.io/psystats/wrangling.html#reshaping-data-melting-casting-and-separating) session:
+
+```{r}
+datasets::attitude %>% 
+  data.table::melt() %>% 
+  ggplot(aes(variable, value)) + 
+  geom_boxplot()
+```
+
+The `ggsave()` function in `ggplot2` can be used to save the last plot that was displayed.
+
+
+```{r}
+ggsave("attitude.jpeg")
+```
+
+This code saves the last plot created by RStudio as a jpeg image with file name "attitude.jpeg". 
+
+To save in different formats, simply change the ending ".jpeg" to the file type you want (e.g., to `attitude.png`, or `attitude.pdf`). 
+
+<div class='exercise'>
+Type `?ggsave` to see all the other possible file formats.
+</div>
+
+You can also specify the exact size dimensions of your figure when saving. For example: 
+
+```{r}
+ggsave("attitude2.jpeg", width=18, height=10, units="cm")
+```
+
+If you don't specify the dimensions, `ggsave()` uses the dimensions of the current plot window (the bottom right quadrant of RStudio).
+
+
+# What does it mean when the R output says 1.4e-4?
+
+If RStudio prints out "1.4e-4", this actually means "0.00014". It is a way of printing out very small (or very large) numbers.
+
+"e-4" means "move the decimal point 4 places to the left". See this by executing the command below -- it should return "0.00014".
+
+
+```{r}
+1.4e-4
+```
+
+So:
+
+- "e-5" means move the decimal point 5 places to the left (e.g., `2.5e-5` is 0.000025)
+- "e-10" means move the decimal point 10 places to the left (e.g., `2.5e-10` is 0.00000000025).
+- "e5" means move the decimal point 5 places to the **right** (e.g., `2.5e5` is 250000).
+
+
+# Where can I find more information on a function?
+
+To find out more about a function or command, you can type `?functionname` to read the help file associated with it. This can be useful for exploring the additional arguments accepted by a function (e.g., as with `width` and `height` in `ggsave()` above).
+
+```{r,eval=F}
+?mean()
+?ggsave()
+```
+
+
+# How can I round numbers to X decimal places? 
+
+The `round()` function can be used to round a number. For example, the command:
+
+```{r}
+round(3.14159, 2)
+```
+
+rounds 3.14159 to 2 decimal places.
+
+We can combine `round` with commands from the `dplyr` package to round **all** of the numbers in a data frame to two decimal places in one go. 
+
+First look at the built-in dataset `DNase`:
+
+```{r}
+DNase %>% head()
+```
+
+The columns `conc` and `density` contain numeric values that we may want to display to 2 decimal places.
+
+We can achieve that using `mutate_if()` from the `dplyr` package, as follows:
+
+```{r,eval=F}
+DNase %>% mutate_if(is.numeric, round, 2) 
+```
+
+
+`mutate_if` will change the entry in the data frame **if** some condition is satisfied. In this case, if the entry is a number (i.e.,  `is.numeric`), it will apply `round` to it to `2` decimal places. (The column `Run` is not rounded because it is is an ordinal, rather than a numeric, variable.)
+
+<div class='exercise'>
+Try rounding the values in `DNase` to one decimal place.
+
+`r hide("Show me")`
+```{r,eval=FALSE}
+DNase %>% mutate_if(is.numeric, round, 1) 
+```
+`r unhide()`
+
+</div>
+
+# Cheat sheets
+
+There's obviously only so much that can be covered in a single module. Some handy cheat sheets for RStudio are located here: https://www.rstudio.com/resources/cheatsheets/
+
+The following may be of particular use for topics from this module:
+
+- [Data visualisation with ggplot](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
+- [Data transformation with dplyr](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
+
+
+# Can you remind me how to create a separate R script file and annotate/comment it?
+
+To create an R script file in R Studio:
+
+- Go to File > New File > R Script
+- This creates a new .r file, which you can type your R code into.
+- To execute the code (i.e., send it to the Console window), simply highlight the line or lines of code and click the "Run" button at the top right of the window.
+- To comment or annotate your code, type the "#" symbol. Anything that you write after the "#" symbol will be in green text, and will be ignored by R when the code is executed.
+- Save the file by going to File > Save. The file will appear in the Files pane (bottom right of R studio).
+
+![Image: Example of an R script](images/example_Rscript.PNG)
+
+
+
+
+# How can I save a file in the files pane of R Studio to my computer?
+
+If using R Studio through the university website (recommended) [rstudio.plymouth.ac.uk](https://rstudio.plymouth.ac.uk), you can save a file in the Files pane as follows:
+
+- Tick the check box next to the file you want to save.
+- Click the "More" button > Export. 
+- You can then choose where to save the file on your computer.
+
+
+# Some people are using R-markdown for their reports. Do I have to use this?
+
+No, as stated in the assessment [brief](https://plymouthpsychology.github.io/psystats/556-assessment.html), the requirement is to submit one PDF file with answers and selected outputs (e.g., converted from MS word) and one R code file.
+
+R-markdown is an advanced way of embedding R code and figures in a single executable document. (As an example, all the worksheets for this module were written in r-markdown.) People can use r-markdown to record and annotate the R code if they prefer, but there is no requirement to do this (you can use a .r file).
+
+If you want to create an R markdown file, go to File > New File > R Markdown.
+
+An R Markdown cheatsheet can be found [here](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf).
+
+
+# How do you add a title or caption to a summary output table?
+
+If exporting to MS word as in Q.1 (above), you can use "caption = Table name" in `pandoc.table.return()`, e.g.:
+
+```{r,eval=F}
+women %>% pandoc.table.return(caption="Table X. Women data") %>% write_file('women.md')
+          rmarkdown::render(input = 'women.md', output_format = "word_document")
+```
+
+
+With Rmarkdown, if you use `pander()` to output a summary table, you can add the `caption=“XXX”` argument to add a title. For example:
+
+
+```{r}
+library(tidyverse)
+library(pander)
+
+# for summary tables
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarise(mean_mpg=mean(mpg)) %>% 
+  pander(caption="Mean miles per gallon by cyl")
+
+# crosstabs/frequencies
+xtabs(~gear+cyl, data=mtcars) %>% 
+  pander(caption="Frequencies by `gear` and `cyl`")
+
+```
+
+`pander()` accepts many kinds of summary table being passed to it in this way. 
+
+
+# When melting data using `data.table::melt()`, is there a way to melt according to a particular variable?
+
+We converted data from short to long format in the [Data Wrangling](https://plymouthpsychology.github.io/psystats/wrangling.html#reshaping-data-melting-casting-and-separating) session.
+
+If you find that everything gets melted and you have lost the grouping variables you want, remember to look at the `id.vars=c(“group”, “anothervar”)` argument. By adding `id.vars` you tell `data.table` that you want to keep these as separate columns.
+
+For example,  compare:
+
+```{r,warning=F}
+library(data.table)
+```
+
+```{r}
+mtcars %>% 
+  melt() %>% 
+  head()
+```
+
+with
+
+```{r}
+mtcars %>% 
+  melt(id.var="cyl") %>% 
+  head()
+```
+
+The latter example melts the data but labels according to the `cyl` variable.
+
+# What techniques can I use for assessing whether adding predictors to a regression model results in a (statistically significant) improvement in the model?
+
+The most relevant material concerns comparison of progressively more complex models in the [Fitting curves](https://plymouthpsychology.github.io/psystats/fitting-curves.html) session using `anova(model1, model2)` and comparison of Bayes Factors.
+
+The materials in the [Multiple regression](https://plymouthpsychology.github.io/psystats/multiple_regression.html) session are also relevant.
+
+
+# Are there any answers for the final exercise in the fitting curves session (session 7)? 
+These have been [added](https://plymouthpsychology.github.io/psystats/fitting-curves.html).
+
+
+# If there's anything else you'd like answers for, please get in touch. Good luck!
+
+
+
+
+```{r child="footer.Rmd"}
+```

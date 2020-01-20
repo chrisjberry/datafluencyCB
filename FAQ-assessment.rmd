@@ -9,8 +9,77 @@ library(pander)
 theme_set(theme_minimal())
 ```
 
+\
+
+### How do I add a caption to a summary output table?
+
+`pander()` can be used to output a summary table with a caption. Use the `caption=“XXX”` argument. For example:
 
 
-### 
+```{r}
+library(tidyverse)
+library(pander)
 
-Frequently asked questions will appear here.
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarise(mean_mpg = mean(mpg)) %>% 
+  pander(caption = "Mean miles per gallon by cyl")
+
+```
+
+\
+
+### How can I round numbers to X decimal places? 
+
+The `round()` function can be used to round a number. For example, the command:
+
+```{r}
+round(3.14159, 2)
+```
+
+rounds 3.14159 to 2 decimal places.
+
+We can combine `round` with commands from the `dplyr` package to round **all** of the numbers in a data frame to two decimal places in one go. 
+
+First look at the built-in dataset `DNase`:
+
+```{r}
+DNase %>% head()
+```
+
+The columns `conc` and `density` contain numeric values that we may want to display to 2 decimal places.
+
+We can achieve that using `mutate_if()` from the `dplyr` package, as follows:
+
+```{r,eval=F}
+DNase %>% mutate_if(is.numeric, round, 2) 
+```
+
+
+**Explanation**: `mutate_if` will change the entry in the data frame **if** some condition is satisfied. In this case, if the entry is a number (i.e.,  `is.numeric`), it will apply `round` to it to `2` decimal places. (The column `Run` is not rounded because it is is an ordinal, rather than a numeric, variable.)
+
+<div class='exercise'>
+Try rounding the values in `DNase` to one decimal place.
+
+`r hide("Show me")`
+```{r,eval=FALSE}
+DNase %>% mutate_if(is.numeric, round, 1) 
+```
+`r unhide()`
+
+</div>
+
+
+\
+
+
+### Cheat sheets
+
+Some handy cheat sheets for RStudio are located here: https://www.rstudio.com/resources/cheatsheets/
+
+The following may be of particular use for topics from this module:
+
+- [Data transformation with dplyr](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
+- [Data visualisation with ggplot](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
+- [R Markdown](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
+

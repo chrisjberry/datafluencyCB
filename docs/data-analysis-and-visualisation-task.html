@@ -147,7 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="data-analysis-and-visualisation-task.html"><a href="data-analysis-and-visualisation-task.html"><i class="fa fa-check"></i>Data analysis and visualisation task</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="building-models-1.html"><a href="building-models-1.html"><i class="fa fa-check"></i>Building models 1</a><ul>
-<li class="chapter" data-level="" data-path="multiple-regression-with-multiple-continuous-predictors.html"><a href="multiple-regression-with-multiple-continuous-predictors.html"><i class="fa fa-check"></i>Multiple Regression with Multiple Continuous Predictors</a></li>
+<li class="chapter" data-level="" data-path="multiple-regression-with-several-continuous-predictors.html"><a href="multiple-regression-with-several-continuous-predictors.html"><i class="fa fa-check"></i>Multiple regression with several continuous predictors</a></li>
 <li class="chapter" data-level="" data-path="analysing-the-model.html"><a href="analysing-the-model.html"><i class="fa fa-check"></i>Analysing the model</a></li>
 <li class="chapter" data-level="" data-path="conceptualising-the-variance-explained-by-predictors.html"><a href="conceptualising-the-variance-explained-by-predictors.html"><i class="fa fa-check"></i>Conceptualising the variance explained by predictors</a></li>
 <li class="chapter" data-level="" data-path="adding-predictor-variables-to-the-model.html"><a href="adding-predictor-variables-to-the-model.html"><i class="fa fa-check"></i>Adding predictor variables to the model</a></li>
@@ -207,135 +207,34 @@ online Rstudio server.</p>
 <div id="questions" class="section level3">
 <h3>Questions</h3>
 <p>The number of marks each question is worth [out of 50] is given below.</p>
-<div id="marks" class="section level4">
-<h4>1. [10 marks]</h4>
+<div id="data-handling-10-marks" class="section level4">
+<h4>1. Data handling [10 marks]</h4>
 <p>Use <code>dplyr</code> functions like <code>group_by</code> and <code>summarise</code> to recreate the two tables below, from the <code>gapminder::gapminder</code> dataset.</p>
+<p>Your tables should like the ones below once you’ve knitted your document to a PDF:</p>
+<center>
+<img src="images/q1a.PNG" />
+</center>
 <p><br />
 </p>
-<table style="width:32%;">
-<caption>Mean Life Expectancy in Europe by Year</caption>
-<colgroup>
-<col width="9%" />
-<col width="22%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">year</th>
-<th align="center">mean(lifeExp)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">1952</td>
-<td align="center">64.4</td>
-</tr>
-<tr class="even">
-<td align="center">1957</td>
-<td align="center">66.7</td>
-</tr>
-<tr class="odd">
-<td align="center">1962</td>
-<td align="center">68.5</td>
-</tr>
-<tr class="even">
-<td align="center">1967</td>
-<td align="center">69.7</td>
-</tr>
-<tr class="odd">
-<td align="center">1972</td>
-<td align="center">70.8</td>
-</tr>
-<tr class="even">
-<td align="center">1977</td>
-<td align="center">71.9</td>
-</tr>
-<tr class="odd">
-<td align="center">1982</td>
-<td align="center">72.8</td>
-</tr>
-<tr class="even">
-<td align="center">1987</td>
-<td align="center">73.6</td>
-</tr>
-<tr class="odd">
-<td align="center">1992</td>
-<td align="center">74.4</td>
-</tr>
-<tr class="even">
-<td align="center">1997</td>
-<td align="center">75.5</td>
-</tr>
-<tr class="odd">
-<td align="center">2002</td>
-<td align="center">76.7</td>
-</tr>
-<tr class="even">
-<td align="center">2007</td>
-<td align="center">77.6</td>
-</tr>
-</tbody>
-</table>
+<center>
+<img src="images/q1b.PNG" />
+</center>
 <p><br />
-<br />
-</p>
-<table style="width:56%;">
-<caption>Country With the Highest GDP in 2007, by Continent</caption>
-<colgroup>
-<col width="16%" />
-<col width="22%" />
-<col width="16%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">continent</th>
-<th align="center">country</th>
-<th align="center">gdpPercap</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Africa</td>
-<td align="center">Gabon</td>
-<td align="center">13206</td>
-</tr>
-<tr class="even">
-<td align="center">Oceania</td>
-<td align="center">Australia</td>
-<td align="center">34435</td>
-</tr>
-<tr class="odd">
-<td align="center">Americas</td>
-<td align="center">United States</td>
-<td align="center">42952</td>
-</tr>
-<tr class="even">
-<td align="center">Asia</td>
-<td align="center">Kuwait</td>
-<td align="center">47307</td>
-</tr>
-<tr class="odd">
-<td align="center">Europe</td>
-<td align="center">Norway</td>
-<td align="center">49357</td>
-</tr>
-</tbody>
-</table>
-<p><br />
-<br />
 </p>
 </div>
-<div id="marks-1" class="section level4">
-<h4>2. [10 marks]</h4>
+<div id="visualisation-and-plotting-10-marks" class="section level4">
+<h4>2. Visualisation and plotting [10 marks]</h4>
 <p>Recreate the plot below, using the <code>datasets::PlantGrowth</code> data:</p>
-<div class="figure"><span id="fig:q2"></span>
-<img src="https://bit.ly/3al19eS" alt="Plant yield by treatment condition" width="672" />
-<p class="caption">
-Figure 1: Plant yield by treatment condition
+<p><br />
+</p>
+<center>
+<img src="images/q2.PNG" />
+</center>
+<p><br />
 </p>
 </div>
-</div>
-<div id="marks-2" class="section level4">
-<h4>3. [20 marks]</h4>
+<div id="regression-20-marks" class="section level4">
+<h4>3. Regression [20 marks]</h4>
 <p>Use <code>read_csv</code> to load the <code>climate</code> dataset held at <a href="https://bit.ly/3a1eF7w" class="uri">https://bit.ly/3a1eF7w</a>. The data are responses to a survey concerning people’s attitudes to climate change.</p>
 <div class="tip">
 <p>These are the variables:</p>
@@ -353,10 +252,12 @@ Figure 1: Plant yield by treatment condition
 <li><p>Does the addition of these variables to the model <em>improve</em> the prediction of <code>change</code>?</p></li>
 <li><p>Using the model with <code>concern</code>, <code>nuclear</code>, <code>exagerate</code>, and <code>hedonism</code> as predictors, derive a prediction for a person who has scores of concern = 2, nuclear = 2.5, exagerate = 3, and hedonism = 3.5.</p></li>
 </ol>
+<p><br />
+</p>
 </div>
-<div id="marks-3" class="section level4">
-<h4>4. [10 marks]</h4>
-<p>Is there sufficient evidence for a linear, quadratic or cubic component of <code>age</code> in the prediction of <code>change</code>? Explain your answer.</p>
+<div id="fitting-curves-10-marks" class="section level4">
+<h4>4. Fitting curves [10 marks]</h4>
+<p>Again, using the <code>climate</code> dataset at <a href="https://bit.ly/3a1eF7w" class="uri">https://bit.ly/3a1eF7w</a>, is there sufficient evidence for a linear, quadratic or cubic component of <code>age</code> in the prediction of <code>change</code>? Explain your answer.</p>
 
 </div>
 </div>
