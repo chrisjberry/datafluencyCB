@@ -1,6 +1,6 @@
 ---
-title: 'Data Fluency - Chris Berry Sessions'
-author: 'Chris Berry'
+title: 'PSYC753 Data Fluency'
+author: ''
 site: bookdown::bookdown_site
 bibliography: [references.bib]
 biblio-style: apa6
@@ -14,10 +14,15 @@ knitr::opts_chunk$set(echo = TRUE, collapse=TRUE, cache=TRUE, comment=NA, messag
 
 # {-}
 
-PSYC753 Data Fluency sessions for Chris Berry
+This workbook contains details of the following PSYC753 sessions given by **Chris Berry**:
 
 - Building models 1  - 21/1/20
  
 - Building models 2 - 29/1/20
 
 - Fitting curves - 4/2/20
+
+
+
+\
+Materials for sessions by Ben Whalley can be found at https://benwhalley.github.io/datafluency/
