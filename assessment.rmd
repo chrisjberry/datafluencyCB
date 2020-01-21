@@ -49,7 +49,7 @@ The number of marks each question is worth [out of 50] is given below.
 
 Use `dplyr` functions like `group_by` and `summarise` to recreate the two tables below, from the `gapminder::gapminder` dataset.
 
-Your tables should like the ones below once you've knitted your document to a PDF:
+Your tables should look like the ones below once you've knitted your document to a PDF:
 
 <center>
 ![](images\q1a.PNG)
