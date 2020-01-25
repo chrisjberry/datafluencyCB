@@ -18,7 +18,7 @@ This workbook contains details of the three sessions given by **Chris Berry**:
 
 - Building models 1  - 21/1/20
  
-- Building models 2 - 29/1/20
+- Building models 2 - 28/1/20
 
 - Fitting curves - 4/2/20
 

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Exercise | PSYC753 Data Fluency</title>
+  <meta name="description" content="Exercise | PSYC753 Data Fluency" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Exercise | PSYC753 Data Fluency" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Exercise | PSYC753 Data Fluency" />
+  
+  
+  
+
+<meta name="author" content="" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="comparing-models-using-bayes-factors.html">
+<link rel="next" href="summary-of-key-points-1.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<link href="media/webex.css" rel="stylesheet" />
+<link href="media/psystats.css" rel="stylesheet" />
+<script src="media/webex.js"></script>
+<script src="media/psystats.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118343766-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-118343766-4');
+</script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Fluency</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section"></a></li>
+<li class="chapter" data-level="" data-path="assessment.html"><a href="assessment.html"><i class="fa fa-check"></i>Assessment</a><ul>
+<li class="chapter" data-level="" data-path="data-analysis-and-visualisation-task.html"><a href="data-analysis-and-visualisation-task.html"><i class="fa fa-check"></i>Data analysis and visualisation task</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="building-models-1.html"><a href="building-models-1.html"><i class="fa fa-check"></i>Building models 1</a><ul>
+<li class="chapter" data-level="" data-path="multiple-regression-with-several-continuous-predictors.html"><a href="multiple-regression-with-several-continuous-predictors.html"><i class="fa fa-check"></i>Multiple regression with several continuous predictors</a></li>
+<li class="chapter" data-level="" data-path="analysing-the-model.html"><a href="analysing-the-model.html"><i class="fa fa-check"></i>Analysing the model</a></li>
+<li class="chapter" data-level="" data-path="conceptualising-the-variance-explained-by-predictors.html"><a href="conceptualising-the-variance-explained-by-predictors.html"><i class="fa fa-check"></i>Conceptualising the variance explained by predictors</a></li>
+<li class="chapter" data-level="" data-path="adding-predictor-variables-to-the-model.html"><a href="adding-predictor-variables-to-the-model.html"><i class="fa fa-check"></i>Adding predictor variables to the model</a></li>
+<li class="chapter" data-level="" data-path="multicollinearity.html"><a href="multicollinearity.html"><i class="fa fa-check"></i>Multicollinearity</a></li>
+<li class="chapter" data-level="" data-path="final-exercise.html"><a href="final-exercise.html"><i class="fa fa-check"></i>Final exercise</a></li>
+<li class="chapter" data-level="" data-path="summary-of-key-points.html"><a href="summary-of-key-points.html"><i class="fa fa-check"></i>Summary of key points</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="building-models-2.html"><a href="building-models-2.html"><i class="fa fa-check"></i>Building models 2</a><ul>
+<li class="chapter" data-level="" data-path="using-anova-and-bayes-factors-to-compare-models.html"><a href="using-anova-and-bayes-factors-to-compare-models.html"><i class="fa fa-check"></i>Using ANOVA and Bayes Factors to compare models</a></li>
+<li class="chapter" data-level="" data-path="comparing-models-using-anova.html"><a href="comparing-models-using-anova.html"><i class="fa fa-check"></i>Comparing models using ANOVA</a></li>
+<li class="chapter" data-level="" data-path="comparing-models-using-bayes-factors.html"><a href="comparing-models-using-bayes-factors.html"><i class="fa fa-check"></i>Comparing models using Bayes Factors</a></li>
+<li class="chapter" data-level="" data-path="exercise.html"><a href="exercise.html"><i class="fa fa-check"></i>Exercise</a></li>
+<li class="chapter" data-level="" data-path="summary-of-key-points-1.html"><a href="summary-of-key-points-1.html"><i class="fa fa-check"></i>Summary of key points</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="fitting-curves.html"><a href="fitting-curves.html"><i class="fa fa-check"></i>Fitting Curves</a></li>
+<li class="chapter" data-level="" data-path="FAQ-assessment.html"><a href="FAQ-assessment.html"><i class="fa fa-check"></i>FAQ Data Analysis and Visualisation Task</a></li>
+<li class="divider"></li>
+<li><a href="./LICENCE" target="blank">Licence: CC BY-SA 4</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSYC753 Data Fluency</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exercise" class="section level2">
+<h2>Exercise</h2>
+<p>A researcher would like to construct a model to predict performance in a memory task from several different variables. The data from 234 individuals are stored in the <code>memory_data</code> dataset, which can be located at <a href="https://bit.ly/37pOTrC" class="uri">https://bit.ly/37pOTrC</a>.</p>
+<div class="exercise">
+<p>Load in the data to the variable <code>memory_data</code> and preview it with <code>head()</code>.</p>
+<div class="solution">
+<button>
+Try this yourself first. Click to show code
+</button>
+<pre class="sourceCode r"><code class="sourceCode r">memory_data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;https://bit.ly/37pOTrC&#39;</span>)
+memory_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()
+<span class="op">&gt;</span><span class="st"> </span><span class="co"># A tibble: 6 x 7</span>
+<span class="er">&gt;</span><span class="st">   </span>attention   sex blueberries    iq   age sleep memory_score
+<span class="op">&gt;</span><span class="st">       </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">       </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">        </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="dv">1</span>      <span class="fl">95.8</span>     <span class="dv">1</span>         <span class="dv">308</span>  <span class="fl">99.9</span>  <span class="fl">44.9</span>  <span class="fl">9.94</span>        <span class="fl">128.</span> 
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>      <span class="fl">66.7</span>     <span class="dv">1</span>         <span class="dv">270</span> <span class="fl">137.</span>   <span class="fl">29.4</span>  <span class="fl">8.04</span>        <span class="fl">127.</span> 
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>     <span class="fl">102.</span>      <span class="dv">1</span>         <span class="dv">442</span> <span class="fl">110.</span>   <span class="fl">31.9</span> <span class="fl">11.0</span>         <span class="fl">118.</span> 
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span>      <span class="fl">36.9</span>     <span class="dv">1</span>         <span class="dv">219</span> <span class="fl">110.</span>   <span class="fl">27.9</span>  <span class="fl">5.28</span>         <span class="fl">95.5</span>
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>      <span class="fl">91.7</span>     <span class="dv">0</span>         <span class="dv">450</span> <span class="fl">119.</span>   <span class="fl">36.7</span>  <span class="fl">9.30</span>        <span class="fl">122.</span> 
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">6</span>     <span class="fl">146.</span>      <span class="dv">1</span>         <span class="dv">255</span>  <span class="fl">85.6</span>  <span class="fl">23.9</span>  <span class="fl">7.05</span>        <span class="fl">102.</span></code></pre>
+</div>
+<div class="tip">
+<p>About the data -</p>
+<p><strong>attention</strong>: sustained attention score (higher = better attention)</p>
+<p><strong>sex</strong>: 0 = female, 1 = male</p>
+<p><strong>blueberries</strong>: average number of blueberries consumed per year</p>
+<p><strong>iq</strong>: the individual’s IQ.</p>
+<p><strong>age</strong>: age of person in years</p>
+<p><strong>sleep</strong>: average hours of sleep per night</p>
+<p><strong>memory_score</strong>: memory test score</p>
+</div>
+<p>The researcher wants to test whether <code>attention</code> and <code>sleep</code> predict <code>memory_score</code>. It is already well-established in the literature that <code>iq</code> and <code>age</code> predict <code>memory_score</code>. She therefore wants to use a hierarchical regression approach to determine whether <code>attention</code> and <code>sleep</code> explain additional variance in <code>memory_score</code> <em>over and above</em> these established variables.</p>
+<p>First, fit a linear model to determine the extent to which <code>memory_score</code> is predicted by <code>iq</code> and <code>age</code>. Store the results in <code>memory1</code>.</p>
+<div class="solution">
+<button>
+Try first, then click to see the code
+</button>
+<pre class="sourceCode r"><code class="sourceCode r">memory1 &lt;-<span class="st"> </span><span class="kw">lm</span>(memory_score <span class="op">~</span><span class="st"> </span>iq <span class="op">+</span><span class="st"> </span>age, <span class="dt">data =</span> memory_data)
+<span class="kw">summary</span>(memory1)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> memory_score <span class="op">~</span><span class="st"> </span>iq <span class="op">+</span><span class="st"> </span>age, <span class="dt">data =</span> memory_data)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Residuals<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">     </span>Min      1Q  Median      3Q     Max 
+<span class="op">&gt;</span><span class="st"> </span><span class="fl">-44.154</span> <span class="fl">-11.754</span>   <span class="fl">0.732</span>  <span class="fl">11.608</span>  <span class="fl">40.790</span> 
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Coefficients<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">             </span>Estimate Std. Error t value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)    
+<span class="op">&gt;</span><span class="st"> </span>(Intercept)  <span class="fl">71.1669</span>     <span class="fl">9.0796</span>   <span class="fl">7.838</span> <span class="fl">1.67e-13</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span>iq            <span class="fl">0.1073</span>     <span class="fl">0.0699</span>   <span class="fl">1.534</span>    <span class="fl">0.126</span>    
+<span class="op">&gt;</span><span class="st"> </span>age           <span class="fl">0.8220</span>     <span class="fl">0.1461</span>   <span class="fl">5.627</span> <span class="fl">5.27e-08</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="op">---</span>
+<span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span>
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Residual standard error<span class="op">:</span><span class="st"> </span><span class="fl">16.1</span> on <span class="dv">231</span> degrees of freedom
+<span class="op">&gt;</span><span class="st"> </span>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.1303</span>,  Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.1228</span> 
+<span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">17.31</span> on <span class="dv">2</span> and <span class="dv">231</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="fl">9.875e-08</span></code></pre>
+</div>
+<p><br />
+Next, add <code>attention</code> and <code>sleep</code> to the model, storing your results in <code>memory2</code>.</p>
+<div class="solution">
+<button>
+Try first, then click to see the code
+</button>
+<pre class="sourceCode r"><code class="sourceCode r">memory2 &lt;-<span class="st"> </span><span class="kw">lm</span>(memory_score <span class="op">~</span><span class="st"> </span>iq <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>attention <span class="op">+</span><span class="st"> </span>sleep, <span class="dt">data =</span> memory_data)
+<span class="kw">summary</span>(memory2)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> memory_score <span class="op">~</span><span class="st"> </span>iq <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>attention <span class="op">+</span><span class="st"> </span>sleep, <span class="dt">data =</span> memory_data)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Residuals<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">     </span>Min      1Q  Median      3Q     Max 
+<span class="op">&gt;</span><span class="st"> </span><span class="fl">-28.935</span>  <span class="fl">-8.555</span>   <span class="fl">1.713</span>   <span class="fl">8.450</span>  <span class="fl">31.384</span> 
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Coefficients<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">             </span>Estimate Std. Error t value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)    
+<span class="op">&gt;</span><span class="st"> </span>(Intercept)  <span class="fl">9.60112</span>    <span class="fl">8.57889</span>   <span class="fl">1.119</span> <span class="fl">0.264246</span>    
+<span class="op">&gt;</span><span class="st"> </span>iq           <span class="fl">0.18673</span>    <span class="fl">0.05451</span>   <span class="fl">3.426</span> <span class="fl">0.000726</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span>age          <span class="fl">0.86579</span>    <span class="fl">0.11308</span>   <span class="fl">7.656</span> <span class="fl">5.32e-13</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span>attention    <span class="fl">0.22894</span>    <span class="fl">0.02757</span>   <span class="fl">8.302</span> <span class="fl">8.88e-15</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span>sleep        <span class="fl">3.68609</span>    <span class="fl">0.39328</span>   <span class="fl">9.373</span>  <span class="op">&lt;</span><span class="st"> </span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="op">---</span>
+<span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span>
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Residual standard error<span class="op">:</span><span class="st"> </span><span class="fl">12.46</span> on <span class="dv">229</span> degrees of freedom
+<span class="op">&gt;</span><span class="st"> </span>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.4839</span>,  Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.4749</span> 
+<span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">53.68</span> on <span class="dv">4</span> and <span class="dv">229</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="er">&lt;</span><span class="st"> </span><span class="fl">2.2e-16</span></code></pre>
+</div>
+<p><br />
+Now, compare the <code>memory1</code> and <code>memory2</code> models using <code>anova()</code></p>
+<div class="solution">
+<button>
+Try first, then click to see the code
+</button>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(memory1, memory2)
+<span class="op">&gt;</span><span class="st"> </span>Analysis of Variance Table
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Model <span class="dv">1</span><span class="op">:</span><span class="st"> </span>memory_score <span class="op">~</span><span class="st"> </span>iq <span class="op">+</span><span class="st"> </span>age
+<span class="op">&gt;</span><span class="st"> </span>Model <span class="dv">2</span><span class="op">:</span><span class="st"> </span>memory_score <span class="op">~</span><span class="st"> </span>iq <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>attention <span class="op">+</span><span class="st"> </span>sleep
+<span class="op">&gt;</span><span class="st">   </span>Res.Df   RSS Df Sum of Sq      F    <span class="kw">Pr</span>(<span class="op">&gt;</span>F)    
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>    <span class="dv">231</span> <span class="dv">59912</span>                                  
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>    <span class="dv">229</span> <span class="dv">35554</span>  <span class="dv">2</span>     <span class="dv">24359</span> <span class="fl">78.447</span> <span class="op">&lt;</span><span class="st"> </span><span class="fl">2.2e-16</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="op">---</span>
+<span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></code></pre>
+</div>
+<div class="tip">
+<p><strong>What does it mean if RStudio prints out “e-” next to a number?</strong></p>
+<p>If R prints “1.4e-4”, in the output this actually means <span class="math inline">\(1.4 \times 10^{-4}\)</span>, or “0.00014”. It is a way of printing out very small (or very large) numbers.</p>
+<p>“e-4” means “move the decimal point 4 places to the left”. See this by executing the command below – it should return “0.00014”.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fl">1.4e-4</span>
+<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">0.00014</span></code></pre>
+<p>So:</p>
+<ul>
+<li>“e-5” means move the decimal point 5 places to the left (e.g., <code>2.5e-5</code> is <span class="math inline">\(2.5 \times 10^{-5}\)</span>, or 0.000025)</li>
+<li>“e-10” means move the decimal point 10 places to the left (e.g., <code>2.5e-10</code> is <span class="math inline">\(2.5 \times 10^{-10}\)</span>, or 0.00000000025).</li>
+<li>“e5” means move the decimal point 5 places to the <strong>right</strong> (e.g., <code>2.5e5</code> is <span class="math inline">\(2.5 \times 10^{5}\)</span>, 250000).</li>
+</ul>
+</div>
+<p><br />
+Answer the following questions:</p>
+<p>A model with <code>iq</code> and <code>age</code> as predictors explains <input class='solveme nospaces' size='5' data-answer='["53.10"]'/> % of the variance in <code>memory_scores</code></p>
+<p>A model with <code>iq</code>, <code>age</code>, <code>attention</code> and <code>sleep</code> as predictors explains <input class='solveme nospaces' size='5' data-answer='["53.10"]'/> % of the variance in <code>memory_scores</code></p>
+<p>Calculate the additional variance explained by the second model: Change in <span class="math inline">\(R^2\)</span> = <input class='solveme nospaces' size='5' data-answer='["53.10"]'/> %</p>
+<p>Is there a statistically significant improvement in the prediction of <code>memory_scores</code> as a result of adding <code>attention</code> and <code>sleep</code> to the model? <select class='solveme' data-answer='["yes"]'> <option></option> <option>no</option> <option>yes</option></select></p>
+<p><br />
+</p>
+<p>Determine how much more likely the <code>memory2</code> model is than the <code>memory1</code> model by computing the Bayes Factor.</p>
+<div class="solution">
+<button>
+Click here if you need a reminder of the steps to take
+</button>
+<ul>
+<li><p>Determine the Bayes Factor for <code>memory1</code></p></li>
+<li><p>Determine the Bayes Factor for <code>memory2</code></p></li>
+<li><p>Compare the Bayes Factors for <code>memory2</code> and <code>memory1</code></p></li>
+</ul>
+</div>
+<div class="solution">
+<button>
+Click here to see the code for this
+</button>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Store the Bayes Factor for the first model in memory1.BF</span>
+memory1.BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(memory_score <span class="op">~</span><span class="st"> </span>iq <span class="op">+</span><span class="st"> </span>age, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(memory_data) )
+
+<span class="co"># Store the Bayes Factor for the second model in memory2.BF</span>
+memory2.BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(memory_score <span class="op">~</span><span class="st"> </span>iq <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>attention <span class="op">+</span><span class="st"> </span>sleep, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(memory_data) )
+
+<span class="co"># Compute the Bayes Factors for memory2.BF vs memory1.BF</span>
+memory2.BF <span class="op">/</span><span class="st"> </span>memory1.BF
+<span class="op">&gt;</span><span class="st"> </span>Bayes factor analysis
+<span class="op">&gt;</span><span class="st"> </span><span class="op">--------------</span>
+<span class="er">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] iq <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>attention <span class="op">+</span><span class="st"> </span>sleep <span class="op">:</span><span class="st"> </span><span class="fl">4.168455e+23</span> ±<span class="dv">0</span>%
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Against denominator<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">   </span>memory_score <span class="op">~</span><span class="st"> </span>iq <span class="op">+</span><span class="st"> </span>age 
+<span class="op">&gt;</span><span class="st"> </span><span class="op">---</span>
+<span class="er">&gt;</span><span class="st"> </span>Bayes factor type<span class="op">:</span><span class="st"> </span>BFlinearModel, JZS</code></pre>
+</div>
+<p>The Bayes Factor to (2 decimal places) is <input class='solveme nospaces' size='4' data-answer='["4.16"]'/> e+ <input class='solveme nospaces' size='2' data-answer='["23"]'/>.</p>
+<p>Does the Bayes Factor support the conclusions from the ANOVA?</p>
+<div class="solution">
+<button>
+click for answer
+</button>
+<p>Yes! The Bayes Factor is equal to <span class="math inline">\(4.16 \times 10^{23}\)</span>, and therefore strongly supports the inclusion of <code>attention</code> and <code>sleep</code> in the model.</p>
+</div>
+<p>The researcher wishes to predict the <code>memory_score</code> for an individual with <code>iq</code> = 105, <code>age</code> = 27, <code>attention</code> = 90, <code>sleep</code> = 8. Determine the prediction. Hint: in a previous session, you have previously used the <code>predict()</code> function to do this.</p>
+<p>The predicted score is <input class='solveme nospaces' size='3' data-answer='["121"]'/></p>
+<div class="solution">
+<button>
+click to show how this was determined
+</button>
+<pre class="sourceCode r"><code class="sourceCode r">new_data &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">iq =</span> <span class="dv">205</span>, <span class="dt">age =</span> <span class="dv">27</span>, <span class="dt">attention =</span> <span class="dv">90</span>, <span class="dt">sleep =</span> <span class="dv">8</span>)
+<span class="kw">predict</span>(memory2, new_data)
+<span class="op">&gt;</span><span class="st">        </span><span class="dv">1</span> 
+<span class="op">&gt;</span><span class="st"> </span><span class="fl">121.3494</span></code></pre>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="comparing-models-using-bayes-factors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="summary-of-key-points-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

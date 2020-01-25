@@ -14,3 +14,16 @@ library(webex)
 library(pander)
 theme_set(theme_minimal())
 ```
+
+
+
+
+## Using ANOVA and Bayes Factors to compare models
+
+-   [**Slides from the session**](slides/regression2-chris.ppt) (available 25-01-2020)
+
+
+
+
+
+

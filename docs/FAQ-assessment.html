@@ -155,7 +155,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="final-exercise.html"><a href="final-exercise.html"><i class="fa fa-check"></i>Final exercise</a></li>
 <li class="chapter" data-level="" data-path="summary-of-key-points.html"><a href="summary-of-key-points.html"><i class="fa fa-check"></i>Summary of key points</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="building-models-2.html"><a href="building-models-2.html"><i class="fa fa-check"></i>Building models 2</a></li>
+<li class="chapter" data-level="" data-path="building-models-2.html"><a href="building-models-2.html"><i class="fa fa-check"></i>Building models 2</a><ul>
+<li class="chapter" data-level="" data-path="using-anova-and-bayes-factors-to-compare-models.html"><a href="using-anova-and-bayes-factors-to-compare-models.html"><i class="fa fa-check"></i>Using ANOVA and Bayes Factors to compare models</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="fitting-curves.html"><a href="fitting-curves.html"><i class="fa fa-check"></i>Fitting Curves</a></li>
 <li class="chapter" data-level="" data-path="FAQ-assessment.html"><a href="FAQ-assessment.html"><i class="fa fa-check"></i>FAQ Data Analysis and Visualisation Task</a></li>
 <li class="divider"></li>
@@ -263,6 +265,21 @@ Show me
 <li><a href="https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf">Data transformation with dplyr</a></li>
 <li><a href="https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf">Data visualisation with ggplot</a></li>
 <li><a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf">R Markdown</a></li>
+</ul>
+<p><br />
+</p>
+</div>
+<div id="what-does-it-mean-if-rstudio-prints-out-e--next-to-a-number" class="section level3">
+<h3>What does it mean if RStudio prints out “e-” next to a number?</h3>
+<p>If R prints “1.4e-4”, in the output this actually means “<span class="math inline">\(1.4 \times 10^{-4}\)</span>”, or “0.00014”. It is a way of printing out very small (or very large) numbers.</p>
+<p>“e-4” means “move the decimal point 4 places to the left”. See this by executing the command below – it should return “0.00014”.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fl">1.4e-4</span>
+<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">0.00014</span></code></pre>
+<p>So:</p>
+<ul>
+<li>“e-5” means move the decimal point 5 places to the left (e.g., <code>2.5e-5</code> is “<span class="math inline">\(2.5 \times 10^{-5}\)</span>”, or 0.000025)</li>
+<li>“e-10” means move the decimal point 10 places to the left (e.g., <code>2.5e-10</code> is “<span class="math inline">\(2.5 \times 10^{-10}\)</span>”, or 0.00000000025).</li>
+<li>“e5” means move the decimal point 5 places to the <strong>right</strong> (e.g., <code>2.5e5</code> is “<span class="math inline">\(2.5 \times 10^{5}\)</span>”, 250000).</li>
 </ul>
 
 </div>

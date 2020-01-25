@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Conceptualising the variance explained by predictors | PSYC753 Data Fluency</title>
-  <meta name="description" content="Conceptualising the variance explained by predictors | PSYC753 Data Fluency" />
+  <title>Using ANOVA to compare models | PSYC753 Data Fluency</title>
+  <meta name="description" content="Using ANOVA to compare models | PSYC753 Data Fluency" />
   <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Conceptualising the variance explained by predictors | PSYC753 Data Fluency" />
+  <meta property="og:title" content="Using ANOVA to compare models | PSYC753 Data Fluency" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Conceptualising the variance explained by predictors | PSYC753 Data Fluency" />
+  <meta name="twitter:title" content="Using ANOVA to compare models | PSYC753 Data Fluency" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="analysing-the-model.html">
-<link rel="next" href="adding-predictor-variables-to-the-model.html">
+<link rel="prev" href="building-models-2.html">
+<link rel="next" href="comparing-models-using-anova.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -156,7 +156,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="summary-of-key-points.html"><a href="summary-of-key-points.html"><i class="fa fa-check"></i>Summary of key points</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="building-models-2.html"><a href="building-models-2.html"><i class="fa fa-check"></i>Building models 2</a><ul>
-<li class="chapter" data-level="" data-path="using-anova-and-bayes-factors-to-compare-models.html"><a href="using-anova-and-bayes-factors-to-compare-models.html"><i class="fa fa-check"></i>Using ANOVA and Bayes Factors to compare models</a></li>
+<li class="chapter" data-level="" data-path="using-anova-to-compare-models.html"><a href="using-anova-to-compare-models.html"><i class="fa fa-check"></i>Using ANOVA to compare models</a></li>
+<li class="chapter" data-level="" data-path="comparing-models-using-anova.html"><a href="comparing-models-using-anova.html"><i class="fa fa-check"></i>Comparing models using ANOVA</a></li>
+<li class="chapter" data-level="" data-path="comparing-models-using-bayes-factors.html"><a href="comparing-models-using-bayes-factors.html"><i class="fa fa-check"></i>Comparing models using Bayes Factors</a></li>
+<li class="chapter" data-level="" data-path="adding-in-multiple-predictors-on-the-second-step.html"><a href="adding-in-multiple-predictors-on-the-second-step.html"><i class="fa fa-check"></i>Adding in multiple predictors on the second step</a></li>
+<li class="chapter" data-level="" data-path="predictions.html"><a href="predictions.html"><i class="fa fa-check"></i>Predictions</a></li>
+<li class="chapter" data-level="" data-path="final-exercise-1.html"><a href="final-exercise-1.html"><i class="fa fa-check"></i>Final Exercise</a></li>
+<li class="chapter" data-level="" data-path="summary-of-key-points-1.html"><a href="summary-of-key-points-1.html"><i class="fa fa-check"></i>Summary of key points</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="fitting-curves.html"><a href="fitting-curves.html"><i class="fa fa-check"></i>Fitting Curves</a></li>
 <li class="chapter" data-level="" data-path="FAQ-assessment.html"><a href="FAQ-assessment.html"><i class="fa fa-check"></i>FAQ Data Analysis and Visualisation Task</a></li>
@@ -180,24 +186,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="conceptualising-the-variance-explained-by-predictors" class="section level2">
-<h2>Conceptualising the variance explained by predictors</h2>
-<p>Venn diagrams are useful for understanding the variance that predictors explain in the outcome variable. They are especially useful for understanding what’s going on in multiple regression.</p>
-<p>Suppose the rectangle below represents all of the <em>variance</em> in <code>finalex</code> to be explained.</p>
-<p><img src="images/Venn1.jpg" /></p>
-<p>The area of the circle below represents the variance in <code>finalex</code> explained by <code>entrex</code> in the first simple regression we did. If this diagram were drawn to scale (it’s not), the area of the circle would be equal to the value of <span class="math inline">\(R^2\)</span> (i.e., 53.1% of the rectangle).</p>
-<p><img src="images/Venn2.jpg" /></p>
-<p>The part of the rectangle not inside the circle represents the variance in <code>finalex</code> that is <em>not</em> explained by the model (i.e., the unexplained or <em>residual</em> variance).</p>
-<p>To <em>improve</em> the model, we can explore whether adding in other predictors to the model explains additional variance, thereby increasing the total <span class="math inline">\(R^2\)</span> of the model.</p>
-<p>You might think that we can simply add in variables (circles, above) to the model as we wish, until all the residual variance has been explained. This seems fine to do until we learn that if we were to add as many predictors to the model as there are rows in our data (33 individuals in our <code>ExamData</code>), then we’d perfectly predict the outcome variable, and have an <span class="math inline">\(R^2\)</span> of 100%! This would be true even if the predictors consisted of random values. Our model would clearly be meaningless though. We ideally want to explain the outcome variable with relatively few predictors.</p>
+<div id="using-anova-to-compare-models" class="section level2">
+<h2>Using ANOVA to compare models</h2>
+<div id="overview-1" class="section level3">
+<h3>Overview</h3>
+<p>So far, we have seen that we can construct a linear model to explain the variance in an outcome variable. We have also seen how we can improve a model by adding predictors.</p>
+<p>But how do we know if one model is better, or should be preferred, over another model? We touched on a common sense approach at the end of the last session - we ideally want models to explain a good chunk of variance in the outcome variable but each predictor should make a sizeable and relatively independent contribution to the model.</p>
+<p>Today we will:</p>
+<ul>
+<li><p>cover a more formal approach to model comparison using:</p>
+<ul>
+<li><p>ANOVA (Analysis of Variance) and</p></li>
+<li><p>Bayes Factors</p></li>
+</ul></li>
+</ul>
+<p>It’s important to be familiar with the material from the first <a href="building-models-1.html">Building Models 1 session</a></p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="analysing-the-model.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="adding-predictor-variables-to-the-model.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="building-models-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="comparing-models-using-anova.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
