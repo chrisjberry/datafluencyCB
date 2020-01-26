@@ -567,3 +567,8 @@ memory3.BF / memory2.BF
 - Bayes Factors greater than 1 indicate evidence for `model2`
     
 - We can report Bayes Factors as $BF_{10}$ = 2.23 (or BF10 = 2.23)
+
+
+\
+
+Next week's session will build on what was done in this session, so make sure you understand what was covered and ask the instructor to clarify anything you're unsure of.
