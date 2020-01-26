@@ -186,9 +186,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="exercise" class="section level2">
 <h2>Exercise</h2>
-<p>A researcher would like to construct a model to predict performance in a memory task from several different variables. The data from 234 individuals are stored in the <code>memory_data</code> dataset, which can be located at <a href="https://bit.ly/37pOTrC" class="uri">https://bit.ly/37pOTrC</a>.</p>
+<p>Now you will practise using ANOVA and Bayes Factors to compare models with a new dataset.</p>
+<p><br />
+<strong>Scenario:</strong> A researcher would like to construct a model to predict scores in a memory task from several different variables. The data from 234 individuals are stored in the <code>memory_data</code> dataset, which are located at <a href="https://bit.ly/37pOTrC" class="uri">https://bit.ly/37pOTrC</a>.</p>
 <div class="exercise">
-<p>Load in the data to the variable <code>memory_data</code> and preview it with <code>head()</code>.</p>
+<p>Use <code>read_csv</code> to load in the data at the link above to the variable <code>memory_data</code> and preview it with <code>head()</code>.</p>
 <div class="solution">
 <button>
 Try this yourself first. Click to show code
@@ -206,22 +208,30 @@ memory_data <span class="op">%&gt;%</span><span class="st"> </span><span class="
 <span class="op">&gt;</span><span class="st"> </span><span class="dv">6</span>     <span class="fl">146.</span>      <span class="dv">1</span>         <span class="dv">255</span>  <span class="fl">85.6</span>  <span class="fl">23.9</span>  <span class="fl">7.05</span>        <span class="fl">102.</span></code></pre>
 </div>
 <div class="tip">
-<p>About the data -</p>
-<p><strong>attention</strong>: sustained attention score (higher = better attention)</p>
-<p><strong>sex</strong>: 0 = female, 1 = male</p>
-<p><strong>blueberries</strong>: average number of blueberries consumed per year</p>
-<p><strong>iq</strong>: the individual’s IQ.</p>
-<p><strong>age</strong>: age of person in years</p>
-<p><strong>sleep</strong>: average hours of sleep per night</p>
-<p><strong>memory_score</strong>: memory test score</p>
+<p><strong>About the data:</strong></p>
+<ul>
+<li><p><strong>attention</strong>: sustained attention score (higher = better attention)</p></li>
+<li><p><strong>sex</strong>: 0 = female, 1 = male</p></li>
+<li><p><strong>blueberries</strong>: average number of blueberries consumed per year</p></li>
+<li><p><strong>iq</strong>: the individual’s IQ</p></li>
+<li><p><strong>age</strong>: age of person in years</p></li>
+<li><p><strong>sleep</strong>: average hours of sleep per night</p></li>
+<li><p><strong>memory_score</strong>: memory test score</p></li>
+</ul>
 </div>
-<p>The researcher wants to test whether <code>attention</code> and <code>sleep</code> predict <code>memory_score</code>. It is already well-established in the literature that <code>iq</code> and <code>age</code> predict <code>memory_score</code>. She therefore wants to use a hierarchical regression approach to determine whether <code>attention</code> and <code>sleep</code> explain additional variance in <code>memory_score</code> <em>over and above</em> these established variables.</p>
-<p>First, fit a linear model to determine the extent to which <code>memory_score</code> is predicted by <code>iq</code> and <code>age</code>. Store the results in <code>memory1</code>.</p>
+<p>The researcher wants to test whether <code>attention</code> and <code>sleep</code> predict <code>memory_score</code>. She is already aware of a well-established finding in the literature, which is that <code>iq</code> and <code>age</code> predict <code>memory_score</code>.</p>
+<p><br />
+She therefore wants to use a hierarchical regression approach to determine whether <code>attention</code> and <code>sleep</code> explain additional variance in <code>memory_score</code> <em>over and above</em> <code>iq</code> and <code>age</code>.</p>
+<p><br />
+1. First, fit a linear model to determine the extent to which <code>memory_score</code> is predicted by <code>iq</code> and <code>age</code>. Store the results in <code>memory1</code>.</p>
 <div class="solution">
 <button>
 Try first, then click to see the code
 </button>
-<pre class="sourceCode r"><code class="sourceCode r">memory1 &lt;-<span class="st"> </span><span class="kw">lm</span>(memory_score <span class="op">~</span><span class="st"> </span>iq <span class="op">+</span><span class="st"> </span>age, <span class="dt">data =</span> memory_data)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># specify the baseline model</span>
+memory1 &lt;-<span class="st"> </span><span class="kw">lm</span>(memory_score <span class="op">~</span><span class="st"> </span>iq <span class="op">+</span><span class="st"> </span>age, <span class="dt">data =</span> memory_data)
+
+<span class="co"># see the model results</span>
 <span class="kw">summary</span>(memory1)
 <span class="op">&gt;</span><span class="st"> </span>
 <span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
@@ -244,12 +254,15 @@ Try first, then click to see the code
 <span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">17.31</span> on <span class="dv">2</span> and <span class="dv">231</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="fl">9.875e-08</span></code></pre>
 </div>
 <p><br />
-Next, add <code>attention</code> and <code>sleep</code> to the model, storing your results in <code>memory2</code>.</p>
+2. Next, add <code>attention</code> and <code>sleep</code> to the model, storing your results in <code>memory2</code>.</p>
 <div class="solution">
 <button>
 Try first, then click to see the code
 </button>
-<pre class="sourceCode r"><code class="sourceCode r">memory2 &lt;-<span class="st"> </span><span class="kw">lm</span>(memory_score <span class="op">~</span><span class="st"> </span>iq <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>attention <span class="op">+</span><span class="st"> </span>sleep, <span class="dt">data =</span> memory_data)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># specify the next model</span>
+memory2 &lt;-<span class="st"> </span><span class="kw">lm</span>(memory_score <span class="op">~</span><span class="st"> </span>iq <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>attention <span class="op">+</span><span class="st"> </span>sleep, <span class="dt">data =</span> memory_data)
+
+<span class="co"># show the results</span>
 <span class="kw">summary</span>(memory2)
 <span class="op">&gt;</span><span class="st"> </span>
 <span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
@@ -274,7 +287,7 @@ Try first, then click to see the code
 <span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">53.68</span> on <span class="dv">4</span> and <span class="dv">229</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="er">&lt;</span><span class="st"> </span><span class="fl">2.2e-16</span></code></pre>
 </div>
 <p><br />
-Now, compare the <code>memory1</code> and <code>memory2</code> models using <code>anova()</code></p>
+3. Now, compare the <code>memory1</code> and <code>memory2</code> models using <code>anova()</code></p>
 <div class="solution">
 <button>
 Try first, then click to see the code
@@ -290,31 +303,24 @@ Try first, then click to see the code
 <span class="er">&gt;</span><span class="st"> </span><span class="op">---</span>
 <span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></code></pre>
 </div>
-<div class="tip">
-<p><strong>What does it mean if RStudio prints out “e-” next to a number?</strong></p>
-<p>If R prints “1.4e-4”, in the output this actually means <span class="math inline">\(1.4 \times 10^{-4}\)</span>, or “0.00014”. It is a way of printing out very small (or very large) numbers.</p>
-<p>“e-4” means “move the decimal point 4 places to the left”. See this by executing the command below – it should return “0.00014”.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fl">1.4e-4</span>
-<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">0.00014</span></code></pre>
-<p>So:</p>
-<ul>
-<li>“e-5” means move the decimal point 5 places to the left (e.g., <code>2.5e-5</code> is <span class="math inline">\(2.5 \times 10^{-5}\)</span>, or 0.000025)</li>
-<li>“e-10” means move the decimal point 10 places to the left (e.g., <code>2.5e-10</code> is <span class="math inline">\(2.5 \times 10^{-10}\)</span>, or 0.00000000025).</li>
-<li>“e5” means move the decimal point 5 places to the <strong>right</strong> (e.g., <code>2.5e5</code> is <span class="math inline">\(2.5 \times 10^{5}\)</span>, 250000).</li>
-</ul>
-</div>
 <p><br />
-Answer the following questions:</p>
-<p>A model with <code>iq</code> and <code>age</code> as predictors explains <input class='solveme nospaces' size='5' data-answer='["53.10"]'/> % of the variance in <code>memory_scores</code></p>
-<p>A model with <code>iq</code>, <code>age</code>, <code>attention</code> and <code>sleep</code> as predictors explains <input class='solveme nospaces' size='5' data-answer='["53.10"]'/> % of the variance in <code>memory_scores</code></p>
-<p>Calculate the additional variance explained by the second model: Change in <span class="math inline">\(R^2\)</span> = <input class='solveme nospaces' size='5' data-answer='["53.10"]'/> %</p>
-<p>Is there a statistically significant improvement in the prediction of <code>memory_scores</code> as a result of adding <code>attention</code> and <code>sleep</code> to the model? <select class='solveme' data-answer='["yes"]'> <option></option> <option>no</option> <option>yes</option></select></p>
+<br />
+<strong>Answer the following questions:</strong></p>
+<ul>
+<li><p>A model with <code>iq</code> and <code>age</code> as predictors explains <input class='solveme nospaces' size='5' data-answer='["13.03"]'/> % of the variance in <code>memory_scores</code></p></li>
+<li><p>A model with <code>iq</code>, <code>age</code>, <code>attention</code> and <code>sleep</code> as predictors explains <input class='solveme nospaces' size='5' data-answer='["48.39"]'/> % of the variance in <code>memory_scores</code></p></li>
+<li><p>Calculate the additional variance explained by the second model: Change in <span class="math inline">\(R^2\)</span> = <input class='solveme nospaces' size='5' data-answer='["35.36"]'/> %</p></li>
+<li><p>The ANOVA comparing models can be reported as: <em>F</em>(<input class='solveme nospaces' size='1' data-answer='["2"]'/>, <input class='solveme nospaces' size='3' data-answer='["229"]'/>) = <input class='solveme nospaces' size='5' data-answer='["78.45"]'/>, <em>p</em> &lt; .001.</p></li>
+<li><p>Is there a statistically significant improvement in the prediction of <code>memory_scores</code> as a result of adding <code>attention</code> and <code>sleep</code> to the model? <select class='solveme' data-answer='["yes"]'> <option></option> <option>no</option> <option>yes</option></select></p></li>
+</ul>
+<p><br />
+<br />
+<strong>Now use Bayes Factors to determine how much more likely the <code>memory2</code> model is than the <code>memory1</code> model .</strong></p>
 <p><br />
 </p>
-<p>Determine how much more likely the <code>memory2</code> model is than the <code>memory1</code> model by computing the Bayes Factor.</p>
 <div class="solution">
 <button>
-Click here if you need a reminder of the steps to take
+Try first, click here for a reminder of the steps
 </button>
 <ul>
 <li><p>Determine the Bayes Factor for <code>memory1</code></p></li>
@@ -322,9 +328,11 @@ Click here if you need a reminder of the steps to take
 <li><p>Compare the Bayes Factors for <code>memory2</code> and <code>memory1</code></p></li>
 </ul>
 </div>
+<p><br />
+</p>
 <div class="solution">
 <button>
-Click here to see the code for this
+Try first, click here to see the code
 </button>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Store the Bayes Factor for the first model in memory1.BF</span>
 memory1.BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(memory_score <span class="op">~</span><span class="st"> </span>iq <span class="op">+</span><span class="st"> </span>age, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(memory_data) )
@@ -343,24 +351,72 @@ memory2.BF <span class="op">/</span><span class="st"> </span>memory1.BF
 <span class="op">&gt;</span><span class="st"> </span><span class="op">---</span>
 <span class="er">&gt;</span><span class="st"> </span>Bayes factor type<span class="op">:</span><span class="st"> </span>BFlinearModel, JZS</code></pre>
 </div>
-<p>The Bayes Factor to (2 decimal places) is <input class='solveme nospaces' size='4' data-answer='["4.16"]'/> e+ <input class='solveme nospaces' size='2' data-answer='["23"]'/>.</p>
-<p>Does the Bayes Factor support the conclusions from the ANOVA?</p>
+<p><br />
+</p>
+<p><strong>Answer the following questions:</strong></p>
+<ul>
+<li><p>The Bayes Factor comparing <code>memory2</code> and <code>memory1</code> to (2 decimal places) is <input class='solveme nospaces' size='4' data-answer='["4.17"]'/> e+ <input class='solveme nospaces' size='2' data-answer='["23"]'/>.</p></li>
+<li><p>Does the Bayes Factor support the conclusions from the ANOVA? <select class='solveme' data-answer='["yes"]'> <option></option> <option>no</option> <option>yes</option></select></p></li>
+</ul>
 <div class="solution">
 <button>
-click for answer
+Click for answer
 </button>
-<p>Yes! The Bayes Factor is equal to <span class="math inline">\(4.16 \times 10^{23}\)</span>, and therefore strongly supports the inclusion of <code>attention</code> and <code>sleep</code> in the model.</p>
+<p>Yes! The Bayes Factor is equal to <span class="math inline">\(4.17 \times 10^{23}\)</span>, and this therefore strongly supports the inclusion of <code>attention</code> and <code>sleep</code> in the model already containing <code>iq</code> and <code>age</code>.</p>
 </div>
-<p>The researcher wishes to predict the <code>memory_score</code> for an individual with <code>iq</code> = 105, <code>age</code> = 27, <code>attention</code> = 90, <code>sleep</code> = 8. Determine the prediction. Hint: in a previous session, you have previously used the <code>predict()</code> function to do this.</p>
-<p>The predicted score is <input class='solveme nospaces' size='3' data-answer='["121"]'/></p>
+<p><br />
+</p>
+<p><br />
+<strong>Extra exercises, if there’s time</strong></p>
+<p><strong>1.</strong></p>
+<p>The researcher wishes to predict the <code>memory_score</code> for a new individual with <code>iq</code> = 105, <code>age</code> = 27, <code>attention</code> = 90, <code>sleep</code> = 8. Determine the prediction.</p>
+<p><br />
+Hint: in a previous session, you have previously used the <code>predict()</code> function to do this.</p>
+<p><br />
+</p>
+<ul>
+<li>The predicted <code>memory_score</code> is <input class='solveme nospaces' size='6' data-answer='["102.68"]'/></li>
+</ul>
 <div class="solution">
 <button>
-click to show how this was determined
+Try first, then click to show the code for the answer
 </button>
-<pre class="sourceCode r"><code class="sourceCode r">new_data &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">iq =</span> <span class="dv">205</span>, <span class="dt">age =</span> <span class="dv">27</span>, <span class="dt">attention =</span> <span class="dv">90</span>, <span class="dt">sleep =</span> <span class="dv">8</span>)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create tibble for the new data</span>
+new_data &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">iq =</span> <span class="dv">105</span>, <span class="dt">age =</span> <span class="dv">27</span>, <span class="dt">attention =</span> <span class="dv">90</span>, <span class="dt">sleep =</span> <span class="dv">8</span>)
+
+<span class="co"># use predict to derive prediction from new data</span>
 <span class="kw">predict</span>(memory2, new_data)
 <span class="op">&gt;</span><span class="st">        </span><span class="dv">1</span> 
-<span class="op">&gt;</span><span class="st"> </span><span class="fl">121.3494</span></code></pre>
+<span class="op">&gt;</span><span class="st"> </span><span class="fl">102.6768</span></code></pre>
+</div>
+<p><br />
+<br />
+<strong>2.</strong></p>
+<p>The researcher is interested to know whether annual consumption of blueberries has any bearing on <code>memory_scores</code>, and so wants to add <code>blueberries</code> to the model in <code>memory2</code>.</p>
+<p><br />
+Determine the Bayes Factor comparing <code>memory2</code> with a model that additionally contains <code>blueberries</code>.</p>
+<ul>
+<li><p>The Bayes Factor for the model comparison is <input class='solveme nospaces' size='4' data-answer='["0.17",".17"]'/> (to 2 decimal places)</p></li>
+<li><p>The Bayes Factor indicates that the model with <code>blueberries</code> is <select class='solveme' data-answer='["less likely"]'> <option></option> <option>more likely</option> <option>less likely</option></select> than the model without it.</p></li>
+<li><p>Should the researcher add <code>blueberries</code> to the model? <select class='solveme' data-answer='["no"]'> <option></option> <option>no</option> <option>yes</option> <option>if it tastes good</option></select></p></li>
+</ul>
+<div class="solution">
+<button>
+Try yourself first, then click for the code
+</button>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># add blueberries to memory2; store in memory3.BF</span>
+memory3.BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(memory_score <span class="op">~</span><span class="st"> </span>iq <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>attention <span class="op">+</span><span class="st"> </span>sleep <span class="op">+</span><span class="st"> </span>blueberries, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(memory_data) )
+
+<span class="co"># calculate the BF for memory3 vs memory2</span>
+memory3.BF <span class="op">/</span><span class="st"> </span>memory2.BF
+<span class="op">&gt;</span><span class="st"> </span>Bayes factor analysis
+<span class="op">&gt;</span><span class="st"> </span><span class="op">--------------</span>
+<span class="er">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] iq <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>attention <span class="op">+</span><span class="st"> </span>sleep <span class="op">+</span><span class="st"> </span>blueberries <span class="op">:</span><span class="st"> </span><span class="fl">0.1663574</span> ±<span class="dv">0</span>%
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Against denominator<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">   </span>memory_score <span class="op">~</span><span class="st"> </span>iq <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>attention <span class="op">+</span><span class="st"> </span>sleep 
+<span class="op">&gt;</span><span class="st"> </span><span class="op">---</span>
+<span class="er">&gt;</span><span class="st"> </span>Bayes factor type<span class="op">:</span><span class="st"> </span>BFlinearModel, JZS</code></pre>
 </div>
 </div>
 </div>

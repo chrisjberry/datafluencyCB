@@ -22,8 +22,548 @@ theme_set(theme_minimal())
 
 -   [**Slides from the session**](slides/regression2-chris.ppt) (available 25-01-2020)
 
+\
+
+### Overview
+
+In the previous session, we saw that we can construct a linear model to predict an outcome variable (e.g., *final exam score* from *entrance exam score*). We also investigated how we can _improve_ a model by adding several continuous predictors to it.
+
+\
+How do we know if one model is _better_ or should be _preferred_ over another model? We touched on a common sense approach in the last session - we ideally want models that explain the variance in an outcome variable but each predictor in the model should make a sizable and relatively independent contribution to the model.
+
+\
+
+Today we will cover a more formal approach to model comparison using:
+
+  - **ANOVA (Analysis of Variance)** and
+
+  - **Bayes Factors**
+  
+\
+
+It's important that you are comfortable with the material from the first [Building Models 1 session](building-models-1.html) before proceeding today.
+
+
+## Comparing models using ANOVA
+
+We can use ANOVA to determine whether the addition of variables into a model leads to a statistically significant improvement in the variance it explains _overall_. We may want to do this, for example, when building on existing theories or models.
+
+\
+We'll start by comparing a model with _one_ predictor vs. a model with _three_ predictors.
+
+\
+Using the `ExamData` from the previous session, we'll run:
+
+- a linear model with `finalex` as the outcome variable, and `entrex` as the predictor.
+
+- a linear model with `finalex` as the outcome variable, and `entrex`,`age`, and `project` as the predictors.
+
+```{r}
+ExamData <- read_csv('https://bit.ly/37GkvJg')              
+model1   <- lm(finalex ~ entrex, data = ExamData)           
+model2   <- lm(finalex ~ entrex + age + project, data = ExamData) 
+
+```
+
+\
+**Explanation of the code**: first the data is loaded into `ExamData`. The results of the simple regression are stored in `model1`. Those of the multiple regression are stored in `model2`.
+
+\
+Use `summary()` to display the results of each regression:
+
+**Model 1:**
+
+```{r}
+summary(model1)
+```
+
+\
+**Model 2:**
+```{r}
+summary(model2)
+```
+
+\
+(If you are not sure what it means by "e-06" in the output above then see the FAQs [here](#e-meaning))
+
+:::{.exercise}
+
+Make note of the variance explained by each model ($R^2$), i.e., `Multiple R-squared`: (report as a percentage, to 2 decimal places)
+
+- Model 1: $R^2$ = `r fitb(answer="53.10",  num=TRUE)` %
+
+- Model 2: $R^2$ = `r fitb(answer="58.69",  num=TRUE)` %
+
+Which model explains a greater proportion of variance in `finalex`? `r mcq(c("extrex alone", answer="entrex, age, project"))`
+
+- Calculate the difference in $R^2$ between the models. `model2` improves the prediction of `finalex` by  `r fitb(answer="5.59",  num=TRUE)` %
+
+:::
+
+\
+To compare the variance explained by each model, use `anova()`:
+
+```{r}
+anova(model1, model2)
+```
+
+\
+**Explanation of the output:** 
+
+- **`anova()`** compares the variance that `model1` and `model2` explain with an _F_-statistic. 
+
+- **`Pr(>F)`** gives the _p_-value for this statistic. If the _p_-value is less than .05, then we can reject the null hypothesis that there is no difference in the variance explained by each model, and we can say that the variance that `model2` explains in `finalex` is significantly greater than that of `model1`.
+
+- We can report the _F_-statistic in APA style as _F_(2, 29) = 1.96, _p_ = .16. We can say that the additional 5.59% variance that `model2` explains relative to `model1` does not represent a statistically significant increase in $R^2$, and so `model2` should **not** be preferred over `model1`.
+
+
+\
+
+:::{.tip}
+Comparing models in steps as we've done is sometimes called **hierarchical regression** or **sequential regression**. This type of regression is usually used for logical or theoretical reasons, when we want to know the contribution of a predictor (or a set of predictors) **over and above** an existing one. 
+:::
+
+
+:::{.exercise}
+
+**Now, you try using `anova` to compare models.**
+
+The variable `attendance` in `ExamData` scores individuals according to whether their class attendance was low (0) or high (1). A researcher suspects that `attendance` may explain additional variance in `finalex` over and above `entrex`.
+
+As an exercise, compare the following two models using the `anova()` approach above: 
+
+1. a model with `extrex` as a sole predictor of `finalex` (i.e., `model1`), and 
+
+2. a model where `finalex` is predicted by `extrex` and `attendance` (call this `model3`). 
+
+Is there sufficient evidence that a model with `entrex` _and_ `attendance` explains more variance than a model with `entrex` alone?
+
+`r hide("Try yourself first, then click to see the code")`
+```{r}
+# model1 was created earlier
+summary(model1)
+
+# specify model3
+model3 <- lm(finalex ~ entrex + attendance, data = ExamData)
+
+# show model3
+summary(model3)
+
+#compare model1 and model3
+anova(model1, model3)
+```
+`r unhide()`
+
+- The variance explained by a model with `entrex` alone is $R^2$ = `r fitb(answer="53.10",  num=TRUE)` %
+
+- The $R^2$ for the model that also included `attendance` was $R^2$ = `r fitb(answer="72.23",  num=TRUE)` %  
+
+- The increase in $R^2$ was `r fitb(answer="19.13",  num=TRUE)`% 
+
+- The ANOVA comparing models can be reported as: _F_(`r fitb(answer=1,  num=TRUE)`, `r fitb(answer=30,  num=TRUE)`) = `r fitb(answer="20.67",  num=TRUE)`, _p_ < .001. 
+
+- The increase in $R^2$ was `r mcq(c(answer = "statistically significant", "not significant"))`.
+
+- As indicated by the estimates of the coefficients for `entrex` and `attendance`, both  `r mcq(c("negatively", answer = "positively"))` predict `finalex`. 
+
+- A higher `entrex` score and greater `attendance` is associated with a `r mcq(c(answer = "higher", "lower"))` `finalex` score.
+
+`r unhide()`
+
+:::
+
+
+## Comparing models using Bayes Factors
+
+An alternative approach to using ANOVA to compare models is to use **Bayes Factors**. 
+
+\
+A **Bayes Factor** is the **probability of obtaining the data under one model compared to another**.  
+
+\
+For example, a Bayes Factor equal to 2 would tell us that the data are _twice_ as likely under one model than another. A Bayes Factor equal to 0.5 would tell us that the data are _half_ as likely under one model than another. 
+
+\
+Unlike classical tests of statistical significance (with _p_-values), Bayes Factors also allow us to _quantify_ evidence for the null hypothesis. Very handy!
+
+\
+To compute a Bayes Factor for a specific linear model, we use `lmBF` in the `BayesFactor` package (where `lm` stands for _linear model_ and `BF` stands for _Bayes Factor_).
+
+\
+First, we need to load the `BayesFactor` package: 
+
+```{r}
+library('BayesFactor')
+```
+
+We can use the `lmBF` function in the same way we use  `lm`. The function will return a **Bayes Factor** for the model we specify.
+
+\
+Let's determine the Bayes Factor for `model1`
+
+```{r}
+model1.BF <- lmBF(finalex ~ entrex, data = as.data.frame(ExamData) )  
+```
+
+**Explanation of the code**: The model is specified in exactly the same way as with `lm`. Due to a limitation of the package, however, we must convert `ExamData` from a tibble to a data frame using `as.data.frame`. Otherwise, the command works in the same way. The results are stored in `model1.BF`.
+
+\
+To look at what's stored in `model1.BF`:
+
+```{r}
+model1.BF
+
+```
+
+**Explanation of the output**: 
+
+- The Bayes Factor provided for the model with `entrex` is equal to **8310.85**. 
+
+- The `Against denominator: Intercept only` means that the model with `entrex` is being compared with a model that contains an **intercept only**. In an intercept-only model, the coefficient for `entrex` is equal to zero; that is, the regression line is a flat line (equal to the _mean_ of `entrex`). 
+
+- The value of our Bayes Factor indicates that the model with `entrex` in is much more likely than a model that contains only an intercept (8310.85 times more likely, to be precise). We can therefore be confident that a model with `entrex` is preferable to the intercept only model (just as with our classical analysis). Happy days!
+
+\
+Now let's do the same for `model2`:
+
+```{r}
+# specify the model
+model2.BF <- lmBF(finalex ~ entrex + age + project, data = as.data.frame(ExamData) )
+
+# show the Bayes Factor
+model2.BF
+```
+
+**Explanation:** The Bayes Factor is equal to **2427.68**. Again, this indicates that the model with `entrex` and `age` is much more likely than a model with only the intercept in (this is not that surprising given the result for `model1.BF` above). 
+
+But, what we want to know is whether `model2` (containing `entrex` and `age`) is **more** likely than `model1` (containing only `entrex`). We can determine this by _dividing_ the Bayes Factor for `model2` by the Bayes Factor for `model1`:
+
+
+```{r}
+model2.BF / model1.BF
+
+```
+
+**Explanation:** The Bayes Factor for this comparison is 0.29. This means that `model2` is **_less than a third as likely_** than `model1`. So, `model2` is much _less_ likely than `model1`. Not good news for `model2`!
+
+
+:::{.tip}
+
+**Interpreting the Bayes Factor**
+
+- A Bayes Factor **equal to 1** tells us that probability of each model is the same.
+
+- A Bayes Factor **greater than 1** means that `model2` is more likely than `model1`.
+
+- A Bayes Factor **less than 1** means that `model1` is more likely than `model2`. 
+
+**Thus, our Bayes Factor of 0.51 indicates that `model1` is more likely than `model2`.**
+
+:::
+
+
+:::{.tip}
+
+**Reporting Bayes Factors**
+
+\
+
+**Notation**
+
+We usually write the Bayes Factor in reports as $BF_{10}$ where: 
+
+- the subscript **1** in $BF_{10}$ denotes the less-constrained model (the alternative hypothesis). This is the model with **more predictors** (our `model2`).
+
+- the subscript **0** in $BF_{10}$ denotes the more constrained or simpler model (i.e., the null hypothesis). This is the model with **fewer predictors** (our `model1`).
+
+(You can just write BF10 if you prefer.)
+
+
+\
+
+**The Size of the Bayes Factor**
+
+- If the Bayes Factor is **greater than 3** (i.e., $BF_{10}$ > 3), we say that there is **substantial evidence for `model2`** (the less constrained model).
+
+- If the Bayes Factor is **less than 0.33** (i.e., $BF_{10}$ < 0.33), we usually say that there is **substantial evidence for `model1`** (the more constrained model).
+
+- We say that intermediate values for the Bayes Factor (between 0.33 and 3) don't offer strong evidence for either model.
+
+:::
+
+Thus, because our Bayes Factor of 0.29 is less than 1, this indicates greater evidence for `model1` than `model2`. Furthermore, because the Bayes Factor is less than 0.33, we have _substantial_ evidence for `model1` over `model2`.
+
+\
+It's becoming increasingly common to report the Bayes Factor alongside the results of a classical analysis. Thus, we could report our results as follows: "There was insufficient evidence that the addition of age and project to the model containing entrance exam resulted in an increase in $R^2$, _F_(2, 29) = 1.96, _p_ = .16; BF10 = 0.29."
+
+
+:::{.exercise}
+
+**Now you try using Bayes Factors to compare models**
+
+To supplement the comparison of `model3` and `model1` that you did with `anova`, now compute the Bayes Factor for `model3` vs. `model1`.
+
+\
+You'll need the following steps:
+
+- Model 1: Obtain the Bayes Factor for a model with `extrex` as a sole predictor of `finalex` (we did this already above; it's stored in `model1.BF`) 
+
+- Model 2: Obtain the Bayes Factor for a model where `finalex` is predicted by `extrex` _and_ `attendance` and store this in `model3.BF`. 
+
+- Compare the Bayes Factors in `model3.BF` and `model1.BF`.
+\
+
+`r hide("Try yourself first, then click here for the code")`
+
+```{r}
+# 1. show the BF for model1 vs. intercept only
+model1.BF  
+
+# 2. Obtain the BF for model3 vs. intercept only, then show it
+model3.BF <- lmBF(finalex ~ entrex + attendance, data = as.data.frame(ExamData) )
+
+model3.BF
+
+# 3. Compare the BFs for model3 vs model1
+model3.BF / model1.BF
+```
+
+`r unhide()`
+
+\
+**Answer the following questions from the output:**
+
+How much more likely is a model with`entrex` than an intercept only model? 
+
+- `r fitb(answer=8310.85, num=TRUE)` times more likely.
+
+How much more likely is a model with `entrex` and `attendance` than an intercept only model? 
+
+- `r fitb(answer=2351114, num=TRUE)` times more likely.
+
+How much more likely is a model with `entrex` and `attendance` as predictors than a model with `entrex` alone? 
+
+- `r fitb(answer="282.90")` times more likely.
+
+There is `r mcq(c("insufficient", answer = "strong"))` evidence that a model with `entrex` and `attendance` should be preferred over a model with `entrex` alone, given the data.
+
+:::
+
+
+## Exercise
+
+Now you will practise using ANOVA and Bayes Factors to compare models with a new dataset.
+
+
+\
+**Scenario:** A researcher would like to construct a model to predict scores in a memory task from several different variables. The data from 234 individuals are stored in the `memory_data` dataset, which are located at https://bit.ly/37pOTrC. 
+
+:::{.exercise}
+
+Use `read_csv` to load in the data at the link above to the variable `memory_data` and preview it with `head()`.
+
+
+`r hide("Try this yourself first. Click to show code")`
+
+```{r}
+memory_data <- read_csv('https://bit.ly/37pOTrC')
+memory_data %>% head()
+```
+
+`r unhide()`
 
 
 
 
+:::{.tip}
 
+**About the data:**
+
+- **attention**: sustained attention score (higher = better attention)
+
+- **sex**: 0 = female, 1 = male
+
+- **blueberries**: average number of blueberries consumed per year
+
+- **iq**: the individual's IQ
+
+- **age**: age of person in years
+
+- **sleep**: average hours of sleep per night
+
+- **memory_score**: memory test score
+
+:::
+
+The researcher wants to test whether `attention` and `sleep` predict `memory_score`. She is already aware of a well-established finding in the literature, which is that `iq` and `age` predict `memory_score`. 
+
+\
+She therefore wants to use a hierarchical regression approach to determine whether `attention` and `sleep` explain additional variance in `memory_score` _over and above_ `iq` and `age`.
+
+\
+1. First, fit a linear model to determine the extent to which `memory_score` is predicted by `iq` and `age`. Store the results in `memory1`.
+
+
+`r hide("Try first, then click to see the code")`
+```{r}
+# specify the baseline model
+memory1 <- lm(memory_score ~ iq + age, data = memory_data)
+
+# see the model results
+summary(memory1)
+```
+`r unhide()`
+
+\
+2. Next, add `attention` and `sleep` to the model, storing your results in `memory2`.
+
+
+`r hide("Try first, then click to see the code")`
+```{r}
+# specify the next model
+memory2 <- lm(memory_score ~ iq + age + attention + sleep, data = memory_data)
+
+# show the results
+summary(memory2)
+```
+`r unhide()`
+
+\
+3. Now, compare the `memory1` and `memory2` models using `anova()`
+
+`r hide("Try first, then click to see the code")`
+```{r}
+anova(memory1, memory2)
+```
+`r unhide()`
+
+
+\
+\
+**Answer the following questions:**
+
+- A model with `iq` and `age` as predictors explains `r fitb(answer="13.03",  num=TRUE)` % of the variance in `memory_scores`
+
+- A model with `iq`, `age`, `attention` and `sleep` as predictors explains `r fitb(answer="48.39",  num=TRUE)` % of the variance in `memory_scores`
+
+- Calculate the additional variance explained by the second model: Change in $R^2$ = `r fitb(answer="35.36",  num=TRUE)` %
+
+- The ANOVA comparing models can be reported as: _F_(`r fitb(answer=2,  num=TRUE)`, `r fitb(answer=229,  num=TRUE)`) = `r fitb(answer="78.45",  num=TRUE)`, _p_ < .001. 
+
+- Is there a statistically significant improvement in the prediction of `memory_scores` as a result of adding `attention` and `sleep` to the model? `r mcq(c("no", answer="yes"))`
+
+\
+\
+**Now use Bayes Factors to determine how much more likely the `memory2` model is than the `memory1` model .**
+
+\
+`r hide("Try first, click here for a reminder of the steps")`
+
+- Determine the Bayes Factor for `memory1`
+
+- Determine the Bayes Factor for `memory2`
+
+- Compare the Bayes Factors for `memory2` and `memory1`
+
+`r unhide()`
+
+\
+`r hide("Try first, click here to see the code")`
+
+```{r}
+# Store the Bayes Factor for the first model in memory1.BF
+memory1.BF <- lmBF(memory_score ~ iq + age, data = as.data.frame(memory_data) )
+
+# Store the Bayes Factor for the second model in memory2.BF
+memory2.BF <- lmBF(memory_score ~ iq + age + attention + sleep, data = as.data.frame(memory_data) )
+
+# Compute the Bayes Factors for memory2.BF vs memory1.BF
+memory2.BF / memory1.BF
+```
+`r unhide()`
+
+\
+
+**Answer the following questions:**
+
+- The Bayes Factor comparing `memory2` and `memory1` to (2 decimal places) is `r fitb(answer="4.17",  num=TRUE)` e+ `r fitb(answer="23",  num=TRUE)`.
+
+- Does the Bayes Factor support the conclusions from the ANOVA? `r mcq(c("no", answer="yes"))`
+
+`r hide("Click for answer")`
+Yes! The Bayes Factor is equal to $4.17 \times 10^{23}$, and this therefore strongly supports the inclusion of `attention` and `sleep` in the model already containing `iq` and `age`.
+`r unhide()`
+
+\
+
+\
+**Extra exercises, if there's time**
+
+**1.**
+
+The researcher wishes to predict the `memory_score` for a new individual with `iq` = 105, `age` = 27, `attention` = 90, `sleep` = 8. Determine the prediction. 
+
+\
+Hint: in a previous session, you have previously used the `predict()` function to do this.
+
+\
+
+- The predicted `memory_score` is `r fitb(answer="102.68",  num=TRUE)`
+
+`r hide("Try first, then click to show the code for the answer")`
+```{r}
+# create tibble for the new data
+new_data <- tibble(iq = 105, age = 27, attention = 90, sleep = 8)
+
+# use predict to derive prediction from new data
+predict(memory2, new_data)
+```
+`r unhide()`
+
+\
+\
+**2.**
+
+The researcher is interested to know whether annual consumption of blueberries has any bearing on `memory_scores`, and so wants to add `blueberries` to the model in `memory2`.
+
+\
+Determine the Bayes Factor comparing `memory2` with a model that additionally contains `blueberries`. 
+
+- The Bayes Factor for the model comparison is `r fitb(answer="0.17",  num=TRUE)` (to 2 decimal places)
+
+- The Bayes Factor indicates that the model with `blueberries` is `r mcq(c("more likely", answer="less likely"))` than the model without it.
+
+- Should the researcher add `blueberries` to the model? `r mcq(c(answer="no", "yes", "if it tastes good"))`
+
+`r hide("Try yourself first, then click for the code")`
+```{r}
+# add blueberries to memory2; store in memory3.BF
+memory3.BF <- lmBF(memory_score ~ iq + age + attention + sleep + blueberries, data = as.data.frame(memory_data) )
+
+# calculate the BF for memory3 vs memory2
+memory3.BF / memory2.BF
+```
+`r unhide()`
+
+:::
+
+
+## Summary of key points
+
+- We can compare a model with one that has more predictors by using `anova(model1, model2)`. 
+
+- We can compare models using Bayes Factors with `lmBF` in the `BayesFactor` package.
+
+- A **Bayes Factor** is probability of one model relative to another, _given the data_.
+
+- To compare Bayes Factors of models:
+
+  - First obtain the Bayes Factors for `model1` and `model2`. 
+  
+  - Then use `model2 / model1` to get the Bayes Factor, indicating how much more likely `model2` is.
+  
+- Bayes Factors less than 1 indicate evidence for `model1`
+    
+- Bayes Factors greater than 1 indicate evidence for `model2`
+    
+- We can report Bayes Factors as $BF_{10}$ = 2.23 (or BF10 = 2.23)

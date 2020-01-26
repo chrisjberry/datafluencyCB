@@ -187,15 +187,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="summary-of-key-points-1" class="section level2">
 <h2>Summary of key points</h2>
 <ul>
-<li><p>We can compare two models using <code>anova(model1, model2)</code></p></li>
-<li><p>We can use <code>lmBF</code> in the <code>BayesFactor</code> package to compare models using Bayes Factors:</p>
+<li><p>We can compare a model with one that has more predictors by using <code>anova(model1, model2)</code>.</p></li>
+<li><p>We can compare models using Bayes Factors with <code>lmBF</code> in the <code>BayesFactor</code> package.</p></li>
+<li><p>A <strong>Bayes Factor</strong> is probability of one model relative to another, <em>given the data</em>.</p></li>
+<li><p>To compare Bayes Factors of models:</p>
 <ul>
-<li><p>First obtain the Bayes Factors for <code>model1</code> and <code>model2</code>.</p>
-<ul>
-<li><p>Then obtain the likelihood of <code>model2</code> over <code>model1</code> using <code>model2 / model1</code></p></li>
-<li><p>BFs less than 1 indicate evidence for <code>model1</code>. BFs greater than 1 indicate evidence for <code>model2</code>.</p></li>
+<li><p>First obtain the Bayes Factors for <code>model1</code> and <code>model2</code>.</p></li>
+<li><p>Then use <code>model2 / model1</code> to get the Bayes Factor, indicating how much more likely <code>model2</code> is.</p></li>
 </ul></li>
-</ul></li>
+<li><p>Bayes Factors less than 1 indicate evidence for <code>model1</code></p></li>
+<li><p>Bayes Factors greater than 1 indicate evidence for <code>model2</code></p></li>
+<li><p>We can report Bayes Factors as <span class="math inline">\(BF_{10}\)</span> = 2.23 (or BF10 = 2.23)</p></li>
 </ul>
 
 </div>

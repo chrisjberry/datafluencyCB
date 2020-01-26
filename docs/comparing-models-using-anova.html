@@ -186,24 +186,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="comparing-models-using-anova" class="section level2">
 <h2>Comparing models using ANOVA</h2>
-<p>Suppose we want to know whether the addition of variables into a model leads to a <em>statistically significant improvement</em> in the variance explained by the model as a whole.</p>
+<p>We can use ANOVA to determine whether the addition of variables into a model leads to a statistically significant improvement in the variance it explains <em>overall</em>. We may want to do this, for example, when building on existing theories or models.</p>
 <p><br />
-We’ll start by comparing a model with one predictor vs. a model with two predictors.</p>
+We’ll start by comparing a model with <em>one</em> predictor vs. a model with <em>three</em> predictors.</p>
 <p><br />
-Load the <code>ExamData</code> from the previous session, and then conduct:</p>
+Using the <code>ExamData</code> from the previous session, we’ll run:</p>
 <ul>
 <li><p>a linear model with <code>finalex</code> as the outcome variable, and <code>entrex</code> as the predictor.</p></li>
-<li><p>a linear model with <code>finalex</code> as the outcome variable, and <code>entrex</code> and <code>age</code> as the predictors.</p></li>
+<li><p>a linear model with <code>finalex</code> as the outcome variable, and <code>entrex</code>,<code>age</code>, and <code>project</code> as the predictors.</p></li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">
-ExamData &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;https://bit.ly/37GkvJg&#39;</span>)              
+<pre class="sourceCode r"><code class="sourceCode r">ExamData &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;https://bit.ly/37GkvJg&#39;</span>)              
 model1   &lt;-<span class="st"> </span><span class="kw">lm</span>(finalex <span class="op">~</span><span class="st"> </span>entrex, <span class="dt">data =</span> ExamData)           
-model2   &lt;-<span class="st"> </span><span class="kw">lm</span>(finalex <span class="op">~</span><span class="st"> </span>entrex <span class="op">+</span><span class="st"> </span>age, <span class="dt">data =</span> ExamData) </code></pre>
+model2   &lt;-<span class="st"> </span><span class="kw">lm</span>(finalex <span class="op">~</span><span class="st"> </span>entrex <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>project, <span class="dt">data =</span> ExamData) </code></pre>
 <p><br />
 <strong>Explanation of the code</strong>: first the data is loaded into <code>ExamData</code>. The results of the simple regression are stored in <code>model1</code>. Those of the multiple regression are stored in <code>model2</code>.</p>
 <p><br />
 Use <code>summary()</code> to display the results of each regression:</p>
-<p>Model 1:</p>
+<p><strong>Model 1:</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(model1)
 <span class="op">&gt;</span><span class="st"> </span>
 <span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
@@ -224,75 +223,101 @@ Use <code>summary()</code> to display the results of each regression:</p>
 <span class="op">&gt;</span><span class="st"> </span>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.531</span>,   Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.5159</span> 
 <span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st">  </span><span class="fl">35.1</span> on <span class="dv">1</span> and <span class="dv">31</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="fl">1.52e-06</span></code></pre>
 <p><br />
-Model 2:</p>
+<strong>Model 2:</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(model2)
 <span class="op">&gt;</span><span class="st"> </span>
 <span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
-<span class="er">&gt;</span><span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> finalex <span class="op">~</span><span class="st"> </span>entrex <span class="op">+</span><span class="st"> </span>age, <span class="dt">data =</span> ExamData)
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> finalex <span class="op">~</span><span class="st"> </span>entrex <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>project, <span class="dt">data =</span> ExamData)
 <span class="op">&gt;</span><span class="st"> </span>
 <span class="er">&gt;</span><span class="st"> </span>Residuals<span class="op">:</span>
 <span class="er">&gt;</span><span class="st">     </span>Min      1Q  Median      3Q     Max 
-<span class="op">&gt;</span><span class="st"> </span><span class="fl">-52.630</span> <span class="fl">-20.048</span>   <span class="fl">2.834</span>  <span class="fl">17.924</span>  <span class="fl">33.461</span> 
+<span class="op">&gt;</span><span class="st"> </span><span class="fl">-42.563</span> <span class="fl">-16.519</span>   <span class="fl">4.901</span>  <span class="fl">16.991</span>  <span class="fl">36.424</span> 
 <span class="op">&gt;</span><span class="st"> </span>
 <span class="er">&gt;</span><span class="st"> </span>Coefficients<span class="op">:</span>
-<span class="er">&gt;</span><span class="st">             </span>Estimate Std. Error t value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)    
-<span class="op">&gt;</span><span class="st"> </span>(Intercept) <span class="fl">-99.1662</span>    <span class="fl">44.9638</span>  <span class="fl">-2.205</span>   <span class="fl">0.0352</span> <span class="op">*</span><span class="st">  </span>
-<span class="er">&gt;</span><span class="st"> </span>entrex        <span class="fl">3.3636</span>     <span class="fl">0.5444</span>   <span class="fl">6.179</span> <span class="fl">8.47e-07</span> <span class="op">**</span><span class="er">*</span>
-<span class="er">&gt;</span><span class="st"> </span>age           <span class="fl">1.9085</span>     <span class="fl">1.3475</span>   <span class="fl">1.416</span>   <span class="fl">0.1670</span>    
+<span class="er">&gt;</span><span class="st">              </span>Estimate Std. Error t value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)    
+<span class="op">&gt;</span><span class="st"> </span>(Intercept) <span class="fl">-117.9159</span>    <span class="fl">46.4211</span>  <span class="fl">-2.540</span>   <span class="fl">0.0167</span> <span class="op">*</span><span class="st">  </span>
+<span class="er">&gt;</span><span class="st"> </span>entrex         <span class="fl">3.0889</span>     <span class="fl">0.5734</span>   <span class="fl">5.387</span> <span class="fl">8.66e-06</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span>age            <span class="fl">1.4231</span>     <span class="fl">1.3756</span>   <span class="fl">1.035</span>   <span class="fl">0.3094</span>    
+<span class="op">&gt;</span><span class="st"> </span>project        <span class="fl">0.6280</span>     <span class="fl">0.4609</span>   <span class="fl">1.363</span>   <span class="fl">0.1835</span>    
 <span class="op">&gt;</span><span class="st"> </span><span class="op">---</span>
 <span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span>
 <span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st"> </span>Residual standard error<span class="op">:</span><span class="st"> </span><span class="fl">22.35</span> on <span class="dv">30</span> degrees of freedom
-<span class="op">&gt;</span><span class="st"> </span>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.5604</span>,  Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.5311</span> 
-<span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">19.12</span> on <span class="dv">2</span> and <span class="dv">30</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="fl">4.419e-06</span></code></pre>
+<span class="er">&gt;</span><span class="st"> </span>Residual standard error<span class="op">:</span><span class="st"> </span><span class="fl">22.03</span> on <span class="dv">29</span> degrees of freedom
+<span class="op">&gt;</span><span class="st"> </span>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.5869</span>,  Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.5442</span> 
+<span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">13.73</span> on <span class="dv">3</span> and <span class="dv">29</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="fl">9.353e-06</span></code></pre>
 <p><br />
-</p>
-<p>Make note of the variance explained by each model (<span class="math inline">\(R^2\)</span>) below: (report to 2 decimal places)</p>
+(If you are not sure what it means by “e-06” in the output above then see the FAQs <a href="FAQ-assessment.html#e-meaning">here</a>)</p>
+<div class="exercise">
+<p>Make note of the variance explained by each model (<span class="math inline">\(R^2\)</span>), i.e., <code>Multiple R-squared</code>: (report as a percentage, to 2 decimal places)</p>
 <ul>
-<li><p>Model 1: <span class="math inline">\(R^2\)</span> = <input class='solveme nospaces' size='6' data-answer='["53.10%"]'/></p></li>
-<li><p>Model 2: <span class="math inline">\(R^2\)</span> = <input class='solveme nospaces' size='6' data-answer='["56.04%"]'/></p></li>
+<li><p>Model 1: <span class="math inline">\(R^2\)</span> = <input class='solveme nospaces' size='5' data-answer='["53.10"]'/> %</p></li>
+<li><p>Model 2: <span class="math inline">\(R^2\)</span> = <input class='solveme nospaces' size='5' data-answer='["58.69"]'/> %</p></li>
 </ul>
-<p>Which model explains a greater proportion of variance in <code>finalex</code>? <select class='solveme' data-answer='["entrex AND age"]'> <option></option> <option>extrex alone</option> <option>entrex AND age</option></select></p>
+<p>Which model explains a greater proportion of variance in <code>finalex</code>? <select class='solveme' data-answer='["entrex, age, project"]'> <option></option> <option>extrex alone</option> <option>entrex, age, project</option></select></p>
 <ul>
-<li>Calculate the difference in <span class="math inline">\(R^2\)</span> between the models. <code>model2</code> improves the prediction of <code>finalex</code> by <input class='solveme nospaces' size='4' data-answer='["2.94"]'/> %</li>
+<li>Calculate the difference in <span class="math inline">\(R^2\)</span> between the models. <code>model2</code> improves the prediction of <code>finalex</code> by <input class='solveme nospaces' size='4' data-answer='["5.59"]'/> %</li>
 </ul>
+</div>
 <p><br />
 To compare the variance explained by each model, use <code>anova()</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(model1, model2)
 <span class="op">&gt;</span><span class="st"> </span>Analysis of Variance Table
 <span class="op">&gt;</span><span class="st"> </span>
 <span class="er">&gt;</span><span class="st"> </span>Model <span class="dv">1</span><span class="op">:</span><span class="st"> </span>finalex <span class="op">~</span><span class="st"> </span>entrex
-<span class="op">&gt;</span><span class="st"> </span>Model <span class="dv">2</span><span class="op">:</span><span class="st"> </span>finalex <span class="op">~</span><span class="st"> </span>entrex <span class="op">+</span><span class="st"> </span>age
+<span class="op">&gt;</span><span class="st"> </span>Model <span class="dv">2</span><span class="op">:</span><span class="st"> </span>finalex <span class="op">~</span><span class="st"> </span>entrex <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>project
 <span class="op">&gt;</span><span class="st">   </span>Res.Df   RSS Df Sum of Sq      F <span class="kw">Pr</span>(<span class="op">&gt;</span>F)
 <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>     <span class="dv">31</span> <span class="dv">15981</span>                           
-<span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>     <span class="dv">30</span> <span class="dv">14979</span>  <span class="dv">1</span>    <span class="fl">1001.6</span> <span class="fl">2.0059</span>  <span class="fl">0.167</span></code></pre>
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>     <span class="dv">29</span> <span class="dv">14078</span>  <span class="dv">2</span>      <span class="dv">1903</span> <span class="fl">1.9601</span> <span class="fl">0.1591</span></code></pre>
 <p><br />
-<strong>Explanation:</strong></p>
+<strong>Explanation of the output:</strong></p>
 <ul>
-<li><p><code>anova()</code> is used here to compare the variance that <code>model1</code> and <code>model2</code> explain with an <em>F</em>-statistic.</p></li>
-<li><p><code>Pr(&gt;F)</code> gives the <em>p</em>-value for this statistic. If the <em>p</em>-value is less than .05, then we can reject the null hypothesis that there is no difference in the variance explained by each model, and we can say that the variance that <code>model2</code> explains in <code>finalex</code> is significantly greater than that of <code>model1</code>.</p></li>
+<li><p><strong><code>anova()</code></strong> compares the variance that <code>model1</code> and <code>model2</code> explain with an <em>F</em>-statistic.</p></li>
+<li><p><strong><code>Pr(&gt;F)</code></strong> gives the <em>p</em>-value for this statistic. If the <em>p</em>-value is less than .05, then we can reject the null hypothesis that there is no difference in the variance explained by each model, and we can say that the variance that <code>model2</code> explains in <code>finalex</code> is significantly greater than that of <code>model1</code>.</p></li>
+<li><p>We can report the <em>F</em>-statistic in APA style as <em>F</em>(2, 29) = 1.96, <em>p</em> = .16. We can say that the additional 5.59% variance that <code>model2</code> explains relative to <code>model1</code> does not represent a statistically significant increase in <span class="math inline">\(R^2\)</span>, and so <code>model2</code> should <strong>not</strong> be preferred over <code>model1</code>.</p></li>
 </ul>
-<p>We can report the <em>F</em>-statistic in APA style as <em>F</em>(1, 30) = 2.01, p = .17. We can say that the additional 2.94% variance that <code>model2</code> explains relative to <code>model1</code> does not represent a statistically significant increase, and so <code>model2</code> should <strong>not</strong> be preferred over <code>model1</code>.</p>
 <p><br />
 </p>
 <div class="tip">
-<p>Comparing models sequentially in this way is sometimes referred to as <strong>hierarchical regression</strong> or <strong>sequential regression</strong>. This type of regression is usually used for logical or theoretical reasons, when we want to know contribution of predictor (or a set of predictors) <em>over and above</em> an existing one.</p>
+<p>Comparing models in steps as we’ve done is sometimes called <strong>hierarchical regression</strong> or <strong>sequential regression</strong>. This type of regression is usually used for logical or theoretical reasons, when we want to know the contribution of a predictor (or a set of predictors) <strong>over and above</strong> an existing one.</p>
 </div>
 <div class="exercise">
-<p>Now you try:</p>
+<p><strong>Now, you try using <code>anova</code> to compare models.</strong></p>
 <p>The variable <code>attendance</code> in <code>ExamData</code> scores individuals according to whether their class attendance was low (0) or high (1). A researcher suspects that <code>attendance</code> may explain additional variance in <code>finalex</code> over and above <code>entrex</code>.</p>
-<p>Compare the following two models, using the <code>anova()</code> approach above:</p>
+<p>As an exercise, compare the following two models using the <code>anova()</code> approach above:</p>
 <ol style="list-style-type: decimal">
 <li><p>a model with <code>extrex</code> as a sole predictor of <code>finalex</code> (i.e., <code>model1</code>), and</p></li>
 <li><p>a model where <code>finalex</code> is predicted by <code>extrex</code> and <code>attendance</code> (call this <code>model3</code>).</p></li>
 </ol>
-<p>Is there sufficient evidence that a model that includes <code>attendance</code> explains more variance than a model with <code>entrex</code> alone?</p>
+<p>Is there sufficient evidence that a model with <code>entrex</code> <em>and</em> <code>attendance</code> explains more variance than a model with <code>entrex</code> alone?</p>
 <div class="solution">
 <button>
-Show me the code
+Try yourself first, then click to see the code
 </button>
-<pre class="sourceCode r"><code class="sourceCode r">model3 &lt;-<span class="st"> </span><span class="kw">lm</span>(finalex <span class="op">~</span><span class="st"> </span>entrex <span class="op">+</span><span class="st"> </span>attendance, <span class="dt">data =</span> ExamData)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># model1 was created earlier</span>
+<span class="kw">summary</span>(model1)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> finalex <span class="op">~</span><span class="st"> </span>entrex, <span class="dt">data =</span> ExamData)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Residuals<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">     </span>Min      1Q  Median      3Q     Max 
+<span class="op">&gt;</span><span class="st"> </span><span class="fl">-54.494</span> <span class="fl">-21.185</span>   <span class="fl">3.733</span>  <span class="fl">18.124</span>  <span class="fl">30.969</span> 
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Coefficients<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">             </span>Estimate Std. Error t value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)    
+<span class="op">&gt;</span><span class="st"> </span>(Intercept) <span class="fl">-46.3045</span>    <span class="fl">25.4773</span>  <span class="fl">-1.817</span>   <span class="fl">0.0788</span> .  
+<span class="op">&gt;</span><span class="st"> </span>entrex        <span class="fl">3.1545</span>     <span class="fl">0.5324</span>   <span class="fl">5.925</span> <span class="fl">1.52e-06</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="op">---</span>
+<span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span>
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Residual standard error<span class="op">:</span><span class="st"> </span><span class="fl">22.7</span> on <span class="dv">31</span> degrees of freedom
+<span class="op">&gt;</span><span class="st"> </span>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.531</span>,   Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.5159</span> 
+<span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st">  </span><span class="fl">35.1</span> on <span class="dv">1</span> and <span class="dv">31</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="fl">1.52e-06</span>
 
+<span class="co"># specify model3</span>
+model3 &lt;-<span class="st"> </span><span class="kw">lm</span>(finalex <span class="op">~</span><span class="st"> </span>entrex <span class="op">+</span><span class="st"> </span>attendance, <span class="dt">data =</span> ExamData)
+
+<span class="co"># show model3</span>
 <span class="kw">summary</span>(model3)
 <span class="op">&gt;</span><span class="st"> </span>
 <span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
@@ -314,6 +339,7 @@ Show me the code
 <span class="op">&gt;</span><span class="st"> </span>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.7223</span>,  Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.7038</span> 
 <span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">39.02</span> on <span class="dv">2</span> and <span class="dv">30</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="fl">4.499e-09</span>
 
+<span class="co">#compare model1 and model3</span>
 <span class="kw">anova</span>(model1, model3)
 <span class="op">&gt;</span><span class="st"> </span>Analysis of Variance Table
 <span class="op">&gt;</span><span class="st"> </span>
@@ -325,11 +351,15 @@ Show me the code
 <span class="er">&gt;</span><span class="st"> </span><span class="op">---</span>
 <span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></code></pre>
 </div>
-<div class="solution">
-<button>
-Try yourself first before clicking to show the answer
-</button>
-<p><strong>Answer</strong>: A model in which <code>finalex</code> is predicted by <code>entrex</code> and <code>attendance</code> leads to a statistically significant improvement in the variance in <code>finalex</code> explained, relative to model that contains <code>entrex</code> alone. The variance explained by a model with <code>entrex</code> alone is <span class="math inline">\(R^2\)</span> = 0.53. The <span class="math inline">\(R^2\)</span> for the model that also included attendance was <span class="math inline">\(R^2\)</span> = 0.72. This increase in <span class="math inline">\(R^2\)</span> of 19.13% was statistically significant, <em>F</em>(1, 30) = 20.67, p &lt; .001. As indicated by the estimates of the coefficients for <code>entrex</code> and <code>attendance</code>, both positively predict <code>finalex</code>: a higher <code>entrex</code> score and greater <code>attendance</code> is associated with a higher <code>finalex</code> score.</p>
+<ul>
+<li><p>The variance explained by a model with <code>entrex</code> alone is <span class="math inline">\(R^2\)</span> = <input class='solveme nospaces' size='5' data-answer='["53.10"]'/> %</p></li>
+<li><p>The <span class="math inline">\(R^2\)</span> for the model that also included <code>attendance</code> was <span class="math inline">\(R^2\)</span> = <input class='solveme nospaces' size='5' data-answer='["72.23"]'/> %</p></li>
+<li><p>The increase in <span class="math inline">\(R^2\)</span> was <input class='solveme nospaces' size='5' data-answer='["19.13"]'/>%</p></li>
+<li><p>The ANOVA comparing models can be reported as: <em>F</em>(<input class='solveme nospaces' size='1' data-answer='["1"]'/>, <input class='solveme nospaces' size='2' data-answer='["30"]'/>) = <input class='solveme nospaces' size='5' data-answer='["20.67"]'/>, <em>p</em> &lt; .001.</p></li>
+<li><p>The increase in <span class="math inline">\(R^2\)</span> was <select class='solveme' data-answer='["statistically significant"]'> <option></option> <option>statistically significant</option> <option>not significant</option></select>.</p></li>
+<li><p>As indicated by the estimates of the coefficients for <code>entrex</code> and <code>attendance</code>, both <select class='solveme' data-answer='["positively"]'> <option></option> <option>negatively</option> <option>positively</option></select> predict <code>finalex</code>.</p></li>
+<li><p>A higher <code>entrex</code> score and greater <code>attendance</code> is associated with a <select class='solveme' data-answer='["higher"]'> <option></option> <option>higher</option> <option>lower</option></select> <code>finalex</code> score.</p></li>
+</ul>
 </div>
 </div>
 </div>

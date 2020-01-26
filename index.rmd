@@ -26,3 +26,6 @@ This workbook contains details of the three sessions given by **Chris Berry**:
 
 \
 (Materials for sessions by Ben Whalley can be found at https://benwhalley.github.io/datafluency/)
+
+\
+Use the left and right arrows to navigate through this workbook.
