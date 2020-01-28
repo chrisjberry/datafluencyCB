@@ -173,6 +173,7 @@ anova(model1, model3)
 :::
 
 
+
 ## Comparing models using Bayes Factors
 
 An alternative approach to using ANOVA to compare models is to use **Bayes Factors**. 
@@ -257,7 +258,7 @@ model2.BF / model1.BF
 
 - A Bayes Factor **less than 1** means that `model1` is more likely than `model2`. 
 
-**Thus, our Bayes Factor of 0.51 indicates that `model1` is more likely than `model2`.**
+**Thus, our Bayes Factor of 0.29 indicates that `model1` is more likely than `model2`.**
 
 :::
 
