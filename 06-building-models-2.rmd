@@ -132,7 +132,7 @@ The variable `attendance` in `ExamData` scores individuals according to whether 
 
 As an exercise, compare the following two models using the `anova()` approach above: 
 
-1. a model with `extrex` as a sole predictor of `finalex` (i.e., `model1`), and 
+1. a model with `entrex` as a sole predictor of `finalex` (i.e., `model1`), and 
 
 2. a model where `finalex` is predicted by `extrex` and `attendance` (call this `model3`). 
 
