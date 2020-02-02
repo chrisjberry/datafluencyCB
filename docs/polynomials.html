@@ -195,7 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Polynomials</h2>
 <p><br />
 </p>
-<p>The regression models we have been fitting assume a <em>linear</em> (i.e., straight line) relationship between variables. However, variables may not always be related in a linear fashion.</p>
+<p>The regression models we have been fitting assume a <strong>linear</strong> (i.e., straight line) relationship between variables. However, variables may not always be related in a linear fashion.</p>
 <p><br />
 </p>
 <p>Suppose variables x and y showed the following trend:</p>
@@ -211,20 +211,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><span class="math inline">\(x^2\)</span> means x-squared, which is x-multiplied-by-x, or “x to the power of two”</p></li>
 <li><p><span class="math inline">\(x^3\)</span> means x-cubed, which is x-multiplied-by-x-multiplied-by-x, or “x to the power of three”</p></li>
 </ul>
+<p><br />
+</p>
 <p>If a model has a <strong>quadratic component</strong> it means it has an <span class="math inline">\(x^2\)</span> term in the equation.</p>
 <p>If a model has a <strong>cubic component</strong> it means it has an <span class="math inline">\(x^3\)</span> term in the equation.</p>
-<div id="constant" class="section level3">
-<h3>Constant</h3>
+<p><br />
+</p>
 <p>To see why this approach works, recall that lines can be represented by equations.</p>
-<p>The equation <strong><span class="math inline">\(y = 1 + 0.5(x)\)</span></strong> would be represented as follows:</p>
+<div id="components-of-a-regression-line" class="section level3">
+<h3>Components of a regression line</h3>
+<p>The equation <strong><span class="math inline">\(y = 1 + 0.5x\)</span></strong> would be represented as follows:</p>
 <p><img src="07-fitting-curves_files/figure-html/fig4-1.png" width="336" style="display: block; margin: auto;" /></p>
-<p>We can think of this line as being made up of the constant and a linear component.</p>
+<p>We can think of this line as being made up of the <strong>constant</strong> and a <strong>linear</strong> component.</p>
 <ul>
-<li>The constant in this equation is indicated by the dashed horizontal line.</li>
-<li>The linear component to this equation 0.5(x) is indicated by the dashed slope line.</li>
-<li>The solid blue line is a combination of these two components.</li>
+<li>The <strong>constant</strong> in this equation is indicated by the dashed horizontal line.</li>
+<li>The <strong>linear</strong> component to this equation 0.5x is indicated by the dashed slope line.</li>
+<li>The solid blue line is a <em>combination</em> of these two components.</li>
 </ul>
-<p>It has no bends.<br />
+<p><br />
 </p>
 </div>
 <div id="quadratic" class="section level3">
@@ -232,12 +236,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The equation <strong><span class="math inline">\(y = x^2\)</span></strong> would be represented as follows:</p>
 <p><img src="07-fitting-curves_files/figure-html/fig5-1.png" width="336" style="display: block; margin: auto;" /></p>
 <p>To get each value of y, we square the value of x.</p>
-<p>So, when x = -5, y is 25. And if x = -4, y = 16, and so on…</p>
+<p><br />
+So, when x = -5, y is 25.</p>
+<p>And if x = -4, y = 16, and so on…</p>
 <p><br />
 </p>
 <p><strong><span class="math inline">\(y = -x^2\)</span></strong>, would look as follows:</p>
 <p><img src="07-fitting-curves_files/figure-html/fig6-1.png" width="336" style="display: block; margin: auto;" /></p>
-<p>Curves with quadratic components have one bend.</p>
+<p>Curves with quadratic components have <strong>one bend</strong>.</p>
 <p><br />
 </p>
 </div>
@@ -245,38 +251,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>Cubic</h3>
 <p>The equation <strong><span class="math inline">\(y = x^3\)</span></strong> would be represented as follows:</p>
 <p><img src="07-fitting-curves_files/figure-html/fig7-1.png" width="336" style="display: block; margin: auto;" /></p>
-<p>To get each value of y, we cube the value of x.</p>
-<p>So, when x = -5, y is -125. And if x = -4, y = -64, and so on…</p>
+<p>To get each value of y, we <em>cube</em> the value of x.</p>
+<p>So, when x = -5, y is -125.</p>
+<p>And if x = 10, y = 1000, and so on…</p>
+<p><br />
+</p>
 <p><strong><span class="math inline">\(y = -x^3\)</span></strong>, would look as follows:</p>
 <p><img src="07-fitting-curves_files/figure-html/fig8-1.png" width="336" style="display: block; margin: auto;" /></p>
-<p>Curves with cubic components have three bends.</p>
+<p>Curves with cubic components have <strong>two bends</strong>.</p>
 <p><br />
 </p>
 </div>
 <div id="linear-plus-quadratic-components" class="section level3">
 <h3>Linear plus quadratic components</h3>
-<p>The equation <strong><span class="math inline">\(y = 50 + 5(x) - x^2\)</span></strong> has</p>
+<p>The equation <strong><span class="math inline">\(y = 50 + 5x - x^2\)</span></strong> has</p>
 <ul>
-<li>a constant equal to 50</li>
-<li>a linear component 5(x)</li>
-<li>a quadratic component <span class="math inline">\(-x^2\)</span>:</li>
+<li>a constant equal to <strong>50</strong></li>
+<li>a linear component <strong>5x</strong></li>
+<li>a quadratic component <strong><span class="math inline">\(-x^2\)</span></strong>:</li>
 </ul>
 <p><img src="07-fitting-curves_files/figure-html/fig9-1.png" width="336" style="display: block; margin: auto;" /></p>
-<p>The dashed lines on the plot indicate the intercept, linear component, and quadratic components of the equation. The solid line represents the equation.</p>
+<p>The dashed lines on the plot indicate the <em>intercept</em>, <em>linear component</em>, and <em>quadratic component</em> of the equation. The solid line represents the equation.</p>
 <p><br />
 </p>
 </div>
-<div id="linear-plus-quadratic-and-cubic-components" class="section level3">
-<h3>Linear plus quadratic and cubic components</h3>
+<div id="linear-quadratic-cubic-components" class="section level3">
+<h3>Linear + quadratic + cubic components</h3>
 <p>The equation <strong><span class="math inline">\(y = 5000 + 750x - 50x^2 - 20x^3\)</span></strong> has</p>
 <ul>
-<li>a constant equal to 50</li>
-<li>a linear component 750x</li>
-<li>a negative quadratic component <span class="math inline">\(-50x^2\)</span></li>
-<li>a negative cubic component <span class="math inline">\(-20x^3\)</span></li>
+<li>a constant equal to <strong>5000</strong></li>
+<li>a linear component <strong>750x</strong></li>
+<li>a negative quadratic component <strong><span class="math inline">\(-50x^2\)</span></strong></li>
+<li>a negative cubic component <strong><span class="math inline">\(-20x^3\)</span></strong></li>
 </ul>
 <p><img src="07-fitting-curves_files/figure-html/fig10-1.png" width="336" style="display: block; margin: auto;" /></p>
-<p>When we see any curve, it is possible to think of it as being composed of components like this.</p>
+<p>The dashed lines in the plot indicate the different components of the curve indicated by the solid blue line.</p>
+<p>When we see any curve, it is possible to think of it as being composed of components like this. In theory, we can keep adding components, but it’s rare to see even higher-order components (e.g., <span class="math inline">\(x^4\)</span>) being added. Issues regarding overfitting and generalisability can also arise (mentioned in the slides).</p>
 </div>
 </div>
             </section>

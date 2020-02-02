@@ -194,14 +194,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="summary-of-key-points-2" class="section level2">
 <h2>Summary of key points</h2>
 <ul>
-<li>Polynomial terms can be added to regression models to fit curves in our data.</li>
+<li>Polynomial terms (e.g., <span class="math inline">\(x^2\)</span>, <span class="math inline">\(x^3\)</span>) can be added to regression models to fit curves in our data.</li>
 </ul>
 <p><br />
 </p>
 <ul>
 <li><p><code>poly(predictor name, X)</code> can be used with <code>lm</code> to specify models with polynomial terms of the Xth order.</p>
 <ul>
-<li>The improvement in fit (<span class="math inline">\(R^2\)</span>) as a result of adding in a polynomial term can be tested using <code>anova(model1, model2)</code>.</li>
+<li>The improvement in fit (<span class="math inline">\(R^2\)</span>) as a result of adding in a polynomial term can be tested using <code>anova(polynomial1, polynomial2)</code>.</li>
 </ul></li>
 </ul>
 <p><br />
@@ -209,13 +209,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><p>Bayes Factors can also be used to compare models with polynomial terms using <code>lmBF</code>.</p>
 <ul>
-<li>You must store the polynomial components in the dataset first before using <code>lmBF</code>. Use <code>poly(predictor name, X)[,"X"]</code>.</li>
+<li>You must store the polynomial components in the dataset first before using <code>lmBF</code>. Use <code>poly(predictor name, X)[,"X"]</code>, where X is the order of the polynomial you will test (e.g., <code>poly(age, 3)[,"3"]</code>).</li>
 </ul></li>
 </ul>
 <p><br />
 </p>
 <ul>
-<li><strong>A note of caution</strong>: Although curves of any complexity can be fit, it may not always be meaningful or parsimonious to do so. Complex models may <em>overfit</em> the data and may not necessarily generalise to new datasets well. It is also important not to extrapolate beyond the range of data used to generate the model when making predictions from the model, as the same relationship may not be present.</li>
+<li><p><strong>A note of caution</strong>: Although curves of any complexity can be fit, it may not always be meaningful or parsimonious to do so.</p>
+<ul>
+<li>Complex models may <em>overfit</em> the data and may not necessarily generalise to new datasets well.</li>
+<li>It is also important not to extrapolate beyond the range of data used to generate the model when making predictions from the model, as the same relationship may not be present.</li>
+</ul></li>
 </ul>
 
 </div>

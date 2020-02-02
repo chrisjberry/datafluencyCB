@@ -193,62 +193,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="bayesian-approach" class="section level2">
 <h2>Bayesian approach</h2>
-<p>As we did in the previous session, we can use Bayes Factors to compare the models with different higher-order polynomial components.</p>
-<p>Unfortunately, <code>poly()</code> does not work seamlessly with <code>lmBF</code>, as it did with <code>lm</code>. We need to create separate variables in <code>SurveyData</code> for the quadratic and cubic components before working out the Bayes Factors with <code>lmBF</code>.</p>
+<p>As we did in the previous session, we can use Bayes Factors to compare the models with different polynomial components.</p>
+<p><br />
+</p>
+<div id="preparations" class="section level3">
+<h3>Preparations</h3>
+<p>Unfortunately, <code>poly()</code> does not work seamlessly with <code>lmBF</code>, as it did with <code>lm</code>. Instead, we need to create separate variables in <code>SurveyData</code> for the quadratic and cubic components before we work out the Bayes Factors with <code>lmBF</code>.</p>
+<p><br />
+</p>
 <p>To add the quadratic component to <code>SurveyData</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">SurveyData &lt;-<span class="st"> </span>
 <span class="st">  </span>SurveyData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>( <span class="dt">age2 =</span> <span class="kw">poly</span>(age,<span class="dv">2</span>)[,<span class="st">&quot;2&quot;</span>] )</code></pre>
-<p><strong>Explanation of the code:</strong> The code takes <code>SurveyData</code>, then uses <code>mutate</code> to add a new variable <code>age2</code> to the dataset. <code>age2</code> contains the quadratic component of <code>age</code>, specified using <code>poly(age,2)[,"2"]</code>.</p>
-<p>We can see the new variable <code>age2</code> when we look at <code>SurveyData</code> again:</p>
-<pre class="sourceCode r"><code class="sourceCode r">SurveyData
-<span class="op">&gt;</span><span class="st"> </span><span class="co"># A tibble: 150 x 4</span>
-<span class="er">&gt;</span><span class="st">      </span>age happiness anxiety    age2
-<span class="op">&gt;</span><span class="st">    </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">     </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">   </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">   </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span>
-<span class="er">&gt;</span><span class="st">  </span><span class="dv">1</span>  <span class="fl">66.0</span>      <span class="fl">7.85</span>    <span class="fl">2.33</span>  <span class="fl">0.0761</span>
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">2</span>  <span class="fl">35.0</span>      <span class="fl">7.56</span>    <span class="fl">2.58</span>  <span class="fl">0.0483</span>
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">3</span>  <span class="fl">58.6</span>      <span class="fl">7.59</span>    <span class="fl">3.43</span> <span class="fl">-0.0440</span>
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">4</span>  <span class="fl">35.0</span>      <span class="fl">7.06</span>    <span class="fl">1.67</span>  <span class="fl">0.0481</span>
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">5</span>  <span class="fl">60.2</span>      <span class="fl">7.96</span>    <span class="fl">2.13</span> <span class="fl">-0.0246</span>
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">6</span>  <span class="fl">67.5</span>      <span class="fl">8.11</span>    <span class="fl">1.09</span>  <span class="fl">0.110</span> 
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">7</span>  <span class="fl">44.4</span>      <span class="fl">6.99</span>    <span class="fl">3.43</span> <span class="fl">-0.0754</span>
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">8</span>  <span class="dv">66</span>        <span class="fl">7.95</span>    <span class="fl">3.82</span>  <span class="fl">0.0767</span>
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">9</span>  <span class="fl">69.6</span>      <span class="fl">8.35</span>    <span class="fl">3.37</span>  <span class="fl">0.161</span> 
-<span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>  <span class="fl">55.6</span>      <span class="fl">7.58</span>    <span class="fl">2.71</span> <span class="fl">-0.0729</span>
-<span class="op">&gt;</span><span class="st"> </span><span class="co"># ... with 140 more rows</span></code></pre>
-<p>Now create the variable for the cubic component:</p>
-<pre class="sourceCode r"><code class="sourceCode r">SurveyData &lt;-<span class="st"> </span>
-<span class="st">  </span>SurveyData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>( <span class="dt">age3 =</span> <span class="kw">poly</span>(age,<span class="dv">3</span>)[,<span class="st">&quot;3&quot;</span>] )</code></pre>
-<p><strong>Explanation of the code:</strong> The code takes <code>SurveyData</code>, then uses <code>mutate</code> to add a new variable <code>age3</code> to the dataset. <code>age3</code> contains the quadratic component of <code>age</code>, specified using <code>poly(age,3)[,"3"]</code>.</p>
-<p>We can see the new variable <code>age3</code> when we look at <code>SurveyData</code> again:</p>
-<pre class="sourceCode r"><code class="sourceCode r">SurveyData
-<span class="op">&gt;</span><span class="st"> </span><span class="co"># A tibble: 150 x 5</span>
-<span class="er">&gt;</span><span class="st">      </span>age happiness anxiety    age2     age3
-<span class="op">&gt;</span><span class="st">    </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">     </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">   </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">   </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">    </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span>
-<span class="er">&gt;</span><span class="st">  </span><span class="dv">1</span>  <span class="fl">66.0</span>      <span class="fl">7.85</span>    <span class="fl">2.33</span>  <span class="fl">0.0761</span>  <span class="fl">0.00888</span>
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">2</span>  <span class="fl">35.0</span>      <span class="fl">7.56</span>    <span class="fl">2.58</span>  <span class="fl">0.0483</span>  <span class="fl">0.0353</span> 
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">3</span>  <span class="fl">58.6</span>      <span class="fl">7.59</span>    <span class="fl">3.43</span> <span class="fl">-0.0440</span> <span class="fl">-0.0988</span> 
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">4</span>  <span class="fl">35.0</span>      <span class="fl">7.06</span>    <span class="fl">1.67</span>  <span class="fl">0.0481</span>  <span class="fl">0.0356</span> 
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">5</span>  <span class="fl">60.2</span>      <span class="fl">7.96</span>    <span class="fl">2.13</span> <span class="fl">-0.0246</span> <span class="fl">-0.0974</span> 
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">6</span>  <span class="fl">67.5</span>      <span class="fl">8.11</span>    <span class="fl">1.09</span>  <span class="fl">0.110</span>   <span class="fl">0.0707</span> 
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">7</span>  <span class="fl">44.4</span>      <span class="fl">6.99</span>    <span class="fl">3.43</span> <span class="fl">-0.0754</span>  <span class="fl">0.0898</span> 
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">8</span>  <span class="dv">66</span>        <span class="fl">7.95</span>    <span class="fl">3.82</span>  <span class="fl">0.0767</span>  <span class="fl">0.00993</span>
-<span class="op">&gt;</span><span class="st">  </span><span class="dv">9</span>  <span class="fl">69.6</span>      <span class="fl">8.35</span>    <span class="fl">3.37</span>  <span class="fl">0.161</span>   <span class="fl">0.180</span>  
-<span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>  <span class="fl">55.6</span>      <span class="fl">7.58</span>    <span class="fl">2.71</span> <span class="fl">-0.0729</span> <span class="fl">-0.0785</span> 
-<span class="op">&gt;</span><span class="st"> </span><span class="co"># ... with 140 more rows</span></code></pre>
-<p><br />
-To derive the Bayes Factor for <code>pmod1</code> using <code>lmBF()</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># first make sure the BayesFactor package is loaded so we can use lmBF</span>
-<span class="kw">library</span>(BayesFactor)
-
-<span class="co"># store the Bayes Factor for pmod1</span>
-pmod1BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(happiness <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(SurveyData) )</code></pre>
+<p><strong>Explanation of the code:</strong> The code takes <code>SurveyData</code>, then uses <code>mutate</code> to add a new variable <code>age2</code> to the dataset. <code>age2</code> contains the quadratic component of <code>age</code>, created by <code>poly(age,2)[,"2"]</code>.</p>
 <p><br />
 </p>
-<p>To derive the Bayes Factor for <code>pmod2</code> using <code>lmBF()</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># store the Bayes Factor for pmod2</span>
-pmod2BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(happiness <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>age2, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(SurveyData) )</code></pre>
-<p>The Bayes Factor comparing <code>pmod2BF</code> and <code>pmod1BF</code> is then:</p>
-<pre class="sourceCode r"><code class="sourceCode r">pmod2BF <span class="op">/</span><span class="st"> </span>pmod1BF
+<p>We can see the new variable <code>age2</code> when we look at <code>SurveyData</code> again:</p>
+<pre class="sourceCode r"><code class="sourceCode r">SurveyData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()
+<span class="op">&gt;</span><span class="st"> </span><span class="co"># A tibble: 6 x 4</span>
+<span class="er">&gt;</span><span class="st">     </span>age happiness anxiety    age2
+<span class="op">&gt;</span><span class="st">   </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">     </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">   </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">   </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="dv">1</span>  <span class="fl">66.0</span>      <span class="fl">7.85</span>    <span class="fl">2.33</span>  <span class="fl">0.0761</span>
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>  <span class="fl">35.0</span>      <span class="fl">7.56</span>    <span class="fl">2.58</span>  <span class="fl">0.0483</span>
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>  <span class="fl">58.6</span>      <span class="fl">7.59</span>    <span class="fl">3.43</span> <span class="fl">-0.0440</span>
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span>  <span class="fl">35.0</span>      <span class="fl">7.06</span>    <span class="fl">1.67</span>  <span class="fl">0.0481</span>
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>  <span class="fl">60.2</span>      <span class="fl">7.96</span>    <span class="fl">2.13</span> <span class="fl">-0.0246</span>
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">6</span>  <span class="fl">67.5</span>      <span class="fl">8.11</span>    <span class="fl">1.09</span>  <span class="fl">0.110</span></code></pre>
+<p><br />
+</p>
+<p>Now create the variable for the <strong>cubic component</strong>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">SurveyData &lt;-<span class="st"> </span>
+<span class="st">  </span>SurveyData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>( <span class="dt">age3 =</span> <span class="kw">poly</span>(age,<span class="dv">3</span>)[,<span class="st">&quot;3&quot;</span>] )</code></pre>
+<p><strong>Explanation of the code:</strong> As before, the code takes <code>SurveyData</code>, then uses <code>mutate</code> to add a new variable <code>age3</code> to the dataset. <code>age3</code> contains the quadratic component of <code>age</code>, created by <code>poly(age,3)[,"3"]</code>.</p>
+<p><br />
+</p>
+<p>Again, we can see the new variable <code>age3</code> when we look at <code>SurveyData</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">SurveyData <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">head</span>()
+<span class="op">&gt;</span><span class="st"> </span><span class="co"># A tibble: 6 x 5</span>
+<span class="er">&gt;</span><span class="st">     </span>age happiness anxiety    age2     age3
+<span class="op">&gt;</span><span class="st">   </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">     </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">   </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">   </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">    </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="dv">1</span>  <span class="fl">66.0</span>      <span class="fl">7.85</span>    <span class="fl">2.33</span>  <span class="fl">0.0761</span>  <span class="fl">0.00888</span>
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>  <span class="fl">35.0</span>      <span class="fl">7.56</span>    <span class="fl">2.58</span>  <span class="fl">0.0483</span>  <span class="fl">0.0353</span> 
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>  <span class="fl">58.6</span>      <span class="fl">7.59</span>    <span class="fl">3.43</span> <span class="fl">-0.0440</span> <span class="fl">-0.0988</span> 
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span>  <span class="fl">35.0</span>      <span class="fl">7.06</span>    <span class="fl">1.67</span>  <span class="fl">0.0481</span>  <span class="fl">0.0356</span> 
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>  <span class="fl">60.2</span>      <span class="fl">7.96</span>    <span class="fl">2.13</span> <span class="fl">-0.0246</span> <span class="fl">-0.0974</span> 
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">6</span>  <span class="fl">67.5</span>      <span class="fl">8.11</span>    <span class="fl">1.09</span>  <span class="fl">0.110</span>   <span class="fl">0.0707</span></code></pre>
+<p><br />
+</p>
+</div>
+<div id="derive-the-bayes-factors" class="section level3">
+<h3>Derive the Bayes Factors</h3>
+<p><br />
+First, make sure the BayesFactor package is loaded (<code>library(BayesFactor)</code>). We can use <code>lmBF</code> to get the Bayes Factor for each model, as we did in the previous session.</p>
+<p><br />
+</p>
+<p>To derive the Bayes Factor for <code>polynomial1</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">polynomial1BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(happiness <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(SurveyData) )</code></pre>
+<p><br />
+</p>
+<p>To derive the Bayes Factor for <code>polynomial2</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># store the Bayes Factor for polynomial2</span>
+polynomial2BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(happiness <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>age2, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(SurveyData) )</code></pre>
+<p><strong>Explanation:</strong> With <code>lmBF</code> we need to specify the polynomial equation with both linear and quadratic components separately, hence <code>happiness ~ age + age2</code>.</p>
+<p><br />
+</p>
+<p>The Bayes Factor comparing <code>polynomial2</code> and <code>polynomial1</code> is then:</p>
+<pre class="sourceCode r"><code class="sourceCode r">polynomial2BF <span class="op">/</span><span class="st"> </span>polynomial1BF
 <span class="op">&gt;</span><span class="st"> </span>Bayes factor analysis
 <span class="op">&gt;</span><span class="st"> </span><span class="op">--------------</span>
 <span class="er">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] age <span class="op">+</span><span class="st"> </span>age2 <span class="op">:</span><span class="st"> </span><span class="fl">2.618277e+17</span> ±<span class="fl">0.01</span>%
@@ -258,22 +267,26 @@ pmod2BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(happiness <sp
 <span class="op">&gt;</span><span class="st"> </span><span class="op">---</span>
 <span class="er">&gt;</span><span class="st"> </span>Bayes factor type<span class="op">:</span><span class="st"> </span>BFlinearModel, JZS</code></pre>
 <div class="exercise">
-<p>How many more times likely is a model with a quadratic component of age than only a linear component?
-<select class='solveme' data-answer='["2.62e+17"]'> <option></option> <option>2.62e-17</option> <option>2.62e+17</option></select></p>
-<p>Does this constitute strong evidence for <code>pmod2</code> over <code>pmod1</code>?
+<p>How many more times likely is a model with a <strong>quadratic component</strong> of <code>age</code> than one with only a <strong>linear component</strong>?
+<select class='solveme' data-answer='["2.62e+17"]'> <option></option> <option>2.62</option> <option>2.62e-17</option> <option>2.62e+17</option></select></p>
+<p>Does this constitute strong evidence for the addition of a quadratic component?
 <select class='solveme' data-answer='["yes"]'> <option></option> <option>yes</option> <option>no</option></select></p>
 <div class="solution">
 <button>
 Explain why
 </button>
-<p>The Bayes Factor tells us that a model with a quadratic component of <code>age</code> is 2.62e+17 or <span class="math inline">\(2.62 \times 10^{17}\)</span> times more likely than one that simply contains a linear component. This is overwhelming evidence for the inclusion of a quadratic component of <code>age</code> in the model.</p>
+<p>The Bayes Factor tells us that a model with a quadratic component of <code>age</code> is 2.62e+17 or <span class="math inline">\(2.62 \times 10^{17}\)</span> times more likely than one that simply contains a linear component. This is very strong evidence for the inclusion of a quadratic component of <code>age</code> in the model.</p>
 </div>
 </div>
-<p>Next, determine the Bayes Factor for <code>pmod3</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">
-pmod3BF &lt;-<span class="st"> </span>BayesFactor<span class="op">::</span><span class="kw">lmBF</span>(happiness <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>age2 <span class="op">+</span><span class="st"> </span>age3, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(SurveyData) )</code></pre>
-<p>Compare <code>pmod3BF</code> and <code>pmod2BF</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">pmod3BF <span class="op">/</span><span class="st"> </span>pmod2BF
+<p><br />
+</p>
+<p>Next, determine the Bayes Factor for <code>polynomial3</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">polynomial3BF &lt;-<span class="st"> </span>BayesFactor<span class="op">::</span><span class="kw">lmBF</span>(happiness <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>age2 <span class="op">+</span><span class="st"> </span>age3, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(SurveyData) )</code></pre>
+<p><strong>Explanation:</strong> Again, we need to specify the polynomial equation with linear, quadratic, and cubic components separately, hence <code>happiness ~ age + age2 + age3</code>.</p>
+<p><br />
+</p>
+<p>Compare <code>polynomial3BF</code> and <code>polynomial2BF</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">polynomial3BF <span class="op">/</span><span class="st"> </span>polynomial2BF
 <span class="op">&gt;</span><span class="st"> </span>Bayes factor analysis
 <span class="op">&gt;</span><span class="st"> </span><span class="op">--------------</span>
 <span class="er">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] age <span class="op">+</span><span class="st"> </span>age2 <span class="op">+</span><span class="st"> </span>age3 <span class="op">:</span><span class="st"> </span><span class="fl">0.1631281</span> ±<span class="dv">0</span>%
@@ -283,21 +296,26 @@ pmod3BF &lt;-<span class="st"> </span>BayesFactor<span class="op">::</span><span
 <span class="op">&gt;</span><span class="st"> </span><span class="op">---</span>
 <span class="er">&gt;</span><span class="st"> </span>Bayes factor type<span class="op">:</span><span class="st"> </span>BFlinearModel, JZS</code></pre>
 <div class="exercise">
-<p>How many more times likely is a model with a cubic component than one with only linear and quadratic components?
+<p>How many more times likely is a model with a <strong>cubic component</strong> than one with only <strong>linear and quadratic components</strong>?
 <input class='solveme nospaces' size='4' data-answer='["0.16"]'/></p>
+<p><br />
+</p>
 <p>Does this constitute strong evidence for the inclusion of a cubic component in the model?
 <select class='solveme' data-answer='["no"]'> <option></option> <option>yes</option> <option>no</option></select></p>
 <div class="solution">
 <button>
 Explain why
 </button>
-<p>The Bayes Factor tells us that a model with a cubic component of <code>age</code> is only 0.16 times more likely than one that contains both linear and quadratic components. Because the Bayes Factor is less than 0.33, this constitutes strong evidence for the simpler model with a quadratic component.</p>
+<p>The Bayes Factor tells us that a model with a cubic component of <code>age</code> is only 0.16 times more likely than one that contains both linear and quadratic components. Because the Bayes Factor is less than 0.33, this constitutes strong evidence for the simpler model with only linear and quadratic components.</p>
 </div>
 <p><br />
-On the basis of the model comparison with Bayes Factors, which model should be preferred?</p>
-<p><select class='solveme' data-answer='["linear and quadratic components of age"]'> <option></option> <option>linear component of age only</option> <option>linear and quadratic components of age</option> <option>linear, quadratic, cubic components of age</option></select></p>
+On the basis of the model comparison with Bayes Factors, which model should be preferred? One with:</p>
+<p><select class='solveme' data-answer='["linear and quadratic components of age"]'> <option></option> <option>a linear component of age only</option> <option>linear and quadratic components of age</option> <option>linear, quadratic, cubic components of age</option></select></p>
+<p><br />
+</p>
+<p>A comparison of Bayes Factors agrees with the comparison of the models with <code>anova</code>. There’s strong evidence that the relationship between <code>age</code> and <code>happiness</code> contains both linear and quadratic components of <code>age</code>. There was no evidence for a cubic component.</p>
 </div>
-<p>A comparison of Bayes Factors agrees with the results using <code>anova</code>: the Bayes Factors indicate that there is more evidence for <code>pmod2</code> than <code>pmod1</code>, and that <code>pmod2</code> should be preferred over <code>pmod2</code>.</p>
+</div>
 </div>
             </section>
 

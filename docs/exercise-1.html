@@ -194,8 +194,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exercise-1" class="section level2">
 <h2>Exercise</h2>
 <div class="exercise">
-<p>Now you try incorporating polynomials to a regression, and do so by investigating the relationshipp between <code>age</code> and <code>anxiety</code> in <code>SurveyData</code>.</p>
-<p><strong>Does <code>age</code> predict <code>anxiety</code>, and are there ?</strong></p>
+<p><strong>Now you try incorporating polynomials to a regression, and do so by investigating the relationship between <code>age</code> and <code>anxiety</code> in <code>SurveyData</code>.</strong></p>
+<p><br />
+</p>
 <p>The column <code>anxiety</code> in <code>SurveyData</code> contains responses to the question:</p>
 <p><strong>“Overall, how anxious did you feel yesterday? Where 0 is ‘not at all anxious’ and 10 is ‘completely anxious’.”</strong></p>
 <ul>
@@ -207,21 +208,28 @@ Try to create the plot yourself first. Click to show the code
 </button>
 <p><img src="07-fitting-curves_files/figure-html/fig14-1.png" width="336" style="display: block; margin: auto;" /></p>
 </div>
+<p><br />
+What kind of relationship between <code>age</code> and <code>anxiety</code> do you think is present?<br />
+</p>
 <div class="solution">
 <button>
-Try to discern the trend in the data yourself first, then click to see answer
+Try yourself first, then click to see answer
 </button>
-<p>A slight bow is evident is evident in the plot such that <code>age</code> and <code>anxiety</code> seem to follow an inverted U-shaped relationship.<br />
-Reported <code>anxiety</code> levels increase from 30 years to middle age (approx. 50 years) and then declines from 50 to 70 years. This mirrors the relationship with <code>age</code> and <code>happiness</code>: <code>anxiety</code> is greatest when <code>happiness</code> seems lowest.</p>
+<p>A slight <strong>bow</strong> is evident in the plot such that <code>age</code> and <code>anxiety</code> seem to follow an inverted U-shaped relationship.<br />
+Reported <code>anxiety</code> levels increase from 30 years to middle age (approx. 50 years) and then declines from 50 to 70 years. This mirrors the relationship with <code>age</code> and <code>happiness</code>. <code>anxiety</code> is greatest when <code>happiness</code> seems lowest.</p>
 </div>
 <p><br />
-<strong>Answer the following questions:</strong></p>
+<br />
+</p>
+<p><strong>Answer the following questions:</strong></p>
+<p><strong>Linear component</strong></p>
 <ul>
 <li>What percentage of the variance in <code>anxiety</code> is explained by a model with <code>age</code> as predictor?
 <input class='solveme nospaces' size='4' data-answer='["1.19"]'/> %</li>
 </ul>
 <p><br />
 </p>
+<p><strong>Quadratic component</strong></p>
 <ul>
 <li><p>What percentage of the variance in <code>anxiety</code> is explained by a model containing both linear and quadratic components of <code>age</code> as predictors?
 <input class='solveme nospaces' size='4' data-answer='["5.63"]'/> %</p></li>
@@ -229,29 +237,31 @@ Reported <code>anxiety</code> levels increase from 30 years to middle age (appro
 <input class='solveme nospaces' size='4' data-answer='["4.44"]'/> %</p></li>
 <li><p>Does this increase represent a statistically significant increase?
 <select class='solveme' data-answer='["yes"]'> <option></option> <option>yes</option> <option>no</option></select></p></li>
-<li><p>What is the <em>F</em>-statistic for the test of the model with a linear component vs. linear + quadratic components?
+<li><p>What is the <em>F</em>-statistic comparing the model with a linear component vs. one with linear and quadratic components?
 <em>F</em>(1, 147) = <input class='solveme nospaces' size='4' data-answer='["6.92"]'/>, <em>p</em> = .009</p></li>
 </ul>
 <p><br />
 </p>
+<p><strong>Cubic component</strong></p>
 <ul>
 <li><p>What percentage of the variance in <code>anxiety</code> is explained by a model containing both linear, quadratic and cubic components of <code>age</code> as predictors?
 <input class='solveme nospaces' size='4' data-answer='["7.02"]'/> %</p></li>
 <li><p>What is the <em>increase</em> in <span class="math inline">\(R^2\)</span> if a cubic component of <code>age</code> is added to the model?
 <input class='solveme nospaces' size='4' data-answer='["2.58"]'/> %</p></li>
 <li><p>Does this increase represent a statistically significant increase? <select class='solveme' data-answer='["no"]'> <option></option> <option>yes</option> <option>no</option></select></p></li>
-<li><p>What is the <em>F</em>-statistic for the test of the model with a linear component vs. linear + quadratic components?
-<em>F</em>(1, 146) = <input class='solveme nospaces' size='4' data-answer='["1.22"]'/>, <em>p</em> = <input class='solveme nospaces' size='4' data-answer='["0.14"]'/></p></li>
+<li><p>What is the <em>F</em>-statistic for the test of the model with a linear + quadratic component vs. linear + quadratic + cubic components?
+<em>F</em>(1, 146) = <input class='solveme nospaces' size='4' data-answer='["2.18"]'/>, <em>p</em> = <input class='solveme nospaces' size='4' data-answer='["0.14"]'/></p></li>
 </ul>
 <p><br />
 </p>
-<ul>
-<li>On the basis of the model comparison with ANOVA, which model should be preferred?
-<select class='solveme' data-answer='["linear and quadratic components of age"]'> <option></option> <option>linear component of age only</option> <option>linear and quadratic components of age</option> <option>linear, quadratic, cubic components of age</option></select></li>
-</ul>
+<p><strong>Decision</strong>
+- On the basis of the model comparison with ANOVA, which model should be preferred?
+<select class='solveme' data-answer='["linear and quadratic components of age"]'> <option></option> <option>linear component of age only</option> <option>linear and quadratic components of age</option> <option>linear, quadratic, cubic components of age</option></select></p>
+<p><br />
+</p>
 <div class="solution">
 <button>
-Show me the code to do this
+Show me the code to do all of this
 </button>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># fit a linear model, show results</span>
 anx1 &lt;-<span class="st"> </span><span class="kw">lm</span>(anxiety <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> SurveyData)
@@ -271,23 +281,28 @@ anx3 &lt;-<span class="st"> </span><span class="kw">lm</span>(anxiety <span clas
 <span class="co"># compare (linear + quadratic) and (linear + quadratic + cubic) models</span>
 <span class="kw">anova</span>(anx2, anx3)</code></pre>
 </div>
-<p><strong>Now compare models with Bayes Factors:</strong></p>
-<p>(Note: you do not need to re-add the quadratic and cubic components of age to <code>SurveyData</code> - these should still be in <code>SurveyData</code> if you followed the steps before.)</p>
+<p><br />
+</p>
+<p><strong>Now use Bayes Factors:</strong></p>
+<p>(Note: you do not need to re-add the quadratic and cubic components of age to <code>SurveyData</code>, as we did this before. These should still be in <code>SurveyData</code> as <code>age2</code> and <code>age3</code>.)</p>
+<p><br />
+</p>
 <ul>
-<li><p>The Bayes Factor comparing a model with linear and quadratic components vs. linear component only is <input class='solveme nospaces' size='4' data-answer='["5.48"]'/></p></li>
+<li><p>The Bayes Factor comparing a model with linear and quadratic components vs. one with a linear component only is <input class='solveme nospaces' size='4' data-answer='["5.48"]'/></p></li>
 <li><p>This indicates that there is more evidence for which model? <select class='solveme' data-answer='["linear plus quadratic components"]'> <option></option> <option>linear component only</option> <option>linear plus quadratic components</option></select></p></li>
 </ul>
 <p><br />
-- The Bayes Factor comparing a model with linear, quadratic and cubic components vs. linear and quadratic components only is <input class='solveme nospaces' size='4' data-answer='["0.76"]'/></p>
+</p>
 <ul>
-<li>This indicates that there is more evidence for which model? <select class='solveme' data-answer='["linear plus quadratic component"]'> <option></option> <option>linear plus quadratic component</option> <option>linear, quadratic, and cubic components</option></select></li>
+<li><p>The Bayes Factor comparing a model with linear, quadratic and cubic components vs. one with linear and quadratic components only is <input class='solveme nospaces' size='4' data-answer='["0.76"]'/></p></li>
+<li><p>This indicates that there is more evidence for which model? <select class='solveme' data-answer='["linear plus quadratic component"]'> <option></option> <option>linear plus quadratic component</option> <option>linear, quadratic, and cubic components</option></select></p></li>
 </ul>
 <p><br />
 </p>
-<p>Do the comparisons of models with Bayes Factors support the conclusions made with anova? <select class='solveme' data-answer='["yes"]'> <option></option> <option>no</option> <option>yes</option></select></p>
+<p>Do the comparisons of models with Bayes Factors agree with the conclusions made with anova? <select class='solveme' data-answer='["yes"]'> <option></option> <option>no</option> <option>yes</option></select></p>
 <div class="solution">
 <button>
-Show me the code to determine the Bayes Factors for each model
+Show me the code to determine the Bayes Factors
 </button>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(BayesFactor)
 
@@ -296,6 +311,9 @@ anx1BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(anxiety <span 
 
 <span class="co"># BF for model anx2</span>
 anx2BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(anxiety <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>age2, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(SurveyData) )
+
+<span class="co"># BF for model anx3</span>
+anx3BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(anxiety<span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>age2 <span class="op">+</span><span class="st"> </span>age3, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(SurveyData) )
 
 <span class="co"># compare BFs for anx2 and anx1</span>
 anx2BF <span class="op">/</span><span class="st"> </span>anx1BF
@@ -307,9 +325,6 @@ anx2BF <span class="op">/</span><span class="st"> </span>anx1BF
 <span class="er">&gt;</span><span class="st">   </span>anxiety <span class="op">~</span><span class="st"> </span>age 
 <span class="op">&gt;</span><span class="st"> </span><span class="op">---</span>
 <span class="er">&gt;</span><span class="st"> </span>Bayes factor type<span class="op">:</span><span class="st"> </span>BFlinearModel, JZS
-
-<span class="co"># BF for model anx3</span>
-anx3BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(anxiety<span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>age2 <span class="op">+</span><span class="st"> </span>age3, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(SurveyData) )
 
 <span class="co"># compare BFs for anx3 and anx2</span>
 anx3BF <span class="op">/</span><span class="st"> </span>anx2BF
