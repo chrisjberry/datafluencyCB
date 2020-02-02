@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>FAQ Data Analysis and Visualisation Task | PSYC753 Data Fluency</title>
-  <meta name="description" content="FAQ Data Analysis and Visualisation Task | PSYC753 Data Fluency" />
+  <title>Exercise | PSYC753 Data Fluency</title>
+  <meta name="description" content="Exercise | PSYC753 Data Fluency" />
   <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="FAQ Data Analysis and Visualisation Task | PSYC753 Data Fluency" />
+  <meta property="og:title" content="Exercise | PSYC753 Data Fluency" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="FAQ Data Analysis and Visualisation Task | PSYC753 Data Fluency" />
+  <meta name="twitter:title" content="Exercise | PSYC753 Data Fluency" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="summary-of-key-points-2.html">
-
+<link rel="prev" href="bayesian-approach.html">
+<link rel="next" href="summary-of-key-points-2.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -191,136 +191,137 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="FAQ-assessment" class="section level1">
-<h1>FAQ Data Analysis and Visualisation Task</h1>
-<p><br />
-</p>
-<div id="how-do-i-add-a-caption-to-a-summary-output-table" class="section level3">
-<h3>How do I add a caption to a summary output table?</h3>
-<p><code>pander()</code> can be used to output a summary table with a caption. Use the <code>caption=“XXX”</code> argument. For example:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
-<span class="kw">library</span>(pander)
-
-mtcars <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">group_by</span>(cyl) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_mpg =</span> <span class="kw">mean</span>(mpg)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;Mean miles per gallon by cyl&quot;</span>)</code></pre>
-<table style="width:24%;">
-<caption>Mean miles per gallon by cyl</caption>
-<colgroup>
-<col width="8%" />
-<col width="15%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">cyl</th>
-<th align="center">mean_mpg</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">4</td>
-<td align="center">26.66</td>
-</tr>
-<tr class="even">
-<td align="center">6</td>
-<td align="center">19.74</td>
-</tr>
-<tr class="odd">
-<td align="center">8</td>
-<td align="center">15.1</td>
-</tr>
-</tbody>
-</table>
-<p><br />
-</p>
-</div>
-<div id="how-can-i-round-numbers-to-x-decimal-places" class="section level3">
-<h3>How can I round numbers to X decimal places?</h3>
-<p>The <code>round()</code> function can be used to round a number. For example, the command:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="fl">3.14159</span>, <span class="dv">2</span>)
-<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">3.14</span></code></pre>
-<p>rounds 3.14159 to 2 decimal places.</p>
-<p>We can combine <code>round</code> with commands from the <code>dplyr</code> package to round <strong>all</strong> of the numbers in a data frame to two decimal places in one go.</p>
-<p>First look at the built-in dataset <code>DNase</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">DNase <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()
-<span class="op">&gt;</span><span class="st"> </span>Grouped Data<span class="op">:</span><span class="st"> </span>density <span class="op">~</span><span class="st"> </span>conc <span class="op">|</span><span class="st"> </span>Run
-<span class="op">&gt;</span><span class="st">   </span>Run       conc density
-<span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>   <span class="dv">1</span> <span class="fl">0.04882812</span>   <span class="fl">0.017</span>
-<span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>   <span class="dv">1</span> <span class="fl">0.04882812</span>   <span class="fl">0.018</span>
-<span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>   <span class="dv">1</span> <span class="fl">0.19531250</span>   <span class="fl">0.121</span>
-<span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span>   <span class="dv">1</span> <span class="fl">0.19531250</span>   <span class="fl">0.124</span>
-<span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>   <span class="dv">1</span> <span class="fl">0.39062500</span>   <span class="fl">0.206</span>
-<span class="op">&gt;</span><span class="st"> </span><span class="dv">6</span>   <span class="dv">1</span> <span class="fl">0.39062500</span>   <span class="fl">0.215</span></code></pre>
-<p>The columns <code>conc</code> and <code>density</code> contain numeric values that we may want to display to 2 decimal places.</p>
-<p>We can achieve that using <code>mutate_if()</code> from the <code>dplyr</code> package, as follows:</p>
-<pre class="sourceCode r"><code class="sourceCode r">DNase <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate_if</span>(is.numeric, round, <span class="dv">2</span>) </code></pre>
-<p><strong>Explanation</strong>: <code>mutate_if</code> will change the entry in the data frame <strong>if</strong> some condition is satisfied. In this case, if the entry is a number (i.e., <code>is.numeric</code>), it will apply <code>round</code> to it to <code>2</code> decimal places. (The column <code>Run</code> is not rounded because it is is an ordinal, rather than a numeric, variable.)</p>
+<div id="exercise-1" class="section level2">
+<h2>Exercise</h2>
 <div class="exercise">
-<p>Try rounding the values in <code>DNase</code> to one decimal place.</p>
+<p>Now you try incorporating polynomials to a regression, and do so by investigating the relationshipp between <code>age</code> and <code>anxiety</code> in <code>SurveyData</code>.</p>
+<p><strong>Does <code>age</code> predict <code>anxiety</code>, and are there ?</strong></p>
+<p>The column <code>anxiety</code> in <code>SurveyData</code> contains responses to the question:</p>
+<p><strong>“Overall, how anxious did you feel yesterday? Where 0 is ‘not at all anxious’ and 10 is ‘completely anxious’.”</strong></p>
+<ul>
+<li>Create a scatterplot of <code>age</code> vs. <code>anxiety</code>. Does there appear to be a linear or non-linear relationship?</li>
+</ul>
 <div class="solution">
 <button>
-Show me
+Try to create the plot yourself first. Click to show the code
 </button>
-<pre class="sourceCode r"><code class="sourceCode r">DNase <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate_if</span>(is.numeric, round, <span class="dv">1</span>) </code></pre>
+<p><img src="07-fitting-curves_files/figure-html/fig14-1.png" width="336" style="display: block; margin: auto;" /></p>
 </div>
+<div class="solution">
+<button>
+Try to discern the trend in the data yourself first, then click to see answer
+</button>
+<p>A slight bow is evident is evident in the plot such that <code>age</code> and <code>anxiety</code> seem to follow an inverted U-shaped relationship.<br />
+Reported <code>anxiety</code> levels increase from 30 years to middle age (approx. 50 years) and then declines from 50 to 70 years. This mirrors the relationship with <code>age</code> and <code>happiness</code>: <code>anxiety</code> is greatest when <code>happiness</code> seems lowest.</p>
 </div>
 <p><br />
-</p>
-</div>
-<div id="cheat-sheets" class="section level3">
-<h3>Cheat sheets</h3>
-<p>Some handy cheat sheets for RStudio are located here: <a href="https://www.rstudio.com/resources/cheatsheets/" class="uri">https://www.rstudio.com/resources/cheatsheets/</a></p>
-<p>The following may be of particular use for topics from this module:</p>
+<strong>Answer the following questions:</strong></p>
 <ul>
-<li><a href="https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf">Data transformation with dplyr</a></li>
-<li><a href="https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf">Data visualisation with ggplot</a></li>
-<li><a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf">R Markdown</a></li>
+<li>What percentage of the variance in <code>anxiety</code> is explained by a model with <code>age</code> as predictor?
+<input class='solveme nospaces' size='4' data-answer='["1.19"]'/> %</li>
 </ul>
 <p><br />
 </p>
-</div>
-<div id="e-meaning" class="section level3">
-<h3>What does it mean if RStudio prints out “e-” next to a number?</h3>
-<p>If R prints “1.4e-4”, in the output this actually means “<span class="math inline">\(1.4 \times 10^{-4}\)</span>”, or “0.00014”. It is a way of printing out very small (or very large) numbers.</p>
-<p>“e-4” means “move the decimal point 4 places to the left”. See this by executing the command below – it should return “0.00014”.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fl">1.4e-4</span>
-<span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="fl">0.00014</span></code></pre>
-<p>So:</p>
 <ul>
-<li>“e-5” means move the decimal point 5 places to the left (e.g., <code>2.5e-5</code> is “<span class="math inline">\(2.5 \times 10^{-5}\)</span>”, or 0.000025)</li>
-<li>“e-10” means move the decimal point 10 places to the left (e.g., <code>2.5e-10</code> is “<span class="math inline">\(2.5 \times 10^{-10}\)</span>”, or 0.00000000025).</li>
-<li>“e5” means move the decimal point 5 places to the <strong>right</strong> (e.g., <code>2.5e5</code> is “<span class="math inline">\(2.5 \times 10^{5}\)</span>”, 250000).</li>
+<li><p>What percentage of the variance in <code>anxiety</code> is explained by a model containing both linear and quadratic components of <code>age</code> as predictors?
+<input class='solveme nospaces' size='4' data-answer='["5.63"]'/> %</p></li>
+<li><p>What is the <em>increase</em> in <span class="math inline">\(R^2\)</span> if a quadratic component of <code>age</code> is added to the model?
+<input class='solveme nospaces' size='4' data-answer='["4.44"]'/> %</p></li>
+<li><p>Does this increase represent a statistically significant increase?
+<select class='solveme' data-answer='["yes"]'> <option></option> <option>yes</option> <option>no</option></select></p></li>
+<li><p>What is the <em>F</em>-statistic for the test of the model with a linear component vs. linear + quadratic components?
+<em>F</em>(1, 147) = <input class='solveme nospaces' size='4' data-answer='["6.92"]'/>, <em>p</em> = .009</p></li>
 </ul>
 <p><br />
 </p>
-</div>
-<div id="how-do-i-set-up-an-r-markdown-file" class="section level3">
-<h3>How do I set up an R Markdown file?</h3>
-<p>R-markdown is a way of embedding R code, figures, and text in a single executable document. (As an example, all the worksheets for this module were written in r-markdown.)</p>
-<p>If you want to create an R markdown file, go to File &gt; New File &gt; R Markdown.</p>
-<p>Ben covered R Markdown in his sessions: <a href="https://benwhalley.github.io/datafluency/rmarkdown.html" class="uri">https://benwhalley.github.io/datafluency/rmarkdown.html</a></p>
-<p>There’s a good cheat sheet here:
-- <a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf">R Markdown</a></p>
-<p><br />
-</p>
-</div>
-<div id="how-do-convert-my-r-markdown-file-to-pdf" class="section level3">
-<h3>How do convert my R Markdown file to PDF?</h3>
-<p>Click the Knit button in the editor window, and select “Knit to PDF”.</p>
-<p>If there are no errors in your code, the PDF of your document will appear in the “Files” window.</p>
-<p><br />
-</p>
-</div>
-<div id="how-can-i-save-a-file-from-rstudio-to-my-own-hard-drivecomputer-so-i-can-submit-it-to-the-dle" class="section level3">
-<h3>How can I save a file from RStudio to my own hard drive/computer so I can submit it to the DLE?</h3>
-<p>If using R Studio through the university website (recommended) <a href="https://rstudio.plymouth.ac.uk">rstudio.plymouth.ac.uk</a>, you can save a file in the Files pane as follows:</p>
 <ul>
-<li>Tick the check box next to the file you want to save.</li>
-<li>Click the “More” button &gt; Export.</li>
-<li>You can then choose where to save the file on your computer.</li>
+<li><p>What percentage of the variance in <code>anxiety</code> is explained by a model containing both linear, quadratic and cubic components of <code>age</code> as predictors?
+<input class='solveme nospaces' size='4' data-answer='["7.02"]'/> %</p></li>
+<li><p>What is the <em>increase</em> in <span class="math inline">\(R^2\)</span> if a cubic component of <code>age</code> is added to the model?
+<input class='solveme nospaces' size='4' data-answer='["2.58"]'/> %</p></li>
+<li><p>Does this increase represent a statistically significant increase? <select class='solveme' data-answer='["no"]'> <option></option> <option>yes</option> <option>no</option></select></p></li>
+<li><p>What is the <em>F</em>-statistic for the test of the model with a linear component vs. linear + quadratic components?
+<em>F</em>(1, 146) = <input class='solveme nospaces' size='4' data-answer='["1.22"]'/>, <em>p</em> = <input class='solveme nospaces' size='4' data-answer='["0.14"]'/></p></li>
 </ul>
+<p><br />
+</p>
+<ul>
+<li>On the basis of the model comparison with ANOVA, which model should be preferred?
+<select class='solveme' data-answer='["linear and quadratic components of age"]'> <option></option> <option>linear component of age only</option> <option>linear and quadratic components of age</option> <option>linear, quadratic, cubic components of age</option></select></li>
+</ul>
+<div class="solution">
+<button>
+Show me the code to do this
+</button>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># fit a linear model, show results</span>
+anx1 &lt;-<span class="st"> </span><span class="kw">lm</span>(anxiety <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> SurveyData)
+<span class="kw">summary</span>(anx1)
 
+<span class="co"># fit a quadratic component, show results</span>
+anx2 &lt;-<span class="st"> </span><span class="kw">lm</span>(anxiety <span class="op">~</span><span class="st"> </span><span class="kw">poly</span>(age,<span class="dv">2</span>), <span class="dt">data=</span>SurveyData)
+<span class="kw">summary</span>(anx2)
+
+<span class="co"># compare linear and linear+quadratic models</span>
+<span class="kw">anova</span>(anx1, anx2)
+
+<span class="co"># fit a cubic component</span>
+anx3 &lt;-<span class="st"> </span><span class="kw">lm</span>(anxiety <span class="op">~</span><span class="st"> </span><span class="kw">poly</span>(age,<span class="dv">3</span>), <span class="dt">data=</span>SurveyData)
+<span class="kw">summary</span>(anx3)
+
+<span class="co"># compare (linear + quadratic) and (linear + quadratic + cubic) models</span>
+<span class="kw">anova</span>(anx2, anx3)</code></pre>
+</div>
+<p><strong>Now compare models with Bayes Factors:</strong></p>
+<p>(Note: you do not need to re-add the quadratic and cubic components of age to <code>SurveyData</code> - these should still be in <code>SurveyData</code> if you followed the steps before.)</p>
+<ul>
+<li><p>The Bayes Factor comparing a model with linear and quadratic components vs. linear component only is <input class='solveme nospaces' size='4' data-answer='["5.48"]'/></p></li>
+<li><p>This indicates that there is more evidence for which model? <select class='solveme' data-answer='["linear plus quadratic components"]'> <option></option> <option>linear component only</option> <option>linear plus quadratic components</option></select></p></li>
+</ul>
+<p><br />
+- The Bayes Factor comparing a model with linear, quadratic and cubic components vs. linear and quadratic components only is <input class='solveme nospaces' size='4' data-answer='["0.76"]'/></p>
+<ul>
+<li>This indicates that there is more evidence for which model? <select class='solveme' data-answer='["linear plus quadratic component"]'> <option></option> <option>linear plus quadratic component</option> <option>linear, quadratic, and cubic components</option></select></li>
+</ul>
+<p><br />
+</p>
+<p>Do the comparisons of models with Bayes Factors support the conclusions made with anova? <select class='solveme' data-answer='["yes"]'> <option></option> <option>no</option> <option>yes</option></select></p>
+<div class="solution">
+<button>
+Show me the code to determine the Bayes Factors for each model
+</button>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(BayesFactor)
+
+<span class="co"># BF for model anx1</span>
+anx1BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(anxiety <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(SurveyData) )
+
+<span class="co"># BF for model anx2</span>
+anx2BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(anxiety <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>age2, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(SurveyData) )
+
+<span class="co"># compare BFs for anx2 and anx1</span>
+anx2BF <span class="op">/</span><span class="st"> </span>anx1BF
+<span class="op">&gt;</span><span class="st"> </span>Bayes factor analysis
+<span class="op">&gt;</span><span class="st"> </span><span class="op">--------------</span>
+<span class="er">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] age <span class="op">+</span><span class="st"> </span>age2 <span class="op">:</span><span class="st"> </span><span class="fl">5.476443</span> ±<span class="dv">0</span>%
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Against denominator<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">   </span>anxiety <span class="op">~</span><span class="st"> </span>age 
+<span class="op">&gt;</span><span class="st"> </span><span class="op">---</span>
+<span class="er">&gt;</span><span class="st"> </span>Bayes factor type<span class="op">:</span><span class="st"> </span>BFlinearModel, JZS
+
+<span class="co"># BF for model anx3</span>
+anx3BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(anxiety<span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>age2 <span class="op">+</span><span class="st"> </span>age3, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(SurveyData) )
+
+<span class="co"># compare BFs for anx3 and anx2</span>
+anx3BF <span class="op">/</span><span class="st"> </span>anx2BF
+<span class="op">&gt;</span><span class="st"> </span>Bayes factor analysis
+<span class="op">&gt;</span><span class="st"> </span><span class="op">--------------</span>
+<span class="er">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] age <span class="op">+</span><span class="st"> </span>age2 <span class="op">+</span><span class="st"> </span>age3 <span class="op">:</span><span class="st"> </span><span class="fl">0.7556007</span> ±<span class="dv">0</span>%
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Against denominator<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">   </span>anxiety <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>age2 
+<span class="op">&gt;</span><span class="st"> </span><span class="op">---</span>
+<span class="er">&gt;</span><span class="st"> </span>Bayes factor type<span class="op">:</span><span class="st"> </span>BFlinearModel, JZS</code></pre>
+</div>
 </div>
 </div>
             </section>
@@ -328,8 +329,8 @@ Show me
           </div>
         </div>
       </div>
-<a href="summary-of-key-points-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="bayesian-approach.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="summary-of-key-points-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

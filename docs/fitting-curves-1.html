@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Fitting curves | PSYC753 Data Fluency</title>
+  <meta name="description" content="Fitting curves | PSYC753 Data Fluency" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Fitting curves | PSYC753 Data Fluency" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Fitting curves | PSYC753 Data Fluency" />
+  
+  
+  
+
+<meta name="author" content="" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="polynomials.html">
+<link rel="next" href="bayesian-approach.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<link href="media/webex.css" rel="stylesheet" />
+<link href="media/psystats.css" rel="stylesheet" />
+<script src="media/webex.js"></script>
+<script src="media/psystats.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118343766-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-118343766-4');
+</script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Fluency</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section"></a></li>
+<li class="chapter" data-level="" data-path="assessment.html"><a href="assessment.html"><i class="fa fa-check"></i>Assessment</a><ul>
+<li class="chapter" data-level="" data-path="data-analysis-and-visualisation-task.html"><a href="data-analysis-and-visualisation-task.html"><i class="fa fa-check"></i>Data analysis and visualisation task</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="building-models-1.html"><a href="building-models-1.html"><i class="fa fa-check"></i>Building models 1</a><ul>
+<li class="chapter" data-level="" data-path="multiple-regression-with-several-continuous-predictors.html"><a href="multiple-regression-with-several-continuous-predictors.html"><i class="fa fa-check"></i>Multiple regression with several continuous predictors</a></li>
+<li class="chapter" data-level="" data-path="analysing-the-model.html"><a href="analysing-the-model.html"><i class="fa fa-check"></i>Analysing the model</a></li>
+<li class="chapter" data-level="" data-path="conceptualising-the-variance-explained-by-predictors.html"><a href="conceptualising-the-variance-explained-by-predictors.html"><i class="fa fa-check"></i>Conceptualising the variance explained by predictors</a></li>
+<li class="chapter" data-level="" data-path="adding-predictor-variables-to-the-model.html"><a href="adding-predictor-variables-to-the-model.html"><i class="fa fa-check"></i>Adding predictor variables to the model</a></li>
+<li class="chapter" data-level="" data-path="multicollinearity.html"><a href="multicollinearity.html"><i class="fa fa-check"></i>Multicollinearity</a></li>
+<li class="chapter" data-level="" data-path="final-exercise.html"><a href="final-exercise.html"><i class="fa fa-check"></i>Final exercise</a></li>
+<li class="chapter" data-level="" data-path="summary-of-key-points.html"><a href="summary-of-key-points.html"><i class="fa fa-check"></i>Summary of key points</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="building-models-2.html"><a href="building-models-2.html"><i class="fa fa-check"></i>Building models 2</a><ul>
+<li class="chapter" data-level="" data-path="using-anova-and-bayes-factors-to-compare-models.html"><a href="using-anova-and-bayes-factors-to-compare-models.html"><i class="fa fa-check"></i>Using ANOVA and Bayes Factors to compare models</a></li>
+<li class="chapter" data-level="" data-path="comparing-models-using-anova.html"><a href="comparing-models-using-anova.html"><i class="fa fa-check"></i>Comparing models using ANOVA</a></li>
+<li class="chapter" data-level="" data-path="comparing-models-using-bayes-factors.html"><a href="comparing-models-using-bayes-factors.html"><i class="fa fa-check"></i>Comparing models using Bayes Factors</a></li>
+<li class="chapter" data-level="" data-path="exercise.html"><a href="exercise.html"><i class="fa fa-check"></i>Exercise</a></li>
+<li class="chapter" data-level="" data-path="summary-of-key-points-1.html"><a href="summary-of-key-points-1.html"><i class="fa fa-check"></i>Summary of key points</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="fitting-curves.html"><a href="fitting-curves.html"><i class="fa fa-check"></i>Fitting curves</a><ul>
+<li class="chapter" data-level="" data-path="using-polynomials-to-fit-curves.html"><a href="using-polynomials-to-fit-curves.html"><i class="fa fa-check"></i>Using polynomials to fit curves</a></li>
+<li class="chapter" data-level="" data-path="polynomials.html"><a href="polynomials.html"><i class="fa fa-check"></i>Polynomials</a></li>
+<li class="chapter" data-level="" data-path="fitting-curves-1.html"><a href="fitting-curves-1.html"><i class="fa fa-check"></i>Fitting curves</a></li>
+<li class="chapter" data-level="" data-path="bayesian-approach.html"><a href="bayesian-approach.html"><i class="fa fa-check"></i>Bayesian approach</a></li>
+<li class="chapter" data-level="" data-path="exercise-1.html"><a href="exercise-1.html"><i class="fa fa-check"></i>Exercise</a></li>
+<li class="chapter" data-level="" data-path="summary-of-key-points-2.html"><a href="summary-of-key-points-2.html"><i class="fa fa-check"></i>Summary of key points</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="FAQ-assessment.html"><a href="FAQ-assessment.html"><i class="fa fa-check"></i>FAQ Data Analysis and Visualisation Task</a></li>
+<li class="divider"></li>
+<li><a href="./LICENCE" target="blank">Licence: CC BY-SA 4</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSYC753 Data Fluency</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="fitting-curves-1" class="section level2">
+<h2>Fitting curves</h2>
+<p>When fitting a regression model to the data, how can we identify whether our regression model should have polynomial components?</p>
+<p>A 2016 survey of the National Office for Statistics investigated happiness across the life span. Approximately 300,000 individuals of all ages answered questions related to well-being. A BBC news report of the study can be found <a href="https://www.bbc.co.uk/news/uk-35471624">here</a>.</p>
+<p>Each participant answered the following question regarding happiness:</p>
+<div class="tip">
+<p>“Overall, how happy did you feel yesterday? Where 0 is ‘not at all happy’ and 10 is ‘completely happy’.”</p>
+</div>
+<p>A dataset inspired by this survey are located at (“<a href="https://bit.ly/2uIxM5K" class="uri">https://bit.ly/2uIxM5K</a>”).</p>
+<p>Load the data into R:</p>
+<pre class="sourceCode r"><code class="sourceCode r">SurveyData &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://bit.ly/2uIxM5K&quot;</span>)</code></pre>
+<p>Preview it:</p>
+<pre class="sourceCode r"><code class="sourceCode r">SurveyData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()
+<span class="op">&gt;</span><span class="st"> </span>Observations<span class="op">:</span><span class="st"> </span><span class="dv">150</span>
+<span class="op">&gt;</span><span class="st"> </span>Variables<span class="op">:</span><span class="st"> </span><span class="dv">3</span>
+<span class="op">&gt;</span><span class="st"> </span><span class="er">$</span><span class="st"> </span>age       <span class="op">&lt;</span>dbl<span class="op">&gt;</span><span class="st"> </span><span class="fl">65.97</span>, <span class="fl">35.03</span>, <span class="fl">58.61</span>, <span class="fl">35.04</span>, <span class="fl">60.16</span>, <span class="fl">67.51</span>, <span class="fl">44.39</span>, <span class="dv">66</span>....
+<span class="op">&gt;</span><span class="st"> </span><span class="er">$</span><span class="st"> </span>happiness <span class="op">&lt;</span>dbl<span class="op">&gt;</span><span class="st"> </span><span class="fl">7.85</span>, <span class="fl">7.56</span>, <span class="fl">7.59</span>, <span class="fl">7.06</span>, <span class="fl">7.96</span>, <span class="fl">8.11</span>, <span class="fl">6.99</span>, <span class="fl">7.95</span>, <span class="dv">8</span>.<span class="dv">35</span>...
+<span class="op">&gt;</span><span class="st"> </span><span class="er">$</span><span class="st"> </span>anxiety   <span class="op">&lt;</span>dbl<span class="op">&gt;</span><span class="st"> </span><span class="fl">2.33</span>, <span class="fl">2.58</span>, <span class="fl">3.43</span>, <span class="fl">1.67</span>, <span class="fl">2.13</span>, <span class="fl">1.09</span>, <span class="fl">3.43</span>, <span class="fl">3.82</span>, <span class="dv">3</span>.<span class="dv">37</span>...</code></pre>
+<p>Obtain some descriptive statistics:</p>
+<pre class="sourceCode r"><code class="sourceCode r">SurveyData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>()
+<span class="op">&gt;</span><span class="st">       </span>age          happiness        anxiety     
+<span class="op">&gt;</span><span class="st">  </span>Min.   <span class="op">:</span><span class="fl">30.16</span>   Min.   <span class="op">:</span><span class="fl">6.750</span>   Min.   <span class="op">:</span><span class="fl">0.800</span>  
+<span class="op">&gt;</span><span class="st">  </span>1st Qu.<span class="op">:</span><span class="fl">39.46</span>   1st Qu.<span class="op">:</span><span class="fl">7.263</span>   1st Qu.<span class="op">:</span><span class="fl">2.420</span>  
+<span class="op">&gt;</span><span class="st">  </span>Median <span class="op">:</span><span class="fl">51.38</span>   Median <span class="op">:</span><span class="fl">7.495</span>   Median <span class="op">:</span><span class="fl">2.940</span>  
+<span class="op">&gt;</span><span class="st">  </span>Mean   <span class="op">:</span><span class="fl">50.31</span>   Mean   <span class="op">:</span><span class="fl">7.544</span>   Mean   <span class="op">:</span><span class="fl">2.937</span>  
+<span class="op">&gt;</span><span class="st">  </span>3rd Qu.<span class="op">:</span><span class="fl">61.18</span>   3rd Qu.<span class="op">:</span><span class="fl">7.768</span>   3rd Qu.<span class="op">:</span><span class="fl">3.417</span>  
+<span class="op">&gt;</span><span class="st">  </span>Max.   <span class="op">:</span><span class="fl">69.58</span>   Max.   <span class="op">:</span><span class="fl">8.530</span>   Max.   <span class="op">:</span><span class="fl">4.700</span></code></pre>
+<div class="exercise">
+<p>What was the age range of the sample?</p>
+</div>
+<p>Use a scatterplot to look at the relationship between age and happiness:</p>
+<pre class="sourceCode r"><code class="sourceCode r">
+SurveyData <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>age, <span class="dt">y=</span>happiness)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="07-fitting-curves_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="exercise">
+<p>Does <code>age</code> appear to be related to <code>happiness</code>? How would you describe the nature of the relationship?</p>
+<p>Does there appear to be a linear, quadratic, or cubic component?</p>
+<p>How would you describe this relationship in psychological terms?</p>
+</div>
+<div id="linear-regression" class="section level3">
+<h3>Linear regression</h3>
+<p>Run a linear regression to determine whether <code>happiness</code> can be predicted from <code>age</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">model1 &lt;-<span class="st"> </span><span class="kw">lm</span>(happiness <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> SurveyData)
+<span class="kw">summary</span>(model1)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> happiness <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> SurveyData)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Residuals<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">      </span>Min       1Q   Median       3Q      Max 
+<span class="op">&gt;</span><span class="st"> </span><span class="fl">-0.78019</span> <span class="fl">-0.16858</span> <span class="fl">-0.04762</span>  <span class="fl">0.19811</span>  <span class="fl">0.84368</span> 
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Coefficients<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">             </span>Estimate Std. Error t value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)    
+<span class="op">&gt;</span><span class="st"> </span>(Intercept) <span class="fl">6.484101</span>   <span class="fl">0.102340</span>   <span class="fl">63.36</span>   <span class="op">&lt;</span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span>age         <span class="fl">0.021076</span>   <span class="fl">0.001979</span>   <span class="fl">10.65</span>   <span class="op">&lt;</span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="op">---</span>
+<span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span>
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Residual standard error<span class="op">:</span><span class="st"> </span><span class="fl">0.2912</span> on <span class="dv">148</span> degrees of freedom
+<span class="op">&gt;</span><span class="st"> </span>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.4339</span>,  Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.4301</span> 
+<span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">113.5</span> on <span class="dv">1</span> and <span class="dv">148</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="er">&lt;</span><span class="st"> </span><span class="fl">2.2e-16</span></code></pre>
+<div class="exercise">
+<p>Write the regression equation for predicting <code>happiness</code> from <code>age</code>, using the values from the <code>Estimate</code> column.</p>
+<div class="solution">
+<button>
+Show me
+</button>
+<p>The regression equation is:</p>
+<p>Predicted happiness = 6.48 + 0.02*age</p>
+</div>
+</div>
+<p>The following parts of the output tell us how well the model explains the data:</p>
+<ul>
+<li><p><strong>Multiple <em>R</em>-squared</strong> (<span class="math inline">\(R^2\)</span>) is the proportion of variance in the outcome variable (happiness) that can be accounted for by the regression model. It gives us some idea of how well our model explains the data. If we multiply the value by 100, we get a percentage. Therefore, in this model, <code>age</code> explains <strong>43.4%</strong> of the variance in <code>happiness</code> scores.</p></li>
+<li><p>The <strong><em>F</em>-statistic</strong> gives us an idea of how much variance in happiness the model explains, relative to how much variance in happiness it does not explain (i.e., the error in prediction or residuals). There are two separate degrees of freedom associated with the <em>F</em>-statistic (1, 148).</p></li>
+<li><p>A <em>p</em>-value associated with <em>F</em> is also given. This is the probability of obtaining an <em>F</em>-statistic as extreme as this, given that the null hypothesis is true. Given that our <em>p</em>-value is less than .05, we can declare age to be a statistically significant predictor of happiness, and could report <em>F</em> as follows:</p></li>
+</ul>
+<div class="exercise">
+<ul>
+<li>Age is a statistically significant predictor of happiness, <em>F</em>(1,148) = 113.00, <em>p</em> &lt; .001.</li>
+</ul>
+</div>
+<p>Now let’s see how well the happiness values predicted by the regression equation match the trends in our data. Plot the regression line from <code>model1</code> on the same plot as the data:</p>
+<pre class="sourceCode r"><code class="sourceCode r">SurveyData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">fit1 =</span> <span class="kw">fitted</span>(model1)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>age, <span class="dt">y=</span>happiness)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y=</span>fit1))</code></pre>
+<p><img src="07-fitting-curves_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>The above code uses the <code>mutate</code> function from the <code>dplyr</code> package to add an additional column named <code>fit1</code> to the SurveyData. <code>fit1</code> contains the values of happiness that are predicted by the model, given each individual’s age.</p>
+<div class="tip">
+<p>An alternative way to plot this graph, consistent with the session on regression, would be to use the <code>augment()</code> function in the <code>broom</code> package.</p>
+<pre class="sourceCode r"><code class="sourceCode r">broom<span class="op">::</span><span class="kw">augment</span>(model1) <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>age, <span class="dt">y=</span>happiness)) <span class="op">+</span><span class="st"> </span>
+<span class="st">   </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">   </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y=</span>.fitted))</code></pre>
+<p><img src="07-fitting-curves_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><code>.fitted</code> are the predicted values computed by <code>augment()</code></p>
+</div>
+<div class="exercise">
+<p>By visual inspection, does the model capture the trend in the data well?</p>
+</div>
+<p>According to the model, happiness increases with age in a linear fashion. However, it is clear from the plot that this straight line is <em>not</em> capturing the non-linear trend that is evident in our data.</p>
+</div>
+<div id="adding-a-quadratic-component" class="section level3">
+<h3>Adding a quadratic component</h3>
+<p>We can add a quadratic component to the regression model using the <code>poly()</code> function.</p>
+<pre class="sourceCode r"><code class="sourceCode r">
+model2 &lt;-<span class="st"> </span><span class="kw">lm</span>(happiness<span class="op">~</span><span class="kw">poly</span>(age,<span class="dv">2</span>), <span class="dt">data=</span>SurveyData)
+<span class="kw">summary</span>(model2)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> happiness <span class="op">~</span><span class="st"> </span><span class="kw">poly</span>(age, <span class="dv">2</span>), <span class="dt">data =</span> SurveyData)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Residuals<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">      </span>Min       1Q   Median       3Q      Max 
+<span class="op">&gt;</span><span class="st"> </span><span class="fl">-0.58896</span> <span class="fl">-0.12752</span> <span class="fl">-0.02333</span>  <span class="fl">0.13274</span>  <span class="fl">0.59724</span> 
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Coefficients<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">               </span>Estimate Std. Error t value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)    
+<span class="op">&gt;</span><span class="st"> </span>(Intercept)    <span class="fl">7.54433</span>    <span class="fl">0.01779</span>  <span class="fl">424.06</span>   <span class="op">&lt;</span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">poly</span>(age, <span class="dv">2</span>)<span class="dv">1</span>  <span class="fl">3.10223</span>    <span class="fl">0.21789</span>   <span class="fl">14.24</span>   <span class="op">&lt;</span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">poly</span>(age, <span class="dv">2</span>)<span class="dv">2</span>  <span class="fl">2.36118</span>    <span class="fl">0.21789</span>   <span class="fl">10.84</span>   <span class="op">&lt;</span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="op">---</span>
+<span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span>
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Residual standard error<span class="op">:</span><span class="st"> </span><span class="fl">0.2179</span> on <span class="dv">147</span> degrees of freedom
+<span class="op">&gt;</span><span class="st"> </span>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.6853</span>,  Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.681</span> 
+<span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">160.1</span> on <span class="dv">2</span> and <span class="dv">147</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="er">&lt;</span><span class="st"> </span><span class="fl">2.2e-16</span></code></pre>
+<p>The ‘2’ in the <code>poly()</code> function tells R that we want to fit a model with a quadratic component. R will then fit a model of the following form:</p>
+<p><span class="math inline">\(happiness = a + b_1(age) + b_2(age^2)\)</span></p>
+<p>where <span class="math inline">\(a\)</span> is the intercept, and <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_2\)</span> are the coefficients for the linear and quadratic components, respectively.</p>
+<p>R will fit this model, and provide estimates of <span class="math inline">\(a\)</span>, <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_2\)</span>.</p>
+<p><span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_2\)</span> are the <strong>coefficients</strong> in the regression equation.</p>
+<p>Visually inspect the fit of the second model:</p>
+<p>Use <code>mutate</code> and <code>fitted</code> to derive the predicted values, as before. The regression line should now appear curved:</p>
+<pre class="sourceCode r"><code class="sourceCode r">SurveyData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">fit2=</span><span class="kw">fitted</span>(model2)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>age,<span class="dt">y=</span>happiness)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y=</span>fit2))</code></pre>
+<p><img src="07-fitting-curves_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="exercise">
+<p>Compare the value of Multiple R-Squared in <code>model1</code> and <code>model2</code>.</p>
+<p>Does the addition of a quadratic component result in an increase in R-Squared in model 2? By how much?</p>
+<div class="solution">
+<button>
+Answer
+</button>
+<p><em>R</em>-squared change from model1 to model2 = 0.685 - 0.434 = 0.25.</p>
+<p>Therefore, the model with the quadratic component accounts for 25% more variance in <code>happiness</code>.</p>
+</div>
+</div>
+<p>We can test whether the <em>increase</em> in <em>R</em>-squared in <code>model2</code> represents a statistically significant increase or not by comparing the models using an ANOVA:</p>
+<pre class="sourceCode r"><code class="sourceCode r">
+<span class="kw">anova</span>(model1, model2)
+<span class="op">&gt;</span><span class="st"> </span>Analysis of Variance Table
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Model <span class="dv">1</span><span class="op">:</span><span class="st"> </span>happiness <span class="op">~</span><span class="st"> </span>age
+<span class="op">&gt;</span><span class="st"> </span>Model <span class="dv">2</span><span class="op">:</span><span class="st"> </span>happiness <span class="op">~</span><span class="st"> </span><span class="kw">poly</span>(age, <span class="dv">2</span>)
+<span class="op">&gt;</span><span class="st">   </span>Res.Df     RSS Df Sum of Sq      F    <span class="kw">Pr</span>(<span class="op">&gt;</span>F)    
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>    <span class="dv">148</span> <span class="fl">12.5542</span>                                  
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>    <span class="dv">147</span>  <span class="fl">6.9791</span>  <span class="dv">1</span>    <span class="fl">5.5752</span> <span class="fl">117.43</span> <span class="op">&lt;</span><span class="st"> </span><span class="fl">2.2e-16</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="op">---</span>
+<span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></code></pre>
+<p><code>anova</code> computes a new <em>F</em>-statistic, testing whether the <em>increase</em> in variance explained by <code>model2</code> is statistically significant or not.</p>
+<div class="tip">
+<p>In the previous lecture you were recommended against using <code>anova()</code> to <strong>specify</strong> models. The use here is different: we are comparing two existing models, rather than specifying and running a model in order to run an ANOVA in the way you did in the previous lecture. You are still advised <em>not</em> to use <code>anova()</code> to specify models as this is cumbersome.</p>
+</div>
+<div class="exercise">
+<p>By examining the F-statistic, is there sufficient evidence for an improvement in fit in the model as a result of adding in the quadratic component?</p>
+<div class="solution">
+<button>
+Answer
+</button>
+<p>We can report the improvement in fit as follows:</p>
+<p>A model with a quadratic component accounted for a statistically significantly greater proportion of variance in happiness than a model with only a linear component, <em>F</em>(1,148) = 117.00, <em>p</em> &lt; .001.</p>
+</div>
+</div>
+</div>
+<div id="adding-a-cubic-component" class="section level3">
+<h3>Adding a cubic component</h3>
+<p>Now run a model with a cubic component:</p>
+<pre class="sourceCode r"><code class="sourceCode r">
+model3 &lt;-<span class="st"> </span><span class="kw">lm</span>(happiness<span class="op">~</span><span class="kw">poly</span>(age,<span class="dv">3</span>),<span class="dt">data=</span>SurveyData)
+<span class="kw">summary</span>(model3)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> happiness <span class="op">~</span><span class="st"> </span><span class="kw">poly</span>(age, <span class="dv">3</span>), <span class="dt">data =</span> SurveyData)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Residuals<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">      </span>Min       1Q   Median       3Q      Max 
+<span class="op">&gt;</span><span class="st"> </span><span class="fl">-0.60468</span> <span class="fl">-0.14165</span> <span class="fl">-0.01844</span>  <span class="fl">0.13839</span>  <span class="fl">0.58176</span> 
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Coefficients<span class="op">:</span>
+<span class="er">&gt;</span><span class="st">               </span>Estimate Std. Error t value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)    
+<span class="op">&gt;</span><span class="st"> </span>(Intercept)    <span class="fl">7.54433</span>    <span class="fl">0.01777</span> <span class="fl">424.447</span>   <span class="op">&lt;</span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">poly</span>(age, <span class="dv">3</span>)<span class="dv">1</span>  <span class="fl">3.10223</span>    <span class="fl">0.21769</span>  <span class="fl">14.251</span>   <span class="op">&lt;</span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">poly</span>(age, <span class="dv">3</span>)<span class="dv">2</span>  <span class="fl">2.36118</span>    <span class="fl">0.21769</span>  <span class="fl">10.846</span>   <span class="op">&lt;</span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">poly</span>(age, <span class="dv">3</span>)<span class="dv">3</span> <span class="fl">-0.24530</span>    <span class="fl">0.21769</span>  <span class="fl">-1.127</span>    <span class="fl">0.262</span>    
+<span class="op">&gt;</span><span class="st"> </span><span class="op">---</span>
+<span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span>
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Residual standard error<span class="op">:</span><span class="st"> </span><span class="fl">0.2177</span> on <span class="dv">146</span> degrees of freedom
+<span class="op">&gt;</span><span class="st"> </span>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.688</span>,   Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.6816</span> 
+<span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">107.3</span> on <span class="dv">3</span> and <span class="dv">146</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="er">&lt;</span><span class="st"> </span><span class="fl">2.2e-16</span></code></pre>
+<p>The ‘3’ in <code>poly(age,3)</code> tells R that we want to specify a model with a cubic component, of the form:</p>
+<p><span class="math inline">\(happiness = a + b_1(age) + b_2(age^2) + b_3(age^3)\)</span></p>
+<p>As before, plot the predicted values from this model in a scatterplot:</p>
+<pre class="sourceCode r"><code class="sourceCode r">
+SurveyData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">fit3=</span> <span class="kw">fitted</span>(model3)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>age,<span class="dt">y=</span>happiness)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y=</span>fit3))</code></pre>
+<p><img src="07-fitting-curves_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="exercise">
+<p>Does the visual fit of the model with a cubic component seem better than the fit of previous models?</p>
+</div>
+<div class="exercise">
+<p>What is the increase in <em>R</em>-squared as a result of adding in the cubic component? (Compare R-squared between <code>model3</code> and <code>model2</code>).</p>
+<p>The increase in R-squared is <input class='solveme nospaces' data-tol='0.001' size='5' data-answer='["0.003",".003"]'/></p>
+</div>
+<p>To determine if this change in <em>R</em>-squared is statistically significant or not, we can again use <code>anova()</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">
+<span class="kw">anova</span>(model2,model3)
+<span class="op">&gt;</span><span class="st"> </span>Analysis of Variance Table
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>Model <span class="dv">1</span><span class="op">:</span><span class="st"> </span>happiness <span class="op">~</span><span class="st"> </span><span class="kw">poly</span>(age, <span class="dv">2</span>)
+<span class="op">&gt;</span><span class="st"> </span>Model <span class="dv">2</span><span class="op">:</span><span class="st"> </span>happiness <span class="op">~</span><span class="st"> </span><span class="kw">poly</span>(age, <span class="dv">3</span>)
+<span class="op">&gt;</span><span class="st">   </span>Res.Df    RSS Df Sum of Sq      F <span class="kw">Pr</span>(<span class="op">&gt;</span>F)
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>    <span class="dv">147</span> <span class="fl">6.9791</span>                           
+<span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>    <span class="dv">146</span> <span class="fl">6.9189</span>  <span class="dv">1</span>  <span class="fl">0.060171</span> <span class="fl">1.2697</span> <span class="fl">0.2617</span></code></pre>
+<p>The <em>F</em>-statistic comparing <code>model3</code> and <code>model2</code> is not statistically significant, <em>F</em>(1, 146) = 1.27, <em>p</em> = .26, indicating that the addition of the cubic component into the regression model does not result in a statistically significant increase in the variability explained by the model.</p>
+<p>This suggests that a model with a quadratic component (<code>model2</code>) is sufficient to explain the data, and that would be the model that we would choose to report. There was insufficient evidence for a model with a cubic trend.</p>
+<p>In conclusion, over the range of <code>age</code> considered, there is evidence for a quadratic relationship between <code>age</code> and <code>happiness</code>. There was insufficient evidence for a model with a cubic trend.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="polynomials.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bayesian-approach.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

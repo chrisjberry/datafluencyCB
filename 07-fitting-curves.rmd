@@ -1,4 +1,4 @@
-# Fitting Curves
+# Fitting curves
 
 ### In brief
 
@@ -18,3 +18,27 @@ library(webex)
 library(pander)
 theme_set(theme_minimal())
 ```
+
+\
+
+## Using polynomials to fit curves
+
+-   [**Slides from the session**](slides/regression3-chris.ppt) (available 02-02-2020)
+
+\
+
+### Overview
+
+
+
+In this session we will:
+
+- See how we can add *polynomial terms* such as $x^2$, $x^3$ to a regression model to capture non-linear relationships.
+
+- Use ANOVA and Bayes Factors to determine whether these terms improve the model.
+
+
+You should be comfortable with what we did in the previous Building Models 1 and Building Models 2 sessions before attempting this one.
+
+
+

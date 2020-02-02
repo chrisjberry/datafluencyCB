@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Assessment | PSYC753 Data Fluency</title>
-  <meta name="description" content="Assessment | PSYC753 Data Fluency" />
+  <title>Summary of key points | PSYC753 Data Fluency</title>
+  <meta name="description" content="Summary of key points | PSYC753 Data Fluency" />
   <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Assessment | PSYC753 Data Fluency" />
+  <meta property="og:title" content="Summary of key points | PSYC753 Data Fluency" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Assessment | PSYC753 Data Fluency" />
+  <meta name="twitter:title" content="Summary of key points | PSYC753 Data Fluency" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="data-analysis-and-visualisation-task.html">
+<link rel="prev" href="exercise-1.html">
+<link rel="next" href="FAQ-assessment.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -162,7 +162,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="exercise.html"><a href="exercise.html"><i class="fa fa-check"></i>Exercise</a></li>
 <li class="chapter" data-level="" data-path="summary-of-key-points-1.html"><a href="summary-of-key-points-1.html"><i class="fa fa-check"></i>Summary of key points</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="fitting-curves.html"><a href="fitting-curves.html"><i class="fa fa-check"></i>Fitting Curves</a></li>
+<li class="chapter" data-level="" data-path="fitting-curves.html"><a href="fitting-curves.html"><i class="fa fa-check"></i>Fitting curves</a><ul>
+<li class="chapter" data-level="" data-path="using-polynomials-to-fit-curves.html"><a href="using-polynomials-to-fit-curves.html"><i class="fa fa-check"></i>Using polynomials to fit curves</a></li>
+<li class="chapter" data-level="" data-path="polynomials.html"><a href="polynomials.html"><i class="fa fa-check"></i>Polynomials</a></li>
+<li class="chapter" data-level="" data-path="identifying-polynomial-components.html"><a href="identifying-polynomial-components.html"><i class="fa fa-check"></i>Identifying polynomial components</a></li>
+<li class="chapter" data-level="" data-path="bayesian-approach.html"><a href="bayesian-approach.html"><i class="fa fa-check"></i>Bayesian approach</a></li>
+<li class="chapter" data-level="" data-path="exercise-1.html"><a href="exercise-1.html"><i class="fa fa-check"></i>Exercise</a></li>
+<li class="chapter" data-level="" data-path="summary-of-key-points-2.html"><a href="summary-of-key-points-2.html"><i class="fa fa-check"></i>Summary of key points</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="FAQ-assessment.html"><a href="FAQ-assessment.html"><i class="fa fa-check"></i>FAQ Data Analysis and Visualisation Task</a></li>
 <li class="divider"></li>
 <li><a href="./LICENCE" target="blank">Licence: CC BY-SA 4</a></li>
@@ -184,16 +191,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="assessment" class="section level1">
-<h1>Assessment</h1> 
+<div id="summary-of-key-points-2" class="section level2">
+<h2>Summary of key points</h2>
+<ul>
+<li>Polynomial terms can be added to regression models to fit curves in our data.</li>
+</ul>
+<p><br />
+</p>
+<ul>
+<li><p><code>poly(predictor name, X)</code> can be used with <code>lm</code> to specify models with polynomial terms of the Xth order.</p>
+<ul>
+<li>The improvement in fit (<span class="math inline">\(R^2\)</span>) as a result of adding in a polynomial term can be tested using <code>anova(model1, model2)</code>.</li>
+</ul></li>
+</ul>
+<p><br />
+</p>
+<ul>
+<li><p>Bayes Factors can also be used to compare models with polynomial terms using <code>lmBF</code>.</p>
+<ul>
+<li>You must store the polynomial components in the dataset first before using <code>lmBF</code>. Use <code>poly(predictor name, X)[,"X"]</code>.</li>
+</ul></li>
+</ul>
+<p><br />
+</p>
+<ul>
+<li><strong>A note of caution</strong>: Although curves of any complexity can be fit, it may not always be meaningful or parsimonious to do so. Complex models may <em>overfit</em> the data and may not necessarily generalise to new datasets well. It is also important not to extrapolate beyond the range of data used to generate the model when making predictions from the model, as the same relationship may not be present.</li>
+</ul>
+
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-analysis-and-visualisation-task.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="exercise-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="FAQ-assessment.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

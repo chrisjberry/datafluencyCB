@@ -105,3 +105,38 @@ So:
 - "e-10" means move the decimal point 10 places to the left (e.g., `2.5e-10` is "$2.5 \times 10^{-10}$", or 0.00000000025).
 - "e5" means move the decimal point 5 places to the **right** (e.g., `2.5e5` is "$2.5 \times 10^{5}$", 250000).
 
+
+\
+
+### How do I set up an R Markdown file?
+
+R-markdown is a way of embedding R code, figures, and text in a single executable document. (As an example, all the worksheets for this module were written in r-markdown.)
+
+If you want to create an R markdown file, go to File > New File > R Markdown.
+
+Ben covered R Markdown in his sessions: https://benwhalley.github.io/datafluency/rmarkdown.html
+
+There's a good cheat sheet here:
+- [R Markdown](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
+
+\
+
+### How do convert my R Markdown file to PDF?
+
+Click the Knit button in the editor window, and select "Knit to PDF".
+
+If there are no errors in your code, the PDF of your document will appear in the "Files" window.
+
+
+\
+
+### How can I save a file from RStudio to my own hard drive/computer so I can submit it to the DLE?
+
+If using R Studio through the university website (recommended) [rstudio.plymouth.ac.uk](https://rstudio.plymouth.ac.uk), you can save a file in the Files pane as follows:
+
+- Tick the check box next to the file you want to save.
+- Click the "More" button > Export. 
+- You can then choose where to save the file on your computer.
+
+
+

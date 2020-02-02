@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Assessment | PSYC753 Data Fluency</title>
-  <meta name="description" content="Assessment | PSYC753 Data Fluency" />
+  <title>Polynomials | PSYC753 Data Fluency</title>
+  <meta name="description" content="Polynomials | PSYC753 Data Fluency" />
   <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Assessment | PSYC753 Data Fluency" />
+  <meta property="og:title" content="Polynomials | PSYC753 Data Fluency" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Assessment | PSYC753 Data Fluency" />
+  <meta name="twitter:title" content="Polynomials | PSYC753 Data Fluency" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="data-analysis-and-visualisation-task.html">
+<link rel="prev" href="using-polynomials-to-fit-curves.html">
+<link rel="next" href="identifying-polynomial-components.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -162,7 +162,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="exercise.html"><a href="exercise.html"><i class="fa fa-check"></i>Exercise</a></li>
 <li class="chapter" data-level="" data-path="summary-of-key-points-1.html"><a href="summary-of-key-points-1.html"><i class="fa fa-check"></i>Summary of key points</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="fitting-curves.html"><a href="fitting-curves.html"><i class="fa fa-check"></i>Fitting Curves</a></li>
+<li class="chapter" data-level="" data-path="fitting-curves.html"><a href="fitting-curves.html"><i class="fa fa-check"></i>Fitting curves</a><ul>
+<li class="chapter" data-level="" data-path="using-polynomials-to-fit-curves.html"><a href="using-polynomials-to-fit-curves.html"><i class="fa fa-check"></i>Using polynomials to fit curves</a></li>
+<li class="chapter" data-level="" data-path="polynomials.html"><a href="polynomials.html"><i class="fa fa-check"></i>Polynomials</a></li>
+<li class="chapter" data-level="" data-path="identifying-polynomial-components.html"><a href="identifying-polynomial-components.html"><i class="fa fa-check"></i>Identifying polynomial components</a></li>
+<li class="chapter" data-level="" data-path="bayesian-approach.html"><a href="bayesian-approach.html"><i class="fa fa-check"></i>Bayesian approach</a></li>
+<li class="chapter" data-level="" data-path="exercise-1.html"><a href="exercise-1.html"><i class="fa fa-check"></i>Exercise</a></li>
+<li class="chapter" data-level="" data-path="summary-of-key-points-2.html"><a href="summary-of-key-points-2.html"><i class="fa fa-check"></i>Summary of key points</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="FAQ-assessment.html"><a href="FAQ-assessment.html"><i class="fa fa-check"></i>FAQ Data Analysis and Visualisation Task</a></li>
 <li class="divider"></li>
 <li><a href="./LICENCE" target="blank">Licence: CC BY-SA 4</a></li>
@@ -184,16 +191,101 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="assessment" class="section level1">
-<h1>Assessment</h1> 
+<div id="polynomials" class="section level2">
+<h2>Polynomials</h2>
+<p><br />
+</p>
+<p>The regression models we have been fitting assume a <em>linear</em> (i.e., straight line) relationship between variables. However, variables may not always be related in a linear fashion.</p>
+<p><br />
+</p>
+<p>Suppose variables x and y showed the following trend:</p>
+<p><img src="07-fitting-curves_files/figure-html/fig1-1.png" width="336" style="display: block; margin: auto;" /></p>
+<p>It is clear that this relationship would not be explained well by a straight line. We’d lose important information about the relationship if we only fit a straight line. A curve would be better.</p>
+<p><br />
+</p>
+<p>We can fit a curve to the data by adding <strong>polynomial</strong> terms to the regression equation.</p>
+<p><br />
+</p>
+<p><strong>Polynomial</strong> means that a variable is raised to a particular power. For example:</p>
+<ul>
+<li><p><span class="math inline">\(x^2\)</span> means x-squared, which is x-multiplied-by-x, or “x to the power of two”</p></li>
+<li><p><span class="math inline">\(x^3\)</span> means x-cubed, which is x-multiplied-by-x-multiplied-by-x, or “x to the power of three”</p></li>
+</ul>
+<p>If a model has a <strong>quadratic component</strong> it means it has an <span class="math inline">\(x^2\)</span> term in the equation.</p>
+<p>If a model has a <strong>cubic component</strong> it means it has an <span class="math inline">\(x^3\)</span> term in the equation.</p>
+<div id="constant" class="section level3">
+<h3>Constant</h3>
+<p>To see why this approach works, recall that lines can be represented by equations.</p>
+<p>The equation <strong><span class="math inline">\(y = 1 + 0.5(x)\)</span></strong> would be represented as follows:</p>
+<p><img src="07-fitting-curves_files/figure-html/fig4-1.png" width="336" style="display: block; margin: auto;" /></p>
+<p>We can think of this line as being made up of the constant and a linear component.</p>
+<ul>
+<li>The constant in this equation is indicated by the dashed horizontal line.</li>
+<li>The linear component to this equation 0.5(x) is indicated by the dashed slope line.</li>
+<li>The solid blue line is a combination of these two components.</li>
+</ul>
+<p>It has no bends.<br />
+</p>
+</div>
+<div id="quadratic" class="section level3">
+<h3>Quadratic</h3>
+<p>The equation <strong><span class="math inline">\(y = x^2\)</span></strong> would be represented as follows:</p>
+<p><img src="07-fitting-curves_files/figure-html/fig5-1.png" width="336" style="display: block; margin: auto;" /></p>
+<p>To get each value of y, we square the value of x.</p>
+<p>So, when x = -5, y is 25. And if x = -4, y = 16, and so on…</p>
+<p><br />
+</p>
+<p><strong><span class="math inline">\(y = -x^2\)</span></strong>, would look as follows:</p>
+<p><img src="07-fitting-curves_files/figure-html/fig6-1.png" width="336" style="display: block; margin: auto;" /></p>
+<p>Curves with quadratic components have one bend.</p>
+<p><br />
+</p>
+</div>
+<div id="cubic" class="section level3">
+<h3>Cubic</h3>
+<p>The equation <strong><span class="math inline">\(y = x^3\)</span></strong> would be represented as follows:</p>
+<p><img src="07-fitting-curves_files/figure-html/fig7-1.png" width="336" style="display: block; margin: auto;" /></p>
+<p>To get each value of y, we cube the value of x.</p>
+<p>So, when x = -5, y is -125. And if x = -4, y = -64, and so on…</p>
+<p><strong><span class="math inline">\(y = -x^3\)</span></strong>, would look as follows:</p>
+<p><img src="07-fitting-curves_files/figure-html/fig8-1.png" width="336" style="display: block; margin: auto;" /></p>
+<p>Curves with cubic components have three bends.</p>
+<p><br />
+</p>
+</div>
+<div id="linear-plus-quadratic-components" class="section level3">
+<h3>Linear plus quadratic components</h3>
+<p>The equation <strong><span class="math inline">\(y = 50 + 5(x) - x^2\)</span></strong> has</p>
+<ul>
+<li>a constant equal to 50</li>
+<li>a linear component 5(x)</li>
+<li>a quadratic component <span class="math inline">\(-x^2\)</span>:</li>
+</ul>
+<p><img src="07-fitting-curves_files/figure-html/fig9-1.png" width="336" style="display: block; margin: auto;" /></p>
+<p>The dashed lines on the plot indicate the intercept, linear component, and quadratic components of the equation. The solid line represents the equation.</p>
+<p><br />
+</p>
+</div>
+<div id="linear-plus-quadratic-and-cubic-components" class="section level3">
+<h3>Linear plus quadratic and cubic components</h3>
+<p>The equation <strong><span class="math inline">\(y = 5000 + 750x - 50x^2 - 20x^3\)</span></strong> has</p>
+<ul>
+<li>a constant equal to 50</li>
+<li>a linear component 750x</li>
+<li>a negative quadratic component <span class="math inline">\(-50x^2\)</span></li>
+<li>a negative cubic component <span class="math inline">\(-20x^3\)</span></li>
+</ul>
+<p><img src="07-fitting-curves_files/figure-html/fig10-1.png" width="336" style="display: block; margin: auto;" /></p>
+<p>When we see any curve, it is possible to think of it as being composed of components like this.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-analysis-and-visualisation-task.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="using-polynomials-to-fit-curves.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="identifying-polynomial-components.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
