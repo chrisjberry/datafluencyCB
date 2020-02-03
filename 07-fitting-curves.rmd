@@ -729,7 +729,7 @@ _F_(1, 147) = `r fitb(answer="6.92")`, _p_ = .009
 
 - Does this increase represent a statistically significant increase? `r mcq(c("yes", answer="no"))`
 
-- What is the _F_-statistic for the test of the model with a linear + quadratic component vs. linear + quadratic + cubic components?
+- What is the _F_-statistic and _p_-value for the test of the model with a linear + quadratic component vs. linear + quadratic + cubic components?
 _F_(1, 146) = `r fitb("2.18")`, _p_ = `r fitb("0.14")`
 
 \
