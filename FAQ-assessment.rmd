@@ -9,7 +9,10 @@ library(pander)
 theme_set(theme_minimal())
 ```
 
+
 \
+
+---
 
 ### How do I add a caption to a summary output table?
 
@@ -27,7 +30,10 @@ mtcars %>%
 
 ```
 
+
 \
+
+---
 
 ### How can I round numbers to X decimal places? 
 
@@ -70,8 +76,10 @@ DNase %>% mutate_if(is.numeric, round, 1)
 </div>
 
 
+
 \
 
+---
 
 ### Cheat sheets
 
@@ -84,9 +92,9 @@ The following may be of particular use for topics from this module:
 - [R Markdown](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
 
 
-
 \
 
+---
 
 ### What does it mean if RStudio prints out "e-" next to a number? {#e-meaning}
 
@@ -108,6 +116,9 @@ So:
 
 \
 
+
+---
+
 ### How do I set up an R Markdown file?
 
 R-markdown is a way of embedding R code, figures, and text in a single executable document. (As an example, all the worksheets for this module were written in r-markdown.)
@@ -119,7 +130,10 @@ Ben covered R Markdown in his sessions: https://benwhalley.github.io/datafluency
 There's a good cheat sheet here:
 - [R Markdown](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
 
+
 \
+
+---
 
 ### How do convert my R Markdown file to PDF?
 
@@ -128,7 +142,10 @@ Click the Knit button in the editor window, and select "Knit to PDF".
 If there are no errors in your code, the PDF of your document will appear in the "Files" window.
 
 
+
 \
+
+---
 
 ### How can I save a file from RStudio to my own hard drive/computer so I can submit it to the DLE?
 
@@ -137,6 +154,7 @@ If using R Studio through the university website (recommended) [rstudio.plymouth
 - Tick the check box next to the file you want to save.
 - Click the "More" button > Export. 
 - You can then choose where to save the file on your computer.
+
 
 
 
