@@ -281,7 +281,7 @@ Explain why
 <p><br />
 </p>
 <p>Next, determine the Bayes Factor for <code>polynomial3</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">polynomial3BF &lt;-<span class="st"> </span>BayesFactor<span class="op">::</span><span class="kw">lmBF</span>(happiness <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>age2 <span class="op">+</span><span class="st"> </span>age3, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(SurveyData) )</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">polynomial3BF &lt;-<span class="st"> </span><span class="kw">lmBF</span>(happiness <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>age2 <span class="op">+</span><span class="st"> </span>age3, <span class="dt">data =</span> <span class="kw">as.data.frame</span>(SurveyData) )</code></pre>
 <p><strong>Explanation:</strong> Again, we need to specify the polynomial equation with linear, quadratic, and cubic components separately, hence <code>happiness ~ age + age2 + age3</code>.</p>
 <p><br />
 </p>

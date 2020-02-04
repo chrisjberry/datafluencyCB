@@ -614,7 +614,7 @@ The Bayes Factor tells us that a model with a quadratic component of `age` is 2.
 Next, determine the Bayes Factor for `polynomial3`:
 
 ```{r}
-polynomial3BF <- BayesFactor::lmBF(happiness ~ age + age2 + age3, data = as.data.frame(SurveyData) )
+polynomial3BF <- lmBF(happiness ~ age + age2 + age3, data = as.data.frame(SurveyData) )
 ```
 **Explanation:** Again, we need to specify the polynomial equation with linear, quadratic, and cubic components separately, hence `happiness ~ age + age2 + age3`.
 
