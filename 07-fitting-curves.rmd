@@ -725,7 +725,7 @@ _F_(1, 147) = `r fitb(answer="6.92")`, _p_ = .009
 `r fitb(answer="7.02")` %
 
 - What is the _increase_ in $R^2$ if a cubic component of `age` is added to the model?
-`r fitb(answer="2.58")` %
+`r fitb(answer="1.39")` %
 
 - Does this increase represent a statistically significant increase? `r mcq(c("yes", answer="no"))`
 
