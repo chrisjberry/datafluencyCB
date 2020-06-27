@@ -10,6 +10,7 @@
 > predicting new data. But for some models curved lines are essential to
 > describe the world as it really is.
 
+
 ```{r, echo=F, include=F}
 knitr::opts_chunk$set(echo = TRUE, collapse=TRUE, cache=TRUE, comment=">", message=FALSE)
 library(tidyverse)
@@ -18,134 +19,120 @@ library(pander)
 theme_set(theme_minimal())
 ```
 
-## Session 1
+\
 
-We will cover use of polynomials and other techniques to fit curved lines with multiple regression.
+## Using polynomials to fit curves
 
-## Learning outcomes
+-   [**Slides from the session**](slides/regression3-chris.ppt) (available 02-02-2020)
 
-- Understand that polynomial terms can be added to a regression model to fit curves to the data (rather than just a straight line).
+\
 
-- Understand how to evaluate the fit of a model using R-squared.
-
-- Understand how to select between different models using ANOVA.
-
-
-## Structure
-
-- In the first part of the workshop, we will play around with plotting various curves using `ggplot`.
-
-- In the second part, we will see how we can fit a curve to some experimental data using polynomials. 
-
-- In the exercise at the end, you will try to figure out the curve that best fits a set of data. Accordingly, it is recommended to store your commands in a .r file as you go along, to make it easy to modify later.
+### Overview
 
 
 
-# Polynomials
+In this session we will:
 
-The regression models we have been fitting assume a linear (i.e., straight line) relationship between variables.
+- See how we can add *polynomial terms* such as $x^2$, $x^3$ to a regression model to capture non-linear relationships.
 
-However, variables may not always be related in a linear fashion. When we plot our data, the line of best fit may appear curved indicating that a _non-linear_ relationship may be present.
+- Use ANOVA and Bayes Factors to determine whether these terms improve the model.
+
+
+You should be comfortable with what we did in the previous Building Models 1 and Building Models 2 sessions before attempting this one.
+
+\
+
+## Polynomials
+
+\
+
+The regression models we have been fitting assume a _linear_ (i.e., straight line) relationship between variables. However, variables may not always be related in a linear fashion.
+
+\
 
 Suppose variables x and y showed the following trend:
 
-```{r,echo=F}
+```{r fig1, fig.height = 3.5, fig.width = 3.5, fig.align = "center",echo=F}
 set.seed(1)
-d <- tibble(x=seq(0,6,0.2),
-            y=3.5 + 5*x - 8*x^2 + 3*x^3 -.3*x^4)
+d <- tibble(x=seq(-6,6,0.2),
+            y=3.5 + 5*x - 8*x^2)
+
+e <- tibble(
+  x=seq(-6,6,0.2),
+  y=3.5+5*x-8*x^2 + rnorm(length(x),0,50),
+  y2=3.5+5*x-8*x^2 + rnorm(length(x),0,50),
+  y3=3.5+5*x-8*x^2 + rnorm(length(x),0,50)
+)
+
 
 d %>% ggplot(aes(x,y)) +
-        geom_line(size=1) + 
-        theme_bw()
+      #geom_line(aes(y=y),size=1) + 
+      theme_bw() +
+      geom_point(aes(y=e$y)) +   
+      theme(axis.text.x=element_blank(),
+            axis.ticks.x=element_blank(),
+            axis.text.y=element_blank(),
+            axis.ticks.y=element_blank()
+            )
+  
 ```
 
-It is clear that this relationship would not be explained well by fitting a standard regression model, which assumes a linear relationship between x and y. We'd lose important information about the relationship if we only fit a straight line. 
+It is clear that this relationship would not be explained well by a straight line. We'd lose important information about the relationship if we only fit a straight line. A curve would be better.
 
-To improve our model, we can fit a curve by using **polynomial** terms in our regression. 
+\
+
+We can fit a curve to the data by adding **polynomial** terms to the regression equation. 
+
+\
 
 **Polynomial** means that a variable is raised to a particular power. For example: 
 
-- $x^2$ means x-squared, which is x-multiplied-by-x.
+- $x^2$ means x-squared, which is x-multiplied-by-x, or "x to the power of two"
 
-- $x^3$ means x-cubed, which is x-multiplied-by-x-multiplied-by-x
-
-The power that we raise x to could be any number.
-
-To understand how polynomials allow us to do this, let's review how lines can be represented as equations. It may also be worth revisiting the section on [Linear Equations in the Regression lecture]( https://plymouthpsychology.github.io/psystats/regression.html#linear-equations).
+- $x^3$ means x-cubed, which is x-multiplied-by-x-multiplied-by-x, or "x to the power of three"
 
 
-# Constant
+If a model has a **quadratic component** it means it has an $x^2$ term in the equation. 
 
-The equation **$y = 1$** would be represented like this:
-
-```{r,echo=F}
-d<-tibble(x=seq(-10,10,0.1),y=rep(1,length(x)))
-d %>% ggplot(aes(x=x)) + 
-  geom_line(aes(y=y),size=2,colour='orange') +
-  geom_line(aes(y=0)) +
-  geom_line(aes(y=x,x=0)) +
-  theme_bw()
-```
-
-Because y is the same value (i.e., 1) at each value of x, we say that y is equal to a **"constant"**. The value of y determines the **height** of the line.
+If a model has a **cubic component** it means it has an $x^3$ term in the equation.
 
 
-# Linear
+### Constant
 
-The equation **$y = 0.5(x)$** would be represented as follows:
+To see why this approach works, recall that lines can be represented by equations.
 
-
-```{r,echo=F}
-d<-tibble(x=seq(-10,10,0.1),y=0.5*x)
-d %>% ggplot(aes(x=x)) + 
-  geom_line(aes(y=y),size=2,colour='orange') +
-  geom_line(aes(y=0)) +
-  geom_line(aes(y=x,x=0)) +
-  theme_bw()
-```
-
-Each value of y on the line is half that of x.
-
-- When x is 2, y is 1
-- When x is 5, y is 2.5
-
-We say that the relationship between y and x is **linear**, because it is a described by a straight line, and y is simply equal to a value of x multiplied by a constant (0.5).
-
-Multiplying x by larger numbers would make this line steeper; smaller numbers make this line less
-steep. If the number were negative, the line would slope from the upper left of the plot to the lower right.
-
-
-# Constant + linear component
 
 The equation **$y = 1 + 0.5(x)$** would be represented as follows:
 
 
-```{r,echo=F}
+```{r,fig4, fig.height = 3.5, fig.width = 3.5, fig.align = "center",echo=F}
 d<-tibble(x=seq(-10,10,0.1),y=1+0.5*x,a=rep(1,length(x)),b=0.5*x)
 d %>% ggplot(aes(x=x)) + 
-  geom_line(aes(y=y),size=2,colour='orange') +
+  geom_line(aes(y=y),size=2,colour='cornflower blue') +
   geom_line(aes(y=0)) +
   geom_line(aes(y=x,x=0)) +
-  geom_line(aes(y=a),linetype=2,size=1,colour='orange') +
-  geom_line(aes(y=b),linetype=2,size=1,colour='orange') +
+  geom_line(aes(y=a),linetype=2,size=1,colour='cornflower blue') +
+  geom_line(aes(y=b),linetype=2,size=1,colour='cornflower blue') +
   theme_bw()
 ```
 
-We can think of this line as being made up of a constant and a linear component.
+We can think of this line as being made up of the constant and a linear component.
 
 - The constant in this equation is indicated by the dashed horizontal line.
 - The linear component to this equation 0.5(x) is indicated by the dashed slope line.
-- The solid orange line is a combination of these two components.
+- The solid blue line is a combination of these two components.
 
+It has no bends.
+\
 
-# Quadratic
+### Quadratic
 
 The equation **$y = x^2$** would be represented as follows:
 
-```{r,echo=F}
+```{r fig5, fig.height = 3.5, fig.width = 3.5, fig.align = "center",echo=F}
 d<-tibble(x=seq(-10,10,0.1),y=x^2)
 d %>% ggplot(aes(x=x)) + 
-  geom_line(aes(y=y),size=2,colour='orange') +
+  geom_line(aes(y=y),size=2,colour='cornflower blue') +
   geom_line(aes(y=0)) +
   geom_line(aes(y=x*10,x=0)) +
   theme_bw()
@@ -155,408 +142,245 @@ To get each value of y, we square the value of x.
 
 So, when x = -5, y is 25. And if x = -4, y = 16, and so on...
 
+\
 
 **$y = -x^2$**,  would look as follows:
 
-```{r,echo=F}
+```{r fig6, fig.height = 3.5, fig.width = 3.5, fig.align = "center",echo=F}
 d<-tibble(x=seq(-10,10,0.1),y=-(x^2))
 d %>% ggplot(aes(x=x)) + 
-  geom_line(aes(y=y),size=2,colour='orange') +
+  geom_line(aes(y=y),size=2,colour='cornflower blue') +
   geom_line(aes(y=0)) +
   geom_line(aes(y=x*10,x=0)) +
   theme_bw()
 ```
 
+Curves with quadratic components have one bend.
 
-# Linear plus quadratic components
+\
+
+### Cubic
+
+The equation **$y = x^3$** would be represented as follows:
+
+```{r fig7, fig.height = 3.5, fig.width = 3.5, fig.align = "center",echo=F}
+d<-tibble(x=seq(-10,10,0.1),y=x^3)
+d %>% ggplot(aes(x=x)) + 
+  geom_line(aes(y=y),size=2,colour='cornflower blue') +
+  geom_line(aes(y=0)) +
+  geom_line(aes(y=x*10,x=0)) +
+  theme_bw()
+```
+
+To get each value of y, we cube the value of x. 
+
+So, when x = -5, y is -125. And if x = -4, y = -64, and so on...
+
+
+**$y = -x^3$**,  would look as follows:
+
+```{r fig8, fig.height = 3.5, fig.width = 3.5, fig.align = "center",echo=F}
+d<-tibble(x=seq(-10,10,0.1),y=-x^3)
+d %>% ggplot(aes(x=x)) + 
+  geom_line(aes(y=y),size=2,colour='cornflower blue') +
+  geom_line(aes(y=0)) +
+  geom_line(aes(y=x*10,x=0)) +
+  theme_bw()
+```
+
+Curves with cubic components have three bends.
+
+
+\
+
+### Linear plus quadratic components
 
 The equation **$y = 50 + 5(x) - x^2$** has 
 
-- a constant 50
+- a constant equal to 50
 - a linear component 5(x)
 - a quadratic component $-x^2$:
 
-```{r,echo=F}
+```{r fig9, fig.height = 3.5, fig.width = 3.5, fig.align = "center",echo=F}
 d<-tibble(x=seq(-10,10,0.1),y=50+5*x-x^2,a=rep(50,length(x)),b1=5*x,b2=-(x^2))
 d %>% ggplot(aes(x=x)) + 
-  geom_line(aes(y=y),size=2,colour='orange') +
+  geom_line(aes(y=y),size=2,colour='cornflower blue') +
   geom_line(aes(y=0)) +
   geom_line(aes(y=x*10,x=0)) +
-  geom_line(aes(y=a),linetype=2,size=1,colour='orange') +
-  geom_line(aes(y=b1),linetype=2,size=1,colour='orange') +
-  geom_line(aes(y=b2),linetype=2,size=1,colour='orange') +
+  geom_line(aes(y=a),linetype=2,size=1,colour='grey') +
+  geom_line(aes(y=b1),linetype=2,size=1,colour='grey') +
+  geom_line(aes(y=b2),linetype=2,size=1,colour='cornflower blue') +
   theme_bw()
 ```
 
 The dashed lines on the plot indicate the intercept, linear component, and quadratic components of the equation. The solid line represents the equation.
 
+\
+
+### Linear plus quadratic and cubic components
+
+The equation **$y = 5000 + 750x - 50x^2 - 20x^3$** has 
+
+- a constant equal to 50
+- a linear component 750x
+- a negative quadratic component $-50x^2$
+- a negative cubic component $-20x^3$
+
+```{r fig10, fig.height = 3.5, fig.width = 3.5, fig.align = "center", echo=FALSE}
+d<-tibble(x=seq(-10,10,0.1),y=5000+750*x-50*x^2-20*x^3,a=rep(5000,length(x)),b1=750*x,b2=-(50*x^2),b3=-20*x^3)
+
+d %>% ggplot(aes(x=x)) + 
+  geom_line(aes(y=y),size=2,colour='cornflower blue') +
+  geom_line(aes(y=0)) +
+  geom_line(aes(y=x*10,x=0)) +
+  geom_line(aes(y=a),linetype=2,size=1,colour='grey') +
+  geom_line(aes(y=b1),linetype=2,size=1,colour='grey') +
+  geom_line(aes(y=b2),linetype=2,size=1,colour='cornflower blue') +
+  geom_line(aes(y=b3),linetype=2,size=1,colour='brown') +
+  theme_bw()
+```
+
+
 When we see any curve, it is possible to think of it as being composed of components like this.
 
 
-<div class='exercise'>
 
-Let's plot some curves. First, load the `tidyverse` package:
+## Identifying polynomial components
 
-```{r}
-library(tidyverse)
-```
 
-We can use `ggplot()` to plot curves:
+To determine whether a model should have quadratic, cubic, or higher order components, we can use the sequential regression approach covered in the previous session. We take the following steps, and look at the change in $R^2$ assocaited with each step.
 
-```{r}
-tibble(x=1:10) %>% 
-  ggplot(aes(x)) + 
-  stat_function(fun=function(x) 2*x + x^2)
-```
+- First fit the linear model
 
-`stat_function(fun=function(x) ....` allows us to superimpose any function we specify on a plot, in this case $2x + x^2$.
+- then test for the addition of the quadratic $x^2$ component
 
-'x^2' means 'x-to-the-power-of-2', or $x^2$.
+- then test for the addition of the cubic $x^3$ component
 
-**Modify the equation in `stat_function(fun=function(x) EQUATION)` to plot the following:**
 
-- $y = 3$
-- $y = x$
-- $y = 3 + x$
-- $y = x^2$
+Let's see this in action!
 
-Hint: the first one would be `stat_function(fun=function(x) 3)`
 
-**Try to reproduce the following plot: **
+:::{.tip}
 
-(Hint: what do you have to do to the values of x to get the values of y?)
+**Learning tip**
 
-```{r,echo=F}
-tibble(x=1:10) %>% 
-  ggplot(aes(x)) + 
-  stat_function(fun=function(x) - x^2)
-```
+Try storing all your code in an R Markdown file today if you are not doing so already!
 
-`r hide("Answer")`
+:::
 
-```{r,visible=F}
-tibble(x=1:10) %>% 
-  ggplot(aes(x)) + 
-  stat_function(fun=function(x) - x^2)
-```
-
-`r unhide()`
-
-
-</div>
-
-
-# Identifying components
-
-It is worth noting some general characteristics of polynomial equations to give you a better idea of what these various components in the equation look like.
-
-## Linear (first-order) components
-
-In a linear equation of the form **$y = b_0 + b_1(x)$**, the coefficient $b_0$ represents the **intercept**. $b_1$ is the coefficient for x.
-
-The line for a linear equation keeps on increasing and decreasing for all values of x, with no bends:
-
-```{r,echo=F}
-d<-tibble(x=seq(-10,10,0.1),y=x)
-d %>% ggplot(aes(x=x)) + 
-  geom_line(aes(y=y),size=2,colour='orange') +
-  geom_line(aes(y=0)) +
-  geom_line(aes(y=x,x=0)) +
-  theme_minimal()
-```
-
-
-## Quadratic (second-order) components
-
-Equations with a quadratic component have form **$y = b_0 + b_1(x) + b_2(x^2)$**. Again, $b_0$ represents the intercept. $b_1$ and $b_2$ are the coefficients for $x$ and $x^2$, respectively.
-
-The **maximum/minimum** of a curve is the **point of inflection** at which the curve switches from decreasing to increasing (or increasing to decreasing). Equations with a quadratic component have one minimum (if the $x^2$ component is positive) or one maximum (if the $x^2$ component is negative).
-
-For curves with positive $x^2$ components:
-
-```{r,echo=F}
-d<-tibble(x=seq(-10,10,0.1),y=50+5*x+x^2)
-d %>% ggplot(aes(x=x)) + 
-  geom_line(aes(y=y),size=2,colour='orange') +
-  geom_line(aes(y=0)) +
-  geom_line(aes(y=x*20,x=0)) +
-  geom_point(y=min(d$y),x=-2.5,size=4) + 
-  theme_bw()
-```
-
-The dot indicates the minimum. Either side of this point, the values of y increase.
-
-
-
-For curves with $-x^2$ components:
-
-```{r,echo=F}
-d<-tibble(x=seq(-10,10,0.1),y=50+5*x-x^2)
-d %>% ggplot(aes(x=x)) + 
-  geom_line(aes(y=y),size=2,colour='orange') +
-  geom_line(aes(y=0)) +
-  geom_line(aes(y=x*10,x=0)) +
-  geom_point(y=max(d$y),x=2.5,size=4) +
-  theme_bw()
-```
-
-The dot indicates the maximum. Either side of this point, the values of y decrease.
-
-<div class='exercise'>
-
-Use `ggplot()` and `stat_function()` to plot a 2nd degree (quadratic) polynomial with the following characteristics:
-
-- a negative intercept
-- a positive linear component
-- a negative quadratic component
-
-
-`r hide("Show me an example")`
-```{r}
-tibble(x=1:10) %>% 
-   ggplot(aes(x)) + 
-   stat_function(fun=function(x) -5 + 0.5*x - 6.0*x^2) +
-   xlim(-5,5) + 
-   ylim(-100,100)
-```
-
-`xlim()` is used to specify the range of values on the x-axis (-5 to 5).
-
-`ylim()` is used to specify the range of values on the y-axis (-100 to 100).
-
-The curve specified in the line `stat_function(fun=function(x) -5 + 0.5*x - 6.0*x^2)` is 
-
-$y = -5 + 0.5x - 6.0x^2$
-
-</div>
-
-## Cubic (third) order components
-
-Curves with a cubic component have _two minima/maxima_ (i.e., two points of inflection), and are of the form **$y = b_0 + b_1(x) + b_2(x^2) + b_3(x^3)$**, where $b_0$ is the intercept, and $b_1$, $b_2$, and $b_3$ are the coefficients for the $x$, $x^2$, and $x^3$ components. 
-
-```{r,echo=F}
-d<-tibble(x=seq(-10,10,0.1),y=0 + 0.2*x + 0.2*x^2 + 0.2*x^3)
-d %>% ggplot(aes(x=x)) + 
-  geom_line(aes(y=y),size=2,colour='orange') +
-  geom_line(aes(y=0)) +
-  geom_line(aes(y=x*30,x=0)) +
-  theme_bw()
-```
-
-<div class='exercise'>
-
-Use `ggplot()` and `stat_function()` to plot a 3rd degree (cubic) polynomial with the following characteristics:
-
-- a positive intercept
-- a negative linear component
-- a positive quadratic component
-- a negative cubic component
-
-
-`r hide("Show me an example")`
-```{r}
-tibble(x=1:10) %>% 
-   ggplot(aes(x)) + 
-   stat_function(fun=function(x) 5 - 0.5*x + 6.0*x^2 - 0.5*x^3) +
-   xlim(-10,10) + 
-   ylim(0,1000)
-```
-
-The curve specified in the line `stat_function(fun=function(x) 5 - 0.5*x + 6.0*x^2 - 0.5*x^3)` is
-
-$y = 5 - 0.5x + 6.0x^2 - 0.5x^3$
-
-</div>
-
-## Quartic (fourth) order components
-
-A curve with a quartic component would have _three maxima/minima_ (i.e., three points of inflection). The equation would be of the form **$y = b_0 + b_1(x) + b_2(x^2) + b_3(x^3) + b_4(x^4)$**.
-
-```{r,echo=F,warning=FALSE}
-d<-tibble(x=seq(-10,10,0.1),y=0+0.5*x-6.0*x^2+1.0*x^3+0.5*x^4)
-d %>% ggplot(aes(x=x)) + 
-  geom_line(aes(y=y),size=2,colour='orange') +
-  geom_line(aes(y=0)) +
-  geom_line(aes(y=x*30,x=0)) +
-  ylim(-100,100) +
-  theme_bw()
-```
-<div class='exercise'>
-
-Use `ggplot` and `stat_function` to plot a 4th degree polynomial.
-
-Note: The points of inflection may not always be visible if the scale on either the y- or x-axis is very large. You can use `ylim()` and `xlim()` to adjust the scale of the axes, e.g., for the quartic function above:
-
-`r hide("Show me")`
-```{r}
-tibble(x=1:10) %>% 
-   ggplot(aes(x)) + 
-   stat_function(fun=function(x) 0 + 0.5*x - 6.0*x^2 + 1.0*x^3 + 0.5*x^4) +
-   xlim(-5,5) + 
-   ylim(-100,100)
-```
-The code specified in `stat_function(fun=function(x) 0 + 0.5*x - 6.0*x^2 + 1.0*x^3 + 0.5*x^4)` is
-
-$y = 0 + 0.5x - 6.0x^2 + 1.0x^3 + 0.5x^4)$
-
-`r unhide()`
-
-
-</div>
-
-
-
-
-
-# Fitting curves to data rather than straight lines
-
-
-When fitting a regression model to the data, how can we identify whether our regression model should have polynomial components?
-
-
-A 2016 survey of the National Office for Statistics investigated happiness across the life span (https://bit.ly/2jaZKBx). Approximately 300,000 individuals of all ages answered questions related to well-being. A BBC news report of the study can be found [here](https://www.bbc.co.uk/news/uk-35471624).
+\
+We'll use a dataset inspired by a 2016 survey of the National Office for Statistics investigated happiness across the life span. Approximately 300,000 individuals of all ages answered questions related to well-being. A BBC news report of the study can be found [here](https://www.bbc.co.uk/news/uk-35471624).
 
 
 Each participant answered the following question regarding happiness:
 
-<div class='exercise'>
+:::{.tip}
 "Overall, how happy did you feel yesterday?  Where 0 is 'not at all happy' and 10 is 'completely happy'."
-</div>
+:::
 
-A fictitious sample of this data is in the file located at ("https://bit.ly/2QlLFAZ"). (Although I made the data up for teaching purposes, the relationships present are the same.)
-
-
-
-Load the data into R: 
+This `happy` dataset are located at "https://bit.ly/2uIxM5K".
 
 
-```{r}
-SurveyData <- read_csv("data/SurveyData.csv")
 
-```
+Load the data into R, and preview the data using `glimpse`: 
 
-Preview it:
 
 ```{r}
+# load the data
+SurveyData <- read_csv("https://bit.ly/2uIxM5K")
+
+# preview it
 SurveyData %>% glimpse()
 ```
 
 
-Obtain some descriptive statistics:
 
-```{r}
-SurveyData %>% summary()
-```
+Plot the relationship between age and happiness:
 
-<div class = "exercise">
-What was the age range of the sample?
-</div>
-
-Use a scatterplot to look at the relationship between age and happiness:
-
-```{r}
-
+```{r fig11, fig.height = 3.5, fig.width = 3.5, fig.align = "center",echo=F}
 SurveyData %>%
   ggplot(aes(x=age, y=happiness)) +
-  geom_point()
-
+  geom_point() 
 ```
 
 
-<div class = "exercise">
-Does `age` appear to be related to `happiness`? How would you describe the nature of the relationship?
+:::{.exercise}
+If you had to guess at this stage, which components seem to be present in the relationship between `happiness` and `age`?
 
-Does there appear to be a linear, quadratic, or cubic component?
+Linear: `r mcq(c("maybe no", answer="maybe yes"))`
 
-How would you describe this relationship in psychological terms?
-</div>
+Quadratic: `r mcq(c("maybe no", answer="maybe yes"))`
 
-## Linear regression
+Cubic: `r mcq(c(answer= "maybe no", "maybe yes"))`
 
-Run a linear regression to determine whether `happiness` can be predicted from `age`:
+\
 
-```{r}
-model1 <- lm(happiness ~ age, data = SurveyData)
-summary(model1)
-```
+Try to describe the relationship in psychological terms.
 
-<div class='exercise'>
-Write the regression equation for predicting `happiness` from `age`, using the values from the `Estimate` column.
-
-
-`r hide("Show me")`
-
-The regression equation is:
-
-Predicted happiness = 6.48 + 0.02*age
-
+`r hide("Try first, click here for a description")`
+Happiness of individuals declines from 30 years to the late forties. Happiness increases beyond the late forties, reaching its peak at 70 years, at which age people reported the highest levels of happiness. 
 `r unhide()`
-</div>
+:::
 
+### Linear regression
 
-
-The following parts of the output tell us how well the model explains the data:
-
-- **Multiple _R_-squared** ($R^2$) is the proportion of variance in the outcome variable (happiness) that can be accounted for by the regression model. It gives us some idea of how well our model explains the data. If we multiply the value by 100, we get a percentage. Therefore, in this model, `age` explains **43.4%** of the variance in `happiness` scores.
-
-- The **_F_-statistic** gives us an idea of how much variance in happiness the model explains, relative to how much variance in happiness it does not explain (i.e., the error in prediction or residuals). There are two separate degrees of freedom associated with the _F_-statistic (1, 148). 
-
-- A _p_-value associated with _F_ is also given. This is the probability of obtaining an _F_-statistic as extreme as this, given that the null hypothesis is true. Given that our _p_-value is less than .05, we can declare age to be a statistically significant predictor of happiness, and could report _F_ as follows:
-
-<div class='exercise'>
-
-- Age is a statistically significant predictor of happiness, _F_(1,148) = 113.00, _p_ < .001.
-
-</div>
-
-Now let's see how well the happiness values predicted by the regression equation match the trends in our data.  Plot the regression line from `model1` on the same plot as the data:
-
+To determine whether there is a linear component, run a simple regression to determine whether `happiness` can be predicted from `age`:
 
 ```{r}
-SurveyData %>% mutate(fit1 = fitted(model1)) %>% 
+pmod1 <- lm(happiness ~ age, data = SurveyData)
+summary(pmod1)
+```
+
+**Explanation:** I stored the model in `pmod1`, as shorthand for "polynomial model 1".
+
+
+:::{.exercise}
+
+What percentage of the variance in `happiness` scores is explained by `age`? `r mcq(c("0.44",answer="43.39","29.12"))` %
+
+Is `age` a statistically significant predictor of `happiness` `r mcq(c("no", answer="yes"))`
+
+:::
+
+\
+
+To see how well the happiness values predicted by the regression equation match the trends in our data.  Plot the regression line from `model1` on the same plot as the data:
+
+
+```{r fig12, fig.height = 3.5, fig.width = 3.5, fig.align = "center",echo=F}
+SurveyData %>% 
+  mutate(fit1 = fitted(pmod1)) %>% 
   ggplot(aes(x=age, y=happiness)) + 
   geom_point() +
   geom_line(aes(y=fit1))
 ```
 
-The above code uses the `mutate` function from the `dplyr` package to add an additional column named `fit1` to the SurveyData. `fit1` contains the values of happiness that are predicted by the model, given each individual's age.
-
-<div class='tip'>
-An alternative way to plot this graph, consistent with the session on regression, would be to use the `augment()` function in the `broom` package.
-
-```{r}
-broom::augment(model1) %>%  ggplot(aes(x=age, y=happiness)) + 
-   geom_point() +
-   geom_line(aes(y=.fitted))
-```
-
-`.fitted` are the predicted values computed by `augment()`
-
-</div>
-
-<div class = "exercise">
-By visual inspection, does the model capture the trend in the data well? 
-</div>
-
-According to the model, happiness increases with age in a linear fashion. However, it is clear from the plot that this straight line is _not_ capturing the non-linear trend that is evident in our data. 
+**Explanation of the code:** The above code uses the `mutate` function from the `dplyr` package to add an additional column named `fit1` to the SurveyData. `fit1` contains the values of happiness that are predicted by the model, given each individual's age.
 
 
-## Adding a quadratic component
+
+:::{.exercise}
+By visual inspection, does the model capture the trend in the data well? `r mcq(c("yes!", answer="not really"))`
+:::
+
+According to the model, happiness increases with age in a _linear_ fashion. However, it is clear from the plot that this straight line is **not** capturing the non-linear trend that is evident in our data. 
+
+
+### Adding a quadratic component
 
 We can add a quadratic component to the regression model using the `poly()` function. 
 
-
 ```{r}
 
-model2 <- lm(happiness~poly(age,2), data=SurveyData)
-summary(model2)
+pmod2 <- lm(happiness ~ poly(age,2), data = SurveyData)
+summary(pmod2)
 
 ```
 
-The '2' in the `poly()` function tells R that we want to fit a model with a quadratic component. R will then fit a model of the following form:
+**Explanation:** Using `poly()` saves us lots of typing. The '2' in the `poly()` function tells R that we want to fit a model with a quadratic component. R will then fit a model of the following form:
 
 
-$happiness = a + b_1(age) + b_2(age^2)$
+$predicted happiness = a + b_1(age) + b_2(age^2)$
 
 
 where $a$ is the intercept, and $b_1$ and $b_2$ are the coefficients for the linear and quadratic components, respectively. 
@@ -565,77 +389,72 @@ where $a$ is the intercept, and $b_1$ and $b_2$ are the coefficients for the lin
 R will fit this model, and provide estimates of $a$, $b_1$ and $b_2$.
 
 
-$b_1$ and $b_2$ are the **coefficients** in the regression equation. 
+To visually inspect the fit of the second model use `mutate` and `fitted` to derive the predicted values, as before. The regression line should now appear curved:
 
 
-Visually inspect the fit of the second model:
-
-
-Use `mutate` and `fitted` to derive the predicted values, as before. The regression line should now appear curved:
-
-
-```{r}
-SurveyData %>% mutate(fit2=fitted(model2)) %>% 
-  ggplot(aes(x=age,y=happiness)) + 
+```{r fig13, fig.height = 3.5, fig.width = 3.5, fig.align = "center",echo=F}
+SurveyData %>% 
+  mutate(fit2 = fitted(pmod2)) %>% 
+  ggplot(aes(x = age, y = happiness)) + 
   geom_point() +
-  geom_line(aes(y=fit2))
+  geom_line(aes(y = fit2))
 ```
 
 
 
-<div class = 'exercise'>
-Compare the value of Multiple R-Squared in `model1` and `model2`. 
-
-Does the addition of a quadratic component result in an increase in R-Squared in model 2? By how much?
+:::{.exercise}
+What percentage of the variance in `happiness` does a model with a quadratic component of `age` explain? `r fitb(answer=68.53,  num=TRUE)` %
 
 
-`r hide("Answer")`
+Compare the value of $R^2$ in `pmod1` and `pmod2`. 
 
-_R_-squared change from model1 to model2 = 0.685 - 0.434 = 0.25.
+Does the addition of a quadratic component result in an increase in R-Squared in model 2?  `r mcq(c(answer = "yes", "no"))`
 
-Therefore, the model with the quadratic component accounts for 25% more variance in `happiness`.
+What is the change in $R^2$? `r fitb(answer=25.14,  num=TRUE)` % (to 2 decimal places)
+
+
+`r hide("Click to see how the answer is calculated")`
+
+_R_-squared change from pmod1 to pmod2 = 68.53 - 43.39 = 25.14%
+
+Therefore, the model with the quadratic component accounts for 25.14% more variance in `happiness`.
 
 `r unhide()`
-</div>
+:::
 
 We can test whether the _increase_ in _R_-squared in `model2` represents a statistically significant increase or not by comparing the models using an ANOVA:
 
 
 ```{r}
 
-anova(model1, model2)
+anova(pmod1, pmod2)
 
 ```
 
 `anova` computes a new _F_-statistic, testing whether the _increase_ in variance explained by `model2` is statistically significant or not. 
 
-<div class="tip">
-In the previous lecture you were recommended against using `anova()` to **specify** models. The use here is different: we are comparing two existing models, rather than specifying and running a model in order to run an ANOVA in the way you did in the previous lecture. You are still advised _not_ to use `anova()` to specify models as this is cumbersome.
-</div>
 
-<div class="exercise">
-By examining the F-statistic, is there sufficient evidence for an improvement in fit in the model as a result of adding in the quadratic component?
+:::{.exercise}
+By examining the _F_-statistic, is there sufficient evidence for an improvement in fit in the model as a result of adding in the quadratic component? `r mcq(c(answer = "yes", "no"))`
 
 
 `r hide("Answer")`
 We can report the improvement in fit as follows: 
 
-A model with a quadratic component accounted for a statistically significantly greater proportion of variance in happiness than a model with only a linear component, _F_(1,148) = 117.00, _p_ < .001.
+A model with a quadratic component of age accounted for a statistically significantly greater proportion of variance in happiness than a model with only a linear component, _F_(1,148) = 117.00, _p_ < .001.
 `r unhide()`
 
-</div>
+:::
 
-## Adding a cubic component
+### Adding a cubic component
 
 
 Now run a model with a cubic component:
 
 
 ```{r}
-
-model3 <- lm(happiness~poly(age,3),data=SurveyData)
-summary(model3)
-
+pmod3 <- lm(happiness ~ poly(age,3), data = SurveyData)
+summary(pmod3)
 ```
 
 The '3' in `poly(age,3)` tells R that we want to specify a model with a cubic component, of the form: 
@@ -644,285 +463,319 @@ The '3' in `poly(age,3)` tells R that we want to specify a model with a cubic co
 $happiness = a + b_1(age) + b_2(age^2) + b_3(age^3)$
 
 
-As before, plot the predicted values from this model in a scatterplot:
+:::{.exercise}
+What percentage of the variance in `happiness` does a model with a cubic component of `age` explain? `r fitb(answer=68.80,  num=TRUE)` %
 
+Compare the value of $R^2$ in `pmod3` and `pmod2`. 
 
-```{r}
+Does the addition of a quadratic component result in an increase in $R^2$ in `pmod3`?  `r mcq(c(answer = "yes", "no"))`
 
-SurveyData %>% mutate(fit3= fitted(model3)) %>% 
-  ggplot(aes(x=age,y=happiness)) + 
-  geom_point() +
-  geom_line(aes(y=fit3))
+What is the increase in _R_-squared as a result of adding in the cubic component? (Compare $R^2$ between `pmod3` and `pmod2`).
 
-```
-
-<div class="exercise">
-Does the visual fit of the model with a cubic component seem better than the fit of previous models?
-</div>
-
-<div class ="exercise">
-What is the increase in _R_-squared as a result of adding in the cubic component? (Compare R-squared between `model3` and `model2`).
-
-The increase in R-squared is `r fitb(answer=0.003, num=TRUE,tol=.001)` 
-</div>
+The increase in R-squared is `r fitb(answer=0.27, num=TRUE)` %
+:::
 
 To determine if this change in _R_-squared is statistically significant or not, we can again use `anova()`:
 
 
 ```{r}
 
-anova(model2,model3)
+anova(pmod2, pmod3)
 
 ```
 
-The _F_-statistic comparing `model3` and `model2` is not statistically significant, _F_(1, 146) = 1.27, _p_ = .26, indicating that the addition of the cubic component into the regression model does not result in a statistically significant increase in the variability explained by the model.
+:::{.exercise}
+Is the increase in $R^2$ a statistically significant increase? `r mcq(c(answer="no", "yes"))`
+
+`r hide('Description of the answer')`
+The _F_-statistic comparing `pmod3` and `pmod2` is not statistically significant, _F_(1, 146) = 1.27, _p_ = .26, indicating that the addition of the cubic component of age into the regression model does not result in a statistically significant increase in the variability explained by the model.
+`r unhide()`
+
+\
+On the basis of the model comparison with `anova`, which model should be preferred:
+
+`r mcq(c("linear component of age only", answer="linear and quadratic components of age", "linear, quadratic, cubic components of age"))`
+
+:::
 
 
-This suggests that a model with a quadratic component (`model2`) is sufficient to explain the data, and that would be the model that we would choose to report. There was insufficient evidence for a model with a cubic trend.
+In conclusion, our analyses suggest that a model with a quadratic component of `age` (`pmod2`) is sufficient to explain the data, and that would be the model that we would choose to report.
 
 
-In conclusion, over the range of `age` considered, there is evidence for a quadratic relationship between `age` and `happiness`. There was insufficient evidence for a model with a cubic trend.
+## Bayesian approach
 
+As we did in the previous session, we can use Bayes Factors to compare the models with different higher-order polynomial components.
 
-# Bayesian approach
+Unfortunately, `poly()` does not work seamlessly with `lmBF`, as it did with `lm`. We need to create separate variables in `SurveyData` for the quadratic and cubic components before working out the Bayes Factors with `lmBF`.
 
-Load the `BayesFactor` package:
-
-```{r,include=FALSE}
-library(BayesFactor)
-```
-
-If we wanted to compare model1, model2, and model3 using a Bayesian approach, then the process is a bit more fiddly.
-
-
-First, because `poly()` does not work seamlessly with `BayesFactor::lmBF()`, we need to compute $age^2$ and $age^3$ ourselves:
-
+To add the quadratic component to `SurveyData`:
 
 ```{r}
-SurveyData <- SurveyData %>% mutate(age2= age^2, age3 = age^3)
-``` 
+SurveyData <- 
+  SurveyData %>% mutate( age2 = poly(age,2)[,"2"] )
+```
+
+**Explanation of the code:** The code takes `SurveyData`, then uses `mutate` to add a new variable `age2` to the dataset. `age2` contains the quadratic component of `age`, specified using `poly(age,2)[,"2"]`. 
+
+We can see the new variable `age2` when we look at `SurveyData` again:
+
+```{r}
+SurveyData
+```
+
+Now create the variable for the cubic component:
+
+```{r}
+SurveyData <- 
+  SurveyData %>% mutate( age3 = poly(age,3)[,"3"] )
+```
+
+**Explanation of the code:** The code takes `SurveyData`, then uses `mutate` to add a new variable `age3` to the dataset. `age3` contains the quadratic component of `age`, specified using `poly(age,3)[,"3"]`. 
+
+We can see the new variable `age3` when we look at `SurveyData` again:
+
+```{r}
+SurveyData
+```
 
 
-This creates a new column in SurveyData with $age^2$ calculated for each individual. Likewise for $age^3$.
-
-
-Now derive model1 and model2, but using `BayesFactor::lmBF()`:
-
-
+\
+To derive the Bayes Factor for `pmod1` using `lmBF()`:
 ```{r,warning=FALSE}
-model1BF <- BayesFactor::lmBF(happiness~age, data=SurveyData)
-model2BF <- BayesFactor::lmBF(happiness~age+age2, data=SurveyData)
+# first make sure the BayesFactor package is loaded so we can use lmBF
+library(BayesFactor)
+
+# store the Bayes Factor for pmod1
+pmod1BF <- lmBF(happiness ~ age, data = as.data.frame(SurveyData) )
 ```
 
-R produces a warning here (don't worry about this).
-
-Note that when adding polynomial terms to the regression equation in `lmBF()`, we use '+', rather than '*'. 
-
-Compute the Bayes Factor for the comparison of `model2BF` and `model1BF` as follows:
+\
 
 
+To derive the Bayes Factor for `pmod2` using `lmBF()`:
 ```{r}
-model2BF / model1BF
+# store the Bayes Factor for pmod2
+pmod2BF <- lmBF(happiness ~ age + age2, data = as.data.frame(SurveyData) )
 ```
 
-<div class="exercise">
-How many more times likely is `model2BF` than `model1BF`? Does this constitute strong or anecdotal evidence for `model2BF`? Refer to the guidelines on [interpretation of Bayes Factors in the previous lecture](https://plymouthpsychology.github.io/psystats/anova.html#interpreting-bayes-factors)
 
-
-`r hide("Answer")`
-
-`model2BF` is 2.62 times more likely than `model1BF`.
-This constitutes only weak or anecdotal evidence for `model2BF`.
-
-What would the dartboard representation for this Bayes Factor look like?
-
-`r unhide()`
-</div>
-
-
-To compare `model3BF` and `model2BF` using a Bayesian approach, we can take similar steps.
-
-
-Determine the Bayes Factor for model3:
-
+The Bayes Factor comparing `pmod2BF` and `pmod1BF` is then:
 ```{r}
-
-model3BF <- BayesFactor::lmBF(happiness~age+age2+age3, data=SurveyData)
-
+pmod2BF / pmod1BF
 ```
 
-Compare `model2BF` and `model3BF`:
+:::{.exercise}
+How many more times likely is a model with a quadratic component of age than only a linear component? 
+`r mcq(c("2.62e-17", answer = "2.62e+17"))` 
 
-```{r}
-model3BF / model2BF
-```
+Does this constitute strong evidence for `pmod2` over `pmod1`? 
+`r mcq(c(answer="yes","no"))`
 
-Should `model3BF` be preferred over `model2BF`?
-
-`r hide("Answer")`
-
-No. There is scarcely any evidence for model3 according to the Bayes Factor.
-
-The model without the cubic component (`model2BF`) should be preferred.
-
+`r hide('Explain why')`
+The Bayes Factor tells us that a model with a quadratic component of `age` is 2.62e+17 or $2.62 \times 10^{17}$ times more likely than one that simply contains a linear component. This is overwhelming evidence for the inclusion of a quadratic component of `age` in the model.
 `r unhide()`
 
-The results of this analysis largely agree with the traditional (NHST) analyses: the Bayes Factors indicate that there is more evidence for model2 than model1 (although the evidence is weak), but there is scarcely any evidence for model3 over model2.
+:::
 
 
+Next, determine the Bayes Factor for `pmod3`:
 
-<div class="tip">
-Tip: An advanced way to add polynomial terms to `SurveyData` would be:
 ```{r}
-SurveyData <- bind_cols(SurveyData,
-                        poly(SurveyData$age,3) %>% 
-                        as.tibble() %>% 
-                        setNames(paste0("age",1:3)))
+
+pmod3BF <- BayesFactor::lmBF(happiness ~ age + age2 + age3, data = as.data.frame(SurveyData) )
+
 ```
-This can be useful if testing a large number of polynomials.
 
-The code uses `bind_cols()` to add new columns to `SurveyData`:
+Compare `pmod3BF` and `pmod2BF`:
 
-- `poly(SurveyData$age,3)` creates three new columns containing the $x$, $x^2$, and $x^3$ components.
-- `as.tibble()` converts these columns to tibble format
-- `setNames(paste0("age"),1:3)` sets the columns names for the three new columns as `age1`, `age2`, and `age3`.
+```{r}
+pmod3BF / pmod2BF
+```
 
-</div>
-  
+:::{.exercise}
+How many more times likely is a model with a cubic component than one with only linear and quadratic components? 
+`r fitb(answer="0.16")`
+
+Does this constitute strong evidence for the inclusion of a cubic component in the model? 
+`r mcq(c("yes",answer="no"))`
+
+`r hide('Explain why')`
+The Bayes Factor tells us that a model with a cubic component of `age` is only 0.16 times more likely than one that contains both linear and quadratic components. Because the Bayes Factor is less than 0.33, this constitutes strong evidence for the simpler model with a quadratic component.
+`r unhide()`
+
+\
+On the basis of the model comparison with Bayes Factors, which model should be preferred?
+
+`r mcq(c("linear component of age only",answer="linear and quadratic components of age","linear, quadratic, cubic components of age"))`
+
+:::
 
 
-# Exercise
+A comparison of Bayes Factors agrees with the results using `anova`: the Bayes Factors indicate that there is more evidence for `pmod2` than `pmod1`, and that `pmod2` should be preferred over `pmod2`.
 
-## Does `age` predict `anxiety`?
 
-<div class='exercise'>
+
+
+## Exercise
+
+
+:::{.exercise}
+
+Now you try incorporating polynomials to a regression, and do so by investigating the relationshipp between `age` and `anxiety` in `SurveyData`.
+
+
+**Does `age` predict `anxiety`, and are there ?**
+
 
 The column `anxiety` in `SurveyData` contains responses to the question:
 
 
-"Overall, how anxious did you feel yesterday?  Where 0 is 'not at all anxious' and 10 is 'completely anxious'."
+**"Overall, how anxious did you feel yesterday?  Where 0 is 'not at all anxious' and 10 is 'completely anxious'."**
 
 
-- Create a scatterplot of `age` vs. `anxiety`. Does there appear to be a non-linear relationship?
+- Create a scatterplot of `age` vs. `anxiety`. Does there appear to be a linear or non-linear relationship?
 
-`r hide("Show me")`
-```{r,eval=FALSE}
+`r hide("Try to create the plot yourself first. Click to show the code")`
+```{r fig14, fig.height = 3.5, fig.width = 3.5, fig.align = "center",echo=F}
 SurveyData %>%
   ggplot(aes(x=age, y=anxiety)) +
   geom_point()
 ```
+`r unhide()`
+
+`r hide("Try to discern the trend in the data yourself first, then click to see answer")`
 A slight bow is evident is evident in the plot such that `age` and `anxiety` seem to follow an inverted U-shaped relationship. 
+\
+Reported `anxiety` levels increase from 30 years to middle age (approx. 50 years) and then declines from 50 to 70 years. This mirrors the relationship with `age` and `happiness`: `anxiety` is greatest when `happiness` seems lowest. 
 `r unhide()`
 
-- By testing for polynomial components, derive the regression model for predicting `anxiety` from `age`. To do this, use the same sequence of steps that we used above, but replace `happiness` with `anxiety`:
+\
+**Answer the following questions:**
 
-Answer the following questions:
+- What percentage of the variance in `anxiety` is explained by a model with `age` as predictor?
+`r fitb(answer="1.19")` %
 
-- Is the relationship between age and anxiety linear or non-linear?
+\
 
-`r hide("Show me")`
-There is sufficient evidence to suggest that the relationship between age and anxiety is non-linear
-`r unhide()`
+- What percentage of the variance in `anxiety` is explained by a model containing both linear and quadratic components of `age` as predictors? 
+`r fitb(answer="5.63")` %
 
-- If the relationship is non-linear, then what is the form of the relationship (i.e., quadratic, cubic, quartic etc.)? 
+- What is the _increase_ in $R^2$ if a quadratic component of `age` is added to the model?
+`r fitb(answer="4.44")` %
 
-`r hide("Show me")`
+- Does this increase represent a statistically significant increase? 
+`r mcq(c(answer="yes","no"))`
 
-A model with a quadratic component seems to provide a best account of the data:
+- What is the _F_-statistic for the test of the model with a linear component vs. linear + quadratic components?
+_F_(1, 147) = `r fitb(answer="6.92")`, _p_ = .009
+
+\
+
+- What percentage of the variance in `anxiety` is explained by a model containing both linear, quadratic and cubic components of `age` as predictors? 
+`r fitb(answer="7.02")` %
+
+- What is the _increase_ in $R^2$ if a cubic component of `age` is added to the model?
+`r fitb(answer="2.58")` %
+
+- Does this increase represent a statistically significant increase? `r mcq(c("yes", answer="no"))`
+
+- What is the _F_-statistic for the test of the model with a linear component vs. linear + quadratic components?
+_F_(1, 146) = `r fitb("1.22")`, _p_ = `r fitb("0.14")`
+
+\
+
+- On the basis of the model comparison with ANOVA, which model should be preferred?
+`r mcq(c("linear component of age only",answer="linear and quadratic components of age","linear, quadratic, cubic components of age"))`
+
+
+`r hide("Show me the code to do this")`
 
 ```{r,eval=FALSE}
-# fit a linear model
-model1 <- lm(anxiety ~ age, data = SurveyData)
-summary(model1)
+# fit a linear model, show results
+anx1 <- lm(anxiety ~ age, data = SurveyData)
+summary(anx1)
 
-# fit a quadratic component
-model2 <- lm(anxiety~ poly(age,2), data=SurveyData)
-summary(model2)
+# fit a quadratic component, show results
+anx2 <- lm(anxiety ~ poly(age,2), data=SurveyData)
+summary(anx2)
 
-# determine if the model with a quadratic component results in an improvement in fit vs. linear
-anova(model1, model2)
+# compare linear and linear+quadratic models
+anova(anx1, anx2)
 
-# check for a cubic component
-model3 <- lm(anxiety ~ poly(age,3), data=SurveyData)
-summary(model3)
+# fit a cubic component
+anx3 <- lm(anxiety ~ poly(age,3), data=SurveyData)
+summary(anx3)
 
-# determine if the model with a cubic component results in an improvement in fit vs. quadratic
-anova(model2, model3)
+# compare (linear + quadratic) and (linear + quadratic + cubic) models
+anova(anx2, anx3)
 ```
 `r unhide()`
 
 
-- Do the results of a Bayesian analysis agree?
+**Now compare models with Bayes Factors:**
 
-`r hide("Show me")`
-The results of a Bayesian analysis agreed:
-```{r,eval=FALSE}
+(Note: you do not need to re-add the quadratic and cubic components of age to `SurveyData` - these should still be in `SurveyData` if you followed the steps before.)
+
+ - The Bayes Factor comparing a model with linear and quadratic components vs. linear component only is `r fitb(answer="5.48")`
+ 
+ - This indicates that there is more evidence for which model? `r mcq(c("linear component only",answer="linear plus quadratic components"))`
+ 
+ \
+- The Bayes Factor comparing a model with linear, quadratic and cubic components vs. linear and quadratic components only is `r fitb("0.76")`
+  
+- This indicates that there is more evidence for which model? `r mcq(c(answer="linear plus quadratic component","linear, quadratic, and cubic components"))`
+ 
+ \
+ 
+Do the comparisons of models with Bayes Factors support the conclusions made with anova? `r mcq(c("no", answer="yes"))`
+
+
+`r hide("Show me the code to determine the Bayes Factors for each model")`
+
+```{r}
 library(BayesFactor)
 
-# create polynomials by hand
-SurveyData <- SurveyData %>% mutate(age2= age^2, age3 = age^3)
+# BF for model anx1
+anx1BF <- lmBF(anxiety ~ age, data = as.data.frame(SurveyData) )
 
-# BF for model 1
-model1BF <- BayesFactor::lmBF(anxiety~ age, data=SurveyData)
+# BF for model anx2
+anx2BF <- lmBF(anxiety ~ age + age2, data = as.data.frame(SurveyData) )
 
-# BF for model 2
-model2BF <- BayesFactor::lmBF(anxiety~ age + age2, data=SurveyData)
+# compare BFs for anx2 and anx1
+anx2BF / anx1BF
 
-# compare BFs for models 1 and 2
-model2BF / model1BF
+# BF for model anx3
+anx3BF <- lmBF(anxiety~ age + age2 + age3, data = as.data.frame(SurveyData) )
 
-# BF for model 3
-model3BF <- BayesFactor::lmBF(anxiety~ age + age2 + age3, data=SurveyData)
-
-# compare BFs for models 2 and 3
-model3BF / model2BF
+# compare BFs for anx3 and anx2
+anx3BF / anx2BF
 
 ```
 `r unhide()`
 
-- Once you have decided on the **final model**:
-
-    - What proportion of variance in anxiety is explained by the model?
-    
-    - Write the regression equation.
-    
-    - Produce a scatterplot showing the data with the final model superimposed on it.
-    
-    - Describe the relationship between `age` and `anxiety` in psychological terms. Does this align with the relationship between `age` and `happiness`?
-    
-    
-`r hide("Show me")`
-```{r,eval=FALSE}
-summary(model2)
-
-SurveyData %>% mutate(fit2=fitted(model2)) %>% 
-  ggplot(aes(x=age,y=anxiety)) + 
-  geom_point() +
-  geom_line(aes(y=fit2))
-```
-
-- The proportion of variance explained by the model R-squared is **5.63%**
-
-- The regression equation is: 
-
-Predicted Anxiety = 2.94 - 1.02Age - 1.98Age^2
-
-- Reported anxiety levels increase from 30 years to middle age (approx. 50 years) and then declines from 50 to 70 years. This mirrors the relationship with age and happiness: anxiety is greatest when happiness seems lowest. 
 
 
-`r unhide()`
+
+:::
 
 
-</div>
-
-
-# Summary
+## Summary of key points
 
 - Polynomial terms can be added to regression models to fit curves in our data. 
 
-- `poly(predictor,X)` can be used when conducting the regression to test for the significance of polynomial terms of the Xth order.
+\
 
-- The improvement in fit (R-squared) as a result of adding in a polynomial term can be tested using `anova(model1,model2)`.
+- `poly(predictor name, X)` can be used with `lm` to specify models with polynomial terms of the Xth order.
 
-- A note: Although curves of any complexity can be fit, it may not always be meaningful or parsimonious to do so. Complex models may 'overfit' the data and may not necessarily generalise to new datasets well. It is also important not to extrapolate beyond the range of data used to generate the model when making predictions from the model, as the same relationship may not be present.
+  - The improvement in fit ($R^2$) as a result of adding in a polynomial term can be tested using `anova(model1, model2)`.
+
+\
+
+- Bayes Factors can also be used to compare models with polynomial terms using `lmBF`.
+
+  - You must store the polynomial components in the dataset first before using `lmBF`. Use `poly(predictor name, X)[,"X"]`.
+
+\
+
+- **A note of caution**: Although curves of any complexity can be fit, it may not always be meaningful or parsimonious to do so. Complex models may _overfit_ the data and may not necessarily generalise to new datasets well. It is also important not to extrapolate beyond the range of data used to generate the model when making predictions from the model, as the same relationship may not be present.
 

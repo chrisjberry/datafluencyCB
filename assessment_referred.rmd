@@ -1,0 +1,110 @@
+# Assessment (Referred)
+
+```{r, echo=FALSE, message=FALSE, include=F, warnings=F}
+library(knitr)
+library(tidyverse)
+library(pander)
+```
+
+
+
+## Referred assessment - Data Analysis and Visualisation Task
+
+This referred assessment is due on 20 August 2020.
+
+Your task is to answer the questions below.
+
+
+### Submitting your answers
+
+You should submit exactly 3 files:
+
+1. An rmd file
+2. A PDF document, produced by knitting your rmd file.
+3. As a separate document, upload a copy of the standard CW coversheet (and complete the feedback section).
+
+
+Within the Rmd file you should:
+
+-   Label each question clearly
+-   Where necessary, include comments explaining what specific lines of code do.
+-   Intersperse explanatory text with code chunks (don't put everything in the same code chunk).
+
+Your rmd file should "Just Work" when the marker opens and runs it, and produce the same output as
+the knitted PDF file you submitted (i.e. there won't be any errors or missing datafiles).
+
+If you work on your own computer at home, you should check your rmd file 'knits' correctly on the
+online Rstudio server.
+
+
+\
+
+### Questions
+
+
+
+#### 1. Data handling 
+
+Use `dplyr` functions like `group_by` and `summarise` to recreate the table below, from the `datasets::InsectSprays` dataset (in-built to RStudio). Use `?InsectSprays` for information on the data.
+
+Your table should look like the one below once you've knitted your document to a PDF:
+
+<center>
+![](images\q1_referred.PNG)
+</center>
+
+\
+
+
+
+#### 2. Visualisation and plotting 
+
+Recreate the plot below, using the `datasets::ToothGrowth` data:
+
+\
+
+<center>
+![](images\q2_referred.PNG)
+</center>
+
+\
+
+#### 3. Regression 
+
+Use `read_csv` to load the `sport` dataset held at <https://bit.ly/2Zm4lCy>. The data are responses to a survey concerning sportspeople's attitudes to sport.
+
+
+
+:::{.tip}
+
+These are the variables:
+
+`age`  age in years
+
+`perabil` perceived ability - an individual's self-perceived ability in their chosen sport. Higher scores indicate greater perceived ability.
+
+`cheating` attitude to cheating - higher scores indicate a greater willingness to cheat to achieve success.
+
+`gamesman` attitude to gamesmanship - higher scores indicate a greater willingness to use various ploys and tactics to gain a psychological advantage over the opposition.
+
+`commit` commitment to sport participation - higher scores indicate a greater commitment in terms of practising, effort, attempts to improve and persevere after making mistakes.
+
+`conven` respect for social conventions - higher scores indicate a greater willingness to display sportsmanship (e.g., shaking hands with opponents, congratulating the opposition)
+
+`task` perception of success and ability in sport, where success is measured relative to how well the *task* can actually be performed, and also relative to how well the task can be performed by oneself.
+
+`ego` perception of success and ability in sport, where success is measured in terms of how well one performs *relative to others*. 
+
+
+:::
+
+
+a. Fit a linear model to determine the extent to which `task` is predicted by  `conven`. Report the results in APA format, include an appropriate plot of the data, and explain the results.
+
+b. Based on this model, what is the prediction and 95% confidence interval for a person with a `conven` score of 20?
+
+c. Can you improve this model? If so, report why and how in detail.
+
+
+
+

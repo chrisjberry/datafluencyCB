@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Summary of key points | PSYC753 Data Fluency</title>
-  <meta name="description" content="Summary of key points | PSYC753 Data Fluency" />
+  <title>Referred assessment - Data Analysis and Visualisation Task | PSYC753 Data Fluency</title>
+  <meta name="description" content="Referred assessment - Data Analysis and Visualisation Task | PSYC753 Data Fluency" />
   <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Summary of key points | PSYC753 Data Fluency" />
+  <meta property="og:title" content="Referred assessment - Data Analysis and Visualisation Task | PSYC753 Data Fluency" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Summary of key points | PSYC753 Data Fluency" />
+  <meta name="twitter:title" content="Referred assessment - Data Analysis and Visualisation Task | PSYC753 Data Fluency" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="exercise-1.html">
-<link rel="next" href="FAQ-assessment.html">
+<link rel="prev" href="assessment-referred.html">
+<link rel="next" href="building-models-1.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -194,37 +194,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="summary-of-key-points-2" class="section level2">
-<h2>Summary of key points</h2>
+<div id="referred-assessment---data-analysis-and-visualisation-task" class="section level2">
+<h2>Referred assessment - Data Analysis and Visualisation Task</h2>
+<p>This referred assessment is due on 20 August 2020.</p>
+<p>Your task is to answer the questions below.</p>
+<div id="submitting-your-answers-1" class="section level3">
+<h3>Submitting your answers</h3>
+<p>You should submit exactly 3 files:</p>
+<ol style="list-style-type: decimal">
+<li>An rmd file</li>
+<li>A PDF document, produced by knitting your rmd file.</li>
+<li>As a separate document, upload a copy of the standard CW coversheet (and complete the feedback section).</li>
+</ol>
+<p>Within the Rmd file you should:</p>
 <ul>
-<li>Polynomial terms (e.g., <span class="math inline">\(x^2\)</span>, <span class="math inline">\(x^3\)</span>) can be added to regression models to fit curves in our data.</li>
+<li>Label each question clearly</li>
+<li>Where necessary, include comments explaining what specific lines of code do.</li>
+<li>Intersperse explanatory text with code chunks (don’t put everything in the same code chunk).</li>
 </ul>
+<p>Your rmd file should “Just Work” when the marker opens and runs it, and produce the same output as
+the knitted PDF file you submitted (i.e. there won’t be any errors or missing datafiles).</p>
+<p>If you work on your own computer at home, you should check your rmd file ‘knits’ correctly on the
+online Rstudio server.</p>
 <p><br />
 </p>
-<ul>
-<li><p><code>poly(predictor name, X)</code> can be used with <code>lm</code> to specify models with polynomial terms of the Xth order.</p>
-<ul>
-<li>The improvement in fit (<span class="math inline">\(R^2\)</span>) as a result of adding in a polynomial term can be tested using <code>anova(polynomial1, polynomial2)</code>.</li>
-</ul></li>
-</ul>
+</div>
+<div id="questions-1" class="section level3">
+<h3>Questions</h3>
+<div id="data-handling" class="section level4">
+<h4>1. Data handling</h4>
+<p>Use <code>dplyr</code> functions like <code>group_by</code> and <code>summarise</code> to recreate the table below, from the <code>datasets::InsectSprays</code> dataset (in-built to RStudio). Use <code>?InsectSprays</code> for information on the data.</p>
+<p>Your table should look like the one below once you’ve knitted your document to a PDF:</p>
+<center>
+<img src="images/q1_referred.PNG" />
+</center>
 <p><br />
 </p>
-<ul>
-<li><p>Bayes Factors can also be used to compare models with polynomial terms using <code>lmBF</code>.</p>
-<ul>
-<li>You must store the polynomial components in the dataset first before using <code>lmBF</code>. Use <code>poly(predictor name, X)[,"X"]</code>, where X is the order of the polynomial you will test (e.g., <code>poly(age, 3)[,"3"]</code>).</li>
-</ul></li>
-</ul>
+</div>
+<div id="visualisation-and-plotting" class="section level4">
+<h4>2. Visualisation and plotting</h4>
+<p>Recreate the plot below, using the <code>datasets::ToothGrowth</code> data:</p>
 <p><br />
 </p>
-<ul>
-<li><p><strong>A note of caution</strong>: Although curves of any complexity can be fit, it may not always be meaningful or parsimonious to do so.</p>
-<ul>
-<li>Complex models may <em>overfit</em> the data and may not necessarily generalise to new datasets well.</li>
-<li>It is also important not to extrapolate beyond the range of data used to generate the model when making predictions from the model, as the same relationship may not be present.</li>
-</ul></li>
-</ul>
+<center>
+<img src="images/q2_referred.PNG" />
+</center>
+<p><br />
+</p>
+</div>
+<div id="regression" class="section level4">
+<h4>3. Regression</h4>
+<p>Use <code>read_csv</code> to load the <code>sport</code> dataset held at <a href="https://bit.ly/2Zm4lCy" class="uri">https://bit.ly/2Zm4lCy</a>. The data are responses to a survey concerning sportspeople’s attitudes to sport.</p>
+<div class="tip">
+<p>These are the variables:</p>
+<p><code>age</code> age in years</p>
+<p><code>perabil</code> perceived ability - an individual’s self-perceived ability in their chosen sport. Higher scores indicate greater perceived ability.</p>
+<p><code>cheating</code> attitude to cheating - higher scores indicate a greater willingness to cheat to achieve success.</p>
+<p><code>gamesman</code> attitude to gamesmanship - higher scores indicate a greater willingness to use various ploys and tactics to gain a psychological advantage over the opposition.</p>
+<p><code>commit</code> commitment to sport participation - higher scores indicate a greater commitment in terms of practising, effort, attempts to improve and persevere after making mistakes.</p>
+<p><code>conven</code> respect for social conventions - higher scores indicate a greater willingness to display sportsmanship (e.g., shaking hands with opponents, congratulating the opposition)</p>
+<p><code>task</code> perception of success and ability in sport, where success is measured relative to how well the <em>task</em> can actually be performed, and also relative to how well the task can be performed by oneself.</p>
+<p><code>ego</code> perception of success and ability in sport, where success is measured in terms of how well one performs <em>relative to others</em>.</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li><p>Fit a linear model to determine the extent to which <code>task</code> is predicted by <code>conven</code>. Report the results in APA format, include an appropriate plot of the data, and explain the results.</p></li>
+<li><p>Based on this model, what is the prediction and 95% confidence interval for a person with a <code>conven</code> score of 20?</p></li>
+<li><p>Can you improve this model? If so, report why and how in detail.</p></li>
+</ol>
 
+</div>
+</div>
 </div>
 <!-- </div> -->
             </section>
@@ -232,8 +271,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="exercise-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="FAQ-assessment.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="assessment-referred.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="building-models-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

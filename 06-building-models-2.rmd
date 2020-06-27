@@ -235,6 +235,8 @@ model2.BF <- lmBF(finalex ~ entrex + age + project, data = as.data.frame(ExamDat
 model2.BF
 ```
 
+\
+
 **Explanation:** The Bayes Factor is equal to **2427.68**. Again, this indicates that the model with `entrex` and `age` is much more likely than a model with only the intercept in (this is not that surprising given the result for `model1.BF` above). 
 
 But, what we want to know is whether `model2` (containing `entrex` and `age`) is **more** likely than `model1` (containing only `entrex`). We can determine this by _dividing_ the Bayes Factor for `model2` by the Bayes Factor for `model1`:

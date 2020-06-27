@@ -1,0 +1,333 @@
+### Constant
+
+To see why this approach works, recall that lines can be represented by equations.
+
+The equation **$y = 1$** would be represented like this:
+
+```{r,echo=F}
+d<-tibble(x=seq(-10,10,0.1),y=rep(1,length(x)))
+d %>% ggplot(aes(x=x)) + 
+  geom_line(aes(y=y),size=2,colour='orange') +
+  geom_line(aes(y=0)) +
+  geom_line(aes(y=x,x=0)) +
+  theme_bw()
+```
+
+Because y is the same value (i.e., 1) at each value of x, we say that y is equal to a **"constant"**. The value of y determines the **height** of the line.
+
+
+### Linear
+
+The equation **$y = 0.5(x)$** would be represented as follows:
+
+
+```{r,echo=F}
+d<-tibble(x=seq(-10,10,0.1),y=0.5*x)
+d %>% ggplot(aes(x=x)) + 
+  geom_line(aes(y=y),size=2,colour='orange') +
+  geom_line(aes(y=0)) +
+  geom_line(aes(y=x,x=0)) +
+  theme_bw()
+```
+
+Each value of y on the line is half that of x.
+
+- When x is 2, y is 1
+
+- When x is 5, y is 2.5
+
+We say that the relationship between y and x is **linear**, because it is a described by a straight line, and y is simply equal to a value of x multiplied by a constant (0.5).
+
+Multiplying x by larger numbers would make this line steeper; smaller numbers make this line less
+steep. If the number were negative, the line would slope from the upper left of the plot to the lower right.
+
+
+### Constant + linear component
+
+The equation **$y = 1 + 0.5(x)$** would be represented as follows:
+
+
+```{r,echo=F}
+d<-tibble(x=seq(-10,10,0.1),y=1+0.5*x,a=rep(1,length(x)),b=0.5*x)
+d %>% ggplot(aes(x=x)) + 
+  geom_line(aes(y=y),size=2,colour='orange') +
+  geom_line(aes(y=0)) +
+  geom_line(aes(y=x,x=0)) +
+  geom_line(aes(y=a),linetype=2,size=1,colour='orange') +
+  geom_line(aes(y=b),linetype=2,size=1,colour='orange') +
+  theme_bw()
+```
+
+We can think of this line as being made up of a constant and a linear component.
+
+- The constant in this equation is indicated by the dashed horizontal line.
+- The linear component to this equation 0.5(x) is indicated by the dashed slope line.
+- The solid orange line is a combination of these two components.
+
+
+### Quadratic
+
+The equation **$y = x^2$** would be represented as follows:
+
+```{r,echo=F}
+d<-tibble(x=seq(-10,10,0.1),y=x^2)
+d %>% ggplot(aes(x=x)) + 
+  geom_line(aes(y=y),size=2,colour='orange') +
+  geom_line(aes(y=0)) +
+  geom_line(aes(y=x*10,x=0)) +
+  theme_bw()
+```
+
+To get each value of y, we square the value of x. 
+
+So, when x = -5, y is 25. And if x = -4, y = 16, and so on...
+
+
+**$y = -x^2$**,  would look as follows:
+
+```{r,echo=F}
+d<-tibble(x=seq(-10,10,0.1),y=-(x^2))
+d %>% ggplot(aes(x=x)) + 
+  geom_line(aes(y=y),size=2,colour='orange') +
+  geom_line(aes(y=0)) +
+  geom_line(aes(y=x*10,x=0)) +
+  theme_bw()
+```
+
+
+### Linear plus quadratic components
+
+The equation **$y = 50 + 5(x) - x^2$** has 
+
+- a constant 50
+- a linear component 5(x)
+- a quadratic component $-x^2$:
+
+```{r,echo=F}
+d<-tibble(x=seq(-10,10,0.1),y=50+5*x-x^2,a=rep(50,length(x)),b1=5*x,b2=-(x^2))
+d %>% ggplot(aes(x=x)) + 
+  geom_line(aes(y=y),size=2,colour='orange') +
+  geom_line(aes(y=0)) +
+  geom_line(aes(y=x*10,x=0)) +
+  geom_line(aes(y=a),linetype=2,size=1,colour='orange') +
+  geom_line(aes(y=b1),linetype=2,size=1,colour='orange') +
+  geom_line(aes(y=b2),linetype=2,size=1,colour='orange') +
+  theme_bw()
+```
+
+The dashed lines on the plot indicate the intercept, linear component, and quadratic components of the equation. The solid line represents the equation.
+
+When we see any curve, it is possible to think of it as being composed of components like this.
+
+
+:::{.exercise}
+
+Let's plot some curves. First, load the `tidyverse` package:
+
+```{r}
+library(tidyverse)
+```
+
+We can use `ggplot()` to plot curves:
+
+```{r}
+tibble(x=1:10) %>% 
+  ggplot(aes(x)) + 
+  stat_function(fun=function(x) 2*x + x^2)
+```
+
+`stat_function(fun=function(x) ....` allows us to superimpose any function we specify on a plot, in this case $2x + x^2$.
+
+'x^2' means 'x-to-the-power-of-2', or $x^2$.
+
+**Modify the equation in `stat_function(fun=function(x) EQUATION)` to plot the following:**
+
+- $y = 3$
+- $y = x$
+- $y = 3 + x$
+- $y = x^2$
+
+Hint: the first one would be `stat_function(fun=function(x) 3)`
+
+**Try to reproduce the following plot: **
+
+(Hint: what do you have to do to the values of x to get the values of y?)
+
+```{r,echo=F}
+tibble(x=1:10) %>% 
+  ggplot(aes(x)) + 
+  stat_function(fun=function(x) - x^2)
+```
+
+`r hide("Answer")`
+
+```{r,visible=F}
+tibble(x=1:10) %>% 
+  ggplot(aes(x)) + 
+  stat_function(fun=function(x) - x^2)
+```
+
+`r unhide()`
+
+
+:::
+
+
+## Identifying components
+
+It is worth noting some general characteristics of polynomial equations to give you a better idea of what these various components in the equation look like.
+
+### Linear (first-order) components
+
+In a linear equation of the form **$y = b_0 + b_1(x)$**, the coefficient $b_0$ represents the **intercept**. $b_1$ is the coefficient for x.
+
+The line for a linear equation keeps on increasing and decreasing for all values of x, with no bends:
+
+```{r,echo=F}
+d<-tibble(x=seq(-10,10,0.1),y=x)
+d %>% ggplot(aes(x=x)) + 
+  geom_line(aes(y=y),size=2,colour='orange') +
+  geom_line(aes(y=0)) +
+  geom_line(aes(y=x,x=0)) +
+  theme_minimal()
+```
+
+
+### Quadratic (second-order) components
+
+Equations with a quadratic component have form **$y = b_0 + b_1(x) + b_2(x^2)$**. Again, $b_0$ represents the intercept. $b_1$ and $b_2$ are the coefficients for $x$ and $x^2$, respectively.
+
+The **maximum/minimum** of a curve is the **point of inflection** at which the curve switches from decreasing to increasing (or increasing to decreasing). Equations with a quadratic component have one minimum (if the $x^2$ component is positive) or one maximum (if the $x^2$ component is negative).
+
+For curves with positive $x^2$ components:
+
+```{r,echo=F}
+d<-tibble(x=seq(-10,10,0.1),y=50+5*x+x^2)
+d %>% ggplot(aes(x=x)) + 
+  geom_line(aes(y=y),size=2,colour='orange') +
+  geom_line(aes(y=0)) +
+  geom_line(aes(y=x*20,x=0)) +
+  geom_point(y=min(d$y),x=-2.5,size=4) + 
+  theme_bw()
+```
+
+The dot indicates the minimum. Either side of this point, the values of y increase.
+
+
+
+For curves with $-x^2$ components:
+
+```{r,echo=F}
+d<-tibble(x=seq(-10,10,0.1),y=50+5*x-x^2)
+d %>% ggplot(aes(x=x)) + 
+  geom_line(aes(y=y),size=2,colour='orange') +
+  geom_line(aes(y=0)) +
+  geom_line(aes(y=x*10,x=0)) +
+  geom_point(y=max(d$y),x=2.5,size=4) +
+  theme_bw()
+```
+
+The dot indicates the maximum. Either side of this point, the values of y decrease.
+
+:::{.exercise}
+
+Use `ggplot()` and `stat_function()` to plot a 2nd degree (quadratic) polynomial with the following characteristics:
+
+- a negative intercept
+- a positive linear component
+- a negative quadratic component
+
+
+`r hide("Show me an example")`
+```{r}
+tibble(x=1:10) %>% 
+   ggplot(aes(x)) + 
+   stat_function(fun=function(x) -5 + 0.5*x - 6.0*x^2) +
+   xlim(-5,5) + 
+   ylim(-100,100)
+```
+
+`xlim()` is used to specify the range of values on the x-axis (-5 to 5).
+
+`ylim()` is used to specify the range of values on the y-axis (-100 to 100).
+
+The curve specified in the line `stat_function(fun=function(x) -5 + 0.5*x - 6.0*x^2)` is 
+
+$y = -5 + 0.5x - 6.0x^2$
+
+:::
+
+### Cubic (third) order components
+
+Curves with a cubic component have _two minima/maxima_ (i.e., two points of inflection), and are of the form **$y = b_0 + b_1(x) + b_2(x^2) + b_3(x^3)$**, where $b_0$ is the intercept, and $b_1$, $b_2$, and $b_3$ are the coefficients for the $x$, $x^2$, and $x^3$ components. 
+
+```{r,echo=F}
+d<-tibble(x=seq(-10,10,0.1),y=0 + 0.2*x + 0.2*x^2 + 0.2*x^3)
+d %>% ggplot(aes(x=x)) + 
+  geom_line(aes(y=y),size=2,colour='orange') +
+  geom_line(aes(y=0)) +
+  geom_line(aes(y=x*30,x=0)) +
+  theme_bw()
+```
+
+:::{.exercise}
+
+Use `ggplot()` and `stat_function()` to plot a 3rd degree (cubic) polynomial with the following characteristics:
+
+- a positive intercept
+- a negative linear component
+- a positive quadratic component
+- a negative cubic component
+
+
+`r hide("Show me an example")`
+```{r}
+tibble(x=1:10) %>% 
+   ggplot(aes(x)) + 
+   stat_function(fun=function(x) 5 - 0.5*x + 6.0*x^2 - 0.5*x^3) +
+   xlim(-10,10) + 
+   ylim(0,1000)
+```
+
+The curve specified in the line `stat_function(fun=function(x) 5 - 0.5*x + 6.0*x^2 - 0.5*x^3)` is
+
+$y = 5 - 0.5x + 6.0x^2 - 0.5x^3$
+
+:::
+
+### Quartic (fourth) order components
+
+A curve with a quartic component would have _three maxima/minima_ (i.e., three points of inflection). The equation would be of the form **$y = b_0 + b_1(x) + b_2(x^2) + b_3(x^3) + b_4(x^4)$**.
+
+```{r,echo=F,warning=FALSE}
+d<-tibble(x=seq(-10,10,0.1),y=0+0.5*x-6.0*x^2+1.0*x^3+0.5*x^4)
+d %>% ggplot(aes(x=x)) + 
+  geom_line(aes(y=y),size=2,colour='orange') +
+  geom_line(aes(y=0)) +
+  geom_line(aes(y=x*30,x=0)) +
+  ylim(-100,100) +
+  theme_bw()
+```
+
+:::{.exercise}
+
+Use `ggplot` and `stat_function` to plot a 4th degree polynomial.
+
+Note: The points of inflection may not always be visible if the scale on either the y- or x-axis is very large. You can use `ylim()` and `xlim()` to adjust the scale of the axes, e.g., for the quartic function above:
+
+`r hide("Show me")`
+```{r}
+tibble(x=1:10) %>% 
+   ggplot(aes(x)) + 
+   stat_function(fun=function(x) 0 + 0.5*x - 6.0*x^2 + 1.0*x^3 + 0.5*x^4) +
+   xlim(-5,5) + 
+   ylim(-100,100)
+```
+The code specified in `stat_function(fun=function(x) 0 + 0.5*x - 6.0*x^2 + 1.0*x^3 + 0.5*x^4)` is
+
+$y = 0 + 0.5x - 6.0x^2 + 1.0x^3 + 0.5x^4)$
+
+`r unhide()`
+
+
+:::
