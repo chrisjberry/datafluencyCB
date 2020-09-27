@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Final exercise | PSYC753 Data Fluency</title>
-  <meta name="description" content="Final exercise | PSYC753 Data Fluency" />
+  <title>Data analysis and visualisation task brief | PSYC753 Data Fluency</title>
+  <meta name="description" content="Data analysis and visualisation task brief | PSYC753 Data Fluency" />
   <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Final exercise | PSYC753 Data Fluency" />
+  <meta property="og:title" content="Data analysis and visualisation task brief | PSYC753 Data Fluency" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Final exercise | PSYC753 Data Fluency" />
+  <meta name="twitter:title" content="Data analysis and visualisation task brief | PSYC753 Data Fluency" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="multicollinearity.html">
-<link rel="next" href="summary-of-key-points.html">
+<link rel="prev" href="assessment.html">
+<link rel="next" href="building-models-1.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -143,6 +143,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li><a href="index.html#section"></a></li>
+<li class="chapter" data-level="" data-path="assessment.html"><a href="assessment.html"><i class="fa fa-check"></i>Assessment</a><ul>
+<li class="chapter" data-level="" data-path="data-analysis-and-visualisation-task-brief.html"><a href="data-analysis-and-visualisation-task-brief.html"><i class="fa fa-check"></i>Data analysis and visualisation task brief</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="building-models-1.html"><a href="building-models-1.html"><i class="fa fa-check"></i>Building models 1</a><ul>
 <li class="chapter" data-level="" data-path="multiple-regression-with-several-continuous-predictors.html"><a href="multiple-regression-with-several-continuous-predictors.html"><i class="fa fa-check"></i>Multiple regression with several continuous predictors</a></li>
 <li class="chapter" data-level="" data-path="analysing-the-model.html"><a href="analysing-the-model.html"><i class="fa fa-check"></i>Analysing the model</a></li>
@@ -167,9 +170,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="exercise-1.html"><a href="exercise-1.html"><i class="fa fa-check"></i>Exercise</a></li>
 <li class="chapter" data-level="" data-path="summary-of-key-points-2.html"><a href="summary-of-key-points-2.html"><i class="fa fa-check"></i>Summary of key points</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="assessment.html"><a href="assessment.html"><i class="fa fa-check"></i>Assessment</a><ul>
-<li class="chapter" data-level="" data-path="data-analysis-and-visualisation-task.html"><a href="data-analysis-and-visualisation-task.html"><i class="fa fa-check"></i>Data Analysis and Visualisation Task</a></li>
-</ul></li>
 <li class="chapter" data-level="" data-path="FAQ-assessment.html"><a href="FAQ-assessment.html"><i class="fa fa-check"></i>FAQ Data Analysis and Visualisation Task</a></li>
 <li class="divider"></li>
 <li><a href="./LICENCE" target="blank">Licence: CC BY-SA 4</a></li>
@@ -191,61 +191,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="final-exercise" class="section level2">
-<h2>Final exercise</h2>
-<div class="exercise">
-<p>As a final exercise, run a multiple regression to predict <code>finalex</code> from <strong>three</strong> predictors: <code>entrex</code>, <code>project</code>, and <code>iq</code>.</p>
-<div class="solution">
-<button>
-Show me how
-</button>
-<pre class="sourceCode r"><code class="sourceCode r">multi4 &lt;-<span class="st"> </span><span class="kw">lm</span>(finalex <span class="op">~</span><span class="st"> </span>entrex <span class="op">+</span><span class="st"> </span>project <span class="op">+</span><span class="st"> </span>iq, <span class="dt">data =</span> ExamData)
-
-<span class="kw">summary</span>(multi4)
-<span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
-<span class="er">&gt;</span><span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> finalex <span class="op">~</span><span class="st"> </span>entrex <span class="op">+</span><span class="st"> </span>project <span class="op">+</span><span class="st"> </span>iq, <span class="dt">data =</span> ExamData)
-<span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st"> </span>Residuals<span class="op">:</span>
-<span class="er">&gt;</span><span class="st">     </span>Min      1Q  Median      3Q     Max 
-<span class="op">&gt;</span><span class="st"> </span><span class="fl">-40.444</span> <span class="fl">-16.174</span>   <span class="fl">5.509</span>  <span class="fl">14.312</span>  <span class="fl">33.338</span> 
-<span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st"> </span>Coefficients<span class="op">:</span>
-<span class="er">&gt;</span><span class="st">              </span>Estimate Std. Error t value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)    
-<span class="op">&gt;</span><span class="st"> </span>(Intercept) <span class="fl">-130.3803</span>    <span class="fl">54.7288</span>  <span class="fl">-2.382</span> <span class="fl">0.023981</span> <span class="op">*</span><span class="st">  </span>
-<span class="er">&gt;</span><span class="st"> </span>entrex         <span class="fl">2.6180</span>     <span class="fl">0.5978</span>   <span class="fl">4.379</span> <span class="fl">0.000142</span> <span class="op">**</span><span class="er">*</span>
-<span class="er">&gt;</span><span class="st"> </span>project        <span class="fl">0.6874</span>     <span class="fl">0.4490</span>   <span class="fl">1.531</span> <span class="fl">0.136620</span>    
-<span class="op">&gt;</span><span class="st"> </span>iq             <span class="fl">0.4862</span>     <span class="fl">0.4610</span>   <span class="fl">1.055</span> <span class="fl">0.300214</span>    
-<span class="op">&gt;</span><span class="st"> </span><span class="op">---</span>
-<span class="er">&gt;</span><span class="st"> </span>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span>
-<span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st"> </span>Residual standard error<span class="op">:</span><span class="st"> </span><span class="fl">22.02</span> on <span class="dv">29</span> degrees of freedom
-<span class="op">&gt;</span><span class="st"> </span>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.5875</span>,  Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.5448</span> 
-<span class="op">&gt;</span><span class="st"> </span>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">13.77</span> on <span class="dv">3</span> and <span class="dv">29</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="fl">9.168e-06</span></code></pre>
+<div id="data-analysis-and-visualisation-task-brief" class="section level2">
+<h2>Data analysis and visualisation task brief</h2>
+<p>This assignment is due to be submitted by the deadline of <em>12 noon on 21 January 2021</em>. You are required to analyse a set of data with RStudio using techniques from the first half of the course, and submit a short report of your findings, in the style similar to that which you may expect to see in the results section of an academic journal.</p>
+<p>The work submitted should be your own work. You may discuss the data with other students but cannot submit shared work.</p>
+<p>Reasonable amounts of assistance with technical aspects of RStudio may be obtained from the demonstrator for the course, Paul Sharpe, but this does not include recommending what you should choose to do, or helping with specific interpretations of output. As a general guide, if you are asking for something which would put you at an unfair advantage relative to any other student, then the request is probably unreasonable.</p>
+<p><br />
+</p>
+<div id="background-and-dataset" class="section level3">
+<h3>Background and dataset</h3>
+<p>Stories of tremendous personal drive, integrity, and achievement are common in the sporting world. However, not all individuals are motivated to compete in ways that might be deemed fair, and it is not uncommon to hear stories of cheating and gamesmanship (the use of dubious methods to win a competition).</p>
+<p>The dataset held at <a href="https://bit.ly/2Zm4lCy" class="uri">https://bit.ly/2Zm4lCy</a> contain responses to a survey, which was conducted to measure the values and attitudes of individuals who play sport. Demographic information was also collected from the respondents.</p>
+<div class="tip">
+<p>These are the variables:</p>
+<p><code>age</code>: age in years</p>
+<p><code>perabil</code>: perceived ability. An individual’s self-perceived ability in their chosen sport. Higher scores indicate greater perceived ability.</p>
+<p><code>cheating</code>: attitude to cheating. Higher scores indicate a greater willingness to cheat to achieve success.</p>
+<p><code>gamesman</code>: attitude to gamesmanship. Higher scores indicate a greater willingness to use various ploys and tactics to gain a psychological advantage over competitors.</p>
+<p><code>commit</code>: commitment to sport participation. Higher scores indicate a greater commitment in terms of practising, effort, attempts to improve and persevere after making mistakes.</p>
+<p><code>conven</code>: respect for social conventions. Higher scores indicate a greater willingness to display sportsmanship (e.g., shaking hands with opponents, congratulating competitors).</p>
+<p><code>task</code>: perception of success and ability in sport, where success is measured relative to how well the <em>task</em> can actually be performed, and also relative to how well the task can be performed by oneself. Higher scores indicate greater perception of success.</p>
+<p><code>ego</code>: perception of success and ability in sport, where success is measured in terms of how well one performs <em>relative to others</em>. Higher scores indicate greater perception of success.</p>
 </div>
-<p>Which variables are statistically significant predictors of <code>finalex</code>?</p>
+<p><strong>ADD in male/female; ADD in years played</strong></p>
+</div>
+<div id="aims-of-the-assignment" class="section level3">
+<h3>Aims of the assignment</h3>
+<p>Your principal objective is to visualise and analyse the data using techiques from the first half of the module (i.e., up to session 8 on fitting curves). You should look at the variables in the dataset and try to identify interesting questions that you could ask; use these questions to guide the visualisations and analyses that you carry out. For instance, you might wish to build a regression model to predict one of the variables, and present tables and figures linked to the analyses.</p>
+<p>Your PDF should include at least <em>one table</em> and <em>one figure</em> that you have created from the data; they should be of a standard that you would expect to see in an academic journal. Statistics should be presented in APA style. The text in the PDF should not exceed 1500 words.</p>
+</div>
+<div id="tips" class="section level3">
+<h3>Tips</h3>
 <ul>
-<li><p><code>entrex</code> <select class='solveme' data-answer='["yes"]'> <option></option> <option>yes</option> <option>no</option></select></p></li>
-<li><p><code>project</code> <select class='solveme' data-answer='["no"]'> <option></option> <option>yes</option> <option>no</option></select></p></li>
-<li><p><code>iq</code> <select class='solveme' data-answer='["no"]'> <option></option> <option>yes</option> <option>no</option></select></p></li>
+<li><p>Rather than just blindly analysing the data all in one huge go, firstly work out what the questions are that seem interesting, and then apply the appropriate analyses and visualisation techniques to the relevant measures for answering them.</p></li>
+<li><p>It is often the case that interesting hypotheses or ways of visualising the data emerge after a period of reflection, rather than during the first attempt. Be willing to explore the relationships in the data, and then put them aside for a while, before doing further analyses.</p></li>
+<li><p>You are not required to use every technique from the first half of the course in order to achieve a good mark.</p></li>
+<li><p>Select data and methods that will allow you to focus on questions that seem to make psychological or social sense.</p></li>
+<li><p>You can dig deeply into aspects of the data if they particularly interest you, but be prepared to justify what you have done. There is no one <em>correct answer</em> to this assessment, just as with real data there is not only one way of visualising the data or analysing it. Analyses are right or wrong in so far as they provide insight into the data and into the problems that are being researched. If you are not sure whether you are making the right choices in your analyses, then provide justification for them.</p></li>
+<li><p>In the end, keep in mind that the purpose of this assessment is for you to demonstrate that you can use the techniques from this course competently to answer questions concerning a dataset and present the findings coherently in a report.</p></li>
 </ul>
-<p>On the basis of all the models conducted so far (with <code>entrex</code>, <code>project</code>, and <code>iq</code>), which model would you choose to best predict <code>finalex</code>?</p>
-<div class="solution">
-<button>
-Tell me which model seems best
-</button>
-<p>The model containing <code>entrex</code> alone, as this seems to provide the simplest and most effective model of the <code>finalex</code>.</p>
-<p>A general goal of regression is to identify the fewest predictor variables necessary to predict an outcome variable, where each predictor variable predicts a substantial and independent segment of the variability in the outcome variable.</p>
+</div>
+<div id="submitting-your-coursework" class="section level3">
+<h3>Submitting your coursework</h3>
+<p>You should submit exactly 3 files:</p>
+<ol style="list-style-type: decimal">
+<li>An <em>Rmd (R markdown) file</em></li>
+<li>A <em>PDF</em> document, produced by knitting your rmd file.</li>
+<li>As a separate document, upload a copy of the standard <em>coursework coversheet</em> (and complete the feedback section).</li>
+</ol>
+<p>Within the Rmd file you should:</p>
+<ul>
+<li>Clearly set out the code that you have used for your analysis</li>
+<li>Where necessary, include comments explaining what specific lines of code do.</li>
+</ul>
+<p>Your rmd file should “Just Work” when the marker opens and runs it, and produce the same output as
+the knitted PDF file you submitted (i.e. there won’t be any errors or missing datafiles).</p>
+<p>If you work on your own computer at home, you should check your rmd file ‘knits’ correctly on the
+online Rstudio server.</p>
+<p><strong>Responses to frequently asked questions will be posted at this <a href="FAQ-assessment.html#FAQ-assessment">FAQ link</a></strong></p>
+
 </div>
 </div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="multicollinearity.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="summary-of-key-points.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="assessment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="building-models-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -23,7 +23,7 @@ theme_set(theme_minimal())
 
 ## Using polynomials to fit curves
 
--   [**Slides from the session**](slides/regression3-chris.ppt) (available 02-02-2020)
+-   [**Slides for the session**](slides/regression3-chris.ppt)
 
 \
 

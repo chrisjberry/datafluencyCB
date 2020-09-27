@@ -6,8 +6,7 @@ new_session: yes
 rmd_files:
   [
     "index.rmd",
-    "assessment.rmd",
-    "assessment_referred.rmd",
+
 
     # PART
     "06-building-models.rmd",
@@ -15,6 +14,7 @@ rmd_files:
     "07-fitting-curves.rmd",
     
     # PART
+    "assessment.rmd",
     "FAQ-assessment.rmd",
 
 ]

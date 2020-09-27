@@ -35,6 +35,8 @@ mtcars %>%
 
 ---
 
+<!--
+
 ### How can I round numbers to X decimal places? 
 
 The `round()` function can be used to round a number. For example, the command:
@@ -156,5 +158,5 @@ If using R Studio through the university website (recommended) [rstudio.plymouth
 - You can then choose where to save the file on your computer.
 
 
-
+-->
 
