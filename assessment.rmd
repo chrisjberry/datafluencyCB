@@ -114,6 +114,8 @@ The work submitted should be your own work. You may discuss the data with other 
 
 Reasonable amounts of assistance with technical aspects of RStudio may be obtained from the demonstrator for the course, Paul Sharpe, but this does not include recommending what you should choose to do, or helping with specific interpretations of output. As a general guide, if you are asking for something which would put you at an unfair advantage relative to any other student, then the request is probably unreasonable.
 
+Submissions will be graded according to the School categorical mark scheme (i.e., A+ to N), as detailed in the handbook: https://pghandbook.psy.plymouth.ac.uk/assessment.html
+
 \
 
 \
