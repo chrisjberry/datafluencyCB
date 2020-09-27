@@ -24,8 +24,9 @@ This workbook contains details of the four sessions given by **Chris Berry**:
 
 - Q&A Support session - week 19 - 30/11/20
 
+\
 
-It also contains details of the Data Visualisation and Analysis assessment.
+It also contains details of the Data Visualisation and Analysis **assessment**.
 
 
 \
