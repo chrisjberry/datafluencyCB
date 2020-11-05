@@ -16,13 +16,13 @@ knitr::opts_chunk$set(echo = TRUE, collapse=TRUE, cache=TRUE, comment=NA, messag
 
 This workbook contains details of the four sessions given by **Chris Berry**:
 
-- Building models 1  - week 16 - 9/11/20
+- Week 16 (9/11/20). Building models 1: Multiple continuous predictors
  
-- Building models 2 - week 17 - 16/11/20
+- Week 17 (16/11/20). Building models 2: Comparing models 
 
-- Fitting curves - week 18 - 23/11/20
+- Week 18 (23/11/20). Fitting curves
 
-- Q&A Support session - week 19 - 30/11/20
+- Week 19 (30/11/20). Q&A Support session
 
 \
 

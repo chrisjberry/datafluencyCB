@@ -1,4 +1,4 @@
-# Fitting curves
+# Fitting curves {#fitcurves}
 
 ### In brief
 
