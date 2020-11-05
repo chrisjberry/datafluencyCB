@@ -179,7 +179,7 @@ anova(model1, model3)
 An alternative approach to using ANOVA to compare models is to use **Bayes Factors**. 
 
 \
-A **Bayes Factor** is the **probability of obtaining the data under one model compared to another**.  
+A **Bayes Factor** is the **probability of obtaining the data under one model compared to another** (Rouder & Morey, 2012).  
 
 \
 For example, a Bayes Factor equal to 2 would tell us that the data are _twice_ as likely under one model than another. A Bayes Factor equal to 0.5 would tell us that the data are _half_ as likely under one model than another. 
