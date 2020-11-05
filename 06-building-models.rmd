@@ -25,7 +25,7 @@ theme_set(theme_minimal())
 
 ## Multiple regression with several continuous predictors
 
--   [Slides for the session](slides/regression1-chris.ppt)
+-   [Slides for the session](slides/PSYC753_Chris1.pptx)
 
 
 ### Overview
