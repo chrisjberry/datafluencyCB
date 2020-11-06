@@ -12,6 +12,8 @@ link-citations: yes
 knitr::opts_chunk$set(echo = TRUE, collapse=TRUE, cache=TRUE, comment=NA, message=FALSE)
 ```
 
+*November 2020*
+
 # {-}
 
 This workbook contains details of the four sessions given by **Chris Berry**:
