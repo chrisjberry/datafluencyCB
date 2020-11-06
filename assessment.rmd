@@ -22,7 +22,7 @@ In overview, you are required to analyse a set of data with RStudio using techni
 You should submit exactly 3 files:
 
 1. An **Rmd (R markdown) file**
-2. A **PDF** document, produced by knitting your rmd file.
+2. An **html** document, produced by *knitting* your rmd file.
 3. As a separate document, upload a copy of the standard **coursework coversheet** (and complete the feedback section).
 
 
@@ -30,13 +30,12 @@ Within the Rmd file you should:
 
 -   Clearly set out the code that you have used for your analysis
 -   Where necessary, include comments explaining what specific lines of code do.
--   Suppress code that you do not want to be visible in your PDF report.
+-   Suppress code that you do not want to be visible in your report.
 
-Your rmd file should "Just Work" when the marker opens and runs it, and produce the same output as
-the knitted PDF file you submitted (i.e. there won't be any errors or missing datafiles).
+Your Rmd file should "Just Work" when the marker opens and runs it, and produce the same output as
+the knitted html file you submitted (i.e. there won't be any errors or missing datafiles).
 
-If you work on your own computer at home, you should check your rmd file 'knits' correctly on the
-online Rstudio server.
+If you work on your own computer at home, you should check your Rmd file 'knits' correctly on the online Rstudio server.
 
 
 
@@ -89,7 +88,7 @@ At a minimum, you are expected to:
 
 - Present statistics in APA style. 
 
-- Not exceed 1500 words in the the text of your PDF.
+- Not exceed 1500 words in the the text of your html.
 
 
 
