@@ -1,5 +1,7 @@
 # Fitting curves {#fitcurves}
 
+*November 2020*
+
 ### In brief
 
 > So far all our regression models have assumed that our variables have
