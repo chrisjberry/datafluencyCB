@@ -22,6 +22,7 @@ theme_set(theme_minimal())
 ## Using ANOVA and Bayes Factors to compare models
 
 -   [**Slides for the session**](slides/PSYC753_Chris2.pptx)
+-   [**Using Rmd files**](slides/PSYC753_Chris2_Rmd.pptx)
 
 \
 
