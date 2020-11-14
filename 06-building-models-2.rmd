@@ -48,7 +48,7 @@ It's important that you are comfortable with the material from the first [Buildi
 
 ## Comparing models using ANOVA
 
-We can use ANOVA to determine whether the addition of variables into a model leads to a statistically significant improvement in the variance it explains _overall_. We may want to do this, for example, when building on existing theories or models.
+We can use ANOVA to determine whether the addition of variables into a model leads to a statistically significant improvement in the variance it explains _overall_. We may want to do this, for example, when building on existing theories or models, or looking at the effects of variables after controlling for others.
 
 \
 We'll start by comparing a model with _one_ predictor vs. a model with _three_ predictors.
@@ -351,6 +351,8 @@ How much more likely is a model with `entrex` and `attendance` as predictors tha
 - `r fitb(answer="282.90")` times more likely.
 
 There is `r mcq(c("insufficient", answer = "strong"))` evidence that a model with `entrex` and `attendance` should be preferred over a model with `entrex` alone, given the data.
+
+A comparison of the Bayes Factors for the two models therefore `r mcq(c("does not converge", answer = "converges"))` with the results of the comparison using ANOVA, and the model in which Final Exam is predicted by `r mcq(c("Entrance Exam only", answer = "Entrance Exam and Attendance"))` should be preferred.
 
 :::
 

@@ -900,7 +900,7 @@ How do we know if one model is <em>better</em> or should be <em>preferred</em> o
 </div>
 <div id="comparing-models-using-anova" class="section level2">
 <h2><span class="header-section-number">2.2</span> Comparing models using ANOVA</h2>
-<p>We can use ANOVA to determine whether the addition of variables into a model leads to a statistically significant improvement in the variance it explains <em>overall</em>. We may want to do this, for example, when building on existing theories or models.</p>
+<p>We can use ANOVA to determine whether the addition of variables into a model leads to a statistically significant improvement in the variance it explains <em>overall</em>. We may want to do this, for example, when building on existing theories or models, or looking at the effects of variables after controlling for others.</p>
 <p><br />
 We’ll start by comparing a model with <em>one</em> predictor vs. a model with <em>three</em> predictors.</p>
 <p><br />
@@ -1239,6 +1239,7 @@ model3.BF / model1.BF
 <li><input class="solveme nospaces" size="6" data-answer="[&quot;282.90&quot;]"></input> times more likely.</li>
 </ul>
 <p>There is <select class="solveme" data-answer="[&quot;strong&quot;]"> <option></option> <option>insufficient</option> <option>strong</option></select> evidence that a model with <code>entrex</code> and <code>attendance</code> should be preferred over a model with <code>entrex</code> alone, given the data.</p>
+<p>A comparison of the Bayes Factors for the two models therefore <select class="solveme" data-answer="[&quot;converges&quot;]"> <option></option> <option>does not converge</option> <option>converges</option></select> with the results of the comparison using ANOVA, and the model in which Final Exam is predicted by <select class="solveme" data-answer="[&quot;Entrance Exam and Attendance&quot;]"> <option></option> <option>Entrance Exam only</option> <option>Entrance Exam and Attendance</option></select> should be preferred.</p>
 </div>
 </div>
 <div id="exercise" class="section level2">
