@@ -540,7 +540,7 @@ memory_data %>%
   geom_point(alpha = 0.5) +   # alpha=0.5 makes points 50% transparent
   xlab('Memory Score') +
   ylab('Attention Score') +
-  labs(size="Sleep (hours)")
+  labs(size="Sleep (hours)") 
 ```
 `r unhide()`
 
