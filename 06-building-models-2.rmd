@@ -402,7 +402,7 @@ memory_data %>% head()
 
 :::
 
-The researcher wants to test whether `attention` and `sleep` predict `memory_score`. She is already aware of a well-established finding in the literature, which is that `iq` and `age` predict `memory_score`. 
+The researcher wants to test whether `attention` and `sleep` predict `memory_score`, but after controlling for `iq` and `age` (she suspects memory varies with `iq` and `age` to being with). 
 
 \
 She therefore wants to use a hierarchical regression approach to determine whether `attention` and `sleep` explain additional variance in `memory_score` _over and above_ `iq` and `age`.
@@ -529,7 +529,23 @@ predict(memory2, new_data)
 
 \
 \
+
 **2.**
+Create a scatterplot of `attention` against `memory_score`, with the size of each point indicating the hours of `sleep`
+
+`r hide("Try yourself first, then click for the code")`
+```{r}
+memory_data %>% 
+  ggplot(aes(x = attention, y = memory_score, size = sleep)) +
+  geom_point(alpha = 0.5) +   # alpha=0.5 makes points 50% transparent
+  xlab('Memory Score') +
+  ylab('Attention Score') +
+  labs(size="Sleep (hours)")
+```
+
+\
+\
+**3.**
 
 The researcher is interested to know whether annual consumption of blueberries has any bearing on `memory_scores`, and so wants to add `blueberries` to the model in `memory2`.
 
