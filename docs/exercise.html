@@ -196,7 +196,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now you will practise using ANOVA and Bayes Factors to compare models with a new dataset.</p>
 <p><br />
 <strong>Scenario:</strong> A researcher would like to construct a model to predict scores in a memory task from several different variables. The data from 234 individuals are stored in the <code>memory_data</code> dataset, which are located at <a href="https://bit.ly/37pOTrC" class="uri">https://bit.ly/37pOTrC</a>.</p>
-<p>:::{.exercise}</p>
+<div class="exercise">
 <p>Use <code>read_csv</code> to load in the data at the link above to the variable <code>memory_data</code> and preview it with <code>head()</code>.</p>
 <div class="solution">
 <button>
@@ -401,7 +401,7 @@ new_data &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span clas
 </p>
 <p><strong>2.</strong>
 Create a scatterplot of <code>attention</code> against <code>memory_score</code>, with the size of each point indicating the hours of <code>sleep</code></p>
-<div class='solution'>
+<div class="solution">
 <button>
 Try yourself first, then click for the code
 </button>
@@ -412,6 +412,7 @@ Try yourself first, then click for the code
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Attention Score&#39;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">size=</span><span class="st">&quot;Sleep (hours)&quot;</span>)</code></pre>
 <p><img src="06-building-models-2_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+</div>
 <p><br />
 <br />
 <strong>3.</strong></p>
@@ -441,7 +442,7 @@ memory3.BF <span class="op">/</span><span class="st"> </span>memory2.BF
 <span class="op">&gt;</span><span class="st"> </span><span class="op">---</span>
 <span class="er">&gt;</span><span class="st"> </span>Bayes factor type<span class="op">:</span><span class="st"> </span>BFlinearModel, JZS</code></pre>
 </div>
-<p>:::</p>
+</div>
 </div>
             </section>
 

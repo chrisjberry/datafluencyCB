@@ -542,6 +542,7 @@ memory_data %>%
   ylab('Attention Score') +
   labs(size="Sleep (hours)")
 ```
+`r unhide()`
 
 \
 \
