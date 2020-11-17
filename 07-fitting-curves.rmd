@@ -18,6 +18,7 @@ knitr::opts_chunk$set(echo = TRUE, collapse=TRUE, cache=TRUE, comment=">", messa
 library(tidyverse)
 library(webex)
 library(pander)
+library(BayesFactor)
 theme_set(theme_minimal())
 ```
 
