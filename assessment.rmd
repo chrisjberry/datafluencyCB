@@ -6,7 +6,7 @@ library(tidyverse)
 library(pander)
 ```
 
-Chris Berry is the lead for the Data Analysis and Visualisation task, worth 50% of the module grade.
+Chris Berry is the lead for the Data Analysis and Visualisation task, worth 50% of the module grade. (Press the Right Arrow key for more details.)
 
 
 ## Data Analysis and Visualisation Task
