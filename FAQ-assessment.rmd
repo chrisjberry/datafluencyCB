@@ -74,11 +74,19 @@ There's a good cheat sheet here:
 - [R Markdown](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
 
 
+----
+
+
 
 <!--
 
 
 
+### Is it possible to have this workbook in PDF form?
+
+Yes, a PDF version of this workbook (Building Models 1, 2, and Fitting Curves) is available to download here: https://github.com/chrisjberry/datafluencyCB/raw/master/docs/datafluencyCB.pdf
+
+Note. Some formatting is lost (e.g., interactive exercises), so you are recommended to use the online version.
 
 
 ### How can I round numbers to X decimal places? 
