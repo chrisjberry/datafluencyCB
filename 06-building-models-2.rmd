@@ -96,7 +96,7 @@ Make note of the variance explained by each model ($R^2$), i.e., `Multiple R-squ
 
 - Model 2: $R^2$ = `r fitb(answer="58.69",  num=TRUE)` %
 
-Which model explains a greater proportion of variance in `finalex`? `r mcq(c("extrex alone", answer="entrex, age, project"))`
+Which model explains a greater proportion of variance in `finalex`? `r mcq(c("entrex alone", answer="entrex, age, project"))`
 
 - Calculate the difference in $R^2$ between the models. `model2` improves the prediction of `finalex` by  `r fitb(answer="5.59",  num=TRUE)` %
 
@@ -136,7 +136,7 @@ As an exercise, compare the following two models using the `anova()` approach ab
 
 1. a model with `entrex` as a sole predictor of `finalex` (i.e., `model1`), and 
 
-2. a model where `finalex` is predicted by `extrex` and `attendance` (call this `model3`). 
+2. a model where `finalex` is predicted by `entrex` and `attendance` (call this `model3`). 
 
 Is there sufficient evidence that a model with `entrex` _and_ `attendance` explains more variance than a model with `entrex` alone?
 
@@ -311,9 +311,9 @@ To supplement the comparison of `model3` and `model1` that you did with `anova`,
 \
 You'll need the following steps:
 
-- Model 1: Obtain the Bayes Factor for a model with `extrex` as a sole predictor of `finalex` (we did this already above; it's stored in `model1.BF`) 
+- Model 1: Obtain the Bayes Factor for a model with `entrex` as a sole predictor of `finalex` (we did this already above; it's stored in `model1.BF`) 
 
-- Model 2: Obtain the Bayes Factor for a model where `finalex` is predicted by `extrex` _and_ `attendance` and store this in `model3.BF`. 
+- Model 2: Obtain the Bayes Factor for a model where `finalex` is predicted by `entrex` _and_ `attendance` and store this in `model3.BF`. 
 
 - Compare the Bayes Factors in `model3.BF` and `model1.BF`.
 \

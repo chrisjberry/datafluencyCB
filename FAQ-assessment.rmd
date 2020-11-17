@@ -58,8 +58,9 @@ So:
 
 \
 
-<!--
+---
 
+\
 
 ### How do I set up an R Markdown file?
 
@@ -67,10 +68,15 @@ R-markdown is a way of embedding R code, figures, and text in a single executabl
 
 If you want to create an R markdown file, go to File > New File > R Markdown.
 
-Ben covered R Markdown in his sessions: https://benwhalley.github.io/datafluency/rmarkdown.html
+Slides to help get started are here: https://chrisjberry.github.io/datafluencyCB/slides/PSYC753_Chris2_Rmd.pptx
 
 There's a good cheat sheet here:
 - [R Markdown](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
+
+<!--
+
+
+
 
 
 ### How can I round numbers to X decimal places? 
@@ -134,50 +140,8 @@ The following may be of particular use for topics from this module:
 
 ---
 
-### What does it mean if RStudio prints out "e-" next to a number? {#e-meaning}
-
-If R prints "1.4e-4", in the output this actually means "$1.4 \times 10^{-4}$", or "0.00014". It is a way of printing out very small (or very large) numbers.
-
-"e-4" means "move the decimal point 4 places to the left". See this by executing the command below -- it should return "0.00014".
 
 
-```{r}
-1.4e-4
-```
-
-So:
-
-- "e-5" means move the decimal point 5 places to the left (e.g., `2.5e-5` is "$2.5 \times 10^{-5}$", or 0.000025)
-- "e-10" means move the decimal point 10 places to the left (e.g., `2.5e-10` is "$2.5 \times 10^{-10}$", or 0.00000000025).
-- "e5" means move the decimal point 5 places to the **right** (e.g., `2.5e5` is "$2.5 \times 10^{5}$", 250000).
-
-
-\
-
-
----
-
-### How do I set up an R Markdown file?
-
-R-markdown is a way of embedding R code, figures, and text in a single executable document. (As an example, all the worksheets for this module were written in r-markdown.)
-
-If you want to create an R markdown file, go to File > New File > R Markdown.
-
-Ben covered R Markdown in his sessions: https://benwhalley.github.io/datafluency/rmarkdown.html
-
-There's a good cheat sheet here:
-- [R Markdown](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
-
-
-\
-
----
-
-### How do convert my R Markdown file to PDF?
-
-Click the Knit button in the editor window, and select "Knit to PDF".
-
-If there are no errors in your code, the PDF of your document will appear in the "Files" window.
 
 
 

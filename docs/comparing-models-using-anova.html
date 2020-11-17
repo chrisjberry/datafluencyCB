@@ -260,7 +260,7 @@ Use <code>summary()</code> to display the results of each regression:</p>
 <li><p>Model 1: <span class="math inline">\(R^2\)</span> = <input class='solveme nospaces' size='5' data-answer='["53.10"]'/> %</p></li>
 <li><p>Model 2: <span class="math inline">\(R^2\)</span> = <input class='solveme nospaces' size='5' data-answer='["58.69"]'/> %</p></li>
 </ul>
-<p>Which model explains a greater proportion of variance in <code>finalex</code>? <select class='solveme' data-answer='["entrex, age, project"]'> <option></option> <option>extrex alone</option> <option>entrex, age, project</option></select></p>
+<p>Which model explains a greater proportion of variance in <code>finalex</code>? <select class='solveme' data-answer='["entrex, age, project"]'> <option></option> <option>entrex alone</option> <option>entrex, age, project</option></select></p>
 <ul>
 <li>Calculate the difference in <span class="math inline">\(R^2\)</span> between the models. <code>model2</code> improves the prediction of <code>finalex</code> by <input class='solveme nospaces' size='4' data-answer='["5.59"]'/> %</li>
 </ul>
@@ -293,7 +293,7 @@ To compare the variance explained by each model, use <code>anova()</code>:</p>
 <p>As an exercise, compare the following two models using the <code>anova()</code> approach above:</p>
 <ol style="list-style-type: decimal">
 <li><p>a model with <code>entrex</code> as a sole predictor of <code>finalex</code> (i.e., <code>model1</code>), and</p></li>
-<li><p>a model where <code>finalex</code> is predicted by <code>extrex</code> and <code>attendance</code> (call this <code>model3</code>).</p></li>
+<li><p>a model where <code>finalex</code> is predicted by <code>entrex</code> and <code>attendance</code> (call this <code>model3</code>).</p></li>
 </ol>
 <p>Is there sufficient evidence that a model with <code>entrex</code> <em>and</em> <code>attendance</code> explains more variance than a model with <code>entrex</code> alone?</p>
 <div class="solution">

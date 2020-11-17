@@ -967,7 +967,7 @@ Use <code>summary()</code> to display the results of each regression:</p>
 <li><p>Model 1: <span class="math inline">\(R^2\)</span> = <input class="solveme nospaces" size="5" data-answer="[&quot;53.10&quot;]"></input> %</p></li>
 <li><p>Model 2: <span class="math inline">\(R^2\)</span> = <input class="solveme nospaces" size="5" data-answer="[&quot;58.69&quot;]"></input> %</p></li>
 </ul>
-<p>Which model explains a greater proportion of variance in <code>finalex</code>? <select class="solveme" data-answer="[&quot;entrex, age, project&quot;]"> <option></option> <option>extrex alone</option> <option>entrex, age, project</option></select></p>
+<p>Which model explains a greater proportion of variance in <code>finalex</code>? <select class="solveme" data-answer="[&quot;entrex, age, project&quot;]"> <option></option> <option>entrex alone</option> <option>entrex, age, project</option></select></p>
 <ul>
 <li>Calculate the difference in <span class="math inline">\(R^2\)</span> between the models. <code>model2</code> improves the prediction of <code>finalex</code> by <input class="solveme nospaces" size="4" data-answer="[&quot;5.59&quot;]"></input> %</li>
 </ul>
@@ -1000,7 +1000,7 @@ To compare the variance explained by each model, use <code>anova()</code>:</p>
 <p>As an exercise, compare the following two models using the <code>anova()</code> approach above:</p>
 <ol style="list-style-type: decimal">
 <li><p>a model with <code>entrex</code> as a sole predictor of <code>finalex</code> (i.e., <code>model1</code>), and</p></li>
-<li><p>a model where <code>finalex</code> is predicted by <code>extrex</code> and <code>attendance</code> (call this <code>model3</code>).</p></li>
+<li><p>a model where <code>finalex</code> is predicted by <code>entrex</code> and <code>attendance</code> (call this <code>model3</code>).</p></li>
 </ol>
 <p>Is there sufficient evidence that a model with <code>entrex</code> <em>and</em> <code>attendance</code> explains more variance than a model with <code>entrex</code> alone?</p>
 <div class="solution">
@@ -1180,8 +1180,8 @@ It’s becoming increasingly common to report the Bayes Factor alongside the res
 <p><br />
 You’ll need the following steps:</p>
 <ul>
-<li><p>Model 1: Obtain the Bayes Factor for a model with <code>extrex</code> as a sole predictor of <code>finalex</code> (we did this already above; it’s stored in <code>model1.BF</code>)</p></li>
-<li><p>Model 2: Obtain the Bayes Factor for a model where <code>finalex</code> is predicted by <code>extrex</code> <em>and</em> <code>attendance</code> and store this in <code>model3.BF</code>.</p></li>
+<li><p>Model 1: Obtain the Bayes Factor for a model with <code>entrex</code> as a sole predictor of <code>finalex</code> (we did this already above; it’s stored in <code>model1.BF</code>)</p></li>
+<li><p>Model 2: Obtain the Bayes Factor for a model where <code>finalex</code> is predicted by <code>entrex</code> <em>and</em> <code>attendance</code> and store this in <code>model3.BF</code>.</p></li>
 <li><p>Compare the Bayes Factors in <code>model3.BF</code> and <code>model1.BF</code>.<br />
 </p></li>
 </ul>
@@ -2362,19 +2362,21 @@ mtcars %&gt;%
 </ul>
 <p><br />
 </p>
+<hr />
+<p><br />
+</p>
+</div>
+<div id="how-do-i-set-up-an-r-markdown-file" class="section level3">
+<h3><span class="header-section-number">5.0.3</span> How do I set up an R Markdown file?</h3>
+<p>R-markdown is a way of embedding R code, figures, and text in a single executable document. (As an example, all the worksheets for this module were written in r-markdown.)</p>
+<p>If you want to create an R markdown file, go to File &gt; New File &gt; R Markdown.</p>
+<p>Slides to help get started are here: <a href="https://chrisjberry.github.io/datafluencyCB/slides/PSYC753_Chris2_Rmd.pptx" class="uri">https://chrisjberry.github.io/datafluencyCB/slides/PSYC753_Chris2_Rmd.pptx</a></p>
+<p>There’s a good cheat sheet here:
+- <a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf">R Markdown</a></p>
 <!--
 
 
-### How do I set up an R Markdown file?
 
-R-markdown is a way of embedding R code, figures, and text in a single executable document. (As an example, all the worksheets for this module were written in r-markdown.)
-
-If you want to create an R markdown file, go to File > New File > R Markdown.
-
-Ben covered R Markdown in his sessions: https://benwhalley.github.io/datafluency/rmarkdown.html
-
-There's a good cheat sheet here:
-- [R Markdown](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
 
 
 ### How can I round numbers to X decimal places? 
@@ -2455,52 +2457,8 @@ The following may be of particular use for topics from this module:
 
 ---
 
-### What does it mean if RStudio prints out "e-" next to a number? {#e-meaning}
-
-If R prints "1.4e-4", in the output this actually means "$1.4 \times 10^{-4}$", or "0.00014". It is a way of printing out very small (or very large) numbers.
-
-"e-4" means "move the decimal point 4 places to the left". See this by executing the command below -- it should return "0.00014".
 
 
-
-```r
-1.4e-4
-> [1] 0.00014
-```
-
-So:
-
-- "e-5" means move the decimal point 5 places to the left (e.g., `2.5e-5` is "$2.5 \times 10^{-5}$", or 0.000025)
-- "e-10" means move the decimal point 10 places to the left (e.g., `2.5e-10` is "$2.5 \times 10^{-10}$", or 0.00000000025).
-- "e5" means move the decimal point 5 places to the **right** (e.g., `2.5e5` is "$2.5 \times 10^{5}$", 250000).
-
-
-\
-
-
----
-
-### How do I set up an R Markdown file?
-
-R-markdown is a way of embedding R code, figures, and text in a single executable document. (As an example, all the worksheets for this module were written in r-markdown.)
-
-If you want to create an R markdown file, go to File > New File > R Markdown.
-
-Ben covered R Markdown in his sessions: https://benwhalley.github.io/datafluency/rmarkdown.html
-
-There's a good cheat sheet here:
-- [R Markdown](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
-
-
-\
-
----
-
-### How do convert my R Markdown file to PDF?
-
-Click the Knit button in the editor window, and select "Knit to PDF".
-
-If there are no errors in your code, the PDF of your document will appear in the "Files" window.
 
 
 
