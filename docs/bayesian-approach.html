@@ -202,8 +202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br />
 </p>
 <p>To add the quadratic component to <code>SurveyData</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">SurveyData &lt;-<span class="st"> </span>
-<span class="st">  </span>SurveyData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>( <span class="dt">age2 =</span> <span class="kw">poly</span>(age,<span class="dv">2</span>)[,<span class="st">&quot;2&quot;</span>] )</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">SurveyData &lt;-<span class="st"> </span>SurveyData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>( <span class="dt">age2 =</span> <span class="kw">poly</span>(age,<span class="dv">2</span>)[,<span class="st">&quot;2&quot;</span>] )</code></pre>
 <p><strong>Explanation of the code:</strong> The code takes <code>SurveyData</code>, then uses <code>mutate</code> to add a new variable <code>age2</code> to the dataset. <code>age2</code> contains the quadratic component of <code>age</code>, created by <code>poly(age,2)[,"2"]</code>.</p>
 <p><br />
 </p>
@@ -221,8 +220,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br />
 </p>
 <p>Now create the variable for the <strong>cubic component</strong>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">SurveyData &lt;-<span class="st"> </span>
-<span class="st">  </span>SurveyData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>( <span class="dt">age3 =</span> <span class="kw">poly</span>(age,<span class="dv">3</span>)[,<span class="st">&quot;3&quot;</span>] )</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">SurveyData &lt;-<span class="st"> </span>SurveyData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>( <span class="dt">age3 =</span> <span class="kw">poly</span>(age,<span class="dv">3</span>)[,<span class="st">&quot;3&quot;</span>] )</code></pre>
 <p><strong>Explanation of the code:</strong> As before, the code takes <code>SurveyData</code>, then uses <code>mutate</code> to add a new variable <code>age3</code> to the dataset. <code>age3</code> contains the quadratic component of <code>age</code>, created by <code>poly(age,3)[,"3"]</code>.</p>
 <p><br />
 </p>
@@ -243,7 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="derive-the-bayes-factors" class="section level3">
 <h3>Derive the Bayes Factors</h3>
 <p><br />
-First, make sure the BayesFactor package is loaded (<code>library(BayesFactor)</code>). We can use <code>lmBF</code> to get the Bayes Factor for each model, as we did in the previous session.</p>
+First, make sure the BayesFactor package is loaded using <code>library(BayesFactor)</code>. We can use <code>lmBF</code> to get the Bayes Factor for each model, as we did in the previous session.</p>
 <p><br />
 </p>
 <p>To derive the Bayes Factor for <code>polynomial1</code>:</p>
@@ -306,7 +304,7 @@ Explain why
 <button>
 Explain why
 </button>
-<p>The Bayes Factor tells us that a model with a cubic component of <code>age</code> is only 0.16 times more likely than one that contains both linear and quadratic components. Because the Bayes Factor is less than 0.33, this constitutes strong evidence for the simpler model with only linear and quadratic components.</p>
+<p>The Bayes Factor tells us that a model with a cubic component of <code>age</code> is only 0.16 times more likely than one that contains both linear and quadratic components. Because the Bayes Factor is less than 0.33, this constitutes strong evidence for the simpler model (with only linear and quadratic components).</p>
 </div>
 <p><br />
 On the basis of the model comparison with Bayes Factors, which model should be preferred? One with:</p>
@@ -360,7 +358,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["datafluencyCB.pdf"],
 "toc": {
 "collapse": "section"
 }

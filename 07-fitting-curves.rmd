@@ -81,7 +81,7 @@ d %>% ggplot(aes(x,y)) +
   
 ```
 
-It is clear that this relationship would not be explained well by a straight line. We'd lose important information about the relationship if we only fit a straight line. A curve would be better.
+Values of y increase with x up to a point, then decrease again. It is clear that this relationship would not be explained well by a straight line. We'd lose important information about the relationship if we only fit a straight line. A curve would be better.
 
 \
 
@@ -255,7 +255,7 @@ d %>% ggplot(aes(x=x)) +
 The dashed lines in the plot indicate the different components of the curve indicated by the solid blue line.
 
 
-When we see any curve, it is possible to think of it as being composed of components like this. In theory, we can keep adding components, but it's rare to see even higher-order components (e.g., $x^4$) being added. Issues regarding overfitting and generalisability can also arise (mentioned in the slides).
+When we see any curve, it is possible to think of it as being composed of components like this. In theory, we can keep adding components, but it's rare to see greater higher-order components (e.g., $x^4$) being added because issues of overfitting and generalisability can arise (mentioned in the slides).
 
 
 
@@ -266,9 +266,9 @@ To determine whether a model should have quadratic, cubic, or higher order compo
 
 - First fit the **linear** model
 
-- then test for the addition of the **quadratic ($x^2$)** component
+- then test for the _addition_ of the **quadratic ($x^2$)** component
 
-- then test for the addition of the **cubic ($x^3$)** component
+- then test for the _addition_ of the **cubic ($x^3$)** component
 
 \
 
@@ -294,11 +294,11 @@ Each participant answered the following question regarding their _happiness_:
 
 \  
 
-This `happy` dataset are located at "https://bit.ly/2uIxM5K".
+This `happy` dataset is located at https://bit.ly/2uIxM5K
 
 \
 
-Let's load the data into R, and preview the data using `head`: 
+Load the data into R, and preview the data using `head`: 
 
 
 ```{r}
@@ -315,7 +315,7 @@ Plot the relationship between `age` and `happiness`:
 
 ```{r fig11, fig.height = 3.5, fig.width = 3.5, fig.align = "center"}
 SurveyData %>%
-  ggplot(aes(x=age, y=happiness)) +
+  ggplot(aes(x = age, y = happiness)) +
   geom_point() 
 ```
 
@@ -323,7 +323,7 @@ SurveyData %>%
 :::{.exercise}
 If you had to guess from the plot, which components seem to be present in the relationship between `happiness` and `age`?
 
-Linear: `r mcq(c("no", answer="possibly"))`
+Linear: `r mcq(c("no", answer="yes"))`
 
 Quadratic: `r mcq(c("no", answer="yes"))`
 
@@ -331,9 +331,9 @@ Cubic: `r mcq(c(answer= "no", "yes"))`
 
 \
 
-Try to describe the relationship between `happiness` and `age`.
+Describe the relationship between `happiness` and `age` (look at the figure and describe the trend in words).
 
-`r hide("Try first, click here for a description")`
+`r hide("Try first, then click for a description")`
 Happiness of individuals appears to decline from 30 years to the late forties. Happiness then increases beyond the late forties, reaching its peak at 70 years, at which age people reported the highest levels of happiness - higher even than levels shown in early thirties.
 `r unhide()`
 :::
@@ -342,7 +342,7 @@ Happiness of individuals appears to decline from 30 years to the late forties. H
 
 ### Linear component
 
-To determine whether there is a linear component, run a simple regression with `happiness` as the outcome variable and `age` as the predictor:
+To determine whether there is a linear component, run a simple regression with `happiness` as the outcome variable and `age` as the predictor. Store the result in `polynomial1`:
 
 ```{r}
 polynomial1 <- lm(happiness ~ age, data = SurveyData)
@@ -362,7 +362,7 @@ Is `age` a statistically significant predictor of `happiness` `r mcq(c("no", ans
 
 \
 
-The linear model does okay, but remember it is only fitting a straight line through our data, which appear to show a curved relationship!
+The linear model explains a statistically significant portion of the data, but remember it is only fitting a straight line through our data, which appear to show a curved relationship!
 
 
 
@@ -370,7 +370,11 @@ The linear model does okay, but remember it is only fitting a straight line thro
 
 ### Adding a quadratic component
 
-We can add a quadratic component to the regression model using `poly()`. If we type `poly(age, 2)` when specifying the model, the '2' in the `poly()` function tells R that we want to fit a model with **both** linear and quadratic components of `age`. This is the model it'll fit:
+We can add a quadratic component to the regression model using `poly()`. 
+
+\
+
+If we type `poly(age, 2)` when specifying the model, the '2' in the `poly()` function tells R that we want to fit a model with **both** linear and quadratic components of `age`. This is the model it will fit:
 
 \
 
@@ -383,6 +387,7 @@ where $a$ is the intercept, and $b_1$ and $b_2$ are the coefficients for the lin
 ```{r}
 
 polynomial2 <- lm(happiness ~ poly(age,2), data = SurveyData)
+
 summary(polynomial2)
 
 ```
@@ -449,7 +454,7 @@ A model with a quadratic component of `age` accounted for a statistically signif
 ### Adding a cubic component
 
 
-Now we'll test for a cubic component.
+Now we'll test for a cubic component:
 
 
 ```{r}
@@ -466,7 +471,7 @@ The '3' in `poly(age,3)` tells R that we want to specify a model with linear, qu
 \
 
 :::{.exercise}
-What percentage of the variance in `happiness` does a model with a **cubic component** of `age` explain? `r fitb(answer=68.80)` %
+What percentage of the variance in `happiness` does a model with a **cubic component** of `age` explain? `r fitb(answer=68.80, num=TRUE)` %
 
 \
 
@@ -535,8 +540,7 @@ Unfortunately, `poly()` does not work seamlessly with `lmBF`, as it did with `lm
 To add the quadratic component to `SurveyData`:
 
 ```{r}
-SurveyData <- 
-  SurveyData %>% mutate( age2 = poly(age,2)[,"2"] )
+SurveyData <- SurveyData %>% mutate( age2 = poly(age,2)[,"2"] )
 ```
 
 **Explanation of the code:** The code takes `SurveyData`, then uses `mutate` to add a new variable `age2` to the dataset. `age2` contains the quadratic component of `age`, created by `poly(age,2)[,"2"]`. 
@@ -547,6 +551,7 @@ We can see the new variable `age2` when we look at `SurveyData` again:
 
 ```{r}
 SurveyData %>% head()
+
 ```
 
 \
@@ -554,8 +559,7 @@ SurveyData %>% head()
 Now create the variable for the **cubic component**:
 
 ```{r}
-SurveyData <- 
-  SurveyData %>% mutate( age3 = poly(age,3)[,"3"] )
+SurveyData <- SurveyData %>% mutate( age3 = poly(age,3)[,"3"] )
 ```
 
 **Explanation of the code:** As before, the code takes `SurveyData`, then uses `mutate` to add a new variable `age3` to the dataset. `age3` contains the quadratic component of `age`, created by `poly(age,3)[,"3"]`. 
@@ -574,7 +578,7 @@ SurveyData %>%  head()
 ### Derive the Bayes Factors 
 
 \
-First, make sure the BayesFactor package is loaded (`library(BayesFactor)`). We can use `lmBF` to get the Bayes Factor for each model, as we did in the previous session. 
+First, make sure the BayesFactor package is loaded using `library(BayesFactor)`. We can use `lmBF` to get the Bayes Factor for each model, as we did in the previous session. 
 
 \
 
@@ -640,7 +644,7 @@ Does this constitute strong evidence for the inclusion of a cubic component in t
 `r mcq(c("yes",answer="no"))`
 
 `r hide('Explain why')`
-The Bayes Factor tells us that a model with a cubic component of `age` is only 0.16 times more likely than one that contains both linear and quadratic components. Because the Bayes Factor is less than 0.33, this constitutes strong evidence for the simpler model with only linear and quadratic components.
+The Bayes Factor tells us that a model with a cubic component of `age` is only 0.16 times more likely than one that contains both linear and quadratic components. Because the Bayes Factor is less than 0.33, this constitutes strong evidence for the simpler model (with only linear and quadratic components).
 `r unhide()`
 
 \
@@ -665,7 +669,7 @@ A comparison of Bayes Factors agrees with the comparison of the models with `ano
 
 :::{.exercise}
 
-**Now you try incorporating polynomials to a regression, and do so by investigating the relationship between `age` and `anxiety` in `SurveyData`.**
+**Now you try incorporating polynomials to a regression. You will investigate the relationship between `age` and `anxiety` in `SurveyData`.**
 
 \
 
@@ -688,10 +692,10 @@ SurveyData %>%
 \
 What kind of relationship between `age` and `anxiety` do you think is present?
 \
-`r hide("Try yourself first, then click to see answer")`
+`r hide("Try to describe the trend yourself first, then click to see answer")`
 A slight **bow** is evident in the plot such that `age` and `anxiety` seem to follow an inverted U-shaped relationship. 
 \
-Reported `anxiety` levels increase from 30 years to middle age (approx. 50 years) and then declines from 50 to 70 years. This mirrors the relationship with `age` and `happiness`. `anxiety` is greatest when `happiness` seems lowest. 
+Reported `anxiety` levels increase from 30 years to middle age (approx. 50 years) and then declines from 50 to 70 years. This mirrors the relationship we saw with `age` and `happiness` -- `anxiety` appears greatest when `happiness` is lowest. 
 `r unhide()`
 
 \
@@ -701,7 +705,7 @@ Reported `anxiety` levels increase from 30 years to middle age (approx. 50 years
 
 **Linear component**
 
-- What percentage of the variance in `anxiety` is explained by a model with `age` as predictor?
+- What percentage of the variance in `anxiety` is explained by a model with `age` as the predictor?
 `r fitb(answer="1.19")` %
 
 \

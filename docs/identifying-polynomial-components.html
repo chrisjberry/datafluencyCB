@@ -196,8 +196,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To determine whether a model should have quadratic, cubic, or higher order components, we can use the <strong>sequential regression</strong> approach covered in the previous session. We take the following steps, and look at the change in <span class="math inline">\(R^2\)</span> associated with each step.</p>
 <ul>
 <li><p>First fit the <strong>linear</strong> model</p></li>
-<li><p>then test for the addition of the <strong>quadratic (<span class="math inline">\(x^2\)</span>)</strong> component</p></li>
-<li><p>then test for the addition of the <strong>cubic (<span class="math inline">\(x^3\)</span>)</strong> component</p></li>
+<li><p>then test for the <em>addition</em> of the <strong>quadratic (<span class="math inline">\(x^2\)</span>)</strong> component</p></li>
+<li><p>then test for the <em>addition</em> of the <strong>cubic (<span class="math inline">\(x^3\)</span>)</strong> component</p></li>
 </ul>
 <p><br />
 </p>
@@ -213,10 +213,10 @@ Each participant answered the following question regarding their <em>happiness</
 <p><strong>"Overall, how happy did you feel yesterday?</strong><br />
 <strong>Where 0 is ‘not at all happy’ and 10 is ‘completely happy’."</strong></p>
 <p> </p>
-<p>This <code>happy</code> dataset are located at “<a href="https://bit.ly/2uIxM5K" class="uri">https://bit.ly/2uIxM5K</a>”.</p>
+<p>This <code>happy</code> dataset is located at <a href="https://bit.ly/2uIxM5K" class="uri">https://bit.ly/2uIxM5K</a></p>
 <p><br />
 </p>
-<p>Let’s load the data into R, and preview the data using <code>head</code>:</p>
+<p>Load the data into R, and preview the data using <code>head</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load the data</span>
 SurveyData &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://bit.ly/2uIxM5K&quot;</span>)
 
@@ -234,20 +234,20 @@ SurveyData <span class="op">%&gt;%</span><span class="st"> </span><span class="k
 <p><br />
 Plot the relationship between <code>age</code> and <code>happiness</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">SurveyData <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>age, <span class="dt">y=</span>happiness)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> happiness)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>() </code></pre>
 <p><img src="07-fitting-curves_files/figure-html/fig11-1.png" width="336" style="display: block; margin: auto;" /></p>
 <div class="exercise">
 <p>If you had to guess from the plot, which components seem to be present in the relationship between <code>happiness</code> and <code>age</code>?</p>
-<p>Linear: <select class='solveme' data-answer='["possibly"]'> <option></option> <option>no</option> <option>possibly</option></select></p>
+<p>Linear: <select class='solveme' data-answer='["yes"]'> <option></option> <option>no</option> <option>yes</option></select></p>
 <p>Quadratic: <select class='solveme' data-answer='["yes"]'> <option></option> <option>no</option> <option>yes</option></select></p>
 <p>Cubic: <select class='solveme' data-answer='["no"]'> <option></option> <option>no</option> <option>yes</option></select></p>
 <p><br />
 </p>
-<p>Try to describe the relationship between <code>happiness</code> and <code>age</code>.</p>
+<p>Describe the relationship between <code>happiness</code> and <code>age</code> (look at the figure and describe the trend in words).</p>
 <div class="solution">
 <button>
-Try first, click here for a description
+Try first, then click for a description
 </button>
 <p>Happiness of individuals appears to decline from 30 years to the late forties. Happiness then increases beyond the late forties, reaching its peak at 70 years, at which age people reported the highest levels of happiness - higher even than levels shown in early thirties.</p>
 </div>
@@ -256,7 +256,7 @@ Try first, click here for a description
 </p>
 <div id="linear-component" class="section level3">
 <h3>Linear component</h3>
-<p>To determine whether there is a linear component, run a simple regression with <code>happiness</code> as the outcome variable and <code>age</code> as the predictor:</p>
+<p>To determine whether there is a linear component, run a simple regression with <code>happiness</code> as the outcome variable and <code>age</code> as the predictor. Store the result in <code>polynomial1</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">polynomial1 &lt;-<span class="st"> </span><span class="kw">lm</span>(happiness <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> SurveyData)
 <span class="kw">summary</span>(polynomial1)
 <span class="op">&gt;</span><span class="st"> </span>
@@ -284,13 +284,16 @@ Try first, click here for a description
 </div>
 <p><br />
 </p>
-<p>The linear model does okay, but remember it is only fitting a straight line through our data, which appear to show a curved relationship!</p>
+<p>The linear model explains a statistically significant portion of the data, but remember it is only fitting a straight line through our data, which appear to show a curved relationship!</p>
 <p><br />
 </p>
 </div>
 <div id="adding-a-quadratic-component" class="section level3">
 <h3>Adding a quadratic component</h3>
-<p>We can add a quadratic component to the regression model using <code>poly()</code>. If we type <code>poly(age, 2)</code> when specifying the model, the ‘2’ in the <code>poly()</code> function tells R that we want to fit a model with <strong>both</strong> linear and quadratic components of <code>age</code>. This is the model it’ll fit:</p>
+<p>We can add a quadratic component to the regression model using <code>poly()</code>.</p>
+<p><br />
+</p>
+<p>If we type <code>poly(age, 2)</code> when specifying the model, the ‘2’ in the <code>poly()</code> function tells R that we want to fit a model with <strong>both</strong> linear and quadratic components of <code>age</code>. This is the model it will fit:</p>
 <p><br />
 </p>
 <p><span class="math inline">\(predicted \: happiness = a + b_1(age) + b_2(age^2)\)</span></p>
@@ -299,6 +302,7 @@ Try first, click here for a description
 <p>where <span class="math inline">\(a\)</span> is the intercept, and <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_2\)</span> are the coefficients for the linear and quadratic components, respectively.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 polynomial2 &lt;-<span class="st"> </span><span class="kw">lm</span>(happiness <span class="op">~</span><span class="st"> </span><span class="kw">poly</span>(age,<span class="dv">2</span>), <span class="dt">data =</span> SurveyData)
+
 <span class="kw">summary</span>(polynomial2)
 <span class="op">&gt;</span><span class="st"> </span>
 <span class="er">&gt;</span><span class="st"> </span>Call<span class="op">:</span>
@@ -371,7 +375,7 @@ Answer
 </div>
 <div id="adding-a-cubic-component" class="section level3">
 <h3>Adding a cubic component</h3>
-<p>Now we’ll test for a cubic component.</p>
+<p>Now we’ll test for a cubic component:</p>
 <pre class="sourceCode r"><code class="sourceCode r">polynomial3 &lt;-<span class="st"> </span><span class="kw">lm</span>(happiness <span class="op">~</span><span class="st"> </span><span class="kw">poly</span>(age,<span class="dv">3</span>), <span class="dt">data =</span> SurveyData)
 <span class="kw">summary</span>(polynomial3)
 <span class="op">&gt;</span><span class="st"> </span>
@@ -492,7 +496,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["datafluencyCB.pdf"],
 "toc": {
 "collapse": "section"
 }

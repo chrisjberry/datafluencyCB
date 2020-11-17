@@ -7,6 +7,9 @@ library(tidyverse)
 library(webex)
 library(pander)
 theme_set(theme_minimal())
+
+# create pdf
+# rmarkdown::render_site(output_format = 'bookdown::pdf_book', encoding = 'UTF-8')
 ```
 
 
@@ -64,7 +67,7 @@ So:
 
 ### How do I set up an R Markdown file?
 
-R-markdown is a way of embedding R code, figures, and text in a single executable document. (As an example, all the worksheets for this module were written in r-markdown.)
+R-markdown is a way of embedding R code, figures, and text in a single executable document. (As an example, this workbook was written in R Markdown.)
 
 If you want to create an R markdown file, go to File > New File > R Markdown.
 
