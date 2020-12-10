@@ -204,6 +204,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>FAQ Data Analysis and Visualisation Task</h1>
 <p><br />
 </p>
+<p><em>Updated 10-12-20</em></p>
+<p><br />
+</p>
+<p><br />
+</p>
 <hr />
 <div id="how-do-i-add-a-caption-to-a-summary-output-table" class="section level3">
 <h3>How do I add a caption to a summary output table?</h3>
@@ -302,6 +307,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The most straightforward way is to cut and paste the text from your knitted HTML file to MS Word. R Markdown does not have a built-in word count feature. It is possible to download RStudio packages from the internet that will do this for you though (for the super-keen only!).</p>
 <p><br />
 </p>
+<hr />
+<p><br />
+</p>
+</div>
+<div id="do-all-the-elements-of-my-figure-and-and-table-need-to-conform-100-to-apa-style-e.g.-italicisations-of-text-in-the-figure-title-etc." class="section level3">
+<h3>Do all the elements of my figure and and table need to conform 100% to APA style (e.g., italicisations of text in the figure title etc.)?</h3>
+<p>This would be difficult to achieve given what has been covered so far on the course. For example, you have not been shown how to italicize text embedded in figures, and so would not be expected to do this. To clarify, the requirement in the assignment brief to make your figure and table <em>“of the standard that you would expect to see in an academic journal”</em> does not mean that they have to conform exactly to the formatting guidelines stated in the APA publication manual. It is more important to consider what data you will show in your table and figure, to design code that will do this effectively, and for the appearance of the table and figure to be clear in your report.</p>
+<p><br />
+</p>
+<p>If you still would like to know how to italicize titles in your figure, then read on.</p>
+<p><br />
+</p>
+<p>As covered in week 17, the symbols * and _ can be placed around words in the text of an Rmd file to italicize them or make them formatted in bold. These symbols, however, don’t work the same way in code chunks as they do in the text of an Rmd file.</p>
+<p><br />
+</p>
+<p>If you want to italicize a figure title, use <code>expression()</code> and <code>italic()</code> when specifying the title in your code chunk. For example, you can add this code to your ggplot:</p>
+<p><code>+ labs(title = expression( italic("your title here") ))</code></p>
+<p><br />
+</p>
+<p>Here’s an example:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="FAQ-assessment.html#cb3-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="FAQ-assessment.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> hp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="FAQ-assessment.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb3-4"><a href="FAQ-assessment.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">expression</span>( <span class="fu">italic</span>(<span class="st">&quot;Miles Per Gallon vs. Horse Power&quot;</span>)) )</span></code></pre></div>
+<p><img src="FAQ-assessment_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<hr />
+<p><br />
+</p>
+</div>
+<div id="how-can-i-find-out-more-about-a-particular-function-so-i-can-play-around-with-its-settings-etc." class="section level3">
+<h3>How can I find out more about a particular function, so I can play around with its settings etc.?</h3>
+<p>For any function in R, if you execute <code>?function_name</code> in your code or at the console, then R will handily load a help file with details of the function and all its options. Try, for example, running <code>?geom_point</code></p>
+<p><br />
+</p>
 <!--
 
 
@@ -332,7 +371,6 @@ First look at the built-in dataset `DNase`:
 
 ```r
 DNase %>% head()
-> Grouped Data: density ~ conc | Run
 >   Run       conc density
 > 1   1 0.04882812   0.017
 > 2   1 0.04882812   0.018
