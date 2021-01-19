@@ -204,7 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>FAQ Data Analysis and Visualisation Task</h1>
 <p><br />
 </p>
-<p><em>Updated 12-01-21</em></p>
+<p><em>Updated 19-01-21</em></p>
 <p><br />
 </p>
 <p><br />
@@ -407,6 +407,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br />
 </p>
 </div>
+<div id="r-outputs-the-text-summarise-ungrouping-output-override-with-.groups-argument-after-i-execute-code-with-the-group_by-function.-what-does-it-mean" class="section level3">
+<h3>R outputs the text “<code>summarise()</code> ungrouping output (override with <code>.groups</code> argument)” after I execute code with the group_by() function. What does it mean?</h3>
+<p>This is a message that R gives after using <code>group_by()</code>. It means that once the code in your chunk has been executed, it will forget about the grouping variable in any subsequent code (so if you want to use the same groups again, you’ll have to use <code>group_by()</code> again).</p>
+<p>If you want to suppress the warning from your html report, there’s some guidance here:</p>
+<p><a href="https://rstats-tips.net/2020/07/31/get-rid-of-info-of-dplyr-when-grouping-summarise-regrouping-output-by-species-override-with-groups-argument/" class="uri">https://rstats-tips.net/2020/07/31/get-rid-of-info-of-dplyr-when-grouping-summarise-regrouping-output-by-species-override-with-groups-argument/</a></p>
+<p><br />
+</p>
+<hr />
+<p><br />
+</p>
+</div>
+<div id="how-can-i-recode-a-variable-change-the-names-of-the-values" class="section level3">
+<h3>How can I recode a variable / change the names of the values?</h3>
+<p><br />
+</p>
+<p>Here’s one way, using the <code>case_when()</code> function from the <code>dplyr</code> package.</p>
+<p><br />
+</p>
+<p>In <code>mtcars</code>, the <code>am</code> variable codes for automatic (0) or manual (1) transmission. The following code creates a new variable <code>am_text</code> in <code>mtcars</code> with text labels:</p>
+<p><br />
+</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="FAQ-assessment.html#cb4-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">am_text =</span> <span class="fu">case_when</span>(am <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;automatic&quot;</span>, am <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">&quot;manual&quot;</span>))</span></code></pre></div>
+<p><br />
+</p>
+<p><code>am_text</code> can then be used as a grouping variable (e.g.,when creating a table with <code>summarise()</code>)</p>
+<p><br />
+</p>
+<hr />
+<p><br />
+</p>
+<p><br />
+</p>
+<hr />
+<hr />
+<p><br />
+</p>
+</div>
 <div id="how-do-i-apply-for-extenuating-circumstances" class="section level3">
 <h3>How do I apply for extenuating circumstances?</h3>
 <p>All requests for extensions to the deadline are dealt with by the Faculty office, and need to applied for via the extenuating circumstances procedure detailed in the programme handbook.</p>
@@ -419,9 +456,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr />
 <p><br />
 </p>
-<hr />
-<p><br />
-</p>
 </div>
 <div id="when-are-your-office-hours" class="section level3">
 <h3>When are your office hours?</h3>
@@ -429,22 +463,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="https://liveplymouthac-my.sharepoint.com/:x:/g/personal/christopher_berry_plymouth_ac_uk/EdkeIgGMW21OprECB_qcWxcBPlfqxsevKdjo2hC6fWggAg?e=OQCgqC" class="uri">https://liveplymouthac-my.sharepoint.com/:x:/g/personal/christopher_berry_plymouth_ac_uk/EdkeIgGMW21OprECB_qcWxcBPlfqxsevKdjo2hC6fWggAg?e=OQCgqC</a></p>
 <!--
 
-\
-
-### Is it possible to get a good grade so long as the minimum requirements of the report are done, and done well? 
-
-Yes
-
-\
-
-
-
-
-### Is it possible to have this workbook in PDF form?
-
-Yes, a PDF version of this workbook (Building Models 1, 2, and Fitting Curves) is available to download here: https://github.com/chrisjberry/datafluencyCB/raw/master/docs/datafluencyCB.pdf
-
-Note. Some formatting is lost (e.g., interactive exercises), so you are recommended to use the online version.
 
 
 ### How can I round numbers to X decimal places? 
@@ -510,21 +528,6 @@ DNase %>% mutate_if(is.numeric, round, 1)
 ---
 
 
-
-
-
-
-\
-
----
-
-### How can I save a file from RStudio to my own hard drive/computer so I can submit it to the DLE?
-
-If using R Studio through the university website (recommended) [rstudio.plymouth.ac.uk](https://rstudio.plymouth.ac.uk), you can save a file in the Files pane as follows:
-
-- Tick the check box next to the file you want to save.
-- Click the "More" button > Export. 
-- You can then choose where to save the file on your computer.
 
 
 -->
