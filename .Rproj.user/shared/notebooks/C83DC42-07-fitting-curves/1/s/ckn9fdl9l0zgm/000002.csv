@@ -1,0 +1,2 @@
+"0","# store the Bayes Factor for polynomial2"
+"0","polynomial2BF <- lmBF(happiness ~ age + age2, data = as.data.frame(SurveyData) )"

@@ -1,0 +1,13 @@
+"0","ExamData <- read_csv('https://bit.ly/37GkvJg')"
+"2","Parsed with column specification:
+cols(
+  finalex = [32mcol_double()[39m,
+  entrex = [32mcol_double()[39m,
+  age = [32mcol_double()[39m,
+  project = [32mcol_double()[39m,
+  iq = [32mcol_double()[39m,
+  proposal = [32mcol_double()[39m,
+  attendance = [32mcol_double()[39m
+)
+"
+"0","ExamData %>% head()"

@@ -1,0 +1,1 @@
+"0","m1 <- lm(finalex ~ entrex, data = ExamData) "

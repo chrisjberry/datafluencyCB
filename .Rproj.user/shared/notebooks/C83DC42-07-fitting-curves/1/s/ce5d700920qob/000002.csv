@@ -1,0 +1,5 @@
+"0","SurveyData <- "
+"0","  SurveyData %>% mutate( age2 = poly(age,2)[,""2""] )"
+"2","Error in SurveyData %>% mutate(age2 = poly(age, 2)[, ""2""]) : 
+  could not find function ""%>%""
+"

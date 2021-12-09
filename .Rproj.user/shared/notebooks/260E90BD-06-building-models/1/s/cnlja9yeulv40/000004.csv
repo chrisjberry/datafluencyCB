@@ -1,0 +1,4 @@
+"0","ExamData %>% "
+"0","  ggplot(aes(x = entrex, y = finalex)) + "
+"0","  geom_point() +"
+"0","  geom_smooth(se=F, method=lm)"

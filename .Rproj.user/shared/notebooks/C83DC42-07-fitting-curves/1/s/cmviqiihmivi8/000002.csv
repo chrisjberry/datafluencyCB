@@ -1,0 +1,1 @@
+"0","polynomial3BF <- lmBF(happiness ~ age + age2 + age3, data = as.data.frame(SurveyData) )"

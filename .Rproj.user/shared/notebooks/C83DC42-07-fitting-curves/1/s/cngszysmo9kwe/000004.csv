@@ -1,0 +1,11 @@
+"0","# load the data"
+"0","SurveyData <- read_csv(""https://bit.ly/2uIxM5K"")"
+"2","Parsed with column specification:
+cols(
+  age = [32mcol_double()[39m,
+  happiness = [32mcol_double()[39m,
+  anxiety = [32mcol_double()[39m
+)
+"
+"0","# preview it"
+"0","SurveyData %>% head()"

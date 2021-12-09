@@ -1,0 +1,8 @@
+"0","d<-tibble(x=seq(-10,10,0.1),y=1+0.5*x,a=rep(1,length(x)),b=0.5*x)"
+"0","d %>% ggplot(aes(x=x)) + "
+"0","  geom_line(aes(y=y),size=2,colour='cornflower blue') +"
+"0","  geom_line(aes(y=0)) +"
+"0","  geom_line(aes(y=x,x=0)) +"
+"0","  geom_line(aes(y=a),linetype=2,size=1,colour='cornflower blue') +"
+"0","  geom_line(aes(y=b),linetype=2,size=1,colour='cornflower blue') +"
+"0","  theme_bw()"

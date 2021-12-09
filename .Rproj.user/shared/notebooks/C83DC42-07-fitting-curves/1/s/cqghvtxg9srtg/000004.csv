@@ -1,0 +1,6 @@
+"0","d<-tibble(x=seq(-10,10,0.1),y=-x^3)"
+"0","d %>% ggplot(aes(x=x)) + "
+"0","  geom_line(aes(y=y),size=2,colour='cornflower blue') +"
+"0","  geom_line(aes(y=0)) +"
+"0","  geom_line(aes(y=x*10,x=0)) +"
+"0","  theme_bw()"

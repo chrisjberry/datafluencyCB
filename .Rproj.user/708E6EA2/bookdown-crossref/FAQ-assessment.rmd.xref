@@ -1,0 +1,19 @@
+h1:FAQ-assessment FAQ Data Analysis and Visualisation Task
+h3:how-do-i-add-a-caption-to-a-summary-output-table How do I add a caption to a summary output table?
+h3:e-meaning What does it mean if RStudio prints out  next to a number?
+h3:how-do-i-set-up-an-r-markdown-file How do I set up an R Markdown file?
+h3:are-there-any-useful-online-cheatsheets Are there any useful online cheatsheets?
+h3:how-can-i-check-the-word-count-in-r-markdown How can I check the word count in R Markdown?
+h3:do-all-the-elements-of-my-figure-and-and-table-need-to-conform-100-to-apa-style-e.g.-italicisations-of-text-in-the-figure-title-etc. Do all the elements of my figure and and table need to conform 100% to APA style (e.g., italicisations of text in the figure title etc.)?
+h3:how-can-i-find-out-more-about-a-particular-function-so-i-can-play-around-with-its-settings-etc. How can I find out more about a particular function, so I can play around with its settings etc.?
+h3:multicollinearity-if-two-predictor-variables-have-a-correlation-greater-than-r-0.9-then-multicollinearity-is-a-problem.-is-the-same-also-true-if-the-correlation-exceeds-r--0.9 Multicollinearity: If two predictor variables have a correlation greater than r = 0.9, then multicollinearity is a problem. Is the same also true if the correlation exceeds r = -0.9?
+h3:should-r-code-be-visible-in-my-html-report Should R code be visible in my html report?
+h3:how-might-the-html-report-look How might the html report look?
+h3:do-i-need-an-introduction-section Do I need an introduction section?
+h3:after-downloading-my-.rmd-file-to-my-computer-how-do-i-open-it-again-in-rstudio After downloading my .Rmd file to my computer, how do I open it again in RStudio?
+h3:in-the-brief-it-says-within-the-rmd-file-you-should-where-necessary-include-comments-explaining-what-specific-lines-of-code-do.-when-should-i-comment-my-rmd-code In the brief it says, . When should I comment my Rmd code?
+h3:r-outputs-the-text-summarise-ungrouping-output-override-with-.groups-argument-after-i-execute-code-with-the-group_by-function.-what-does-it-mean R outputs the text  after I execute code with the group_by() function. What does it mean?
+h3:how-can-i-recode-a-variable-change-the-names-of-the-values How can I recode a variable / change the names of the values?
+h3:how-do-i-apply-for-extenuating-circumstances How do I apply for extenuating circumstances?
+h3:when-are-your-office-hours When are your office hours?
+

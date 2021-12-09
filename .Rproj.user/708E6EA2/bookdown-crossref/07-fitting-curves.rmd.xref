@@ -1,0 +1,21 @@
+h1:fitcurves Fitting curves
+h3:in-brief In brief
+h2:using-polynomials-to-fit-curves Using polynomials to fit curves
+h3:overview Overview
+h2:polynomials Polynomials
+h3:components-of-a-regression-line Components of a regression line
+h3:quadratic Quadratic
+h3:cubic Cubic
+h3:linear-plus-quadratic-components Linear plus quadratic components
+h3:linear-quadratic-cubic-components Linear + quadratic + cubic components
+h2:identifying-polynomial-components Identifying polynomial components
+h3:linear-component Linear component
+h3:adding-a-quadratic-component Adding a quadratic component
+h3:adding-a-cubic-component Adding a cubic component
+h3:a-note-about-poly A note about 
+h2:bayesian-approach Bayesian approach
+h3:preparations Preparations
+h3:derive-the-bayes-factors Derive the Bayes Factors
+h2:exercise Exercise
+h2:summary-of-key-points Summary of key points
+

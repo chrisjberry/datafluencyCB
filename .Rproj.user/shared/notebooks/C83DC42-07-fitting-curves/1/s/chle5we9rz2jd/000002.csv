@@ -1,0 +1,37 @@
+"0","polynomial3BF / polynomial2BF"
+"1","Bayes factor analysis
+--------------
+"
+"1","[1] age + age2 + age3"
+"1",""
+"1"," : "
+"1",""
+"1","0.1631281"
+"1",""
+"1"," ±"
+"1",""
+"1","0"
+"1",""
+"1","%
+"
+"1","
+Against denominator:
+"
+"1"," "
+"1"," "
+"1","happiness ~ age + age2"
+"1"," "
+"1","
+"
+"1","---
+Bayes factor type: "
+"1",""
+"1","BFlinearModel"
+"1",""
+"1",", "
+"1",""
+"1","JZS"
+"1",""
+"1","
+
+"

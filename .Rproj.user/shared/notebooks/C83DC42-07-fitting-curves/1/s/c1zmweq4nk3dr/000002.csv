@@ -1,0 +1,7 @@
+"0","augment(pmod2) %>%  
+  ggplot(aes(x=age, y=happiness)) + 
+   geom_point() +
+   geom_line(aes(y= .fitted))
+"
+"2","Error in FUN(X[[i]], ...) : object 'age' not found
+"
