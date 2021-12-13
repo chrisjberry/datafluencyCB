@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Session 2 Multiple regression: multiple continuous predictors | PSYC753 Data Fluency: Analysis</title>
+  <meta name="description" content="Course materials for PSYC753 2022" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Session 2 Multiple regression: multiple continuous predictors | PSYC753 Data Fluency: Analysis" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://chrisjberry.github.io/datafluencyCB/" />
+  
+  <meta property="og:description" content="Course materials for PSYC753 2022" />
+  <meta name="github-repo" content="datafluencyCB" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Session 2 Multiple regression: multiple continuous predictors | PSYC753 Data Fluency: Analysis" />
+  
+  <meta name="twitter:description" content="Course materials for PSYC753 2022" />
+  
+
+<meta name="author" content="Chris Berry" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="simple-regression.html"/>
+<link rel="next" href="anova-2x2-between-subjects.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="include/psyteachr.css" type="text/css" />
+<link rel="stylesheet" href="include/webex.css" type="text/css" />
+<link rel="stylesheet" href="include/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PSYC753 Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="1" data-path="simple-regression.html"><a href="simple-regression.html"><i class="fa fa-check"></i><b>1</b> Simple Regression</a></li>
+<li class="chapter" data-level="2" data-path="multiple1.html"><a href="multiple1.html"><i class="fa fa-check"></i><b>2</b> Multiple regression: multiple continuous predictors</a>
+<ul>
+<li class="chapter" data-level="2.0.1" data-path="multiple1.html"><a href="multiple1.html#in-brief"><i class="fa fa-check"></i><b>2.0.1</b> In brief</a></li>
+<li class="chapter" data-level="2.1" data-path="multiple1.html"><a href="multiple1.html#multiple-regression-with-several-continuous-predictors"><i class="fa fa-check"></i><b>2.1</b> Multiple regression with several continuous predictors</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="multiple1.html"><a href="multiple1.html#overview-1"><i class="fa fa-check"></i><b>2.1.1</b> Overview</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="multiple1.html"><a href="multiple1.html#analysing-the-model"><i class="fa fa-check"></i><b>2.2</b> Analysing the model</a></li>
+<li class="chapter" data-level="2.3" data-path="multiple1.html"><a href="multiple1.html#conceptualising-the-variance-explained-by-predictors"><i class="fa fa-check"></i><b>2.3</b> Conceptualising the variance explained by predictors</a></li>
+<li class="chapter" data-level="2.4" data-path="multiple1.html"><a href="multiple1.html#adding-predictor-variables-to-the-model"><i class="fa fa-check"></i><b>2.4</b> Adding predictor variables to the model</a></li>
+<li class="chapter" data-level="2.5" data-path="multiple1.html"><a href="multiple1.html#multicollinearity"><i class="fa fa-check"></i><b>2.5</b> Multicollinearity</a></li>
+<li class="chapter" data-level="2.6" data-path="multiple1.html"><a href="multiple1.html#final-exercise"><i class="fa fa-check"></i><b>2.6</b> Final exercise</a></li>
+<li class="chapter" data-level="2.7" data-path="multiple1.html"><a href="multiple1.html#summary-of-key-points"><i class="fa fa-check"></i><b>2.7</b> Summary of key points</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="anova-2x2-between-subjects.html"><a href="anova-2x2-between-subjects.html"><i class="fa fa-check"></i><b>3</b> ANOVA: 2x2 Between-subjects</a></li>
+<li class="chapter" data-level="4" data-path="multiple-regression-one-continuous-one-categorical.html"><a href="multiple-regression-one-continuous-one-categorical.html"><i class="fa fa-check"></i><b>4</b> Multiple regression: one continuous, one categorical</a></li>
+<li class="chapter" data-level="5" data-path="multiple3.html"><a href="multiple3.html"><i class="fa fa-check"></i><b>5</b> Multiple regression: evaluating and comparing models</a>
+<ul>
+<li class="chapter" data-level="5.0.1" data-path="multiple3.html"><a href="multiple3.html#in-brief-1"><i class="fa fa-check"></i><b>5.0.1</b> In brief</a></li>
+<li class="chapter" data-level="5.1" data-path="multiple3.html"><a href="multiple3.html#using-anova-and-bayes-factors-to-compare-models"><i class="fa fa-check"></i><b>5.1</b> Using ANOVA and Bayes Factors to compare models</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="multiple3.html"><a href="multiple3.html#overview-2"><i class="fa fa-check"></i><b>5.1.1</b> Overview</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="multiple3.html"><a href="multiple3.html#comparing-models-using-anova"><i class="fa fa-check"></i><b>5.2</b> Comparing models using ANOVA</a></li>
+<li class="chapter" data-level="5.3" data-path="multiple3.html"><a href="multiple3.html#comparing-models-using-bayes-factors"><i class="fa fa-check"></i><b>5.3</b> Comparing models using Bayes Factors</a></li>
+<li class="chapter" data-level="5.4" data-path="multiple3.html"><a href="multiple3.html#exercise"><i class="fa fa-check"></i><b>5.4</b> Exercise</a></li>
+<li class="chapter" data-level="5.5" data-path="multiple3.html"><a href="multiple3.html#summary-of-key-points-1"><i class="fa fa-check"></i><b>5.5</b> Summary of key points</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="anova-repeated-measures.html"><a href="anova-repeated-measures.html"><i class="fa fa-check"></i><b>6</b> ANOVA: Repeated measures</a></li>
+<li class="chapter" data-level="7" data-path="pre-post-data-effect-sizes-clinically-significant-change.html"><a href="pre-post-data-effect-sizes-clinically-significant-change.html"><i class="fa fa-check"></i><b>7</b> Pre-post data, effect sizes, clinically significant change</a></li>
+<li class="chapter" data-level="8" data-path="regression-assessment-2022.html"><a href="regression-assessment-2022.html"><i class="fa fa-check"></i><b>8</b> Regression Assessment 2022</a></li>
+<li class="chapter" data-level="9" data-path="regression-assessment-2022-faqs.html"><a href="regression-assessment-2022-faqs.html"><i class="fa fa-check"></i><b>9</b> Regression Assessment 2022: FAQs</a></li>
+<li class="appendix"><span><b>Appendices</b></span></li>
+<li class="divider"></li>
+<li><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" 
+    target="blank"><img alt="Creative Commons License" 
+    style="border-width:0" 
+    src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSYC753 Data Fluency: Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="multiple1" class="section level1" number="2">
+<h1><span class="header-section-number">Session 2</span> Multiple regression: multiple continuous predictors</h1>
+<p><em>January 2022</em></p>
+<div id="in-brief" class="section level3" number="2.0.1">
+<h3><span class="header-section-number">2.0.1</span> In brief</h3>
+<blockquote>
+<p>Models need to be <em>appropriately complex</em>. That is, we want to make models
+that represent our theories for the underlying causes of our data. Often this
+means adding many variables to a regression model. But we won't
+always be sure which variables to add. Adding multiple variables also brings
+challenges. Where predictors are highly correlated (termed <strong>multicollinearity</strong>)
+then model results can be confusing.</p>
+</blockquote>
+</div>
+<div id="multiple-regression-with-several-continuous-predictors" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Multiple regression with several continuous predictors</h2>
+<ul>
+<li><a href="slides/PSYC753_Chris1.pptx">Slides for the session</a></li>
+</ul>
+<div id="overview-1" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Overview</h3>
+<p>So far, you have used regression to predict an outcome variable from a predictor variable. For example, can we predict <em>academic performance</em> from <em>hours of study</em>?</p>
+<p>You've also used it to determine whether the relation between two variables differs according to a categorical variable. Does the relation between academic performance and hours of study, for example, differ for <em>men</em> and <em>women</em>?</p>
+<p><br />
+We often want to determine the extent to which an outcome variable is predicted by <strong>several continuous predictors</strong>.</p>
+<p>For example, in addition to hours of study, a person's <em>IQ</em> or <em>academic interest</em> might also predict their academic performance. We may want to add these predictors to a model because it may serve to <em>improve</em> the prediction of academic performance.</p>
+<p><br />
+Today, we will:</p>
+<ul>
+<li><p>learn how to conduct a multiple regression with several continuous predictor variables</p></li>
+<li><p>evaluate the regression model with statistics (<span class="math inline">\(R^2\)</span>, <em>F</em>-statistic, <em>t</em>-values)</p></li>
+<li><p>use Venn diagrams to help conceptualise the contribution of predictors to a model</p></li>
+</ul>
+<div class="tip">
+<p><strong>Simple vs. multiple regression</strong></p>
+<ul>
+<li><p><strong>Simple regression</strong> is a linear model of the relationship between <em>one outcome variable and one predictor variable</em>. For example, can we predict <code>exam performance</code> on the basis of <code>IQ</code> scores?</p></li>
+<li><p><strong>Multiple regression</strong> is a linear model of the relationship between <em>one outcome variable and more than one predictor variable</em>. For example, can we predict <code>exam performance</code>based on <code>IQ</code> scores <em>and</em> <code>attendance</code> at lectures?</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="analysing-the-model" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Analysing the model</h2>
+<p>Suppose we want to construct a model to predict final university exam scores. This is the task faced by some admissions tutors! We'll start off with a simple regression model, then work up to multiple regression.</p>
+<p>Load the <code>ExamData</code> dataset from <a href="https://bit.ly/37GkvJg" class="uri">https://bit.ly/37GkvJg</a>. This contains exam scores for students taking a university course. (Make sure <code>tidyverse</code> is loaded first!)</p>
+<div class="tip">
+<p><strong>Learning tip</strong></p>
+<p>Try typing out the code today if you usually cut and paste it to R!</p>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="multiple1.html#cb1-1" aria-hidden="true" tabindex="-1"></a>ExamData <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://bit.ly/37GkvJg&#39;</span>)</span>
+<span id="cb1-2"><a href="multiple1.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="multiple1.html#cb1-3" aria-hidden="true" tabindex="-1"></a>ExamData <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">finalex</th>
+<th align="right">entrex</th>
+<th align="right">age</th>
+<th align="right">project</th>
+<th align="right">iq</th>
+<th align="right">proposal</th>
+<th align="right">attendance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">38</td>
+<td align="right">44</td>
+<td align="right">21.9</td>
+<td align="right">50</td>
+<td align="right">110</td>
+<td align="right">44</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">49</td>
+<td align="right">40</td>
+<td align="right">22.6</td>
+<td align="right">75</td>
+<td align="right">120</td>
+<td align="right">70</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">61</td>
+<td align="right">43</td>
+<td align="right">21.8</td>
+<td align="right">54</td>
+<td align="right">119</td>
+<td align="right">54</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">65</td>
+<td align="right">42</td>
+<td align="right">22.5</td>
+<td align="right">60</td>
+<td align="right">125</td>
+<td align="right">53</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">69</td>
+<td align="right">44</td>
+<td align="right">21.9</td>
+<td align="right">82</td>
+<td align="right">121</td>
+<td align="right">73</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">73</td>
+<td align="right">46</td>
+<td align="right">21.8</td>
+<td align="right">65</td>
+<td align="right">140</td>
+<td align="right">62</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tip">
+<p>These are the variables in <code>ExamData</code>:</p>
+<ul>
+<li><code>finalex</code>: final examination marks</li>
+<li><code>entrex</code>: entrance examination marks</li>
+<li><code>age</code>: age in years</li>
+<li><code>project</code>: dissertation project marks</li>
+<li><code>iq</code>: IQ score</li>
+<li><code>proposal</code>: dissertation proposal grade</li>
+<li><code>attendance</code>: 1 = high attendance; 0 = low attendance</li>
+</ul>
+</div>
+<p>First, let's ask whether <code>finalex</code> is predicted by <code>entrex</code>. Plot these variables:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="multiple1.html#cb2-1" aria-hidden="true" tabindex="-1"></a>ExamData <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="multiple1.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> entrex, <span class="at">y =</span> finalex)) <span class="sc">+</span> </span>
+<span id="cb2-3"><a href="multiple1.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-4"><a href="multiple1.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se=</span>F, <span class="at">method=</span>lm)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="02_multiple_regression_1_files/figure-html/unnamed-chunk-3-1.png" alt="TRUE" width="100%" />
+<p class="caption">
+Figure 2.1: TRUE
+</p>
+</div>
+<p>There looks to be a positive association - students with higher entrance exam scores tend to have higher final exam scores. A good start!</p>
+<p>To conduct the simple regression with <code>finalex</code> as the outcome variable, and <code>entrex</code> as the predictor variable, use <code>lm</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="multiple1.html#cb3-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(finalex <span class="sc">~</span> entrex, <span class="at">data =</span> ExamData) </span></code></pre></div>
+<p><strong>Explanation</strong>: <code>finalex ~ entrex</code> can be read as "<code>finalex</code> is predicted by <code>entrex</code>". The model is stored in <code>m1</code>.</p>
+<p>View the intercept of the regression line and the coefficient for <code>entrex</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="multiple1.html#cb4-1" aria-hidden="true" tabindex="-1"></a>m1</span>
+<span id="cb4-2"><a href="multiple1.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb4-3"><a href="multiple1.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Call<span class="sc">:</span></span>
+<span id="cb4-4"><a href="multiple1.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">lm</span>(<span class="at">formula =</span> finalex <span class="sc">~</span> entrex, <span class="at">data =</span> ExamData)</span>
+<span id="cb4-5"><a href="multiple1.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb4-6"><a href="multiple1.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Coefficients<span class="sc">:</span></span>
+<span id="cb4-7"><a href="multiple1.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> (Intercept)       entrex  </span>
+<span id="cb4-8"><a href="multiple1.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>     <span class="sc">-</span><span class="fl">46.305</span>        <span class="fl">3.155</span></span></code></pre></div>
+<p>We can therefore write the regression equation:</p>
+<p><span class="math inline">\(Predicted\ final\ exam\ score = -46.305 + 3.155(entrance\ exam)\)</span></p>
+<p><br />
+<br />
+Use <code>summary(m1)</code> to display statistical analysis of the model:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="multiple1.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span>
+<span id="cb5-2"><a href="multiple1.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb5-3"><a href="multiple1.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Call<span class="sc">:</span></span>
+<span id="cb5-4"><a href="multiple1.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">lm</span>(<span class="at">formula =</span> finalex <span class="sc">~</span> entrex, <span class="at">data =</span> ExamData)</span>
+<span id="cb5-5"><a href="multiple1.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb5-6"><a href="multiple1.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Residuals<span class="sc">:</span></span>
+<span id="cb5-7"><a href="multiple1.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>     Min      1Q  Median      3Q     Max </span>
+<span id="cb5-8"><a href="multiple1.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="sc">-</span><span class="fl">54.494</span> <span class="sc">-</span><span class="fl">21.185</span>   <span class="fl">3.733</span>  <span class="fl">18.124</span>  <span class="fl">30.969</span> </span>
+<span id="cb5-9"><a href="multiple1.html#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb5-10"><a href="multiple1.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Coefficients<span class="sc">:</span></span>
+<span id="cb5-11"><a href="multiple1.html#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>             Estimate Std. Error t value <span class="fu">Pr</span>(<span class="sc">&gt;</span><span class="er">|</span>t<span class="sc">|</span>)    </span>
+<span id="cb5-12"><a href="multiple1.html#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> (Intercept) <span class="sc">-</span><span class="fl">46.3045</span>    <span class="fl">25.4773</span>  <span class="sc">-</span><span class="fl">1.817</span>   <span class="fl">0.0788</span> .  </span>
+<span id="cb5-13"><a href="multiple1.html#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> entrex        <span class="fl">3.1545</span>     <span class="fl">0.5324</span>   <span class="fl">5.925</span> <span class="fl">1.52e-06</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb5-14"><a href="multiple1.html#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="sc">---</span></span>
+<span id="cb5-15"><a href="multiple1.html#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb5-16"><a href="multiple1.html#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb5-17"><a href="multiple1.html#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Residual standard error<span class="sc">:</span> <span class="fl">22.7</span> on <span class="dv">31</span> degrees of freedom</span>
+<span id="cb5-18"><a href="multiple1.html#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Multiple R<span class="sc">-</span>squared<span class="sc">:</span>  <span class="fl">0.531</span>,   Adjusted R<span class="sc">-</span>squared<span class="sc">:</span>  <span class="fl">0.5159</span> </span>
+<span id="cb5-19"><a href="multiple1.html#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> F<span class="sc">-</span>statistic<span class="sc">:</span>  <span class="fl">35.1</span> on <span class="dv">1</span> and <span class="dv">31</span> DF,  p<span class="sc">-</span>value<span class="sc">:</span> <span class="fl">1.52e-06</span></span></code></pre></div>
+<p><strong>Explanation of the output</strong>:</p>
+<p><br />
+<strong><code>Residuals:</code></strong> provides an indication of the discrepancy between the values of <code>finalex</code> predicted by the model (i.e., the regression equation) and the actual values of <code>finalex</code>. If the model does a good job in predicting <code>finalex</code>, the residuals should be relatively small.</p>
+<ul>
+<li>The difference between <code>Min</code> and <code>Max</code> gives us some idea of the range of error in the prediction of <code>finalex</code> scores. The difference in <code>3Q</code> and <code>1Q</code> is the interquartile range. The <code>median</code> of the residuals is 3.73.</li>
+</ul>
+<p><br />
+<strong><code>Coefficients:</code></strong> contains tests of statistical significance for each of the coefficients. The values in the column headed <code>Pr(&gt;|t|)</code> are the <em>p</em>-values associated with the <em>t</em>-values for the coefficients for each predictor. The <em>t</em>-values test a null hypothesis that the coefficients are equal to zero. A <em>p</em>-value less than .05 indicates that a predictor is statistically significant.</p>
+<ul>
+<li><p>The row for the <code>(intercept)</code> reports a <em>t</em>-test for whether the value of the intercept differs from zero. We're not usually interested in this test (so don't report it).</p></li>
+<li><p>The row for <code>entrex</code> tests whether the value of its coefficient (3.15) differs from zero. A coefficient of zero would be expected if the predictor explained no variance in the outcome variable. The coefficient for <code>entrex</code> (3.15) is clearly greater than zero. We can report this by saying that <code>extrex</code> is a statistically significant predictor of <code>finalex</code>, <em>b</em> = 3.15, <em>t</em>(31) = 5.92, <em>p</em> &lt; .001.</p></li>
+</ul>
+<p><br />
+<strong><code>Multiple R-squared:</code></strong> This is <span class="math inline">\(R^2\)</span> - the <strong>proportion of variance in <code>finalex</code> explained by <code>entrex</code></strong>. Here, <span class="math inline">\(R^2\)</span> = 0.531. So approximately half of the variance in <code>finalex</code> is explained by <code>entrex</code>. It's usually referred to simply as "R-squared" or <span class="math inline">\(R^2\)</span>.</p>
+<ul>
+<li><span class="math inline">\(R^2\)</span> is often reported as a percentage. To get this, simply multiply the value by 100. i.e., 0.531 x 100 = 53.10%.</li>
+</ul>
+<p><br />
+<strong><code>Adjusted R-squared:</code></strong> is an estimate of <span class="math inline">\(R^2\)</span>, but adjusted for the population. Despite the usefulness of this statistic, most studies still tend to report only the (unadjusted) <span class="math inline">\(R^2\)</span> value. If reporting the <code>Adjusted R-squared</code> value, be sure to label it clearly as such. Here, Adjusted R-squared = 0.52.</p>
+<p><br />
+<strong><code>F-statistic:</code></strong> This compares the variance in <code>finalex</code> explained by the model with the variance that it does not explain (i.e., explained variance divided by unexplained variance). Higher values of <em>F</em> indicate that the model explains greater variance in an outcome variable. If the <em>p</em>-value associated with the <em>F</em>-statistic is less than .05, we can say that the model significantly predicts the outcome variable.</p>
+<p>Hence, we can say that a model consisting of <code>entrex</code> alone is a significant predictor of <code>finalex</code>, <em>F</em>(1, 31) = 35.10, <em>p</em> &lt; .001. Higher <code>entrex</code> scores tend to be associated with higher <code>finalex</code> scores. If our model did not explain any variance in <code>finalex</code>, we wouldn't expect this to be statistically significant.</p>
+<ul>
+<li>In simple regression, the null hypothesis being tested on the <em>F</em>-statistic is that the slope of the regression line in the population is equal to zero. This is actually equivalent to the <em>t</em>-test on the <code>entrex</code> coefficient. So in simple regression, report the <em>F</em>-statistic for the overall regression or the <em>t</em>-test on the coefficient (not both). This equivalence between <em>F</em> and <em>t</em> does not hold true for multiple regression, as we shall see later.</li>
+</ul>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-1" class="exercise"><strong>Exercise 2.1  </strong></span><strong>Now you have a go</strong></p>
+<p>Run another simple regression:</p>
+<ul>
+<li><p>set <code>finalex</code> as the outcome variable and <code>project</code> as the predictor variable</p></li>
+<li><p>store the output in a variable with a different name (<code>m2</code>)</p></li>
+<li><p>then display the output of <code>m2</code> using <code>summary()</code>.</p></li>
+</ul>
+<div class="webex-solution">
+<button>
+Try yourself first before clicking to show the code
+</button>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="multiple1.html#cb6-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(finalex <span class="sc">~</span> project, <span class="at">data=</span> ExamData) </span>
+<span id="cb6-2"><a href="multiple1.html#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="multiple1.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span>
+<span id="cb6-4"><a href="multiple1.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb6-5"><a href="multiple1.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Call<span class="sc">:</span></span>
+<span id="cb6-6"><a href="multiple1.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">lm</span>(<span class="at">formula =</span> finalex <span class="sc">~</span> project, <span class="at">data =</span> ExamData)</span>
+<span id="cb6-7"><a href="multiple1.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb6-8"><a href="multiple1.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Residuals<span class="sc">:</span></span>
+<span id="cb6-9"><a href="multiple1.html#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>     Min      1Q  Median      3Q     Max </span>
+<span id="cb6-10"><a href="multiple1.html#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="sc">-</span><span class="fl">64.015</span> <span class="sc">-</span><span class="fl">21.686</span>  <span class="sc">-</span><span class="fl">0.573</span>  <span class="fl">21.758</span>  <span class="fl">70.427</span> </span>
+<span id="cb6-11"><a href="multiple1.html#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb6-12"><a href="multiple1.html#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Coefficients<span class="sc">:</span></span>
+<span id="cb6-13"><a href="multiple1.html#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>             Estimate Std. Error t value <span class="fu">Pr</span>(<span class="sc">&gt;</span><span class="er">|</span>t<span class="sc">|</span>)  </span>
+<span id="cb6-14"><a href="multiple1.html#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> (Intercept)   <span class="fl">4.6968</span>    <span class="fl">40.1677</span>   <span class="fl">0.117</span>   <span class="fl">0.9077</span>  </span>
+<span id="cb6-15"><a href="multiple1.html#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> project       <span class="fl">1.4442</span>     <span class="fl">0.5861</span>   <span class="fl">2.464</span>   <span class="fl">0.0195</span> <span class="sc">*</span></span>
+<span id="cb6-16"><a href="multiple1.html#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="sc">---</span></span>
+<span id="cb6-17"><a href="multiple1.html#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb6-18"><a href="multiple1.html#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb6-19"><a href="multiple1.html#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Residual standard error<span class="sc">:</span> <span class="fl">30.32</span> on <span class="dv">31</span> degrees of freedom</span>
+<span id="cb6-20"><a href="multiple1.html#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Multiple R<span class="sc">-</span>squared<span class="sc">:</span>  <span class="fl">0.1638</span>,  Adjusted R<span class="sc">-</span>squared<span class="sc">:</span>  <span class="fl">0.1368</span> </span>
+<span id="cb6-21"><a href="multiple1.html#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> F<span class="sc">-</span>statistic<span class="sc">:</span> <span class="fl">6.072</span> on <span class="dv">1</span> and <span class="dv">31</span> DF,  p<span class="sc">-</span>value<span class="sc">:</span> <span class="fl">0.01948</span></span></code></pre></div>
+</div>
+<p><br />
+Answer the following: (report statistics to 2 decimal places)</p>
+<ul>
+<li><p>What is the value of the coefficient for <code>project</code>? <input class='webex-solveme nospaces' size='4' data-answer='["1.44"]'/></p></li>
+<li><p>What proportion of the variance in <code>finalex</code> is explained by <code>project</code>?: <span class="math inline">\(R^2\)</span> = <input class='webex-solveme nospaces' size='4' data-answer='["0.16",".16"]'/> (or <input class='webex-solveme nospaces' size='5' data-answer='["16.38"]'/> %).</p></li>
+<li><p>Write down the regression equation (on a bit of paper).</p></li>
+</ul>
+<div class="webex-solution">
+<button>
+Show me
+</button>
+<ul>
+<li><span class="math inline">\(Predicted\ final\ exam\ score = 4.70 + 1.44(project)\)</span></li>
+</ul>
+</div>
+<ul>
+<li><p>Is <code>project</code> alone a statistically significant predictor of <code>finalex</code>, as indicated by the <em>F</em>-statistic? <select class='webex-select'><option value='blank'></option><option value=''>no</option><option value='answer'>yes</option></select></p></li>
+<li><p>Report the <em>F</em>-ratio in APA style, that is, in the form</p>
+<p><strong><em>F</em>(df1, df2) = <em>F</em>-statistic, <em>p</em> = <em>p</em>-value</strong>:</p></li>
+</ul>
+<div class="webex-solution">
+<button>
+Show me
+</button>
+<p><em>F</em>(1, 31) = 6.07, <em>p</em> = .02</p>
+</div>
+<ul>
+<li>Individuals with <select class='webex-select'><option value='blank'></option><option value=''>lower</option><option value='answer'>higher</option></select> project scores tended to have higher final exam scores.</li>
+</ul>
+</div>
+</div>
+<div id="conceptualising-the-variance-explained-by-predictors" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Conceptualising the variance explained by predictors</h2>
+<p>Venn diagrams are useful for understanding the variance that predictors explain in the outcome variable. They are especially useful for understanding what's going on in multiple regression.</p>
+<p>Suppose the rectangle below represents all of the <em>variance</em> in <code>finalex</code> to be explained.</p>
+<p><img src="images\Venn1.jpg" /></p>
+<p>The area of the circle below represents the variance in <code>finalex</code> explained by <code>entrex</code> in the first simple regression we did. If this diagram were drawn to scale (it's not), the area of the circle would be equal to the value of <span class="math inline">\(R^2\)</span> (i.e., 53.1% of the rectangle).</p>
+<p><img src="images\Venn2.jpg" /></p>
+<p>The part of the rectangle not inside the circle represents the variance in <code>finalex</code> that is <em>not</em> explained by the model (i.e., the unexplained or <em>residual</em> variance).</p>
+<p>To <em>improve</em> the model, we can explore whether adding in other predictors to the model explains additional variance, thereby increasing the total <span class="math inline">\(R^2\)</span> of the model.</p>
+<p>You might think that we can simply add in variables (circles, above) to the model as we wish, until all the residual variance has been explained. This seems fine to do until we learn that if we were to add as many predictors to the model as there are rows in our data (33 individuals in our <code>ExamData</code>), then we'd perfectly predict the outcome variable, and have an <span class="math inline">\(R^2\)</span> of 100%! This would be true even if the predictors consisted of random values. Our model would clearly be meaningless though. We ideally want to explain the outcome variable with relatively few predictors.</p>
+</div>
+<div id="adding-predictor-variables-to-the-model" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Adding predictor variables to the model</h2>
+<p>An issue that can arise when adding variables to a model is that predictors are usually correlated to some extent. This can make interpretation of multiple regressions tricky. For example, a predictor that is statistically significant in a simple regression may become non-significant in a multiple regression. Let's see a demonstration of this!</p>
+<p>We'll now add <code>project</code> to the model with <code>entrex</code>. First, check the correlation between predictors:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="multiple1.html#cb7-1" aria-hidden="true" tabindex="-1"></a>ExamData <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="multiple1.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(entrex,project) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="multiple1.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span>
+<span id="cb7-4"><a href="multiple1.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>            entrex   project</span>
+<span id="cb7-5"><a href="multiple1.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> entrex  <span class="fl">1.0000000</span> <span class="fl">0.2908253</span></span>
+<span id="cb7-6"><a href="multiple1.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> project <span class="fl">0.2908253</span> <span class="fl">1.0000000</span></span></code></pre></div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-2" class="exercise"><strong>Exercise 2.2  </strong></span>The correlation between <code>entrex</code> and <code>project</code> is <em>r</em> = <input class='webex-solveme nospaces' size='4' data-answer='["0.29",".29"]'/></p>
+<p>Our predictor variables are weakly correlated. We should keep this in mind going forward.</p>
+</div>
+<p>Now run a <em>multiple regression</em> to predict <code>finalex</code> from both <code>entrex</code> and <code>project</code>. Again, use <code>lm</code> but use the <code>+</code> symbol to add predictors to the model:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="multiple1.html#cb8-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(finalex <span class="sc">~</span> entrex <span class="sc">+</span> project, <span class="at">data =</span> ExamData)</span>
+<span id="cb8-2"><a href="multiple1.html#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="multiple1.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m3)</span>
+<span id="cb8-4"><a href="multiple1.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb8-5"><a href="multiple1.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Call<span class="sc">:</span></span>
+<span id="cb8-6"><a href="multiple1.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">lm</span>(<span class="at">formula =</span> finalex <span class="sc">~</span> entrex <span class="sc">+</span> project, <span class="at">data =</span> ExamData)</span>
+<span id="cb8-7"><a href="multiple1.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb8-8"><a href="multiple1.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Residuals<span class="sc">:</span></span>
+<span id="cb8-9"><a href="multiple1.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>     Min      1Q  Median      3Q     Max </span>
+<span id="cb8-10"><a href="multiple1.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="sc">-</span><span class="fl">41.880</span> <span class="sc">-</span><span class="fl">16.617</span>   <span class="fl">4.636</span>  <span class="fl">15.562</span>  <span class="fl">35.273</span> </span>
+<span id="cb8-11"><a href="multiple1.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb8-12"><a href="multiple1.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Coefficients<span class="sc">:</span></span>
+<span id="cb8-13"><a href="multiple1.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>             Estimate Std. Error t value <span class="fu">Pr</span>(<span class="sc">&gt;</span><span class="er">|</span>t<span class="sc">|</span>)    </span>
+<span id="cb8-14"><a href="multiple1.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> (Intercept) <span class="sc">-</span><span class="fl">84.8289</span>    <span class="fl">33.6846</span>  <span class="sc">-</span><span class="fl">2.518</span>   <span class="fl">0.0174</span> <span class="sc">*</span>  </span>
+<span id="cb8-15"><a href="multiple1.html#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> entrex        <span class="fl">2.8894</span>     <span class="fl">0.5406</span>   <span class="fl">5.344</span> <span class="fl">8.81e-06</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb8-16"><a href="multiple1.html#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> project       <span class="fl">0.7515</span>     <span class="fl">0.4457</span>   <span class="fl">1.686</span>   <span class="fl">0.1021</span>    </span>
+<span id="cb8-17"><a href="multiple1.html#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="sc">---</span></span>
+<span id="cb8-18"><a href="multiple1.html#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb8-19"><a href="multiple1.html#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb8-20"><a href="multiple1.html#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Residual standard error<span class="sc">:</span> <span class="fl">22.06</span> on <span class="dv">30</span> degrees of freedom</span>
+<span id="cb8-21"><a href="multiple1.html#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Multiple R<span class="sc">-</span>squared<span class="sc">:</span>  <span class="fl">0.5716</span>,  Adjusted R<span class="sc">-</span>squared<span class="sc">:</span>  <span class="fl">0.5431</span> </span>
+<span id="cb8-22"><a href="multiple1.html#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> F<span class="sc">-</span>statistic<span class="sc">:</span> <span class="fl">20.02</span> on <span class="dv">2</span> and <span class="dv">30</span> DF,  p<span class="sc">-</span>value<span class="sc">:</span> <span class="fl">3e-06</span></span></code></pre></div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-3" class="exercise"><strong>Exercise 2.3  </strong></span>In this model with <code>entrex</code> and <code>project</code>as predictors:</p>
+<p>What is the value of <span class="math inline">\(R^2\)</span> (as a percentage): <input class='webex-solveme nospaces' size='5' data-answer='["57.16"]'/> %</p>
+<p>By how much has <span class="math inline">\(R^2\)</span> <em>increased</em> in this model, relative to the model with <code>entrex</code> alone (where <span class="math inline">\(R^2\)</span> was 53.10%)? (as a percentage) (you will need to calculate this) <input class='webex-solveme nospaces' size='4' data-answer='["4.06"]'/> %</p>
+<p>Is the overall regression model predicting <code>finalex</code> on the basis of <code>entrex</code> and <code>project</code> statistically significant? <select class='webex-select'><option value='blank'></option><option value='answer'>yes</option><option value=''>no</option></select></p>
+<ul>
+<li><p>Is <code>entrex</code> a statistically significant predictor of <code>finalex</code>? <select class='webex-select'><option value='blank'></option><option value='answer'>yes</option><option value=''>no</option></select></p></li>
+<li><p>We can report this in the following way: the <em>t</em>-test on the coefficient for <code>entrex</code> is statistically significant, <em>b</em> = 2.89, <em>t</em>(30) = 5.34, <em>p</em> &lt; .001.</p></li>
+<li><p>Is <code>project</code> a statistically significant predictor of <code>finalex</code> in this model? <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select></p></li>
+<li><p>What is the value of the coefficient for <code>project</code>? <em>b</em> = <input class='webex-solveme nospaces' data-tol='0.01' size='4' data-answer='["0.75",".75"]'/></p></li>
+<li><p>Report the <em>t</em>-statistic in APA style:</p></li>
+</ul>
+<div class="webex-solution">
+<button>
+Show me
+</button>
+<p>Project mark was not a statistically significant predictor of final examination in this model, <em>b</em> = 0.75, <em>t</em>(30) = 1.69, <em>p</em> = .10</p>
+</div>
+</div>
+<p>Looking across the analyses we've performed, we can see that <code>project</code> is a (weak) but statistically significant predictor of <code>finalex</code> in a simple regression. However, when it is included in a model that also includes <code>entrex</code> it is not a significant predictor! What's going on?</p>
+<ul>
+<li><p>The model containing only <code>project</code> explains 16.38% of the variability in <code>finalex</code>.</p></li>
+<li><p>The model containing only <code>entrex</code> explains 53.10% of the variability in <code>finalex</code>.</p></li>
+<li><p>However, a model containing <em>both</em> <code>project</code> and <code>entrex</code> only explains 57.16% of the variability in <code>finalex</code>, not 16.38 + 53.10 = 69.48%, as we might expect.</p></li>
+</ul>
+<p>This is because the predictors are <em>correlated</em> (<em>r</em> = .29) and so the variance they explain in <code>finalex</code> is <em>shared</em>.</p>
+<p><br />
+We could represent this on a Venn diagram as follows:</p>
+<p><img src="images\Venn3.jpg" /></p>
+<p>The correlation is represented as an overlap in the circles. Their total area (57.16%) is therefore <em>less</em> than the area they'd explain if there were no overlap (69.48%) (i.e., if there was no correlation).</p>
+<p><strong>This demonstrates an important point</strong>: The <em>t</em>-tests on the coefficients in a multiple regression assess the <strong>unique</strong> contribution of each predictor in the model. That is, they test the variance a predictor explains in an outcome variable, <strong>after</strong> the variance explained by the other predictors has been taken into account. This is why <code>project</code> is not statistically significant in the multiple regression model -- it only explains a small amount of variance once <code>entrex</code> has been taken into account.</p>
+<div class="tip">
+<p>It is possible to think of the <em>F</em>-statistic and <em>t</em>-value in multiple regression in terms of the Venn diagram:</p>
+<ul>
+<li><p>The <strong><em>F</em>-statistic</strong> compares the explained variance with the unexplained variance. The explained variance is represented by the <strong><em>outline</em></strong> of the two circles in the Venn diagram above. The unexplained variance is the remaining blue area of the rectangle.</p></li>
+<li><p>The <strong><em>t</em>-value</strong> compares the unique variance a predictor explains with the remaining unexplained variance. For example, for <code>project</code> in the Venn diagram above, this would be the area in the orange <strong><em>crescent</em></strong>, relative to the remaining blue area in the rectangle.</p></li>
+</ul>
+</div>
+</div>
+<div id="multicollinearity" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Multicollinearity</h2>
+<p>If the correlation between predictors is very high (greater than <em>r</em> = 0.9), this is known as <strong>multicollinearity</strong>. On a Venn diagram, the circles representing the predictors would almost completely overlap. Multicollinearity can be a problem in multiple regression. Predictors may explain a large amount of variance in the outcome variable, but their 'unique' contribution in a multiple regression may be small. A situation can arise where <em>neither</em> predictor may be statistically significant even though the overall regression is significant!</p>
+<p><img src="images\Venn_multi.jpg" /></p>
+<p>An example of multicollinearity in the <code>ExamData</code> dataset can be seen with the variables <code>project</code> and <code>proposal</code>.</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-4" class="exercise"><strong>Exercise 2.4  </strong></span>Obtain the correlation between <code>project</code> and <code>proposal</code>:</p>
+<div class="webex-solution">
+<button>
+Show me
+</button>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="multiple1.html#cb9-1" aria-hidden="true" tabindex="-1"></a>ExamData <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="multiple1.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(project, proposal) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="multiple1.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span>
+<span id="cb9-4"><a href="multiple1.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>            project  proposal</span>
+<span id="cb9-5"><a href="multiple1.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> project  <span class="fl">1.0000000</span> <span class="fl">0.9371487</span></span>
+<span id="cb9-6"><a href="multiple1.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> proposal <span class="fl">0.9371487</span> <span class="fl">1.0000000</span></span></code></pre></div>
+</div>
+<p>The correlation between <code>project</code> and <code>proposal</code> is <em>r</em> = <input class='webex-solveme nospaces' size='4' data-answer='["0.94",".94"]'/>.</p>
+<p>To see the effects of multicollinearity, conduct a regression with <code>finalex</code> as the outcome variable and <code>project</code> and <code>proposal</code> as the predictor variables.</p>
+<div class="webex-solution">
+<button>
+Show me
+</button>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="multiple1.html#cb10-1" aria-hidden="true" tabindex="-1"></a>multi1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(finalex <span class="sc">~</span> project <span class="sc">+</span> proposal, <span class="at">data =</span> ExamData)</span>
+<span id="cb10-2"><a href="multiple1.html#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="multiple1.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(multi1)</span>
+<span id="cb10-4"><a href="multiple1.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb10-5"><a href="multiple1.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Call<span class="sc">:</span></span>
+<span id="cb10-6"><a href="multiple1.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">lm</span>(<span class="at">formula =</span> finalex <span class="sc">~</span> project <span class="sc">+</span> proposal, <span class="at">data =</span> ExamData)</span>
+<span id="cb10-7"><a href="multiple1.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb10-8"><a href="multiple1.html#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Residuals<span class="sc">:</span></span>
+<span id="cb10-9"><a href="multiple1.html#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>     Min      1Q  Median      3Q     Max </span>
+<span id="cb10-10"><a href="multiple1.html#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="sc">-</span><span class="fl">64.287</span> <span class="sc">-</span><span class="fl">22.590</span>  <span class="sc">-</span><span class="fl">0.346</span>  <span class="fl">22.395</span>  <span class="fl">70.289</span> </span>
+<span id="cb10-11"><a href="multiple1.html#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb10-12"><a href="multiple1.html#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Coefficients<span class="sc">:</span></span>
+<span id="cb10-13"><a href="multiple1.html#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>             Estimate Std. Error t value <span class="fu">Pr</span>(<span class="sc">&gt;</span><span class="er">|</span>t<span class="sc">|</span>)</span>
+<span id="cb10-14"><a href="multiple1.html#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> (Intercept)   <span class="fl">4.8784</span>    <span class="fl">40.8601</span>   <span class="fl">0.119</span>    <span class="fl">0.906</span></span>
+<span id="cb10-15"><a href="multiple1.html#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> project       <span class="fl">1.2751</span>     <span class="fl">1.7072</span>   <span class="fl">0.747</span>    <span class="fl">0.461</span></span>
+<span id="cb10-16"><a href="multiple1.html#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> proposal      <span class="fl">0.1826</span>     <span class="fl">1.7263</span>   <span class="fl">0.106</span>    <span class="fl">0.916</span></span>
+<span id="cb10-17"><a href="multiple1.html#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb10-18"><a href="multiple1.html#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Residual standard error<span class="sc">:</span> <span class="fl">30.81</span> on <span class="dv">30</span> degrees of freedom</span>
+<span id="cb10-19"><a href="multiple1.html#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Multiple R<span class="sc">-</span>squared<span class="sc">:</span>  <span class="fl">0.1641</span>,  Adjusted R<span class="sc">-</span>squared<span class="sc">:</span>  <span class="fl">0.1084</span> </span>
+<span id="cb10-20"><a href="multiple1.html#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> F<span class="sc">-</span>statistic<span class="sc">:</span> <span class="fl">2.945</span> on <span class="dv">2</span> and <span class="dv">30</span> DF,  p<span class="sc">-</span>value<span class="sc">:</span> <span class="fl">0.06797</span></span></code></pre></div>
+</div>
+<ul>
+<li><p>How much variance in <code>finalex</code> is explained by the model: <span class="math inline">\(R^2\)</span> = <input class='webex-solveme nospaces' data-tol='0.02' size='5' data-answer='["16.41"]'/> %.</p></li>
+<li><p>Is the overall regression statistically significant? <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select></p></li>
+<li><p>Is the coefficient for <code>project</code> statistically significant? <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select></p></li>
+<li><p>Is the coefficient for <code>proposal</code> statistically significant? <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select></p></li>
+</ul>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-5" class="exercise"><strong>Exercise 2.5  </strong></span>Now run two simple regressions to determine whether <code>project</code> and <code>proposal</code> explain variance in <code>finalex</code> and are statistically significant predictors when in models on their own.</p>
+<div class="webex-solution">
+<button>
+Show me
+</button>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="multiple1.html#cb11-1" aria-hidden="true" tabindex="-1"></a>multi2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(finalex <span class="sc">~</span> project, <span class="at">data =</span> ExamData)</span>
+<span id="cb11-2"><a href="multiple1.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(multi2)</span>
+<span id="cb11-3"><a href="multiple1.html#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="multiple1.html#cb11-4" aria-hidden="true" tabindex="-1"></a>multi3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(finalex <span class="sc">~</span> proposal, <span class="at">data =</span> ExamData)</span>
+<span id="cb11-5"><a href="multiple1.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(multi3)</span>
+<span id="cb11-6"><a href="multiple1.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb11-7"><a href="multiple1.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Call<span class="sc">:</span></span>
+<span id="cb11-8"><a href="multiple1.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">lm</span>(<span class="at">formula =</span> finalex <span class="sc">~</span> project, <span class="at">data =</span> ExamData)</span>
+<span id="cb11-9"><a href="multiple1.html#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb11-10"><a href="multiple1.html#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Residuals<span class="sc">:</span></span>
+<span id="cb11-11"><a href="multiple1.html#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>     Min      1Q  Median      3Q     Max </span>
+<span id="cb11-12"><a href="multiple1.html#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="sc">-</span><span class="fl">64.015</span> <span class="sc">-</span><span class="fl">21.686</span>  <span class="sc">-</span><span class="fl">0.573</span>  <span class="fl">21.758</span>  <span class="fl">70.427</span> </span>
+<span id="cb11-13"><a href="multiple1.html#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb11-14"><a href="multiple1.html#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Coefficients<span class="sc">:</span></span>
+<span id="cb11-15"><a href="multiple1.html#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>             Estimate Std. Error t value <span class="fu">Pr</span>(<span class="sc">&gt;</span><span class="er">|</span>t<span class="sc">|</span>)  </span>
+<span id="cb11-16"><a href="multiple1.html#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> (Intercept)   <span class="fl">4.6968</span>    <span class="fl">40.1677</span>   <span class="fl">0.117</span>   <span class="fl">0.9077</span>  </span>
+<span id="cb11-17"><a href="multiple1.html#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> project       <span class="fl">1.4442</span>     <span class="fl">0.5861</span>   <span class="fl">2.464</span>   <span class="fl">0.0195</span> <span class="sc">*</span></span>
+<span id="cb11-18"><a href="multiple1.html#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="sc">---</span></span>
+<span id="cb11-19"><a href="multiple1.html#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb11-20"><a href="multiple1.html#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb11-21"><a href="multiple1.html#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Residual standard error<span class="sc">:</span> <span class="fl">30.32</span> on <span class="dv">31</span> degrees of freedom</span>
+<span id="cb11-22"><a href="multiple1.html#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Multiple R<span class="sc">-</span>squared<span class="sc">:</span>  <span class="fl">0.1638</span>,  Adjusted R<span class="sc">-</span>squared<span class="sc">:</span>  <span class="fl">0.1368</span> </span>
+<span id="cb11-23"><a href="multiple1.html#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> F<span class="sc">-</span>statistic<span class="sc">:</span> <span class="fl">6.072</span> on <span class="dv">1</span> and <span class="dv">31</span> DF,  p<span class="sc">-</span>value<span class="sc">:</span> <span class="fl">0.01948</span></span>
+<span id="cb11-24"><a href="multiple1.html#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb11-25"><a href="multiple1.html#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> </span>
+<span id="cb11-26"><a href="multiple1.html#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Call<span class="sc">:</span></span>
+<span id="cb11-27"><a href="multiple1.html#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">lm</span>(<span class="at">formula =</span> finalex <span class="sc">~</span> proposal, <span class="at">data =</span> ExamData)</span>
+<span id="cb11-28"><a href="multiple1.html#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb11-29"><a href="multiple1.html#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Residuals<span class="sc">:</span></span>
+<span id="cb11-30"><a href="multiple1.html#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>     Min      1Q  Median      3Q     Max </span>
+<span id="cb11-31"><a href="multiple1.html#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="sc">-</span><span class="fl">64.987</span> <span class="sc">-</span><span class="fl">22.987</span>  <span class="sc">-</span><span class="fl">1.378</span>  <span class="fl">24.059</span>  <span class="fl">68.921</span> </span>
+<span id="cb11-32"><a href="multiple1.html#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb11-33"><a href="multiple1.html#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Coefficients<span class="sc">:</span></span>
+<span id="cb11-34"><a href="multiple1.html#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>             Estimate Std. Error t value <span class="fu">Pr</span>(<span class="sc">&gt;</span><span class="er">|</span>t<span class="sc">|</span>)  </span>
+<span id="cb11-35"><a href="multiple1.html#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> (Intercept)   <span class="fl">16.628</span>     <span class="fl">37.441</span>   <span class="fl">0.444</span>   <span class="fl">0.6601</span>  </span>
+<span id="cb11-36"><a href="multiple1.html#cb11-36" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> proposal       <span class="fl">1.391</span>      <span class="fl">0.598</span>   <span class="fl">2.326</span>   <span class="fl">0.0267</span> <span class="sc">*</span></span>
+<span id="cb11-37"><a href="multiple1.html#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="sc">---</span></span>
+<span id="cb11-38"><a href="multiple1.html#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb11-39"><a href="multiple1.html#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb11-40"><a href="multiple1.html#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Residual standard error<span class="sc">:</span> <span class="fl">30.59</span> on <span class="dv">31</span> degrees of freedom</span>
+<span id="cb11-41"><a href="multiple1.html#cb11-41" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Multiple R<span class="sc">-</span>squared<span class="sc">:</span>  <span class="fl">0.1486</span>,  Adjusted R<span class="sc">-</span>squared<span class="sc">:</span>  <span class="fl">0.1211</span> </span>
+<span id="cb11-42"><a href="multiple1.html#cb11-42" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> F<span class="sc">-</span>statistic<span class="sc">:</span> <span class="fl">5.409</span> on <span class="dv">1</span> and <span class="dv">31</span> DF,  p<span class="sc">-</span>value<span class="sc">:</span> <span class="fl">0.02675</span></span></code></pre></div>
+</div>
+<ul>
+<li><p>In a simple regression with <code>finalex</code> as the outcome variable, and <code>project</code> as the predictor variable, <span class="math inline">\(R^2\)</span> = <input class='webex-solveme nospaces' data-tol='0.1' size='4' data-answer='["16.4"]'/> %.</p></li>
+<li><p>Is the overall regression statistically significant? <select class='webex-select'><option value='blank'></option><option value='answer'>yes</option><option value=''>no</option></select></p></li>
+<li><p>In a simple regression with <code>finalex</code> as the outcome variable, and <code>proposal</code> as the predictor variable, <span class="math inline">\(R^2\)</span> = <input class='webex-solveme nospaces' data-tol='0.1' size='4' data-answer='["14.9"]'/> %.</p></li>
+<li><p>Is the overall regression statistically significant? <select class='webex-select'><option value='blank'></option><option value='answer'>yes</option><option value=''>no</option></select></p></li>
+<li><p>Try to explain what's going on here in your own words. Click below or ask if you get stuck.</p></li>
+</ul>
+<div class="webex-solution">
+<button>
+Explain
+</button>
+<p><em>Interpretation</em></p>
+<ul>
+<li><p>Because <code>proposal</code> and <code>project</code> are highly correlated (<em>r</em> = 0.94), this gives rise to the situation where the simple regressions indicate that they explain variance in <code>finalex</code>, but when both are included as predictors in a multiple regression, it appears as if neither are significant predictors of <code>finalex</code> !</p></li>
+<li><p>If this were a real scenario, we'd consider dropping <code>project</code> or <code>proposal</code> from the model. Because the correlation is so high, having one predictor is as good as having the other (more or less).</p></li>
+<li><p>It seems intuitive that a person's final project mark would be highly correlated with their proposal mark.</p></li>
+<li><p>The take-home message here is to check for high correlations between your predictor variables before including them in a multiple regression.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="final-exercise" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Final exercise</h2>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-6" class="exercise"><strong>Exercise 2.6  </strong></span>As a final exercise, run a multiple regression to predict <code>finalex</code> from <strong>three</strong> predictors: <code>entrex</code>, <code>project</code>, and <code>iq</code>.</p>
+<div class="webex-solution">
+<button>
+Show me how
+</button>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="multiple1.html#cb12-1" aria-hidden="true" tabindex="-1"></a>multi4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(finalex <span class="sc">~</span> entrex <span class="sc">+</span> project <span class="sc">+</span> iq, <span class="at">data =</span> ExamData)</span>
+<span id="cb12-2"><a href="multiple1.html#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="multiple1.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(multi4)</span>
+<span id="cb12-4"><a href="multiple1.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb12-5"><a href="multiple1.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Call<span class="sc">:</span></span>
+<span id="cb12-6"><a href="multiple1.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">lm</span>(<span class="at">formula =</span> finalex <span class="sc">~</span> entrex <span class="sc">+</span> project <span class="sc">+</span> iq, <span class="at">data =</span> ExamData)</span>
+<span id="cb12-7"><a href="multiple1.html#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb12-8"><a href="multiple1.html#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Residuals<span class="sc">:</span></span>
+<span id="cb12-9"><a href="multiple1.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>     Min      1Q  Median      3Q     Max </span>
+<span id="cb12-10"><a href="multiple1.html#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="sc">-</span><span class="fl">40.444</span> <span class="sc">-</span><span class="fl">16.174</span>   <span class="fl">5.509</span>  <span class="fl">14.312</span>  <span class="fl">33.338</span> </span>
+<span id="cb12-11"><a href="multiple1.html#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb12-12"><a href="multiple1.html#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Coefficients<span class="sc">:</span></span>
+<span id="cb12-13"><a href="multiple1.html#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>              Estimate Std. Error t value <span class="fu">Pr</span>(<span class="sc">&gt;</span><span class="er">|</span>t<span class="sc">|</span>)    </span>
+<span id="cb12-14"><a href="multiple1.html#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> (Intercept) <span class="sc">-</span><span class="fl">130.3803</span>    <span class="fl">54.7288</span>  <span class="sc">-</span><span class="fl">2.382</span> <span class="fl">0.023981</span> <span class="sc">*</span>  </span>
+<span id="cb12-15"><a href="multiple1.html#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> entrex         <span class="fl">2.6180</span>     <span class="fl">0.5978</span>   <span class="fl">4.379</span> <span class="fl">0.000142</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb12-16"><a href="multiple1.html#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> project        <span class="fl">0.6874</span>     <span class="fl">0.4490</span>   <span class="fl">1.531</span> <span class="fl">0.136620</span>    </span>
+<span id="cb12-17"><a href="multiple1.html#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> iq             <span class="fl">0.4862</span>     <span class="fl">0.4610</span>   <span class="fl">1.055</span> <span class="fl">0.300214</span>    </span>
+<span id="cb12-18"><a href="multiple1.html#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="sc">---</span></span>
+<span id="cb12-19"><a href="multiple1.html#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Signif. codes<span class="sc">:</span>  <span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb12-20"><a href="multiple1.html#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb12-21"><a href="multiple1.html#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Residual standard error<span class="sc">:</span> <span class="fl">22.02</span> on <span class="dv">29</span> degrees of freedom</span>
+<span id="cb12-22"><a href="multiple1.html#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Multiple R<span class="sc">-</span>squared<span class="sc">:</span>  <span class="fl">0.5875</span>,  Adjusted R<span class="sc">-</span>squared<span class="sc">:</span>  <span class="fl">0.5448</span> </span>
+<span id="cb12-23"><a href="multiple1.html#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> F<span class="sc">-</span>statistic<span class="sc">:</span> <span class="fl">13.77</span> on <span class="dv">3</span> and <span class="dv">29</span> DF,  p<span class="sc">-</span>value<span class="sc">:</span> <span class="fl">9.168e-06</span></span></code></pre></div>
+</div>
+<p>Which variables are statistically significant predictors of <code>finalex</code>?</p>
+<ul>
+<li><p><code>entrex</code> <select class='webex-select'><option value='blank'></option><option value='answer'>yes</option><option value=''>no</option></select></p></li>
+<li><p><code>project</code> <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select></p></li>
+<li><p><code>iq</code> <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select></p></li>
+</ul>
+<p>On the basis of all the models conducted so far (with <code>entrex</code>, <code>project</code>, and <code>iq</code>), which model would you choose to best predict <code>finalex</code>?</p>
+<div class="webex-solution">
+<button>
+Tell me which model seems best
+</button>
+<p>The model containing <code>entrex</code> alone, as this seems to provide the simplest and most effective model of the <code>finalex</code>.</p>
+<p>A general goal of regression is to identify the fewest predictor variables necessary to predict an outcome variable, where each predictor variable predicts a substantial and independent segment of the variability in the outcome variable.</p>
+</div>
+</div>
+</div>
+<div id="summary-of-key-points" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Summary of key points</h2>
+<ul>
+<li><p>Predictors can be added to a model in <code>lm</code> using the <code>+</code> symbol</p></li>
+<li><p>e.g., <code>lm(finalex ~ entrex + project + iq)</code></p></li>
+<li><p>Predictor variables are often correlated to some extent. This can affect the interpretation of individual predictor variables. Venn diagrams help to understand the results.</p></li>
+<li><p>The <strong><em>F</em>-statistic</strong> tells us whether the model <em>as a whole</em> significantly predicts the outcome variable.</p></li>
+<li><p>The <strong><em>t</em>-values</strong> tell us whether individual predictors in the model are statistically significant.</p></li>
+<li><p>In multiple regression, it's important to understand that the statistical significance of individual predictors only holds <strong>after taking into account the other predictors in the model</strong>.</p></li>
+<li><p><strong>Multicollinearity</strong> exists when predictors are very highly correlated (<em>r</em> above 0.9) and should be avoided.</p></li>
+</ul>
+
+</div>
+</div>
+<div class="psyteachr_footer">
+  
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+  
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
+
+  update_total_correct();
+}
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="simple-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="anova-2x2-between-subjects.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"google": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": {},
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
