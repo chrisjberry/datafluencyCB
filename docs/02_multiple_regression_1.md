@@ -1,676 +1,887 @@
 # Multiple regression: multiple continuous predictors {#multiple1}
 
-*January 2022*
-
-### In brief
-
-> Models need to be _appropriately complex_. That is, we want to make models
-> that represent our theories for the underlying causes of our data. Often this
-> means adding many variables to a regression model. But we won't
-> always be sure which variables to add. Adding multiple variables also brings
-> challenges. Where predictors are highly correlated (termed **multicollinearity**)
-> then model results can be confusing. 
+*Chris Berry*
+\
+*2022*
 
 
 
-
-## Multiple regression with several continuous predictors
-
--   [Slides for the session](slides/PSYC753_Chris1.pptx)
+<!--
+commented text
 
 
-### Overview
+<style>
+div.exercise { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
 
-So far, you have used regression to predict an outcome variable from a predictor variable. For example, can we predict _academic performance_ from _hours of study_?
+<style>
+div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
+</style>
 
-You've also used it to determine whether the relation between two variables differs according to a categorical variable. Does the relation between academic performance and hours of study, for example, differ for _men_ and _women_?
+
+## Overview
 
 \
-We often want to determine the extent to which an outcome variable is predicted by **several continuous predictors**.
 
-For example, in addition to hours of study, a person's _IQ_ or _academic interest_ might also predict their academic performance. We may want to add these predictors to a model because it may serve to _improve_ the prediction of academic performance. 
+* **Slides** from the lecture part of the session: [Download](slides/PSYC753_L2_MultipleRegression1.pptx)
 
 \
-Today, we will: 
 
-- learn how to conduct a multiple regression with several continuous predictor variables
 
-- evaluate the regression model with statistics ($R^2$, _F_-statistic, _t_-values)
+This worksheet assumes you have gone through the previous one on [simple regression](#simple1). 
 
-- use Venn diagrams to help conceptualise the contribution of predictors to a model
-
+\
 
 :::{.tip}
 
-**Simple vs. multiple regression**
+When we want to determine the extent to which an outcome variable (e.g., anxiety score) is predicted by **multiple continuous predictors** (e.g., screen time *and* physical activity), we can use **multiple regression**. 
 
-- **Simple regression** is a linear model of the relationship between *one outcome variable and one predictor variable*. For example, can we predict `exam performance` on the basis of `IQ` scores? 
+Adding multiple predictors to a model may serve to _improve_ the prediction of the outcome variable. 
 
-- **Multiple regression** is a linear model of the relationship between *one outcome variable and more than one predictor variable*. For example, can we predict `exam performance`based on `IQ` scores _and_ `attendance` at lectures?
+:::
+
+\
+
+:::{.tip}
+**Simple vs. Multiple Regression**
+
+- **Simple regression** is a linear model of the relationship between *one outcome variable and one predictor variable*. For example, can we predict **anxiety scores** on the basis of **screen time** scores? 
+
+- **Multiple regression** is a linear model of the relationship between *one outcome variable and more than one predictor variable*. For example, can we predict **anxiety scores** based on **screen time** scores, **physical activity** scores, and **life satisfaction**? 
 
 :::
 
 
+## Worked example
 
-## Analysing the model
+In the previous session we used `screen_time` to predict `anxiety_score` in the data of Hrafnkelsdottir et al. (2018). In a separate simple regression (in the exercises), we used `physical_activity` to predict `anxiety_score`.
 
-Suppose we want to construct a model to predict final university exam scores. This is the task faced by some admissions tutors!  We'll start off with a simple regression model, then work up to multiple regression.  
+We'll now conduct a multiple regression by including both `screen_time` and `physical_activity` in the same model.
 
-
-Load the `ExamData` dataset from https://bit.ly/37GkvJg. This contains exam scores for students taking a university course. (Make sure `tidyverse` is loaded first!)
+\
 
 :::{.tip}
 
-**Learning tip**
+**Multiple regression with `lm()`**
 
-Try typing out the code today if you usually cut and paste it to R!
+To include additional predictors in a regression model, use the `+` symbol when specifying the model with `lm()`:
+
+`lm(outcome ~ predictor_1 + predictor_2 + predictor_3.... , data = mydata)`
 
 :::
 
+\
 
 
 ```r
-ExamData <- read_csv('https://bit.ly/37GkvJg')
+# load tidyverse (if not already loaded)
+library(tidyverse)
 
-ExamData %>% head()
+# load the dataset (if not already loaded)
+mentalh <- read_csv('data/mentalhealthdata.csv')
+
+# conduct a multiple regression, store it in multiple1
+multiple1 <- lm(anxiety_score ~ screen_time + physical_activity, data = mentalh) 
+
+# look at the coefficients
+multiple1
+```
+
+```
+## 
+## Call:
+## lm(formula = anxiety_score ~ screen_time + physical_activity, 
+##     data = mentalh)
+## 
+## Coefficients:
+##       (Intercept)        screen_time  physical_activity  
+##            8.3991             0.1627            -0.5699
+```
+
+
+* `(Intercept)` is the value of the intercept **a** in the regression equation
+* `screen_time` is the value of the coefficient for the `screen_time` predictor
+* `physical_activity` is the value of the coefficient for the `physical_activity` predictor
+
+\
+
+The regression equation is therefore written as:
+
+  $Predicted\ anxiety\ score  = 8.40 + 0.16(screen\ time) - 0.57(physical\ activity)$
+
+\
+
+:::{.exercise}
+By looking at the _sign_  (positive or negative) on the relevant coefficient, complete these statements: 
+
+* Greater `screen_time` scores are associated with <select class='webex-select'><option value='blank'></option><option value=''>lower</option><option value='answer'>higher</option></select> levels of anxiety
+
+
+<div class='webex-solution'><button>Explanation</button>
+
+A positive sign on the coefficient indicates a positive association between the predictor variable and the outcome variable (i.e., as scores on one increase, scores on the other also increase).
+
+</div>
+
+
+* Greater levels of `physical_activity` are associated with <select class='webex-select'><option value='blank'></option><option value='answer'>lower</option><option value=''>higher</option></select> levels of anxiety.
+
+
+<div class='webex-solution'><button>Explanation</button>
+
+A negative sign on the coefficient indicates a negative association between the predictor variable and the outcome variable (i.e., as scores on one increase, scores on the other decrease).
+
+</div>
+
+:::
+
+
+### Predicting new data
+
+As with simple regression, we can use the multiple regression equation to predict what the outcome variable would be, given new data. For example, for a new individual with a `screen_time` score of 10 and `physical_activity` score of 5.5:
+
+
+```r
+# specify the new data (for all predictors in the model)
+new_scores <- tibble(screen_time = 10, 
+                     physical_activity = 5.5)
+
+# use augment() in the broom package to obtain the prediction
+library(broom)
+augment(multiple1, newdata = new_scores)
 ```
 
 <div class="kable-table">
 
-| finalex| entrex|  age| project|  iq| proposal| attendance|
-|-------:|------:|----:|-------:|---:|--------:|----------:|
-|      38|     44| 21.9|      50| 110|       44|          0|
-|      49|     40| 22.6|      75| 120|       70|          0|
-|      61|     43| 21.8|      54| 119|       54|          0|
-|      65|     42| 22.5|      60| 125|       53|          0|
-|      69|     44| 21.9|      82| 121|       73|          0|
-|      73|     46| 21.8|      65| 140|       62|          0|
+| screen_time| physical_activity|  .fitted|
+|-----------:|-----------------:|--------:|
+|          10|               5.5| 6.892328|
 
 </div>
 
+`.fitted` is the predicted `anxiety_score` (6.9). `augment()` has worked it out the prediction automatically.
 
-
-:::{.tip}
-
-
-These are the variables in `ExamData`:
-
-- `finalex`: final examination marks
-- `entrex`:  entrance examination marks
-- `age`: age in years
-- `project`: dissertation project marks
-- `iq`: IQ score
-- `proposal`: dissertation proposal grade
-- `attendance`: 1 = high attendance; 0 = low attendance
-
-:::
-
-
-First, let's ask whether `finalex` is predicted by `entrex`. Plot these variables:
+To derive predictions for several new participants, use `c(score1, score2...)` when specifying the `new_scores`:
 
 
 ```r
-ExamData %>% 
-  ggplot(aes(x = entrex, y = finalex)) + 
-  geom_point() +
-  geom_smooth(se=F, method=lm)
+# specify the new data (for both predictors)
+new_scores <- tibble(screen_time = c(10, 12), 
+                     physical_activity = c(5.5, 2))
+
+# use augment() in the broom package for the predictions
+augment(multiple1, newdata = new_scores)
+```
+
+<div class="kable-table">
+
+| screen_time| physical_activity|  .fitted|
+|-----------:|-----------------:|--------:|
+|          10|               5.5| 6.892328|
+|          12|               2.0| 9.212314|
+
+</div>
+
+The second row contains the prediction for a new person with `screen_time` of **12** hours and `physical_activity` of **2**. Their predicted `anxiety_score` is **9.21**.
+
+\
+
+
+
+
+### Evaluating the model: Bayes Factor
+
+Use `lmBF()` to obtain the Bayes Factor for the multiple regression model:
+
+
+```r
+# store the BF in multiple1_BF
+multiple1_BF <- lmBF(anxiety_score ~ screen_time + physical_activity, data = mentalh)
+```
+
+```
+## Warning: data coerced from tibble to data frame
+```
+
+```r
+# show the BF
+multiple1_BF
+```
+
+```
+## Bayes factor analysis
+## --------------
+## [1] screen_time + physical_activity : 58.40328 ±0%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+```
+
+The Bayes Factor for the model is **58.40**. This tells us that the model with `screen_time` and `physical_activity` is 58.40 times more likely than an `Intercept only` model. In other words, there's strong evidence that this model is explaining variance in `anxiety_score`, and should be preferred over an intercept-only one (i.e., one with no predictors).
+
+
+
+### Residuals
+
+We can obtain a plot of the predicted values vs. the residuals (a spread-versus level plot) in the same was as for simple regression, by using `augment()` in the `broom` package.
+
+
+```r
+# create a spread-versus-level plot
+augment(multiple1) %>% 
+  ggplot(aes(x = .fitted, y = .resid)) +
+  geom_hline(yintercept = 0) +
+  geom_point()
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02_multiple_regression_1_files/figure-html/unnamed-chunk-3-1.png" alt="TRUE" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-3)TRUE</p>
+<img src="02_multiple_regression_1_files/figure-html/unnamed-chunk-6-1.png" alt="TRUE" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-6)TRUE</p>
 </div>
 
+A negative trend in the plot is evident, such that the residuals become more negative as the predicted values of `anxiety_score` increase. This was also the case in the previous worksheet with `anxiety_score` versus `screen_time`. This suggests the model could be improved. 
 
-There looks to be a positive association - students with higher entrance exam scores tend to have higher final exam scores. A good start!
 
-To conduct the simple regression with `finalex` as the outcome variable, and `entrex` as the predictor variable, use `lm`: 
+\
+
+### Evaluating the model: R^2^
+
+Use `glance()` in the `broom` package to obtain the R^2^ for the model:
 
 
 ```r
-m1 <- lm(finalex ~ entrex, data = ExamData) 
-```
-**Explanation**: `finalex ~ entrex` can be read as "`finalex` is predicted by `entrex`". The model is stored in `m1`. 
-
-
-View the intercept of the regression line and the coefficient for `entrex`:
-
-
-```r
-m1
-> 
-> Call:
-> lm(formula = finalex ~ entrex, data = ExamData)
-> 
-> Coefficients:
-> (Intercept)       entrex  
->     -46.305        3.155
+glance(multiple1)
 ```
 
-We can therefore write the regression equation:
+<div class="kable-table">
 
-  $Predicted\ final\ exam\ score  = -46.305 + 3.155(entrance\ exam)$
-
-
-\
-\
-Use `summary(m1)` to display statistical analysis of the model: 
-
-
-```r
-summary(m1)
-> 
-> Call:
-> lm(formula = finalex ~ entrex, data = ExamData)
-> 
-> Residuals:
->     Min      1Q  Median      3Q     Max 
-> -54.494 -21.185   3.733  18.124  30.969 
-> 
-> Coefficients:
->             Estimate Std. Error t value Pr(>|t|)    
-> (Intercept) -46.3045    25.4773  -1.817   0.0788 .  
-> entrex        3.1545     0.5324   5.925 1.52e-06 ***
-> ---
-> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-> 
-> Residual standard error: 22.7 on 31 degrees of freedom
-> Multiple R-squared:  0.531,	Adjusted R-squared:  0.5159 
-> F-statistic:  35.1 on 1 and 31 DF,  p-value: 1.52e-06
-```
-
-
-
-
-
-**Explanation of the output**:
-
-\
-**`Residuals:`** provides an indication of the discrepancy between the values of `finalex` predicted by the model (i.e., the regression equation) and the actual values of `finalex`. If the model does a good job in predicting `finalex`,  the residuals should be relatively small. 
-
-  - The difference between `Min` and `Max` gives us some idea of the range of error in the prediction of `finalex` scores. The difference in `3Q` and `1Q` is the interquartile range. The `median` of the residuals is 3.73.
-
-\
-**`Coefficients:`** contains tests of statistical significance for each of the coefficients. The values in the column headed `Pr(>|t|)` are the _p_-values associated with the _t_-values for the coefficients for each predictor. The _t_-values test a null hypothesis that the coefficients are equal to zero. A _p_-value less than .05 indicates that a predictor is statistically significant.
-
-  - The row for the `(intercept)` reports a _t_-test for whether the value of the intercept differs from zero. We're not usually interested in this test (so don't report it). 
-
-  - The row for `entrex` tests whether the value of its coefficient (3.15) differs from zero. A coefficient of zero would be expected if the predictor explained no variance in the outcome variable. The coefficient for `entrex` (3.15) is clearly greater than zero. We can report this by saying that `extrex` is a statistically significant predictor of `finalex`, _b_ = 3.15, _t_(31) = 5.92, _p_ < .001.
-
-\
-**`Multiple R-squared:`** This is $R^2$ - the **proportion of variance in `finalex` explained by `entrex`**.  Here, $R^2$ = 0.531. So approximately half of the variance in `finalex` is explained by `entrex`. It's usually referred to simply as "R-squared" or $R^2$.
-
-  - $R^2$ is often reported as a percentage. To get this, simply multiply the value by 100. i.e., 0.531 x 100 = 53.10%.  
-
-\
-**`Adjusted R-squared:`** is an estimate of $R^2$, but adjusted for the population. Despite the usefulness of this statistic, most studies still tend to report only the (unadjusted) $R^2$ value. If reporting the `Adjusted R-squared` value, be sure to label it clearly as such. Here, Adjusted R-squared = 0.52.
-
-\
-**`F-statistic:`** This compares the variance in `finalex` explained by the model with the variance that it does not explain (i.e., explained variance divided by unexplained variance). Higher values of _F_ indicate that the model explains greater variance in an outcome variable. If the _p_-value associated with the _F_-statistic is less than .05, we can say that the model significantly predicts the outcome variable. 
-
-Hence, we can say that a model consisting of `entrex` alone is a significant predictor of `finalex`, _F_(1, 31) = 35.10, _p_ < .001. Higher `entrex` scores tend to be associated with higher `finalex` scores. If our model did not explain any variance in `finalex`, we wouldn't expect this to be statistically significant.
-
-  - In simple regression, the null hypothesis being tested on the _F_-statistic is that the slope of the regression line in the population is equal to zero. This is actually equivalent to the _t_-test on the `entrex` coefficient. So in simple regression, report the _F_-statistic for the overall regression or the _t_-test on the coefficient (not both). This equivalence between _F_ and _t_ does not hold true for multiple regression, as we shall see later.
-
-
-
-
-
-:::{.exercise}
-
-**Now you have a go**
-
-Run another simple regression:
-
-- set `finalex` as the outcome variable and `project` as the predictor variable
-
-- store the output in a variable with a different name (`m2`)
-
-- then display the output of `m2` using `summary()`.
-
-
-
-<div class='webex-solution'><button>Try yourself first before clicking to show the code</button>
-
-
-```r
-m2 <- lm(finalex ~ project, data= ExamData) 
-
-summary(m2)
-> 
-> Call:
-> lm(formula = finalex ~ project, data = ExamData)
-> 
-> Residuals:
->     Min      1Q  Median      3Q     Max 
-> -64.015 -21.686  -0.573  21.758  70.427 
-> 
-> Coefficients:
->             Estimate Std. Error t value Pr(>|t|)  
-> (Intercept)   4.6968    40.1677   0.117   0.9077  
-> project       1.4442     0.5861   2.464   0.0195 *
-> ---
-> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-> 
-> Residual standard error: 30.32 on 31 degrees of freedom
-> Multiple R-squared:  0.1638,	Adjusted R-squared:  0.1368 
-> F-statistic: 6.072 on 1 and 31 DF,  p-value: 0.01948
-```
+| r.squared| adj.r.squared|    sigma| statistic|   p.value| df|    logLik|      AIC|      BIC| deviance| df.residual| nobs|
+|---------:|-------------:|--------:|---------:|---------:|--:|---------:|--------:|--------:|--------:|-----------:|----:|
+|  0.064907|     0.0571469| 3.510864|  8.364191| 0.0003076|  2| -651.1421| 1310.284| 1324.273| 2970.606|         241|  244|
 
 </div>
 
+* `r.squared` is **R^2^**, the proportion of variance in values of `anxiety_score` explained by the model. Thus, `screen_time` and `physical_activity` explain 0.0649, or 6.49% of the variance in `anxiety_score`.
+
+* `adj.r.squared` is the **Adjusted R^2^** value, which is R^2^, adjusted for the sample size and number of predictors in the model. It is an estimate of R^2^ for the population (not merely the scores we have in the sample), and is always less than R^2^. You'll see researchers using either R^2^ or the adjusted R^2^ in the literature. If you're not sure which one to use, report the adjusted R^2^, and say which one you are using (e.g., "adjusted R^2^ = 5.71%"). 
+
+The adjusted R^2^ value is 0.0571, so a model with `screen_time` and `physical_activity` explains 5.71% of the variance in `anxiety_scores`.
 
 \
-Answer the following: (report statistics to 2 decimal places)
-
-- What is the value of the coefficient for `project`? <input class='webex-solveme nospaces' size='4' data-answer='["1.44"]'/>
-
-- What proportion of the variance in `finalex` is explained by `project`?: $R^2$ = <input class='webex-solveme nospaces' size='4' data-answer='["0.16",".16"]'/> (or <input class='webex-solveme nospaces' size='5' data-answer='["16.38"]'/> %).
-
-- Write down the regression equation (on a bit of paper).
 
 
-<div class='webex-solution'><button>Show me</button>
+## Contribution of individual predictors
 
+By looking at the regular (non-adjusted) R^2^ values of our models so far, an interesting trend is evident:
 
-  - $Predicted\ final\ exam\ score  = 4.70 + 1.44(project)$
+- In a simple regression of `anxiety_score ~ screen_time`, R^2^ = 2.96%
 
+- In a simple regression of `anxiety_score ~ physical_activity`, R^2^ = 5.33%
 
-</div>
-
-
-- Is `project` alone a statistically significant predictor of `finalex`, as indicated by the _F_-statistic? <select class='webex-select'><option value='blank'></option><option value=''>no</option><option value='answer'>yes</option></select>
-
-- Report the _F_-ratio in APA style, that is, in the form 
-
-  **_F_(df1, df2) = _F_-statistic, _p_ = _p_-value**: 
-
-
-<div class='webex-solution'><button>Show me</button>
-
-
-_F_(1, 31) = 6.07, _p_ = .02
-
-
-</div>
-
-
-- Individuals with <select class='webex-select'><option value='blank'></option><option value=''>lower</option><option value='answer'>higher</option></select> project scores tended to have higher final exam scores.
-
-:::
-
-
-
-## Conceptualising the variance explained by predictors
-
-Venn diagrams are useful for understanding the variance that predictors explain in the outcome variable. They are especially useful for understanding what's going on in multiple regression.
-
-
-Suppose the rectangle below represents all of the _variance_ in `finalex` to be explained.
-
-
-![](images\Venn1.jpg)
-
-
-The area of the circle below represents the variance in `finalex` explained by `entrex` in the first simple regression we did. If this diagram were drawn to scale (it's not), the area of the circle would be equal to the value of $R^2$ (i.e., 53.1% of the rectangle).
-
-
-![](images\Venn2.jpg)
-
-
-The part of the rectangle not inside the circle represents the variance in `finalex` that is _not_ explained by the model (i.e., the unexplained or _residual_ variance). 
-
-
-To _improve_ the model, we can explore whether adding in other predictors to the model explains additional variance, thereby increasing the total $R^2$ of the model.
-
-
-You might think that we can simply add in variables (circles, above) to the model as we wish, until all the residual variance has been explained. This seems fine to do until we learn that if we were to add as many predictors to the model as there are rows in our data (33 individuals in our `ExamData`), then we'd perfectly predict the outcome variable, and have an $R^2$ of 100%! This would be true even if the predictors consisted of random values. Our model would clearly be meaningless though. We ideally want to explain the outcome variable with relatively few predictors.
-
-
-
-## Adding predictor variables to the model
-
-An issue that can arise when adding variables to a model is that predictors are usually correlated to some extent. This can make interpretation of multiple regressions tricky. For example, a predictor that is statistically significant in a simple regression may become non-significant in a multiple regression. Let's see a demonstration of this!
-
-We'll now add `project` to the model with `entrex`. First, check the correlation between predictors:
+- Yet, in a multiple regression of `anxiety_score ~ screen_time + physical_activity`, R^2^ = 6.49%, which is _less_ than the sum of R^2^ from the simple regressions (i.e., 2.96 + 5.33 = 8.29%). Why don't the R^2^ values from the simple regressions add up to the same value as the multiple regression? The reason is because `screen_time` and `physical_activity` are **correlated**, and this means that some of the variance that they explain in `anxiety_score` is **shared**. 
 
 
 ```r
-ExamData %>% 
-  select(entrex,project) %>% 
-  cor()
->            entrex   project
-> entrex  1.0000000 0.2908253
-> project 0.2908253 1.0000000
+# obtain the correlation between the predictors
+mentalh %>% 
+  select(screen_time, physical_activity) %>% 
+  correlate()
 ```
 
+```
+## 
+## Correlation method: 'pearson'
+## Missing treated using: 'pairwise.complete.obs'
+```
+
+<div class="kable-table">
+
+|term              | screen_time| physical_activity|
+|:-----------------|-----------:|-----------------:|
+|screen_time       |          NA|        -0.2987714|
+|physical_activity |  -0.2987714|                NA|
+
+</div>
+\
 
 
-:::{.exercise}
+### Venn Diagrams
 
-The correlation between `entrex` and `project` is _r_ = <input class='webex-solveme nospaces' size='4' data-answer='["0.29",".29"]'/>
-
-Our predictor variables are weakly correlated. We should keep this in mind going forward.
-
-:::
+Venn diagrams are useful for understanding the variance that predictors explain in the outcome variable. They are especially useful for understanding what's going on with R^2^ in a multiple regression:
 
 
-Now run a _multiple regression_ to predict `finalex` from both `entrex` and `project`. Again, use `lm` but use the `+` symbol to add predictors to the model:
+Suppose the rectangle below represents all of the _variance_ in `anxiety_score` to be explained.
+
+
+![](images\Venn1.jpg){width=70%}
+
+
+The area of the circle below represents the variance in `anxiety_score` explained by `screen_time` in the first simple regression we did in the last session. If this diagram were drawn to scale (it's not!), the area of the circle would be equal to the value of $R^2$ (i.e., 2.96% of the rectangle).
+
+
+![](images\Venn2.jpg){width=70%}
+
+
+The part of the rectangle not inside the circle represents the variance in `anxiety_score` that is _not_ explained by the model (i.e., the unexplained or _residual_ variance). 
+
+We'll now add `physical_activity` to the model with `screen_time`. We could represent this on a Venn diagram as follows:
+
+![](images\Venn3.jpg){width=70%}
+
+The correlation is represented as an overlap in the circles. Their total area (6.49%) is _less_ than the area they'd explain if there were no overlap (8.29%) (if there was zero correlation).
+
+**This demonstrates an important point**: Predictors are often correlated to some degree. In multiple regression, it only really makes sense to talk about the contribution a predictor makes _in the context of the other predictors in the model_. That is, a given predictor explains variance in the outcome variable only _after the other predictors in the model have been taken into account_, or _given the presence of the other predictors_. 
+
+To take this further, if variables predictors are correlated in a mutliple regression, the model as a whole may explain the outcome variable well (indicated by the BF and R^2^), even though the *unique contribution* of a predictor is very low. 
+
+Given that the **unique** contribution of `screen_time` and `physical_activity` is lower in a multiple regression model, this begs the question of whether it was worth adding in `physical_activity` to the model with `screen_time` in the first place. (Conversely, we can ask whether adding `screen_time` to a model containing `physical_activity` results in an improvement in prediction of `anxiety_score`.)
+
+\
+
+### Bayes Factors to assess the contribution of predictors
+
+Is the addition of `physical_activity`to a model containing `screen_time` statistically significant? Does it result in an _improvement_ in prediction? We can use Bayes Factors to determine whether there's sufficient evidence for this or not.
+
+First, obtain the Bayes Factors for the simple and multiple regression models using `lmBF()`:
 
 
 ```r
-m3 <- lm(finalex ~ entrex + project, data = ExamData)
+# BF for anxiety_score ~ screen_time
+simple1_BF    <- lmBF(anxiety_score ~ screen_time, data = data.frame(mentalh))
 
-summary(m3)
-> 
-> Call:
-> lm(formula = finalex ~ entrex + project, data = ExamData)
-> 
-> Residuals:
->     Min      1Q  Median      3Q     Max 
-> -41.880 -16.617   4.636  15.562  35.273 
-> 
-> Coefficients:
->             Estimate Std. Error t value Pr(>|t|)    
-> (Intercept) -84.8289    33.6846  -2.518   0.0174 *  
-> entrex        2.8894     0.5406   5.344 8.81e-06 ***
-> project       0.7515     0.4457   1.686   0.1021    
-> ---
-> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-> 
-> Residual standard error: 22.06 on 30 degrees of freedom
-> Multiple R-squared:  0.5716,	Adjusted R-squared:  0.5431 
-> F-statistic: 20.02 on 2 and 30 DF,  p-value: 3e-06
+# BF for anxiety_score ~ physical activity
+simple2_BF    <- lmBF(anxiety_score ~ physical_activity, data = data.frame(mentalh))
+
+# BF for anxiety_score ~ screen_time + physical_activity
+multiple1_BF   <- lmBF(anxiety_score ~ screen_time + physical_activity, data = data.frame(mentalh))
+
+# look at the BFs
+simple1_BF
+simple2_BF
+multiple1_BF
 ```
 
+```
+## Bayes factor analysis
+## --------------
+## [1] screen_time : 4.420298 ±0%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+## 
+## Bayes factor analysis
+## --------------
+## [1] physical_activity : 77.49101 ±0%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+## 
+## Bayes factor analysis
+## --------------
+## [1] screen_time + physical_activity : 58.40328 ±0%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+```
 
-:::{.exercise}
-In this model with `entrex` and `project`as predictors:
-
-What is the value of $R^2$ (as a percentage): <input class='webex-solveme nospaces' size='5' data-answer='["57.16"]'/> %
-
-By how much has $R^2$ _increased_ in this model, relative to the model with `entrex` alone (where $R^2$ was 53.10%)? (as a percentage) (you will need to calculate this) <input class='webex-solveme nospaces' size='4' data-answer='["4.06"]'/> %
-
-Is the overall regression model predicting `finalex` on the basis of `entrex` and `project` statistically significant? <select class='webex-select'><option value='blank'></option><option value='answer'>yes</option><option value=''>no</option></select>
-
-- Is `entrex` a statistically significant predictor of `finalex`?  <select class='webex-select'><option value='blank'></option><option value='answer'>yes</option><option value=''>no</option></select>
-
-- We can report this in the following way: the _t_-test on the coefficient for `entrex` is statistically significant, *b* = 2.89, *t*(30) = 5.34, *p* < .001.
-
-- Is `project` a statistically significant predictor of `finalex` in this model?  <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
-
-- What is the value of the coefficient for `project`? _b_ = <input class='webex-solveme nospaces' data-tol='0.01' size='4' data-answer='["0.75",".75"]'/>
-
-- Report the _t_-statistic in APA style: 
-
-
-<div class='webex-solution'><button>Show me</button>
-
-
-Project mark was not a statistically significant predictor of final examination in this model, *b* = 0.75, *t*(30) = 1.69, *p* = .10
-
-
-</div>
-
-
-:::
-
-
-
-
-
-Looking across the analyses we've performed, we can see that `project` is a (weak) but statistically significant predictor of `finalex` in a simple regression. However, when it is included in a model that also includes `entrex` it is not a significant predictor! What's going on?
-
-- The model containing only `project` explains 16.38% of the variability in `finalex`.
-
-- The model containing only `entrex` explains 53.10% of the variability in `finalex`.
-
-- However, a model containing _both_ `project` and `entrex` only explains 57.16% of the variability in `finalex`, not 16.38 + 53.10 = 69.48%, as we might expect. 
-
-This is because the predictors are _correlated_ (_r_ = .29) and so the variance they explain in `finalex` is _shared_.
+* In a model with `screen_time` alone, BF = 4.42. 
+* In a model with `physical_activity` alone, BF = 77.49.
+* In a model with both predictors, BF = 58.40
 
 \
-We could represent this on a Venn diagram as follows:
-
-![](images\Venn3.jpg)
-
-The correlation is represented as an overlap in the circles. Their total area (57.16%) is therefore _less_ than the area they'd explain if there were no overlap (69.48%) (i.e., if there was no correlation).
-
-**This demonstrates an important point**: The *t*-tests on the coefficients in a multiple regression assess the **unique** contribution of each predictor in the model. That is, they test the variance a predictor explains in an outcome variable, **after** the variance explained by the other predictors has been taken into account. This is why `project` is not statistically significant in the multiple regression model  -- it only explains a small amount of variance once `entrex` has been taken into account. 
 
 :::{.tip}
 
-It is possible to think of the _F_-statistic and _t_-value in multiple regression in terms of the Venn diagram:
+**Comparing models**
 
-- The **_F_-statistic** compares the explained variance with the unexplained variance. The explained variance is represented by the **_outline_** of the two circles in the Venn diagram above. The unexplained variance is the remaining blue area of the rectangle.
+We can use the following formula to determine whether there's evidence for a more complex version of a model, relative to a simpler one:
 
-- The **_t_-value** compares the unique variance a predictor explains with the remaining unexplained variance. For example, for `project` in the Venn diagram above, this would be the area in the orange **_crescent_**, relative to the remaining blue area in the rectangle.
+`BF_complex_model / BF_simpler_model`
+
+That is, we divide the BF for the complex model, by the BF for the simpler one. This then tells us _how many more times more likely the more complex model is, relative to the simpler one._
+
+For example, if `BF_complex_model = 10` and `BF_simpler_model = 2`, then the more complex model is five times more likely than the simpler one (because 10 / 2 = 5). There'd be strong evidence to prefer the more complex model. 
 
 :::
+
+\
+
+
+For our models:
+
+
+```r
+# compare the BFs for the multiple regression model with one containing screen_time alone
+multiple1_BF / simple1_BF
+```
+
+```
+## Bayes factor analysis
+## --------------
+## [1] screen_time + physical_activity : 13.21252 ±0%
+## 
+## Against denominator:
+##   anxiety_score ~ screen_time 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+```
+
+The BF comparing the multiple regression model with the model containing `screen_time` alone is **13.21**. This indicates that the model with both `screen_time` and `physical_activity` is over 13 times more likely than the model with `screen_time` alone. The BF is greater than 3, so this indicates strong evidence for the inclusion of the `screen_time` variable.
+
+\
+
+Equally, we could ask if the addition of `screen_time` to a model containing `physical_activity` is statistically significant:
+
+```r
+# compare BFs for the multiple regression model and the model containing physical_activity alone
+multiple1_BF / simple2_BF
+```
+
+```
+## Bayes factor analysis
+## --------------
+## [1] screen_time + physical_activity : 0.7536782 ±0%
+## 
+## Against denominator:
+##   anxiety_score ~ physical_activity 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+```
+
+The BF for the comparison is less than one (BF = 0.75), indicating that the addition of `screen_time` to a model containing `physical_activity` is **not** statistically significant.
+
+Putting this altogether, in a multiple regression model, the _unique contribution_ of `screen_time` is not statistically significant, but that of `physical_activity` is. In the interest of parsimony (not making things more complex than they need to be), it would make sense to drop `screen_time` from the model, which doesn't contribute much to the model, over an above `physical_activity`. `physical_activity` is doing a good job at explaining the variance in `anxiety_score` on its own.
+
+\
+
+### Bayes Factors shortcut: `regressionBF()`
+
+As a shortcut, we could use `regressionBF()`, which automatically calculates the BFs for all permutations of a set of predictors in a model:
+
+
+```r
+# obtain BFs for all permutations of the model
+all_BFs <- regressionBF(anxiety_score ~ screen_time + physical_activity, data = mentalh)
+```
+
+```
+## Warning: data coerced from tibble to data frame
+```
+
+```r
+# look at the BFs
+all_BFs
+```
+
+```
+## Bayes factor analysis
+## --------------
+## [1] screen_time                     : 4.420298 ±0%
+## [2] physical_activity               : 77.49101 ±0%
+## [3] screen_time + physical_activity : 58.40328 ±0%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+```
+
+We can then compare the BFs for given models to obtain the same results as before:
+
+
+```r
+# compare multiple regression with simple regression 1 
+# the BF should be the same as before
+all_BFs[3] / all_BFs[1]
+
+# compare multiple regression with simple regression 2
+# the BF should be the same as before
+all_BFs[3] / all_BFs[2]
+```
+
+```
+## Bayes factor analysis
+## --------------
+## [1] screen_time + physical_activity : 13.21252 ±0%
+## 
+## Against denominator:
+##   anxiety_score ~ screen_time 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+## 
+## Bayes factor analysis
+## --------------
+## [1] screen_time + physical_activity : 0.7536782 ±0%
+## 
+## Against denominator:
+##   anxiety_score ~ physical_activity 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+```
+
 
 
 ## Multicollinearity
 
-If the correlation between predictors is very high (greater than _r_ = 0.9), this is known as **multicollinearity**. On a Venn diagram, the circles representing the predictors would almost completely overlap. Multicollinearity can be a problem in multiple regression. Predictors may explain a large amount of variance in the outcome variable, but their 'unique' contribution in a multiple regression may be small. A situation can arise where _neither_ predictor may be statistically significant even though the overall regression is significant!
+If the correlation between predictors is very high (greater than _r_ = 0.8 or less than -0.8), this is known as **multicollinearity**. On a Venn diagram, the circles representing the predictors would almost completely overlap. Multicollinearity can be a problem in multiple regression. Predictors may explain a large amount of variance in the outcome variable, but their 'unique' contribution in a multiple regression may be small. In an exterme scenario, _neither_ predictor may be statistically significant even though the overall regression explains a large amount of variance in the outcome variable!
 
-![](images\Venn_multi.jpg)
+![](images\Venn_multi.jpg){width=50%}
 
 
 
-An example of multicollinearity in the `ExamData` dataset can be seen with the variables `project` and `proposal`. 
+An example of multicollinearity in the `mentalh` dataset can be seen with the variables `BMI` (Body Mass Index) and `weight_kg` (weight of the participant in kg). 
 
 :::{.exercise}
 
-Obtain the correlation between `project` and `proposal`:
+Obtain the correlation between `BMI` and `weight_kg`:
 
 
-<div class='webex-solution'><button>Show me</button>
+<div class='webex-solution'><button>Solution</button>
 
 
 ```r
-ExamData %>% 
-  select(project, proposal) %>% 
-  cor()
->            project  proposal
-> project  1.0000000 0.9371487
-> proposal 0.9371487 1.0000000
+mentalh %>% 
+  select(BMI, weight_kg) %>% 
+  correlate()
 ```
+
+```
+## 
+## Correlation method: 'pearson'
+## Missing treated using: 'pairwise.complete.obs'
+```
+
+<div class="kable-table">
+
+|term      |       BMI| weight_kg|
+|:---------|---------:|---------:|
+|BMI       |        NA| 0.8164486|
+|weight_kg | 0.8164486|        NA|
+
+</div>
 
 </div>
 
 
+The correlation between `BMI` and `weight_kg` (to two decimal places) is _r_ = <input class='webex-solveme nospaces' size='4' data-answer='["0.82"]'/>.
+:::
 
-The correlation between `project` and `proposal` is _r_ = <input class='webex-solveme nospaces' size='4' data-answer='["0.94",".94"]'/>.
+Since BMI is calculated from a person's weight (in addition to height and sex), it is no surprise that the correlation with `weight_kg` is so high. Given that both variables say similar things, and are highly correlated (r > 0.8), we wouldn't include both as predictors in a model. We'd pick one instead.
 
-To see the effects of multicollinearity, conduct a regression with `finalex` as the outcome variable and `project` and `proposal` as the predictor variables.
+\
 
+The take-home message here is to check for extreme correlations between your predictor variables before including them in a multiple regression.
 
-<div class='webex-solution'><button>Show me</button>
+\
 
+:::{.tip}
+**How many predictor variables should be in the model?**
 
-```r
-multi1 <- lm(finalex ~ project + proposal, data = ExamData)
-
-summary(multi1)
-> 
-> Call:
-> lm(formula = finalex ~ project + proposal, data = ExamData)
-> 
-> Residuals:
->     Min      1Q  Median      3Q     Max 
-> -64.287 -22.590  -0.346  22.395  70.289 
-> 
-> Coefficients:
->             Estimate Std. Error t value Pr(>|t|)
-> (Intercept)   4.8784    40.8601   0.119    0.906
-> project       1.2751     1.7072   0.747    0.461
-> proposal      0.1826     1.7263   0.106    0.916
-> 
-> Residual standard error: 30.81 on 30 degrees of freedom
-> Multiple R-squared:  0.1641,	Adjusted R-squared:  0.1084 
-> F-statistic: 2.945 on 2 and 30 DF,  p-value: 0.06797
-```
-
-</div>
-
-
-- How much variance in `finalex` is explained by the model: $R^2$ = <input class='webex-solveme nospaces' data-tol='0.02' size='5' data-answer='["16.41"]'/> %.
-
-- Is the overall regression statistically significant? <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
-
-- Is the coefficient for `project` statistically significant? <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
-
-- Is the coefficient for `proposal` statistically significant? <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
+If adding predictors to the regression improves the prediction of the outcome variable, you may think that we can simply add in variables to the model as we wish, until all the residual variance has been explained. This seems fine to do until we learn that if we were to add as many predictors to the model as there are rows in our data (e.g., 244 participants in`mentalh`), then we'd perfectly predict the outcome variable, and have an $R^2$ of 100%! This would be true even if the predictors consisted of random values. Our model would clearly be meaningless though. We ideally want to explain the outcome variable with relatively few predictors.
 :::
 
 
+\
+
+## Exercise
+
 :::{.exercise}
 
-Now run two simple regressions to determine whether `project` and `proposal` explain variance in `finalex` and are statistically significant predictors when in models on their own. 
+Use multiple regression to investigate the extent to which `screen_time` and `physical_activity` predict `depression_score` in the `mentalh` dataset. `depression_score` is a measure of the symptoms of depression. Higher scores indicate a greater number of depressive symptoms.
 
 
-<div class='webex-solution'><button>Show me</button>
+\
+
+**Adapt the code in this worksheet to do the following:**
+
+**1. Obtain the correlations between `dep_score`, `screen_time`, and `physical_activity`**
+
+
+<div class='webex-solution'><button>Hint</button>
+
+Pipe `mentalh` to `select()` and use `correlate()`
+
+</div>
+ 
+
+
+<div class='webex-solution'><button>Solution</button>
 
 
 ```r
-multi2 <- lm(finalex ~ project, data = ExamData)
-summary(multi2)
+mentalh %>% 
+  select(depression_score, screen_time, physical_activity) %>% 
+  correlate()
+```
 
-multi3 <- lm(finalex ~ proposal, data = ExamData)
-summary(multi3)
-> 
-> Call:
-> lm(formula = finalex ~ project, data = ExamData)
-> 
-> Residuals:
->     Min      1Q  Median      3Q     Max 
-> -64.015 -21.686  -0.573  21.758  70.427 
-> 
-> Coefficients:
->             Estimate Std. Error t value Pr(>|t|)  
-> (Intercept)   4.6968    40.1677   0.117   0.9077  
-> project       1.4442     0.5861   2.464   0.0195 *
-> ---
-> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-> 
-> Residual standard error: 30.32 on 31 degrees of freedom
-> Multiple R-squared:  0.1638,	Adjusted R-squared:  0.1368 
-> F-statistic: 6.072 on 1 and 31 DF,  p-value: 0.01948
-> 
-> 
-> Call:
-> lm(formula = finalex ~ proposal, data = ExamData)
-> 
-> Residuals:
->     Min      1Q  Median      3Q     Max 
-> -64.987 -22.987  -1.378  24.059  68.921 
-> 
-> Coefficients:
->             Estimate Std. Error t value Pr(>|t|)  
-> (Intercept)   16.628     37.441   0.444   0.6601  
-> proposal       1.391      0.598   2.326   0.0267 *
-> ---
-> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-> 
-> Residual standard error: 30.59 on 31 degrees of freedom
-> Multiple R-squared:  0.1486,	Adjusted R-squared:  0.1211 
-> F-statistic: 5.409 on 1 and 31 DF,  p-value: 0.02675
+</div>
+ 
+
+\
+
+**State the correlations to two decimal places:** 
+
+* The correlation between the depression score and screen time is _r_ = <input class='webex-solveme nospaces' size='4' data-answer='["0.28",".28"]'/>
+* The correlation between the depression score and physical activity is _r_ = <input class='webex-solveme nospaces' size='5' data-answer='["-0.22","-.22"]'/>
+* The correlation between screen time and physical activity is _r_ = <input class='webex-solveme nospaces' size='5' data-answer='["-0.30","-.30"]'/>
+\
+
+**Is multicolinearity a concern between the two predictor variables?** <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option><option value=''>cannot determine</option></select>
+
+
+<div class='webex-solution'><button>Explanation</button>
+
+The correlation between the predictor variables is r = -.30. Although they are weakly correlated, this does not exceed r = -.80, and therefore multicolinearity is not a concern.
+
+</div>
+
+
+\
+
+**2. Conduct a multiple regression, with `depression_score` as the outcome variable, and `screen_time` and `physical_activity` as the predictor variables**
+
+
+<div class='webex-solution'><button>Hint</button>
+
+Use `lm()` to specify the simple regression
+
+</div>
+ 
+
+
+<div class='webex-solution'><button>Solution</button>
+
+
+```r
+multiple2 <- lm(depression_score ~ screen_time + physical_activity, data = mentalh)
+multiple2
+```
+
+</div>
+ 
+
+What is the value of the intercept a (to two decimal places)? <input class='webex-solveme nospaces' size='5' data-answer='["17.71"]'/>
+
+What is the value of the coefficient for `screen_time` (to two decimal places)? <input class='webex-solveme nospaces' size='4' data-answer='["0.83"]'/>
+
+What is the value of the coefficient for `physical_activity` (to two decimal places)? <input class='webex-solveme nospaces' size='5' data-answer='["-1.05"]'/>
+
+\
+
+What is the regression equation?
+
+<div class='webex-radiogroup' id='radio_QBMDVVHKZD'><label><input type="radio" autocomplete="off" name="radio_QBMDVVHKZD" value=""></input> <span>Predicted depression score = 17.71 + 1.05(screen time) - 0.83(physical activity)</span></label><label><input type="radio" autocomplete="off" name="radio_QBMDVVHKZD" value=""></input> <span>Predicted depression score = 17.71 + 0.83(screen time) + 1.05(physical activity)</span></label><label><input type="radio" autocomplete="off" name="radio_QBMDVVHKZD" value="answer"></input> <span>Predicted depression score = 17.71 + 0.83(screen time) - 1.05(physical activity)</span></label></div>
+
+
+
+\
+
+**3. Obtain R-squared**
+
+<div class='webex-solution'><button>Hint</button>
+
+Make sure you have stored the regression results (e.g., in `mutliple2`), then use `glance()` with that variable
+
+</div>
+
+
+
+<div class='webex-solution'><button>Solution</button>
+
+
+```r
+glance(multiple2)
 ```
 
 </div>
 
 
-- In a simple regression with `finalex` as the outcome variable, and `project` as the predictor variable, $R^2$ = <input class='webex-solveme nospaces' data-tol='0.1' size='4' data-answer='["16.4"]'/> %.
+What proportion of variance in the depression score is explained by screen time and physical activity? (Report the adjusted R-squared value, to two decimal places) <input class='webex-solveme nospaces' size='4' data-answer='["0.09"]'/>
 
-- Is the overall regression statistically significant? <select class='webex-select'><option value='blank'></option><option value='answer'>yes</option><option value=''>no</option></select>
+Report the value of adjusted R-squared as a percentage, to two decimal places: The adjusted R^2^ value is equal to <input class='webex-solveme nospaces' size='4' data-answer='["9.00"]'/>%
 
-- In a simple regression with `finalex` as the outcome variable, and `proposal` as the predictor variable, $R^2$ = <input class='webex-solveme nospaces' data-tol='0.1' size='4' data-answer='["14.9"]'/> %.
 
-- Is the overall regression statistically significant? <select class='webex-select'><option value='blank'></option><option value='answer'>yes</option><option value=''>no</option></select>
+\
+
+**4. Obtain the Bayes Factor for the model**
+
+<div class='webex-solution'><button>Hint</button>
+
+Use `lmBF()` to specify the model
+
+</div>
+
+
+
+<div class='webex-solution'><button>Solution</button>
+
+
+```r
+multiple2_BF <- lmBF(depression_score ~ screen_time + physical_activity, data = mentalh)
+```
+
+</div>
+
+
+How many times more likely is the model with  `screen_time` and `physical_activity` as a predictor of `depression_score`, compared to an intercept-only model? (to two decimal places) <input class='webex-solveme nospaces' size='7' data-answer='["3388.76"]'/>
+
+\
+
+**5. Produce a spread versus level plot of the data. Is there any trend evident in the residuals?**
+
+
+<div class='webex-solution'><button>Hint</button>
+
+Use `augment()` with `ggplot()` and `geom_point()`
+
+</div>
+
+
+
+
+<div class='webex-solution'><button>Solution</button>
+
+
+
+```r
+augment(multiple2) %>% 
+  ggplot(aes(x = .fitted, y = .resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0)
+```
   
-- Try to explain what's going on here in your own words. Click below or ask if you get stuck.
-
-
-
-<div class='webex-solution'><button>Explain</button>
-
-*Interpretation*
-
-- Because `proposal` and `project` are highly correlated (_r_ = 0.94), this gives rise to the situation where the simple regressions indicate that they explain variance in `finalex`, but when both are included as predictors in a multiple regression, it appears as if neither are significant predictors of `finalex` !  
-
-- If this were a real scenario, we'd consider dropping `project` or `proposal` from the model. Because the correlation is so high, having one predictor is as good as having the other (more or less).
-
-- It seems intuitive that a person's final project mark would be highly correlated with their proposal mark.
-
-- The take-home message here is to check for high correlations between your predictor variables before including them in a multiple regression. 
 
 </div>
 
 
-:::
+*What type of trend is evident between the predicted values and the residuals <select class='webex-select'><option value='blank'></option><option value=''>positive trend</option><option value=''>no association</option><option value='answer'>negative association</option></select>*
+
+
+<div class='webex-solution'><button>Further interpretation</button>
+
+The pattern shown in the spread-level plot is similar to the pattern in our previous regression models. Once again, this suggests our model can be improved. We'll investigate this more in future sessions. 
+
+</div>
+
+
+\
+
+**6. Using `lmBF()`, determine whether the unique contribution of `screen_time` and `physical_activity` to prediction of `depression_score` is statistically significant**
+
+
+<div class='webex-solution'><button>Hint</button>
+
+* Use `lmBF()` to obtain the BF for both simple regressions and the multiple regression.
+* Then use the formula `BF_complex_model / BF_simpler_model` to obtain the BF for the contribution of each predictor.
+
+</div>
 
 
 
-
-
-
-## Final exercise
-
-:::{.exercise}
-
-As a final exercise, run a multiple regression to predict `finalex` from **three** predictors: `entrex`, `project`, and `iq`.
-
-
-<div class='webex-solution'><button>Show me how</button>
+<div class='webex-solution'><button>Solution</button>
 
 
 ```r
-multi4 <- lm(finalex ~ entrex + project + iq, data = ExamData)
+# BF for depression_score ~ screen_time
+BF_screen <- lmBF(depression_score ~ screen_time, data = data.frame(mentalh))
 
-summary(multi4)
-> 
-> Call:
-> lm(formula = finalex ~ entrex + project + iq, data = ExamData)
-> 
-> Residuals:
->     Min      1Q  Median      3Q     Max 
-> -40.444 -16.174   5.509  14.312  33.338 
-> 
-> Coefficients:
->              Estimate Std. Error t value Pr(>|t|)    
-> (Intercept) -130.3803    54.7288  -2.382 0.023981 *  
-> entrex         2.6180     0.5978   4.379 0.000142 ***
-> project        0.6874     0.4490   1.531 0.136620    
-> iq             0.4862     0.4610   1.055 0.300214    
-> ---
-> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-> 
-> Residual standard error: 22.02 on 29 degrees of freedom
-> Multiple R-squared:  0.5875,	Adjusted R-squared:  0.5448 
-> F-statistic: 13.77 on 3 and 29 DF,  p-value: 9.168e-06
+# BF for depression_score ~ physical_activity
+BF_physical <- lmBF(depression_score ~ physical_activity, data = data.frame(mentalh))
+
+# BF for depression_score ~ screen_time + physical_activity
+BF_screen_physical <- lmBF(depression_score ~ screen_time + physical_activity, data = data.frame(mentalh))
+
+# show the BFs
+BF_screen
+BF_physical
+BF_screen_physical
+
+# BF for the unique contribution of physical_activity
+BF_screen_physical / BF_screen
+
+# BF for the unique contribution of screen_time
+BF_screen_physical / BF_physical
 ```
+
+```
+## Bayes factor analysis
+## --------------
+## [1] screen_time : 1661.733 ±0%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+## 
+## Bayes factor analysis
+## --------------
+## [1] physical_activity : 36.68915 ±0.01%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+## 
+## Bayes factor analysis
+## --------------
+## [1] screen_time + physical_activity : 3388.76 ±0%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+## 
+## Bayes factor analysis
+## --------------
+## [1] screen_time + physical_activity : 2.039293 ±0%
+## 
+## Against denominator:
+##   depression_score ~ screen_time 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+## 
+## Bayes factor analysis
+## --------------
+## [1] screen_time + physical_activity : 92.36409 ±0.01%
+## 
+## Against denominator:
+##   depression_score ~ physical_activity 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+```
+
 
 </div>
 
 
-Which variables are statistically significant predictors of `finalex`?
+* The BF associated with the unique contribution of `physical_activity` is <input class='webex-solveme nospaces' size='4' data-answer='["2.04"]'/>
 
-- `entrex` <select class='webex-select'><option value='blank'></option><option value='answer'>yes</option><option value=''>no</option></select>
+* The BF associated with the unique contribution of `screen_time` is <input class='webex-solveme nospaces' size='5' data-answer='["92.37"]'/>
 
-- `project` <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
+\
 
-- `iq` <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
-
-On the basis of all the models conducted so far (with `entrex`, `project`, and `iq`), which model would you choose to best predict `finalex`?
+**7. On balance, is there evidence for a model containing both screen time and physical activity as predictors of depression scores?**
 
 
+<div class='webex-solution'><button>Hint</button>
 
-<div class='webex-solution'><button>Tell me which model seems best</button>
+Look at BF for the unique contributions. If the BF is greater than 3, this indicates strong evidence for the inclusion of the predictor.
+
+</div>
 
 
-The model containing `entrex` alone, as this seems to provide the simplest and most effective model of the `finalex`.
 
-A general goal of regression is to identify the fewest predictor variables necessary to predict an outcome variable, where each predictor variable predicts a substantial and independent segment of the variability in the outcome variable.
+<div class='webex-solution'><button>Solution</button>
+
+Together, screen time and physical activity explain 9.00% of the variance in depression scores (adjusted R^2^), and there was strong evidence for this model, compared to an intercept only model, BF = 3388.76. The unique contribution of screen time was statistically significant (BF = 92.37), but there was only weak evidence that physical activity made a contribution, over and above screen time, in this model, BF = 2.04.
 
 
 </div>
@@ -678,21 +889,55 @@ A general goal of regression is to identify the fewest predictor variables neces
 
 :::
 
+
+
+\
+
+
+
+## Further exercises
+
+:::{.exercise}
+
+Produce density plots of the individual variables `depression_score`, `screen_time` and `physical_activity`. 
+
+Produce a scatterplot to show all three variables on the same figure
+
+What is the increase in R^2^ associated with the addition of `screen_time` and `physical_activity` into the model predicting `depression_score`
+
+Move residuals and regressionBF sections here.
+
+
+:::
+
+
+\
 
 ## Summary of key points
 
 - Predictors can be added to a model in `lm` using the `+` symbol
 
-- e.g., `lm(finalex ~ entrex + project + iq)`
+  - e.g., `lm(anxiety_score ~ screen_time + physical_activity + predictor_3 + ....)`
 
-- Predictor variables are often correlated to some extent. This can affect the interpretation of individual predictor variables. Venn diagrams help to understand the results. 
+- Predictor variables are often _correlated_ to some extent. This can affect the interpretation of individual predictor variables. Venn diagrams help to understand the results. 
 
-- The **_F_-statistic** tells us whether the model _as a whole_ significantly predicts the outcome variable.
+- In multiple regression, it's important to understand that each predictor makes a contribution to explaining the outcome variable only **after taking into account the other predictors in the model**.
 
-- The **_t_-values** tell us whether individual predictors in the model are statistically significant.
+- As with simple regression, the Bayes Factor for a multiple regression model tells us how much more likely the overall model is, compared to an intercept-only model. 
 
-- In multiple regression, it's important to understand that the statistical significance of individual predictors only holds **after taking into account the other predictors in the model**.
+- To know whether individual predictors are statistically significant or not, we have to compare Bayes Factors for the more complex model which includes it, versus the model without it. i.e., `BF_complex_model / BF_simpler_model`. Use `lmBF()` to derive the BFs for each model separately, or use `regressionBF()` to obtain all the BFs for a set of models in one go.
 
-- **Multicollinearity** exists when predictors are very highly correlated (_r_ above 0.9) and should be avoided.
+
+- **Multicollinearity** exists when predictors are very highly correlated (_r_ above 0.8) and should be avoided.
+
+\
+
+## References
+
+Hrafnkelsdottir S.M., Brychta R.J., Rognvaldsdottir V., Gestsdottir S., Chen K.Y., Johannsson E., et al. (2018) Less screen time and more frequent vigorous physical activity is associated with lower risk of reporting negative mental health symptoms among Icelandic adolescents. _PLoS ONE_ _13_(4): e0196286. https://doi.org/10.1371/journal.pone.0196286
+
+
+commented text
+--> 
 
 

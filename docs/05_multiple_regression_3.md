@@ -1,19 +1,26 @@
 # Multiple regression: evaluating and comparing models {#multiple3}
 
-*January 2022*
-
-### In brief
-
-> In this session we discuss model selection in the context of ANOVA and the use
-> of Bayes Factors to choose between theoretically interesting models.
+*Chris Berry*
+\
+*2022*
 
 
 
 
 
+<style>
+div.exercise { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+
+<style>
+div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
+</style>
 
 
-## Using ANOVA and Bayes Factors to compare models
+<!--
+commented text
+
+### Using ANOVA and Bayes Factors to compare models
 
 -   [**Slides for the session**](slides/PSYC753_Chris2.pptx)
 -   [**Using Rmd files**](slides/PSYC753_Chris2_Rmd.pptx)
@@ -57,6 +64,25 @@ Using the `ExamData` from the previous session, we'll run:
 
 ```r
 ExamData <- read_csv('https://bit.ly/37GkvJg')              
+```
+
+```
+## Rows: 33 Columns: 7
+```
+
+```
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## dbl (7): finalex, entrex, age, project, iq, proposal, attendance
+```
+
+```
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+```r
 model1   <- lm(finalex ~ entrex, data = ExamData)           
 model2   <- lm(finalex ~ entrex + age + project, data = ExamData) 
 ```
@@ -72,24 +98,27 @@ Use `summary()` to display the results of each regression:
 
 ```r
 summary(model1)
-> 
-> Call:
-> lm(formula = finalex ~ entrex, data = ExamData)
-> 
-> Residuals:
->     Min      1Q  Median      3Q     Max 
-> -54.494 -21.185   3.733  18.124  30.969 
-> 
-> Coefficients:
->             Estimate Std. Error t value Pr(>|t|)    
-> (Intercept) -46.3045    25.4773  -1.817   0.0788 .  
-> entrex        3.1545     0.5324   5.925 1.52e-06 ***
-> ---
-> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-> 
-> Residual standard error: 22.7 on 31 degrees of freedom
-> Multiple R-squared:  0.531,	Adjusted R-squared:  0.5159 
-> F-statistic:  35.1 on 1 and 31 DF,  p-value: 1.52e-06
+```
+
+```
+## 
+## Call:
+## lm(formula = finalex ~ entrex, data = ExamData)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -54.494 -21.185   3.733  18.124  30.969 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -46.3045    25.4773  -1.817   0.0788 .  
+## entrex        3.1545     0.5324   5.925 1.52e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 22.7 on 31 degrees of freedom
+## Multiple R-squared:  0.531,	Adjusted R-squared:  0.5159 
+## F-statistic:  35.1 on 1 and 31 DF,  p-value: 1.52e-06
 ```
 
 \
@@ -97,26 +126,29 @@ summary(model1)
 
 ```r
 summary(model2)
-> 
-> Call:
-> lm(formula = finalex ~ entrex + age + project, data = ExamData)
-> 
-> Residuals:
->     Min      1Q  Median      3Q     Max 
-> -42.563 -16.519   4.901  16.991  36.424 
-> 
-> Coefficients:
->              Estimate Std. Error t value Pr(>|t|)    
-> (Intercept) -117.9159    46.4211  -2.540   0.0167 *  
-> entrex         3.0889     0.5734   5.387 8.66e-06 ***
-> age            1.4231     1.3756   1.035   0.3094    
-> project        0.6280     0.4609   1.363   0.1835    
-> ---
-> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-> 
-> Residual standard error: 22.03 on 29 degrees of freedom
-> Multiple R-squared:  0.5869,	Adjusted R-squared:  0.5442 
-> F-statistic: 13.73 on 3 and 29 DF,  p-value: 9.353e-06
+```
+
+```
+## 
+## Call:
+## lm(formula = finalex ~ entrex + age + project, data = ExamData)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -42.563 -16.519   4.901  16.991  36.424 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -117.9159    46.4211  -2.540   0.0167 *  
+## entrex         3.0889     0.5734   5.387 8.66e-06 ***
+## age            1.4231     1.3756   1.035   0.3094    
+## project        0.6280     0.4609   1.363   0.1835    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 22.03 on 29 degrees of freedom
+## Multiple R-squared:  0.5869,	Adjusted R-squared:  0.5442 
+## F-statistic: 13.73 on 3 and 29 DF,  p-value: 9.353e-06
 ```
 
 \
@@ -200,44 +232,47 @@ summary(model3)
 
 #compare model1 and model3
 anova(model1, model3)
-> 
-> Call:
-> lm(formula = finalex ~ entrex, data = ExamData)
-> 
-> Residuals:
->     Min      1Q  Median      3Q     Max 
-> -54.494 -21.185   3.733  18.124  30.969 
-> 
-> Coefficients:
->             Estimate Std. Error t value Pr(>|t|)    
-> (Intercept) -46.3045    25.4773  -1.817   0.0788 .  
-> entrex        3.1545     0.5324   5.925 1.52e-06 ***
-> ---
-> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-> 
-> Residual standard error: 22.7 on 31 degrees of freedom
-> Multiple R-squared:  0.531,	Adjusted R-squared:  0.5159 
-> F-statistic:  35.1 on 1 and 31 DF,  p-value: 1.52e-06
-> 
-> 
-> Call:
-> lm(formula = finalex ~ entrex + attendance, data = ExamData)
-> 
-> Residuals:
->     Min      1Q  Median      3Q     Max 
-> -42.750 -11.750   1.801   9.689  30.347 
-> 
-> Coefficients:
->             Estimate Std. Error t value Pr(>|t|)    
-> (Intercept) -63.3108    20.2768  -3.122  0.00395 ** 
-> entrex        3.2741     0.4173   7.846 9.35e-09 ***
-> attendance   28.8202     6.3398   4.546 8.37e-05 ***
-> ---
-> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-> 
-> Residual standard error: 17.76 on 30 degrees of freedom
-> Multiple R-squared:  0.7223,	Adjusted R-squared:  0.7038 
-> F-statistic: 39.02 on 2 and 30 DF,  p-value: 4.499e-09
+```
+
+```
+## 
+## Call:
+## lm(formula = finalex ~ entrex, data = ExamData)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -54.494 -21.185   3.733  18.124  30.969 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -46.3045    25.4773  -1.817   0.0788 .  
+## entrex        3.1545     0.5324   5.925 1.52e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 22.7 on 31 degrees of freedom
+## Multiple R-squared:  0.531,	Adjusted R-squared:  0.5159 
+## F-statistic:  35.1 on 1 and 31 DF,  p-value: 1.52e-06
+## 
+## 
+## Call:
+## lm(formula = finalex ~ entrex + attendance, data = ExamData)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -42.750 -11.750   1.801   9.689  30.347 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -63.3108    20.2768  -3.122  0.00395 ** 
+## entrex        3.2741     0.4173   7.846 9.35e-09 ***
+## attendance   28.8202     6.3398   4.546 8.37e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 17.76 on 30 degrees of freedom
+## Multiple R-squared:  0.7223,	Adjusted R-squared:  0.7038 
+## F-statistic: 39.02 on 2 and 30 DF,  p-value: 4.499e-09
 ```
 
 <div class="kable-table">
@@ -316,14 +351,17 @@ To look at what's stored in `model1.BF`:
 
 ```r
 model1.BF
-> Bayes factor analysis
-> --------------
-> [1] entrex : 8310.846 ±0.01%
-> 
-> Against denominator:
->   Intercept only 
-> ---
-> Bayes factor type: BFlinearModel, JZS
+```
+
+```
+## Bayes factor analysis
+## --------------
+## [1] entrex : 8310.846 ±0.01%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS
 ```
 
 **Explanation of the output**: 
@@ -344,14 +382,17 @@ model2.BF <- lmBF(finalex ~ entrex + age + project, data = as.data.frame(ExamDat
 
 # show the Bayes Factor
 model2.BF
-> Bayes factor analysis
-> --------------
-> [1] entrex + age + project : 2427.676 ±0%
-> 
-> Against denominator:
->   Intercept only 
-> ---
-> Bayes factor type: BFlinearModel, JZS
+```
+
+```
+## Bayes factor analysis
+## --------------
+## [1] entrex + age + project : 2427.676 ±0%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS
 ```
 
 \
@@ -364,14 +405,17 @@ But, what we want to know is whether `model2` (containing `entrex` and `age`) is
 
 ```r
 model2.BF / model1.BF
-> Bayes factor analysis
-> --------------
-> [1] entrex + age + project : 0.2921093 ±0.01%
-> 
-> Against denominator:
->   finalex ~ entrex 
-> ---
-> Bayes factor type: BFlinearModel, JZS
+```
+
+```
+## Bayes factor analysis
+## --------------
+## [1] entrex + age + project : 0.2921093 ±0.01%
+## 
+## Against denominator:
+##   finalex ~ entrex 
+## ---
+## Bayes factor type: BFlinearModel, JZS
 ```
 
 **Explanation:** The Bayes Factor for this comparison is 0.29. This means that `model2` is **_less than a third as likely_** than `model1`. So, `model2` is much _less_ likely than `model1`. Not good news for `model2`!
@@ -459,32 +503,35 @@ model3.BF
 
 # 3. Compare the BFs for model3 vs model1
 model3.BF / model1.BF
-> Bayes factor analysis
-> --------------
-> [1] entrex : 8310.846 ±0.01%
-> 
-> Against denominator:
->   Intercept only 
-> ---
-> Bayes factor type: BFlinearModel, JZS
-> 
-> Bayes factor analysis
-> --------------
-> [1] entrex + attendance : 2351114 ±0%
-> 
-> Against denominator:
->   Intercept only 
-> ---
-> Bayes factor type: BFlinearModel, JZS
-> 
-> Bayes factor analysis
-> --------------
-> [1] entrex + attendance : 282.897 ±0.01%
-> 
-> Against denominator:
->   finalex ~ entrex 
-> ---
-> Bayes factor type: BFlinearModel, JZS
+```
+
+```
+## Bayes factor analysis
+## --------------
+## [1] entrex : 8310.846 ±0.01%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+## 
+## Bayes factor analysis
+## --------------
+## [1] entrex + attendance : 2351114 ±0%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+## 
+## Bayes factor analysis
+## --------------
+## [1] entrex + attendance : 282.897 ±0.01%
+## 
+## Against denominator:
+##   finalex ~ entrex 
+## ---
+## Bayes factor type: BFlinearModel, JZS
 ```
 
 
@@ -533,6 +580,25 @@ Use `read_csv` to load in the data at the link above to the variable `memory_dat
 
 ```r
 memory_data <- read_csv('https://bit.ly/37pOTrC')
+```
+
+```
+## Rows: 234 Columns: 7
+```
+
+```
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## dbl (7): attention, sex, blueberries, iq, age, sleep, memory_score
+```
+
+```
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+```r
 memory_data %>% head()
 ```
 
@@ -595,25 +661,28 @@ memory1 <- lm(memory_score ~ iq + age, data = memory_data)
 
 # see the model results
 summary(memory1)
-> 
-> Call:
-> lm(formula = memory_score ~ iq + age, data = memory_data)
-> 
-> Residuals:
->     Min      1Q  Median      3Q     Max 
-> -44.154 -11.754   0.732  11.608  40.790 
-> 
-> Coefficients:
->             Estimate Std. Error t value Pr(>|t|)    
-> (Intercept)  71.1669     9.0796   7.838 1.67e-13 ***
-> iq            0.1073     0.0699   1.534    0.126    
-> age           0.8220     0.1461   5.627 5.27e-08 ***
-> ---
-> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-> 
-> Residual standard error: 16.1 on 231 degrees of freedom
-> Multiple R-squared:  0.1303,	Adjusted R-squared:  0.1228 
-> F-statistic: 17.31 on 2 and 231 DF,  p-value: 9.875e-08
+```
+
+```
+## 
+## Call:
+## lm(formula = memory_score ~ iq + age, data = memory_data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -44.154 -11.754   0.732  11.608  40.790 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  71.1669     9.0796   7.838 1.67e-13 ***
+## iq            0.1073     0.0699   1.534    0.126    
+## age           0.8220     0.1461   5.627 5.27e-08 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 16.1 on 231 degrees of freedom
+## Multiple R-squared:  0.1303,	Adjusted R-squared:  0.1228 
+## F-statistic: 17.31 on 2 and 231 DF,  p-value: 9.875e-08
 ```
 
 </div>
@@ -633,27 +702,30 @@ memory2 <- lm(memory_score ~ iq + age + attention + sleep, data = memory_data)
 
 # show the results
 summary(memory2)
-> 
-> Call:
-> lm(formula = memory_score ~ iq + age + attention + sleep, data = memory_data)
-> 
-> Residuals:
->     Min      1Q  Median      3Q     Max 
-> -28.935  -8.555   1.713   8.450  31.384 
-> 
-> Coefficients:
->             Estimate Std. Error t value Pr(>|t|)    
-> (Intercept)  9.60112    8.57889   1.119 0.264246    
-> iq           0.18673    0.05451   3.426 0.000726 ***
-> age          0.86579    0.11308   7.656 5.32e-13 ***
-> attention    0.22894    0.02757   8.302 8.88e-15 ***
-> sleep        3.68609    0.39328   9.373  < 2e-16 ***
-> ---
-> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-> 
-> Residual standard error: 12.46 on 229 degrees of freedom
-> Multiple R-squared:  0.4839,	Adjusted R-squared:  0.4749 
-> F-statistic: 53.68 on 4 and 229 DF,  p-value: < 2.2e-16
+```
+
+```
+## 
+## Call:
+## lm(formula = memory_score ~ iq + age + attention + sleep, data = memory_data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -28.935  -8.555   1.713   8.450  31.384 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  9.60112    8.57889   1.119 0.264246    
+## iq           0.18673    0.05451   3.426 0.000726 ***
+## age          0.86579    0.11308   7.656 5.32e-13 ***
+## attention    0.22894    0.02757   8.302 8.88e-15 ***
+## sleep        3.68609    0.39328   9.373  < 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 12.46 on 229 degrees of freedom
+## Multiple R-squared:  0.4839,	Adjusted R-squared:  0.4749 
+## F-statistic: 53.68 on 4 and 229 DF,  p-value: < 2.2e-16
 ```
 
 </div>
@@ -731,14 +803,17 @@ memory2.BF <- lmBF(memory_score ~ iq + age + attention + sleep, data = as.data.f
 
 # Compute the Bayes Factors for memory2.BF vs memory1.BF
 memory2.BF / memory1.BF
-> Bayes factor analysis
-> --------------
-> [1] iq + age + attention + sleep : 4.168455e+23 ±0%
-> 
-> Against denominator:
->   memory_score ~ iq + age 
-> ---
-> Bayes factor type: BFlinearModel, JZS
+```
+
+```
+## Bayes factor analysis
+## --------------
+## [1] iq + age + attention + sleep : 4.168455e+23 ±0%
+## 
+## Against denominator:
+##   memory_score ~ iq + age 
+## ---
+## Bayes factor type: BFlinearModel, JZS
 ```
 
 </div>
@@ -786,8 +861,11 @@ new_data <- tibble(iq = 105, age = 27, attention = 90, sleep = 8)
 
 # use predict to derive prediction from new data
 predict(memory2, new_data)
->        1 
-> 102.6768
+```
+
+```
+##        1 
+## 102.6768
 ```
 
 </div>
@@ -845,14 +923,17 @@ memory3.BF <- lmBF(memory_score ~ iq + age + attention + sleep + blueberries, da
 
 # calculate the BF for memory3 vs memory2
 memory3.BF / memory2.BF
-> Bayes factor analysis
-> --------------
-> [1] iq + age + attention + sleep + blueberries : 0.1663574 ±0%
-> 
-> Against denominator:
->   memory_score ~ iq + age + attention + sleep 
-> ---
-> Bayes factor type: BFlinearModel, JZS
+```
+
+```
+## Bayes factor analysis
+## --------------
+## [1] iq + age + attention + sleep + blueberries : 0.1663574 ±0%
+## 
+## Against denominator:
+##   memory_score ~ iq + age + attention + sleep 
+## ---
+## Bayes factor type: BFlinearModel, JZS
 ```
 
 </div>
@@ -885,3 +966,7 @@ memory3.BF / memory2.BF
 \
 
 Next week's session will build on what was done in this session, so make sure you understand what was covered and ask if there's anything you're unsure of.
+
+
+commented text
+--> 

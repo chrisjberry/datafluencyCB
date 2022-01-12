@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Session 1 Simple Regression | PSYC753 Data Fluency: Analysis</title>
+  <meta name="description" content="Course materials for PSYC753 2022" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Session 1 Simple Regression | PSYC753 Data Fluency: Analysis" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://chrisjberry.github.io/datafluencyCB/" />
+  
+  <meta property="og:description" content="Course materials for PSYC753 2022" />
+  <meta name="github-repo" content="datafluencyCB" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Session 1 Simple Regression | PSYC753 Data Fluency: Analysis" />
+  
+  <meta name="twitter:description" content="Course materials for PSYC753 2022" />
+  
+
+<meta name="author" content="Chris Berry" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="multiple1.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="include/psyteachr.css" type="text/css" />
+<link rel="stylesheet" href="include/webex.css" type="text/css" />
+<link rel="stylesheet" href="include/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PSYC753 Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="1" data-path="simple1.html"><a href="simple1.html"><i class="fa fa-check"></i><b>1</b> Simple Regression</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="simple1.html"><a href="simple1.html#overview-1"><i class="fa fa-check"></i><b>1.1</b> Overview</a></li>
+<li class="chapter" data-level="1.2" data-path="simple1.html"><a href="simple1.html#worked-example"><i class="fa fa-check"></i><b>1.2</b> Worked Example</a></li>
+<li class="chapter" data-level="1.3" data-path="simple1.html"><a href="simple1.html#predicting"><i class="fa fa-check"></i><b>1.3</b> Predicting</a></li>
+<li class="chapter" data-level="1.4" data-path="simple1.html"><a href="simple1.html#residuals"><i class="fa fa-check"></i><b>1.4</b> Residuals</a></li>
+<li class="chapter" data-level="1.5" data-path="simple1.html"><a href="simple1.html#evaluating-the-model"><i class="fa fa-check"></i><b>1.5</b> Evaluating the model</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="simple1.html"><a href="simple1.html#r2"><i class="fa fa-check"></i><b>1.5.1</b> R<sup>2</sup></a></li>
+<li class="chapter" data-level="1.5.2" data-path="simple1.html"><a href="simple1.html#bayes-factor"><i class="fa fa-check"></i><b>1.5.2</b> Bayes Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="simple1.html"><a href="simple1.html#exercise"><i class="fa fa-check"></i><b>1.6</b> Exercise</a></li>
+<li class="chapter" data-level="1.7" data-path="simple1.html"><a href="simple1.html#further-exercises"><i class="fa fa-check"></i><b>1.7</b> Further Exercises</a></li>
+<li class="chapter" data-level="1.8" data-path="simple1.html"><a href="simple1.html#summary"><i class="fa fa-check"></i><b>1.8</b> Summary</a></li>
+<li class="chapter" data-level="1.9" data-path="simple1.html"><a href="simple1.html#references"><i class="fa fa-check"></i><b>1.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="multiple1.html"><a href="multiple1.html"><i class="fa fa-check"></i><b>2</b> Multiple regression: multiple continuous predictors</a></li>
+<li class="chapter" data-level="3" data-path="anova-one-way-and-2x2-between-subjects.html"><a href="anova-one-way-and-2x2-between-subjects.html"><i class="fa fa-check"></i><b>3</b> ANOVA: One-way (and 2x2 Between-subjects)</a></li>
+<li class="chapter" data-level="4" data-path="multiple-regression-one-continuous-one-categorical.html"><a href="multiple-regression-one-continuous-one-categorical.html"><i class="fa fa-check"></i><b>4</b> Multiple regression: one continuous, one categorical</a></li>
+<li class="chapter" data-level="5" data-path="multiple3.html"><a href="multiple3.html"><i class="fa fa-check"></i><b>5</b> Multiple regression: evaluating and comparing models</a></li>
+<li class="chapter" data-level="6" data-path="anova-repeated-measures.html"><a href="anova-repeated-measures.html"><i class="fa fa-check"></i><b>6</b> ANOVA: Repeated measures</a></li>
+<li class="chapter" data-level="7" data-path="pre-post-data-effect-sizes-clinically-significant-change.html"><a href="pre-post-data-effect-sizes-clinically-significant-change.html"><i class="fa fa-check"></i><b>7</b> Pre-post data, effect sizes, clinically significant change</a></li>
+<li class="chapter" data-level="8" data-path="data-analysis-assessment-2022.html"><a href="data-analysis-assessment-2022.html"><i class="fa fa-check"></i><b>8</b> Data Analysis Assessment 2022</a></li>
+<li class="chapter" data-level="9" data-path="data-analysis-assessment-2022-faqs.html"><a href="data-analysis-assessment-2022-faqs.html"><i class="fa fa-check"></i><b>9</b> Data Analysis Assessment 2022: FAQs</a></li>
+<li class="appendix"><span><b>Appendices</b></span></li>
+<li class="divider"></li>
+<li><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" 
+    target="blank"><img alt="Creative Commons License" 
+    style="border-width:0" 
+    src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSYC753 Data Fluency: Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="simple1" class="section level1" number="1">
+<h1><span class="header-section-number">Session 1</span> Simple Regression</h1>
+<p><em>Chris Berry</em><br />
+<em>2022</em></p>
+<style>
+div.exercise { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<style>
+div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
+</style>
+<div id="overview-1" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Overview</h2>
+<ul>
+<li><strong>Slides</strong> from the lecture part of the session: <a href="slides/PSYC753_Chris1.pptx">Download</a></li>
+</ul>
+<p><br />
+</p>
+<div class="tip">
+<ul>
+<li><p>In <strong>simple regression</strong>, we create a <em>linear (straight line) model</em> of the relationship between <em>one outcome variable and one predictor variable</em></p>
+<ul>
+<li><p>The <strong>outcome variable</strong> is what we want to predict or explain (e.g., <em>anxiety scores</em>)</p></li>
+<li><p>The <strong>predictor variable</strong> is what we use to predict the outcome variable (e.g., <em>average hours of screen time per week in hours</em>)</p></li>
+<li><p>Both the outcome and predictor variable are <em>continuous</em> variables</p></li>
+</ul></li>
+<li><p><strong>Regression</strong> is actually a more general technique that underpins a wide variety of analyses. <strong>Simple regression</strong> is the most basic form of regression.</p></li>
+</ul>
+</div>
+<p><br />
+</p>
+<p>The simple regression equation has the form, <strong>Predicted outcome = a + b(Predictor)</strong>. This is the same as the equation for a straight line (Y = a + bX) that many of you will have been taught in school.</p>
+<ul>
+<li><p>a is the <strong>intercept</strong>, it is the <em>height</em> of the line</p></li>
+<li><p>b is the <strong>slope</strong> (or <strong>coefficient for the predictor variable</strong>). It determines the <em>steepness</em> of the line, or, more formally, the amount of increase in the outcome variable for a one unit change in the predictor variable.</p></li>
+</ul>
+<p><br />
+</p>
+<p>The goal of simple regression is to obtain the values of the intercept (a) and slope (b) so that the line 'fits' or 'goes through' our data as closely as possible. The specific method of 'fitting' the line to the data is called <em>the method of least squares</em> (described in the lecture). Fortunately, R can work out the intercept and slope automatically for us (with <code>lm()</code>).</p>
+<p><br />
+</p>
+</div>
+<div id="worked-example" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Worked Example</h2>
+<p><strong>Is screen time linked to mental health?</strong></p>
+<p>Teychenne and Hinkley (2016) used regression to investigate the association between <strong>anxiety</strong> and daily hours of <strong>screen time</strong> (e.g., TV, computer, device use) in 528 mothers with young children.</p>
+<p><br />
+</p>
+<p>Read in the data from their study to R and store in <code>mentalh</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="simple1.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ensure tidyverse is loaded first</span></span>
+<span id="cb1-2"><a href="simple1.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="simple1.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="simple1.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># read the data using read_csv()</span></span>
+<span id="cb1-5"><a href="simple1.html#cb1-5" aria-hidden="true" tabindex="-1"></a>mentalh <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/1_mental_health_data.csv&#39;</span>)</span></code></pre></div>
+<p>There are numerous variables in <code>mentalh</code> (use <code>mentalh %&gt;% glimpse()</code> to take a look). We will focus only on two here:</p>
+<ul>
+<li><code>anxiety_score</code>: a score representing the number of anxiety symptoms experienced in the past week, and</li>
+<li><code>screen_time</code>: hours per day of screen time use on average.</li>
+</ul>
+<p>(Note: the data are publicly available, but I've changed some of the variable names for clarity.)</p>
+<p><br />
+</p>
+<p>First, create a scatterplot of the two variables. Put the predictor variable on the x-axis, and the outcome variable on the y-axis.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="simple1.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The code below takes mentalh and pipes it to ggplot() </span></span>
+<span id="cb2-2"><a href="simple1.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># aes() is used to tell ggplot() to put </span></span>
+<span id="cb2-3"><a href="simple1.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># screen_time on the x-axis, and anxiety_score on the y-axis</span></span>
+<span id="cb2-4"><a href="simple1.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># The settings in geom_smooth() tell ggplot() to add the regression line.</span></span>
+<span id="cb2-5"><a href="simple1.html#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="simple1.html#cb2-6" aria-hidden="true" tabindex="-1"></a>mentalh <span class="sc">%&gt;%</span> </span>
+<span id="cb2-7"><a href="simple1.html#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> screen_time, <span class="at">y =</span> anxiety_score)) <span class="sc">+</span> </span>
+<span id="cb2-8"><a href="simple1.html#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb2-9"><a href="simple1.html#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="01_simple_regression_files/figure-html/unnamed-chunk-3-1.png" alt="Scatterplot of anxiety score according to screen time (hours per day) " width="50%" />
+<p class="caption">
+Figure 1.1: Scatterplot of anxiety score according to screen time (hours per day)
+</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-1" class="exercise"><strong>Exercise 1.1  </strong></span><strong>Describe the relationship between screen time and anxiety in the scatterplot plot</strong> (pick one):</p>
+<div id="radio_QQRXNVJLGU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QQRXNVJLGU" value=""></input> <span>Individuals with lower levels of screen time tend to have higher anxiety scores</span></label><label><input type="radio" autocomplete="off" name="radio_QQRXNVJLGU" value=""></input> <span>No association between screen time and anxiety scores is apparent</span></label><label><input type="radio" autocomplete="off" name="radio_QQRXNVJLGU" value="answer"></input> <span>Individuals with higher levels of screen time tend to have higher anxiety scores</span></label>
+</div>
+</div>
+<p><br />
+</p>
+<p>Use <code>lm()</code> to run the simple regression and store the results in <code>simple1</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="simple1.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># conduct a simple regression of anxiety as a function of screen time</span></span>
+<span id="cb3-2"><a href="simple1.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># store the results in simple1</span></span>
+<span id="cb3-3"><a href="simple1.html#cb3-3" aria-hidden="true" tabindex="-1"></a>simple1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(anxiety_score <span class="sc">~</span> screen_time, <span class="at">data =</span> mentalh)</span></code></pre></div>
+<p><strong>Explanation:</strong> To specify the regression equation, we use <code>outcome_variable ~ predictor_variable</code>.The <code>~</code> symbol is a tilde. We use it to specify certain formulas in R. When you see <code>~</code>, you can read it as "as a function of". So, <code>outcome variable ~ predictor variable</code> means "outcome variable as a function of the predictor variable". In our case, "<code>anxiety_score</code> as a function of <code>screen_time</code>".</p>
+<p><br />
+</p>
+<p>The intercept (a) and slope (b) are automatically calculated and stored in <code>simple1</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="simple1.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the results </span></span>
+<span id="cb4-2"><a href="simple1.html#cb4-2" aria-hidden="true" tabindex="-1"></a>simple1</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = anxiety_score ~ screen_time, data = mentalh)
+## 
+## Coefficients:
+## (Intercept)  screen_time  
+##      5.5923       0.1318</code></pre>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-2" class="exercise"><strong>Exercise 1.2  </strong></span><br />
+</p>
+<p><strong>The value of the intercept a is <select class='webex-select'><option value='blank'></option><option value='answer'>5.20</option><option value=''>0.25</option></select></strong></p>
+<p><strong>The value of the slope b for the screen_time predictor is <select class='webex-select'><option value='blank'></option><option value=''>5.20</option><option value='answer'>0.25</option></select></strong></p>
+<p><strong>The regression equation (of the form Predicted Outcome = a + b(Predictor)) can therefore be written as what?</strong></p>
+<div id="radio_GVVNUHBFGW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GVVNUHBFGW" value=""></input> <span>predicted screen time = 5.59 + 0.13(anxiety score)</span></label><label><input type="radio" autocomplete="off" name="radio_GVVNUHBFGW" value="answer"></input> <span>predicted anxiety score = 5.59 + 0.13(screen_time)</span></label><label><input type="radio" autocomplete="off" name="radio_GVVNUHBFGW" value=""></input> <span>predicted anxiety score = 0.13 + 5.59(screen_time)</span></label>
+</div>
+</div>
+</div>
+<div id="predicting" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Predicting</h2>
+<p>The regression equation can be used for <strong>prediction</strong>.</p>
+<p>Suppose someone asked us what the <code>anxiety_score</code> would be for a new person whose <code>screen_time</code> score is 10 hours per week.</p>
+<p>By reading off from the regression line on the scatterplot from earlier, the <code>anxiety_score</code> looks to around 7:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="01_simple_regression_files/figure-html/unnamed-chunk-6-1.png" alt="Predicted anxiety score for a person with 10 hours screen time" width="50%" />
+<p class="caption">
+Figure 1.2: Predicted anxiety score for a person with 10 hours screen time
+</p>
+</div>
+<p>Using the regression equation, we can substitute 10 for <code>screen_time</code>, then calculate predicted <code>anxiety_score</code> more precisely. The <code>augment()</code> function in the <code>broom</code> package can be used to work out the prediction for new data automatically:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="simple1.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the broom package</span></span>
+<span id="cb6-2"><a href="simple1.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb6-3"><a href="simple1.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="simple1.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># store new scores as a new tibble</span></span>
+<span id="cb6-5"><a href="simple1.html#cb6-5" aria-hidden="true" tabindex="-1"></a>new_scores <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">screen_time =</span> <span class="dv">10</span>)</span>
+<span id="cb6-6"><a href="simple1.html#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="simple1.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># give new_scores to augment()</span></span>
+<span id="cb6-8"><a href="simple1.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(simple1, <span class="at">newdata =</span> new_scores)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">screen_time</th>
+<th align="right">.fitted</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">6.91012</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The predicted <code>anxiety_score</code> is <strong>6.91</strong></p>
+<p><br />
+</p>
+<p>Predictions for multiple individuals can also be made at once. Here we obtain the predictions for two people with <code>screen_time</code> scores of 10 and 15.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="simple1.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store the scores we want predictions for in new_scores</span></span>
+<span id="cb7-2"><a href="simple1.html#cb7-2" aria-hidden="true" tabindex="-1"></a>new_scores <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">screen_time =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>))</span>
+<span id="cb7-3"><a href="simple1.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="simple1.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use augment() to derive the predicted anxiety_scores</span></span>
+<span id="cb7-5"><a href="simple1.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(simple1, <span class="at">newdata =</span> new_scores)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">screen_time</th>
+<th align="right">.fitted</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">6.910120</td>
+</tr>
+<tr class="even">
+<td align="right">15</td>
+<td align="right">7.569031</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The predicted <code>anxiety_scores</code> are <strong>6.91</strong> and <strong>7.57</strong>.</p>
+<p><br />
+<br />
+</p>
+</div>
+<div id="residuals" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Residuals</h2>
+<div class="tip">
+<p>The <strong>residual</strong> for a given datapoint is its vertical distance from the regression line. It is the <strong>error</strong> in prediction of the outcome variable for that datapoint.</p>
+<p><strong>Residual = Observed - Predicted</strong></p>
+</div>
+<p><br />
+</p>
+<p>To view the residuals, again use the <code>augment()</code> function in the <code>broom</code> package, this time without specifying new data. The residual for each individual is given in the column <code>.resid</code></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="simple1.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the residuals for simple1 (in .resid)</span></span>
+<span id="cb8-2"><a href="simple1.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use head() to only see first 6 rows</span></span>
+<span id="cb8-3"><a href="simple1.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(simple1) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">anxiety_score</th>
+<th align="right">screen_time</th>
+<th align="right">.fitted</th>
+<th align="right">.resid</th>
+<th align="right">.hat</th>
+<th align="right">.sigma</th>
+<th align="right">.cooksd</th>
+<th align="right">.std.resid</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">2.571429</td>
+<td align="right">5.931167</td>
+<td align="right">1.068833</td>
+<td align="right">0.0022003</td>
+<td align="right">3.514985</td>
+<td align="right">0.0001024</td>
+<td align="right">0.304677</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">1.428571</td>
+<td align="right">5.780559</td>
+<td align="right">4.219441</td>
+<td align="right">0.0029659</td>
+<td align="right">3.510454</td>
+<td align="right">0.0021534</td>
+<td align="right">1.203238</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">4.214286</td>
+<td align="right">6.147666</td>
+<td align="right">6.852334</td>
+<td align="right">0.0019133</td>
+<td align="right">3.502526</td>
+<td align="right">0.0036559</td>
+<td align="right">1.953016</td>
+</tr>
+<tr class="even">
+<td align="right">13</td>
+<td align="right">7.285714</td>
+<td align="right">6.552426</td>
+<td align="right">6.447574</td>
+<td align="right">0.0039508</td>
+<td align="right">3.503969</td>
+<td align="right">0.0067111</td>
+<td align="right">1.839532</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">18.571430</td>
+<td align="right">8.039682</td>
+<td align="right">-5.039682</td>
+<td align="right">0.0402420</td>
+<td align="right">3.508118</td>
+<td align="right">0.0449817</td>
+<td align="right">-1.464784</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1.500000</td>
+<td align="right">5.789972</td>
+<td align="right">-3.789972</td>
+<td align="right">0.0029045</td>
+<td align="right">3.511390</td>
+<td align="right">0.0017011</td>
+<td align="right">-1.080735</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-3" class="exercise"><strong>Exercise 1.3  </strong></span>What was the residual for a person with <code>anxiety_score</code> equal to 13, and <code>screen_time</code> score equal to 7.29 <select class='webex-select'><option value='blank'></option><option value=''>6.55</option><option value=''>6.85</option><option value='answer'>6.45</option></select>?</p>
+<p><br />
+</p>
+<p>**For this person, was the <code>anxiety score</code> predicted by the model <select class='webex-select'><option value='blank'></option><option value=''>overpredicted (too high)</option><option value=''>fit exactly</option><option value='answer'>underpredicted (too low)</option></select></p>
+</div>
+<p><br />
+</p>
+<p>An assumption underlying regression is that the residuals are a bit like random noise. When we plot the <em>residual</em> against the <em>predicted values</em>, there should be no associations evident in the plot. We can use this plot for checking this assumption of regression.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="simple1.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a spread-versus-level plot</span></span>
+<span id="cb9-2"><a href="simple1.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using information in augment()</span></span>
+<span id="cb9-3"><a href="simple1.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use geom_hline() to draw a horizontal line at y=0</span></span>
+<span id="cb9-4"><a href="simple1.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(simple1) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-5"><a href="simple1.html#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="simple1.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="simple1.html#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-10"></span>
+<img src="01_simple_regression_files/figure-html/unnamed-chunk-10-1.png" alt="Spread-versus-level plot: Predicted anxiety score vs. the residual" width="50%" />
+<p class="caption">
+Figure 1.3: Spread-versus-level plot: Predicted anxiety score vs. the residual
+</p>
+</div>
+<p><strong>Explanation</strong>: If there's no trend in the residuals, we'd expect the points to be a random cloud above and below the horizontal line (at y = 0). There should be no patterns, and the points should be pretty symmetrically distributed around a single point in the middle of the plot. Here, however, it's evident that the residuals tend to have lower values as the predicted values (<code>.fitted</code>) increase. In other words, there's some tendency for the model to overestimate <code>anxiety_score</code> as <code>screen_time</code> becomes more extreme. This type of plot is often seen in real datasets like this one.</p>
+</div>
+<div id="evaluating-the-model" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Evaluating the model</h2>
+<div id="r2" class="section level3" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> R<sup>2</sup></h3>
+<div class="tip">
+<p><strong>R<sup>2</sup></strong> is a statistic that describes how well our model explains the outcome variable. It ranges between 0 and 1 and can be interpreted as the <strong>proportion of variance in the outcome variable that is explained by the predictor variable</strong>.</p>
+</div>
+<p><br />
+</p>
+<p>To obtain R<sup>2</sup> for the model:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="simple1.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use glance() to get R-squared</span></span>
+<span id="cb10-2"><a href="simple1.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(simple1)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<colgroup>
+<col width="9%" />
+<col width="12%" />
+<col width="8%" />
+<col width="9%" />
+<col width="9%" />
+<col width="2%" />
+<col width="9%" />
+<col width="8%" />
+<col width="7%" />
+<col width="8%" />
+<col width="11%" />
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">r.squared</th>
+<th align="right">adj.r.squared</th>
+<th align="right">sigma</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">df</th>
+<th align="right">logLik</th>
+<th align="right">AIC</th>
+<th align="right">BIC</th>
+<th align="right">deviance</th>
+<th align="right">df.residual</th>
+<th align="right">nobs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.0148346</td>
+<td align="right">0.0129617</td>
+<td align="right">3.511952</td>
+<td align="right">7.920493</td>
+<td align="right">0.0050709</td>
+<td align="right">1</td>
+<td align="right">-1411.456</td>
+<td align="right">2828.913</td>
+<td align="right">2841.72</td>
+<td align="right">6487.581</td>
+<td align="right">526</td>
+<td align="right">528</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The column <code>r.squared</code> contains our value of R-squared, and is equal to 0.0148. To interpret as a percentage, multiply the proportion by 100. This means that <code>screen_time</code> explains 1.48% of the variance in <code>anxiety_score</code>. In psychological research, this is a relatively small amount of variance that is being explained. It may still be meaningful in some contexts though (e.g., where it may be better to have a model with some predictive power rather than none at all).</p>
+<p>R<sup>2</sup> is actually the value of the correlation between the outcome and predictor variable, multiplied by itself:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="simple1.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load corrr package</span></span>
+<span id="cb11-2"><a href="simple1.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrr)</span>
+<span id="cb11-3"><a href="simple1.html#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="simple1.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the correlation coefficient between screen_time and anxiety_score</span></span>
+<span id="cb11-5"><a href="simple1.html#cb11-5" aria-hidden="true" tabindex="-1"></a>mentalh <span class="sc">%&gt;%</span> </span>
+<span id="cb11-6"><a href="simple1.html#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(screen_time, anxiety_score) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-7"><a href="simple1.html#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlate</span>()</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">term</th>
+<th align="right">screen_time</th>
+<th align="right">anxiety_score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">screen_time</td>
+<td align="right">NA</td>
+<td align="right">0.1217973</td>
+</tr>
+<tr class="even">
+<td align="left">anxiety_score</td>
+<td align="right">0.1217973</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The correlation between <code>screen_time</code> and <code>anxiety_score</code> is 0.1217973.</p>
+<p>0.1217973 * 0.1217973 = <strong>0.0148</strong>, which is equal to our value of R<sup>2</sup> obtained previously.</p>
+<p><br />
+</p>
+</div>
+<div id="bayes-factor" class="section level3" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> Bayes Factor</h3>
+<p>To further evaluate the model, we can obtain a Bayes Factor.</p>
+<p><br />
+</p>
+<div class="tip">
+<p>The <strong>Bayes Factor</strong> tells us how much more likely the model is than a model of <code>anxiety_score</code> that comprises the mean only. We call this baseline model the <strong>intercept-only</strong> model. It is a model in which the regression line is a flat line (has a slope equal to zero).</p>
+</div>
+<p><br />
+</p>
+<p>To compute the Bayes Factor, we use <code>lmBF()</code> in the <code>BayesFactor</code> package:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="simple1.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load BayesFactor package</span></span>
+<span id="cb12-2"><a href="simple1.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(BayesFactor)</span>
+<span id="cb12-3"><a href="simple1.html#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="simple1.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Bayes Factor</span></span>
+<span id="cb12-5"><a href="simple1.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(anxiety_score <span class="sc">~</span> screen_time, <span class="at">data =</span> mentalh) </span></code></pre></div>
+<pre><code>## Warning: data coerced from tibble to data frame</code></pre>
+<pre><code>## Bayes factor analysis
+## --------------
+## [1] screen_time : 4.465124 ±0%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS</code></pre>
+<p>The Bayes Factor is 4.47. We'd report this as BF = 4.47. This BF means that a model consisting of <code>screen_time</code> alone as a predictor of <code>anxiety_score</code> is over four times more likely than an intercept-only model in which <code>screen_time</code> does not predict <code>anxiety_score</code>. In other words, there's sufficient evidence to say that <code>screen_time</code> predicts <code>anxiety_score</code>.</p>
+<p><br />
+</p>
+<div class="tip">
+<p><strong>Reporting the simple regression:</strong></p>
+<p>A simple regression was conducted to model the number of anxiety symptoms reported in the past week (anxiety score) from average hours of screen time usage per day (screen time). Screen time was found to have a positive association with anxiety scores, whereby individuals who reported greater levels of screen time also tended to have greater anxiety scores. The regression equation was "Predicted anxiety score = 5.59 + 0.13(screen time)", indicating that every hour of screen time use was associated with an increase in 0.13 in the anxiety score. Screen time explained 1.30% of the variance in anxiety score (adjusted R<sup>2</sup> value). The Bayes Factor, comparing the model against an intercept-only model, was 4.47, indicating that the model was statistically significant, being over four times more likely than an intercept-only model.</p>
+</div>
+</div>
+</div>
+<div id="exercise" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Exercise</h2>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-4" class="exercise"><strong>Exercise 1.4  </strong></span>Is screen time predicted by age?</p>
+<p>In addition to screen time, Teychenne and Hinkley (2016) also asked participants their age in years, stored in <code>age</code> in the <code>mentalh</code> dataset. Let's explore the relation between these variables using simple regression.</p>
+<p><br />
+</p>
+<p><strong>Adapt the code in this worksheet to do the following:</strong></p>
+<p><strong>1. Produce a scatterplot of <code>age</code> vs. <code>screen_time</code></strong></p>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<p>Pipe <code>mentalh</code> to <code>ggplot()</code> and use <code>geom_point()</code> and <code>geom_smooth()</code></p>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="simple1.html#cb15-1" aria-hidden="true" tabindex="-1"></a>mentalh <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="simple1.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> screen_time)) <span class="sc">+</span> </span>
+<span id="cb15-3"><a href="simple1.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb15-4"><a href="simple1.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+</div>
+<p><br />
+</p>
+<p><em>Describe the relationship between screen time and anxiety</em> (pick one):</p>
+<div id="radio_DOPHFKZNDJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DOPHFKZNDJ" value=""></input> <span>Older individuals tend to have higher sccreen time scores</span></label><label><input type="radio" autocomplete="off" name="radio_DOPHFKZNDJ" value=""></input> <span>Older individuals tend to have lower screen time scores</span></label><label><input type="radio" autocomplete="off" name="radio_DOPHFKZNDJ" value="answer"></input> <span>No association between age and screen time appears to be present</span></label>
+</div>
+<p><br />
+</p>
+<p><strong>2. Conduct a simple regression, with <code>screen_time</code> as the outcome variable, and <code>age</code> as the predictor variable</strong></p>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<p>Use <code>lm()</code> to specify the simple regression</p>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="simple1.html#cb16-1" aria-hidden="true" tabindex="-1"></a>simple2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(screen_time <span class="sc">~</span> age, <span class="at">data =</span> mentalh)</span>
+<span id="cb16-2"><a href="simple1.html#cb16-2" aria-hidden="true" tabindex="-1"></a>simple2</span></code></pre></div>
+</div>
+<p>What is the value of the intercept a (to two decimal places)? <input class='webex-solveme nospaces' size='4' data-answer='["7.48"]'/></p>
+<p>What is the value of the slope b (to two decimal places)? <input class='webex-solveme nospaces' size='5' data-answer='["-0.10"]'/></p>
+<p><br />
+</p>
+<p>What is the regression equation?</p>
+<div id="radio_ILJFZMGFON" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ILJFZMGFON" value="answer"></input> <span>Predicted screen time = 7.48 - 0.10(age)</span></label><label><input type="radio" autocomplete="off" name="radio_ILJFZMGFON" value=""></input> <span>Predicted screen time = 0.10 - 7.48(age)</span></label><label><input type="radio" autocomplete="off" name="radio_ILJFZMGFON" value=""></input> <span>Predicted screen time = 7.48 + 0.10(age)</span></label>
+</div>
+<p><br />
+</p>
+<p><strong>3. Obtain R-squared</strong></p>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<p>Make sure you have stored the regression results (e.g., in <code>simple2</code>), then use <code>glance()</code> with that variable</p>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="simple1.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(simple2)</span></code></pre></div>
+</div>
+<p>What proportion of variance in the anxiety score is explained by self reported levels of vigorous physical activity? (Report the adjusted R-squared value, to two decimal places) <input class='webex-solveme nospaces' size='4' data-answer='["0.02"]'/></p>
+<p>Report the value of adjusted R-squared as a percentage, to two decimal places: The adjusted R<sup>2</sup> value is equal to <input class='webex-solveme nospaces' size='4' data-answer='["1.68"]'/>%</p>
+<p><br />
+</p>
+<p><strong>4. Obtain the Bayes Factor for the model</strong></p>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<p>Use <code>lmBF()</code> to specify the model</p>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="simple1.html#cb18-1" aria-hidden="true" tabindex="-1"></a>simple2_BF <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(screen_time <span class="sc">~</span> age, <span class="at">data =</span> mentalh)</span></code></pre></div>
+</div>
+<p>How many times more likely is the model with <code>age</code> as a predictor of <code>screen_time</code>, compared to an intercept-only model? (to two decimal places) <input class='webex-solveme nospaces' size='5' data-answer='["12.19"]'/></p>
+<p><br />
+</p>
+<p><strong>5. Produce a plot of the fitted (predicted values) against the residuals. Is there any trend evident in the residuals?</strong></p>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<p>Use <code>augment()</code> with <code>ggplot()</code> and <code>geom_point()</code></p>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="simple1.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(simple2) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="simple1.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span> </span>
+<span id="cb19-3"><a href="simple1.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb19-4"><a href="simple1.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)</span></code></pre></div>
+</div>
+<p><em>What type of trend is evident between the predicted values and the residuals?</em></p>
+<div class="webex-solution">
+<button>
+Further interpretation
+</button>
+<p>The spread of the points above the line appear seem to be greater than those of points below the horizontal line, indicating that the model tends to underestimate some of the screen time scores. This could be because the screen time scores are positively skewed (e.g., try <code>mentalh %&gt;% ggplot(aes(screen_time)) + geom_density()</code>), and therefore taking the log transform of the scores prior to analysis may improve this plot (though may not necessarily change the outcome of the analysis).</p>
+</div>
+<p><strong>6. On balance, does age seem to be a good predictor of a person's daily screen time use?</strong></p>
+</div>
+<p><br />
+</p>
+</div>
+<div id="further-exercises" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> Further Exercises</h2>
+<p>These exercises are not essential, and are for those feeling confident with everything so far.</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-5" class="exercise"><strong>Exercise 1.5  </strong></span>Further Exercise 1</p>
+<p>The variable <code>physical_activity</code> in the <code>mentalh</code> dataset is a measure of moderate to vigorous physical activity of the participants in the study, based on participant's self reported weekly activity.</p>
+<p>To what extent is participants' <code>anxiety_score</code> explained by their <code>physical_activity</code>?</p>
+<p>Investigate this question by producing the following:</p>
+<ul>
+<li>Scatterplot</li>
+<li>Correlation</li>
+<li>Simple regression model</li>
+<li>Adjusted R-squared value</li>
+<li>Bayes Factor</li>
+</ul>
+<p>On balance, does the <code>anxiety_score</code> seem to be predicted well by <code>physical_activity</code>?</p>
+<div class="webex-solution">
+<button>
+Solution: code
+</button>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="simple1.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot</span></span>
+<span id="cb20-2"><a href="simple1.html#cb20-2" aria-hidden="true" tabindex="-1"></a>mentalh <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="simple1.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> physical_activity, <span class="at">y =</span> anxiety_score)) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="simple1.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb20-5"><a href="simple1.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="at">se =</span> F) <span class="sc">+</span></span>
+<span id="cb20-6"><a href="simple1.html#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Physical activity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb20-7"><a href="simple1.html#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Anxiety score&quot;</span>) <span class="sc">+</span></span>
+<span id="cb20-8"><a href="simple1.html#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb20-9"><a href="simple1.html#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="simple1.html#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="simple1.html#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation</span></span>
+<span id="cb20-12"><a href="simple1.html#cb20-12" aria-hidden="true" tabindex="-1"></a>mentalh <span class="sc">%&gt;%</span> <span class="fu">select</span>(anxiety_score, physical_activity) <span class="sc">%&gt;%</span> <span class="fu">correlate</span>()</span>
+<span id="cb20-13"><a href="simple1.html#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="simple1.html#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="co"># simple regression model</span></span>
+<span id="cb20-15"><a href="simple1.html#cb20-15" aria-hidden="true" tabindex="-1"></a>model_activity <span class="ot">&lt;-</span> <span class="fu">lm</span>(anxiety_score <span class="sc">~</span> physical_activity, <span class="at">data =</span> mentalh)</span>
+<span id="cb20-16"><a href="simple1.html#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-17"><a href="simple1.html#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="co"># look at intercept and slope</span></span>
+<span id="cb20-18"><a href="simple1.html#cb20-18" aria-hidden="true" tabindex="-1"></a>model_activity</span>
+<span id="cb20-19"><a href="simple1.html#cb20-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-20"><a href="simple1.html#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="co"># look at plot of fitted values and residuals</span></span>
+<span id="cb20-21"><a href="simple1.html#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(model_activity) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-22"><a href="simple1.html#cb20-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fitted, <span class="at">y=</span>.resid)) <span class="sc">+</span></span>
+<span id="cb20-23"><a href="simple1.html#cb20-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb20-24"><a href="simple1.html#cb20-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)</span>
+<span id="cb20-25"><a href="simple1.html#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-26"><a href="simple1.html#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="co"># look at R-squared</span></span>
+<span id="cb20-27"><a href="simple1.html#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(model_activity)</span>
+<span id="cb20-28"><a href="simple1.html#cb20-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-29"><a href="simple1.html#cb20-29" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate Bayes Factor</span></span>
+<span id="cb20-30"><a href="simple1.html#cb20-30" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(anxiety_score <span class="sc">~</span> physical_activity, <span class="at">data =</span> mentalh)</span></code></pre></div>
+</div>
+<div class="webex-solution">
+<button>
+Solution: interpretation
+</button>
+<p>No, there's no evidence that the anxiety scores are predicted by self reported measures of moderate-to-vigorous levels of physical activity. The two measures showed virtually no correlation, r = -0.01. The regression equation was Predicted Anxiety Score = 6.23 - 0.0001*physical activity, and the model explained no appreciable amount of variance in anxiety score, adjusted R<sup>2</sup> = -0.0017. The Bayes Factor was equal to 0.10. Given that this value of the Bayes Factor is less than 0.33, this indicates strong evidence for the intercept-only model, compared to the simple regression model where physical activity is the sole predictor of anxiety scores. In other words, if we only had these two variables, the best predictor of anxiety scores would be the mean value of the anxiety scores.</p>
+<p><br />
+</p>
+<p>Interestingly, although there appears to be no association between anxiety and physical activity in this sample of mothers, other populations do show reductions in anxiety with greater levels of vigorous physical activity (e.g., adolescents, see Hrafnkelsdottir et al., 2018).</p>
+</div>
+</div>
+<p><br />
+</p>
+<p><br />
+</p>
+</div>
+<div id="summary" class="section level2" number="1.8">
+<h2><span class="header-section-number">1.8</span> Summary</h2>
+<div class="tip">
+<ul>
+<li><p>Use <strong>simple regression</strong> to model the relationship between an outcome and predictor variable, where both are continuous variables.</p></li>
+<li><p>Once obtained, the regression equation allows us to:</p>
+<ul>
+<li><p>precisely <strong>describe the association</strong> between the outcome and predictor variables (whether positive or negative).</p></li>
+<li><p>derive <strong>predictions</strong> for the outcome variable, given new values of the predictor variable.</p></li>
+<li><p><strong>evaluate</strong> the model by comparing it with other models of varying complexity (i.e., models with fewer or more predictors)</p></li>
+</ul></li>
+</ul>
+</div>
+<p><br />
+</p>
+</div>
+<div id="references" class="section level2" number="1.9">
+<h2><span class="header-section-number">1.9</span> References</h2>
+<p>Hrafnkelsdottir S.M., Brychta R.J., Rognvaldsdottir V., Gestsdottir S., Chen K.Y., Johannsson E., et al. (2018) Less screen time and more frequent vigorous physical activity is associated with lower risk of reporting negative mental health symptoms among Icelandic adolescents. <em>PLoS ONE</em> <em>13</em>(4): e0196286. <a href="https://doi.org/10.1371/journal.pone.0196286" class="uri">https://doi.org/10.1371/journal.pone.0196286</a></p>
+<p>Teychenne M, Hinkley T (2016) Associations between screen-based sedentary behaviour and anxiety symptoms in mothers with young children. <em>PLoS ONE</em>, <em>11</em>(5): e0155696. <a href="https://doi.org/10.1371/journal.pone.0155696" class="uri">https://doi.org/10.1371/journal.pone.0155696</a></p>
+<p><br />
+</p>
+
+</div>
+</div>
+<div class="psyteachr_footer">
+  
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+  
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
+
+  update_total_correct();
+}
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="multiple1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"google": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": {},
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
