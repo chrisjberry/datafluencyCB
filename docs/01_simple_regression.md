@@ -20,7 +20,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 ## Overview
 
 
-* **Slides** from the lecture part of the session: [Download](slides/PSYC753_Chris1.pptx)
+* **Slides** from the lecture part of the session: [Download](slides/PSYC753_L1_SimpleRegression.pptx)
 
 \
 
@@ -113,7 +113,7 @@ mentalh %>%
 
 **Describe the relationship between screen time and anxiety in the scatterplot plot** (pick one):
 
-<div class='webex-radiogroup' id='radio_QQRXNVJLGU'><label><input type="radio" autocomplete="off" name="radio_QQRXNVJLGU" value=""></input> <span>Individuals with lower levels of screen time tend to have higher anxiety scores</span></label><label><input type="radio" autocomplete="off" name="radio_QQRXNVJLGU" value=""></input> <span>No association between screen time and anxiety scores is apparent</span></label><label><input type="radio" autocomplete="off" name="radio_QQRXNVJLGU" value="answer"></input> <span>Individuals with higher levels of screen time tend to have higher anxiety scores</span></label></div>
+<div class='webex-radiogroup' id='radio_TYYHPXPMTG'><label><input type="radio" autocomplete="off" name="radio_TYYHPXPMTG" value=""></input> <span>Individuals with lower levels of screen time tend to have higher anxiety scores</span></label><label><input type="radio" autocomplete="off" name="radio_TYYHPXPMTG" value=""></input> <span>No association between screen time and anxiety scores is apparent</span></label><label><input type="radio" autocomplete="off" name="radio_TYYHPXPMTG" value="answer"></input> <span>Individuals with higher levels of screen time tend to have higher anxiety scores</span></label></div>
 
 
 :::
@@ -160,7 +160,7 @@ simple1
 
 **The regression equation (of the form Predicted Outcome = a + b(Predictor)) can therefore be written as what?**
 
-<div class='webex-radiogroup' id='radio_GVVNUHBFGW'><label><input type="radio" autocomplete="off" name="radio_GVVNUHBFGW" value=""></input> <span>predicted screen time = 5.59 + 0.13(anxiety score)</span></label><label><input type="radio" autocomplete="off" name="radio_GVVNUHBFGW" value="answer"></input> <span>predicted anxiety score = 5.59 + 0.13(screen_time)</span></label><label><input type="radio" autocomplete="off" name="radio_GVVNUHBFGW" value=""></input> <span>predicted anxiety score = 0.13 + 5.59(screen_time)</span></label></div>
+<div class='webex-radiogroup' id='radio_NEGGIXITBD'><label><input type="radio" autocomplete="off" name="radio_NEGGIXITBD" value=""></input> <span>predicted screen time = 5.59 + 0.13(anxiety score)</span></label><label><input type="radio" autocomplete="off" name="radio_NEGGIXITBD" value="answer"></input> <span>predicted anxiety score = 5.59 + 0.13(screen_time)</span></label><label><input type="radio" autocomplete="off" name="radio_NEGGIXITBD" value=""></input> <span>predicted anxiety score = 0.13 + 5.59(screen_time)</span></label></div>
 
 
 :::
@@ -441,7 +441,7 @@ mentalh %>%
 
 _Describe the relationship between screen time and anxiety_ (pick one):
 
-<div class='webex-radiogroup' id='radio_DOPHFKZNDJ'><label><input type="radio" autocomplete="off" name="radio_DOPHFKZNDJ" value=""></input> <span>Older individuals tend to have higher sccreen time scores</span></label><label><input type="radio" autocomplete="off" name="radio_DOPHFKZNDJ" value=""></input> <span>Older individuals tend to have lower screen time scores</span></label><label><input type="radio" autocomplete="off" name="radio_DOPHFKZNDJ" value="answer"></input> <span>No association between age and screen time appears to be present</span></label></div>
+<div class='webex-radiogroup' id='radio_PDLBXYDWZR'><label><input type="radio" autocomplete="off" name="radio_PDLBXYDWZR" value=""></input> <span>Older individuals tend to have higher sccreen time scores</span></label><label><input type="radio" autocomplete="off" name="radio_PDLBXYDWZR" value=""></input> <span>Older individuals tend to have lower screen time scores</span></label><label><input type="radio" autocomplete="off" name="radio_PDLBXYDWZR" value="answer"></input> <span>No association between age and screen time appears to be present</span></label></div>
 
 
 \
@@ -476,7 +476,7 @@ What is the value of the slope b (to two decimal places)? <input class='webex-so
 
 What is the regression equation?
 
-<div class='webex-radiogroup' id='radio_ILJFZMGFON'><label><input type="radio" autocomplete="off" name="radio_ILJFZMGFON" value="answer"></input> <span>Predicted screen time = 7.48 - 0.10(age)</span></label><label><input type="radio" autocomplete="off" name="radio_ILJFZMGFON" value=""></input> <span>Predicted screen time = 0.10 - 7.48(age)</span></label><label><input type="radio" autocomplete="off" name="radio_ILJFZMGFON" value=""></input> <span>Predicted screen time = 7.48 + 0.10(age)</span></label></div>
+<div class='webex-radiogroup' id='radio_OEKXYQXCSL'><label><input type="radio" autocomplete="off" name="radio_OEKXYQXCSL" value="answer"></input> <span>Predicted screen time = 7.48 - 0.10(age)</span></label><label><input type="radio" autocomplete="off" name="radio_OEKXYQXCSL" value=""></input> <span>Predicted screen time = 0.10 - 7.48(age)</span></label><label><input type="radio" autocomplete="off" name="radio_OEKXYQXCSL" value=""></input> <span>Predicted screen time = 7.48 + 0.10(age)</span></label></div>
 
 
 
