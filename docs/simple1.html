@@ -247,21 +247,20 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <li><p>The <strong>predictor variable</strong> is what we use to predict the outcome variable (e.g., <em>average hours of screen time per week</em>)</p></li>
 <li><p>Both the outcome and predictor variable are <em>continuous</em> variables</p></li>
 </ul></li>
-<li><p><strong>Regression</strong> is actually a more general technique that underpins a wide variety of analyses. <strong>Simple regression</strong> is the most basic form of regression.</p></li>
+<li><p>Regression is actually a more general technique that underpins a wide variety of analyses. Simple regression is the most basic form of regression.</p></li>
 </ul>
 </div>
 <p><br />
 </p>
 <p>The simple regression equation has the form</p>
 <p><strong>Predicted outcome = a + b(Predictor)</strong></p>
-<p>(This is the same as the equation for a straight line (y = mx + c) that many of you will have been taught at school if you did your GCSEs in the UK.)</p>
 <ul>
 <li><p>a is the <strong>intercept</strong>, it is the <em>height</em> of the line. More formally, it's the value of the outcome when the predictor is equal to zero.</p></li>
-<li><p>b is the <strong>slope</strong> (or <strong>coefficient for the predictor variable</strong>). It determines the <em>steepness</em> of the line, or, more formally, the amount of change in the outcome variable for a one unit increase in the predictor variable.</p></li>
+<li><p>b is the <strong>slope</strong> (or coefficient for the predictor variable). It determines the <em>steepness</em> of the line, or, more formally, the amount of change in the outcome variable for a one unit increase in the predictor variable.</p></li>
 </ul>
 <p><br />
 </p>
-<p>The goal of simple regression is to obtain the values of the intercept (a) and slope (b) so that the line 'fits' or 'goes through' our data as closely as possible. The specific method of 'fitting' the line to the data is called <em>the method of least squares</em> (described in the lecture). Fortunately, R can work out the intercept and slope automatically for us (with <code>lm()</code>).</p>
+<p>The goal of simple regression is to obtain the values of the intercept (a) and slope (b) so that the line 'fits' or 'goes through' our data as closely as possible. The specific method of 'fitting' the line to the data is called <em>the method of least squares</em> (described in the lecture). R can do this all automatically for us (with <code>lm()</code>).</p>
 <p><br />
 </p>
 </div>
@@ -305,8 +304,8 @@ Figure 1.1: Scatterplot of anxiety score according to screen time (hours per day
 </div>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-1" class="exercise"><strong>Exercise 1.1  </strong></span><strong>Describe the relationship between screen time and anxiety evident in the scatterplot</strong> (pick one):</p>
-<div id="radio_TPVISMYBGJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TPVISMYBGJ" value=""></input> <span>Individuals with lower levels of screen time tend to have higher anxiety scores</span></label><label><input type="radio" autocomplete="off" name="radio_TPVISMYBGJ" value=""></input> <span>No association between screen time and anxiety scores is apparent</span></label><label><input type="radio" autocomplete="off" name="radio_TPVISMYBGJ" value="answer"></input> <span>Individuals with higher levels of screen time tend to have higher anxiety scores</span></label>
+<div id="radio_UDXWLPEIIN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UDXWLPEIIN" value=""></input> <span>Individuals with lower levels of screen time tend to have higher anxiety scores</span></label><label><input type="radio" autocomplete="off" name="radio_UDXWLPEIIN" value=""></input> <span>No association between screen time and anxiety scores is apparent</span></label><label><input type="radio" autocomplete="off" name="radio_UDXWLPEIIN" value="answer"></input> <span>Individuals with higher levels of screen time tend to have higher anxiety scores</span></label>
 </div>
 </div>
 <p><br />
@@ -334,8 +333,8 @@ Figure 1.1: Scatterplot of anxiety score according to screen time (hours per day
 <p><strong>The value of the intercept a is <select class='webex-select'><option value='blank'></option><option value='answer'>5.59</option><option value=''>0.13</option></select></strong></p>
 <p><strong>The value of the slope b for the screen_time predictor is <select class='webex-select'><option value='blank'></option><option value=''>5.59</option><option value='answer'>0.13</option></select></strong></p>
 <p><strong>The regression equation (Predicted Outcome = a + b(Predictor)) can therefore be written as what?</strong></p>
-<div id="radio_AZYQVOWLGW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_AZYQVOWLGW" value=""></input> <span>predicted screen time = 5.59 + 0.13(anxiety score)</span></label><label><input type="radio" autocomplete="off" name="radio_AZYQVOWLGW" value="answer"></input> <span>predicted anxiety score = 5.59 + 0.13(screen_time)</span></label><label><input type="radio" autocomplete="off" name="radio_AZYQVOWLGW" value=""></input> <span>predicted anxiety score = 0.13 + 5.59(screen_time)</span></label>
+<div id="radio_FUPKVZDYPN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FUPKVZDYPN" value=""></input> <span>predicted screen time = 5.59 + 0.13(anxiety score)</span></label><label><input type="radio" autocomplete="off" name="radio_FUPKVZDYPN" value="answer"></input> <span>predicted anxiety score = 5.59 + 0.13(screen_time)</span></label><label><input type="radio" autocomplete="off" name="radio_FUPKVZDYPN" value=""></input> <span>predicted anxiety score = 0.13 + 5.59(screen_time)</span></label>
 </div>
 </div>
 </div>
@@ -404,7 +403,7 @@ Figure 1.2: Predicted anxiety score for a person with 10 hours screen time
 </tbody>
 </table>
 </div>
-<p>Each row shows one individual. The predicted <code>anxiety_scores</code> are <strong>6.91</strong> and <strong>7.57</strong>.</p>
+<p>Each row shows one individual. Their predicted <code>anxiety_scores</code> are <strong>6.91</strong> and <strong>7.57</strong>.</p>
 <p><br />
 <br />
 </p>
@@ -417,7 +416,7 @@ Figure 1.2: Predicted anxiety score for a person with 10 hours screen time
 </div>
 <p><br />
 </p>
-<p>To view the residuals, again use the <code>augment()</code> function in the <code>broom</code> package, this time without including <code>newdata</code>. The residual for each observation is given in the column <code>.resid</code></p>
+<p>To view the residuals, again use the <code>augment()</code> function in the <code>broom</code> package (this time without including <code>newdata</code>). The residual for each observation is given in the column <code>.resid</code></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="simple1.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the residuals for simple1 (in .resid)</span></span>
 <span id="cb8-2"><a href="simple1.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pipe to head() to only show the first 6 rows</span></span>
 <span id="cb8-3"><a href="simple1.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(simple1) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
@@ -508,12 +507,12 @@ Figure 1.2: Predicted anxiety score for a person with 10 hours screen time
 <button>
 Explain
 </button>
-<p>The person has an <code>anxiety_score</code> of 13 and <code>screen_time</code> score of 7.29. The predicted <code>anxiety_score</code> for this datapoint is 6.55 (in the <code>.fitted</code> column), so the model underpredicts the <code>true value</code>anxiety_score`.</p>
+<p>The person has an <code>anxiety_score</code> of 13 and <code>screen_time</code> score of 7.29. The predicted <code>anxiety_score</code> for this datapoint is 6.55 (in the <code>.fitted</code> column), so the model underpredicts the observed value of <code>anxiety_score</code>.</p>
 </div>
 </div>
 <p><br />
 </p>
-<p>An assumption underlying regression is that the residuals are like random noise. When we plot the <em>residual</em> against the <em>predicted values</em>, there should be no trends evident in the datapoints in the plot. We can use this plot for checking this assumption of regression.</p>
+<p>An assumption underlying regression is that the residuals are like random noise. When we plot the <em>residual</em> against the <em>predicted values</em>, there should be no trend evident in the datapoints in the plot. We can use this plot for checking this assumption of regression.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="simple1.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a plot of the predicted values vs. residuals</span></span>
 <span id="cb9-2"><a href="simple1.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the &quot;.fitted&quot; and &quot;.resid&quot; columns in augment()</span></span>
 <span id="cb9-3"><a href="simple1.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use geom_hline() to draw a horizontal line at y = 0</span></span>
@@ -523,9 +522,9 @@ Explain
 <span id="cb9-7"><a href="simple1.html#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb9-8"><a href="simple1.html#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-10"></span>
-<img src="01_simple_regression_files/figure-html/unnamed-chunk-10-1.png" alt="Spread-versus-level plot: Predicted anxiety score vs. the residual" width="50%" />
+<img src="01_simple_regression_files/figure-html/unnamed-chunk-10-1.png" alt="Predicted anxiety score vs. the residual" width="50%" />
 <p class="caption">
-Figure 1.3: Spread-versus-level plot: Predicted anxiety score vs. the residual
+Figure 1.3: Predicted anxiety score vs. the residual
 </p>
 </div>
 <p><strong>Explanation</strong>: If there's no trend in the residuals, we'd expect the points to look like a random cloud above and below the horizontal line (at y = 0). There should be no patterns, and the points should be pretty symmetrically distributed around a single point in the middle of the plot. There's some slight indication that the residuals tend to have lower values as the predicted values (<code>.fitted</code>) increase. In other words, there's some tendency for the model to overestimate <code>anxiety_score</code> as <code>screen_time</code> becomes more extreme. There's also greater spread above the horizontal at lower predicted values, but this doesn't look too serious and the plot seems okay. Problems can indicate that improvement in the model is possible.</p>
@@ -592,7 +591,7 @@ Figure 1.3: Spread-versus-level plot: Predicted anxiety score vs. the residual
 </tbody>
 </table>
 </div>
-<p>The column <code>r.squared</code> contains R-squared for the model, and is equal to <strong>0.0148</strong>. To report as a percentage, multiply by 100. This means that <code>screen_time</code> explains 1.48% of the variance in <code>anxiety_score</code>. In psychological research, this is a relatively small amount of variance to explain with a model. It may still be meaningful in some contexts though (e.g., where it may be better to have a model with some predictive power rather than none at all).</p>
+<p>The column <code>r.squared</code> contains R-squared for the model, and is equal to <strong>0.0148</strong>. To report as a percentage, multiply by 100. This means that <code>screen_time</code> explains <strong>1.48%</strong> of the variance in <code>anxiety_score</code>. In psychological research, this is a relatively small amount of variance to explain with a model. It may still be meaningful in some contexts though (e.g., where it may be better to have a model with some predictive power rather than none at all).</p>
 <p>In simple regression, R<sup>2</sup> is actually the squared value of the Pearson correlation between the outcome and predictor variable:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="simple1.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load corrr package</span></span>
 <span id="cb11-2"><a href="simple1.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrr)</span>
@@ -635,7 +634,7 @@ Figure 1.3: Spread-versus-level plot: Predicted anxiety score vs. the residual
 <p><br />
 </p>
 <div class="tip">
-<p>The <strong>Bayes Factor</strong> tells us how much more likely the model is than one comprising the mean of the outcome variable only. We call this baseline model the <strong>intercept-only</strong> model. It is a model in which the regression line is a flat line (i.e., has a slope equal to zero).</p>
+<p>The <strong>Bayes Factor</strong> tells us how much more likely the model is than one comprising the mean of the outcome variable only. We call this baseline model the <strong>intercept-only</strong> model. It is a model in which the regression line is a flat line (i.e., has a slope equal to zero), and the predictor does not predict the outcome at all.</p>
 </div>
 <p><br />
 </p>
@@ -665,8 +664,8 @@ Figure 1.3: Spread-versus-level plot: Predicted anxiety score vs. the residual
 <div id="exercise" class="section level2" number="1.6">
 <h2><span class="header-section-number">1.6</span> Exercise</h2>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-4" class="exercise"><strong>Exercise 1.4  </strong></span>Is screen time predicted by age?</p>
-<p>In addition to screen time, Teychenne and Hinkley (2016) also asked participants their age in years, recorded in <code>age</code> in the <code>mentalh</code> dataset. Let's explore the relation between these variables using simple regression.</p>
+<p><span id="exr:unlabeled-div-4" class="exercise"><strong>Exercise 1.4  </strong></span><strong>Is screen time predicted by age?</strong></p>
+<p>In addition to screen time, Teychenne and Hinkley (2016) also asked participants their age in years, recorded in <code>age</code> in the <code>mentalh</code> dataset. Let's explore whether <code>age</code> predicts <code>screen_time</code> using simple regression.</p>
 <p><br />
 </p>
 <p><strong>Adapt the code in this worksheet to do the following:</strong></p>
@@ -691,9 +690,9 @@ Solution
 </div>
 <p><br />
 </p>
-<p><em>Describe the relationship between age and screen time</em> (pick one):</p>
-<div id="radio_KBFZOIFOLN" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_KBFZOIFOLN" value=""></input> <span>Older individuals tend to have higher screen time scores</span></label><label><input type="radio" autocomplete="off" name="radio_KBFZOIFOLN" value="answer"></input> <span>Older individuals tend to have lower screen time scores</span></label><label><input type="radio" autocomplete="off" name="radio_KBFZOIFOLN" value=""></input> <span>No association between age and screen time appears to be present</span></label>
+<p><em>Describe the relationship between age and screen time in the scatterplot</em> (pick one):</p>
+<div id="radio_TYPWHMIRKM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TYPWHMIRKM" value=""></input> <span>Older individuals tend to have higher screen time scores</span></label><label><input type="radio" autocomplete="off" name="radio_TYPWHMIRKM" value="answer"></input> <span>Older individuals tend to have lower screen time scores</span></label><label><input type="radio" autocomplete="off" name="radio_TYPWHMIRKM" value=""></input> <span>No association between age and screen time appears to be present</span></label>
 </div>
 <p><br />
 </p>
@@ -716,8 +715,8 @@ Solution
 <p><br />
 </p>
 <p>What is the regression equation?</p>
-<div id="radio_CANSBAZVAJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CANSBAZVAJ" value="answer"></input> <span>Predicted screen time = 7.48 - 0.10(age)</span></label><label><input type="radio" autocomplete="off" name="radio_CANSBAZVAJ" value=""></input> <span>Predicted screen time = 0.10 - 7.48(age)</span></label><label><input type="radio" autocomplete="off" name="radio_CANSBAZVAJ" value=""></input> <span>Predicted screen time = 7.48 + 0.10(age)</span></label>
+<div id="radio_NKTXXTPGZV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NKTXXTPGZV" value="answer"></input> <span>Predicted screen time = 7.48 - 0.10(age)</span></label><label><input type="radio" autocomplete="off" name="radio_NKTXXTPGZV" value=""></input> <span>Predicted screen time = 0.10 - 7.48(age)</span></label><label><input type="radio" autocomplete="off" name="radio_NKTXXTPGZV" value=""></input> <span>Predicted screen time = 7.48 + 0.10(age)</span></label>
 </div>
 <p><br />
 </p>
@@ -734,8 +733,8 @@ Solution
 </button>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="simple1.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(simple2)</span></code></pre></div>
 </div>
-<p>What proportion of variance in the screen time is explained by age? (Report the adjusted R-squared value, to two decimal places) <input class='webex-solveme nospaces' size='4' data-answer='["0.02"]'/></p>
-<p>Report the value of adjusted R-squared as a percentage, to two decimal places: The adjusted R<sup>2</sup> value is equal to <input class='webex-solveme nospaces' size='4' data-answer='["1.68"]'/>%</p>
+<p>What <strong>proportion</strong> of variance in the screen time is explained by age? (Report the adjusted R-squared value, to two decimal places) <input class='webex-solveme nospaces' size='4' data-answer='["0.02"]'/></p>
+<p>Report the value of adjusted R-squared as a <strong>percentage</strong>, to two decimal places: The adjusted R<sup>2</sup> value is equal to <input class='webex-solveme nospaces' size='4' data-answer='["1.68"]'/>%</p>
 <p><br />
 </p>
 <p><strong>4. Obtain the Bayes Factor for the model</strong></p>
@@ -755,7 +754,7 @@ Solution
 <p>How many times more likely is the model with <code>age</code> as a predictor of <code>screen_time</code>, compared to an intercept-only model? (to two decimal places) <input class='webex-solveme nospaces' size='5' data-answer='["12.19"]'/></p>
 <p><br />
 </p>
-<p><strong>5. Produce a plot of the fitted (predicted) values against the residuals. Is there any trend evident in the residuals?</strong></p>
+<p><strong>5. Produce a plot of the fitted (predicted) values against the residuals</strong></p>
 <div class="webex-solution">
 <button>
 Hint
@@ -784,14 +783,14 @@ Further interpretation
 <p><br />
 </p>
 <p><strong>6. On balance, does age seem to be a good predictor of a person's daily screen time use?</strong></p>
-<div id="radio_WVAXLFKXFU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_WVAXLFKXFU" value=""></input> <span>No</span></label><label><input type="radio" autocomplete="off" name="radio_WVAXLFKXFU" value="answer"></input> <span>Yes</span></label><label><input type="radio" autocomplete="off" name="radio_WVAXLFKXFU" value=""></input> <span>Cannot determine</span></label>
+<div id="radio_EKLVUGEAID" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EKLVUGEAID" value=""></input> <span>No</span></label><label><input type="radio" autocomplete="off" name="radio_EKLVUGEAID" value="answer"></input> <span>Yes</span></label><label><input type="radio" autocomplete="off" name="radio_EKLVUGEAID" value=""></input> <span>Cannot determine</span></label>
 </div>
 <div class="webex-solution">
 <button>
 Explanation
 </button>
-<p>Yes, the older the individuals were, the lower the screen time score tended to be. A model with age as a predictor of screen time explained only 1.68% of the variance in screen time scores, but the Bayes Factor indicated strong evidence for this model compared to an intercept-only model.</p>
+<p>Yes, the older the individuals were, the lower the screen time score tended to be. A model with age as a predictor of screen time explained only 1.68% of the variance in screen time scores (adjusted R<sup>2</sup>), but the Bayes Factor (BF = 12. 19) indicated strong evidence for this model compared to an intercept-only model.</p>
 </div>
 </div>
 <p><br />
@@ -801,8 +800,8 @@ Explanation
 <h2><span class="header-section-number">1.7</span> Further Exercises</h2>
 <p>For those feeling confident with everything so far.</p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-5" class="exercise"><strong>Exercise 1.5  </strong></span>Further Exercise</p>
-<p>The variable <code>physical_activity</code> in the <code>mentalh</code> dataset is a measure of moderate-to- vigorous physical activity, based on participant's self reported weekly activity.</p>
+<p><span id="exr:unlabeled-div-5" class="exercise"><strong>Exercise 1.5  </strong></span><strong>Further Exercise</strong></p>
+<p>The variable <code>physical_activity</code> in the <code>mentalh</code> dataset is a measure of moderate-to-vigorous physical activity, based on participant's self reported weekly activity.</p>
 <p>To what extent is participants' <code>anxiety_score</code> explained by their <code>physical_activity</code>?</p>
 <p>Investigate by producing the following:</p>
 <ul>
@@ -826,33 +825,32 @@ Solution: code
 <span id="cb19-7"><a href="simple1.html#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Anxiety score&quot;</span>) <span class="sc">+</span></span>
 <span id="cb19-8"><a href="simple1.html#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
 <span id="cb19-9"><a href="simple1.html#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-10"><a href="simple1.html#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-11"><a href="simple1.html#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation</span></span>
-<span id="cb19-12"><a href="simple1.html#cb19-12" aria-hidden="true" tabindex="-1"></a>mentalh <span class="sc">%&gt;%</span> <span class="fu">select</span>(anxiety_score, physical_activity) <span class="sc">%&gt;%</span> <span class="fu">correlate</span>()</span>
-<span id="cb19-13"><a href="simple1.html#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-14"><a href="simple1.html#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co"># simple regression model</span></span>
-<span id="cb19-15"><a href="simple1.html#cb19-15" aria-hidden="true" tabindex="-1"></a>model_activity <span class="ot">&lt;-</span> <span class="fu">lm</span>(anxiety_score <span class="sc">~</span> physical_activity, <span class="at">data =</span> mentalh)</span>
-<span id="cb19-16"><a href="simple1.html#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-17"><a href="simple1.html#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="co"># look at intercept and slope</span></span>
-<span id="cb19-18"><a href="simple1.html#cb19-18" aria-hidden="true" tabindex="-1"></a>model_activity</span>
-<span id="cb19-19"><a href="simple1.html#cb19-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-20"><a href="simple1.html#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="co"># look at plot of fitted values and residuals</span></span>
-<span id="cb19-21"><a href="simple1.html#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(model_activity) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-22"><a href="simple1.html#cb19-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fitted, <span class="at">y=</span>.resid)) <span class="sc">+</span></span>
-<span id="cb19-23"><a href="simple1.html#cb19-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb19-24"><a href="simple1.html#cb19-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)</span>
-<span id="cb19-25"><a href="simple1.html#cb19-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-26"><a href="simple1.html#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="co"># look at R-squared</span></span>
-<span id="cb19-27"><a href="simple1.html#cb19-27" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(model_activity)</span>
-<span id="cb19-28"><a href="simple1.html#cb19-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-29"><a href="simple1.html#cb19-29" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate Bayes Factor</span></span>
-<span id="cb19-30"><a href="simple1.html#cb19-30" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(anxiety_score <span class="sc">~</span> physical_activity, <span class="at">data =</span> mentalh)</span></code></pre></div>
+<span id="cb19-10"><a href="simple1.html#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation</span></span>
+<span id="cb19-11"><a href="simple1.html#cb19-11" aria-hidden="true" tabindex="-1"></a>mentalh <span class="sc">%&gt;%</span> <span class="fu">select</span>(anxiety_score, physical_activity) <span class="sc">%&gt;%</span> <span class="fu">correlate</span>()</span>
+<span id="cb19-12"><a href="simple1.html#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="simple1.html#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># simple regression model</span></span>
+<span id="cb19-14"><a href="simple1.html#cb19-14" aria-hidden="true" tabindex="-1"></a>model_activity <span class="ot">&lt;-</span> <span class="fu">lm</span>(anxiety_score <span class="sc">~</span> physical_activity, <span class="at">data =</span> mentalh)</span>
+<span id="cb19-15"><a href="simple1.html#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="simple1.html#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co"># look at intercept and slope</span></span>
+<span id="cb19-17"><a href="simple1.html#cb19-17" aria-hidden="true" tabindex="-1"></a>model_activity</span>
+<span id="cb19-18"><a href="simple1.html#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="simple1.html#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="co"># look at plot of fitted values and residuals</span></span>
+<span id="cb19-20"><a href="simple1.html#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(model_activity) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-21"><a href="simple1.html#cb19-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fitted, <span class="at">y=</span>.resid)) <span class="sc">+</span></span>
+<span id="cb19-22"><a href="simple1.html#cb19-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb19-23"><a href="simple1.html#cb19-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)</span>
+<span id="cb19-24"><a href="simple1.html#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-25"><a href="simple1.html#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="co"># look at R-squared</span></span>
+<span id="cb19-26"><a href="simple1.html#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(model_activity)</span>
+<span id="cb19-27"><a href="simple1.html#cb19-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-28"><a href="simple1.html#cb19-28" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate Bayes Factor</span></span>
+<span id="cb19-29"><a href="simple1.html#cb19-29" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(anxiety_score <span class="sc">~</span> physical_activity, <span class="at">data =</span> mentalh)</span></code></pre></div>
 </div>
 <div class="webex-solution">
 <button>
 Solution: interpretation
 </button>
-<p>No, there's no evidence that the anxiety scores are predicted by self reported measures of moderate-to-vigorous levels of physical activity. The two measures showed virtually no correlation, r = -0.01. The regression equation was Predicted Anxiety Score = 6.23 - 0.0001(physical activity), and the model explained no variance in anxiety score with the adjusted R<sup>2</sup> = -0.0017. The Bayes Factor was equal to 0.10. Given that this value of the Bayes Factor is less than 0.33, this indicates strong evidence for the intercept-only model, compared to the simple regression model where physical activity is the sole predictor of anxiety scores. In other words, if we only had these two variables, the best predictor of anxiety scores would be the mean value of the anxiety scores.</p>
+<p>No, there's no evidence that the anxiety scores are predicted by self reported measures of moderate-to-vigorous levels of physical activity. The two measures showed virtually no correlation, <em>r</em> = -0.01. The regression equation was Predicted Anxiety Score = 6.23 - 0.0001(physical activity), and the model explained no variance in anxiety score with the adjusted R<sup>2</sup> = -0.0017. The Bayes Factor was equal to 0.10. Given that this value of the Bayes Factor is less than 0.33, this indicates strong evidence for the intercept-only model, compared to the simple regression model where physical activity is the sole predictor of anxiety scores. In other words, if we only had these two variables, the best predictor of anxiety scores would be the mean value of the anxiety scores.</p>
 <p><br />
 </p>
 <p>Interestingly, although there appears to be no relationship between anxiety and physical activity in this sample of individuals (mothers), other populations do apparently show reductions in anxiety with greater levels of vigorous physical activity (e.g., in adolescents, see Hrafnkelsdottir et al., 2018).</p>
@@ -872,13 +870,13 @@ Solution: interpretation
 <ul>
 <li><p>precisely <strong>describe the relationship</strong> between the outcome and predictor variables (whether positive or negative).</p></li>
 <li><p>derive <strong>predictions</strong> for the outcome variable, given new values of the predictor variable.</p></li>
-<li><p><strong>evaluate</strong> the model with R<sup>2</sup> and by comparing it to an intercept-only model</p></li>
+<li><p><strong>evaluate</strong> the model with R<sup>2</sup> and use Bayes factor to compare how much more likely it is to an intercept-only model</p></li>
 </ul></li>
 </ul>
 <p><br />
 </p>
 <ul>
-<li><p>Key functions</p>
+<li><p><strong>Key functions</strong></p>
 <ul>
 <li><p>Visualise the data: <code>ggplot()</code></p></li>
 <li><p>Simple regression: <code>lm()</code></p></li>
