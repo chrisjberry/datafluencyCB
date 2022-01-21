@@ -6,6 +6,8 @@
 
 
 
+<!--
+commented text
 
 
 <style>
@@ -16,9 +18,7 @@ div.exercise { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 </style>
 
-
-<!--
-commented text
+Add in the Tychenne & Hinkley study here with all the covariates. 
 
 ### Using ANOVA and Bayes Factors to compare models
 

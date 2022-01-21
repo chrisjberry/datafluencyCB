@@ -25,11 +25,11 @@ commented text
 # Overview {-}
 
 
-This workbook contains details of the seven sessions given by **Chris Berry**:  
+This workbook contains worksheets for the seven sessions given by **Chris Berry**:  
 
 - 17/01/22. [Simple regression](#simple1)
  
-- 24/01/22. Multiple regression 1: multiple continuous predictors
+- 24/01/22. [Multiple regression 1: multiple continuous predictors](#multiple1)
 
 - 31/01/22. ANOVA 1
 
@@ -37,7 +37,7 @@ This workbook contains details of the seven sessions given by **Chris Berry**:
 
 - 14/02/22. Multiple regression 3: evaluating and comparing models
 
-- 21/02/22. No session
+  (21/02/22. No session)
 
 - 28/02/22. ANOVA 2
 
@@ -47,7 +47,7 @@ This workbook contains details of the seven sessions given by **Chris Berry**:
 
 It also contains details of:
 
-- the **Analysis Assessment** (50% of module grade)
+- the **Analysis Assessment** (50% of module grade) (released in 3rd session)
 
 - the assessment FAQs
 

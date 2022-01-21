@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="multiple-regression-one-continuous-one-categorical.html"/>
-<link rel="next" href="anova-repeated-measures.html"/>
+<link rel="prev" href="mutliple2.html"/>
+<link rel="next" href="anova2.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -52,6 +52,8 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 
@@ -156,14 +158,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.8" data-path="simple1.html"><a href="simple1.html#summary"><i class="fa fa-check"></i><b>1.8</b> Summary</a></li>
 <li class="chapter" data-level="1.9" data-path="simple1.html"><a href="simple1.html#references"><i class="fa fa-check"></i><b>1.9</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="multiple1.html"><a href="multiple1.html"><i class="fa fa-check"></i><b>2</b> Multiple regression: multiple continuous predictors</a></li>
-<li class="chapter" data-level="3" data-path="anova-one-way-and-2x2-between-subjects.html"><a href="anova-one-way-and-2x2-between-subjects.html"><i class="fa fa-check"></i><b>3</b> ANOVA: One-way (and 2x2 Between-subjects)</a></li>
-<li class="chapter" data-level="4" data-path="multiple-regression-one-continuous-one-categorical.html"><a href="multiple-regression-one-continuous-one-categorical.html"><i class="fa fa-check"></i><b>4</b> Multiple regression: one continuous, one categorical</a></li>
+<li class="chapter" data-level="2" data-path="multiple1.html"><a href="multiple1.html"><i class="fa fa-check"></i><b>2</b> Multiple regression: multiple continuous predictors</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="multiple1.html"><a href="multiple1.html#overview-2"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="multiple1.html"><a href="multiple1.html#worked-example-1"><i class="fa fa-check"></i><b>2.2</b> Worked example</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="multiple1.html"><a href="multiple1.html#residual-plot"><i class="fa fa-check"></i><b>2.2.1</b> Residual plot</a></li>
+<li class="chapter" data-level="2.2.2" data-path="multiple1.html"><a href="multiple1.html#evaluating-the-model-bayes-factor"><i class="fa fa-check"></i><b>2.2.2</b> Evaluating the model: Bayes Factor</a></li>
+<li class="chapter" data-level="2.2.3" data-path="multiple1.html"><a href="multiple1.html#evaluating-the-model-r2"><i class="fa fa-check"></i><b>2.2.3</b> Evaluating the model: R<sup>2</sup></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="multiple1.html"><a href="multiple1.html#understanding-the-contribution-of-individual-predictors"><i class="fa fa-check"></i><b>2.3</b> Understanding the contribution of individual predictors</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="multiple1.html"><a href="multiple1.html#r2-in-simple-vs.-multiple-regression"><i class="fa fa-check"></i><b>2.3.1</b> R<sup>2</sup> in simple vs. multiple regression</a></li>
+<li class="chapter" data-level="2.3.2" data-path="multiple1.html"><a href="multiple1.html#venn-diagrams"><i class="fa fa-check"></i><b>2.3.2</b> Venn Diagrams</a></li>
+<li class="chapter" data-level="2.3.3" data-path="multiple1.html"><a href="multiple1.html#using-bayes-factors-to-assess-the-unique-contribution-of-predictors"><i class="fa fa-check"></i><b>2.3.3</b> Using Bayes factors to assess the unique contribution of predictors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="multiple1.html"><a href="multiple1.html#multicollinearity"><i class="fa fa-check"></i><b>2.4</b> Multicollinearity</a></li>
+<li class="chapter" data-level="2.5" data-path="multiple1.html"><a href="multiple1.html#exercise-1"><i class="fa fa-check"></i><b>2.5</b> Exercise</a></li>
+<li class="chapter" data-level="2.6" data-path="multiple1.html"><a href="multiple1.html#further-exercises-1"><i class="fa fa-check"></i><b>2.6</b> Further exercises</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="multiple1.html"><a href="multiple1.html#regressionbf"><i class="fa fa-check"></i><b>2.6.1</b> <code>regressionBF()</code></a></li>
+<li class="chapter" data-level="2.6.2" data-path="multiple1.html"><a href="multiple1.html#predicting-new-data"><i class="fa fa-check"></i><b>2.6.2</b> Predicting new data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="multiple1.html"><a href="multiple1.html#summary-of-key-points"><i class="fa fa-check"></i><b>2.7</b> Summary of key points</a></li>
+<li class="chapter" data-level="2.8" data-path="multiple1.html"><a href="multiple1.html#references-1"><i class="fa fa-check"></i><b>2.8</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="anova1.html"><a href="anova1.html"><i class="fa fa-check"></i><b>3</b> ANOVA: between-subjects designs</a></li>
+<li class="chapter" data-level="4" data-path="mutliple2.html"><a href="mutliple2.html"><i class="fa fa-check"></i><b>4</b> Multiple regression: one continuous, one categorical</a></li>
 <li class="chapter" data-level="5" data-path="multiple3.html"><a href="multiple3.html"><i class="fa fa-check"></i><b>5</b> Multiple regression: evaluating and comparing models</a></li>
-<li class="chapter" data-level="6" data-path="anova-repeated-measures.html"><a href="anova-repeated-measures.html"><i class="fa fa-check"></i><b>6</b> ANOVA: Repeated measures</a></li>
-<li class="chapter" data-level="7" data-path="pre-post-data-effect-sizes-clinically-significant-change.html"><a href="pre-post-data-effect-sizes-clinically-significant-change.html"><i class="fa fa-check"></i><b>7</b> Pre-post data, effect sizes, clinically significant change</a></li>
-<li class="chapter" data-level="8" data-path="data-analysis-assessment-2022.html"><a href="data-analysis-assessment-2022.html"><i class="fa fa-check"></i><b>8</b> Data Analysis Assessment 2022</a></li>
-<li class="chapter" data-level="9" data-path="data-analysis-assessment-2022-faqs.html"><a href="data-analysis-assessment-2022-faqs.html"><i class="fa fa-check"></i><b>9</b> Data Analysis Assessment 2022: FAQs</a></li>
+<li class="chapter" data-level="6" data-path="anova2.html"><a href="anova2.html"><i class="fa fa-check"></i><b>6</b> ANOVA: Repeated measures</a></li>
+<li class="chapter" data-level="7" data-path="prepost.html"><a href="prepost.html"><i class="fa fa-check"></i><b>7</b> Pre-post data, effect sizes, clinically significant change</a></li>
+<li class="chapter" data-level="8" data-path="assessment2022.html"><a href="assessment2022.html"><i class="fa fa-check"></i><b>8</b> Data Analysis Assessment 2022</a></li>
+<li class="chapter" data-level="9" data-path="faqs.html"><a href="faqs.html"><i class="fa fa-check"></i><b>9</b> FAQs</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="faqs.html"><a href="faqs.html#e-meaning"><i class="fa fa-check"></i><b>9.1</b> What does it mean if RStudio prints out "e-" next to a number?</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="divider"></li>
 <li><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" 
@@ -192,14 +221,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Session 5</span> Multiple regression: evaluating and comparing models</h1>
 <p><em>Chris Berry</em><br />
 <em>2022</em></p>
+<!--
+commented text
+
+
 <style>
 div.exercise { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
+
 <style>
 div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 </style>
-<!--
-commented text
+
+Add in the Tychenne & Hinkley study here with all the covariates. 
 
 ### Using ANOVA and Bayes Factors to compare models
 
@@ -1332,8 +1366,8 @@ window.onload = function() {
           </div>
         </div>
       </div>
-<a href="multiple-regression-one-continuous-one-categorical.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="anova-repeated-measures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="mutliple2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="anova2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1389,6 +1423,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

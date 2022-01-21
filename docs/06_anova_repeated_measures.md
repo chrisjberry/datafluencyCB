@@ -1,4 +1,4 @@
-# ANOVA: Repeated measures
+# ANOVA: Repeated measures {#anova2}
 
 *Chris Berry*
 \

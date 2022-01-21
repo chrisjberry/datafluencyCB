@@ -1,4 +1,4 @@
-# Multiple regression: one continuous, one categorical
+# Multiple regression: one continuous, one categorical {#mutliple2}
 
 *Chris Berry*
 \
