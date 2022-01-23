@@ -196,11 +196,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="anova1.html"><a href="anova1.html#worked-example-3"><i class="fa fa-check"></i><b>3.3.1</b> Worked example</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="anova1.html"><a href="anova1.html#exercises"><i class="fa fa-check"></i><b>3.4</b> Exercises</a>
-<ul>
-<li class="chapter" data-level="3.4.1" data-path="anova1.html"><a href="anova1.html#further"><i class="fa fa-check"></i><b>3.4.1</b> Further</a></li>
-</ul></li>
-<li class="chapter" data-level="3.5" data-path="anova1.html"><a href="anova1.html#references-2"><i class="fa fa-check"></i><b>3.5</b> References</a></li>
+<li class="chapter" data-level="3.4" data-path="anova1.html"><a href="anova1.html#exercises"><i class="fa fa-check"></i><b>3.4</b> Exercises</a></li>
+<li class="chapter" data-level="3.5" data-path="anova1.html"><a href="anova1.html#further-exercise"><i class="fa fa-check"></i><b>3.5</b> Further Exercise</a></li>
+<li class="chapter" data-level="3.6" data-path="anova1.html"><a href="anova1.html#references-2"><i class="fa fa-check"></i><b>3.6</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="mutliple2.html"><a href="mutliple2.html"><i class="fa fa-check"></i><b>4</b> Multiple regression: one continuous, one categorical</a></li>
 <li class="chapter" data-level="5" data-path="multiple3.html"><a href="multiple3.html"><i class="fa fa-check"></i><b>5</b> Multiple regression: evaluating and comparing models</a>
@@ -822,12 +820,12 @@ nobs
 <p><br />
 </p>
 <p>First, obtain the Bayes Factor for the model in which <code>predictor_1</code> has been left out of the full model. Then obtain the Bayes Factor for model in which <code>predictor_2</code> has been left out of the model. Repeat this for as many predictors you have in the model.</p>
-<p>In our example, this involves obtaining the BFs of the model of <code>wellbeing ~ worry</code>, and the BF of the model of <code>wellbeing ~ describing</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="multiple1.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BF for wellbeing ~ worry</span></span>
-<span id="cb13-2"><a href="multiple1.html#cb13-2" aria-hidden="true" tabindex="-1"></a>worry_BF <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> worry, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<p>In our example, this involves obtaining the BFs of the model of <code>wellbeing ~ describing</code>, and the BF of the model of <code>wellbeing ~ worry</code>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="multiple1.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BF for wellbeing ~ describing</span></span>
+<span id="cb13-2"><a href="multiple1.html#cb13-2" aria-hidden="true" tabindex="-1"></a>describing_BF <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> describing, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
 <span id="cb13-3"><a href="multiple1.html#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="multiple1.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># BF for wellbeing ~ describing</span></span>
-<span id="cb13-5"><a href="multiple1.html#cb13-5" aria-hidden="true" tabindex="-1"></a>describing_BF <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> describing, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span></code></pre></div>
+<span id="cb13-4"><a href="multiple1.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># BF for wellbeing ~ worry</span></span>
+<span id="cb13-5"><a href="multiple1.html#cb13-5" aria-hidden="true" tabindex="-1"></a>worry_BF <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> worry, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span></code></pre></div>
 <p>We also need the BF for the full model:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="multiple1.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BF for wellbeing ~ worry + describing</span></span>
 <span id="cb14-2"><a href="multiple1.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (this is the same as multiple1_BF above, but </span></span>
@@ -840,30 +838,16 @@ nobs
 <p>We can use the following general formula to determine whether there's evidence for a more complex version of a model, relative to a simpler model:</p>
 <p><code>BF_more_complex_model / BF_simpler_model</code></p>
 <p>That is, we divide the BF for the more complex model by the BF for the simpler one. This then tells us <em>how many more times more likely the more complex model is, relative to the simpler one.</em></p>
-<p>For example, if <code>BF_more_complex_model = 10</code> and <code>BF_simpler_model = 2</code>, then the more complex model is five times more likely than the simpler one (because 10 / 2 = 5). There'd be strong evidence to prefer the more complex model.</p>
+<p>For example, if <code>BF_more_complex_model = 10</code> and <code>BF_simpler_model = 2</code>, then the more complex model is five times more likely than the simpler one (because 10 / 2 = 5). There'd be substantial evidence to prefer the more complex model.</p>
 </div>
 <p><br />
 </p>
-<p>In our case, we can compare Bayes Factor of the full model (<code>worry_describing_BF</code>) with that of our simpler models (<code>worry_BF</code>) and (<code>describing_BF</code>) in order to determine whether each predictor makes a unique contribution to the full model or not.</p>
-<p><br />
-</p>
-<p>To determine if there's evidence for the unique contribution of <code>describing</code> to the model:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="multiple1.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BFs for the full model and one in which describing is left out</span></span>
-<span id="cb15-2"><a href="multiple1.html#cb15-2" aria-hidden="true" tabindex="-1"></a>worry_describing_BF <span class="sc">/</span> worry_BF</span></code></pre></div>
-<pre><code>## Bayes factor analysis
-## --------------
-## [1] worry + describing : 738.4095 ±0%
-## 
-## Against denominator:
-##   wellbeing ~ worry 
-## ---
-## Bayes factor type: BFlinearModel, JZS</code></pre>
-<p>The BF comparing the full model with one containing <code>worry</code> alone is <strong>738.41</strong>. This indicates that the model with both <code>worry</code> and <code>describing</code> is over seven hundred times more likely than the model with <code>worry</code> alone. The BF is greater than 3, so this indicates substantial evidence for the unique contribution of <code>describing</code> to the prediction of <code>wellbeing</code>.</p>
+<p>In our case, we can compare Bayes Factor of the full model (<code>worry_describing_BF</code>) with that of our simpler models (<code>describing_BF</code>) and (<code>worry_BF</code>) in order to determine whether each predictor makes a unique contribution to the full model or not.</p>
 <p><br />
 </p>
 <p>To determine if there's evidence for the unique contribution of <code>worry</code> to the model:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="multiple1.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare BFs for the full model and one in which worry is left out</span></span>
-<span id="cb17-2"><a href="multiple1.html#cb17-2" aria-hidden="true" tabindex="-1"></a>worry_describing_BF <span class="sc">/</span> describing_BF</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="multiple1.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare BFs for the full model and one in which worry is left out</span></span>
+<span id="cb15-2"><a href="multiple1.html#cb15-2" aria-hidden="true" tabindex="-1"></a>worry_describing_BF <span class="sc">/</span> describing_BF</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] worry + describing : 981.4912 ±0%
@@ -873,7 +857,21 @@ nobs
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
 <p>The BF for the comparison is <strong>981.49</strong>, indicating that there's substantial evidence that the addition of <code>worry</code> to a model containing <code>describing</code> improves the model. In other words, there's evidence for a unique contribution of <code>worry</code> to the prediction of <code>wellbeing</code>.</p>
-<p>Thus, in a multiple regression model, there's substantial evidence that both <code>worry</code> and <code>describing</code> predict <code>wellbeing</code> overall (BF = 4,190,994). There's also substantial evidence that <code>describing</code> (BF = 738.41) and <code>worry</code> (BF = 981.49) make unique contributions to this model. The model with both predictors included therefore seems justified.</p>
+<p><br />
+</p>
+<p>To determine if there's evidence for the unique contribution of <code>describing</code> to the model:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="multiple1.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BFs for the full model and one in which describing is left out</span></span>
+<span id="cb17-2"><a href="multiple1.html#cb17-2" aria-hidden="true" tabindex="-1"></a>worry_describing_BF <span class="sc">/</span> worry_BF</span></code></pre></div>
+<pre><code>## Bayes factor analysis
+## --------------
+## [1] worry + describing : 738.4095 ±0%
+## 
+## Against denominator:
+##   wellbeing ~ worry 
+## ---
+## Bayes factor type: BFlinearModel, JZS</code></pre>
+<p>The BF comparing the full model with one containing <code>worry</code> alone is <strong>738.41</strong>. This indicates that the model with both <code>worry</code> and <code>describing</code> is over seven hundred times more likely than the model with <code>worry</code> alone. The BF is greater than 3, so this indicates substantial evidence for the unique contribution of <code>describing</code> to the prediction of <code>wellbeing</code>.</p>
+<p>Thus, in a multiple regression model, there's substantial evidence that both <code>worry</code> and <code>describing</code> predict <code>wellbeing</code> overall (BF = 4,190,994). There's also substantial evidence that <code>worry</code> (BF = 981.49) and <code>describing</code> (BF = 738.41) make unique contributions to this model. The model with both predictors included therefore seems justified.</p>
 <p><br />
 </p>
 </div>
@@ -991,8 +989,8 @@ Solution
 <p><br />
 </p>
 <p>What is the regression equation?</p>
-<div id="radio_JGBZBAHTRF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JGBZBAHTRF" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_JGBZBAHTRF" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_JGBZBAHTRF" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label>
+<div id="radio_RXSLLMKBKC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RXSLLMKBKC" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_RXSLLMKBKC" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_RXSLLMKBKC" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label>
 </div>
 <p><br />
 </p>
