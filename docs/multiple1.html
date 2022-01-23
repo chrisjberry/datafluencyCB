@@ -995,8 +995,8 @@ Solution
 <p><br />
 </p>
 <p>What is the regression equation?</p>
-<div id="radio_PBUJCKYTEU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PBUJCKYTEU" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_PBUJCKYTEU" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_PBUJCKYTEU" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label>
+<div id="radio_XDLISJKVEN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XDLISJKVEN" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_XDLISJKVEN" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_XDLISJKVEN" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label>
 </div>
 <p><br />
 </p>
@@ -1157,9 +1157,23 @@ Solution
 </ul>
 <p><br />
 </p>
+<p>Comparing the BF for [3] and [2] will tell us whether there's evidence that <code>worry</code> makes a unique contribution.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="multiple1.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare multiple regression with simple regression 2</span></span>
+<span id="cb28-2"><a href="multiple1.html#cb28-2" aria-hidden="true" tabindex="-1"></a>all_BFs[<span class="dv">3</span>] <span class="sc">/</span> all_BFs[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## Bayes factor analysis
+## --------------
+## [1] worry + describing : 981.4912 ±0%
+## 
+## Against denominator:
+##   wellbeing ~ describing 
+## ---
+## Bayes factor type: BFlinearModel, JZS</code></pre>
+<p>The BF for this comparison is <strong>981.49</strong>, which matches the BF for the unique contribution of <code>describing</code> calculated earlier.</p>
+<p><br />
+</p>
 <p>Comparing the BF for [3] and [1] will therefore tell us whether there's evidence that <code>describing</code> makes a unique contribution to the model:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="multiple1.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BF for [3] and [1]</span></span>
-<span id="cb28-2"><a href="multiple1.html#cb28-2" aria-hidden="true" tabindex="-1"></a>all_BFs[<span class="dv">3</span>] <span class="sc">/</span> all_BFs[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="multiple1.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BF for [3] and [1]</span></span>
+<span id="cb30-2"><a href="multiple1.html#cb30-2" aria-hidden="true" tabindex="-1"></a>all_BFs[<span class="dv">3</span>] <span class="sc">/</span> all_BFs[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] worry + describing : 738.4095 ±0%
@@ -1171,18 +1185,6 @@ Solution
 <p>The BF for this comparison is <strong>738.41</strong>, which matches the BF for the unique contribution of <code>describing</code> calculated earlier.</p>
 <p><br />
 </p>
-<p>Comparing the BF for [3] and [2] will tell us whether there's evidence that <code>worry</code> makes a unique contribution.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="multiple1.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare multiple regression with simple regression 2</span></span>
-<span id="cb30-2"><a href="multiple1.html#cb30-2" aria-hidden="true" tabindex="-1"></a>all_BFs[<span class="dv">3</span>] <span class="sc">/</span> all_BFs[<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## Bayes factor analysis
-## --------------
-## [1] worry + describing : 981.4912 ±0%
-## 
-## Against denominator:
-##   wellbeing ~ describing 
-## ---
-## Bayes factor type: BFlinearModel, JZS</code></pre>
-<p>The BF for this comparison is <strong>981.49</strong>, which matches the BF for the unique contribution of <code>describing</code> calculated earlier.</p>
 <p>Thus, the BFs derived by this method are the same as when we used <code>lmBF()</code> in the main section of the worksheet.</p>
 <p><br />
 </p>
@@ -1291,9 +1293,9 @@ describing
 <p><span id="exr:unlabeled-div-4" class="exercise"><strong>Exercise 2.4  </strong></span>Predicting data</p>
 <p>For the model in the main exercise (i.e., <code>gad ~ brooding + observing</code>), what are the predicted values of <code>gad</code> for three new individuals with <code>brooding</code> scores of 10, 15, and 20, and <code>observing</code> scores of 3, 6 and 9, respectively.</p>
 <ul>
-<li>Predicted GAD of participant 1 (to two decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["8.87"]'/></li>
-<li>Predicted GAD of participant 2 (to two decimal places) = <input class='webex-solveme nospaces' size='5' data-answer='["13.24"]'/></li>
-<li>Predicted GAD of participant 3 (to two decimal places) = <input class='webex-solveme nospaces' size='5' data-answer='["17.61"]'/></li>
+<li>Predicted GAD of participant 1 (to one decimal place) = <input class='webex-solveme nospaces' size='3' data-answer='["8.9"]'/></li>
+<li>Predicted GAD of participant 2 (to one decimal place) = <input class='webex-solveme nospaces' size='4' data-answer='["13.2"]'/></li>
+<li>Predicted GAD of participant 3 (to one decimal place) = <input class='webex-solveme nospaces' size='4' data-answer='["17.6"]'/></li>
 </ul>
 <div class="webex-solution">
 <button>
