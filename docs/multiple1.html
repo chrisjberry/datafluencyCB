@@ -995,8 +995,8 @@ Solution
 <p><br />
 </p>
 <p>What is the regression equation?</p>
-<div id="radio_SJODLFJRSJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_SJODLFJRSJ" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_SJODLFJRSJ" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_SJODLFJRSJ" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label>
+<div id="radio_ETYHOHXOYM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ETYHOHXOYM" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_ETYHOHXOYM" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_ETYHOHXOYM" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label>
 </div>
 <p><br />
 </p>
@@ -1336,300 +1336,53 @@ Solution
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="multiple1.html#cb35-1" aria-hidden="true" tabindex="-1"></a>wellbeing_data <span class="sc">%&gt;%</span> </span>
 <span id="cb35-2"><a href="multiple1.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(wellbeing, attention, clarity, repair) <span class="sc">%&gt;%</span> </span>
 <span id="cb35-3"><a href="multiple1.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlate</span>(<span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## Correlation method: &#39;pearson&#39;
-## Missing treated using: &#39;pairwise.complete.obs&#39;</code></pre>
-<div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-term
-</th>
-<th style="text-align:right;">
-wellbeing
-</th>
-<th style="text-align:right;">
-attention
-</th>
-<th style="text-align:right;">
-clarity
-</th>
-<th style="text-align:right;">
-repair
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-wellbeing
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
--0.3162625
-</td>
-<td style="text-align:right;">
-0.3755731
-</td>
-<td style="text-align:right;">
-0.5002038
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-attention
-</td>
-<td style="text-align:right;">
--0.3162625
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-0.1560582
-</td>
-<td style="text-align:right;">
-0.0216476
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-clarity
-</td>
-<td style="text-align:right;">
-0.3755731
-</td>
-<td style="text-align:right;">
-0.1560582
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-0.4078774
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-repair
-</td>
-<td style="text-align:right;">
-0.5002038
-</td>
-<td style="text-align:right;">
-0.0216476
-</td>
-<td style="text-align:right;">
-0.4078774
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 <p> </p>
 <p>Run multiple regression:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="multiple1.html#cb37-1" aria-hidden="true" tabindex="-1"></a>multiple3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, <span class="at">data =</span> wellbeing_data)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="multiple1.html#cb36-1" aria-hidden="true" tabindex="-1"></a>multiple3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, <span class="at">data =</span> wellbeing_data)</span></code></pre></div>
 <p><br />
 </p>
 <p>Adjusted R<sup>2</sup> for the overall model:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="multiple1.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>( multiple3 )</span></code></pre></div>
-<div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:right;">
-r.squared
-</th>
-<th style="text-align:right;">
-adj.r.squared
-</th>
-<th style="text-align:right;">
-sigma
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-<th style="text-align:right;">
-df
-</th>
-<th style="text-align:right;">
-logLik
-</th>
-<th style="text-align:right;">
-AIC
-</th>
-<th style="text-align:right;">
-BIC
-</th>
-<th style="text-align:right;">
-deviance
-</th>
-<th style="text-align:right;">
-df.residual
-</th>
-<th style="text-align:right;">
-nobs
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-0.4167062
-</td>
-<td style="text-align:right;">
-0.3884823
-</td>
-<td style="text-align:right;">
-9.889914
-</td>
-<td style="text-align:right;">
-14.76431
-</td>
-<td style="text-align:right;">
-2e-07
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--242.8268
-</td>
-<td style="text-align:right;">
-495.6536
-</td>
-<td style="text-align:right;">
-506.6019
-</td>
-<td style="text-align:right;">
-6064.245
-</td>
-<td style="text-align:right;">
-62
-</td>
-<td style="text-align:right;">
-66
-</td>
-</tr>
-</tbody>
-</table>
-</div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="multiple1.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>( multiple3 )</span></code></pre></div>
 <p><br />
 </p>
 <p>Using <code>lmBF()</code>:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="multiple1.html#cb39-1" aria-hidden="true" tabindex="-1"></a>BF_attention_clarity_repair <span class="ot">&lt;-</span></span>
-<span id="cb39-2"><a href="multiple1.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
-<span id="cb39-3"><a href="multiple1.html#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="multiple1.html#cb39-4" aria-hidden="true" tabindex="-1"></a>BF_attention_clarity <span class="ot">&lt;-</span></span>
-<span id="cb39-5"><a href="multiple1.html#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> clarity, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
-<span id="cb39-6"><a href="multiple1.html#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-7"><a href="multiple1.html#cb39-7" aria-hidden="true" tabindex="-1"></a>BF_attention_repair <span class="ot">&lt;-</span></span>
-<span id="cb39-8"><a href="multiple1.html#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> repair, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
-<span id="cb39-9"><a href="multiple1.html#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-10"><a href="multiple1.html#cb39-10" aria-hidden="true" tabindex="-1"></a>BF_clarity_repair <span class="ot">&lt;-</span></span>
-<span id="cb39-11"><a href="multiple1.html#cb39-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> clarity <span class="sc">+</span> repair, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
-<span id="cb39-12"><a href="multiple1.html#cb39-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-13"><a href="multiple1.html#cb39-13" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of attention</span></span>
-<span id="cb39-14"><a href="multiple1.html#cb39-14" aria-hidden="true" tabindex="-1"></a>BF_attention_clarity_repair <span class="sc">/</span> BF_clarity_repair</span>
-<span id="cb39-15"><a href="multiple1.html#cb39-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-16"><a href="multiple1.html#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of clarity</span></span>
-<span id="cb39-17"><a href="multiple1.html#cb39-17" aria-hidden="true" tabindex="-1"></a>BF_attention_clarity_repair <span class="sc">/</span> BF_attention_repair</span>
-<span id="cb39-18"><a href="multiple1.html#cb39-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-19"><a href="multiple1.html#cb39-19" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of repair</span></span>
-<span id="cb39-20"><a href="multiple1.html#cb39-20" aria-hidden="true" tabindex="-1"></a>BF_attention_clarity_repair <span class="sc">/</span> BF_attention_clarity</span></code></pre></div>
-<pre><code>## Bayes factor analysis
-## --------------
-## [1] attention + clarity + repair : 81.00941 ±0%
-## 
-## Against denominator:
-##   wellbeing ~ clarity + repair 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-## 
-## Bayes factor analysis
-## --------------
-## [1] attention + clarity + repair : 3.836891 ±0%
-## 
-## Against denominator:
-##   wellbeing ~ attention + repair 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-## 
-## Bayes factor analysis
-## --------------
-## [1] attention + clarity + repair : 82.35924 ±0%
-## 
-## Against denominator:
-##   wellbeing ~ attention + clarity 
-## ---
-## Bayes factor type: BFlinearModel, JZS</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="multiple1.html#cb38-1" aria-hidden="true" tabindex="-1"></a>BF_attention_clarity_repair <span class="ot">&lt;-</span></span>
+<span id="cb38-2"><a href="multiple1.html#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<span id="cb38-3"><a href="multiple1.html#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="multiple1.html#cb38-4" aria-hidden="true" tabindex="-1"></a>BF_attention_clarity <span class="ot">&lt;-</span></span>
+<span id="cb38-5"><a href="multiple1.html#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> clarity, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<span id="cb38-6"><a href="multiple1.html#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="multiple1.html#cb38-7" aria-hidden="true" tabindex="-1"></a>BF_attention_repair <span class="ot">&lt;-</span></span>
+<span id="cb38-8"><a href="multiple1.html#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> repair, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<span id="cb38-9"><a href="multiple1.html#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="multiple1.html#cb38-10" aria-hidden="true" tabindex="-1"></a>BF_clarity_repair <span class="ot">&lt;-</span></span>
+<span id="cb38-11"><a href="multiple1.html#cb38-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> clarity <span class="sc">+</span> repair, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<span id="cb38-12"><a href="multiple1.html#cb38-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-13"><a href="multiple1.html#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of attention</span></span>
+<span id="cb38-14"><a href="multiple1.html#cb38-14" aria-hidden="true" tabindex="-1"></a>BF_attention_clarity_repair <span class="sc">/</span> BF_clarity_repair</span>
+<span id="cb38-15"><a href="multiple1.html#cb38-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-16"><a href="multiple1.html#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of clarity</span></span>
+<span id="cb38-17"><a href="multiple1.html#cb38-17" aria-hidden="true" tabindex="-1"></a>BF_attention_clarity_repair <span class="sc">/</span> BF_attention_repair</span>
+<span id="cb38-18"><a href="multiple1.html#cb38-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-19"><a href="multiple1.html#cb38-19" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of repair</span></span>
+<span id="cb38-20"><a href="multiple1.html#cb38-20" aria-hidden="true" tabindex="-1"></a>BF_attention_clarity_repair <span class="sc">/</span> BF_attention_clarity</span></code></pre></div>
 <p><br />
 </p>
 <p>Using <code>regressionBF()</code>:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="multiple1.html#cb41-1" aria-hidden="true" tabindex="-1"></a>all_BFs <span class="ot">&lt;-</span></span>
-<span id="cb41-2"><a href="multiple1.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">regressionBF</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
-<span id="cb41-3"><a href="multiple1.html#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="multiple1.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># look at output</span></span>
-<span id="cb41-5"><a href="multiple1.html#cb41-5" aria-hidden="true" tabindex="-1"></a>all_BFs</span>
-<span id="cb41-6"><a href="multiple1.html#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-7"><a href="multiple1.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of attention</span></span>
-<span id="cb41-8"><a href="multiple1.html#cb41-8" aria-hidden="true" tabindex="-1"></a>all_BFs[<span class="dv">7</span>] <span class="sc">/</span> all_BFs[<span class="dv">6</span>]</span>
-<span id="cb41-9"><a href="multiple1.html#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-10"><a href="multiple1.html#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of clarity</span></span>
-<span id="cb41-11"><a href="multiple1.html#cb41-11" aria-hidden="true" tabindex="-1"></a>all_BFs[<span class="dv">7</span>] <span class="sc">/</span> all_BFs[<span class="dv">5</span>]</span>
-<span id="cb41-12"><a href="multiple1.html#cb41-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-13"><a href="multiple1.html#cb41-13" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of repair</span></span>
-<span id="cb41-14"><a href="multiple1.html#cb41-14" aria-hidden="true" tabindex="-1"></a>all_BFs[<span class="dv">7</span>] <span class="sc">/</span> all_BFs[<span class="dv">4</span>]</span></code></pre></div>
-<pre><code>## Bayes factor analysis
-## --------------
-## [1] attention                    : 4.759631 ±0%
-## [2] clarity                      : 18.08091 ±0.01%
-## [3] repair                       : 960.1706 ±0%
-## [4] attention + clarity          : 874.9426 ±0%
-## [5] attention + repair           : 18780.73 ±0%
-## [6] clarity + repair             : 889.5214 ±0%
-## [7] attention + clarity + repair : 72059.61 ±0%
-## 
-## Against denominator:
-##   Intercept only 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-## 
-## Bayes factor analysis
-## --------------
-## [1] attention + clarity + repair : 81.00941 ±0%
-## 
-## Against denominator:
-##   wellbeing ~ clarity + repair 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-## 
-## Bayes factor analysis
-## --------------
-## [1] attention + clarity + repair : 3.836891 ±0%
-## 
-## Against denominator:
-##   wellbeing ~ attention + repair 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-## 
-## Bayes factor analysis
-## --------------
-## [1] attention + clarity + repair : 82.35924 ±0%
-## 
-## Against denominator:
-##   wellbeing ~ attention + clarity 
-## ---
-## Bayes factor type: BFlinearModel, JZS</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="multiple1.html#cb39-1" aria-hidden="true" tabindex="-1"></a>all_BFs <span class="ot">&lt;-</span></span>
+<span id="cb39-2"><a href="multiple1.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">regressionBF</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<span id="cb39-3"><a href="multiple1.html#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="multiple1.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># look at output</span></span>
+<span id="cb39-5"><a href="multiple1.html#cb39-5" aria-hidden="true" tabindex="-1"></a>all_BFs</span>
+<span id="cb39-6"><a href="multiple1.html#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="multiple1.html#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of attention</span></span>
+<span id="cb39-8"><a href="multiple1.html#cb39-8" aria-hidden="true" tabindex="-1"></a>all_BFs[<span class="dv">7</span>] <span class="sc">/</span> all_BFs[<span class="dv">6</span>]</span>
+<span id="cb39-9"><a href="multiple1.html#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-10"><a href="multiple1.html#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of clarity</span></span>
+<span id="cb39-11"><a href="multiple1.html#cb39-11" aria-hidden="true" tabindex="-1"></a>all_BFs[<span class="dv">7</span>] <span class="sc">/</span> all_BFs[<span class="dv">5</span>]</span>
+<span id="cb39-12"><a href="multiple1.html#cb39-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-13"><a href="multiple1.html#cb39-13" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of repair</span></span>
+<span id="cb39-14"><a href="multiple1.html#cb39-14" aria-hidden="true" tabindex="-1"></a>all_BFs[<span class="dv">7</span>] <span class="sc">/</span> all_BFs[<span class="dv">4</span>]</span></code></pre></div>
 <p><br />
 </p>
 </div>
