@@ -31,7 +31,7 @@ This workbook contains worksheets for the seven sessions given by **Chris Berry*
  
 - 24/01/22. [Multiple regression 1: multiple continuous predictors](#multiple1)
 
-- 31/01/22. ANOVA 1
+- 31/01/22. [ANOVA 1](#anova1)
 
 - 07/02/22. Multiple regression 2: one continuous, one categorical
 
@@ -45,11 +45,11 @@ This workbook contains worksheets for the seven sessions given by **Chris Berry*
 
 \
 
-It also contains details of:
+It also contains a link to the:
 
 - the **Analysis Assessment** (50% of module grade) (released in 3rd session)
 
-- the assessment FAQs
+- FAQs
 
 
 \

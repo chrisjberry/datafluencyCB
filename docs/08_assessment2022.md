@@ -9,6 +9,12 @@
 
 
 
+The instructions for the assessment are in the "Analysis Assessment" submission link, located in the "Assessments" section of the [PSYC753 2020-21 DLE page](https://dle.plymouth.ac.uk/course/view.php?id=56923).
+
+\
+
+Please see the [FAQs](#faqs) on the following page.
+
 
 <!--
 commented text

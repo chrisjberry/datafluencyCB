@@ -167,9 +167,9 @@ wellbeing_data %>%
 </tbody>
 </table>
 
-* The correlation between `wellbeing` and `worry` (to 2 decimal places) is _r_ = <input class='webex-solveme nospaces' size='-.54' data-answer='["-0.54"]'/>
-* The correlation between `wellbeing` and `describing`  (to 2 decimal places) is _r_ = <input class='webex-solveme nospaces' size='0.54' data-answer='[".54"]'/>
-* The correlation between the two predictors (`worry` and `describing`)  (to 2 decimal places) is _r_ = <input class='webex-solveme nospaces' size='-0.25' data-answer='["-.25"]'/>
+* The correlation between `wellbeing` and `worry` (to 2 decimal places) is _r_ = <input class='webex-solveme nospaces' size='5' data-answer='["-0.54","-.54"]'/>
+* The correlation between `wellbeing` and `describing`  (to 2 decimal places) is _r_ = <input class='webex-solveme nospaces' size='4' data-answer='[".54","0.54"]'/>
+* The correlation between the two predictors (`worry` and `describing`)  (to 2 decimal places) is _r_ = <input class='webex-solveme nospaces' size='5' data-answer='["-.25","-0.25"]'/>
 
 :::
 
@@ -349,7 +349,7 @@ glance(multiple1)
 
 </div>
 
-* `r.squared` is **R^2^**, the proportion of variance in `wellbeing` explained by the model. Thus, the model explains 0.4656, or 46.56% of the variance in `wellbeing`.
+* `r.squared` is **R^2^**, the proportion of variance in `wellbeing` explained by the model. Thus, the model explains 0.4653, or 46.53% of the variance in `wellbeing`.
 * `adj.r.squared` is the **Adjusted R^2^** value, which is R^2^ adjusted for the sample size and the number of predictors in the model. It is an estimate of R^2^ for the population (not merely the scores we have in the sample), and is always less than R^2^. You'll see researchers reporting either R^2^ or the adjusted R^2^ in the literature. If you're not sure which one to use, report the adjusted R^2^, and say so (e.g., "adjusted R^2^ = 44.83%"). 
 
 The adjusted R^2^ value is 0.4483, so in a report we could say that a model with `worry` and `describing` explains **44.83%** of the variance in `wellbeing`.
@@ -521,15 +521,15 @@ We can compare Bayes Factors to determine whether a given predictor in a multipl
 
 First, obtain the Bayes Factor for the model in which `predictor_1` has been left out of the full model. Then obtain the Bayes Factor for model in which `predictor_2` has been left out of the model. Repeat this for as many predictors you have in the model. 
 
-In our example, this involves obtaining the BFs of the model of `wellbeing ~ worry`, and the BF of the model of `wellbeing ~ describing`:
+In our example, this involves obtaining the BFs of the model of `wellbeing ~ describing`, and the BF of the model of `wellbeing ~ worry`:
 
 
 ```r
-# BF for wellbeing ~ worry
-worry_BF <- lmBF(wellbeing ~ worry, data = data.frame(wellbeing_data))
-
 # BF for wellbeing ~ describing
 describing_BF <- lmBF(wellbeing ~ describing, data = data.frame(wellbeing_data))
+
+# BF for wellbeing ~ worry
+worry_BF <- lmBF(wellbeing ~ worry, data = data.frame(wellbeing_data))
 ```
 
 We also need the BF for the full model:
@@ -554,13 +554,35 @@ We can use the following general formula to determine whether there's evidence f
 
 That is, we divide the BF for the more complex model by the BF for the simpler one. This then tells us _how many more times more likely the more complex model is, relative to the simpler one._
 
-For example, if `BF_more_complex_model = 10` and `BF_simpler_model = 2`, then the more complex model is five times more likely than the simpler one (because 10 / 2 = 5). There'd be strong evidence to prefer the more complex model.
+For example, if `BF_more_complex_model = 10` and `BF_simpler_model = 2`, then the more complex model is five times more likely than the simpler one (because 10 / 2 = 5). There'd be substantial evidence to prefer the more complex model.
 
 :::
 
 \
 
-In our case, we can compare Bayes Factor of the full model (`worry_describing_BF`) with that of our simpler models (`worry_BF`) and (`describing_BF`) in order to determine whether each predictor makes a unique contribution to the full model or not.
+In our case, we can compare Bayes Factor of the full model (`worry_describing_BF`) with that of our simpler models (`describing_BF`) and (`worry_BF`) in order to determine whether each predictor makes a unique contribution to the full model or not.
+
+\
+
+To determine if there's evidence for the unique contribution of `worry` to the model:
+
+```r
+# compare BFs for the full model and one in which worry is left out
+worry_describing_BF / describing_BF
+```
+
+```
+## Bayes factor analysis
+## --------------
+## [1] worry + describing : 981.4912 ±0%
+## 
+## Against denominator:
+##   wellbeing ~ describing 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+```
+
+The BF for the comparison is **981.49**, indicating that there's substantial evidence that the addition of `worry` to a model containing `describing` improves the model. In other words, there's evidence for a unique contribution of `worry` to the prediction of `wellbeing`.
 
 \
 
@@ -585,29 +607,8 @@ worry_describing_BF / worry_BF
 
 The BF comparing the full model with one containing `worry` alone is **738.41**. This indicates that the model with both `worry` and `describing` is over seven hundred times more likely than the model with `worry` alone. The BF is greater than 3, so this indicates substantial evidence for the unique contribution of `describing` to the prediction of `wellbeing`.
 
-\
 
-To determine if there's evidence for the unique contribution of `worry` to the model:
-
-```r
-# compare BFs for the full model and one in which worry is left out
-worry_describing_BF / describing_BF
-```
-
-```
-## Bayes factor analysis
-## --------------
-## [1] worry + describing : 981.4912 ±0%
-## 
-## Against denominator:
-##   wellbeing ~ describing 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-```
-
-The BF for the comparison is **981.49**, indicating that there's substantial evidence that the addition of `worry` to a model containing `describing` improves the model. In other words, there's evidence for a unique contribution of `worry` to the prediction of `wellbeing`.
-
-Thus, in a multiple regression model, there's substantial evidence that both `worry` and `describing` predict `wellbeing` overall (BF = 4,190,994). There's also substantial evidence that `describing` (BF = 738.41) and `worry` (BF = 981.49) make unique contributions to this model. The model with both predictors included therefore seems justified.
+Thus, in a multiple regression model, there's substantial evidence that both `worry` and `describing` predict `wellbeing` overall (BF = 4,190,994). There's also substantial evidence that `worry` (BF = 981.49) and `describing` (BF = 738.41) make unique contributions to this model. The model with both predictors included therefore seems justified.
 
 
 \
@@ -678,6 +679,16 @@ Pipe `wellbeing_data` to `ggplot()` and use `geom_point()`. Use the `size` optio
 
 
 <div class='webex-solution'><button>Solution</button>
+
+
+```r
+wellbeing_data %>% 
+  ggplot(aes(x = brooding, y = gad, size = observing)) +
+  geom_point() +
+  xlab("Brooding") + 
+  ylab("GAD severity of symptoms score") +
+  theme_classic()
+```
 
 <div class="figure" style="text-align: center">
 <img src="02_multiple_regression_1_files/figure-html/unnamed-chunk-17-1.png" alt="GAD vs. brooding and observing scores" width="50%" />
@@ -770,7 +781,7 @@ What is the value of the coefficient for `observing` (to two decimal places)? <i
 
 What is the regression equation?
 
-<div class='webex-radiogroup' id='radio_ZLYAXUNZPD'><label><input type="radio" autocomplete="off" name="radio_ZLYAXUNZPD" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_ZLYAXUNZPD" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_ZLYAXUNZPD" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label></div>
+<div class='webex-radiogroup' id='radio_ZPDRNQQDBZ'><label><input type="radio" autocomplete="off" name="radio_ZPDRNQQDBZ" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_ZPDRNQQDBZ" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_ZPDRNQQDBZ" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label></div>
 
 
 
@@ -796,7 +807,7 @@ glance(multiple2)
 </div>
 
 
-What proportion of variance in the GAD score is explained by the model containing `brooding` and `observing`? (Report the adjusted R-squared value as a proportion, to two decimal places) <input class='webex-solveme nospaces' size='.35' data-answer='["0.35"]'/>
+What proportion of variance in the GAD score is explained by the model containing `brooding` and `observing`? (Report the adjusted R-squared value as a proportion, to two decimal places) <input class='webex-solveme nospaces' size='4' data-answer='["0.34",".34"]'/>
 
 Report the value of adjusted R-squared as a percentage, to two decimal places: The adjusted R^2^ value is equal to <input class='webex-solveme nospaces' size='5' data-answer='["34.50"]'/>%
 
@@ -859,7 +870,7 @@ augment(multiple2) %>%
 
 <div class='webex-solution'><button>Further interpretation</button>
 
-Although there's a slight negative association for lower predicted values, the assumptions of homoscedasticity and independence of residuals appear to be met. you could also try adding the code `+ geom_smooth(method = "lm", se = FALSE)` to your plot to see what the (linear) trend line would actually be.
+Although there's a slight negative association for lower predicted values, the assumptions of homoscedasticity and independence of residuals appear to be met. You could also try adding the code `+ geom_smooth(method = "lm", se = FALSE)` to your plot to see what the (linear) trend line would actually be.
 
 </div>
 
@@ -1000,6 +1011,28 @@ all_BFs
 
 \
 
+Comparing the BF for [3] and [2] will tell us whether there's evidence that `worry` makes a unique contribution.
+
+```r
+# compare multiple regression with simple regression 2
+all_BFs[3] / all_BFs[2]
+```
+
+```
+## Bayes factor analysis
+## --------------
+## [1] worry + describing : 981.4912 ±0%
+## 
+## Against denominator:
+##   wellbeing ~ describing 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+```
+
+The BF for this comparison is **981.49**, which matches the BF for the unique contribution of `describing` calculated earlier.
+
+\
+
 Comparing the BF for [3] and [1] will therefore tell us whether there's evidence that `describing` makes a unique contribution to the model:
 
 
@@ -1021,28 +1054,7 @@ all_BFs[3] / all_BFs[1]
 
 The BF for this comparison is **738.41**, which matches the BF for the unique contribution of `describing` calculated earlier.
 
-
 \
-
-Comparing the BF for [3] and [2] will tell us whether there's evidence that `worry` makes a unique contribution.
-
-```r
-# compare multiple regression with simple regression 2
-all_BFs[3] / all_BFs[2]
-```
-
-```
-## Bayes factor analysis
-## --------------
-## [1] worry + describing : 981.4912 ±0%
-## 
-## Against denominator:
-##   wellbeing ~ describing 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-```
-
-The BF for this comparison is **981.49**, which matches the BF for the unique contribution of `describing` calculated earlier.
 
 Thus, the BFs derived by this method are the same as when we used `lmBF()` in the main section of the worksheet.
 
@@ -1146,9 +1158,9 @@ Predicting data
 
 For the model in the main exercise (i.e., `gad ~ brooding + observing`), what are the predicted values of `gad` for three new individuals with `brooding` scores of 10, 15, and 20, and `observing` scores of 3, 6 and 9, respectively. 
 
-* Predicted GAD of participant 1 (to two decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["8.87"]'/>
-* Predicted GAD of participant 2 (to two decimal places) = <input class='webex-solveme nospaces' size='5' data-answer='["13.24"]'/>
-* Predicted GAD of participant 3 (to two decimal places) = <input class='webex-solveme nospaces' size='5' data-answer='["17.61"]'/>
+* Predicted GAD of participant 1 (to one decimal place) = <input class='webex-solveme nospaces' size='3' data-answer='["8.9"]'/>
+* Predicted GAD of participant 2 (to one decimal place) = <input class='webex-solveme nospaces' size='4' data-answer='["13.2"]'/>
+* Predicted GAD of participant 3 (to one decimal place) = <input class='webex-solveme nospaces' size='4' data-answer='["17.6"]'/>
 
 
 <div class='webex-solution'><button>Solution</button>
@@ -1206,58 +1218,6 @@ wellbeing_data %>%
   correlate(method = "pearson")
 ```
 
-```
-## 
-## Correlation method: 'pearson'
-## Missing treated using: 'pairwise.complete.obs'
-```
-
-<div class="kable-table">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> term </th>
-   <th style="text-align:right;"> wellbeing </th>
-   <th style="text-align:right;"> attention </th>
-   <th style="text-align:right;"> clarity </th>
-   <th style="text-align:right;"> repair </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> wellbeing </td>
-   <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> -0.3162625 </td>
-   <td style="text-align:right;"> 0.3755731 </td>
-   <td style="text-align:right;"> 0.5002038 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> attention </td>
-   <td style="text-align:right;"> -0.3162625 </td>
-   <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 0.1560582 </td>
-   <td style="text-align:right;"> 0.0216476 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> clarity </td>
-   <td style="text-align:right;"> 0.3755731 </td>
-   <td style="text-align:right;"> 0.1560582 </td>
-   <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 0.4078774 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> repair </td>
-   <td style="text-align:right;"> 0.5002038 </td>
-   <td style="text-align:right;"> 0.0216476 </td>
-   <td style="text-align:right;"> 0.4078774 </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-</tbody>
-</table>
-
-</div>
-
 \ 
 
 Run multiple regression:
@@ -1274,45 +1234,6 @@ Adjusted R^2^ for the overall model:
 ```r
 glance( multiple3 )
 ```
-
-<div class="kable-table">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> r.squared </th>
-   <th style="text-align:right;"> adj.r.squared </th>
-   <th style="text-align:right;"> sigma </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> df </th>
-   <th style="text-align:right;"> logLik </th>
-   <th style="text-align:right;"> AIC </th>
-   <th style="text-align:right;"> BIC </th>
-   <th style="text-align:right;"> deviance </th>
-   <th style="text-align:right;"> df.residual </th>
-   <th style="text-align:right;"> nobs </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 0.4167062 </td>
-   <td style="text-align:right;"> 0.3884823 </td>
-   <td style="text-align:right;"> 9.889914 </td>
-   <td style="text-align:right;"> 14.76431 </td>
-   <td style="text-align:right;"> 2e-07 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> -242.8268 </td>
-   <td style="text-align:right;"> 495.6536 </td>
-   <td style="text-align:right;"> 506.6019 </td>
-   <td style="text-align:right;"> 6064.245 </td>
-   <td style="text-align:right;"> 62 </td>
-   <td style="text-align:right;"> 66 </td>
-  </tr>
-</tbody>
-</table>
-
-</div>
 
 \
 
@@ -1343,35 +1264,6 @@ BF_attention_clarity_repair / BF_attention_repair
 BF_attention_clarity_repair / BF_attention_clarity
 ```
 
-```
-## Bayes factor analysis
-## --------------
-## [1] attention + clarity + repair : 81.00941 ±0%
-## 
-## Against denominator:
-##   wellbeing ~ clarity + repair 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-## 
-## Bayes factor analysis
-## --------------
-## [1] attention + clarity + repair : 3.836891 ±0%
-## 
-## Against denominator:
-##   wellbeing ~ attention + repair 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-## 
-## Bayes factor analysis
-## --------------
-## [1] attention + clarity + repair : 82.35924 ±0%
-## 
-## Against denominator:
-##   wellbeing ~ attention + clarity 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-```
-
 
 \
 
@@ -1393,50 +1285,6 @@ all_BFs[7] / all_BFs[5]
 
 # unique contribution of repair
 all_BFs[7] / all_BFs[4]
-```
-
-```
-## Bayes factor analysis
-## --------------
-## [1] attention                    : 4.759631 ±0%
-## [2] clarity                      : 18.08091 ±0.01%
-## [3] repair                       : 960.1706 ±0%
-## [4] attention + clarity          : 874.9426 ±0%
-## [5] attention + repair           : 18780.73 ±0%
-## [6] clarity + repair             : 889.5214 ±0%
-## [7] attention + clarity + repair : 72059.61 ±0%
-## 
-## Against denominator:
-##   Intercept only 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-## 
-## Bayes factor analysis
-## --------------
-## [1] attention + clarity + repair : 81.00941 ±0%
-## 
-## Against denominator:
-##   wellbeing ~ clarity + repair 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-## 
-## Bayes factor analysis
-## --------------
-## [1] attention + clarity + repair : 3.836891 ±0%
-## 
-## Against denominator:
-##   wellbeing ~ attention + repair 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-## 
-## Bayes factor analysis
-## --------------
-## [1] attention + clarity + repair : 82.35924 ±0%
-## 
-## Against denominator:
-##   wellbeing ~ attention + clarity 
-## ---
-## Bayes factor type: BFlinearModel, JZS
 ```
 \
 

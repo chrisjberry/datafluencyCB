@@ -6,8 +6,40 @@
 
 
 
+
+
+
 <!--
 commented text
+
+
+
+```r
+# plot histogram of continuous vars
+data %>%
+  keep(is.numeric) %>%                     # Keep only numeric columns
+  gather() %>%                             # Convert to key-value pairs
+  ggplot(aes(value)) +                     # Plot the values
+  facet_wrap(~ key, scales = "free") +   # In separate panels
+  geom_histogram()        
+
+# plot histogram of categorical vars (count data)
+data %>% 
+  keep(is.character)  %>% 
+  gather() %>%                             # Convert to key-value pairs
+  ggplot(aes(value)) +                     # Plot the values
+  facet_wrap(~ key, scales = "free") +   # In separate panels
+  geom_histogram(stat="count")        
+
+# correlations of numeric
+data %>%
+  keep(is.numeric) %>%
+  correlate()
+  
+  
+# large datasets can look griddy
+# use geom_jitter()
+```
 
 
 <style>
@@ -891,8 +923,8 @@ memory_data %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-19-1.png" alt="TRUE" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-19)TRUE</p>
+<img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-20-1.png" alt="TRUE" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-20)TRUE</p>
 </div>
 
 </div>

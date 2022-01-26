@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Session 4 Two-way between-subjects ANOVA | PSYC753 Data Fluency: Analysis</title>
+  <meta name="description" content="Course materials for PSYC753 2022" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Session 4 Two-way between-subjects ANOVA | PSYC753 Data Fluency: Analysis" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://chrisjberry.github.io/datafluencyCB/" />
+  
+  <meta property="og:description" content="Course materials for PSYC753 2022" />
+  <meta name="github-repo" content="datafluencyCB" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Session 4 Two-way between-subjects ANOVA | PSYC753 Data Fluency: Analysis" />
+  
+  <meta name="twitter:description" content="Course materials for PSYC753 2022" />
+  
+
+<meta name="author" content="Chris Berry" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="anova1.html"/>
+<link rel="next" href="exercises.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="include/psyteachr.css" type="text/css" />
+<link rel="stylesheet" href="include/webex.css" type="text/css" />
+<link rel="stylesheet" href="include/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PSYC753 Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="1" data-path="simple1.html"><a href="simple1.html"><i class="fa fa-check"></i><b>1</b> Simple Regression</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="simple1.html"><a href="simple1.html#overview-1"><i class="fa fa-check"></i><b>1.1</b> Overview</a></li>
+<li class="chapter" data-level="1.2" data-path="simple1.html"><a href="simple1.html#worked-example"><i class="fa fa-check"></i><b>1.2</b> Worked Example</a></li>
+<li class="chapter" data-level="1.3" data-path="simple1.html"><a href="simple1.html#predicting"><i class="fa fa-check"></i><b>1.3</b> Predicting</a></li>
+<li class="chapter" data-level="1.4" data-path="simple1.html"><a href="simple1.html#residuals"><i class="fa fa-check"></i><b>1.4</b> Residuals</a></li>
+<li class="chapter" data-level="1.5" data-path="simple1.html"><a href="simple1.html#evaluating-the-model"><i class="fa fa-check"></i><b>1.5</b> Evaluating the model</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="simple1.html"><a href="simple1.html#r2"><i class="fa fa-check"></i><b>1.5.1</b> R<sup>2</sup></a></li>
+<li class="chapter" data-level="1.5.2" data-path="simple1.html"><a href="simple1.html#bayes-factor"><i class="fa fa-check"></i><b>1.5.2</b> Bayes Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="simple1.html"><a href="simple1.html#exercise"><i class="fa fa-check"></i><b>1.6</b> Exercise</a></li>
+<li class="chapter" data-level="1.7" data-path="simple1.html"><a href="simple1.html#further-exercises"><i class="fa fa-check"></i><b>1.7</b> Further Exercises</a></li>
+<li class="chapter" data-level="1.8" data-path="simple1.html"><a href="simple1.html#summary"><i class="fa fa-check"></i><b>1.8</b> Summary</a></li>
+<li class="chapter" data-level="1.9" data-path="simple1.html"><a href="simple1.html#references"><i class="fa fa-check"></i><b>1.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="multiple1.html"><a href="multiple1.html"><i class="fa fa-check"></i><b>2</b> Multiple regression: multiple continuous predictors</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="multiple1.html"><a href="multiple1.html#overview-2"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="multiple1.html"><a href="multiple1.html#worked-example-1"><i class="fa fa-check"></i><b>2.2</b> Worked example</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="multiple1.html"><a href="multiple1.html#residual-plot"><i class="fa fa-check"></i><b>2.2.1</b> Residual plot</a></li>
+<li class="chapter" data-level="2.2.2" data-path="multiple1.html"><a href="multiple1.html#evaluating-the-model-bayes-factor"><i class="fa fa-check"></i><b>2.2.2</b> Evaluating the model: Bayes Factor</a></li>
+<li class="chapter" data-level="2.2.3" data-path="multiple1.html"><a href="multiple1.html#evaluating-the-model-r2"><i class="fa fa-check"></i><b>2.2.3</b> Evaluating the model: R<sup>2</sup></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="multiple1.html"><a href="multiple1.html#understanding-the-contribution-of-individual-predictors"><i class="fa fa-check"></i><b>2.3</b> Understanding the contribution of individual predictors</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="multiple1.html"><a href="multiple1.html#r2-in-simple-vs.-multiple-regression"><i class="fa fa-check"></i><b>2.3.1</b> R<sup>2</sup> in simple vs. multiple regression</a></li>
+<li class="chapter" data-level="2.3.2" data-path="multiple1.html"><a href="multiple1.html#venn-diagrams"><i class="fa fa-check"></i><b>2.3.2</b> Venn Diagrams</a></li>
+<li class="chapter" data-level="2.3.3" data-path="multiple1.html"><a href="multiple1.html#using-bayes-factors-to-assess-the-unique-contribution-of-predictors"><i class="fa fa-check"></i><b>2.3.3</b> Using Bayes factors to assess the unique contribution of predictors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="multiple1.html"><a href="multiple1.html#multicollinearity"><i class="fa fa-check"></i><b>2.4</b> Multicollinearity</a></li>
+<li class="chapter" data-level="2.5" data-path="multiple1.html"><a href="multiple1.html#exercise-1"><i class="fa fa-check"></i><b>2.5</b> Exercise</a></li>
+<li class="chapter" data-level="2.6" data-path="multiple1.html"><a href="multiple1.html#further-exercises-1"><i class="fa fa-check"></i><b>2.6</b> Further exercises</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="multiple1.html"><a href="multiple1.html#regressionbf"><i class="fa fa-check"></i><b>2.6.1</b> <code>regressionBF()</code></a></li>
+<li class="chapter" data-level="2.6.2" data-path="multiple1.html"><a href="multiple1.html#predicting-new-data"><i class="fa fa-check"></i><b>2.6.2</b> Predicting new data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="multiple1.html"><a href="multiple1.html#summary-of-key-points"><i class="fa fa-check"></i><b>2.7</b> Summary of key points</a></li>
+<li class="chapter" data-level="2.8" data-path="multiple1.html"><a href="multiple1.html#references-1"><i class="fa fa-check"></i><b>2.8</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="anova1.html"><a href="anova1.html"><i class="fa fa-check"></i><b>3</b> ANOVA: between-subjects designs</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="anova1.html"><a href="anova1.html#overview-3"><i class="fa fa-check"></i><b>3.1</b> Overview</a></li>
+<li class="chapter" data-level="3.2" data-path="anova1.html"><a href="anova1.html#one-way-between-subjects-anova"><i class="fa fa-check"></i><b>3.2</b> One-way between subjects ANOVA</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="anova1.html"><a href="anova1.html#worked-example-2"><i class="fa fa-check"></i><b>3.2.1</b> Worked Example</a></li>
+<li class="chapter" data-level="3.2.2" data-path="anova1.html"><a href="anova1.html#r2-1"><i class="fa fa-check"></i><b>3.2.2</b> R<sup>2</sup></a></li>
+<li class="chapter" data-level="3.2.3" data-path="anova1.html"><a href="anova1.html#follow-up-tests-pairwise-comparisons"><i class="fa fa-check"></i><b>3.2.3</b> Follow-up tests: Pairwise Comparisons</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="two-way-between-subjects-anova.html"><a href="two-way-between-subjects-anova.html"><i class="fa fa-check"></i><b>4</b> Two-way between-subjects ANOVA</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="two-way-between-subjects-anova.html"><a href="two-way-between-subjects-anova.html#worked-example-3"><i class="fa fa-check"></i><b>4.1</b> Worked example</a></li>
+<li class="chapter" data-level="4.2" data-path="two-way-between-subjects-anova.html"><a href="two-way-between-subjects-anova.html#read-in-the-data-1"><i class="fa fa-check"></i><b>4.2</b> Read in the data</a></li>
+<li class="chapter" data-level="4.3" data-path="two-way-between-subjects-anova.html"><a href="two-way-between-subjects-anova.html#convert-the-independent-variables-to-factors"><i class="fa fa-check"></i><b>4.3</b> Convert the independent variables to factors</a></li>
+<li class="chapter" data-level="4.4" data-path="two-way-between-subjects-anova.html"><a href="two-way-between-subjects-anova.html#n-in-each-group"><i class="fa fa-check"></i><b>4.4</b> n in each group</a></li>
+<li class="chapter" data-level="4.5" data-path="two-way-between-subjects-anova.html"><a href="two-way-between-subjects-anova.html#visualise-the-data-1"><i class="fa fa-check"></i><b>4.5</b> Visualise the data</a></li>
+<li class="chapter" data-level="4.6" data-path="two-way-between-subjects-anova.html"><a href="two-way-between-subjects-anova.html#plot-the-means-1"><i class="fa fa-check"></i><b>4.6</b> Plot the means</a></li>
+<li class="chapter" data-level="4.7" data-path="two-way-between-subjects-anova.html"><a href="two-way-between-subjects-anova.html#bayes-factors"><i class="fa fa-check"></i><b>4.7</b> Bayes factors</a></li>
+<li class="chapter" data-level="4.8" data-path="two-way-between-subjects-anova.html"><a href="two-way-between-subjects-anova.html#r2-2"><i class="fa fa-check"></i><b>4.8</b> R<sup>2</sup></a></li>
+<li class="chapter" data-level="4.9" data-path="two-way-between-subjects-anova.html"><a href="two-way-between-subjects-anova.html#follow-up-comparisons"><i class="fa fa-check"></i><b>4.9</b> Follow-up comparisons</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>5</b> Exercises</a></li>
+<li class="chapter" data-level="6" data-path="summary-1.html"><a href="summary-1.html"><i class="fa fa-check"></i><b>6</b> Summary</a></li>
+<li class="chapter" data-level="7" data-path="references-2.html"><a href="references-2.html"><i class="fa fa-check"></i><b>7</b> References</a></li>
+<li class="chapter" data-level="8" data-path="mutliple2.html"><a href="mutliple2.html"><i class="fa fa-check"></i><b>8</b> Multiple regression: one continuous, one categorical</a></li>
+<li class="chapter" data-level="9" data-path="multiple3.html"><a href="multiple3.html"><i class="fa fa-check"></i><b>9</b> Multiple regression: evaluating and comparing models</a>
+<ul>
+<li class="chapter" data-level="9.0.1" data-path="multiple3.html"><a href="multiple3.html#using-anova-and-bayes-factors-to-compare-models"><i class="fa fa-check"></i><b>9.0.1</b> Using ANOVA and Bayes Factors to compare models</a></li>
+<li class="chapter" data-level="9.0.2" data-path="multiple3.html"><a href="multiple3.html#overview-4"><i class="fa fa-check"></i><b>9.0.2</b> Overview</a></li>
+<li class="chapter" data-level="9.1" data-path="multiple3.html"><a href="multiple3.html#comparing-models-using-anova"><i class="fa fa-check"></i><b>9.1</b> Comparing models using ANOVA</a></li>
+<li class="chapter" data-level="9.2" data-path="multiple3.html"><a href="multiple3.html#comparing-models-using-bayes-factors"><i class="fa fa-check"></i><b>9.2</b> Comparing models using Bayes Factors</a></li>
+<li class="chapter" data-level="9.3" data-path="multiple3.html"><a href="multiple3.html#exercise-2"><i class="fa fa-check"></i><b>9.3</b> Exercise</a></li>
+<li class="chapter" data-level="9.4" data-path="multiple3.html"><a href="multiple3.html#summary-of-key-points-1"><i class="fa fa-check"></i><b>9.4</b> Summary of key points</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="anova2.html"><a href="anova2.html"><i class="fa fa-check"></i><b>10</b> ANOVA: Repeated measures</a></li>
+<li class="chapter" data-level="11" data-path="prepost.html"><a href="prepost.html"><i class="fa fa-check"></i><b>11</b> Pre-post data, effect sizes, clinically significant change</a></li>
+<li class="chapter" data-level="12" data-path="assessment2022.html"><a href="assessment2022.html"><i class="fa fa-check"></i><b>12</b> Data Analysis Assessment 2022</a></li>
+<li class="chapter" data-level="13" data-path="faqs.html"><a href="faqs.html"><i class="fa fa-check"></i><b>13</b> FAQs</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="faqs.html"><a href="faqs.html#e-meaning"><i class="fa fa-check"></i><b>13.1</b> What does it mean if RStudio prints out "e-" next to a number?</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendices</b></span></li>
+<li class="divider"></li>
+<li><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" 
+    target="blank"><img alt="Creative Commons License" 
+    style="border-width:0" 
+    src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSYC753 Data Fluency: Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="two-way-between-subjects-anova" class="section level1" number="4">
+<h1><span class="header-section-number">Session 4</span> Two-way between-subjects ANOVA</h1>
+<div class="tip">
+<p>In a <strong>two-way ANOVA</strong>, there are <em>two</em> categorical independent variables or factors.</p>
+<p>When there are multiple factors, the ANOVA is referred to as <em>factorial</em> ANOVA.</p>
+<p>For example, if the design has two factors, and each factor has two levels, then we refer to the design as a 2 x 2 factorial design. The first number (2) denotes the number of levels of the first factor. The second number (2) denotes the number of levels of the second factor. If, instead, the second factor had three levels, we'd say we have a 2 x 3 factorial design.</p>
+</div>
+<div id="worked-example-3" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Worked example</h2>
+<p>What is the role of resilience in the distress experienced from childhood adversities? Beutel et al. (2017) analysed the distress scores from 2,437 individuals who were either low or high in trait resilience and had experienced either low or high levels of childhood adversity.</p>
+<p><br />
+</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-2" class="exercise"><strong>Exercise 4.1  </strong></span>Design check.</p>
+<ul>
+<li><p>What is the first independent variable (or <em>factor</em>) that is mentioned in this design? <select class='webex-select'><option value='blank'></option><option value=''>distress score</option><option value=''>childhood adversity</option><option value='answer'>trait resilience</option></select></p></li>
+<li><p>How many levels does the first factor have? <select class='webex-select'><option value='blank'></option><option value=''>1</option><option value='answer'>2</option><option value=''>3</option><option value=''>4</option></select></p></li>
+<li><p>What is the second independent variable (or <em>factor</em>)? <select class='webex-select'><option value='blank'></option><option value=''>distress score</option><option value='answer'>childhood adversity</option><option value=''>trait resilience</option></select></p></li>
+<li><p>How many levels does the second factor have? <select class='webex-select'><option value='blank'></option><option value=''>1</option><option value='answer'>2</option><option value=''>3</option><option value=''>4</option></select></p></li>
+<li><p>What is the dependent variable? <select class='webex-select'><option value='blank'></option><option value='answer'>distress score</option><option value=''>childhood adversity</option><option value=''>trait resilience</option></select></p></li>
+<li><p>What is the nature of the independent variables? <select class='webex-select'><option value='blank'></option><option value='answer'>categorical</option><option value=''>continuous</option></select></p></li>
+<li><p>What type of design is this? <select class='webex-select'><option value='blank'></option><option value=''>2 x 2 x 2 between subjects factorial design</option><option value=''>2 x 3 between subjects factorial design</option><option value='answer'>2 x 2 between subjects factorial design</option><option value=''>correlational design</option></select></p></li>
+</ul>
+</div>
+</div>
+<div id="read-in-the-data-1" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Read in the data</h2>
+<p>Read in the data at the link below and store in <code>resilience_data</code>:</p>
+<p><a href="https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_resilience_data.csv" class="uri">https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_resilience_data.csv</a></p>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">distress</th>
+<th align="left">resilience</th>
+<th align="left">adversity</th>
+<th align="right">sex</th>
+<th align="right">partnership</th>
+<th align="right">education</th>
+<th align="right">income</th>
+<th align="right">unemployed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="left">high</td>
+<td align="left">low</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">low</td>
+<td align="left">low</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">0</td>
+<td align="left">high</td>
+<td align="left">low</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">0</td>
+<td align="left">high</td>
+<td align="left">low</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">low</td>
+<td align="left">low</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">high</td>
+<td align="left">low</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><code>distress</code> contains the distress scores. Higher scores indicate greater levels of distress.</li>
+<li><code>resilience</code> labels the levels of childhood adversity ( <em>low_res</em> or <em>high_res</em>)</li>
+<li><code>adversity</code> labels the levels of trait resilience ( <em>low_adv</em> or <em>high_adv</em>)</li>
+</ul>
+<p>(Note. The data are publicly available, but I have changed some of the variable names for clarity.)</p>
+<p><br />
+</p>
+</div>
+<div id="convert-the-independent-variables-to-factors" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Convert the independent variables to factors</h2>
+<p>To enable the factors to be used as such in ANOVA, we need to convert them to factors using <code>factor()</code>:</p>
+</div>
+<div id="n-in-each-group" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> n in each group</h2>
+<p>Obtain the number of participants in each group:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="two-way-between-subjects-anova.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use count() to obtain the number of rows in the dataset, </span></span>
+<span id="cb17-2"><a href="two-way-between-subjects-anova.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># but group_by() both resilience AND adversity</span></span>
+<span id="cb17-3"><a href="two-way-between-subjects-anova.html#cb17-3" aria-hidden="true" tabindex="-1"></a>resilience_data <span class="sc">%&gt;%</span> </span>
+<span id="cb17-4"><a href="two-way-between-subjects-anova.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(resilience, adversity) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-5"><a href="two-way-between-subjects-anova.html#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">resilience</th>
+<th align="left">adversity</th>
+<th align="right">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">high</td>
+<td align="left">high</td>
+<td align="right">106</td>
+</tr>
+<tr class="even">
+<td align="left">high</td>
+<td align="left">low</td>
+<td align="right">997</td>
+</tr>
+<tr class="odd">
+<td align="left">low</td>
+<td align="left">high</td>
+<td align="right">284</td>
+</tr>
+<tr class="even">
+<td align="left">low</td>
+<td align="left">low</td>
+<td align="right">1050</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In a between-subjects factorial design, participants are assigned to groups by crossing the levels of one variable with those of the second variable. Thus, each row labels the level of resilience and level of adversity for that group.</p>
+<ul>
+<li>The number of participants in the high resilience, high adversity group is <input class='webex-solveme nospaces' size='3' data-answer='["106"]'/></li>
+<li>The number of participants in the high resilience, low adversity group is <input class='webex-solveme nospaces' size='3' data-answer='["997"]'/></li>
+<li>The number of participants in the low resilience, high adversity group is <input class='webex-solveme nospaces' size='3' data-answer='["284"]'/></li>
+<li>The number of participants in the low resilience, low adversity group is <input class='webex-solveme nospaces' size='4' data-answer='["1050"]'/></li>
+</ul>
+<p><br />
+</p>
+</div>
+<div id="visualise-the-data-1" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Visualise the data</h2>
+<p>The way the data are distributed in each group can be inspected with histograms or density plots.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="two-way-between-subjects-anova.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use `facet_wrap(~resilience*adversity)`</span></span>
+<span id="cb18-2"><a href="two-way-between-subjects-anova.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to plot scores for all combinations of </span></span>
+<span id="cb18-3"><a href="two-way-between-subjects-anova.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># resilience and adversity levels</span></span>
+<span id="cb18-4"><a href="two-way-between-subjects-anova.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;labeller = label_both&#39; labels levels by factor name</span></span>
+<span id="cb18-5"><a href="two-way-between-subjects-anova.html#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="two-way-between-subjects-anova.html#cb18-6" aria-hidden="true" tabindex="-1"></a>resilience_data <span class="sc">%&gt;%</span> </span>
+<span id="cb18-7"><a href="two-way-between-subjects-anova.html#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(distress)) <span class="sc">+</span> </span>
+<span id="cb18-8"><a href="two-way-between-subjects-anova.html#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb18-9"><a href="two-way-between-subjects-anova.html#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>resilience<span class="sc">*</span>adversity, <span class="at">labeller =</span> label_both)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-19"></span>
+<img src="03_anova_between_subjects_files/figure-html/unnamed-chunk-19-1.png" alt="TRUE" width="100%" />
+<p class="caption">
+Figure 4.1: TRUE
+</p>
+</div>
+<p><strong>Interpretation:</strong> The data in each group appear positively skewed - the tail of the distribution goes towards the right (i.e., towards more positive values of distress). Beutel et al. (2017) took no further action and analysed the scores as they were.</p>
+<p><br />
+</p>
+</div>
+<div id="plot-the-means-1" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> Plot the means</h2>
+<p>Use <code>ggbarplot()</code> in the <code>ggpubr</code> package:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="two-way-between-subjects-anova.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb19-2"><a href="two-way-between-subjects-anova.html#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="two-way-between-subjects-anova.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the mean of each group</span></span>
+<span id="cb19-4"><a href="two-way-between-subjects-anova.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use &#39;desc_stat = &quot;mean_se&quot; to add SE error bars</span></span>
+<span id="cb19-5"><a href="two-way-between-subjects-anova.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># use &#39;position = position_dodge(0.3)&#39; so that points are spaced</span></span>
+<span id="cb19-6"><a href="two-way-between-subjects-anova.html#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="two-way-between-subjects-anova.html#cb19-7" aria-hidden="true" tabindex="-1"></a>resilience_data <span class="sc">%&gt;%</span> </span>
+<span id="cb19-8"><a href="two-way-between-subjects-anova.html#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggerrorplot</span>(<span class="at">x =</span> <span class="st">&quot;resilience&quot;</span>, <span class="at">y =</span> <span class="st">&quot;distress&quot;</span>,  <span class="at">color =</span> <span class="st">&quot;adversity&quot;</span>,</span>
+<span id="cb19-9"><a href="two-way-between-subjects-anova.html#cb19-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">desc_stat =</span> <span class="st">&quot;mean_se&quot;</span>, </span>
+<span id="cb19-10"><a href="two-way-between-subjects-anova.html#cb19-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.3</span>)) <span class="sc">+</span></span>
+<span id="cb19-11"><a href="two-way-between-subjects-anova.html#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Resilience&quot;</span>) <span class="sc">+</span></span>
+<span id="cb19-12"><a href="two-way-between-subjects-anova.html#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Distress&quot;</span>) </span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-20"></span>
+<img src="03_anova_between_subjects_files/figure-html/unnamed-chunk-20-1.png" alt="Distress scores as a function of adversity and resilience (error bars indicate standard error of the mean)" width="75%" />
+<p class="caption">
+Figure 4.2: Distress scores as a function of adversity and resilience (error bars indicate standard error of the mean)
+</p>
+</div>
+<div class="tip">
+<p>In a two-way design, researchers look at three things:</p>
+<ul>
+<li><strong>The main effect of factor 1</strong>: Overall, do scores differ according to the levels of factor 1?</li>
+<li><strong>The main effect of factor 2</strong>: Overall, do scores differ according to the levels of factor 2?</li>
+<li><strong>The interaction between the factors</strong>: Is the effect of one factor different at <em>each level</em> of the other factor?</li>
+</ul>
+<p><br />
+</p>
+<p>Get some idea of the main effects and interaction by inspecting the plot of the means:</p>
+<ul>
+<li><strong>The main effect of resilience:</strong> Overall, distress scores in the high resilience groups appear to be <select class='webex-select'><option value='blank'></option><option value='answer'>lower than</option><option value=''>about the same as</option><option value=''>higher than</option></select> those in the low resilience groups.</li>
+<li><strong>The main effect of distress</strong>: Overall, distress scores in the low adversity groups appear to be <select class='webex-select'><option value='blank'></option><option value=''>lower than</option><option value=''>about the same as</option><option value='answer'>higher than</option></select> those in the high adversity groups.</li>
+<li><strong>The interaction between resilience and distress</strong>: When trait resilience is low rather than high, the effect of adversity on distress appears to be <select class='webex-select'><option value='blank'></option><option value=''>lower</option><option value=''>similar</option><option value='answer'>greater</option></select>. (Hint: the effect of adversity is indicated by the difference between the red and blue points.)</li>
+</ul>
+</div>
+<p><br />
+</p>
+</div>
+<div id="bayes-factors" class="section level2" number="4.7">
+<h2><span class="header-section-number">4.7</span> Bayes factors</h2>
+<div class="tip">
+<p>Use <code>anovaBF()</code> in the <code>BayesFactor</code> package to obtain Bayes Factors corresponding to the main effect of factor 1, the main effect of factor 2, and the interaction between factor 1 and factor 2. The Bayes Factors will tell us whether we have evidence for each of these things.</p>
+<p>To specify the two-way ANOVA in <code>anovaBF()</code>, use <code>dependent_variable ~ factor1 * factor2</code>.</p>
+</div>
+<p>For the data:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="two-way-between-subjects-anova.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain the Bayes Factors for the ANOVA model</span></span>
+<span id="cb20-2"><a href="two-way-between-subjects-anova.html#cb20-2" aria-hidden="true" tabindex="-1"></a>anova2x2_BF <span class="ot">&lt;-</span> <span class="fu">anovaBF</span>( distress <span class="sc">~</span> resilience <span class="sc">*</span> adversity, <span class="at">data =</span> <span class="fu">data.frame</span>(resilience_data) )</span>
+<span id="cb20-3"><a href="two-way-between-subjects-anova.html#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="two-way-between-subjects-anova.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the output</span></span>
+<span id="cb20-5"><a href="two-way-between-subjects-anova.html#cb20-5" aria-hidden="true" tabindex="-1"></a>anova2x2_BF</span></code></pre></div>
+<pre><code>## Bayes factor analysis
+## --------------
+## [1] resilience                                    : 1.822053e+27 ±0%
+## [2] adversity                                     : 7.870878e+25 ±0%
+## [3] resilience + adversity                        : 3.339074e+46 ±2.16%
+## [4] resilience + adversity + resilience:adversity : 3.130195e+49 ±2.06%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS</code></pre>
+<div class="webex-solution">
+<button>
+What does 1.82e+27 mean?
+</button>
+<p>It means 1.82 x 10<sup>27</sup>. A very large number! For more information see:
+<a href="https://chrisjberry.github.io/datafluencyCB/faqs#e-meaning" target="_blank">FAQ</a></p>
+</div>
+<p>A number of BFs are given in the output. Each BF compares how likely the model is, compared to an intercept only model:</p>
+<ul>
+<li><code>[1] resilience</code> is the BF for the main effect of resilience. It's how much more likely a model with <code>resilience</code> alone is than an intercept-only model.</li>
+<li><code>[2] adversity</code> is the BF for the main effect of adversity. It's how much more likely a model with <code>adversity</code> alone is than an intercept-only model.<br />
+</li>
+<li><code>[3] resilience + adversity</code> is the BF for the main effects of resilience and adversity. It's how much more likely a model with main effects of <code>resilience</code> and <code>adversity</code> is than an intercept-only model.<br />
+</li>
+<li><code>[4] resilience + adversity + resilience:adversity</code> is the BF for the main effects of resilience and adversity <strong>and</strong> the interaction between them (<code>resilience:adversity</code>). It's how much more likely a model with main effects of <code>resilience</code> and <code>adversity</code> and also the interaction (<code>resilience:adversity</code>) is than an intercept-only model.</li>
+</ul>
+<p><code>[1]</code> and <code>[2]</code> correspond to the main effects of each factor. To obtain the BF for the interaction, we need to divide <code>[4]</code> by <code>[3]</code>:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="two-way-between-subjects-anova.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BF for the interaction</span></span>
+<span id="cb22-2"><a href="two-way-between-subjects-anova.html#cb22-2" aria-hidden="true" tabindex="-1"></a>anova2x2_BF[<span class="dv">4</span>] <span class="sc">/</span> anova2x2_BF[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## Bayes factor analysis
+## --------------
+## [1] resilience + adversity + resilience:adversity : 937.444 ±2.98%
+## 
+## Against denominator:
+##   distress ~ resilience + adversity 
+## ---
+## Bayes factor type: BFlinearModel, JZS</code></pre>
+<p>This tells us whether there's evidence for the addition of an interaction term to a model containing the main effects of each factor. This is the BF that tells us whether there's evidence for an interaction between our factors or not.</p>
+<p>Record the Bayes Factors for this 2 x 2 ANOVA below:</p>
+<ul>
+<li>The BF for the main effect of <code>resilience</code> is BF = <input class='webex-solveme nospaces' size='4' data-answer='["1.82"]'/> x 10<sup>27</sup>.</li>
+<li>The BF for the main effect of <code>adversity</code> is BF = <input class='webex-solveme nospaces' size='4' data-answer='["7.87"]'/> x 10<sup>25</sup>.</li>
+<li>The BF for the <code>resilience</code> and <code>adversity</code> interaction is approximately (to the nearest whole number) <input class='webex-solveme nospaces' data-tol='5' size='3' data-answer='["939"]'/>.</li>
+</ul>
+<div class='webex-solution'>
+<button>
+Meaning of ±1.03%
+</button>
+<p>You'll notice that some of BFs had <code>±1.03%</code> or similar next to them in the output. This is the error associated with the BF. It's like saying my height is 185 cm, plus or minus a millimeter or so. It can be non-zero because generation of the BFs involves random sampling processes. Larger error values means that the same value of the BF won't necessarily be output each time the line of code containing <code>anovaBF()</code> is run, so there's a chance that the BFs in your output differ slightly from those above (particularly for the interaction), hence me asking you to give your answer to the nearest whole number.
+<code>r unhide()</code></p>
+<p><br />
+</p>
+</div>
+<div id="r2-2" class="section level2" number="4.8">
+<h2><span class="header-section-number">4.8</span> R<sup>2</sup></h2>
+<div class="tip">
+<p>Once again, <code>glance()</code> can be used to obtain R<sup>2</sup> for the ANOVA model. The model first needs to be specified with <code>lm()</code>. Using <code>factor1 * factor2</code> when specifycing the model is a shortcut, which will automatically specify the full model containing the interaction. We can use <code>lm(distress ~ resilience * adversity)</code>, which is equivalent to <code>lm(distress ~ resilience + adversity + resilience*adversity)</code>.</p>
+</div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="two-way-between-subjects-anova.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the ANOVA model using lm()</span></span>
+<span id="cb24-2"><a href="two-way-between-subjects-anova.html#cb24-2" aria-hidden="true" tabindex="-1"></a>anova2x2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(distress <span class="sc">~</span> resilience <span class="sc">*</span> adversity, <span class="at">data =</span> resilience_data)</span>
+<span id="cb24-3"><a href="two-way-between-subjects-anova.html#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="two-way-between-subjects-anova.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># R^2^</span></span>
+<span id="cb24-5"><a href="two-way-between-subjects-anova.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(anova2x2)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<colgroup>
+<col width="9%" />
+<col width="12%" />
+<col width="8%" />
+<col width="9%" />
+<col width="7%" />
+<col width="2%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="11%" />
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">r.squared</th>
+<th align="right">adj.r.squared</th>
+<th align="right">sigma</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">df</th>
+<th align="right">logLik</th>
+<th align="right">AIC</th>
+<th align="right">BIC</th>
+<th align="right">deviance</th>
+<th align="right">df.residual</th>
+<th align="right">nobs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.0963021</td>
+<td align="right">0.0951878</td>
+<td align="right">2.142569</td>
+<td align="right">86.42379</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">-5312.959</td>
+<td align="right">10635.92</td>
+<td align="right">10664.91</td>
+<td align="right">11168.93</td>
+<td align="right">2433</td>
+<td align="right">2437</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The adjusted R<sup>2</sup> of the ANOVA model (to two decimal places, as a percentage) is <input class='webex-solveme nospaces' size='4' data-answer='["9.52"]'/> %, which is the percentage of variance in distress explained by the model.</p>
+<p><br />
+</p>
+</div>
+<div id="follow-up-comparisons" class="section level2" number="4.9">
+<h2><span class="header-section-number">4.9</span> Follow-up comparisons</h2>
+<p>Given that we have evidence for an interaction, <code>anovaBF()</code> can be used to conduct follow-up comparisons to explore the nature of the interaction. Note, we would not do this if the BF did not show evidence for the interaction (i.e., if the BF was less than 3).</p>
+<p>The interaction implies the effect of <code>adversity</code> is not the same in individuals with <code>high</code> resilience, and those with <code>low</code> resilience.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="two-way-between-subjects-anova.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. The effect of adversity in individuals with high resilience</span></span>
+<span id="cb25-2"><a href="two-way-between-subjects-anova.html#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="two-way-between-subjects-anova.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use filter() to store only </span></span>
+<span id="cb25-4"><a href="two-way-between-subjects-anova.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the data from the &#39;high&#39; resilience groups</span></span>
+<span id="cb25-5"><a href="two-way-between-subjects-anova.html#cb25-5" aria-hidden="true" tabindex="-1"></a>resilience_high <span class="ot">&lt;-</span> </span>
+<span id="cb25-6"><a href="two-way-between-subjects-anova.html#cb25-6" aria-hidden="true" tabindex="-1"></a>  resilience_data <span class="sc">%&gt;%</span> </span>
+<span id="cb25-7"><a href="two-way-between-subjects-anova.html#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(resilience <span class="sc">==</span> <span class="st">&quot;high&quot;</span>)</span>
+<span id="cb25-8"><a href="two-way-between-subjects-anova.html#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="two-way-between-subjects-anova.html#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co"># use `anovaBF()` to look at effect of adversity in resilience_high</span></span>
+<span id="cb25-10"><a href="two-way-between-subjects-anova.html#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>( distress <span class="sc">~</span> adversity, <span class="at">data =</span> <span class="fu">data.frame</span>(resilience_high) )</span></code></pre></div>
+<pre><code>## Bayes factor analysis
+## --------------
+## [1] adversity : 1.026598 ±0%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS</code></pre>
+<p>To determine the evidence for the effect of <code>adversity</code> in individuals with <code>low</code> resilience:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="two-way-between-subjects-anova.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. The effect of adversity in individuals with low resilience</span></span>
+<span id="cb27-2"><a href="two-way-between-subjects-anova.html#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="two-way-between-subjects-anova.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use filter() to store only </span></span>
+<span id="cb27-4"><a href="two-way-between-subjects-anova.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the data from the &#39;low&#39; resilience groups</span></span>
+<span id="cb27-5"><a href="two-way-between-subjects-anova.html#cb27-5" aria-hidden="true" tabindex="-1"></a>resilience_low <span class="ot">&lt;-</span> </span>
+<span id="cb27-6"><a href="two-way-between-subjects-anova.html#cb27-6" aria-hidden="true" tabindex="-1"></a>  resilience_data <span class="sc">%&gt;%</span> </span>
+<span id="cb27-7"><a href="two-way-between-subjects-anova.html#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(resilience <span class="sc">==</span> <span class="st">&quot;low&quot;</span>)</span>
+<span id="cb27-8"><a href="two-way-between-subjects-anova.html#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="two-way-between-subjects-anova.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># use `anovaBF()` to look at effect of adversity in resilience_low</span></span>
+<span id="cb27-10"><a href="two-way-between-subjects-anova.html#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>( distress <span class="sc">~</span> adversity, <span class="at">data =</span> <span class="fu">data.frame</span>(resilience_low) )</span></code></pre></div>
+<pre><code>## Bayes factor analysis
+## --------------
+## [1] adversity : 2.389569e+17 ±0%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS</code></pre>
+<p>This confirms the interaction that is apparent in the plot: There's no evidence for an effect of adversity within high resilience individuals (BF = <input class='webex-solveme nospaces' size='4' data-answer='["1.03"]'/>), but there's substantial evidence for an effect of adversity within low resilience individuals (BF = <input class='webex-solveme nospaces' size='4' data-answer='["2.39"]'/>x 10<sup>17</sup>), such that levels of distress are greatest when the level of adversity is highest. Interestingly, this suggests that resilience may have a buffering effect on the distress experienced as a result of childhood adversity (see Beutel et al., 2017, for further discussion).</p>
+<p><br />
+</p>
+</div>
+</div>
+<div class="psyteachr_footer">
+  
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+  
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
+
+  update_total_correct();
+}
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="anova1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercises.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"google": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": {},
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
