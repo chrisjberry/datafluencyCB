@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Session 4 Multiple regression: one continuous, one categorical | PSYC753 Data Fluency: Analysis</title>
+  <meta name="description" content="Course materials for PSYC753 2022" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Session 4 Multiple regression: one continuous, one categorical | PSYC753 Data Fluency: Analysis" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://chrisjberry.github.io/datafluencyCB/" />
+  
+  <meta property="og:description" content="Course materials for PSYC753 2022" />
+  <meta name="github-repo" content="datafluencyCB" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Session 4 Multiple regression: one continuous, one categorical | PSYC753 Data Fluency: Analysis" />
+  
+  <meta name="twitter:description" content="Course materials for PSYC753 2022" />
+  
+
+<meta name="author" content="Chris Berry" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="anova1.html"/>
+<link rel="next" href="multiple3.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="include/psyteachr.css" type="text/css" />
+<link rel="stylesheet" href="include/webex.css" type="text/css" />
+<link rel="stylesheet" href="include/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PSYC753 Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="1" data-path="simple1.html"><a href="simple1.html"><i class="fa fa-check"></i><b>1</b> Simple Regression</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="simple1.html"><a href="simple1.html#overview-1"><i class="fa fa-check"></i><b>1.1</b> Overview</a></li>
+<li class="chapter" data-level="1.2" data-path="simple1.html"><a href="simple1.html#worked-example"><i class="fa fa-check"></i><b>1.2</b> Worked Example</a></li>
+<li class="chapter" data-level="1.3" data-path="simple1.html"><a href="simple1.html#predicting"><i class="fa fa-check"></i><b>1.3</b> Predicting</a></li>
+<li class="chapter" data-level="1.4" data-path="simple1.html"><a href="simple1.html#residuals"><i class="fa fa-check"></i><b>1.4</b> Residuals</a></li>
+<li class="chapter" data-level="1.5" data-path="simple1.html"><a href="simple1.html#evaluating-the-model"><i class="fa fa-check"></i><b>1.5</b> Evaluating the model</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="simple1.html"><a href="simple1.html#r2"><i class="fa fa-check"></i><b>1.5.1</b> R<sup>2</sup></a></li>
+<li class="chapter" data-level="1.5.2" data-path="simple1.html"><a href="simple1.html#bayes-factor"><i class="fa fa-check"></i><b>1.5.2</b> Bayes Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="simple1.html"><a href="simple1.html#exercise"><i class="fa fa-check"></i><b>1.6</b> Exercise</a></li>
+<li class="chapter" data-level="1.7" data-path="simple1.html"><a href="simple1.html#further-exercises"><i class="fa fa-check"></i><b>1.7</b> Further Exercises</a></li>
+<li class="chapter" data-level="1.8" data-path="simple1.html"><a href="simple1.html#summary"><i class="fa fa-check"></i><b>1.8</b> Summary</a></li>
+<li class="chapter" data-level="1.9" data-path="simple1.html"><a href="simple1.html#references"><i class="fa fa-check"></i><b>1.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="multiple1.html"><a href="multiple1.html"><i class="fa fa-check"></i><b>2</b> Multiple regression: multiple continuous predictors</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="multiple1.html"><a href="multiple1.html#overview-2"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="multiple1.html"><a href="multiple1.html#worked-example-1"><i class="fa fa-check"></i><b>2.2</b> Worked example</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="multiple1.html"><a href="multiple1.html#residual-plot"><i class="fa fa-check"></i><b>2.2.1</b> Residual plot</a></li>
+<li class="chapter" data-level="2.2.2" data-path="multiple1.html"><a href="multiple1.html#evaluating-the-model-bayes-factor"><i class="fa fa-check"></i><b>2.2.2</b> Evaluating the model: Bayes Factor</a></li>
+<li class="chapter" data-level="2.2.3" data-path="multiple1.html"><a href="multiple1.html#evaluating-the-model-r2"><i class="fa fa-check"></i><b>2.2.3</b> Evaluating the model: R<sup>2</sup></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="multiple1.html"><a href="multiple1.html#understanding-the-contribution-of-individual-predictors"><i class="fa fa-check"></i><b>2.3</b> Understanding the contribution of individual predictors</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="multiple1.html"><a href="multiple1.html#r2-in-simple-vs.-multiple-regression"><i class="fa fa-check"></i><b>2.3.1</b> R<sup>2</sup> in simple vs. multiple regression</a></li>
+<li class="chapter" data-level="2.3.2" data-path="multiple1.html"><a href="multiple1.html#venn-diagrams"><i class="fa fa-check"></i><b>2.3.2</b> Venn Diagrams</a></li>
+<li class="chapter" data-level="2.3.3" data-path="multiple1.html"><a href="multiple1.html#using-bayes-factors-to-assess-the-unique-contribution-of-predictors"><i class="fa fa-check"></i><b>2.3.3</b> Using Bayes factors to assess the unique contribution of predictors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="multiple1.html"><a href="multiple1.html#multicollinearity"><i class="fa fa-check"></i><b>2.4</b> Multicollinearity</a></li>
+<li class="chapter" data-level="2.5" data-path="multiple1.html"><a href="multiple1.html#exercise-1"><i class="fa fa-check"></i><b>2.5</b> Exercise</a></li>
+<li class="chapter" data-level="2.6" data-path="multiple1.html"><a href="multiple1.html#further-exercises-1"><i class="fa fa-check"></i><b>2.6</b> Further exercises</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="multiple1.html"><a href="multiple1.html#regressionbf"><i class="fa fa-check"></i><b>2.6.1</b> <code>regressionBF()</code></a></li>
+<li class="chapter" data-level="2.6.2" data-path="multiple1.html"><a href="multiple1.html#predicting-new-data"><i class="fa fa-check"></i><b>2.6.2</b> Predicting new data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="multiple1.html"><a href="multiple1.html#summary-of-key-points"><i class="fa fa-check"></i><b>2.7</b> Summary of key points</a></li>
+<li class="chapter" data-level="2.8" data-path="multiple1.html"><a href="multiple1.html#references-1"><i class="fa fa-check"></i><b>2.8</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="anova1.html"><a href="anova1.html"><i class="fa fa-check"></i><b>3</b> ANOVA: between-subjects designs</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="anova1.html"><a href="anova1.html#overview-3"><i class="fa fa-check"></i><b>3.1</b> Overview</a></li>
+<li class="chapter" data-level="3.2" data-path="anova1.html"><a href="anova1.html#one-way-between-subjects-anova"><i class="fa fa-check"></i><b>3.2</b> One-way between subjects ANOVA</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="anova1.html"><a href="anova1.html#worked-example-2"><i class="fa fa-check"></i><b>3.2.1</b> Worked Example</a></li>
+<li class="chapter" data-level="3.2.2" data-path="anova1.html"><a href="anova1.html#read-in-the-data"><i class="fa fa-check"></i><b>3.2.2</b> Read in the data</a></li>
+<li class="chapter" data-level="3.2.3" data-path="anova1.html"><a href="anova1.html#convert-the-independent-variable-to-a-factor"><i class="fa fa-check"></i><b>3.2.3</b> Convert the independent variable to a factor</a></li>
+<li class="chapter" data-level="3.2.4" data-path="anova1.html"><a href="anova1.html#n-of-each-group"><i class="fa fa-check"></i><b>3.2.4</b> n of each group</a></li>
+<li class="chapter" data-level="3.2.5" data-path="anova1.html"><a href="anova1.html#visualise-the-data"><i class="fa fa-check"></i><b>3.2.5</b> Visualise the data</a></li>
+<li class="chapter" data-level="3.2.6" data-path="anova1.html"><a href="anova1.html#plot-the-means"><i class="fa fa-check"></i><b>3.2.6</b> Plot the means</a></li>
+<li class="chapter" data-level="3.2.7" data-path="anova1.html"><a href="anova1.html#descriptives-mean-of-each-group"><i class="fa fa-check"></i><b>3.2.7</b> Descriptives: Mean of each group</a></li>
+<li class="chapter" data-level="3.2.8" data-path="anova1.html"><a href="anova1.html#bayes-factor-1"><i class="fa fa-check"></i><b>3.2.8</b> Bayes factor</a></li>
+<li class="chapter" data-level="3.2.9" data-path="anova1.html"><a href="anova1.html#r2-1"><i class="fa fa-check"></i><b>3.2.9</b> R<sup>2</sup></a></li>
+<li class="chapter" data-level="3.2.10" data-path="anova1.html"><a href="anova1.html#follow-up-tests"><i class="fa fa-check"></i><b>3.2.10</b> Follow-up tests</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="anova1.html"><a href="anova1.html#two-way-between-subjects-anova"><i class="fa fa-check"></i><b>3.3</b> Two-way between-subjects ANOVA</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="anova1.html"><a href="anova1.html#worked-example-3"><i class="fa fa-check"></i><b>3.3.1</b> Worked example</a></li>
+<li class="chapter" data-level="3.3.2" data-path="anova1.html"><a href="anova1.html#read-in-the-data-1"><i class="fa fa-check"></i><b>3.3.2</b> Read in the data</a></li>
+<li class="chapter" data-level="3.3.3" data-path="anova1.html"><a href="anova1.html#convert-the-independent-variables-to-factors"><i class="fa fa-check"></i><b>3.3.3</b> Convert the independent variables to factors</a></li>
+<li class="chapter" data-level="3.3.4" data-path="anova1.html"><a href="anova1.html#n-in-each-group"><i class="fa fa-check"></i><b>3.3.4</b> n in each group</a></li>
+<li class="chapter" data-level="3.3.5" data-path="anova1.html"><a href="anova1.html#visualise-the-data-1"><i class="fa fa-check"></i><b>3.3.5</b> Visualise the data</a></li>
+<li class="chapter" data-level="3.3.6" data-path="anova1.html"><a href="anova1.html#plot-the-means-1"><i class="fa fa-check"></i><b>3.3.6</b> Plot the means</a></li>
+<li class="chapter" data-level="3.3.7" data-path="anova1.html"><a href="anova1.html#bayes-factors"><i class="fa fa-check"></i><b>3.3.7</b> Bayes factors</a></li>
+<li class="chapter" data-level="3.3.8" data-path="anova1.html"><a href="anova1.html#r2-2"><i class="fa fa-check"></i><b>3.3.8</b> R<sup>2</sup></a></li>
+<li class="chapter" data-level="3.3.9" data-path="anova1.html"><a href="anova1.html#follow-up-comparisons"><i class="fa fa-check"></i><b>3.3.9</b> Follow-up comparisons</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="anova1.html"><a href="anova1.html#exercise-one-way"><i class="fa fa-check"></i><b>3.4</b> Exercise: one-way</a></li>
+<li class="chapter" data-level="3.5" data-path="anova1.html"><a href="anova1.html#exercise-two-way"><i class="fa fa-check"></i><b>3.5</b> Exercise: two-way</a></li>
+<li class="chapter" data-level="3.6" data-path="anova1.html"><a href="anova1.html#summary-1"><i class="fa fa-check"></i><b>3.6</b> Summary</a></li>
+<li class="chapter" data-level="3.7" data-path="anova1.html"><a href="anova1.html#references-2"><i class="fa fa-check"></i><b>3.7</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="multiple2.html"><a href="multiple2.html"><i class="fa fa-check"></i><b>4</b> Multiple regression: one continuous, one categorical</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="multiple2.html"><a href="multiple2.html#overview-4"><i class="fa fa-check"></i><b>4.1</b> Overview</a></li>
+<li class="chapter" data-level="4.2" data-path="multiple2.html"><a href="multiple2.html#worked-example-4"><i class="fa fa-check"></i><b>4.2</b> Worked example</a></li>
+<li class="chapter" data-level="4.3" data-path="multiple2.html"><a href="multiple2.html#read-in-the-data-2"><i class="fa fa-check"></i><b>4.3</b> Read in the data</a></li>
+<li class="chapter" data-level="4.4" data-path="multiple2.html"><a href="multiple2.html#visualise-the-data-2"><i class="fa fa-check"></i><b>4.4</b> Visualise the data</a></li>
+<li class="chapter" data-level="4.5" data-path="multiple2.html"><a href="multiple2.html#evidence-for-the-interaction"><i class="fa fa-check"></i><b>4.5</b> Evidence for the interaction</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="multiple2.html"><a href="multiple2.html#model-without-the-interaction"><i class="fa fa-check"></i><b>4.5.1</b> Model without the interaction</a></li>
+<li class="chapter" data-level="4.5.2" data-path="multiple2.html"><a href="multiple2.html#model-with-the-interaction"><i class="fa fa-check"></i><b>4.5.2</b> Model with the interaction</a></li>
+<li class="chapter" data-level="4.5.3" data-path="multiple2.html"><a href="multiple2.html#compare-the-model-with-and-without-the-interaction"><i class="fa fa-check"></i><b>4.5.3</b> Compare the model with and without the interaction</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="multiple2.html"><a href="multiple2.html#simple-slopes-analysis"><i class="fa fa-check"></i><b>4.6</b> Simple slopes analysis</a></li>
+<li class="chapter" data-level="4.7" data-path="multiple2.html"><a href="multiple2.html#exercises"><i class="fa fa-check"></i><b>4.7</b> Exercises</a></li>
+<li class="chapter" data-level="4.8" data-path="multiple2.html"><a href="multiple2.html#further-exercise"><i class="fa fa-check"></i><b>4.8</b> Further exercise</a></li>
+<li class="chapter" data-level="4.9" data-path="multiple2.html"><a href="multiple2.html#further-knowledge-moderation"><i class="fa fa-check"></i><b>4.9</b> Further knowledge: moderation</a></li>
+<li class="chapter" data-level="4.10" data-path="multiple2.html"><a href="multiple2.html#further-knowledge-coefficients"><i class="fa fa-check"></i><b>4.10</b> Further knowledge: coefficients</a></li>
+<li class="chapter" data-level="4.11" data-path="multiple2.html"><a href="multiple2.html#further-knowledge-centering"><i class="fa fa-check"></i><b>4.11</b> Further knowledge: centering</a></li>
+<li class="chapter" data-level="4.12" data-path="multiple2.html"><a href="multiple2.html#summary-2"><i class="fa fa-check"></i><b>4.12</b> Summary</a></li>
+<li class="chapter" data-level="4.13" data-path="multiple2.html"><a href="multiple2.html#references-3"><i class="fa fa-check"></i><b>4.13</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="multiple3.html"><a href="multiple3.html"><i class="fa fa-check"></i><b>5</b> Multiple regression: evaluating and comparing models</a></li>
+<li class="chapter" data-level="6" data-path="anova2.html"><a href="anova2.html"><i class="fa fa-check"></i><b>6</b> ANOVA: Repeated measures</a></li>
+<li class="chapter" data-level="7" data-path="prepost.html"><a href="prepost.html"><i class="fa fa-check"></i><b>7</b> Pre-post data, effect sizes, clinically significant change</a></li>
+<li class="chapter" data-level="8" data-path="assessment2022.html"><a href="assessment2022.html"><i class="fa fa-check"></i><b>8</b> Data Analysis Assessment 2022</a></li>
+<li class="chapter" data-level="9" data-path="faqs.html"><a href="faqs.html"><i class="fa fa-check"></i><b>9</b> FAQs</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="faqs.html"><a href="faqs.html#e-meaning"><i class="fa fa-check"></i><b>9.1</b> What does it mean if RStudio prints out "e-" next to a number?</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendices</b></span></li>
+<li class="divider"></li>
+<li><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" 
+    target="blank"><img alt="Creative Commons License" 
+    style="border-width:0" 
+    src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSYC753 Data Fluency: Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="multiple2" class="section level1" number="4">
+<h1><span class="header-section-number">Session 4</span> Multiple regression: one continuous, one categorical</h1>
+<p><em>Chris Berry</em><br />
+<em>2022</em></p>
+<!--
+commented text
+commented text
+-->
+<style>
+div.exercise { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<style>
+div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
+</style>
+<div id="overview-4" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Overview</h2>
+<ul>
+<li><strong>Slides</strong> from the lecture part of the session: <a href="slides/PSYC753_L4_PSYC753_L4_MultipleRegression2.pptx">Download</a></li>
+</ul>
+<p><br />
+</p>
+<p>So far we have looked at <a href="simple1.html#simple1">simple</a> and <a href="multiple1.html#multiple1">multiple regression</a> with <em>continuous variables</em>. (And in the last session, we saw that between-subjects <a href="anova1.html#anova1">ANOVA</a> was equivalent to a multiple regression in which all the predictors are categorical.)</p>
+<p>Here, we look at multiple regression with a mixture of continuous and categorical predictors. Specifically, one predictor is <em>continuous</em>, and the other is a <em>dichotomous categorical variable</em> (i.e., made up of two levels or groups).</p>
+<p>This type of analysis can be used to see whether the relationship between two variables is the same or different across groups of individuals. For example, adherence to a particular treatment may be associated with attitudes towards the efficacy of the treatment, but the nature of the association may differ according to the type of psychological disorder a person has.</p>
+<p>Thus, in this type of analysis, in addition to looking at the ability of individual predictors to explain an outcome variable, we're able to look at their <em>combined</em> effect in explaining the outcome. This is referred to as an <strong>interaction effect</strong>. The interaction can tell us whether the relationship between one of the predictors and the outcome differs as a function of the levels of the other predictor variable.</p>
+</div>
+<div id="worked-example-4" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Worked example</h2>
+<p>Scientists often research things that are of personal interest to themselves. Do people end up trusting the researcher more when they have some personal investment in what they are researching? Altenmuller et al. (2021) looked at whether participants' trust in the researcher is related to 1) whether they are told that the researcher is personally affected by the research or not affected by their research, and 2) the participant's attitude towards the research topic.</p>
+<p>The data from Altenmuller et al.'s (2021) study (Experiment 2) are stored at the link below.</p>
+<p><a href="https://raw.githubusercontent.com/chrisjberry/Teaching/master/4_trust_data.csv" class="uri">https://raw.githubusercontent.com/chrisjberry/Teaching/master/4_trust_data.csv</a></p>
+<p>The key variables:</p>
+<ul>
+<li><code>trustworthiness</code>: how trustworthy the participant finds the researcher. Higher scores indicate higher levels of trustworthiness.</li>
+<li><code>attitude</code>: the participant's attitude towards the research topic. Higher scores indicate a more positive attitude.</li>
+<li><code>group</code>: whether participants were told that the researcher is personally <code>affected</code> or <code>not_affected</code> by their own research.</li>
+</ul>
+<div class="webex-solution">
+<button>
+More about the data
+</button>
+<p>The data were made publicly available by the researchers and have been pre-processed (using the researcher's open R code). Only a subset of the data is used here for teaching purposes; variable names have been changed for clarity.</p>
+</div>
+<p><br />
+</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-15" class="exercise"><strong>Exercise 4.1  </strong></span>Design check.</p>
+<ul>
+<li><p>What is the outcome variable in this design? <select class='webex-select'><option value='blank'></option><option value=''>attitude</option><option value='answer'>trustworthiness</option><option value=''>group</option></select></p></li>
+<li><p>What is the nature of the outcome variable? <select class='webex-select'><option value='blank'></option><option value=''>categorical</option><option value='answer'>continuous</option></select></p></li>
+<li><p>What is the name of the continuous predictor variable? <select class='webex-select'><option value='blank'></option><option value=''>group</option><option value='answer'>attitude</option><option value=''>trustworthiness</option></select></p></li>
+<li><p>What is the name of the categorical predictor variable? <select class='webex-select'><option value='blank'></option><option value='answer'>group</option><option value=''>attitude</option><option value=''>trustworthiness</option></select></p></li>
+<li><p>How many levels of <code>group</code> are there? <select class='webex-select'><option value='blank'></option><option value=''>1</option><option value='answer'>2</option><option value=''>3</option></select></p></li>
+<li><p>When a variable has two levels it is called a <select class='webex-select'><option value='blank'></option><option value=''>continuous</option><option value='answer'>dichotomous</option><option value=''>quantitative</option></select> variable.</p></li>
+</ul>
+</div>
+<p><br />
+</p>
+</div>
+<div id="read-in-the-data-2" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Read in the data</h2>
+<p>Read in the data to <code>trust_data</code></p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="multiple2.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ensure tidyverse is loaded</span></span>
+<span id="cb100-2"><a href="multiple2.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(tidyverse)</span></span>
+<span id="cb100-3"><a href="multiple2.html#cb100-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-4"><a href="multiple2.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the data</span></span>
+<span id="cb100-5"><a href="multiple2.html#cb100-5" aria-hidden="true" tabindex="-1"></a>trust_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/4_trust_data.csv&#39;</span>)</span>
+<span id="cb100-6"><a href="multiple2.html#cb100-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-7"><a href="multiple2.html#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the data</span></span>
+<span id="cb100-8"><a href="multiple2.html#cb100-8" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">ppt</th>
+<th align="left">group</th>
+<th align="right">attitude</th>
+<th align="right">trustworthiness</th>
+<th align="right">credibility</th>
+<th align="right">evaluation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">not_affected</td>
+<td align="right">5.714286</td>
+<td align="right">4.428571</td>
+<td align="right">4.428571</td>
+<td align="right">2.583333</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">affected</td>
+<td align="right">3.142857</td>
+<td align="right">4.285714</td>
+<td align="right">4.428571</td>
+<td align="right">3.250000</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">not_affected</td>
+<td align="right">5.285714</td>
+<td align="right">4.428571</td>
+<td align="right">4.428571</td>
+<td align="right">2.750000</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">not_affected</td>
+<td align="right">4.428571</td>
+<td align="right">4.642857</td>
+<td align="right">3.857143</td>
+<td align="right">2.416667</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">affected</td>
+<td align="right">6.000000</td>
+<td align="right">6.000000</td>
+<td align="right">5.285714</td>
+<td align="right">2.333333</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">not_affected</td>
+<td align="right">3.642857</td>
+<td align="right">5.500000</td>
+<td align="right">4.571429</td>
+<td align="right">2.500000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br />
+</p>
+</div>
+<div id="visualise-the-data-2" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Visualise the data</h2>
+<p>Use a scatterplot to look at the relationship between <code>trustworthiness</code>, <code>attitude</code> and <code>group</code>. Use different colours for each <code>group</code> by specifying <code>colour = group</code> in <code>aes()</code>:</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="multiple2.html#cb101-1" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
+<span id="cb101-2"><a href="multiple2.html#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> attitude, <span class="at">y =</span> trustworthiness, <span class="at">colour =</span> group )) <span class="sc">+</span></span>
+<span id="cb101-3"><a href="multiple2.html#cb101-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb101-4"><a href="multiple2.html#cb101-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb101-5"><a href="multiple2.html#cb101-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() </span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="04_multiple_regression_2_files/figure-html/unnamed-chunk-3-1.png" alt="Trustworthiness vs. participant attitude to research" width="75%" />
+<p class="caption">
+Figure 1.1: Trustworthiness vs. participant attitude to research
+</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-16" class="exercise"><strong>Exercise 4.2  </strong></span>Visual inspection of the scatterplot</p>
+<p>Does the relationship between <code>attitude</code> and <code>trustworthiness</code> appear to be the same within each <code>group</code>? <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select></p>
+<p><br />
+</p>
+<p>Within the group that were told that the researcher was personally <code>affected</code> by their research:</p>
+<ul>
+<li>The association between <code>attitude</code> and <code>trustworthiness</code> appears to be <select class='webex-select'><option value='blank'></option><option value=''>negative</option><option value='answer'>positive</option></select></li>
+<li>A more positive attitude towards the research topic tends to be associated with <select class='webex-select'><option value='blank'></option><option value=''>lower</option><option value=''>no change</option><option value='answer'>higher</option></select> values of <code>trustworthiness</code>.</li>
+</ul>
+<p><br />
+</p>
+<p>Within the group that were told that the researcher was personally <code>not_affected</code> by their research:</p>
+<ul>
+<li>The association between <code>attitude</code> and <code>trustworthiness</code> appears to be <select class='webex-select'><option value='blank'></option><option value='answer'>negative</option><option value=''>positive</option></select></li>
+<li>A more positive attitude towards the research topic tends to be associated with <select class='webex-select'><option value='blank'></option><option value='answer'>lower</option><option value=''>no change</option><option value=''>higher</option></select> values of <code>trustworthiness</code>.</li>
+</ul>
+</div>
+<div class="webex-solution">
+<button>
+Go further with ggplot
+</button>
+<p>The scatterplot can be improved through further customisation.</p>
+<p>For example, to change the x- and y- labels, add the code:</p>
+<p><code>+ xlab("Participants' attitude to the research") +</code>
+<code>ylab("Trustworthiness of researcher")</code></p>
+<p>Feel free to customise the plot further if you feel it can be improved!</p>
+</div>
+<div class="webex-solution">
+<button>
+Further inspection
+</button>
+<p>It is good practice to inspect the distributions of the data prior to analysis, for example, with <code>geom_histogram()</code> or <code>geom_density()</code>. When can check if the data appear normally distributed, or positively or negatively skewed. We can also check for outliers using <code>geom_boxplot()</code>. Get to know your data!</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="multiple2.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the distribution of trustworthiness</span></span>
+<span id="cb102-2"><a href="multiple2.html#cb102-2" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
+<span id="cb102-3"><a href="multiple2.html#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(trustworthiness)) <span class="sc">+</span></span>
+<span id="cb102-4"><a href="multiple2.html#cb102-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() </span>
+<span id="cb102-5"><a href="multiple2.html#cb102-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-6"><a href="multiple2.html#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the distribution of attitude</span></span>
+<span id="cb102-7"><a href="multiple2.html#cb102-7" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
+<span id="cb102-8"><a href="multiple2.html#cb102-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(attitude)) <span class="sc">+</span></span>
+<span id="cb102-9"><a href="multiple2.html#cb102-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() </span>
+<span id="cb102-10"><a href="multiple2.html#cb102-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-11"><a href="multiple2.html#cb102-11" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain n in affected &amp; not_affected groups</span></span>
+<span id="cb102-12"><a href="multiple2.html#cb102-12" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
+<span id="cb102-13"><a href="multiple2.html#cb102-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb102-14"><a href="multiple2.html#cb102-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
+</div>
+<p><br />
+</p>
+</div>
+<div id="evidence-for-the-interaction" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Evidence for the interaction</h2>
+<p>An interaction between the <code>attitude</code> and <code>group</code> predictors is suggested by the scatterplot. That is, the association between <code>trustworthiness</code> and <code>attitude</code> appears to be different in the <code>affected</code> and <code>non_affected</code> groups. We may therefore want to include the interaction term in our multiple regression model and determine whether we have evidence for the interaction or not using Bayes factors.</p>
+<p>We'll do this in three steps:</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>Specify the model <em>without</em> the interaction</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>Specify the model <em>with</em> the interaction</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>Compare the model <em>with</em> and <em>without</em> the interaction</li>
+</ol></li>
+</ul>
+<p><br />
+</p>
+<div id="model-without-the-interaction" class="section level3" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> Model without the interaction</h3>
+<p>The model without an interaction looks like a typical multiple regression model with two predictors (from Session 2):</p>
+<p><code>model &lt;- lm(outcome ~ predictor_1 + predictor_2, data = mydata)</code></p>
+<p>As we did in the previous session, we need to also convert the categorical variable (<code>group</code>) to a <code>factor()</code> to ensure it's treated as categorical by R.</p>
+<p>Thus, For our data:</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="multiple2.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert group to a factor</span></span>
+<span id="cb103-2"><a href="multiple2.html#cb103-2" aria-hidden="true" tabindex="-1"></a>trust_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">factor</span>(group))</span>
+<span id="cb103-3"><a href="multiple2.html#cb103-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-4"><a href="multiple2.html#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model without the interaction</span></span>
+<span id="cb103-5"><a href="multiple2.html#cb103-5" aria-hidden="true" tabindex="-1"></a>without_interaction <span class="ot">&lt;-</span> <span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude <span class="sc">+</span> group, </span>
+<span id="cb103-6"><a href="multiple2.html#cb103-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data =</span> trust_data)</span>
+<span id="cb103-7"><a href="multiple2.html#cb103-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-8"><a href="multiple2.html#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="co"># R² for the model</span></span>
+<span id="cb103-9"><a href="multiple2.html#cb103-9" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
+<span id="cb103-10"><a href="multiple2.html#cb103-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(without_interaction)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<colgroup>
+<col width="9%" />
+<col width="12%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="2%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="10%" />
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">r.squared</th>
+<th align="right">adj.r.squared</th>
+<th align="right">sigma</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">df</th>
+<th align="right">logLik</th>
+<th align="right">AIC</th>
+<th align="right">BIC</th>
+<th align="right">deviance</th>
+<th align="right">df.residual</th>
+<th align="right">nobs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.0130486</td>
+<td align="right">0.0065555</td>
+<td align="right">0.7588684</td>
+<td align="right">2.009602</td>
+<td align="right">0.1358188</td>
+<td align="right">2</td>
+<td align="right">-349.3972</td>
+<td align="right">706.7944</td>
+<td align="right">721.7018</td>
+<td align="right">175.0679</td>
+<td align="right">304</td>
+<td align="right">307</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>How much of the variance in <code>trustworthiness</code> is explained by the model with <code>attitude</code> and <code>group</code>? The adjusted R<sup>2</sup> (as a proportion, to two decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["0.01"]'/>.</li>
+</ul>
+<p><br />
+</p>
+<p>Next use <code>lmBF()</code> to obtain the BF for the model with no interaction:</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="multiple2.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(BayesFactor)</span></span>
+<span id="cb104-2"><a href="multiple2.html#cb104-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-3"><a href="multiple2.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain BF for the model</span></span>
+<span id="cb104-4"><a href="multiple2.html#cb104-4" aria-hidden="true" tabindex="-1"></a>BF_without_interaction <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(trustworthiness <span class="sc">~</span> attitude <span class="sc">+</span> group,</span>
+<span id="cb104-5"><a href="multiple2.html#cb104-5" aria-hidden="true" tabindex="-1"></a>                               <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span>
+<span id="cb104-6"><a href="multiple2.html#cb104-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-7"><a href="multiple2.html#cb104-7" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the BF</span></span>
+<span id="cb104-8"><a href="multiple2.html#cb104-8" aria-hidden="true" tabindex="-1"></a>BF_without_interaction </span></code></pre></div>
+<pre><code>## Bayes factor analysis
+## --------------
+## [1] attitude + group : 0.1051397 ±1.69%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS</code></pre>
+<p>The BF for the model without the interaction is equal to (to 2 decimal places) <input class='webex-solveme nospaces' data-tol='0.1' size='5' data-answer='["0.105",".105"]'/>.</p>
+<p><br />
+</p>
+</div>
+<div id="model-with-the-interaction" class="section level3" number="4.5.2">
+<h3><span class="header-section-number">4.5.2</span> Model with the interaction</h3>
+<div class="tip">
+<p>To specify an interaction between two predictors, use the term <code>predictor1 * predictor2</code>. The <code>*</code> symbol means multiply, so the interaction term is simply the predictors multiplied together.</p>
+</div>
+<p>To specify the model with the interaction, add the interaction term <code>predictor1 * predictor2</code> to the model without the interaction term:</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="multiple2.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model with the interaction</span></span>
+<span id="cb106-2"><a href="multiple2.html#cb106-2" aria-hidden="true" tabindex="-1"></a>with_interaction <span class="ot">&lt;-</span> <span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group,</span>
+<span id="cb106-3"><a href="multiple2.html#cb106-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data =</span> trust_data)</span>
+<span id="cb106-4"><a href="multiple2.html#cb106-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-5"><a href="multiple2.html#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="co"># R² for the model</span></span>
+<span id="cb106-6"><a href="multiple2.html#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(with_interaction)</span></code></pre></div>
+<div class="kable-table">
+<table style="width:100%;">
+<colgroup>
+<col width="9%" />
+<col width="12%" />
+<col width="8%" />
+<col width="9%" />
+<col width="9%" />
+<col width="2%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="10%" />
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">r.squared</th>
+<th align="right">adj.r.squared</th>
+<th align="right">sigma</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">df</th>
+<th align="right">logLik</th>
+<th align="right">AIC</th>
+<th align="right">BIC</th>
+<th align="right">deviance</th>
+<th align="right">df.residual</th>
+<th align="right">nobs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.0623098</td>
+<td align="right">0.0530257</td>
+<td align="right">0.740907</td>
+<td align="right">6.711482</td>
+<td align="right">0.0002128</td>
+<td align="right">3</td>
+<td align="right">-341.5378</td>
+<td align="right">693.0756</td>
+<td align="right">711.7098</td>
+<td align="right">166.3298</td>
+<td align="right">303</td>
+<td align="right">307</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>How much of the variance in <code>trustworthiness</code> is explained by the model with <code>attitude</code>,<code>group</code>, and the <code>attitude*group</code> interaction? The adjusted R<sup>2</sup> (as a proportion, to two decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["0.05"]'/>.</li>
+</ul>
+<p><br />
+</p>
+<p>Use <code>lmBF()</code> to obtain the BF for the model with the interaction:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="multiple2.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain BF for the model</span></span>
+<span id="cb107-2"><a href="multiple2.html#cb107-2" aria-hidden="true" tabindex="-1"></a>BF_with_interaction <span class="ot">&lt;-</span> </span>
+<span id="cb107-3"><a href="multiple2.html#cb107-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(trustworthiness <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group,</span>
+<span id="cb107-4"><a href="multiple2.html#cb107-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span>
+<span id="cb107-5"><a href="multiple2.html#cb107-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-6"><a href="multiple2.html#cb107-6" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the BF</span></span>
+<span id="cb107-7"><a href="multiple2.html#cb107-7" aria-hidden="true" tabindex="-1"></a>BF_with_interaction </span></code></pre></div>
+<pre><code>## Bayes factor analysis
+## --------------
+## [1] attitude + group + attitude * group : 31.6718 ±1.39%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS</code></pre>
+<p>The BF for the model with the interaction is equal to <input class='webex-solveme nospaces' data-tol='7.5' size='2' data-answer='["31"]'/>. (Note: yours may come out slightly different to that shown in the worksheet due to random sampling processes used in the BF generation; as long as the BF is around 30, that's okay.)</p>
+<p><br />
+</p>
+</div>
+<div id="compare-the-model-with-and-without-the-interaction" class="section level3" number="4.5.3">
+<h3><span class="header-section-number">4.5.3</span> Compare the model with and without the interaction</h3>
+<p>To determine whether there's evidence for the interaction, we need to compare the Bayes factor for the model with and without the interaction.</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-17" class="exercise"><strong>Exercise 4.3  </strong></span>Bayes factors can be compared with the formula:</p>
+<p><span class="math inline">\(\frac{Bayes \ factor \ more \ complex \ model}{Bayes \ factor \ simpler \ model}\)</span></p>
+<p>Dividing the BFs in this way will return another Bayes factor, which is a number that tells us how many times more likely the more complex model compared to the simpler model, given the data.</p>
+<p><br />
+</p>
+<p>So, if we perform this calculation:</p>
+<p><span class="math inline">\(\frac{Bayes \ factor \ for \ model \ with \ interaction}{Bayes \ factor \ for \ model \ without \ interaction}\)</span></p>
+<p>this will tell us how many times more likely the model <em>with</em> the interaction is than the model <em>without</em> the interaction. In other words, dividing the BF for the model with the interaction by the BF for the model without the interaction will tell us whether there's evidence for an interaction between the predictors.</p>
+</div>
+<p><br />
+</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="multiple2.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare BFs of models</span></span>
+<span id="cb109-2"><a href="multiple2.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to determine evidence for the interaction</span></span>
+<span id="cb109-3"><a href="multiple2.html#cb109-3" aria-hidden="true" tabindex="-1"></a>BF_with_interaction <span class="sc">/</span> BF_without_interaction</span></code></pre></div>
+<pre><code>## Bayes factor analysis
+## --------------
+## [1] attitude + group + attitude * group : 301.2355 ±2.19%
+## 
+## Against denominator:
+##   trustworthiness ~ attitude + group 
+## ---
+## Bayes factor type: BFlinearModel, JZS</code></pre>
+<p>The Bayes factor for the comparison of the model with and without the interaction is approximately 300. (Yours may not be exactly equal to 300 because of the error associated with the generation of the Bayes factor; it should be roughly the same though!)</p>
+<p><br />
+</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-18" class="exercise"><strong>Exercise 4.4  </strong></span>Assessing the interaction</p>
+<p><strong>Adjusted R<sup>2</sup>:</strong></p>
+<ul>
+<li>The adjusted R<sup>2</sup> for the model without the interaction (that you noted earlier) was: <input class='webex-solveme nospaces' size='4' data-answer='["0.01"]'/></li>
+<li>The adjusted R<sup>2</sup> for the model with the interaction (that you also noted earlier) was: <input class='webex-solveme nospaces' size='4' data-answer='["0.05"]'/></li>
+<li>What is the <em>increase</em> in adjusted R<sup>2</sup> as a result of the addition of the interaction term to the model? <em>Hint. Work out the difference between the two adjusted R<sup>2</sup> values you noted above?</em> <input class='webex-solveme nospaces' size='4' data-answer='["0.04"]'/></li>
+</ul>
+<p><br />
+</p>
+<p><strong>Bayes factors</strong></p>
+<ul>
+<li>According to comparison of BFs for the models, which statement is true?</li>
+</ul>
+<div id="radio_BMNGZOLLPY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BMNGZOLLPY" value=""></input> <span>There's substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_BMNGZOLLPY" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_BMNGZOLLPY" value="answer"></input> <span>There's substantial evidence for an interaction between attitude and group</span></label>
+</div>
+<div class="webex-solution">
+<button>
+Explanation
+</button>
+<p>As a result of adding in the interaction term to the model, the adjusted R<sup>2</sup> value increases by approximately 0.04 (i.e., from 0.01 to 0.05). The comparison of BFs for the model with and without the interaction term indicates that there's substantial evidence for the interaction between <code>attitude</code> and <code>group</code> - it's around 300 times more likely that there is an interaction than there isn't one.</p>
+<p>Thus, as indicated in the scatterplot, there's evidence that the association between <code>trustworthiness</code> and <code>attitude</code> is different in each <code>group</code>. Namely, the association is positive in the <code>affected</code> group, whereas it appears to be negative in the <code>not_affected</code> group.</p>
+</div>
+</div>
+<p><br />
+</p>
+</div>
+</div>
+<div id="simple-slopes-analysis" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> Simple slopes analysis</h2>
+<p>Given evidence for the interaction, we can conduct follow-up analyses to further characterise it.</p>
+<div class="tip">
+<p>In a <strong>simple slopes analysis</strong> the relationship between the outcome and first predictor is examined at each level of the second predictor.</p>
+</div>
+<p><br />
+</p>
+<p>Another way of thinking about the interaction is that it implies that the <em>slopes</em> of the lines for the <code>affected</code> (red line in the scatterplot) and <code>not_affected</code> (blue line) groups are not the same. We'll conduct a simple slopes analysis by conducting two simple regressions. The first will be the regression of <code>trustworthiness</code> on the basis of <code>attitude</code> in the <code>affected</code> group. The second will be the regression of <code>trustworthiness</code> on the basis of <code>attitude</code> in the <code>not_affected</code> group. The simplest way to do this is to store the data for each group separately, then perform a simple regression with each dataset.</p>
+<p><br />
+</p>
+<p>First, filter <code>trust_data</code> for each <code>group</code>:</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="multiple2.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;affected&quot;</span></span>
+<span id="cb111-2"><a href="multiple2.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="co"># store in affected_data</span></span>
+<span id="cb111-3"><a href="multiple2.html#cb111-3" aria-hidden="true" tabindex="-1"></a>affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;affected&quot;</span>)</span>
+<span id="cb111-4"><a href="multiple2.html#cb111-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-5"><a href="multiple2.html#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;not_affected&quot;</span></span>
+<span id="cb111-6"><a href="multiple2.html#cb111-6" aria-hidden="true" tabindex="-1"></a><span class="co"># store in not_affected_data</span></span>
+<span id="cb111-7"><a href="multiple2.html#cb111-7" aria-hidden="true" tabindex="-1"></a>not_affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;not_affected&quot;</span>)</span></code></pre></div>
+<p><br />
+</p>
+<p>Now run a simple regression of <code>trustworthiness ~ attitude</code> in each group. First, do the <code>affected</code> group:</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="multiple2.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group: simple regression coefficients</span></span>
+<span id="cb112-2"><a href="multiple2.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude, <span class="at">data =</span> affected_data)</span>
+<span id="cb112-3"><a href="multiple2.html#cb112-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-4"><a href="multiple2.html#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group: BF</span></span>
+<span id="cb112-5"><a href="multiple2.html#cb112-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(trustworthiness <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(affected_data))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = trustworthiness ~ attitude, data = affected_data)
+## 
+## Coefficients:
+## (Intercept)     attitude  
+##      3.9631       0.1839  
+## 
+## Bayes factor analysis
+## --------------
+## [1] attitude : 1483.223 ±0%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS</code></pre>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-19" class="exercise"><strong>Exercise 4.5  </strong></span>For the <code>affected</code> group (the red line in the scatter plot)</p>
+<ul>
+<li>The intercept of the regression line is = <input class='webex-solveme nospaces' size='4' data-answer='["3.96"]'/></li>
+<li>The slope of the regression line is = <input class='webex-solveme nospaces' size='4' data-answer='["0.18"]'/></li>
+<li>The BF for the model is <input class='webex-solveme nospaces' size='7' data-answer='["1483.22"]'/></li>
+<li>This is <select class='webex-select'><option value='blank'></option><option value=''>inconclusive</option><option value='answer'>substantial</option></select> evidence for <select class='webex-select'><option value='blank'></option><option value=''>a negative</option><option value=''>an absence of an</option><option value='answer'>a positive</option></select> association between <code>trustworthiness</code> and <code>attitude</code> in the <code>affected</code> group.</li>
+<li>In this group, participants with more positive attitudes to the research topic perceived the researcher to <select class='webex-select'><option value='blank'></option><option value=''>be less</option><option value='answer'>be more</option></select> credible.</li>
+</ul>
+</div>
+<p><br />
+</p>
+<p>For the <code>not_affected</code> group:</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="multiple2.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not_affected group: simple regression coefficients</span></span>
+<span id="cb114-2"><a href="multiple2.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude, <span class="at">data =</span> not_affected_data)</span>
+<span id="cb114-3"><a href="multiple2.html#cb114-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-4"><a href="multiple2.html#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="co"># not_affected group BF</span></span>
+<span id="cb114-5"><a href="multiple2.html#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(trustworthiness <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(not_affected_data))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = trustworthiness ~ attitude, data = not_affected_data)
+## 
+## Coefficients:
+## (Intercept)     attitude  
+##     5.09157     -0.09505  
+## 
+## Bayes factor analysis
+## --------------
+## [1] attitude : 0.5874073 ±0%
+## 
+## Against denominator:
+##   Intercept only 
+## ---
+## Bayes factor type: BFlinearModel, JZS</code></pre>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-20" class="exercise"><strong>Exercise 4.6  </strong></span>For the <code>not_affected</code> group (the blue line in the scatterplot)</p>
+<ul>
+<li>The intercept of the regression line is = <input class='webex-solveme nospaces' size='4' data-answer='["5.09"]'/></li>
+<li>The slope of the regression line is = <input class='webex-solveme nospaces' size='5' data-answer='["-0.10"]'/></li>
+<li>The BF for the model is <input class='webex-solveme nospaces' size='4' data-answer='["0.59"]'/></li>
+<li>Although the scatterplot suggests <select class='webex-select'><option value='blank'></option><option value='answer'>a negative</option><option value=''>an absence of an</option><option value=''>a positive</option></select> association between <code>trustworthiness</code> and <code>attitude</code> in the <code>not_affected</code> group, there was insufficient evidence for this association because the Bayes factor was <select class='webex-select'><option value='blank'></option><option value='answer'>inconclusive</option><option value=''>substantial</option></select></li>
+</ul>
+</div>
+<p><br />
+</p>
+<p>In sum, this analysis has shown that when participants hold a more favourable attitude towards a research topic, they perceived researchers who were personally affected by their own research as being more trustworthy. The association appeared to be reversed for researchers who were not personally affected by their research, but a Bayes factor analysis indicated that there was no association between trustworthiness and attitude in this group.</p>
+<p><br />
+</p>
+</div>
+<div id="exercises" class="section level2" number="4.7">
+<h2><span class="header-section-number">4.7</span> Exercises</h2>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-21" class="exercise"><strong>Exercise 4.7  </strong></span>Credibility</p>
+<p>In addition to asking about <em>trustworthiness</em>, Altenmuller et al. (2021) also asked participants how <em>credible</em> they found the researcher. The scores are stored in <code>credibility</code> in the <code>trust_data</code>; higher scores indicate greater perceived credibility. As with <code>trustworthiness</code>, the authors looked at whether <code>attitude</code> and <code>group</code> predicted <code>credibility</code>.</p>
+<p><br />
+</p>
+<p><strong>Adapt the code in this worksheet to do the following:</strong></p>
+<ol style="list-style-type: decimal">
+<li><strong>Create a scatterplot with <code>credibility</code> on the y-axis, <code>attitude</code> on the x-axis, and <code>group</code> as separate lines.</strong></li>
+</ol>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<p>Pipe the data to <code>ggplot()</code> and use <code>colour = group</code> in <code>aes</code></p>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="multiple2.html#cb116-1" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
+<span id="cb116-2"><a href="multiple2.html#cb116-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> attitude, <span class="at">y =</span> credibility, <span class="at">colour =</span> group )) <span class="sc">+</span></span>
+<span id="cb116-3"><a href="multiple2.html#cb116-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb116-4"><a href="multiple2.html#cb116-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb116-5"><a href="multiple2.html#cb116-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() </span></code></pre></div>
+</div>
+<ul>
+<li>The slope for the <code>affected</code> group appears to be <select class='webex-select'><option value='blank'></option><option value=''>close to zero</option><option value='answer'>positive</option><option value=''>negative</option></select></li>
+<li>The slope for the <code>not_affected</code> group appears to be <select class='webex-select'><option value='blank'></option><option value='answer'>close to zero</option><option value='answer'>positive</option><option value=''>negative</option></select></li>
+</ul>
+<p><br />
+</p>
+<p><strong>2. Obtain adjusted R<sup>2</sup> and the BF for the model <em>without</em> an interaction</strong></p>
+<ul>
+<li>Adjusted R<sup>2</sup> (as a proportion, to 2 decimal places) for the model without an interaction is: <input class='webex-solveme nospaces' size='4' data-answer='["0.15"]'/></li>
+<li>The BF for the model without an interaction is <input class='webex-solveme nospaces' data-tol='9e+07' size='9' data-answer='["927611180"]'/></li>
+</ul>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<p>Specify the model with <code>predictor1 + predictor2</code> with <code>lm()</code>, pass to <code>glance()</code>, then use <code>lmBF()</code> to get the BF.</p>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="multiple2.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model without an interaction</span></span>
+<span id="cb117-2"><a href="multiple2.html#cb117-2" aria-hidden="true" tabindex="-1"></a>credibility_no_interaction <span class="ot">&lt;-</span> </span>
+<span id="cb117-3"><a href="multiple2.html#cb117-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(credibility <span class="sc">~</span> attitude <span class="sc">+</span> group, <span class="at">data =</span> trust_data)</span>
+<span id="cb117-4"><a href="multiple2.html#cb117-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-5"><a href="multiple2.html#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
+<span id="cb117-6"><a href="multiple2.html#cb117-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(credibility_no_interaction)</span>
+<span id="cb117-7"><a href="multiple2.html#cb117-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-8"><a href="multiple2.html#cb117-8" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
+<span id="cb117-9"><a href="multiple2.html#cb117-9" aria-hidden="true" tabindex="-1"></a>BF_credibility_no_interaction <span class="ot">&lt;-</span></span>
+<span id="cb117-10"><a href="multiple2.html#cb117-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(credibility <span class="sc">~</span> attitude <span class="sc">+</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span></code></pre></div>
+</div>
+<p><br />
+</p>
+<p><strong>3. Obtain adjusted R<sup>2</sup> and the BF for the model <em>with</em> an interaction</strong></p>
+<ul>
+<li>Adjusted R<sup>2</sup> (as a <em>proportion</em>, to 2 decimal places) for the model without an interaction is: <input class='webex-solveme nospaces' size='4' data-answer='["0.21"]'/></li>
+<li>The BF for the model without an interaction is <input class='webex-solveme nospaces' data-tol='1.2' size='3' data-answer='["7.5"]'/> x 10<sup>12</sup></li>
+</ul>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<p>Specify the model with <code>predictor1 + predictor2 + predictor1*predictor2</code> with <code>lm()</code>, pass to <code>glance()</code>, then use <code>lmBF()</code> to get the BF.</p>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="multiple2.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model with an interaction</span></span>
+<span id="cb118-2"><a href="multiple2.html#cb118-2" aria-hidden="true" tabindex="-1"></a>credibility_with_interaction <span class="ot">&lt;-</span> </span>
+<span id="cb118-3"><a href="multiple2.html#cb118-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(credibility <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group, <span class="at">data =</span> trust_data)</span>
+<span id="cb118-4"><a href="multiple2.html#cb118-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-5"><a href="multiple2.html#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
+<span id="cb118-6"><a href="multiple2.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(credibility_with_interaction)</span>
+<span id="cb118-7"><a href="multiple2.html#cb118-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-8"><a href="multiple2.html#cb118-8" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
+<span id="cb118-9"><a href="multiple2.html#cb118-9" aria-hidden="true" tabindex="-1"></a>BF_credibility_with_interaction <span class="ot">&lt;-</span></span>
+<span id="cb118-10"><a href="multiple2.html#cb118-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(credibility <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group, <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span></code></pre></div>
+</div>
+<p><br />
+</p>
+<p><strong>4. Compare the models with and without the interaction</strong></p>
+<ul>
+<li>The increase in adjusted R<sup>2</sup> as a result of including the interaction term in the model is (as a proportion to 2 decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["0.06"]'/></li>
+<li>The Bayes factor for the comparison of the models with and without the interaction = <input class='webex-solveme nospaces' data-tol='600' size='4' data-answer='["8400"]'/></li>
+<li>Is there substantial evidence for an interaction between <code>attitude</code> and <code>group</code> in the prediction of percieved credibility of the researcher? <select class='webex-select'><option value='blank'></option><option value=''>no</option><option value='answer'>yes</option></select></li>
+</ul>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<ul>
+<li>Work out the difference in adjusted R<sup>2</sup> in the model with and without the interaction.</li>
+<li>Use <code>BF_model_with_interaction / BF_model_without_interaction</code></li>
+<li>If the BF &gt; 3, then by convention we say there's substantial evidence for the interaction.</li>
+</ul>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="multiple2.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adj R-square difference</span></span>
+<span id="cb119-2"><a href="multiple2.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fl">0.21</span> <span class="sc">-</span> <span class="fl">0.15</span></span>
+<span id="cb119-3"><a href="multiple2.html#cb119-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-4"><a href="multiple2.html#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare BFs</span></span>
+<span id="cb119-5"><a href="multiple2.html#cb119-5" aria-hidden="true" tabindex="-1"></a>BF_credibility_with_interaction <span class="sc">/</span> BF_credibility_no_interaction</span></code></pre></div>
+</div>
+<p><br />
+</p>
+<p><strong>5. Simple slopes analysis</strong></p>
+<p>For the <code>affected</code> group:</p>
+<ul>
+<li>The intercept of the regression line is = <input class='webex-solveme nospaces' size='4' data-answer='["1.92"]'/></li>
+<li>The slope of the regression line is = <input class='webex-solveme nospaces' size='4' data-answer='["0.47"]'/></li>
+<li>The BF for the model is <input class='webex-solveme nospaces' size='4' data-answer='["1.91"]'/> x 10<sup>15</sup></li>
+<li>This is <select class='webex-select'><option value='blank'></option><option value=''>inconclusive</option><option value='answer'>substantial</option></select> evidence for <select class='webex-select'><option value='blank'></option><option value=''>a negative</option><option value=''>an absence of an</option><option value='answer'>a positive</option></select> association between <code>credibility</code> and <code>attitude</code> in the <code>affected</code> group.</li>
+<li>In this group, participants with more positive attitudes to the research topic perceived the researcher to <select class='webex-select'><option value='blank'></option><option value=''>be less</option><option value='answer'>be more</option></select> credible.</li>
+</ul>
+<p><br />
+</p>
+<p>For the <code>not_affected</code> group:</p>
+<ul>
+<li>The intercept of the regression line is = <input class='webex-solveme nospaces' size='4' data-answer='["3.73"]'/></li>
+<li>The slope of the regression line is = <input class='webex-solveme nospaces' size='4' data-answer='["0.08"]'/></li>
+<li>The BF for the model is <input class='webex-solveme nospaces' size='4' data-answer='["0.32"]'/></li>
+<li>This is <select class='webex-select'><option value='blank'></option><option value=''>inconclusive</option><option value='answer'>substantial</option></select> evidence for <select class='webex-select'><option value='blank'></option><option value=''>a negative</option><option value='answer'>an absence of an</option><option value=''>a positive</option></select> association between <code>credibility</code> and <code>attitude</code> in the <code>not_affected</code> group.</li>
+</ul>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<p>Use <code>filter()</code> to separate out the groups of each dataset.
+Conduct one simple regression for the <code>affected</code> group.
+Conduct one simple regression for the <code>not_affected</code> group.</p>
+</div>
+<div class="webex-solution">
+<button>
+Code
+</button>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="multiple2.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;affected&quot;</span></span>
+<span id="cb120-2"><a href="multiple2.html#cb120-2" aria-hidden="true" tabindex="-1"></a>affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;affected&quot;</span>)</span>
+<span id="cb120-3"><a href="multiple2.html#cb120-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-4"><a href="multiple2.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;not_affected&quot;</span></span>
+<span id="cb120-5"><a href="multiple2.html#cb120-5" aria-hidden="true" tabindex="-1"></a>not_affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;not_affected&quot;</span>)</span>
+<span id="cb120-6"><a href="multiple2.html#cb120-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-7"><a href="multiple2.html#cb120-7" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group coefficients</span></span>
+<span id="cb120-8"><a href="multiple2.html#cb120-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(credibility <span class="sc">~</span> attitude, <span class="at">data =</span> affected_data)</span>
+<span id="cb120-9"><a href="multiple2.html#cb120-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-10"><a href="multiple2.html#cb120-10" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group BF</span></span>
+<span id="cb120-11"><a href="multiple2.html#cb120-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(credibility <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(affected_data))</span>
+<span id="cb120-12"><a href="multiple2.html#cb120-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-13"><a href="multiple2.html#cb120-13" aria-hidden="true" tabindex="-1"></a><span class="co"># not_affected group coefficients</span></span>
+<span id="cb120-14"><a href="multiple2.html#cb120-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(credibility <span class="sc">~</span> attitude, <span class="at">data =</span> not_affected_data)</span>
+<span id="cb120-15"><a href="multiple2.html#cb120-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-16"><a href="multiple2.html#cb120-16" aria-hidden="true" tabindex="-1"></a><span class="co"># not_affected group BF</span></span>
+<span id="cb120-17"><a href="multiple2.html#cb120-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(credibility <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(not_affected_data))</span></code></pre></div>
+</div>
+</div>
+<p><br />
+</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-22" class="exercise"><strong>Exercise 4.8  </strong></span>Critical evaluation of the field</p>
+<p>Altenmuller et al. (2021) also asked participants to report how critical they were in their evaluation of the entire research field. The scores are stored in <code>evaluation</code> in the <code>trust_data</code>; higher scores indicate that the participant evaluated the field <em>more critically</em>. As with the other outcome variables we've considered, the authors looked at whether <code>attitude</code> and <code>group</code> predicted <code>evaluation</code>.</p>
+<p><br />
+</p>
+<p><strong>Adapt the code in this worksheet to do the following:</strong></p>
+<ol style="list-style-type: decimal">
+<li><strong>Create a scatterplot with <code>evaluation</code> on the y-axis, <code>attitude</code> on the x-axis, and <code>group</code> as separate lines.</strong></li>
+</ol>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<p>Pipe the data to <code>ggplot()</code> and use <code>colour = group</code> in <code>aes()</code></p>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="multiple2.html#cb121-1" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
+<span id="cb121-2"><a href="multiple2.html#cb121-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> attitude, <span class="at">y =</span> evaluation, <span class="at">colour =</span> group )) <span class="sc">+</span></span>
+<span id="cb121-3"><a href="multiple2.html#cb121-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb121-4"><a href="multiple2.html#cb121-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb121-5"><a href="multiple2.html#cb121-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() </span></code></pre></div>
+</div>
+<ul>
+<li>The slope for the <code>affected</code> group appears to be <select class='webex-select'><option value='blank'></option><option value=''>close to zero</option><option value=''>positive</option><option value='answer'>negative</option></select></li>
+<li>The slope for the <code>not_affected</code> group appears to be <select class='webex-select'><option value='blank'></option><option value='answer'>close to zero</option><option value=''>positive</option><option value='answer'>negative</option></select></li>
+</ul>
+<p><br />
+</p>
+<p><strong>2. Obtain adjusted R<sup>2</sup> and the BF for the model without an interaction</strong></p>
+<ul>
+<li>Adjusted R<sup>2</sup> (as a proportion, to 2 decimal places) for the model without an interaction is: <input class='webex-solveme nospaces' size='4' data-answer='["0.20"]'/></li>
+<li>The BF for the model without an interaction is <input class='webex-solveme nospaces' data-tol='0.3' size='3' data-answer='["1.4"]'/> x 10<sup>13</sup></li>
+</ul>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<p>Specify the model with <code>predictor1 + predictor2</code> with <code>lm()</code>, pass to <code>glance()</code>, then use <code>lmBF()</code> to get the BF.</p>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="multiple2.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model without an interaction</span></span>
+<span id="cb122-2"><a href="multiple2.html#cb122-2" aria-hidden="true" tabindex="-1"></a>evaluation_no_interaction <span class="ot">&lt;-</span> </span>
+<span id="cb122-3"><a href="multiple2.html#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(evaluation <span class="sc">~</span> attitude <span class="sc">+</span> group, <span class="at">data =</span> trust_data)</span>
+<span id="cb122-4"><a href="multiple2.html#cb122-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-5"><a href="multiple2.html#cb122-5" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
+<span id="cb122-6"><a href="multiple2.html#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(evaluation_no_interaction)</span>
+<span id="cb122-7"><a href="multiple2.html#cb122-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-8"><a href="multiple2.html#cb122-8" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
+<span id="cb122-9"><a href="multiple2.html#cb122-9" aria-hidden="true" tabindex="-1"></a>BF_evaluation_no_interaction <span class="ot">&lt;-</span></span>
+<span id="cb122-10"><a href="multiple2.html#cb122-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(evaluation <span class="sc">~</span> attitude <span class="sc">+</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span></code></pre></div>
+</div>
+<p><br />
+</p>
+<p><strong>3. Obtain adjusted R<sup>2</sup> and the BF for the model with an interaction</strong></p>
+<ul>
+<li>Adjusted R<sup>2</sup> (as a <em>proportion</em>, to 2 decimal places) for the model without an interaction is: <input class='webex-solveme nospaces' size='4' data-answer='["0.27"]'/></li>
+<li>The BF for the model without an interaction is <input class='webex-solveme nospaces' data-tol='1' size='3' data-answer='["2.9"]'/> x 10<sup>18</sup></li>
+</ul>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<p>Specify the model with <code>predictor1 + predictor2 + predictor1*predictor2</code> with <code>lm()</code>, pass to <code>glance()</code>, then use <code>lmBF()</code> to get the BF.</p>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="multiple2.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model with an interaction</span></span>
+<span id="cb123-2"><a href="multiple2.html#cb123-2" aria-hidden="true" tabindex="-1"></a>evaluation_with_interaction <span class="ot">&lt;-</span> </span>
+<span id="cb123-3"><a href="multiple2.html#cb123-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(evaluation <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group, <span class="at">data =</span> trust_data)</span>
+<span id="cb123-4"><a href="multiple2.html#cb123-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-5"><a href="multiple2.html#cb123-5" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
+<span id="cb123-6"><a href="multiple2.html#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(evaluation_with_interaction)</span>
+<span id="cb123-7"><a href="multiple2.html#cb123-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-8"><a href="multiple2.html#cb123-8" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
+<span id="cb123-9"><a href="multiple2.html#cb123-9" aria-hidden="true" tabindex="-1"></a>BF_evaluation_with_interaction <span class="ot">&lt;-</span></span>
+<span id="cb123-10"><a href="multiple2.html#cb123-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(evaluation <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group, <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span></code></pre></div>
+</div>
+<p><br />
+</p>
+<p><strong>4. Compare the model with and without the interaction</strong></p>
+<ul>
+<li>The increase in adjusted R<sup>2</sup> as a result of including the interaction in the model is (as a proportion to 2 decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["0.07"]'/></li>
+<li>The Bayes factor for the model with the interaction vs. without = <input class='webex-solveme nospaces' data-tol='50000' size='6' data-answer='["212284"]'/></li>
+<li>Is there evidence for an interaction between <code>attitude</code> and <code>group</code>? <select class='webex-select'><option value='blank'></option><option value=''>no</option><option value='answer'>yes</option></select></li>
+</ul>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<ul>
+<li>Work out the difference in adjusted R<sup>2</sup> in the model with and without the interaction.</li>
+<li>Use <code>BF_more_complex_model / BF_simpler_model</code></li>
+<li>If the BF &gt; 3, then there's substantial evidence for the interaction.</li>
+</ul>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="multiple2.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adj R-square difference</span></span>
+<span id="cb124-2"><a href="multiple2.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fl">0.27</span> <span class="sc">-</span> <span class="fl">0.20</span></span>
+<span id="cb124-3"><a href="multiple2.html#cb124-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-4"><a href="multiple2.html#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare BFs</span></span>
+<span id="cb124-5"><a href="multiple2.html#cb124-5" aria-hidden="true" tabindex="-1"></a>BF_evaluation_with_interaction <span class="sc">/</span> BF_evaluation_no_interaction</span></code></pre></div>
+</div>
+<p><br />
+</p>
+<p><strong>5. Simple slopes analysis</strong></p>
+<p>For the <code>affected</code> group:</p>
+<ul>
+<li>The intercept of the regression line is = <input class='webex-solveme nospaces' size='4' data-answer='["4.80"]'/></li>
+<li>The slope of the regression line is = <input class='webex-solveme nospaces' size='5' data-answer='["-0.44"]'/></li>
+<li>The BF for the model is <input class='webex-solveme nospaces' size='4' data-answer='["1.15"]'/> x 10<sup>20</sup></li>
+<li>This is <select class='webex-select'><option value='blank'></option><option value=''>inconclusive</option><option value='answer'>substantial</option></select> evidence for <select class='webex-select'><option value='blank'></option><option value='answer'>a negative</option><option value=''>an absence of an</option><option value=''>a positive</option></select> association between <code>evaluation</code> and <code>attitude</code> in the <code>affected</code> group.</li>
+<li>In this group, participants with more positive attitudes to the research topic evaluated the research field <select class='webex-select'><option value='blank'></option><option value='answer'>less</option><option value=''>more</option></select> critically</li>
+</ul>
+<p><br />
+</p>
+<p>For the <code>not_affected</code> group:</p>
+<ul>
+<li>The intercept of the regression line is = <input class='webex-solveme nospaces' size='4' data-answer='["3.32"]'/></li>
+<li>The slope of the regression line is = <input class='webex-solveme nospaces' size='5' data-answer='["-0.09"]'/></li>
+<li>The BF for the model is <input class='webex-solveme nospaces' size='4' data-answer='["0.65"]'/></li>
+<li>This is <select class='webex-select'><option value='blank'></option><option value=''>substantial</option><option value='answer'>insufficient</option></select> evidence for an association between <code>evaluation</code> and <code>attitude</code> in the <code>not_affected</code> group.</li>
+</ul>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<p>Use <code>filter()</code> to separate out the groups of each dataset.
+Conduct one simple regression for the <code>affected</code> group.
+Conduct one simple regression for the <code>not_affected</code> group.</p>
+</div>
+<div class="webex-solution">
+<button>
+Code
+</button>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="multiple2.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;affected&quot;</span></span>
+<span id="cb125-2"><a href="multiple2.html#cb125-2" aria-hidden="true" tabindex="-1"></a>affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;affected&quot;</span>)</span>
+<span id="cb125-3"><a href="multiple2.html#cb125-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-4"><a href="multiple2.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;not_affected&quot;</span></span>
+<span id="cb125-5"><a href="multiple2.html#cb125-5" aria-hidden="true" tabindex="-1"></a>not_affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;not_affected&quot;</span>)</span>
+<span id="cb125-6"><a href="multiple2.html#cb125-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-7"><a href="multiple2.html#cb125-7" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group</span></span>
+<span id="cb125-8"><a href="multiple2.html#cb125-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(evaluation <span class="sc">~</span> attitude, <span class="at">data =</span> affected_data)</span>
+<span id="cb125-9"><a href="multiple2.html#cb125-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-10"><a href="multiple2.html#cb125-10" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group BF</span></span>
+<span id="cb125-11"><a href="multiple2.html#cb125-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(evaluation <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(affected_data))</span>
+<span id="cb125-12"><a href="multiple2.html#cb125-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-13"><a href="multiple2.html#cb125-13" aria-hidden="true" tabindex="-1"></a><span class="co"># not_affected group</span></span>
+<span id="cb125-14"><a href="multiple2.html#cb125-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(evaluation <span class="sc">~</span> attitude, <span class="at">data =</span> not_affected_data)</span>
+<span id="cb125-15"><a href="multiple2.html#cb125-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-16"><a href="multiple2.html#cb125-16" aria-hidden="true" tabindex="-1"></a><span class="co"># not affected group BF</span></span>
+<span id="cb125-17"><a href="multiple2.html#cb125-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(evaluation <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(not_affected_data))</span></code></pre></div>
+</div>
+</div>
+<p><br />
+</p>
+</div>
+<div id="further-exercise" class="section level2" number="4.8">
+<h2><span class="header-section-number">4.8</span> Further exercise</h2>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-23" class="exercise"><strong>Exercise 4.9  </strong></span>No interaction</p>
+<p>Using the data from Teychenne and Hinkley (2016) that we used in Session 1, determine whether there is evidence for an interaction between <code>anxiety_score</code> and level of <code>education</code> in the prediction of <code>screen_time</code>? <code>education</code> is made up of groups 'No uni degree' and 'University degree'.</p>
+<p>The data are located at:</p>
+<p><a href="https://raw.githubusercontent.com/chrisjberry/Teaching/master/1_mental_health_data.csv" class="uri">https://raw.githubusercontent.com/chrisjberry/Teaching/master/1_mental_health_data.csv</a></p>
+<ul>
+<li>The increase in Adjusted R<sup>2</sup> associated with the addition of the interaction to the model is (as a proportion) <input class='webex-solveme nospaces' data-tol='0.01' size='1' data-answer='["0"]'/></li>
+<li>The Bayes factor comparing the model with and without the interaction is (to two decimal places) <input class='webex-solveme nospaces' data-tol='0.55' size='4' data-answer='["0.17",".17"]'/></li>
+<li>There's substantial evidence that the relationship between <code>anxiety_score</code> and <code>screen_time</code> is <select class='webex-select'><option value='blank'></option><option value='answer'>the same</option><option value=''>different</option></select> in those who have a degree and those who don't.</li>
+</ul>
+<p><br />
+</p>
+<p>Given the lack of evidence for an interaction, in an additive model containing only <code>anxiety_score</code> and <code>education</code> as predictors of <code>screen_time</code>:</p>
+<ul>
+<li>Higher anxiety scores tended to be associated with <select class='webex-select'><option value='blank'></option><option value=''>fewer</option><option value=''>no change in</option><option value='answer'>greater</option></select> hours of screen time, BF = <input class='webex-solveme nospaces' data-tol='0.2' size='3' data-answer='["2.2"]'/></li>
+<li>Individuals without a university degree tended to spend <select class='webex-select'><option value='blank'></option><option value=''>a similar amount of time</option><option value='answer'>greater amounts of time</option><option value=''>lower amounts of time</option></select> using screens (e.g., devices, TV, computer) each week than those with a university degree, BF = <input class='webex-solveme nospaces' data-tol='1000' size='5' data-answer='["32604"]'/></li>
+</ul>
+<div class="webex-solution">
+<button>
+Solution code
+</button>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="multiple2.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read the data to R using read_csv()</span></span>
+<span id="cb126-2"><a href="multiple2.html#cb126-2" aria-hidden="true" tabindex="-1"></a>mentalh <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/1_mental_health_data.csv&#39;</span>)</span>
+<span id="cb126-3"><a href="multiple2.html#cb126-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-4"><a href="multiple2.html#cb126-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot</span></span>
+<span id="cb126-5"><a href="multiple2.html#cb126-5" aria-hidden="true" tabindex="-1"></a>mentalh <span class="sc">%&gt;%</span> </span>
+<span id="cb126-6"><a href="multiple2.html#cb126-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> anxiety_score, <span class="at">y =</span> screen_time, <span class="at">colour =</span> education )) <span class="sc">+</span></span>
+<span id="cb126-7"><a href="multiple2.html#cb126-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb126-8"><a href="multiple2.html#cb126-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb126-9"><a href="multiple2.html#cb126-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() </span>
+<span id="cb126-10"><a href="multiple2.html#cb126-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-11"><a href="multiple2.html#cb126-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model without an interaction</span></span>
+<span id="cb126-12"><a href="multiple2.html#cb126-12" aria-hidden="true" tabindex="-1"></a>screen_time_no_interaction <span class="ot">&lt;-</span> </span>
+<span id="cb126-13"><a href="multiple2.html#cb126-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(screen_time <span class="sc">~</span> anxiety_score <span class="sc">+</span> education, <span class="at">data =</span> mentalh)</span>
+<span id="cb126-14"><a href="multiple2.html#cb126-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-15"><a href="multiple2.html#cb126-15" aria-hidden="true" tabindex="-1"></a><span class="co"># in library(broom)</span></span>
+<span id="cb126-16"><a href="multiple2.html#cb126-16" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(screen_time_no_interaction) <span class="co"># adj R² = 0.06</span></span>
+<span id="cb126-17"><a href="multiple2.html#cb126-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-18"><a href="multiple2.html#cb126-18" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
+<span id="cb126-19"><a href="multiple2.html#cb126-19" aria-hidden="true" tabindex="-1"></a>BF_screen_time_no_interaction <span class="ot">&lt;-</span></span>
+<span id="cb126-20"><a href="multiple2.html#cb126-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(screen_time <span class="sc">~</span> anxiety_score <span class="sc">+</span> education, <span class="at">data =</span> <span class="fu">data.frame</span>(mentalh))</span>
+<span id="cb126-21"><a href="multiple2.html#cb126-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-22"><a href="multiple2.html#cb126-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model with an interaction</span></span>
+<span id="cb126-23"><a href="multiple2.html#cb126-23" aria-hidden="true" tabindex="-1"></a>screen_time_with_interaction <span class="ot">&lt;-</span> </span>
+<span id="cb126-24"><a href="multiple2.html#cb126-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(screen_time <span class="sc">~</span> anxiety_score <span class="sc">+</span> education <span class="sc">+</span> anxiety_score<span class="sc">*</span>education, <span class="at">data =</span> mentalh)</span>
+<span id="cb126-25"><a href="multiple2.html#cb126-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-26"><a href="multiple2.html#cb126-26" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
+<span id="cb126-27"><a href="multiple2.html#cb126-27" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(screen_time_with_interaction)  <span class="co"># adj R² = 0.06</span></span>
+<span id="cb126-28"><a href="multiple2.html#cb126-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-29"><a href="multiple2.html#cb126-29" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
+<span id="cb126-30"><a href="multiple2.html#cb126-30" aria-hidden="true" tabindex="-1"></a>BF_screen_time_with_interaction <span class="ot">&lt;-</span></span>
+<span id="cb126-31"><a href="multiple2.html#cb126-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(screen_time <span class="sc">~</span> anxiety_score <span class="sc">+</span> education <span class="sc">+</span> anxiety_score<span class="sc">*</span>education, <span class="at">data =</span> <span class="fu">data.frame</span>(mentalh))</span>
+<span id="cb126-32"><a href="multiple2.html#cb126-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-33"><a href="multiple2.html#cb126-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Adj R-square difference</span></span>
+<span id="cb126-34"><a href="multiple2.html#cb126-34" aria-hidden="true" tabindex="-1"></a><span class="fl">0.06</span> <span class="sc">-</span> <span class="fl">0.06</span></span>
+<span id="cb126-35"><a href="multiple2.html#cb126-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-36"><a href="multiple2.html#cb126-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare BFs</span></span>
+<span id="cb126-37"><a href="multiple2.html#cb126-37" aria-hidden="true" tabindex="-1"></a>BF_screen_time_with_interaction <span class="sc">/</span> BF_screen_time_no_interaction</span>
+<span id="cb126-38"><a href="multiple2.html#cb126-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-39"><a href="multiple2.html#cb126-39" aria-hidden="true" tabindex="-1"></a><span class="co"># There&#39;s no evidence for the interaction, </span></span>
+<span id="cb126-40"><a href="multiple2.html#cb126-40" aria-hidden="true" tabindex="-1"></a><span class="co"># therefore assume additive model</span></span>
+<span id="cb126-41"><a href="multiple2.html#cb126-41" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb126-42"><a href="multiple2.html#cb126-42" aria-hidden="true" tabindex="-1"></a><span class="co"># BF of unique contribution of anxiety_score in model with education</span></span>
+<span id="cb126-43"><a href="multiple2.html#cb126-43" aria-hidden="true" tabindex="-1"></a>BF_screen_time_no_interaction <span class="sc">/</span> <span class="fu">lmBF</span>(screen_time <span class="sc">~</span> education, <span class="at">data =</span> <span class="fu">data.frame</span>(mentalh))</span>
+<span id="cb126-44"><a href="multiple2.html#cb126-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-45"><a href="multiple2.html#cb126-45" aria-hidden="true" tabindex="-1"></a><span class="co"># BF of unique contribution of education in model with anxiety_score</span></span>
+<span id="cb126-46"><a href="multiple2.html#cb126-46" aria-hidden="true" tabindex="-1"></a>BF_screen_time_no_interaction <span class="sc">/</span> <span class="fu">lmBF</span>(screen_time <span class="sc">~</span> anxiety_score, <span class="at">data =</span> <span class="fu">data.frame</span>(mentalh))</span></code></pre></div>
+</div>
+</div>
+<p><br />
+</p>
+</div>
+<div id="further-knowledge-moderation" class="section level2" number="4.9">
+<h2><span class="header-section-number">4.9</span> Further knowledge: moderation</h2>
+<div class="webex-solution">
+<button>
+Moderation
+</button>
+<p>The analysis that we've performed with <code>attitude</code> and <code>group</code> in this session is sometimes referred to as a test of moderation (Baron &amp; Kenny, 1986).</p>
+<div class="tip">
+<p>Moderation is when the relationship between two variables changes as a function of a third variable.</p>
+</div>
+<p><br />
+</p>
+<p>Altenmuller et al. (2021) concluded that participants' <code>attitude</code> <em>moderated</em> "the effect of a researcher disclosing being personally <code>affected</code> (vs. <code>not affected</code> ) by their own research on participants' <code>trustworthiness</code> ascriptions regarding the research". That is, <code>attitude</code> moderates the main effect of <code>group</code> on <code>trustworthiness</code>.</p>
+<p>It could also be said that the effect of a researcher saying that they are personally affected by their own research moderates the relationship between <code>attitude</code> and <code>trustworthiness</code> (or <code>credibility</code>). That is, the <code>group</code> moderates the relationship between <code>attitude</code> and <code>trustworthiness</code>. A relationship is present when the researcher says they are affected, but absent when they say they are not affected.</p>
+<p>Which variable is said to be the <em>moderator</em> variable appears to be down to the choice of the researcher and the context of the research.</p>
+<p>If we don't find evidence for the interaction term, then we don't have evidence that one variable moderates the relationship between the other two. Instead, researchers may say that there is <em>an additive effect of both predictors on the outcome variable</em>. The absence of an interaction indicates that the regression lines for each group do not differ (i.e., the lines for each group in a scatterplot are statistically parallel to one another).</p>
+</div>
+<p><br />
+</p>
+</div>
+<div id="further-knowledge-coefficients" class="section level2" number="4.10">
+<h2><span class="header-section-number">4.10</span> Further knowledge: coefficients</h2>
+<p>Only for those wanting a deeper understanding.</p>
+<div class="webex-solution">
+<button>
+Coefficients
+</button>
+<p>If we obtain the coefficients for the full regression model (with the interaction), we can write out the regression equation:</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="multiple2.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group, <span class="at">data =</span> trust_data)</span></code></pre></div>
+<p><br />
+</p>
+<p><span class="math inline">\(Predicted\ outcome = a + b_1X_1 + b_2X_2 + b_3X_1X_2\)</span></p>
+<p>So,</p>
+<p><span class="math inline">\(Predicted\ trustworthiness = 3.96 + 0.18(attitude) + 1.13(group) - 0.28(attitude\times group)\)</span></p>
+<p><br />
+</p>
+<p>From this equation, we can derive the simple regression equations for each group.</p>
+<p><br />
+</p>
+<p>As we saw in the previous session, behind the scenes, R uses <em>dummy coding</em> to code the two levels of the categorical variable (i.e., coding levels of a categorical variable with 0s and 1s). It uses 0s to code the <code>affected</code> group and 1s to code the <code>not_affected</code> group. It does it this way because it assigns 0s and 1s alphabetically.</p>
+<p><br />
+</p>
+<p>Thus, taking the regression equation and substituting <code>group</code> = 0 for the <code>affected</code> group:</p>
+<p><span class="math display">\[ 
+\begin{align}
+Predicted\ trustworthiness    &amp;= 3.96 + 0.18(attitude) + (1.13\times0) - 0.28(attitude\times0)\\
+                              &amp;= 3.96 + 0.18(attitude) + 0 - 0 \\
+                              &amp;= 3.96 + 0.18(attitude) 
+\end{align}
+\]</span>
+The intercept (3.96) and slope (0.18) in this simple regression equation match those obtained for the <code>affected</code> group in the earlier simple slopes analysis.</p>
+<p><br />
+</p>
+<p>Next, taking the full regression equation and substituting <code>group</code> = 1 for the <code>not_affected</code> group:</p>
+<p><span class="math display">\[ 
+\begin{align}
+Predicted\ trustworthiness    &amp;= 3.96 + 0.18(attitude) + (1.13\times1) - 0.28(attitude\times1)\\
+                              &amp;= 3.96 + 0.18(attitude) + 1.13 - 0.28(attitude) \\
+                              &amp;= 5.09 + 0.18(attitude) - 0.28(attitude) \\
+                              &amp;= 5.09 -0.10(attitude)
+\end{align}
+\]</span></p>
+<p>The intercept (5.09) and slope (-0.10) in this simple regression correspond to those we obtained for the <code>not_affected</code> group in the earlier simple slopes analysis.</p>
+<p>In sum, when one of the predictors is dichotomous, it is possible to derive the simple regression equation for each level of that predictor from the regression equation for the model with the interaction term included.</p>
+</div>
+<p><br />
+</p>
+</div>
+<div id="further-knowledge-centering" class="section level2" number="4.11">
+<h2><span class="header-section-number">4.11</span> Further knowledge: centering</h2>
+<p>Again, only for those wanting deeper knowledge.</p>
+<div class="webex-solution">
+<button>
+Centering
+</button>
+<p>When testing for moderation effects, it is common to <em>center</em> the predictor variables prior to the analysis. (Indeed, Altenmuller et al. (2021) centered <code>attitude</code> prior to running their analyses.) Centering is where you subtract the mean of a variable from every score of that variable. For example, to center the <code>attitude</code> scores, we'd obtain the mean of <code>attitude</code>, and then subtract that value from each of our <code>attitude</code> scores. Thus, a participant with a score of 0 on the centered attitude score would therefore have an attitude value that is equal to the mean.</p>
+<p>Centering is usually performed to help increase the interpretability of the coefficients of the predictor variables in a model with an interaction. It can also help to reduce the chances of multicollinearity between the predictor variables and the interaction term. Multicollinearity can occur because the interaction term is derived from the individual predictors themselves (by multiplying them together).</p>
+<p><code>scale()</code> can be used to center variables automatically. Set the option <code>center = TRUE</code> to center the variable. Setting the option <code>scale = TRUE</code> would also standardise the variable (i.e., divide each score by the standard deviation, to create <em>z</em>-scores), so <code>scale = FALSE</code> means that we won't also standardise the scores:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="multiple2.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># center the attitude scores</span></span>
+<span id="cb128-2"><a href="multiple2.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use mutate() to create a new variable in trust_data</span></span>
+<span id="cb128-3"><a href="multiple2.html#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="co"># called attitude_centered</span></span>
+<span id="cb128-4"><a href="multiple2.html#cb128-4" aria-hidden="true" tabindex="-1"></a>trust_data <span class="ot">&lt;-</span> </span>
+<span id="cb128-5"><a href="multiple2.html#cb128-5" aria-hidden="true" tabindex="-1"></a>  trust_data <span class="sc">%&gt;%</span> </span>
+<span id="cb128-6"><a href="multiple2.html#cb128-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">attitude_centered =</span> <span class="fu">scale</span>(attitude, <span class="at">center =</span> <span class="cn">TRUE</span>, <span class="at">scale =</span> <span class="cn">FALSE</span>)[,<span class="dv">1</span>] )</span>
+<span id="cb128-7"><a href="multiple2.html#cb128-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-8"><a href="multiple2.html#cb128-8" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the means to check that centered scores have mean of 0</span></span>
+<span id="cb128-9"><a href="multiple2.html#cb128-9" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">mean</span>(attitude), <span class="fu">mean</span>(attitude_centered))</span></code></pre></div>
+<p>Before centering, the mean of the <code>attitude</code> scores was 4.26. After centering, the mean (of <code>attitude_centered</code>) is 0, or close enough to zero, being 4.08 x 10<sup>-16</sup>, more precisely because there's some rounding error along the way.</p>
+<p><br />
+</p>
+<p>Now re-run the analysis using <code>attitude_centered</code> in place of <code>attitude</code> and look at adjusted R<sup>2</sup> and the BF:</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="multiple2.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># full model with attitude_centered</span></span>
+<span id="cb129-2"><a href="multiple2.html#cb129-2" aria-hidden="true" tabindex="-1"></a>full_centered <span class="ot">&lt;-</span> <span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude_centered <span class="sc">+</span> group <span class="sc">+</span> attitude_centered<span class="sc">*</span>group, <span class="at">data =</span> trust_data)</span>
+<span id="cb129-3"><a href="multiple2.html#cb129-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-4"><a href="multiple2.html#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="co"># R-squared</span></span>
+<span id="cb129-5"><a href="multiple2.html#cb129-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(full_centered)</span>
+<span id="cb129-6"><a href="multiple2.html#cb129-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-7"><a href="multiple2.html#cb129-7" aria-hidden="true" tabindex="-1"></a><span class="co"># BF</span></span>
+<span id="cb129-8"><a href="multiple2.html#cb129-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(trustworthiness <span class="sc">~</span> attitude_centered <span class="sc">+</span> group <span class="sc">+</span> attitude_centered<span class="sc">*</span>group, </span>
+<span id="cb129-9"><a href="multiple2.html#cb129-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span></code></pre></div>
+<ul>
+<li>The adjusted R<sup>2</sup> for the full model is <input class='webex-solveme nospaces' size='4' data-answer='["0.05"]'/>, which is the same as we found previously when <code>attitude</code> was not centered.</li>
+<li>The BF for the model is approximately 33, which is the same as we found previously with the non-centered version of <code>attitude</code>.</li>
+</ul>
+<p>Thus, centering predictors does not affect the adjusted R<sup>2</sup> or evidence for the model. This is because subtracting the mean from a variable is equivalent to a linear transformation and this does not affect the association.</p>
+<p><br />
+</p>
+<p><br />
+</p>
+<p>To go even further, centering affects the values of the coefficients of the individual predictors in the model, but has no effect on the coefficient for the interaction.</p>
+<p><br />
+</p>
+<p>When <code>attitude</code> wasn't centered, the regression equation was:</p>
+<p><span class="math inline">\(Predicted\ trustworthiness = 3.96 + 0.18(attitude) + 1.13(group) - 0.28(attitude\times group)\)</span></p>
+<p><br />
+</p>
+<p>Using <code>attitude_centered</code>, the coefficients for the regression equation are ontained from:</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="multiple2.html#cb130-1" aria-hidden="true" tabindex="-1"></a>full_centered</span></code></pre></div>
+<p>And so the regression equation is:</p>
+<p><span class="math inline">\(Predicted\ trustworthiness = 4.75 + 0.18(attitude) -0.06(group) - 0.28(attitude\times group)\)</span></p>
+<p>Notice that the intercept has changed and so has the coefficient for <code>group</code>.</p>
+<p><br />
+</p>
+<p>As before, to obtain the simple regression equations for each <code>group</code> we can once again substitute in the dummy codes for <code>group</code>. Thus, for the <code>affected</code> group:</p>
+<p><span class="math display">\[ 
+\begin{align}
+Predicted\ trustworthiness    &amp;= 4.75 + 0.18(attitude) - (0.06\times0) - 0.28(attitude\times0)\\
+                              &amp;= 4.75 + 0.18(attitude) + 0 - 0 \\
+                              &amp;= 4.75 + 0.18(attitude) 
+\end{align}
+\]</span></p>
+<p>For the <code>not_affected</code> group:</p>
+<p><span class="math display">\[ 
+\begin{align}
+Predicted\ trustworthiness    &amp;= 4.75 + 0.18(attitude) - (0.06\times1) - 0.28(attitude\times0)\\
+                              &amp;= 4.75 + 0.18(attitude) -0.06 - 0.28(attitude) \\
+                              &amp;= 4.69 + 0.18(attitude) - 0.28(attitude) \\
+                              &amp;= 4.69 -0.10(attitude)
+\end{align}
+\]</span>
+The values in the simple regression equations come out slightly differently when attitude is centered, but the direction on the sign of the coefficient for <code>attitude</code> is the same.</p>
+<p><br />
+</p>
+<p>In sum, centering of predictor variables is often performed in moderation analyses, but does not affect the variance explained by the model, the evidence (i.e., the BF) for the model, nor the direction (positive/negative) of the associations in the simple slopes analyses (because it doesn't change the slope). Centering can be desirable to aid interpretation of the coefficients of individual predictors and can reduce multicollinearity.</p>
+</div>
+<p><br />
+</p>
+</div>
+<div id="summary-2" class="section level2" number="4.12">
+<h2><span class="header-section-number">4.12</span> Summary</h2>
+<ul>
+<li>A multiple regression model can consist of a mixture of continuous and categorical predictors,</li>
+<li>Predictors may have a combined effect in explaining the outcome variable. Evidence for this <em>interaction effect</em> can be examined by adding the interaction term to the model, i.e., with <code>lm(outcome ~ predictor1 + predictor2 + predictor1*predictor2)</code></li>
+<li>With a dichotomous categorical variable, the interaction implies that the slopes of the simple regressions of <code>outcome ~ continuous_predictor</code> are different. This can be examined with a simple slopes analysis.</li>
+<li>The interaction implies that the relationship between the outcome and continuous predictor are different in each group.</li>
+</ul>
+<p><br />
+</p>
+</div>
+<div id="references-3" class="section level2" number="4.13">
+<h2><span class="header-section-number">4.13</span> References</h2>
+<p>Altenmuller M.S., Lange L.L., Gollwitzer M. (2021). When research is me-search: How researchers’ motivation to pursue a topic affects laypeople’s trust in science. <em>PLoS ONE</em> <em>16</em>(7): e0253911. <a href="https://doi.org/10.1371/journal.pone.0253911" class="uri">https://doi.org/10.1371/journal.pone.0253911</a></p>
+<p>Baron, R. M., &amp; Kenny, D. A. (1986). The moderator–mediator variable distinction in social psychological research: Conceptual, strategic, and statistical considerations. <em>Journal of Personality and Social Psychology</em>, <em>51</em>(6), 1173. <a href="https://psycnet.apa.org/doi/10.1037/0022-3514.51.6.1173" class="uri">https://psycnet.apa.org/doi/10.1037/0022-3514.51.6.1173</a></p>
+
+</div>
+</div>
+<div class="psyteachr_footer">
+  
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+  
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
+
+  update_total_correct();
+}
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="anova1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="multiple3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"google": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": {},
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -33,7 +33,7 @@ This workbook contains worksheets for the seven sessions given by **Chris Berry*
 
 - 31/01/22. [ANOVA 1](#anova1)
 
-- 07/02/22. Multiple regression 2: one continuous, one categorical
+- 07/02/22. [Multiple regression 2: one continuous, one categorical](#multiple2)
 
 - 14/02/22. Multiple regression 3: evaluating and comparing models
 
