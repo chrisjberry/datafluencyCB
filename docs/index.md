@@ -47,9 +47,9 @@ This workbook contains worksheets for the seven sessions given by **Chris Berry*
 
 It also contains a link to the:
 
-- the **Analysis Assessment** (50% of module grade) (released in 3rd session)
+- the [Analysis Assessment](#assessment2022) (50% of module grade)
 
-- FAQs
+- [FAQs](#faqs)
 
 
 \
