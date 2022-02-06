@@ -471,7 +471,7 @@ Go further with ggplot
 <button>
 Further inspection
 </button>
-<p>It is good practice to inspect the distributions of the data prior to analysis, for example, with <code>geom_histogram()</code> or <code>geom_density()</code>. When can check if the data appear normally distributed, or positively or negatively skewed. We can also check for outliers using <code>geom_boxplot()</code>. Get to know your data!</p>
+<p>It is good practice to inspect the distributions of the data prior to analysis, for example, with <code>geom_histogram()</code> or <code>geom_density()</code>. We can check if the data appear normally distributed, or positively or negatively skewed. We can also check for outliers using <code>geom_boxplot()</code>. Get to know your data!</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="multiple2.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the distribution of trustworthiness</span></span>
 <span id="cb3-2"><a href="multiple2.html#cb3-2" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
 <span id="cb3-3"><a href="multiple2.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(trustworthiness)) <span class="sc">+</span></span>
@@ -589,7 +589,7 @@ Further inspection
 <span id="cb5-8"><a href="multiple2.html#cb5-8" aria-hidden="true" tabindex="-1"></a>BF_without_interaction </span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] attitude + group : 0.1027409 ±1.31%
+## [1] attitude + group : 0.1033332 ±1.73%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -676,7 +676,7 @@ Further inspection
 <span id="cb8-7"><a href="multiple2.html#cb8-7" aria-hidden="true" tabindex="-1"></a>BF_with_interaction </span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 31.89956 ±1.29%
+## [1] attitude + group + attitude * group : 32.27505 ±1.78%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -706,7 +706,7 @@ Further inspection
 <span id="cb10-3"><a href="multiple2.html#cb10-3" aria-hidden="true" tabindex="-1"></a>BF_with_interaction <span class="sc">/</span> BF_without_interaction</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 310.4856 ±1.84%
+## [1] attitude + group + attitude * group : 312.3394 ±2.49%
 ## 
 ## Against denominator:
 ##   trustworthiness ~ attitude + group 
@@ -729,8 +729,8 @@ Further inspection
 <ul>
 <li>According to comparison of BFs for the models, which statement is true?</li>
 </ul>
-<div id="radio_KMAUSZXBNK" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_KMAUSZXBNK" value=""></input> <span>There's substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_KMAUSZXBNK" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_KMAUSZXBNK" value="answer"></input> <span>There's substantial evidence for an interaction between attitude and group</span></label>
+<div id="radio_VZMYYEFZUP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VZMYYEFZUP" value=""></input> <span>There's substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_VZMYYEFZUP" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_VZMYYEFZUP" value="answer"></input> <span>There's substantial evidence for an interaction between attitude and group</span></label>
 </div>
 <div class="webex-solution">
 <button>
@@ -1363,7 +1363,7 @@ Centering
 <p><span class="math inline">\(Predicted\ trustworthiness = 3.96 + 0.18(attitude) + 1.13(group) - 0.28(attitude\times group)\)</span></p>
 <p><br />
 </p>
-<p>Using <code>attitude_centered</code>, the coefficients for the regression equation are ontained from:</p>
+<p>Using <code>attitude_centered</code>, the coefficients for the regression equation are obtained from:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="multiple2.html#cb31-1" aria-hidden="true" tabindex="-1"></a>full_centered</span></code></pre></div>
 <p>And so the regression equation is:</p>
 <p><span class="math inline">\(Predicted\ trustworthiness = 4.75 + 0.18(attitude) -0.06(group) - 0.28(attitude\times group)\)</span></p>
