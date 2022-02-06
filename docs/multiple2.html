@@ -240,14 +240,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.10" data-path="multiple2.html"><a href="multiple2.html#summary-2"><i class="fa fa-check"></i><b>4.10</b> Summary</a></li>
 <li class="chapter" data-level="4.11" data-path="multiple2.html"><a href="multiple2.html#references-3"><i class="fa fa-check"></i><b>4.11</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="multiple3.html"><a href="multiple3.html"><i class="fa fa-check"></i><b>5</b> Multiple regression: evaluating and comparing models</a>
+<li class="chapter" data-level="5" data-path="multiple3.html"><a href="multiple3.html"><i class="fa fa-check"></i><b>5</b> Multiple regression: hierarchical analysis</a>
 <ul>
-<li class="chapter" data-level="5.0.1" data-path="multiple3.html"><a href="multiple3.html#using-anova-and-bayes-factors-to-compare-models"><i class="fa fa-check"></i><b>5.0.1</b> Using ANOVA and Bayes Factors to compare models</a></li>
-<li class="chapter" data-level="5.0.2" data-path="multiple3.html"><a href="multiple3.html#overview-5"><i class="fa fa-check"></i><b>5.0.2</b> Overview</a></li>
-<li class="chapter" data-level="5.1" data-path="multiple3.html"><a href="multiple3.html#comparing-models-using-anova"><i class="fa fa-check"></i><b>5.1</b> Comparing models using ANOVA</a></li>
-<li class="chapter" data-level="5.2" data-path="multiple3.html"><a href="multiple3.html#comparing-models-using-bayes-factors"><i class="fa fa-check"></i><b>5.2</b> Comparing models using Bayes Factors</a></li>
-<li class="chapter" data-level="5.3" data-path="multiple3.html"><a href="multiple3.html#exercise-2"><i class="fa fa-check"></i><b>5.3</b> Exercise</a></li>
-<li class="chapter" data-level="5.4" data-path="multiple3.html"><a href="multiple3.html#summary-of-key-points-1"><i class="fa fa-check"></i><b>5.4</b> Summary of key points</a></li>
+<li class="chapter" data-level="5.1" data-path="multiple3.html"><a href="multiple3.html#overview-5"><i class="fa fa-check"></i><b>5.1</b> Overview</a></li>
+<li class="chapter" data-level="5.2" data-path="multiple3.html"><a href="multiple3.html#worked-example-1-wellbeing"><i class="fa fa-check"></i><b>5.2</b> Worked example 1: wellbeing</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="multiple3.html"><a href="multiple3.html#read-in-the-data-3"><i class="fa fa-check"></i><b>5.2.1</b> Read in the data</a></li>
+<li class="chapter" data-level="5.2.2" data-path="multiple3.html"><a href="multiple3.html#visualisation"><i class="fa fa-check"></i><b>5.2.2</b> Visualisation</a></li>
+<li class="chapter" data-level="5.2.3" data-path="multiple3.html"><a href="multiple3.html#correlations"><i class="fa fa-check"></i><b>5.2.3</b> Correlations</a></li>
+<li class="chapter" data-level="5.2.4" data-path="multiple3.html"><a href="multiple3.html#hierarchical-regression"><i class="fa fa-check"></i><b>5.2.4</b> Hierarchical regression</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="multiple3.html"><a href="multiple3.html#exercise-1-1"><i class="fa fa-check"></i><b>5.3</b> Exercise 1</a></li>
+<li class="chapter" data-level="5.4" data-path="multiple3.html"><a href="multiple3.html#worked-exercise-2-controlling-for-categorical-variables"><i class="fa fa-check"></i><b>5.4</b> Worked Exercise 2: Controlling for categorical variables</a></li>
+<li class="chapter" data-level="5.5" data-path="multiple3.html"><a href="multiple3.html#exercise-2"><i class="fa fa-check"></i><b>5.5</b> Exercise 2</a></li>
+<li class="chapter" data-level="5.6" data-path="multiple3.html"><a href="multiple3.html#summary-3"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+<li class="chapter" data-level="5.7" data-path="multiple3.html"><a href="multiple3.html#references-4"><i class="fa fa-check"></i><b>5.7</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="anova2.html"><a href="anova2.html"><i class="fa fa-check"></i><b>6</b> ANOVA: Repeated measures</a></li>
 <li class="chapter" data-level="7" data-path="prepost.html"><a href="prepost.html"><i class="fa fa-check"></i><b>7</b> Pre-post data, effect sizes, clinically significant change</a></li>
@@ -298,6 +305,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <h2><span class="header-section-number">4.1</span> Overview</h2>
 <ul>
 <li><strong>Slides</strong> from the lecture part of the session: <a href="slides/PSYC753_L4_MultipleRegression2.pptx">Download</a></li>
+<li><strong>Slides</strong> for <a href="slides/PSYC753_Rmd_Support.pptx">Rmd support</a></li>
 </ul>
 <p><br />
 </p>
@@ -581,7 +589,7 @@ Further inspection
 <span id="cb5-8"><a href="multiple2.html#cb5-8" aria-hidden="true" tabindex="-1"></a>BF_without_interaction </span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] attitude + group : 0.1059167 ±2.36%
+## [1] attitude + group : 0.1027409 ±1.31%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -668,7 +676,7 @@ Further inspection
 <span id="cb8-7"><a href="multiple2.html#cb8-7" aria-hidden="true" tabindex="-1"></a>BF_with_interaction </span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 31.68152 ±1.62%
+## [1] attitude + group + attitude * group : 31.89956 ±1.29%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -698,7 +706,7 @@ Further inspection
 <span id="cb10-3"><a href="multiple2.html#cb10-3" aria-hidden="true" tabindex="-1"></a>BF_with_interaction <span class="sc">/</span> BF_without_interaction</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 299.1173 ±2.86%
+## [1] attitude + group + attitude * group : 310.4856 ±1.84%
 ## 
 ## Against denominator:
 ##   trustworthiness ~ attitude + group 
@@ -721,8 +729,8 @@ Further inspection
 <ul>
 <li>According to comparison of BFs for the models, which statement is true?</li>
 </ul>
-<div id="radio_PQIOVDTUCM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PQIOVDTUCM" value=""></input> <span>There's substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_PQIOVDTUCM" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_PQIOVDTUCM" value="answer"></input> <span>There's substantial evidence for an interaction between attitude and group</span></label>
+<div id="radio_KMAUSZXBNK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KMAUSZXBNK" value=""></input> <span>There's substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_KMAUSZXBNK" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_KMAUSZXBNK" value="answer"></input> <span>There's substantial evidence for an interaction between attitude and group</span></label>
 </div>
 <div class="webex-solution">
 <button>
