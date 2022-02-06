@@ -463,8 +463,8 @@ Go further with ggplot
 </button>
 <p>The scatterplot can be improved through further customisation.</p>
 <p>For example, to change the x- and y- labels, add the code:</p>
-<p><code>+ xlab("Participants' attitude to the research") +</code>
-<code>ylab("Trustworthiness of researcher")</code></p>
+<p><code>+ xlab("Participants' attitude to the research")</code><br />
+<code>+ ylab("Trustworthiness of researcher")</code></p>
 <p>Feel free to customise the plot further if you feel it can be improved!</p>
 </div>
 <div class="webex-solution">
@@ -512,7 +512,7 @@ Further inspection
 <p>The model without an interaction looks like a typical multiple regression model with two predictors (from Session 2):</p>
 <p><code>model &lt;- lm(outcome ~ predictor_1 + predictor_2, data = mydata)</code></p>
 <p>As we did in the previous session, we need to also convert the categorical variable (<code>group</code>) to a <code>factor()</code> to ensure it's treated as categorical by R.</p>
-<p>Thus, For our data:</p>
+<p>Thus, for our data:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="multiple2.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert group to a factor</span></span>
 <span id="cb4-2"><a href="multiple2.html#cb4-2" aria-hidden="true" tabindex="-1"></a>trust_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">factor</span>(group))</span>
 <span id="cb4-3"><a href="multiple2.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -589,7 +589,7 @@ Further inspection
 <span id="cb5-8"><a href="multiple2.html#cb5-8" aria-hidden="true" tabindex="-1"></a>BF_without_interaction </span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] attitude + group : 0.1033332 ±1.73%
+## [1] attitude + group : 0.1073778 ±1.1%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -676,7 +676,7 @@ Further inspection
 <span id="cb8-7"><a href="multiple2.html#cb8-7" aria-hidden="true" tabindex="-1"></a>BF_with_interaction </span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 32.27505 ±1.78%
+## [1] attitude + group + attitude * group : 31.53068 ±1.62%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -706,7 +706,7 @@ Further inspection
 <span id="cb10-3"><a href="multiple2.html#cb10-3" aria-hidden="true" tabindex="-1"></a>BF_with_interaction <span class="sc">/</span> BF_without_interaction</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 312.3394 ±2.49%
+## [1] attitude + group + attitude * group : 293.6424 ±1.96%
 ## 
 ## Against denominator:
 ##   trustworthiness ~ attitude + group 
@@ -721,7 +721,7 @@ Further inspection
 <ul>
 <li>The adjusted R<sup>2</sup> for the model without the interaction (that you noted earlier) was: <input class='webex-solveme nospaces' size='4' data-answer='["0.01"]'/></li>
 <li>The adjusted R<sup>2</sup> for the model with the interaction (that you also noted earlier) was: <input class='webex-solveme nospaces' size='4' data-answer='["0.05"]'/></li>
-<li>What is the <em>increase</em> in adjusted R<sup>2</sup> as a result of the addition of the interaction term to the model? <em>Hint. Work out the difference between the two adjusted R<sup>2</sup> values you noted above?</em> <input class='webex-solveme nospaces' size='4' data-answer='["0.04"]'/></li>
+<li>What is the <em>increase</em> in adjusted R<sup>2</sup> as a result of the addition of the interaction term to the model? <em>Hint. Work out the difference between the two adjusted R<sup>2</sup> values you noted above</em> <input class='webex-solveme nospaces' size='4' data-answer='["0.04"]'/></li>
 </ul>
 <p><br />
 </p>
@@ -729,8 +729,8 @@ Further inspection
 <ul>
 <li>According to comparison of BFs for the models, which statement is true?</li>
 </ul>
-<div id="radio_VZMYYEFZUP" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_VZMYYEFZUP" value=""></input> <span>There's substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_VZMYYEFZUP" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_VZMYYEFZUP" value="answer"></input> <span>There's substantial evidence for an interaction between attitude and group</span></label>
+<div id="radio_LDDVETPPGZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LDDVETPPGZ" value=""></input> <span>There's substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_LDDVETPPGZ" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_LDDVETPPGZ" value="answer"></input> <span>There's substantial evidence for an interaction between attitude and group</span></label>
 </div>
 <div class="webex-solution">
 <button>
@@ -1175,7 +1175,7 @@ Code
 <h2><span class="header-section-number">4.8</span> Further exercise</h2>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-9" class="exercise"><strong>Exercise 4.9  </strong></span>No interaction</p>
-<p>Using the data from Teychenne and Hinkley (2016) that we used in Session 1, determine whether there is evidence for an interaction between <code>anxiety_score</code> and level of <code>education</code> in the prediction of <code>screen_time</code>? <code>education</code> is made up of groups 'No uni degree' and 'University degree'.</p>
+<p>Using the data from Teychenne and Hinkley (2016) that we used in Session 1, determine whether there is evidence for an interaction between <code>anxiety_score</code> and level of <code>education</code> in the prediction of <code>screen_time</code>. <code>education</code> is made up of groups 'No uni degree' and 'University degree'.</p>
 <p>The data are located at:</p>
 <p><a href="https://raw.githubusercontent.com/chrisjberry/Teaching/master/1_mental_health_data.csv" class="uri">https://raw.githubusercontent.com/chrisjberry/Teaching/master/1_mental_health_data.csv</a></p>
 <ul>
@@ -1259,7 +1259,7 @@ Moderation
 </div>
 <p><br />
 </p>
-<p>Altenmuller et al. (2021) concluded that participants' <code>attitude</code> <em>moderated</em> "the effect of a researcher disclosing being personally <code>affected</code> (vs. <code>not affected</code> ) by their own research on participants' <code>trustworthiness</code> ascriptions regarding the research". That is, <code>attitude</code> moderates the main effect of <code>group</code> on <code>trustworthiness</code>.</p>
+<p>Altenmuller et al. (2021) concluded that participants' <code>attitude</code> <em>moderated</em> "the effect of a researcher disclosing being personally <code>affected</code> (vs. <code>not affected</code> ) by their own research on participants' <code>trustworthiness</code> ascriptions regarding the research". That is, <code>attitude</code> moderates the effect of <code>group</code> on <code>trustworthiness</code>.</p>
 <p>It could also be said that the effect of a researcher saying that they are personally affected by their own research moderates the relationship between <code>attitude</code> and <code>trustworthiness</code> (or <code>credibility</code>). That is, the <code>group</code> moderates the relationship between <code>attitude</code> and <code>trustworthiness</code>. A relationship is present when the researcher says they are affected, but absent when they say they are not affected.</p>
 <p>Which variable is said to be the <em>moderator</em> variable appears to be down to the choice of the researcher and the context of the research.</p>
 <p>If we don't find evidence for the interaction term, then we don't have evidence that one variable moderates the relationship between the other two. Instead, researchers may say that there is <em>an additive effect of both predictors on the outcome variable</em>. The absence of an interaction indicates that the regression lines for each group do not differ (i.e., the lines for each group in a scatterplot are statistically parallel to one another).</p>
