@@ -17,7 +17,9 @@ The PDF instructions for the assessment are in the "Analysis Assessment" submiss
 
 Answers to [FAQs](#faqs) are on the following page.
 
+\
 
+**Slides** for [Rmd support](slides/PSYC753_Rmd_Support.pptx)
 <!--
 commented text
 

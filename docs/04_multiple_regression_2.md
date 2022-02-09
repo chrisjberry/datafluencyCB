@@ -22,7 +22,8 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 
 ## Overview
 
-* **Slides** from the lecture part of the session: [Download](slides/PSYC753_L4_PSYC753_L4_MultipleRegression2.pptx)
+* **Slides** from the lecture part of the session: [Download](slides/PSYC753_L4_MultipleRegression2.pptx)
+* **Slides** for [Rmd support](slides/PSYC753_Rmd_Support.pptx)
 
 \
 
@@ -159,8 +160,8 @@ The scatterplot can be improved through further customisation.
 
 For example, to change the x- and y- labels, add the code:
 
-  `+ xlab("Participants' attitude to the research") +`
-  `ylab("Trustworthiness of researcher")`
+  `+ xlab("Participants' attitude to the research")`  
+  `+ ylab("Trustworthiness of researcher")`
 
 Feel free to customise the plot further if you feel it can be improved!
 
@@ -172,7 +173,7 @@ Feel free to customise the plot further if you feel it can be improved!
 
 <div class='webex-solution'><button>Further inspection</button>
 
-It is good practice to inspect the distributions of the data prior to analysis, for example, with `geom_histogram()` or `geom_density()`. When can check if the data appear normally distributed, or positively or negatively skewed. We can also check for outliers using `geom_boxplot()`. Get to know your data!
+It is good practice to inspect the distributions of the data prior to analysis, for example, with `geom_histogram()` or `geom_density()`. We can check if the data appear normally distributed, or positively or negatively skewed. We can also check for outliers using `geom_boxplot()`. Get to know your data!
 
 
 ```r
@@ -218,7 +219,7 @@ The model without an interaction looks like a typical multiple regression model 
 
 As we did in the previous session, we need to also convert the categorical variable (`group`) to a `factor()` to ensure it's treated as categorical by R.
 
-Thus, For our data:
+Thus, for our data:
 
 
 ```r
@@ -263,7 +264,7 @@ BF_without_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group : 0.108627 ±3.09%
+## [1] attitude + group : 0.1041619 ±2.2%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -322,7 +323,7 @@ BF_with_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 32.66177 ±1.31%
+## [1] attitude + group + attitude * group : 31.4508 ±1.31%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -368,7 +369,7 @@ BF_with_interaction / BF_without_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 300.6783 ±3.36%
+## [1] attitude + group + attitude * group : 301.9415 ±2.56%
 ## 
 ## Against denominator:
 ##   trustworthiness ~ attitude + group 
@@ -387,7 +388,7 @@ Assessing the interaction
 
 * The adjusted R^2^ for the model without the interaction (that you noted earlier) was: <input class='webex-solveme nospaces' size='4' data-answer='["0.01"]'/>
 * The adjusted R^2^ for the model with the interaction (that you also noted earlier) was: <input class='webex-solveme nospaces' size='4' data-answer='["0.05"]'/>
-* What is the _increase_ in adjusted R^2^ as a result of the addition of the interaction term to the model? _Hint. Work out the difference between the two adjusted R^2^ values you noted above?_ <input class='webex-solveme nospaces' size='4' data-answer='["0.04"]'/>
+* What is the _increase_ in adjusted R^2^ as a result of the addition of the interaction term to the model? _Hint. Work out the difference between the two adjusted R^2^ values you noted above_ <input class='webex-solveme nospaces' size='4' data-answer='["0.04"]'/>
 
 
 \
@@ -396,7 +397,7 @@ Assessing the interaction
 
 * According to comparison of BFs for the models, which statement is true?
 
-<div class='webex-radiogroup' id='radio_ZVCNWSRRMM'><label><input type="radio" autocomplete="off" name="radio_ZVCNWSRRMM" value=""></input> <span>There&apos;s substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_ZVCNWSRRMM" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_ZVCNWSRRMM" value="answer"></input> <span>There&apos;s substantial evidence for an interaction between attitude and group</span></label></div>
+<div class='webex-radiogroup' id='radio_KRRTNDJIHY'><label><input type="radio" autocomplete="off" name="radio_KRRTNDJIHY" value=""></input> <span>There&apos;s substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_KRRTNDJIHY" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_KRRTNDJIHY" value="answer"></input> <span>There&apos;s substantial evidence for an interaction between attitude and group</span></label></div>
 
 
 
@@ -958,7 +959,7 @@ lmBF(evaluation ~ attitude, data = data.frame(not_affected_data))
 
 No interaction
 
-Using the data from Teychenne and Hinkley (2016) that we used in Session 1, determine whether there is evidence for an interaction between `anxiety_score` and level of `education` in the prediction of `screen_time`? `education` is made up of groups 'No uni degree' and 'University degree'.
+Using the data from Teychenne and Hinkley (2016) that we used in Session 1, determine whether there is evidence for an interaction between `anxiety_score` and level of `education` in the prediction of `screen_time`. `education` is made up of groups 'No uni degree' and 'University degree'.
 
 The data are located at:
 
@@ -1039,7 +1040,9 @@ BF_screen_time_no_interaction / lmBF(screen_time ~ anxiety_score, data = data.fr
 
 \
 
-## Further knowledge: moderation
+## Further knowledge
+
+### Moderation
 
 
 <div class='webex-solution'><button>Moderation</button>
@@ -1053,7 +1056,7 @@ Moderation is when the relationship between two variables changes as a function 
 
 \
 
-Altenmuller et al. (2021) concluded that participants' `attitude` _moderated_ "the effect of a researcher disclosing being personally `affected` (vs. `not affected` ) by their own research on participants' `trustworthiness` ascriptions regarding the research". That is, `attitude` moderates the main effect of `group` on `trustworthiness`.
+Altenmuller et al. (2021) concluded that participants' `attitude` _moderated_ "the effect of a researcher disclosing being personally `affected` (vs. `not affected` ) by their own research on participants' `trustworthiness` ascriptions regarding the research". That is, `attitude` moderates the effect of `group` on `trustworthiness`.
 
 It could also be said that the effect of a researcher saying that they are personally affected by their own research moderates the relationship between `attitude` and `trustworthiness` (or `credibility`). That is, the `group` moderates the relationship between `attitude` and `trustworthiness`. A relationship is present when the researcher says they are affected, but absent when they say they are not affected.
 
@@ -1067,7 +1070,7 @@ If we don't find evidence for the interaction term, then we don't have evidence 
 
 \
 
-## Further knowledge: coefficients
+### Coefficients
 
 Only for those wanting a deeper understanding.
 
@@ -1136,7 +1139,7 @@ In sum, when one of the predictors is dichotomous, it is possible to derive the 
 \
 
 
-## Further knowledge: centering
+### Centering
 
 Again, only for those wanting deeper knowledge.
 
@@ -1201,7 +1204,7 @@ $Predicted\ trustworthiness = 3.96 + 0.18(attitude) + 1.13(group) - 0.28(attitud
 
 \
 
-Using `attitude_centered`, the coefficients for the regression equation are ontained from:
+Using `attitude_centered`, the coefficients for the regression equation are obtained from:
 
 
 ```r

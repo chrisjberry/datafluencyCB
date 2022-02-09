@@ -1,45 +1,10 @@
-# Multiple regression: evaluating and comparing models {#multiple3}
+# Multiple regression: hierarchical regression {#multiple3}
 
 *Chris Berry*
 \
 *2022*
 
 
-
-
-
-
-<!--
-commented text
-
-
-
-```r
-# plot histogram of continuous vars
-data %>%
-  keep(is.numeric) %>%                     # Keep only numeric columns
-  gather() %>%                             # Convert to key-value pairs
-  ggplot(aes(value)) +                     # Plot the values
-  facet_wrap(~ key, scales = "free") +   # In separate panels
-  geom_histogram()        
-
-# plot histogram of categorical vars (count data)
-data %>% 
-  keep(is.character)  %>% 
-  gather() %>%                             # Convert to key-value pairs
-  ggplot(aes(value)) +                     # Plot the values
-  facet_wrap(~ key, scales = "free") +   # In separate panels
-  geom_histogram(stat="count")        
-
-# correlations of numeric
-data %>%
-  keep(is.numeric) %>%
-  correlate()
-  
-  
-# large datasets can look griddy
-# use geom_jitter()
-```
 
 
 <style>
@@ -50,922 +15,882 @@ div.exercise { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 </style>
 
-Add in the Tychenne & Hinkley study here with all the covariates. 
+## Overview
 
-### Using ANOVA and Bayes Factors to compare models
-
--   [**Slides for the session**](slides/PSYC753_Chris2.pptx)
--   [**Using Rmd files**](slides/PSYC753_Chris2_Rmd.pptx)
+* **Slides** from the lecture part of the session: [Download](slides/PSYC753_L5_MultipleRegression3.pptx)
 
 \
 
-### Overview
+**Hierarchical regression** is a form of multiple regression analysis and can be used when we want to add predictor variables to a model in discrete steps or stages. The technique allows the unique contribution of the variables on each step to be separately determined.
 
-In the previous session, we saw that we can construct a linear model to predict an outcome variable (e.g., *final exam score* from *entrance exam score*). We also investigated how we can _improve_ a model by adding several continuous predictors to it.
+We can use it when we want to know whether a predictor variable (e.g., `sense_of_belonging`) predicts an outcome (e.g., `social_interaction`) after controlling for background variables that are categorical (e.g., `gender`, `level of education`) or continuous (e.g., `age`, `score on a cognitive test`) in nature. The variables entered on each step can also be determined by theoretical considerations, to test specific hypotheses.
 
-\
-How do we know if one model is _better_ or should be _preferred_ over another model? We touched on a common sense approach in the last session - we ideally want models that explain the variance in an outcome variable but each predictor in the model should make a sizable and relatively independent contribution to the model.
+At each step in the analysis, the increase in the variance explained in the outcome variable (i.e., R^2^) and evidence for the unique contribution of the predictors (with Bayes factors) can be assessed. 
 
-\
-
-Today we will cover a more formal approach to model comparison using:
-
-  - **ANOVA (Analysis of Variance)** and
-
-  - **Bayes Factors**
-  
-\
-
-It's important that you are comfortable with the material from the first [Building Models 1 session](building-models-1.html) before proceeding today.
-
-
-## Comparing models using ANOVA
-
-We can use ANOVA to determine whether the addition of variables into a model leads to a statistically significant improvement in the variance it explains _overall_. We may want to do this, for example, when building on existing theories or models, or looking at the effects of variables after controlling for others.
+Hierarchical regression is sometimes called _sequential regression_.
 
 \
-We'll start by comparing a model with _one_ predictor vs. a model with _three_ predictors.
+
+## Worked example 1: wellbeing
+In Session 2, we analysed some of the data from Iani et al. (2019) and found evidence that `brooding` and `worry` predicted `wellbeing` in a multiple regression. 
+
+Iani et al. (2019) were actually primarily interested in whether mindfulness and emotional intelligence predicted psychological wellbeing scores, but _after_ controlling for `brooding` and `worry`. The reason for asking the question in this way is because it's a well-established finding that `brooding` and `worry` explain `wellbeing`, but less is known about `mindfulness` and `emotional intelligence`. 
+
+To control for `brooding` and `worry`, these variables are entered into a regression first. Next, mindfulness and emotional intelligence are added, and the _change_ in R^2^ associated with their addition to the model can be evaluated. Bayes factors can also be used to assess the unique contribution of the predictors added at each step. 
+
+
+
+
+
 
 \
-Using the `ExamData` from the previous session, we'll run:
 
-- a linear model with `finalex` as the outcome variable, and `entrex` as the predictor.
+### Read in the data
 
-- a linear model with `finalex` as the outcome variable, and `entrex`,`age`, and `project` as the predictors.
+Read the data to R, and store in `pwb_data` (to stand for Psychological WellBeing data). The data we'll use are located at:
+
+https://raw.githubusercontent.com/chrisjberry/Teaching/master/2_wellbeing_data.csv
 
 
 ```r
-ExamData <- read_csv('https://bit.ly/37GkvJg')              
+# First ensure tidyverse is loaded, i.e., 'library(tidyverse)'
+
+# read in the data using read_csv(), store in pwb_data
+pwb_data <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/2_wellbeing_data.csv')
 ```
 
-```
-## Rows: 33 Columns: 7
-```
+(_Note._ The data are publicly available, but I've changed the variable names for clarity. As in Iani et al., missing values were replaced with the mean of the relevant variable.)
 
-```
-## -- Column specification --------------------------------------------------------
-## Delimiter: ","
-## dbl (7): finalex, entrex, age, project, iq, proposal, attendance
-```
-
-```
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
-model1   <- lm(finalex ~ entrex, data = ExamData)           
-model2   <- lm(finalex ~ entrex + age + project, data = ExamData) 
-```
-
-\
-**Explanation of the code**: first the data is loaded into `ExamData`. The results of the simple regression are stored in `model1`. Those of the multiple regression are stored in `model2`.
-
-\
-Use `summary()` to display the results of each regression:
-
-**Model 1:**
+Preview the data with `head()`:
 
 
 ```r
-summary(model1)
-```
-
-```
-## 
-## Call:
-## lm(formula = finalex ~ entrex, data = ExamData)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -54.494 -21.185   3.733  18.124  30.969 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) -46.3045    25.4773  -1.817   0.0788 .  
-## entrex        3.1545     0.5324   5.925 1.52e-06 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 22.7 on 31 degrees of freedom
-## Multiple R-squared:  0.531,	Adjusted R-squared:  0.5159 
-## F-statistic:  35.1 on 1 and 31 DF,  p-value: 1.52e-06
-```
-
-\
-**Model 2:**
-
-```r
-summary(model2)
-```
-
-```
-## 
-## Call:
-## lm(formula = finalex ~ entrex + age + project, data = ExamData)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -42.563 -16.519   4.901  16.991  36.424 
-## 
-## Coefficients:
-##              Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) -117.9159    46.4211  -2.540   0.0167 *  
-## entrex         3.0889     0.5734   5.387 8.66e-06 ***
-## age            1.4231     1.3756   1.035   0.3094    
-## project        0.6280     0.4609   1.363   0.1835    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 22.03 on 29 degrees of freedom
-## Multiple R-squared:  0.5869,	Adjusted R-squared:  0.5442 
-## F-statistic: 13.73 on 3 and 29 DF,  p-value: 9.353e-06
-```
-
-\
-(If you are not sure what it means by "e-06" in the output above then see the FAQs [here](#e-meaning))
-
-:::{.exercise}
-
-Make note of the variance explained by each model ($R^2$), i.e., `Multiple R-squared`: (report as a percentage, to 2 decimal places)
-
-- Model 1: $R^2$ = <input class='webex-solveme nospaces' size='5' data-answer='["53.10"]'/> %
-
-- Model 2: $R^2$ = <input class='webex-solveme nospaces' size='5' data-answer='["58.69"]'/> %
-
-Which model explains a greater proportion of variance in `finalex`? <select class='webex-select'><option value='blank'></option><option value=''>entrex alone</option><option value='answer'>entrex, age, project</option></select>
-
-- Calculate the difference in $R^2$ between the models. `model2` improves the prediction of `finalex` by  <input class='webex-solveme nospaces' size='4' data-answer='["5.59"]'/> %
-
-:::
-
-\
-To compare the variance explained by each model, use `anova()`:
-
-
-```r
-anova(model1, model2)
+pwb_data %>% head()
 ```
 
 <div class="kable-table">
 
-| Res.Df|      RSS| Df| Sum of Sq|        F|    Pr(>F)|
-|------:|--------:|--:|---------:|--------:|---------:|
-|     31| 15980.58| NA|        NA|       NA|        NA|
-|     29| 14077.62|  2|  1902.957| 1.960052| 0.1590683|
+| describing| observing| acting| nonreactivity| nonjudging| attention| clarity| repair| brooding| worry| wellbeing| gad|
+|----------:|---------:|------:|-------------:|----------:|---------:|-------:|------:|--------:|-----:|---------:|---:|
+|         13|        14|     19|             6|         15|        23|      20|     21|       18|    19|        64|  13|
+|         15|         6|     15|            13|         12|        24|      20|     15|       14|    30|        72|   7|
+|         14|        14|     16|            17|         11|        31|      27|     26|       15|    30|        59|  11|
+|         10|        10|     18|            18|         18|        27|      18|     20|       16|    29|        62|  13|
+|         10|        14|     15|            14|         16|        21|      24|     14|        8|    27|        78|   5|
+|         21|        15|     18|            14|         14|        30|      26|     23|       10|    23|        78|   4|
 
 </div>
-
-\
-**Explanation of the output:** 
-
-- **`anova()`** compares the variance that `model1` and `model2` explain with an _F_-statistic. 
-
-- **`Pr(>F)`** gives the _p_-value for this statistic. If the _p_-value is less than .05, then we can reject the null hypothesis that there is no difference in the variance explained by each model, and we can say that the variance that `model2` explains in `finalex` is significantly greater than that of `model1`.
-
-- We can report the _F_-statistic in APA style as _F_(2, 29) = 1.96, _p_ = .16. We can say that the additional 5.59% variance that `model2` explains relative to `model1` does not represent a statistically significant increase in $R^2$, and so `model2` should **not** be preferred over `model1`.
-
-
-\
-
-:::{.tip}
-Comparing models in steps as we've done is sometimes called **hierarchical regression** or **sequential regression**. This type of regression is usually used for logical or theoretical reasons, when we want to know the contribution of a predictor (or a set of predictors) **over and above** an existing one. 
-:::
-
-
-:::{.exercise}
-
-**Now, you try using `anova` to compare models.**
-
-The variable `attendance` in `ExamData` scores individuals according to whether their class attendance was low (0) or high (1). A researcher suspects that `attendance` may explain additional variance in `finalex` over and above `entrex`.
-
-As an exercise, compare the following two models using the `anova()` approach above: 
-
-1. a model with `entrex` as a sole predictor of `finalex` (i.e., `model1`), and 
-
-2. a model where `finalex` is predicted by `entrex` and `attendance` (call this `model3`). 
-
-Is there sufficient evidence that a model with `entrex` _and_ `attendance` explains more variance than a model with `entrex` alone?
-
-
-<div class='webex-solution'><button>Try yourself first, then click to see the code</button>
-
-
-```r
-# model1 was created earlier
-summary(model1)
-
-# specify model3
-model3 <- lm(finalex ~ entrex + attendance, data = ExamData)
-
-# show model3
-summary(model3)
-
-#compare model1 and model3
-anova(model1, model3)
-```
-
-```
-## 
-## Call:
-## lm(formula = finalex ~ entrex, data = ExamData)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -54.494 -21.185   3.733  18.124  30.969 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) -46.3045    25.4773  -1.817   0.0788 .  
-## entrex        3.1545     0.5324   5.925 1.52e-06 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 22.7 on 31 degrees of freedom
-## Multiple R-squared:  0.531,	Adjusted R-squared:  0.5159 
-## F-statistic:  35.1 on 1 and 31 DF,  p-value: 1.52e-06
-## 
-## 
-## Call:
-## lm(formula = finalex ~ entrex + attendance, data = ExamData)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -42.750 -11.750   1.801   9.689  30.347 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) -63.3108    20.2768  -3.122  0.00395 ** 
-## entrex        3.2741     0.4173   7.846 9.35e-09 ***
-## attendance   28.8202     6.3398   4.546 8.37e-05 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 17.76 on 30 degrees of freedom
-## Multiple R-squared:  0.7223,	Adjusted R-squared:  0.7038 
-## F-statistic: 39.02 on 2 and 30 DF,  p-value: 4.499e-09
-```
-
-<div class="kable-table">
-
-| Res.Df|       RSS| Df| Sum of Sq|        F|   Pr(>F)|
-|------:|---------:|--:|---------:|--------:|--------:|
-|     31| 15980.580| NA|        NA|       NA|       NA|
-|     30|  9462.434|  1|  6518.146| 20.66533| 8.37e-05|
-
-</div>
-
-</div>
-
-
-- The variance explained by a model with `entrex` alone is $R^2$ = <input class='webex-solveme nospaces' size='5' data-answer='["53.10"]'/> %
-
-- The $R^2$ for the model that also included `attendance` was $R^2$ = <input class='webex-solveme nospaces' size='5' data-answer='["72.23"]'/> %  
-
-- The increase in $R^2$ was <input class='webex-solveme nospaces' size='5' data-answer='["19.13"]'/>% 
-
-- The ANOVA comparing models can be reported as: _F_(<input class='webex-solveme nospaces' size='1' data-answer='["1"]'/>, <input class='webex-solveme nospaces' size='2' data-answer='["30"]'/>) = <input class='webex-solveme nospaces' size='5' data-answer='["20.67"]'/>, _p_ < .001. 
-
-- The increase in $R^2$ was <select class='webex-select'><option value='blank'></option><option value='answer'>statistically significant</option><option value=''>not significant</option></select>.
-
-- As indicated by the estimates of the coefficients for `entrex` and `attendance`, both  <select class='webex-select'><option value='blank'></option><option value=''>negatively</option><option value='answer'>positively</option></select> predict `finalex`. 
-
-- A higher `entrex` score and greater `attendance` is associated with a <select class='webex-select'><option value='blank'></option><option value='answer'>higher</option><option value=''>lower</option></select> `finalex` score.
-
-
-</div>
-
-
-:::
-
-
-
-## Comparing models using Bayes Factors
-
-An alternative approach to using ANOVA to compare models is to use **Bayes Factors**. 
-
-\
-A **Bayes Factor** is the **probability of obtaining the data under one model compared to another** (Rouder & Morey, 2012).  
-
-\
-For example, a Bayes Factor equal to 2 would tell us that the data are _twice_ as likely under one model than another. A Bayes Factor equal to 0.5 would tell us that the data are _half_ as likely under one model than another. 
-
-\
-Unlike classical tests of statistical significance (with _p_-values), Bayes Factors also allow us to _quantify_ evidence for the null hypothesis. Very handy!
-
-\
-To compute a Bayes Factor for a specific linear model, we use `lmBF` in the `BayesFactor` package (where `lm` stands for _linear model_ and `BF` stands for _Bayes Factor_).
-
-\
-First, we need to load the `BayesFactor` package: 
-
-
-```r
-library('BayesFactor')
-```
-
-We can use the `lmBF` function in the same way we use  `lm`. The function will return a **Bayes Factor** for the model we specify.
-
-\
-Let's determine the Bayes Factor for `model1`
-
-
-```r
-model1.BF <- lmBF(finalex ~ entrex, data = as.data.frame(ExamData) )  
-```
-
-**Explanation of the code**: The model is specified in exactly the same way as with `lm`. Due to a limitation of the package, however, we must convert `ExamData` from a tibble to a data frame using `as.data.frame`. Otherwise, the command works in the same way. The results are stored in `model1.BF`.
-
-\
-To look at what's stored in `model1.BF`:
-
-
-```r
-model1.BF
-```
-
-```
-## Bayes factor analysis
-## --------------
-## [1] entrex : 8310.846 ±0.01%
-## 
-## Against denominator:
-##   Intercept only 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-```
-
-**Explanation of the output**: 
-
-- The Bayes Factor provided for the model with `entrex` is equal to **8310.85**. 
-
-- The `Against denominator: Intercept only` means that the model with `entrex` is being compared with a model that contains an **intercept only**. In an intercept-only model, the coefficient for `entrex` is equal to zero; that is, the regression line is a flat line (equal to the _mean_ of `entrex`). 
-
-- The value of our Bayes Factor indicates that the model with `entrex` in is much more likely than a model that contains only an intercept (8310.85 times more likely, to be precise). We can therefore be confident that a model with `entrex` is preferable to the intercept only model (just as with our classical analysis). Happy days!
-
-\
-Now let's do the same for `model2`:
-
-
-```r
-# specify the model
-model2.BF <- lmBF(finalex ~ entrex + age + project, data = as.data.frame(ExamData) )
-
-# show the Bayes Factor
-model2.BF
-```
-
-```
-## Bayes factor analysis
-## --------------
-## [1] entrex + age + project : 2427.676 ±0%
-## 
-## Against denominator:
-##   Intercept only 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-```
-
-\
-
-**Explanation:** The Bayes Factor is equal to **2427.68**. Again, this indicates that the model with `entrex` and `age` is much more likely than a model with only the intercept in (this is not that surprising given the result for `model1.BF` above). 
-
-But, what we want to know is whether `model2` (containing `entrex` and `age`) is **more** likely than `model1` (containing only `entrex`). We can determine this by _dividing_ the Bayes Factor for `model2` by the Bayes Factor for `model1`:
-
-
-
-```r
-model2.BF / model1.BF
-```
-
-```
-## Bayes factor analysis
-## --------------
-## [1] entrex + age + project : 0.2921093 ±0.01%
-## 
-## Against denominator:
-##   finalex ~ entrex 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-```
-
-**Explanation:** The Bayes Factor for this comparison is 0.29. This means that `model2` is **_less than a third as likely_** than `model1`. So, `model2` is much _less_ likely than `model1`. Not good news for `model2`!
-
-
-:::{.tip}
-
-**Interpreting the Bayes Factor**
-
-- A Bayes Factor **equal to 1** tells us that probability of each model is the same.
-
-- A Bayes Factor **greater than 1** means that `model2` is more likely than `model1`.
-
-- A Bayes Factor **less than 1** means that `model1` is more likely than `model2`. 
-
-**Thus, our Bayes Factor of 0.29 indicates that `model1` is more likely than `model2`.**
-
-:::
-
-
-:::{.tip}
-
-**Reporting Bayes Factors**
-
-\
-
-**Notation**
-
-We usually write the Bayes Factor in reports as $BF_{10}$ where: 
-
-- the subscript **1** in $BF_{10}$ denotes the less-constrained model (the alternative hypothesis). This is the model with **more predictors** (our `model2`).
-
-- the subscript **0** in $BF_{10}$ denotes the more constrained or simpler model (i.e., the null hypothesis). This is the model with **fewer predictors** (our `model1`).
-
-(You can just write BF10 if you prefer.)
-
-
-\
-
-**The Size of the Bayes Factor**
-
-- If the Bayes Factor is **greater than 3** (i.e., $BF_{10}$ > 3), we say that there is **substantial evidence for `model2`** (the less constrained model).
-
-- If the Bayes Factor is **less than 0.33** (i.e., $BF_{10}$ < 0.33), we usually say that there is **substantial evidence for `model1`** (the more constrained model).
-
-- We say that intermediate values for the Bayes Factor (between 0.33 and 3) don't offer strong evidence for either model.
-
-:::
-
-Thus, because our Bayes Factor of 0.29 is less than 1, this indicates greater evidence for `model1` than `model2`. Furthermore, because the Bayes Factor is less than 0.33, we have _substantial_ evidence for `model1` over `model2`.
-
-\
-It's becoming increasingly common to report the Bayes Factor alongside the results of a classical analysis. Thus, we could report our results as follows: "There was insufficient evidence that the addition of age and project to the model containing entrance exam resulted in an increase in $R^2$, _F_(2, 29) = 1.96, _p_ = .16; BF10 = 0.29."
-
-
-:::{.exercise}
-
-**Now you try using Bayes Factors to compare models**
-
-To supplement the comparison of `model3` and `model1` that you did with `anova`, now compute the Bayes Factor for `model3` vs. `model1`.
-
-\
-You'll need the following steps:
-
-- Model 1: Obtain the Bayes Factor for a model with `entrex` as a sole predictor of `finalex` (we did this already above; it's stored in `model1.BF`) 
-
-- Model 2: Obtain the Bayes Factor for a model where `finalex` is predicted by `entrex` _and_ `attendance` and store this in `model3.BF`. 
-
-- Compare the Bayes Factors in `model3.BF` and `model1.BF`.
-\
-
-
-<div class='webex-solution'><button>Try yourself first, then click here for the code</button>
-
-
-
-```r
-# 1. show the BF for model1 vs. intercept only
-model1.BF  
-
-# 2. Obtain the BF for model3 vs. intercept only, then show it
-model3.BF <- lmBF(finalex ~ entrex + attendance, data = as.data.frame(ExamData) )
-
-model3.BF
-
-# 3. Compare the BFs for model3 vs model1
-model3.BF / model1.BF
-```
-
-```
-## Bayes factor analysis
-## --------------
-## [1] entrex : 8310.846 ±0.01%
-## 
-## Against denominator:
-##   Intercept only 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-## 
-## Bayes factor analysis
-## --------------
-## [1] entrex + attendance : 2351114 ±0%
-## 
-## Against denominator:
-##   Intercept only 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-## 
-## Bayes factor analysis
-## --------------
-## [1] entrex + attendance : 282.897 ±0.01%
-## 
-## Against denominator:
-##   finalex ~ entrex 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-```
-
-
-</div>
-
-
-\
-**Answer the following questions from the output:**
-
-How much more likely is a model with`entrex` than an intercept only model? 
-
-- <input class='webex-solveme nospaces' size='7' data-answer='["8310.85"]'/> times more likely.
-
-How much more likely is a model with `entrex` and `attendance` than an intercept only model? 
-
-- <input class='webex-solveme nospaces' size='7' data-answer='["2351114"]'/> times more likely.
-
-How much more likely is a model with `entrex` and `attendance` as predictors than a model with `entrex` alone? 
-
-- <input class='webex-solveme nospaces' size='6' data-answer='["282.90"]'/> times more likely.
-
-There is <select class='webex-select'><option value='blank'></option><option value=''>insufficient</option><option value='answer'>strong</option></select> evidence that a model with `entrex` and `attendance` should be preferred over a model with `entrex` alone, given the data.
-
-A comparison of the Bayes Factors for the two models therefore <select class='webex-select'><option value='blank'></option><option value=''>does not converge</option><option value='answer'>converges</option></select> with the results of the comparison using ANOVA, and the model in which Final Exam is predicted by <select class='webex-select'><option value='blank'></option><option value=''>Entrance Exam only</option><option value='answer'>Entrance Exam and Attendance</option></select> should be preferred.
-
-:::
-
-
-## Exercise
-
-Now you will practise using ANOVA and Bayes Factors to compare models with a new dataset.
-
-
-\
-**Scenario:** A researcher would like to construct a model to predict scores in a memory task from several different variables. The data from 234 individuals are stored in the `memory_data` dataset, which are located at https://bit.ly/37pOTrC. 
-
-:::{.exercise}
-
-Use `read_csv` to load in the data at the link above to the variable `memory_data` and preview it with `head()`.
-
-
-
-<div class='webex-solution'><button>Try this yourself first. Click to show code</button>
-
-
-
-```r
-memory_data <- read_csv('https://bit.ly/37pOTrC')
-```
-
-```
-## Rows: 234 Columns: 7
-```
-
-```
-## -- Column specification --------------------------------------------------------
-## Delimiter: ","
-## dbl (7): attention, sex, blueberries, iq, age, sleep, memory_score
-```
-
-```
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
-memory_data %>% head()
-```
-
-<div class="kable-table">
-
-| attention| sex| blueberries|      iq|    age|  sleep| memory_score|
-|---------:|---:|-----------:|-------:|------:|------:|------------:|
-|    95.790|   1|         308|  99.932| 44.935|  9.945|       128.42|
-|    66.748|   1|         270| 136.502| 29.450|  8.037|       127.43|
-|   102.399|   1|         442| 109.591| 31.862| 11.011|       117.99|
-|    36.863|   1|         219| 110.494| 27.894|  5.284|        95.51|
-|    91.708|   0|         450| 118.925| 36.746|  9.303|       122.11|
-|   146.196|   1|         255|  85.601| 23.902|  7.047|       102.22|
-
-</div>
-
-
-</div>
-
-
-
-
-
-:::{.tip}
 
 **About the data:**
 
-- **attention**: sustained attention score (higher = better attention)
+Mindfulness variables: 
 
-- **sex**: 0 = female, 1 = male
+* `describing`: Higher scores indicate greater ability to describe one's inner experiences. 
+* `observing`: Higher scores indicate greater levels of observing.
+* `acting`: Higher scores indicate greater levels of acting with awareness. 
+* `nonreactivity`: Higher scores indicate greater levels of nonreactivity. 
+* `nonjudging`: Higher scores indicate greater levels of nonjudging. 
 
-- **blueberries**: average number of blueberries consumed per year
+Emotional intelligence variables: 
 
-- **iq**: the individual's IQ
+* `attention`: Higher scores indicate greater skill in attending to their feelings and moods.
+* `clarity`: Higher scores indicate greater skill in experiencing their feelings clearly.
+* `repair`: Higher scores indicate greater skill in regulating unpleasant moods or prolonging pleasant ones. 
 
-- **age**: age of person in years
+Negative functioning variables:
 
-- **sleep**: average hours of sleep per night
+* `brooding`: Higher scores indicate greater levels of brooding.
+* `worry`: Higher scores indicate greater levels of worry.
 
-- **memory_score**: memory test score
+Outcome variables:
 
+* `wellbeing`: Higher scores indicate higher levels of psychological wellbeing in terms of self-acceptance, positive relations with others, autonomy, environmental mastery, purpose in life, and personal growth.
+* `gad`: higher scores indicate greater severity of Generalised Anxiety Disorder.
+
+\
+
+### Visualisation
+
+There are a number of continuous variables in the dataset that we can visualise with density plots or histograms. We've done this individually, variable by variable in past worksheets. Here I'd like to show you a more advanced way of plotting. The code below uses will create a density plot of every variable in a dataset that is numeric (continuous) in nature, using different facets:
+
+
+```r
+# Plot density plots of all the numeric (continuous) variables
+# The code below:
+# -Keeps only the numeric columns in a data frame
+# -Uses pivot_longer() to code each set of scores by its variable name
+# -Specifies the 'score' to plot in aes()
+# -Uses facet_wrap() to plot each variable in a separate panel
+# -Uses scales = "free" to allow the range on the x- and y-axis to be different across panels
+
+pwb_data %>%
+  keep(is.numeric) %>%                     
+  pivot_longer(everything(), names_to = "variable", values_to = "score") %>%  
+  ggplot(aes(score)) +                     
+  facet_wrap(~ variable, scales = "free") +     
+  geom_density()        
+```
+
+<div class="figure" style="text-align: center">
+<img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-4-1.png" alt="Density plots for each continous predictor in pwb_data" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-4)Density plots for each continous predictor in pwb_data</p>
+</div>
+\
+
+### Correlations
+With many variables being used in a multiple regression, it is good practice to inspect the correlations between all continuous variables to get an idea of the inter-relations and to check for multicollinearity between predictors. 
+
+Obtain a correlation matrix of all of the numeric variables. Ensure the `corrr` package is loaded, then use `correlate()`:
+
+
+```r
+# library(corrr) # ensure this is loaded
+
+# correlations of all numeric variables
+# use mutate() with round() to round to 2 D.P.
+pwb_data %>%
+  keep(is.numeric) %>%
+  correlate(method = "pearson") %>% 
+  mutate(across(where(is.numeric), round, digits = 2))
+```
+
+:::{.exercise}
+Before conducting the hierarchical regression, Iani et al. (2019) reported the Pearson correlations between `wellbeing` and `gad` and the mindfulness and emotional intelligence variables. We'll report a subset of those here. Report the correlations below to two decimal places:
+
+* `describing` and `clarity`, _r_ = <input class='webex-solveme nospaces' size='4' data-answer='["0.64",".64"]'/>
+* `describing` and `wellbeing`, _r_ = <input class='webex-solveme nospaces' size='4' data-answer='["0.54",".54"]'/>
+* `repair` and `wellbeing`, _r_ = <input class='webex-solveme nospaces' size='4' data-answer='["0.50",".50"]'/>
+* `nonreactivity` and `brooding`, _r_ = <input class='webex-solveme nospaces' size='5' data-answer='["-0.25","-.25"]'/>
+* `nonreactivity` and `gad`, _r_ = <input class='webex-solveme nospaces' size='5' data-answer='["-0.22","-.22"]'/> 
+
+\
+
+* Does multicollinearity seem an issue (check the correlations between the predictors for _r_ < -0.8 or _r_ > 0.8)? <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
 :::
 
-The researcher wants to test whether `attention` and `sleep` predict `memory_score`, but after controlling for `iq` and `age` (she suspects memory varies with `iq` and `age` to being with). 
 
 \
-She therefore wants to use a hierarchical regression approach to determine whether `attention` and `sleep` explain additional variance in `memory_score` _over and above_ `iq` and `age`.
+
+### Hierarchical regression
+To conduct the hierarchical regression, variables will be entered to the multiple regression in progressive steps, and the change in R^2^ associated with the predictors added to the model at each step obtained. Likewise, Bayes factors can be used to determine whether there is evidence that the predictors added at each step make a unique contribution to the prediction of the outcome variable.
+
+Iani et al. (2019) wanted to explain variance in `wellbeing` (the outcome variable). They reported the non-adjusted R^2^, so that's what we'll do too. Due to theoretical considerations, the variables in each step were entered as follows:
+
+* Step 1: `brooding`
+* Step 2: `brooding`, `worry`
+* Step 3: `brooding`, `worry` and mindfulness variables (`describing`, `observing`, `acting`, `nonreactivity`, `nonjudging`)
+* Step 4: `brooding`, `worry`, mindfulness variables (`describing`, `observing`, `acting`, `nonreactivity`, `nonjudging`), and emotional intelligence variables (`attention`, `clarity`, `repair`).
 
 \
-1. First, fit a linear model to determine the extent to which `memory_score` is predicted by `iq` and `age`. Store the results in `memory1`.
 
-
-
-<div class='webex-solution'><button>Try first, then click to see the code</button>
+#### Step 1: brooding
+First, use `brooding` to predict `wellbeing`. Use `lm()` and `glance()` to obtain the R^2^ for the model, then use `lmBF()` to obtain the BF for the model. 
 
 
 ```r
-# specify the baseline model
-memory1 <- lm(memory_score ~ iq + age, data = memory_data)
+# specify the model in the step
+step1 <- lm(wellbeing ~ brooding, data = pwb_data)
 
-# see the model results
-summary(memory1)
-```
+# R^2^
+# ensure broom package loaded, i.e., 'library(broom)'
+glance(step1)
 
-```
-## 
-## Call:
-## lm(formula = memory_score ~ iq + age, data = memory_data)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -44.154 -11.754   0.732  11.608  40.790 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)  71.1669     9.0796   7.838 1.67e-13 ***
-## iq            0.1073     0.0699   1.534    0.126    
-## age           0.8220     0.1461   5.627 5.27e-08 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 16.1 on 231 degrees of freedom
-## Multiple R-squared:  0.1303,	Adjusted R-squared:  0.1228 
-## F-statistic: 17.31 on 2 and 231 DF,  p-value: 9.875e-08
-```
+# store the BF
+# library(BayesFactor)
+BF_step1 <- lmBF(wellbeing ~ brooding, data = data.frame(pwb_data))
 
-</div>
-
-
-\
-2. Next, add `attention` and `sleep` to the model, storing your results in `memory2`.
-
-
-
-<div class='webex-solution'><button>Try first, then click to see the code</button>
-
-
-```r
-# specify the next model
-memory2 <- lm(memory_score ~ iq + age + attention + sleep, data = memory_data)
-
-# show the results
-summary(memory2)
-```
-
-```
-## 
-## Call:
-## lm(formula = memory_score ~ iq + age + attention + sleep, data = memory_data)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -28.935  -8.555   1.713   8.450  31.384 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)  9.60112    8.57889   1.119 0.264246    
-## iq           0.18673    0.05451   3.426 0.000726 ***
-## age          0.86579    0.11308   7.656 5.32e-13 ***
-## attention    0.22894    0.02757   8.302 8.88e-15 ***
-## sleep        3.68609    0.39328   9.373  < 2e-16 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 12.46 on 229 degrees of freedom
-## Multiple R-squared:  0.4839,	Adjusted R-squared:  0.4749 
-## F-statistic: 53.68 on 4 and 229 DF,  p-value: < 2.2e-16
-```
-
-</div>
-
-
-\
-3. Now, compare the `memory1` and `memory2` models using `anova()`
-
-
-<div class='webex-solution'><button>Try first, then click to see the code</button>
-
-
-```r
-anova(memory1, memory2)
+# look at BF
+BF_step1
 ```
 
 <div class="kable-table">
 
-| Res.Df|      RSS| Df| Sum of Sq|        F| Pr(>F)|
-|------:|--------:|--:|---------:|--------:|------:|
-|    231| 59912.24| NA|        NA|       NA|     NA|
-|    229| 35553.54|  2|   24358.7| 78.44706|      0|
+| r.squared| adj.r.squared|   sigma| statistic|   p.value| df|    logLik|      AIC|      BIC| deviance| df.residual| nobs|
+|---------:|-------------:|-------:|---------:|---------:|--:|---------:|--------:|--------:|--------:|-----------:|----:|
+|  0.189052|     0.1763809| 11.4776|  14.91998| 0.0002642|  1| -253.7007| 513.4014| 519.9704| 8431.064|          64|   66|
 
 </div>
-
-</div>
-
-
-
-\
-\
-**Answer the following questions:**
-
-- A model with `iq` and `age` as predictors explains <input class='webex-solveme nospaces' size='5' data-answer='["13.03"]'/> % of the variance in `memory_scores`
-
-- A model with `iq`, `age`, `attention` and `sleep` as predictors explains <input class='webex-solveme nospaces' size='5' data-answer='["48.39"]'/> % of the variance in `memory_scores`
-
-- Calculate the additional variance explained by the second model: Change in $R^2$ = <input class='webex-solveme nospaces' size='5' data-answer='["35.36"]'/> %
-
-- The ANOVA comparing models can be reported as: _F_(<input class='webex-solveme nospaces' size='1' data-answer='["2"]'/>, <input class='webex-solveme nospaces' size='3' data-answer='["229"]'/>) = <input class='webex-solveme nospaces' size='5' data-answer='["78.45"]'/>, _p_ < .001. 
-
-- Is there a statistically significant improvement in the prediction of `memory_scores` as a result of adding `attention` and `sleep` to the model? <select class='webex-select'><option value='blank'></option><option value=''>no</option><option value='answer'>yes</option></select>
-
-\
-\
-**Now use Bayes Factors to determine how much more likely the `memory2` model is than the `memory1` model .**
-
-\
-
-<div class='webex-solution'><button>Try first, click here for a reminder of the steps</button>
-
-
-- Determine the Bayes Factor for `memory1`
-
-- Determine the Bayes Factor for `memory2`
-
-- Compare the Bayes Factors for `memory2` and `memory1`
-
-
-</div>
-
-
-\
-
-<div class='webex-solution'><button>Try first, click here to see the code</button>
-
-
-
-```r
-# Store the Bayes Factor for the first model in memory1.BF
-memory1.BF <- lmBF(memory_score ~ iq + age, data = as.data.frame(memory_data) )
-
-# Store the Bayes Factor for the second model in memory2.BF
-memory2.BF <- lmBF(memory_score ~ iq + age + attention + sleep, data = as.data.frame(memory_data) )
-
-# Compute the Bayes Factors for memory2.BF vs memory1.BF
-memory2.BF / memory1.BF
-```
 
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] iq + age + attention + sleep : 4.168455e+23 ±0%
+## [1] brooding : 95.76111 ±0%
 ## 
 ## Against denominator:
-##   memory_score ~ iq + age 
+##   Intercept only 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS
 ```
 
-</div>
-
-
-\
-
-**Answer the following questions:**
-
-- The Bayes Factor comparing `memory2` and `memory1` to (2 decimal places) is <input class='webex-solveme nospaces' size='4' data-answer='["4.17"]'/> e+ <input class='webex-solveme nospaces' size='2' data-answer='["23"]'/>.
-
-- Does the Bayes Factor support the conclusions from the ANOVA? <select class='webex-select'><option value='blank'></option><option value=''>no</option><option value='answer'>yes</option></select>
-
-
-<div class='webex-solution'><button>Click for answer</button>
-
-Yes! The Bayes Factor is equal to $4.17 \times 10^{23}$, and this therefore strongly supports the inclusion of `attention` and `sleep` in the model already containing `iq` and `age`.
-
-</div>
-
+* The R^2^ (non-adjusted, to 2 decimal places) for the model in Step 1 = <input class='webex-solveme nospaces' size='4' data-answer='["0.19"]'/>.
+* The BF for the model in Step 1 = <input class='webex-solveme nospaces' size='5' data-answer='["95.76"]'/>
 
 \
 
-\
-**Extra exercises, if there's time**
+#### Step 2: brooding + worry
 
-**1.**
+Next, add `worry` to the model in Step 1, using `+ worry` and look at R^2^ again and obtain the BF. We'll look at: 
 
-The researcher wishes to predict the `memory_score` for a new individual with `iq` = 105, `age` = 27, `attention` = 90, `sleep` = 8. Determine the prediction. 
-
-\
-Hint: in a previous session, you have previously used the `predict()` function to do this.
-
-\
-
-- The predicted `memory_score` is <input class='webex-solveme nospaces' size='6' data-answer='["102.68"]'/>
-
-
-<div class='webex-solution'><button>Try first, then click to show the code for the answer</button>
+* whether the model in Step 2 explains more variance in `wellbeing` by looking at whether R^2^ increases. 
+* whether there's evidence for a contribution of `worry` after controlling for `brooding`, by dividing the Bayes factor for the model in Step 2 by the BF for the model in Step 1
 
 
 ```r
-# create tibble for the new data
-new_data <- tibble(iq = 105, age = 27, attention = 90, sleep = 8)
+# specify the model in the step
+step2 <- lm(wellbeing ~ brooding + worry, data = pwb_data)
 
-# use predict to derive prediction from new data
-predict(memory2, new_data)
+# R-sq
+glance(step2)
+
+# store the BF
+BF_step2 <- lmBF(wellbeing ~ brooding + worry, data = data.frame(pwb_data))
+
+# compare the BFs for the models in Step 2 and Step 1
+BF_step2 / BF_step1
 ```
 
+<div class="kable-table">
+
+| r.squared| adj.r.squared|    sigma| statistic| p.value| df|    logLik|      AIC|      BIC| deviance| df.residual| nobs|
+|---------:|-------------:|--------:|---------:|-------:|--:|---------:|--------:|--------:|--------:|-----------:|----:|
+| 0.3288693|     0.3075636| 10.52393|  15.43572| 3.5e-06|  2| -247.4558| 502.9116| 511.6702| 6977.446|          63|   66|
+
+</div>
+
 ```
-##        1 
-## 102.6768
+## Bayes factor analysis
+## --------------
+## [1] brooding + worry : 56.11175 ±0%
+## 
+## Against denominator:
+##   wellbeing ~ brooding 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+```
+
+* The R^2^ for the model in Step 2 is <input class='webex-solveme nospaces' size='4' data-answer='["0.33"]'/>
+* The _increase_ in R^2^ associated with the addition of `worry` to the model is <input class='webex-solveme nospaces' size='4' data-answer='["0.14"]'/> _Hint. To calculate this, take the R^2^ for the model in step 2 and subtract the R^2^ for the model in Step 1_.
+* The BF for the contribution of `worry` to the model is <input class='webex-solveme nospaces' size='5' data-answer='["56.11"]'/>. _Hint. This is the BF produced by dividing the BF for the model in Step 2, by the BF for the model in Step 1._
+
+
+
+<div class='webex-solution'><button>calculatoR</button>
+
+
+Did you know that R can function like a calculator too? Simply type the formula next to `>` in the console window and hit enter, e.g., `> 2 + 2`
+
+Or use code in your script:
+
+```r
+0.33 - 0.19
 ```
 
 </div>
 
 
+
+<div class='webex-solution'><button>Change in R-squared symbol</button>
+
+
+In reports and articles, you will often see the change in R^2^ written as $\Delta R^2$. The $\Delta$ symbol means "change". For example $\Delta R^2 = 0.33$.
+
+</div>
+
+
 \
-\
 
-**2.**
-Create a scatterplot of `attention` against `memory_score`, with the size of each point indicating the hours of `sleep`
+#### Step 3: brooding + worry + mindfulness variables
 
-
-<div class='webex-solution'><button>Try yourself first, then click for the code</button>
+Next, add the variables associated with mindfulness to the model. The mindfulness measures are `observing`, `describing`, `acting`, `nonjudging`, and `nonreactivity`. Add these five variables to the model all in the same step. As before, note R^2^ for the model and the BF. To determine whether there's evidence for the addition of the mindfulness variables, compare the BF for the model in Step 3 and the BF of the model in Step 2.
 
 
 ```r
-memory_data %>% 
-  ggplot(aes(x = attention, y = memory_score, size = sleep)) +
-  geom_point(alpha = 0.5) +   # alpha=0.5 makes points 50% transparent
-  xlab('Memory Score') +
-  ylab('Attention Score') +
-  labs(size="Sleep (hours)") 
+# specify the model in the step
+step3 <- lm(wellbeing ~ brooding + worry + 
+             observing + describing + acting + nonjudging + nonreactivity, 
+            data = pwb_data)
+
+# R-sq
+glance(step3)
+
+# store the BF
+BF_step3 <- lmBF(wellbeing ~ brooding + worry + 
+                   observing + describing + acting + nonjudging + nonreactivity, 
+                 data = data.frame(pwb_data))
+
+# compare the BFs for the models in step 3 and step 2
+BF_step3 / BF_step2
+```
+
+<div class="kable-table">
+
+| r.squared| adj.r.squared|    sigma| statistic| p.value| df|    logLik|      AIC|      BIC| deviance| df.residual| nobs|
+|---------:|-------------:|--------:|---------:|-------:|--:|---------:|--------:|--------:|--------:|-----------:|----:|
+| 0.5330601|     0.4767053| 9.148738|  9.458999|   1e-07|  7| -235.4846| 488.9692| 508.6761| 4854.566|          58|   66|
+
+</div>
+
+```
+## Bayes factor analysis
+## --------------
+## [1] brooding + worry + observing + describing + acting + nonjudging + nonreactivity : 35.49308 ±0%
+## 
+## Against denominator:
+##   wellbeing ~ brooding + worry 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+```
+
+* The R^2^ for the model in Step 3 is <input class='webex-solveme nospaces' size='4' data-answer='["0.53"]'/>
+* The increase in R^2^ associated with the addition of the mindfulness variables is <input class='webex-solveme nospaces' size='4' data-answer='["0.20"]'/> _Hint. Take the R^2^ for the model in Step 3 and subtract the R^2^ for the model in Step 2._
+* The BF for the contribution of the mindfulness variables to the model is <input class='webex-solveme nospaces' size='5' data-answer='["35.49"]'/> _Hint. This is the BF produced by dividing `BF_step3` by `BF_step2`._
+* After controlling for `brooding` and `worry`, is there sufficient evidence for the contribution of mindfulness to the prediction of `wellbeing`? <select class='webex-select'><option value='blank'></option><option value='answer'>yes, BF>3</option><option value=''>no</option></select>
+
+
+<div class='webex-solution'><button>Explain</button>
+
+The BF comparing the models in Steps 3 and 2 was BF = 34.59, indicating that the model in Step 3 is more than thirty five times more likely than the model in Step 2, given the data. Thus, there's substantial evidence that the mindfulness variables contribute to the prediction of `wellbeing` after controlling for `brooding` and `worry`. The mindfulness variables explain an additional R^2^ = 0.20, or 20%. of the variance in `wellbeing`, over and above `brooding` and `worry`. 
+
+</div>
+
+
+\
+
+#### Step 4: brooding + worry + mindfulness + emotional intelligence variables
+
+Next, add the variables associated with emotional intelligence to the model. The emotional intelligence variables are `attention`, `clarity`, and `repair`. These three variables are added to the model all in the same step. Once again, note R^2^ for the model and the BF. To determine whether there's evidence for the addition of the emotional intelligence variables, compare the BF for the model in Step 4 and the BF of the model in Step 3. 
+
+
+```r
+# specify the model in step 4
+step4 <- lm(wellbeing ~ brooding + worry + 
+              observing + describing + acting + nonjudging + nonreactivity + 
+              attention + clarity + repair, 
+            data = pwb_data)
+
+# R-sq
+glance(step4)
+
+# store the BF
+BF_step4 <- lmBF(wellbeing ~ brooding + worry + 
+                   observing + describing + acting + nonjudging + nonreactivity + 
+                   attention + clarity + repair, 
+                 data = data.frame(pwb_data))
+
+# compare the BFs for the models in step 4 and step 3
+BF_step4 / BF_step3
+```
+
+<div class="kable-table">
+
+| r.squared| adj.r.squared|    sigma| statistic| p.value| df|    logLik|      AIC|      BIC| deviance| df.residual| nobs|
+|---------:|-------------:|--------:|---------:|-------:|--:|---------:|--------:|--------:|--------:|-----------:|----:|
+| 0.6045859|     0.5326924| 8.645487|  8.409467|       0| 10| -229.9978| 483.9956| 510.2715| 4110.944|          55|   66|
+
+</div>
+
+```
+## Bayes factor analysis
+## --------------
+## [1] brooding + worry + observing + describing + acting + nonjudging + nonreactivity + attention + clarity + repair : 2.150042 ±0%
+## 
+## Against denominator:
+##   wellbeing ~ brooding + worry + observing + describing + acting + nonjudging + nonreactivity 
+## ---
+## Bayes factor type: BFlinearModel, JZS
+```
+
+* The R^2^ for the model in Step 4 is <input class='webex-solveme nospaces' data-tol='0.01' size='3' data-answer='["0.6",".6"]'/>
+* The increase in R^2^ associated with the addition of the emotional intelligence variables is <input class='webex-solveme nospaces' data-tol='0.01' size='4' data-answer='["0.07",".07"]'/> _Hint. Take the R^2^ for the model in Step 4 and subtract the R^2^ for the model in Step 3._
+* The BF representing the evidence for the unique contribution of the emotional intelligence variables to the model is <input class='webex-solveme nospaces' size='4' data-answer='["2.15"]'/>
+* After controlling for `brooding`,  `worry`, and mindfulness, is there sufficient evidence for the contribution of emotional intelligence to the prediction of `wellbeing`? <select class='webex-select'><option value='blank'></option><option value=''>yes, BF > 3</option><option value='answer'>no, BF < 3</option></select>
+
+
+<div class='webex-solution'><button>Explain</button>
+
+The BF comparing the models in steps 4 and 3 was BF = 2.15. Although this indicates that the model in Step 4 is more than twice as likely than the model in Step 3, given the data, the BF is less than 3, and therefore falls short of the conventional level for declaring that there's substantial evidence for the addition of emotional intelligence. Thus, according to this Bayes factor analysis, there's insufficient evidence that the additional R^2^ = 0.07, or 7%, of the variance in `wellbeing` explained by emotional intelligence is meaningful. 
+
+</div>
+
+
+
+\
+
+\
+
+## Exercise 1
+
+:::{.exercise}
+
+Hierarchical regression
+
+Iani et al. (2019) were also interested in whether whether mindfulness and emotional intelligence predicted `gad` (anxiety symptoms) after controlling for `brooding` and `worry`. 
+
+Repeat the analysis conducted above, but now with `gad` as the outcome variable.
+
+* Step 1: `brooding`
+* Step 2: `brooding`, `worry`
+* Step 3: `brooding`, `worry` and mindfulness variables (`describing`, `observing`, `acting`, `nonreactivity`, `nonjudging`)
+* Step 4: `brooding`, `worry`, mindfulness variables (`describing`, `observing`, `acting`, `nonreactivity`, `nonjudging`), and emotional intelligence variables (`attention`, `clarity`, `repair`).
+
+
+**Step 1: brooding**
+
+* The R^2^ (non-adjusted, to two decimal places) for the model in Step 1 = <input class='webex-solveme nospaces' size='4' data-answer='["0.37"]'/>
+* The BF for the model in Step 1 = <input class='webex-solveme nospaces' data-tol='0.5' size='8' data-answer='["138455.1"]'/>
+
+
+<div class='webex-solution'><button>Solution - code</button>
+
+
+```r
+# specify the model in step 1, store in gad1
+gad1 <- lm(gad ~ brooding, data = pwb_data)
+
+# R-sq
+glance(gad1)
+
+# store BF
+BF_gad1 <- lmBF(gad ~ brooding, data = data.frame(pwb_data))
+
+# show BF
+BF_gad1
+```
+
+</div>
+
+
+
+\
+
+**Step 2: brooding + worry**
+
+* The R^2^ for the model in Step 2 is <input class='webex-solveme nospaces' size='4' data-answer='["0.45"]'/>
+* The increase in R^2^ associated with the addition of `worry` is <input class='webex-solveme nospaces' size='4' data-answer='["0.08"]'/> 
+* The BF for the contribution of `worry` to the model is <input class='webex-solveme nospaces' size='5' data-answer='["12.66"]'/>
+
+
+<div class='webex-solution'><button>Hint</button>
+
+Next, add `worry` to the model, using `+ worry`. Look at R^2^ again and obtain the BF. 
+
+* To determine the R^2^ change for the model, take the R^2^ for the model in Step 2 and subtract the R^2^ value for the model in Step 1. 
+* To determine whether there's evidence for a contribution of `worry` after controlling for `brooding`, divide the Bayes factor for the model by the BF for the model in Step 1.
+
+
+</div>
+
+
+
+<div class='webex-solution'><button>Solution - code</button>
+
+
+```r
+# specify the model in Step 2
+gad2 <- lm(gad ~ brooding + worry, data = pwb_data)
+
+# R sq
+glance(gad2)
+
+# store the BF
+BF_gad2 <- lmBF(gad ~ brooding + worry, data = data.frame(pwb_data))
+
+# compare the BFs for the models in Step 2 and Step 1
+BF_gad2 / BF_gad1
+```
+
+</div>
+
+
+
+\
+
+**Step 3: brooding + worry + mindfulness variables**
+
+* The R^2^ for the model in Step 3 is <input class='webex-solveme nospaces' size='4' data-answer='["0.48"]'/>
+* The increase in R^2^ associated with the addition of the mindfulness variables is <input class='webex-solveme nospaces' size='4' data-answer='["0.03"]'/> 
+* The BF for the contribution of the mindfulness variables to the model is <input class='webex-solveme nospaces' size='5' data-answer='["0.006"]'/>
+* After controlling for `brooding` and `worry`, is there sufficient evidence for the contribution of mindfulness to the prediction of `gad`? <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
+* There's <select class='webex-select'><option value='blank'></option><option value='answer'>substantial</option><option value=''>inconclusive</option></select> evidence for the model in Step 2, compared to Step 3, because the Bayes factor for the model in Step 3 divided by that of the model in Step 2 is <select class='webex-select'><option value='blank'></option><option value='answer'>less than 0.33</option><option value=''>equal to 1</option><option value=''>greater than 3</option></select>.
+
+
+<div class='webex-solution'><button>Hint</button>
+
+Add the variables associated with mindfulness to the model. The mindfulness measures are `observing`, `describing`, `acting`, `nonjudging`, and `nonreactivity`. These five variables are added to the model all in the same step. 
+
+* To calculate the increase in R^2^, take the R^2^ for the model in Step 3 and subtract the R^2^ for the model in Step 2.
+* To obtain the BF for the contribution of the mindfulness variables, take the BF for the model in Step 3 and divide it by the BF for the model in Step 2. 
+* If the BF is greater than 3, there's substantial evidence for the model in Step 3. If the BF < 0.33, then there's substantial evidence for the model in Step 2. Intermediate BFs are inconclusive.
+
+
+</div>
+
+
+
+<div class='webex-solution'><button>Solution - code</button>
+
+
+
+```r
+# specify the model in Step 3
+gad3 <- lm(gad ~ brooding + worry + 
+              observing + describing + acting + 
+              nonjudging + nonreactivity, 
+            data = pwb_data)
+
+# R-sq
+glance(gad3)
+
+# store the BF
+BF_gad3 <- lmBF(gad ~ brooding + worry + 
+                   observing + describing + acting + 
+                   nonjudging + nonreactivity, 
+                 data = data.frame(pwb_data))
+
+# compare the BFs for the models in Step 3 and Step 2
+BF_gad3 / BF_gad2
+```
+
+</div>
+
+\
+
+**Step 4: brooding + worry + mindfulness + emotional intelligence variables**
+
+* The R^2^ for the model in Step 4 is <input class='webex-solveme nospaces' size='4' data-answer='["0.55"]'/>
+* The increase in R^2^ associated with the addition of the emotional intelligence variables to the model is <input class='webex-solveme nospaces' size='4' data-answer='["0.07"]'/>.
+* The BF associated with the contribution of the emotional intelligence variables to the model is <input class='webex-solveme nospaces' size='4' data-answer='["1.33"]'/>
+* After controlling for `brooding`, `worry`, and mindfulness, is there sufficient evidence for the contribution of emotional intelligence to the prediction of `gad`? <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
+
+
+
+<div class='webex-solution'><button>Hint</button>
+
+Add the variables associated with emotional intelligence to the model. The emotional intelligence measures are `attention`, `clarity`, and `repair`. These three variables are added to the model all in the same step.
+
+* To calculate the increase in R^2^, take the R^2^ for the model in Step 4 and subtract the R^2^ for the model in Step 3.
+* To obtain the BF for the contribution of the emotional intelligence variables, take the BF for the model in Step 4 and divide it by the BF for the model in Step 3.
+* If the BF is greater than 3, there's substantial evidence for the model in Step 4. If the BF < 0.33, then there's substantial evidence for the model in Step 3. Intermediate BFs are inconclusive.
+
+
+</div>
+
+
+
+<div class='webex-solution'><button>Solution - code</button>
+
+
+
+```r
+# specify the model in Step 4
+gad4 <- lm(gad ~ brooding + worry + 
+                  observing + describing + acting + nonjudging + nonreactivity + 
+                  attention + clarity + repair, 
+                  data = pwb_data)
+
+# R-sq
+glance(gad4)
+
+# store the BF
+BF_gad4 <- lmBF(gad ~ brooding + worry + 
+                       observing + describing + acting + nonjudging + nonreactivity +
+                       attention + clarity + repair, 
+                       data = data.frame(pwb_data))
+
+# compare the BFs for the models in Step 3 and Step 2
+BF_gad4 / BF_gad3
+```
+
+
+</div>
+
+
+\
+
+**In summary, regarding the hypothesis of Iani et al. (2019):**
+`
+* After controlling for `brooding` and `worry`, there's evidence for the contribution of mindfulness and emotional intelligence to the prediction of `gad`. <select class='webex-select'><option value='blank'></option><option value='answer'>no</option><option value=''>yes</option></select>
+
+
+:::
+
+\
+
+## Worked Exercise 2: Controlling for categorical variables
+
+All of the variables considered in the previous exercise were continuous (or at were least assumed to be). It is also possible to use hierarchical regression to control for the influence of variables that are _categorical_ in nature. 
+
+How do human-animal relationships affect mental health? Ratschen et al. (2020) looked at the impact of relationships with animals (e.g., pets) on mental health and loneliness in individuals during the Covid-19 pandemic.
+
+Data from their study are located at the link below.
+
+https://raw.githubusercontent.com/chrisjberry/Teaching/master/4_trust_data.csv
+
+
+<div class='webex-solution'><button>More on the data</button>
+
+The data are publicly available and variable names have been changed here for clarity. Missing data have been dealt with differently to the way the researchers dealt with them, so the data you are analysing (and therefore the results) are not identical to theirs.
+
+</div>
+
+
+\
+
+About the data:
+
+* `comfort`: Comfort from companion animals. Higher scores indicate greater comfort from the companion animal.
+* `mental_health_pre`: Mental health before lockdown. Higher scores indicate better mental health.
+* `mental_health_since`: Mental health during lockdown. Higher scores indicate better mental health.
+* `wellbeing_since`: Higher scores indicate better wellbeing.
+* `gender`: Male, female, another option, or prefer not to say
+* `age`: Age group. 
+* `partner`: Whether the participant lives with their partner or not.
+* `species`: The type of animal companion.
+* `loneliness_pre`: Loneliness before lockdown. Higher scores indicate greater loneliness.
+* `loneliness_since`: Loneliness during lockdown. Higher scores indicate greater loneliness. 
+
+\
+
+### Visualisation
+
+Inspect the distributions of the continuous variables:
+
+
+```r
+# Read in the data
+animal_data <- 
+  read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/4_animal_data.csv')
+
+
+# Plot density plots of all the numeric (continuous) variables
+# The code below:
+# -Keeps only the numeric columns in a data frame
+# -Uses pivot_longer() to code each set of scores by its variable name
+# -Specifies the 'score' to plot in aes()
+# -Uses facet_wrap() to plot each variable in a separate panel
+# -Uses scales = "free" to allow the range on the x- and y-axis to be different across panels
+
+animal_data %>%
+  keep(is.numeric) %>%                     
+  pivot_longer(everything(), names_to = "variable", values_to = "score") %>%   
+  ggplot(aes(score)) +     
+  facet_wrap(~ variable, scales = "free") +     
+  geom_histogram()            
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-20-1.png" alt="TRUE" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-20)TRUE</p>
+<img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-15-1.png" alt="Histogram plots for each continous predictor" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-15)Histogram plots for each continous predictor</p>
 </div>
-
-</div>
-
-
 \
-\
-**3.**
 
-The researcher is interested to know whether annual consumption of blueberries has any bearing on `memory_scores`, and so wants to add `blueberries` to the model in `memory2`.
-
-\
-Determine the Bayes Factor comparing `memory2` with a model that additionally contains `blueberries`. 
-
-- The Bayes Factor for the model comparison is <input class='webex-solveme nospaces' size='4' data-answer='["0.17",".17"]'/> (to 2 decimal places)
-
-- The Bayes Factor indicates that the model with `blueberries` is <select class='webex-select'><option value='blank'></option><option value=''>more likely</option><option value='answer'>less likely</option></select> than the model without it.
-
-- Should the researcher add `blueberries` to the model? <select class='webex-select'><option value='blank'></option><option value='answer'>no</option><option value=''>yes</option><option value=''>if it tastes good</option></select>
-
-
-<div class='webex-solution'><button>Try yourself first, then click for the code</button>
+The code can be modified to obtain histograms of all of the categorical variables:
 
 
 ```r
-# add blueberries to memory2; store in memory3.BF
-memory3.BF <- lmBF(memory_score ~ iq + age + attention + sleep + blueberries, data = as.data.frame(memory_data) )
+# Plot histograms of all the categorical vars (i.e., count data)
+# The code:
+# -Keeps only the character columns in the dataset
+# -Uses pivot_longer() to code each set of scores by variable
+# -Specifies the 'score' to plot in aes()
+# -Uses facet_wrap() to plot in separate panels
+# -Tells geom_histogram() to plot count data 
 
-# calculate the BF for memory3 vs memory2
-memory3.BF / memory2.BF
+animal_data %>% 
+  keep(is.character)  %>% 
+  pivot_longer(everything(), names_to = "variable", values_to = "score") %>%   
+  ggplot(aes(score)) +     
+  facet_wrap(~ variable, scales = "free") +     
+  geom_histogram(stat = "count")        
 ```
 
+<div class="figure" style="text-align: center">
+<img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-16-1.png" alt="Histograms for each categorical predictor" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-16)Histograms for each categorical predictor</p>
+</div>
+
+By looking at the histograms of the categorical variables, answer the following:
+
+* Age: The majority of people were in age group <select class='webex-select'><option value='blank'></option><option value=''>18_24</option><option value=''>25_34</option><option value=''>35_44</option><option value='answer'>45_54</option><option value=''>55_64</option><option value=''>65_70</option><option value=''>70_over</option></select>
+* Gender: The majority of people were <select class='webex-select'><option value='blank'></option><option value=''>in another way</option><option value='answer'>female</option><option value=''>male</option><option value=''>prefer not to say</option></select>
+* Partner: The majority of people were <select class='webex-select'><option value='blank'></option><option value='answer'>living with partner</option><option value=''>not_living_with_partner</option></select>
+* Species: The most common animal companion was <select class='webex-select'><option value='blank'></option><option value=''>bird</option><option value=''>cat</option><option value='answer'>dog</option><option value=''>fish</option><option value=''>horse</option><option value=''>other</option><option value=''>reptile</option><option value=''>small</option></select>
+
+\
+
+The scores on the `loneliness_pre` variable range from 3 to 9, so there are only 7 possible scores. When there are many data points, this can create issues when visualising the variable in a scatterplot because there are only so many combinations of scores for the variable, so they overlap.  
+
+The code below uses the `gridExtra` package to display two plots created with `ggplot()`. Each plot is stored in a separate variable `panel1` and `panel2`, then placed side-by-side using `grid.arrange()` from the `gridExtra` package:
+
+
+```r
+# load library(gridExtra)
+# for displaying different plots on multiple panels
+library(gridExtra)
+
+# create a scatterplot of loneliness scores
+# without random jittering of points
+# store in panel1
+panel1 <- 
+  animal_data %>% 
+    ggplot(aes(x=loneliness_pre, y = loneliness_since)) +
+    geom_point() +
+    geom_smooth(method="lm", se = F) +
+    ggtitle("Without geom_jitter()")
+
+# create a scatterplot of loneliness scores
+# with random jittering of points using geom_jitter()
+# store in panel2
+panel2 <- 
+  animal_data %>% 
+    ggplot(aes(x=loneliness_pre, y = loneliness_since)) +
+    geom_jitter() +
+    geom_smooth(method="lm", se = F)+
+    ggtitle("With geom_jitter()")
+
+grid.arrange(panel1, panel2, nrow = 1)
 ```
-## Bayes factor analysis
-## --------------
-## [1] iq + age + attention + sleep + blueberries : 0.1663574 ±0%
-## 
-## Against denominator:
-##   memory_score ~ iq + age + attention + sleep 
-## ---
-## Bayes factor type: BFlinearModel, JZS
+
+<div class="figure" style="text-align: center">
+<img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-17-1.png" alt="Using geom_jitter(): loneliness_since vs. londliness_pre" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-17)Using geom_jitter(): loneliness_since vs. londliness_pre</p>
+</div>
+
+Using `geom_jitter()` instead of `geom_point()` means that the scores will be randomly jittered by a tiny amount. This reduces overlap, making it much easier to see how the scores are distributed. It's useful to use `geom_jitter()` when the response variable is on an ordinal scale, but the responses are discrete (e.g., 1, 2, 3, 4, 5), as is often the case with survey data and likert scales.
+
+\
+
+The next step isn't strictly necessary because the categorical variables are stored as character variables (i.e., `<chr>`), but it is good practice to convert the categorical variables to `factors` before the analysis.
+
+
+```r
+# Convert categorical variables to factors
+# (remember, age is grouped, so is categorical here)
+animal_data <- 
+  animal_data %>% 
+  mutate(gender = factor(gender),
+         age = factor(age),
+         partner = factor(age),
+         species = factor(species))
+```
+
+
+## Exercise 2
+
+:::{.exercise}
+Hierarchical regression
+
+Using the `animal_data`, we'll look at whether `comfort` scores predict `mental_health_pre` after controlling for `gender`, `age`, `partner`, `species` and `loneliness_pre`.
+
+* How many steps do you think there'll be in the hierarchical regression analyses? <select class='webex-select'><option value='blank'></option><option value=''>1</option><option value='answer'>2</option><option value=''>3</option><option value=''>4</option><option value=''>5</option><option value=''>6</option><option value=''>7</option></select>
+
+
+<div class='webex-solution'><button>Explain</button>
+
+
+The variables we want to control for can go into the model in the Step 1. Then we can add `comfort` to the model in Step 2, to see whether it explains `mental_health_pre` over and above all the variables in Step 1.
+
+
+</div>
+
+
+\
+
+The variables that are controlled for in a multiple regression are sometimes called **covariates**
+
+\
+
+**Step 1: Covariates only**
+
+* R^2^ for the model containing the covariates only is <input class='webex-solveme nospaces' size='5' data-answer='["0.119"]'/> (to **three** decimal places; this level of precision is required for this answer)
+* The BF for the model containing the covariates only is <select class='webex-select'><option value='blank'></option><option value=''>< 0.33</option><option value=''>between 0.33 and 3</option><option value='answer'>> 10000</option></select>
+
+
+<div class='webex-solution'><button>Hint</button>
+
+Run a regression to predict `mental_health_pre` from the covariates only. The covariates are the things we want to control for, and are `gender`, `age`, `partner`, `species` and `loneliness_pre`.
+
+* Obtain R^2^ for the model using `glance()` in the `broom` package.
+* Obtain the BF for the model using `lmBF()` in the `BayesFactor` package.
+
+</div>
+
+
+
+<div class='webex-solution'><button>Solution</button>
+
+
+
+```r
+# store model with covariates only
+step1_covariates <- 
+  lm(mental_health_pre ~ gender + age + partner + species + loneliness_pre,
+     data = animal_data)
+
+# R-sq
+glance(step1_covariates)
+
+# Store the BF
+BF_step1_covariates <- 
+  lmBF(mental_health_pre ~ gender + age + partner + species + loneliness_pre, 
+       data = data.frame(animal_data))
+
+# View the BF for step 1
+BF_step1_covariates
+```
+
+
+</div>
+
+
+\
+
+**Step 2: Covariates plus comfort**
+
+* The R^2^ for the model with the covariates and the `comfort` predictor is <input class='webex-solveme nospaces' size='5' data-answer='["0.121"]'/> (report to **three** decimal places)
+* The _increase_ in R^2^ as a result of the addition of `comfort` to the model with the covariates is <input class='webex-solveme nospaces' size='5' data-answer='["0.002"]'/> _Hint: subtract the R^2^ for Step 1 from that of Step 2. It's necessary to use the R^2^ values to three decimal places because the increase is so small!_
+* The Bayes factor for the comparison of the model in Step 2 and Step 1 is <select class='webex-select'><option value='blank'></option><option value=''>< 0.33</option><option value=''>between 0.33 and 3</option><option value='answer'>> 3</option></select>
+* Is there sufficient evidence that comfort from animal companions explains mental health levels before lockdown, after controlling for `gender`, `age`, `partner`, `species` of animal, and `loneliness_pre`? <select class='webex-select'><option value='blank'></option><option value=''>no, BF < 0.33</option><option value=''>no, BF between 0.33 and 3</option><option value='answer'>yes, BF > 3</option></select>
+* Individuals who reported deriving greater comfort from animals also tended to have <select class='webex-select'><option value='blank'></option><option value=''>higher</option><option value='answer'>lower</option></select> levels of mental health, as measured  before lockdown.
+
+
+<div class='webex-solution'><button>Hint</button>
+
+Run a regression to predict `mental_health_pre` from the covariates and `comfort`. The covariates are the things we want to control for, and are `gender`, `age`, `partner`, `species` and `loneliness_pre`.
+
+* Obtain R^2^ for the model using `glance()` in the `broom` package.
+* Obtain the BF for the model using `lmBF()` in the `BayesFactor` package.
+* Calculate the difference in R^2^ for the model in Step 2 and the model in Step 1
+* Divide the BF for the model in Step 2 by the BF for the model in Step 1 to obtain the BF representing the evidence for the contribution of `comfort` to the model, after controlling for the covariates.
+* To determine whether the association between `comfort` and `mental_health_pre` is positive or negative, look at the sign on the coefficient for `comfort` by using `step2_full`.
+
+</div>
+
+
+
+<div class='webex-solution'><button>Solution - code</button>
+
+
+
+```r
+# covariates + comfort
+step2_full <- 
+  lm(mental_health_pre ~ comfort + gender + age + partner + species + loneliness_pre, 
+     data = animal_data)
+
+# R-sq
+glance(step2_full) 
+
+# store BF
+BF_step2_full <- 
+  lmBF(mental_health_pre ~ comfort + gender + age + partner + species + loneliness_pre, 
+       data = data.frame(animal_data))
+
+# evidence for comfort, controlling for covariates
+BF_step2_full / BF_step1_covariates
+
+# look at the sign on the coefficient for comfort
+step2_full
 ```
 
 </div>
@@ -973,32 +898,167 @@ memory3.BF / memory2.BF
 
 :::
 
+\
 
-## Summary of key points
+## Further knowledge and exercises
 
-- We can compare a model with one that has more predictors by using `anova(model1, model2)`. 
+### Standardised Coefficients
 
-- We can compare models using Bayes Factors with `lmBF` in the `BayesFactor` package.
 
-- A **Bayes Factor** is probability of one model relative to another, _given the data_.
+<div class='webex-solution'><button>Standardised coefficients</button>
 
-- To compare Bayes Factors of models:
+Iani et al. (2019) also reported the values of the coefficients for the predictors at each step (see their Table 2). 
 
-  - First obtain the Bayes Factors for `model1` and `model2`. 
-  
-  - Then use `model2 / model1` to get the Bayes Factor, indicating how much more likely `model2` is.
-  
-- Bayes Factors less than 1 indicate evidence for `model1`
-    
-- Bayes Factors greater than 1 indicate evidence for `model2`
-    
-- We can report Bayes Factors as $BF_{10}$ = 2.23 (or BF10 = 2.23)
+When a multiple regression has been performed using the raw data, the coefficients given by `lm()` are **unstandardised**. This means that they are in the same units as the predictor variable they correspond to. For example, if the coefficient for `brooding` is -1.57, this means that a 1 unit increase in `brooding` score is associated with a 1.57 _decrease_ in `wellbeing` score.
+
+We'd like to be able to compare the coefficients of predictors to get some idea of their relative strength of the contribution to the model. The trouble is that predictors are often measured on different scales, with different ranges. For example, scores of `brooding` range from 5 to 20, and those of `clarity` range from 10 to 40. Use `summary(pwb_data)` to see this. Because the scales are so different, it doesn't make sense to directly compare the coefficients of the predictors.
+
+:::{.tip}
+To compare the coefficents of predictor variables in a model, we need to compare the **standardised regression coefficients**. These are the coefficients derived from the data after the scores of each predictor have been standardised. To standardise the scores of a variable, subtract the mean value from each score, and then divide each score by the standard deviation of the scores. The `scale()` function does this automatically for us. 
+:::
+
+To standardise all the numeric variables in the `pwb_data`:
+
+
+```r
+# Store the result in std_pwb_data
+# Take pwb_data, pipe it to
+# mutate_if().
+# Tell mutate_if() to standardise a column
+# using 'scale' if the variable type 'is.numeric'
+# (note, it's not possible to standardise non-numeric variables)
+
+std_pwb_data <-
+  pwb_data %>% 
+  mutate_if(is.numeric, scale)
+```
+
+Now re-run the final Step 4 of the hierarchical regression in Iani et al. (2019), but with `std_pwb_data` instead of `pwb_data`:
+
+
+```r
+# run the regression using standardised data
+std_step4 <- lm(wellbeing ~ brooding + worry + 
+              observing + describing + acting + nonjudging + nonreactivity + 
+              attention + clarity + repair, 
+            data = std_pwb_data)
+
+# look at standardised coefficients
+std_step4
+```
+
+The standardised coefficients are called the **beta** coefficients, and have the symbol $\beta$. Beta coefficients range from -1 to +1, so the zero is usually omitted when reporting, e.g., $\beta(brooding) = -.12$
+
+Make a note of the standardised (beta) coefficients for the model in Iani et al. (2019):
+
+* `brooding` = <input class='webex-solveme nospaces' size='5' data-answer='["-.12","-0.12"]'/>
+* `worry` = <input class='webex-solveme nospaces' size='5' data-answer='["-.28","-0.28"]'/>
+* `observing` = <input class='webex-solveme nospaces' size='5' data-answer='["-.07","-0.07"]'/>
+* `describing` = <input class='webex-solveme nospaces' size='4' data-answer='[".38","0.38"]'/>
+* `acting` = <input class='webex-solveme nospaces' size='4' data-answer='[".10","0.10"]'/>
+* `nonjudging` = <input class='webex-solveme nospaces' size='5' data-answer='["-.24","-0.24"]'/>
+* `nonreactivity` = <input class='webex-solveme nospaces' size='5' data-answer='["-.11","-0.11"]'/>
+* `attention` = <input class='webex-solveme nospaces' size='5' data-answer='["-.29","-0.29"]'/>
+* `clarity` = <input class='webex-solveme nospaces' size='4' data-answer='[".02","0.02"]'/>
+* `repair` = <input class='webex-solveme nospaces' size='4' data-answer='[".20","0.20"]'/>
+
+\
+
+As with the unstandardised coefficients, the sign on the beta coefficient indicates the direction of the association with the outcome variable (i.e., positive or negative).
+
+Because the beta coefficients are now on the same scale, their magnitudes (i.e., their absolute size, ignoring the sign) can be compared to determine the relative "importance" of each predictor. For example, `describing` has the largest beta coeffcient (.38); it therefore makes the greatest contribution to the prediction of `wellbeing` in the full model. `clarity` makes the smallest contribution (beta = .02).
+
+Note, some of the beta coefficients differ slightly from those in Iani et al. (2019). I suspect this is because of rounding errors introduced during standardisation in different software packages. The ordinal pattern in the beta coefficients is the same, however.
+
+\
+
+### Prediction
+
+
+<div class='webex-solution'><button>Prediction</button>
+
+The final model can be used to predict new data points (as in earlier sessions):
+
+
+```r
+# specify data for new ppt
+new_pwb <- tibble(  brooding = 6,
+                    worry = 12,
+                    observing = 12,
+                    describing = 18,
+                    acting = 17,
+                    nonjudging = 20,
+                    nonreactivity = 19,
+                    attention = 30,
+                    clarity = 27,
+                    repair = 27 )
+
+# use augment() in broom package. 
+# .fitted = predicted wellbeing value
+augment(step4, newdata = new_pwb)
+```
+
+The predicted value of wellbeing for the new participant in `new_pwb` is <input class='webex-solveme nospaces' size='5' data-answer='["73.29"]'/>.
+
+</div>
 
 
 \
 
-Next week's session will build on what was done in this session, so make sure you understand what was covered and ask if there's anything you're unsure of.
+### Residuals
 
 
-commented text
---> 
+<div class='webex-solution'><button>Residuals</button>
+
+As in earlier sessions, the residuals can be inspected in a plot of the predicted values vs. the residuals:
+
+
+```r
+# scatterplot of the predicted outcome values vs. residuals
+augment(step4) %>% 
+  ggplot(aes(x=.fitted, y=.resid)) + 
+  geom_point()+
+  geom_hline(yintercept=0)
+```
+We can also inspect the histogram of the residuals for normality:
+
+
+```r
+# histogram of the residuals
+augment(step4) %>% 
+  ggplot(aes(x=.resid)) + 
+  geom_histogram() 
+```
+
+</div>
+
+
+\
+
+## Summary
+
+**Hierarchical regression**
+
+* In hierarchical regression, predictors are added to a regression model in successive steps.
+* It can be used to test particular theories or hypotheses.
+* It can also be used to control the influence of particular variables before analysing whether a predictor variable (or set of variables) of interest explains the outcome variable.
+* As before, `lm()` and `glance()` can be used to obtain R^2^ for the model at each step. 
+* The change in R^2^ associated with each step can be obtained to determine the unique contribution of the predictors in each step.
+* `lmBF()` can be used to obtain the Bayes factor for the model in each step. Bayes factors of models from successive steps can be compared to determine the evidence for the unique contribution of predictors in a step.
+
+\
+
+**Plotting tips:**
+
+* Use `geom_jitter()` to make scatterplots with overlapping points easier to interpret. Useful for survey data. 
+* Use `keep()` with `pivot_longer()`, `ggplot()` and `facet_wrap()` to plot lots of variables of a certain type (e.g., numeric or character) on separate panels.
+* Use `grid.arrange()` in the `gridExtra` package to display figures on separate panels.
+
+
+\
+
+## References
+Iani, L., Quinto, R. M., Lauriola, M., Crosta, M. L., & Pozzi, G. (2019). Psychological well-being and distress in patients with generalized anxiety disorder: The roles of positive and negative functioning. _PloS ONE_, _14_(11), e0225646. https://doi.org/10.1371/journal.pone.0225646
+
+Ratschen E., Shoesmith E., Shahab L., Silva K., Kale D., Toner P., et al. (2020) Human-animal relationships and interactions during the Covid-19 lockdown phase in the UK: Investigating links with mental health and loneliness. _PLoS ONE_, _15_(9):e0239397. https://doi.org/10.1371/journal.pone.0239397
+

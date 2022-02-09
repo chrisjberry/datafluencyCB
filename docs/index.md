@@ -35,7 +35,7 @@ This workbook contains worksheets for the seven sessions given by **Chris Berry*
 
 - 07/02/22. [Multiple regression 2: one continuous, one categorical](#multiple2)
 
-- 14/02/22. Multiple regression 3: evaluating and comparing models
+- 14/02/22. [Multiple regression 3: hierarchical regression](#multiple3)
 
   (21/02/22. No session)
 
