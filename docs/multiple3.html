@@ -935,7 +935,7 @@ Explain
 </ul>
 <p><strong>Step 1: brooding</strong></p>
 <ul>
-<li>The R<sup>2</sup> (non-adjusted, to two decimal places) for the model in Step 1 = <input class='webex-solveme nospaces' size='4' data-answer='["0.37"]'/></li>
+<li>The R<sup>2</sup> (non-adjusted, to two decimal places) for the model in Step 1 = <input class='webex-solveme nospaces' data-tol='0.01' size='4' data-answer='["0.36",".36"]'/></li>
 <li>The BF for the model in Step 1 = <input class='webex-solveme nospaces' data-tol='0.5' size='8' data-answer='["138455.1"]'/></li>
 </ul>
 <div class="webex-solution">
@@ -960,7 +960,7 @@ Solution - code
 <ul>
 <li>The R<sup>2</sup> for the model in Step 2 is <input class='webex-solveme nospaces' size='4' data-answer='["0.45"]'/></li>
 <li>The increase in R<sup>2</sup> associated with the addition of <code>worry</code> is <input class='webex-solveme nospaces' size='4' data-answer='["0.08"]'/></li>
-<li>The BF for the contribution of <code>worry</code> to the model is <input class='webex-solveme nospaces' size='5' data-answer='["12.66"]'/></li>
+<li>The BF for the contribution of <code>worry</code> to the model is <input class='webex-solveme nospaces' data-tol='0.03' size='5' data-answer='["12.66"]'/></li>
 </ul>
 <div class="webex-solution">
 <button>
@@ -1075,8 +1075,10 @@ Solution - code
 </div>
 <p><br />
 </p>
-<p><strong>In summary, regarding the hypothesis of Iani et al. (2019):</strong>
-<code>* After controlling for</code>brooding<code>and</code>worry<code>, there's evidence for the contribution of mindfulness and emotional intelligence to the prediction of</code>gad`. <select class='webex-select'><option value='blank'></option><option value='answer'>no</option><option value=''>yes</option></select></p>
+<p><strong>In summary, regarding the hypothesis of Iani et al. (2019):</strong></p>
+<ul>
+<li>After controlling for <code>brooding</code> and <code>worry</code>, there's evidence for the contribution of mindfulness and emotional intelligence to the prediction of <code>gad</code>. <select class='webex-select'><option value='blank'></option><option value='answer'>no</option><option value=''>yes</option></select></li>
+</ul>
 </div>
 <p><br />
 </p>
