@@ -1205,7 +1205,7 @@ Figure 5.3: Histograms for each categorical predictor
 Figure 5.4: Using geom_jitter(): loneliness_since vs. londliness_pre
 </p>
 </div>
-<p>Using <code>geom_jitter()</code> instead of <code>geom_point()</code> means that the scores will be randomly jittered by a tiny amount. This reduces overlap, making it much easier to see how the scores are distributed. It's useful to use <code>geom_jitter()</code> when the response variable is on an ordinal scale, but the responses are discrete (e.g., 1, 2, 3, 4, 5), as is often the case with survey data and likert scales.</p>
+<p>Using <code>geom_jitter()</code> instead of <code>geom_point()</code> means that the scores will be randomly jittered by a tiny amount. This reduces overlap, making it much easier to see how the scores are distributed. It's useful to use <code>geom_jitter()</code> when the response variable is on an ordinal scale, but the responses are discrete (e.g., 1, 2, 3, 4, 5), as is often the case with survey data and likert scales. Thus, if you ever create a scatterplot of survey data and it ends up looking like the plot on the left, try using <code>geom_jitter()</code> instead of <code>geom_point()</code>.</p>
 <p><br />
 </p>
 <p>The next step isn't strictly necessary because the categorical variables are stored as character variables (i.e., <code>&lt;chr&gt;</code>), but it is good practice to convert the categorical variables to <code>factors</code> before the analysis.</p>
@@ -1335,8 +1335,10 @@ Standardised coefficients
 <p>When a multiple regression has been performed using the raw data, the coefficients given by <code>lm()</code> are <strong>unstandardised</strong>. This means that they are in the same units as the predictor variable they correspond to. For example, if the coefficient for <code>brooding</code> is -1.57, this means that a 1 unit increase in <code>brooding</code> score is associated with a 1.57 <em>decrease</em> in <code>wellbeing</code> score.</p>
 <p>We'd like to be able to compare the coefficients of predictors to get some idea of their relative strength of the contribution to the model. The trouble is that predictors are often measured on different scales, with different ranges. For example, scores of <code>brooding</code> range from 5 to 20, and those of <code>clarity</code> range from 10 to 40. Use <code>summary(pwb_data)</code> to see this. Because the scales are so different, it doesn't make sense to directly compare the coefficients of the predictors.</p>
 <div class="tip">
-<p>To compare the coefficents of predictor variables in a model, we need to compare the <strong>standardised regression coefficients</strong>. These are the coefficients derived from the data after the scores of each predictor have been standardised. To standardise the scores of a variable, subtract the mean value from each score, and then divide each score by the standard deviation of the scores. The <code>scale()</code> function does this automatically for us.</p>
+<p>To compare the coefficients of predictor variables in a model, we need to compare the <strong>standardised regression coefficients</strong>. These are the coefficients derived from the data after the scores of each predictor have been standardised. To standardise the scores of a variable, subtract the mean value from each score, and then divide each score by the standard deviation of the scores. The <code>scale()</code> function does this automatically for us.</p>
 </div>
+<p><br />
+</p>
 <p>To standardise all the numeric variables in the <code>pwb_data</code>:</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="multiple3.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the result in std_pwb_data</span></span>
 <span id="cb24-2"><a href="multiple3.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Take pwb_data, pipe it to</span></span>
@@ -1348,7 +1350,7 @@ Standardised coefficients
 <span id="cb24-8"><a href="multiple3.html#cb24-8" aria-hidden="true" tabindex="-1"></a>std_pwb_data <span class="ot">&lt;-</span></span>
 <span id="cb24-9"><a href="multiple3.html#cb24-9" aria-hidden="true" tabindex="-1"></a>  pwb_data <span class="sc">%&gt;%</span> </span>
 <span id="cb24-10"><a href="multiple3.html#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.numeric, scale)</span></code></pre></div>
-<p>Now re-run the final Step 4 of the hierarchical regression in Iani et al. (2019), but with <code>std_pwb_data</code> instead of <code>pwb_data</code>:</p>
+<p>Now re-run Step 4 (i.e., the final model) of the hierarchical regression in Iani et al. (2019), but with <code>std_pwb_data</code> instead of <code>pwb_data</code>:</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="multiple3.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run the regression using standardised data</span></span>
 <span id="cb25-2"><a href="multiple3.html#cb25-2" aria-hidden="true" tabindex="-1"></a>std_step4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
 <span id="cb25-3"><a href="multiple3.html#cb25-3" aria-hidden="true" tabindex="-1"></a>              observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> nonjudging <span class="sc">+</span> nonreactivity <span class="sc">+</span> </span>
@@ -1375,7 +1377,7 @@ Standardised coefficients
 </p>
 <p>As with the unstandardised coefficients, the sign on the beta coefficient indicates the direction of the association with the outcome variable (i.e., positive or negative).</p>
 <p>Because the beta coefficients are now on the same scale, their magnitudes (i.e., their absolute size, ignoring the sign) can be compared to determine the relative "importance" of each predictor. For example, <code>describing</code> has the largest beta coeffcient (.38); it therefore makes the greatest contribution to the prediction of <code>wellbeing</code> in the full model. <code>clarity</code> makes the smallest contribution (beta = .02).</p>
-<p>Note, some of the beta coefficients differ slightly from those in Iani et al. (2019). I suspect this is because of rounding errors introduced during standardisation in different software packages. The ordinal pattern in the beta coefficients is the same, however.</p>
+<p>Note, some of the beta coefficients differ slightly from those reported by Iani et al. (2019). This is most likely due to differences in rounding introduced during standardisation by different software packages. The values are very close though and the ordinal pattern in the beta coefficients is the same.</p>
 <p><br />
 </p>
 </div>
@@ -1385,7 +1387,7 @@ Standardised coefficients
 <button>
 Prediction
 </button>
-<p>The final model can be used to predict new data points (as in earlier sessions):</p>
+<p>The final model can be used to predict new data points (as in earlier sessions). For the model with continuous predictors:</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="multiple3.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify data for new ppt</span></span>
 <span id="cb26-2"><a href="multiple3.html#cb26-2" aria-hidden="true" tabindex="-1"></a>new_pwb <span class="ot">&lt;-</span> <span class="fu">tibble</span>(  <span class="at">brooding =</span> <span class="dv">6</span>,</span>
 <span id="cb26-3"><a href="multiple3.html#cb26-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">worry =</span> <span class="dv">12</span>,</span>
@@ -1402,6 +1404,21 @@ Prediction
 <span id="cb26-14"><a href="multiple3.html#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="co"># .fitted = predicted wellbeing value</span></span>
 <span id="cb26-15"><a href="multiple3.html#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(step4, <span class="at">newdata =</span> new_pwb)</span></code></pre></div>
 <p>The predicted value of wellbeing for the new participant in <code>new_pwb</code> is <input class='webex-solveme nospaces' size='5' data-answer='["73.29"]'/>.</p>
+<p><br />
+</p>
+<p>For the model with categorical predictors:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="multiple3.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify data for new ppt</span></span>
+<span id="cb27-2"><a href="multiple3.html#cb27-2" aria-hidden="true" tabindex="-1"></a>new_animal_dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>( <span class="at">comfort =</span> <span class="dv">45</span>,</span>
+<span id="cb27-3"><a href="multiple3.html#cb27-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">gender =</span> <span class="st">&#39;female&#39;</span>,</span>
+<span id="cb27-4"><a href="multiple3.html#cb27-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">age =</span> <span class="st">&#39;18_24&#39;</span>,</span>
+<span id="cb27-5"><a href="multiple3.html#cb27-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">partner =</span> <span class="st">&#39;living_partner&#39;</span>,</span>
+<span id="cb27-6"><a href="multiple3.html#cb27-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">species =</span> <span class="st">&#39;cat&#39;</span>,</span>
+<span id="cb27-7"><a href="multiple3.html#cb27-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">loneliness_pre =</span> <span class="dv">7</span>)</span>
+<span id="cb27-8"><a href="multiple3.html#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="multiple3.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># use augment() in broom package. </span></span>
+<span id="cb27-10"><a href="multiple3.html#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co"># .fitted = predicted value</span></span>
+<span id="cb27-11"><a href="multiple3.html#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(step2_full, <span class="at">newdata =</span> new_animal_dat)</span></code></pre></div>
+<p>The predicted value of <code>mental_health_pre</code> for the new participant in <code>new_animal_dat</code> is <input class='webex-solveme nospaces' size='5' data-answer='["18.03"]'/>.</p>
 </div>
 <p><br />
 </p>
@@ -1413,16 +1430,16 @@ Prediction
 Residuals
 </button>
 <p>As in earlier sessions, the residuals can be inspected in a plot of the predicted values vs. the residuals:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="multiple3.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot of the predicted outcome values vs. residuals</span></span>
-<span id="cb27-2"><a href="multiple3.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(step4) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-3"><a href="multiple3.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fitted, <span class="at">y=</span>.resid)) <span class="sc">+</span> </span>
-<span id="cb27-4"><a href="multiple3.html#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb27-5"><a href="multiple3.html#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>)</span></code></pre></div>
-<p>We can also inspect the histogram of the residuals for normality:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="multiple3.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram of the residuals</span></span>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="multiple3.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot of the predicted outcome values vs. residuals</span></span>
 <span id="cb28-2"><a href="multiple3.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(step4) <span class="sc">%&gt;%</span> </span>
-<span id="cb28-3"><a href="multiple3.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.resid)) <span class="sc">+</span> </span>
-<span id="cb28-4"><a href="multiple3.html#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() </span></code></pre></div>
+<span id="cb28-3"><a href="multiple3.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fitted, <span class="at">y=</span>.resid)) <span class="sc">+</span> </span>
+<span id="cb28-4"><a href="multiple3.html#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb28-5"><a href="multiple3.html#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>)</span></code></pre></div>
+<p>We can also inspect the histogram of the residuals for normality:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="multiple3.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram of the residuals</span></span>
+<span id="cb29-2"><a href="multiple3.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(step4) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a href="multiple3.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.resid)) <span class="sc">+</span> </span>
+<span id="cb29-4"><a href="multiple3.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() </span></code></pre></div>
 </div>
 <p><br />
 </p>
