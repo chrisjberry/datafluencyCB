@@ -436,7 +436,7 @@ Repeat the analysis conducted above, but now with `gad` as the outcome variable.
 
 **Step 1: brooding**
 
-* The R^2^ (non-adjusted, to two decimal places) for the model in Step 1 = <input class='webex-solveme nospaces' size='4' data-answer='["0.37"]'/>
+* The R^2^ (non-adjusted, to two decimal places) for the model in Step 1 = <input class='webex-solveme nospaces' data-tol='0.01' size='4' data-answer='["0.36",".36"]'/>
 * The BF for the model in Step 1 = <input class='webex-solveme nospaces' data-tol='0.5' size='8' data-answer='["138455.1"]'/>
 
 
@@ -466,8 +466,8 @@ BF_gad1
 **Step 2: brooding + worry**
 
 * The R^2^ for the model in Step 2 is <input class='webex-solveme nospaces' size='4' data-answer='["0.45"]'/>
-* The increase in R^2^ associated with the addition of `worry` is <input class='webex-solveme nospaces' size='4' data-answer='["0.08"]'/> 
-* The BF for the contribution of `worry` to the model is <input class='webex-solveme nospaces' size='5' data-answer='["12.66"]'/>
+* The increase in R^2^ associated with the addition of `worry` is <input class='webex-solveme nospaces' data-tol='0.01' size='4' data-answer='["0.08",".08"]'/> 
+* The BF for the contribution of `worry` to the model is <input class='webex-solveme nospaces' data-tol='0.03' size='5' data-answer='["12.66"]'/>
 
 
 <div class='webex-solution'><button>Hint</button>
@@ -608,7 +608,7 @@ BF_gad4 / BF_gad3
 \
 
 **In summary, regarding the hypothesis of Iani et al. (2019):**
-`
+
 * After controlling for `brooding` and `worry`, there's evidence for the contribution of mindfulness and emotional intelligence to the prediction of `gad`. <select class='webex-select'><option value='blank'></option><option value='answer'>no</option><option value=''>yes</option></select>
 
 
@@ -624,7 +624,7 @@ How do human-animal relationships affect mental health? Ratschen et al. (2020) l
 
 Data from their study are located at the link below.
 
-https://raw.githubusercontent.com/chrisjberry/Teaching/master/4_trust_data.csv
+https://raw.githubusercontent.com/chrisjberry/Teaching/master/5_animal_data.csv
 
 
 <div class='webex-solution'><button>More on the data</button>
@@ -659,7 +659,7 @@ Inspect the distributions of the continuous variables:
 ```r
 # Read in the data
 animal_data <- 
-  read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/4_animal_data.csv')
+  read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/5_animal_data.csv')
 
 
 # Plot density plots of all the numeric (continuous) variables
@@ -756,7 +756,7 @@ grid.arrange(panel1, panel2, nrow = 1)
 <p class="caption">(\#fig:unnamed-chunk-17)Using geom_jitter(): loneliness_since vs. londliness_pre</p>
 </div>
 
-Using `geom_jitter()` instead of `geom_point()` means that the scores will be randomly jittered by a tiny amount. This reduces overlap, making it much easier to see how the scores are distributed. It's useful to use `geom_jitter()` when the response variable is on an ordinal scale, but the responses are discrete (e.g., 1, 2, 3, 4, 5), as is often the case with survey data and likert scales.
+Using `geom_jitter()` instead of `geom_point()` means that the scores will be randomly jittered by a tiny amount. This reduces overlap, making it much easier to see how the scores are distributed. It's useful to use `geom_jitter()` when the response variable is on an ordinal scale, but the responses are discrete (e.g., 1, 2, 3, 4, 5), as is often the case with survey data and likert scales. Thus, if you ever create a scatterplot of survey data and it ends up looking like the plot on the left, try using `geom_jitter()` instead of `geom_point()`.
 
 \
 
@@ -914,8 +914,10 @@ When a multiple regression has been performed using the raw data, the coefficien
 We'd like to be able to compare the coefficients of predictors to get some idea of their relative strength of the contribution to the model. The trouble is that predictors are often measured on different scales, with different ranges. For example, scores of `brooding` range from 5 to 20, and those of `clarity` range from 10 to 40. Use `summary(pwb_data)` to see this. Because the scales are so different, it doesn't make sense to directly compare the coefficients of the predictors.
 
 :::{.tip}
-To compare the coefficents of predictor variables in a model, we need to compare the **standardised regression coefficients**. These are the coefficients derived from the data after the scores of each predictor have been standardised. To standardise the scores of a variable, subtract the mean value from each score, and then divide each score by the standard deviation of the scores. The `scale()` function does this automatically for us. 
+To compare the coefficients of predictor variables in a model, we need to compare the **standardised regression coefficients**. These are the coefficients derived from the data after the scores of each predictor have been standardised. To standardise the scores of a variable, subtract the mean value from each score, and then divide each score by the standard deviation of the scores. The `scale()` function does this automatically for us. 
 :::
+
+\
 
 To standardise all the numeric variables in the `pwb_data`:
 
@@ -933,7 +935,7 @@ std_pwb_data <-
   mutate_if(is.numeric, scale)
 ```
 
-Now re-run the final Step 4 of the hierarchical regression in Iani et al. (2019), but with `std_pwb_data` instead of `pwb_data`:
+Now re-run Step 4 (i.e., the final model) of the hierarchical regression in Iani et al. (2019), but with `std_pwb_data` instead of `pwb_data`:
 
 
 ```r
@@ -968,7 +970,7 @@ As with the unstandardised coefficients, the sign on the beta coefficient indica
 
 Because the beta coefficients are now on the same scale, their magnitudes (i.e., their absolute size, ignoring the sign) can be compared to determine the relative "importance" of each predictor. For example, `describing` has the largest beta coeffcient (.38); it therefore makes the greatest contribution to the prediction of `wellbeing` in the full model. `clarity` makes the smallest contribution (beta = .02).
 
-Note, some of the beta coefficients differ slightly from those in Iani et al. (2019). I suspect this is because of rounding errors introduced during standardisation in different software packages. The ordinal pattern in the beta coefficients is the same, however.
+Note, some of the beta coefficients differ slightly from those reported by Iani et al. (2019). This is most likely due to differences in rounding  introduced during standardisation by different software packages. The values are very close though and the ordinal pattern in the beta coefficients is the same.
 
 \
 
@@ -977,7 +979,7 @@ Note, some of the beta coefficients differ slightly from those in Iani et al. (2
 
 <div class='webex-solution'><button>Prediction</button>
 
-The final model can be used to predict new data points (as in earlier sessions):
+The final model can be used to predict new data points (as in earlier sessions). For the model with continuous predictors:
 
 
 ```r
@@ -999,6 +1001,28 @@ augment(step4, newdata = new_pwb)
 ```
 
 The predicted value of wellbeing for the new participant in `new_pwb` is <input class='webex-solveme nospaces' size='5' data-answer='["73.29"]'/>.
+
+\
+
+For the model with categorical predictors:
+
+
+```r
+# specify data for new ppt
+new_animal_dat <- tibble( comfort = 45,
+                    gender = 'female',
+                    age = '18_24',
+                    partner = 'living_partner',
+                    species = 'cat',
+                    loneliness_pre = 7)
+
+# use augment() in broom package. 
+# .fitted = predicted value
+augment(step2_full, newdata = new_animal_dat)
+```
+
+The predicted value of `mental_health_pre` for the new participant in `new_animal_dat` is <input class='webex-solveme nospaces' size='5' data-answer='["18.03"]'/>.
+
 
 </div>
 

@@ -377,20 +377,20 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <h2><span class="header-section-number">6.3</span> Long format data</h2>
 <p>To conduct a repeated measures ANOVA in R, the data must be in <strong>long format</strong>. This is crucial.</p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-1" class="exercise"><strong>Exercise 6.1  </strong></span>Wide vs. long format</p>
+<p><span id="exr:unlabeled-div-27" class="exercise"><strong>Exercise 6.1  </strong></span>Wide vs. long format</p>
 <ul>
 <li>When the data are in <em>wide</em> format, all of the data for a single participant is stored:</li>
 </ul>
-<div id="radio_UFEBWSHIFG" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UFEBWSHIFG" value="answer"></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_UFEBWSHIFG" value=""></input> <span>on multiple rows, with each row representing a separate observation</span></label>
+<div id="radio_OCQFOGEVTQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OCQFOGEVTQ" value="answer"></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_OCQFOGEVTQ" value=""></input> <span>on multiple rows, with each row representing a separate observation</span></label>
 </div>
 <p><br />
 </p>
 <ul>
 <li>When the data are in <em>long</em> format, all of the data for a single participant is stored:</li>
 </ul>
-<div id="radio_NUWYRKOXAJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NUWYRKOXAJ" value=""></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_NUWYRKOXAJ" value="answer"></input> <span>on multiple rows, with each row representing a separate observation</span></label>
+<div id="radio_DPHEMGEABW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DPHEMGEABW" value=""></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_DPHEMGEABW" value="answer"></input> <span>on multiple rows, with each row representing a separate observation</span></label>
 </div>
 </div>
 <p><br />
@@ -404,7 +404,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <p>The data are at the link below:</p>
 <p><a href="https://raw.githubusercontent.com/chrisjberry/Teaching/master/6a_discrimination_test.csv" class="uri">https://raw.githubusercontent.com/chrisjberry/Teaching/master/6a_discrimination_test.csv</a></p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-2" class="exercise"><strong>Exercise 6.2  </strong></span>Design check.</p>
+<p><span id="exr:unlabeled-div-28" class="exercise"><strong>Exercise 6.2  </strong></span>Design check.</p>
 <ul>
 <li><p>What is the independent variable (or <em>factor</em>) in this design? <select class='webex-select'><option value='blank'></option><option value=''>proportion correct</option><option value='answer'>time since training</option></select></p></li>
 <li><p>How many levels does the factor have? <select class='webex-select'><option value='blank'></option><option value=''>1</option><option value=''>2</option><option value='answer'>3</option><option value=''>4</option></select></p></li>
@@ -418,13 +418,13 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 </p>
 <div id="read-in-the-data-4" class="section level3" number="6.4.1">
 <h3><span class="header-section-number">6.4.1</span> Read in the data</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="anova2.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(tidyverse)</span></span>
-<span id="cb1-2"><a href="anova2.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="anova2.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the data</span></span>
-<span id="cb1-4"><a href="anova2.html#cb1-4" aria-hidden="true" tabindex="-1"></a>discriminate_wide <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/6a_discrimination_test.csv&#39;</span>)</span>
-<span id="cb1-5"><a href="anova2.html#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="anova2.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the data</span></span>
-<span id="cb1-7"><a href="anova2.html#cb1-7" aria-hidden="true" tabindex="-1"></a>discriminate_wide</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="anova2.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(tidyverse)</span></span>
+<span id="cb160-2"><a href="anova2.html#cb160-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-3"><a href="anova2.html#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the data</span></span>
+<span id="cb160-4"><a href="anova2.html#cb160-4" aria-hidden="true" tabindex="-1"></a>discriminate_wide <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/6a_discrimination_test.csv&#39;</span>)</span>
+<span id="cb160-5"><a href="anova2.html#cb160-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-6"><a href="anova2.html#cb160-6" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the data</span></span>
+<span id="cb160-7"><a href="anova2.html#cb160-7" aria-hidden="true" tabindex="-1"></a>discriminate_wide</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -483,7 +483,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <li><code>month2</code>: proportion correct 2 months after training</li>
 </ul>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-3" class="exercise"><strong>Exercise 6.3  </strong></span>Data check</p>
+<p><span id="exr:unlabeled-div-29" class="exercise"><strong>Exercise 6.3  </strong></span>Data check</p>
 <ul>
 <li><p>How many participants are there in this dataset? <select class='webex-select'><option value='blank'></option><option value=''>3</option><option value=''>4</option><option value='answer'>6</option><option value=''>18</option></select></p></li>
 <li><p>Are the data in long format or wide format? <select class='webex-select'><option value='blank'></option><option value=''>long</option><option value='answer'>wide</option></select></p></li>
@@ -502,21 +502,21 @@ Explain
 <h3><span class="header-section-number">6.4.2</span> Convert the data to long format</h3>
 <p>Data must be in <em>long format</em> in order to be analysed using a repeated measures ANOVA.</p>
 <p>Use <code>pivot_longer()</code> to convert the data to long format:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="anova2.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The code below:</span></span>
-<span id="cb2-2"><a href="anova2.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># - stores the result in discriminate_long</span></span>
-<span id="cb2-3"><a href="anova2.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># - takes discriminate_wide and pipes it to</span></span>
-<span id="cb2-4"><a href="anova2.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - pivot_longer()</span></span>
-<span id="cb2-5"><a href="anova2.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># - specifies which of the existing columns to make into a new single column</span></span>
-<span id="cb2-6"><a href="anova2.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># - specifies the name of the new column labeling the conditions</span></span>
-<span id="cb2-7"><a href="anova2.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># - specifies the name of the column containing the dependent variable</span></span>
-<span id="cb2-8"><a href="anova2.html#cb2-8" aria-hidden="true" tabindex="-1"></a>discriminate_long <span class="ot">&lt;-</span></span>
-<span id="cb2-9"><a href="anova2.html#cb2-9" aria-hidden="true" tabindex="-1"></a>  discriminate_wide <span class="sc">%&gt;%</span> </span>
-<span id="cb2-10"><a href="anova2.html#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;day3&quot;</span>, <span class="st">&quot;month2&quot;</span>),</span>
-<span id="cb2-11"><a href="anova2.html#cb2-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>,</span>
-<span id="cb2-12"><a href="anova2.html#cb2-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;performance&quot;</span>)</span>
-<span id="cb2-13"><a href="anova2.html#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="anova2.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first 6 rows</span></span>
-<span id="cb2-15"><a href="anova2.html#cb2-15" aria-hidden="true" tabindex="-1"></a>discriminate_long <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="anova2.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The code below:</span></span>
+<span id="cb161-2"><a href="anova2.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="co"># - stores the result in discriminate_long</span></span>
+<span id="cb161-3"><a href="anova2.html#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="co"># - takes discriminate_wide and pipes it to</span></span>
+<span id="cb161-4"><a href="anova2.html#cb161-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - pivot_longer()</span></span>
+<span id="cb161-5"><a href="anova2.html#cb161-5" aria-hidden="true" tabindex="-1"></a><span class="co"># - specifies which of the existing columns to make into a new single column</span></span>
+<span id="cb161-6"><a href="anova2.html#cb161-6" aria-hidden="true" tabindex="-1"></a><span class="co"># - specifies the name of the new column labeling the conditions</span></span>
+<span id="cb161-7"><a href="anova2.html#cb161-7" aria-hidden="true" tabindex="-1"></a><span class="co"># - specifies the name of the column containing the dependent variable</span></span>
+<span id="cb161-8"><a href="anova2.html#cb161-8" aria-hidden="true" tabindex="-1"></a>discriminate_long <span class="ot">&lt;-</span></span>
+<span id="cb161-9"><a href="anova2.html#cb161-9" aria-hidden="true" tabindex="-1"></a>  discriminate_wide <span class="sc">%&gt;%</span> </span>
+<span id="cb161-10"><a href="anova2.html#cb161-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;day3&quot;</span>, <span class="st">&quot;month2&quot;</span>),</span>
+<span id="cb161-11"><a href="anova2.html#cb161-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>,</span>
+<span id="cb161-12"><a href="anova2.html#cb161-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;performance&quot;</span>)</span>
+<span id="cb161-13"><a href="anova2.html#cb161-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-14"><a href="anova2.html#cb161-14" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first 6 rows</span></span>
+<span id="cb161-15"><a href="anova2.html#cb161-15" aria-hidden="true" tabindex="-1"></a>discriminate_long <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -561,7 +561,7 @@ Explain
 </table>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-4" class="exercise"><strong>Exercise 6.4  </strong></span>Data check - long</p>
+<p><span id="exr:unlabeled-div-30" class="exercise"><strong>Exercise 6.4  </strong></span>Data check - long</p>
 <ul>
 <li><p>How many participants are there in <code>discriminate_long</code>? <select class='webex-select'><option value='blank'></option><option value=''>2</option><option value=''>4</option><option value='answer'>6</option><option value=''>18</option></select></p></li>
 <li><p>Are the data in <code>discriminate_long</code> in long format or wide format? <select class='webex-select'><option value='blank'></option><option value='answer'>long</option><option value=''>wide</option></select></p></li>
@@ -586,16 +586,16 @@ Explain
 <p>As with the analysis of categorical variables in regression and ANOVA, each categorical variable must be converted to a factor before the analysis.</p>
 <p>Importantly, in repeated measures designs, <strong>the column of participant labels <code>ppt</code> must also be converted to a factor</strong>.</p>
 <p>Because the levels of <code>time</code> are ordered, we can additionally specify the way the levels should be ordered by using <code>levels = c("level_1_name", "level_2_name", "level_3_name")</code> when using <code>factor()</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="anova2.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use mutate() to transform </span></span>
-<span id="cb3-2"><a href="anova2.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># both ppt and time to factor</span></span>
-<span id="cb3-3"><a href="anova2.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and overwrite existing variables</span></span>
-<span id="cb3-4"><a href="anova2.html#cb3-4" aria-hidden="true" tabindex="-1"></a>discriminate_long <span class="ot">&lt;-</span></span>
-<span id="cb3-5"><a href="anova2.html#cb3-5" aria-hidden="true" tabindex="-1"></a>  discriminate_long <span class="sc">%&gt;%</span> </span>
-<span id="cb3-6"><a href="anova2.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ppt  =</span> <span class="fu">factor</span>(ppt),</span>
-<span id="cb3-7"><a href="anova2.html#cb3-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">time =</span> <span class="fu">factor</span>(time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;day3&quot;</span>, <span class="st">&quot;month2&quot;</span>) ) )</span>
-<span id="cb3-8"><a href="anova2.html#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="anova2.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># check</span></span>
-<span id="cb3-10"><a href="anova2.html#cb3-10" aria-hidden="true" tabindex="-1"></a>discriminate_long <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="anova2.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use mutate() to transform </span></span>
+<span id="cb162-2"><a href="anova2.html#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="co"># both ppt and time to factor</span></span>
+<span id="cb162-3"><a href="anova2.html#cb162-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and overwrite existing variables</span></span>
+<span id="cb162-4"><a href="anova2.html#cb162-4" aria-hidden="true" tabindex="-1"></a>discriminate_long <span class="ot">&lt;-</span></span>
+<span id="cb162-5"><a href="anova2.html#cb162-5" aria-hidden="true" tabindex="-1"></a>  discriminate_long <span class="sc">%&gt;%</span> </span>
+<span id="cb162-6"><a href="anova2.html#cb162-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ppt  =</span> <span class="fu">factor</span>(ppt),</span>
+<span id="cb162-7"><a href="anova2.html#cb162-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">time =</span> <span class="fu">factor</span>(time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;day3&quot;</span>, <span class="st">&quot;month2&quot;</span>) ) )</span>
+<span id="cb162-8"><a href="anova2.html#cb162-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-9"><a href="anova2.html#cb162-9" aria-hidden="true" tabindex="-1"></a><span class="co"># check</span></span>
+<span id="cb162-10"><a href="anova2.html#cb162-10" aria-hidden="true" tabindex="-1"></a>discriminate_long <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -640,7 +640,7 @@ Explain
 </table>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-5" class="exercise"><strong>Exercise 6.5  </strong></span>Data check - factors</p>
+<p><span id="exr:unlabeled-div-31" class="exercise"><strong>Exercise 6.5  </strong></span>Data check - factors</p>
 <p>After using <code>mutate()</code> and <code>factor()</code> above:</p>
 <ul>
 <li><p>In <code>discriminate_long</code>, what type of variable is <code>ppt</code>? <select class='webex-select'><option value='blank'></option><option value='answer'><fct> factor</option><option value=''><chr> character</option><option value=''><dbl> double (numeric)</option></select></p></li>
@@ -654,10 +654,10 @@ Explain
 <div id="visualise-the-data-3" class="section level3" number="6.4.4">
 <h3><span class="header-section-number">6.4.4</span> Visualise the data</h3>
 <p>Look at the distribution of the dependent variable in each condition.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="anova2.html#cb4-1" aria-hidden="true" tabindex="-1"></a>discriminate_long <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a href="anova2.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> performance)) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="anova2.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> time) <span class="sc">+</span> </span>
-<span id="cb4-4"><a href="anova2.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="anova2.html#cb163-1" aria-hidden="true" tabindex="-1"></a>discriminate_long <span class="sc">%&gt;%</span> </span>
+<span id="cb163-2"><a href="anova2.html#cb163-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> performance)) <span class="sc">+</span></span>
+<span id="cb163-3"><a href="anova2.html#cb163-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> time) <span class="sc">+</span> </span>
+<span id="cb163-4"><a href="anova2.html#cb163-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
 <img src="06_anova_repeated_measures_files/figure-html/unnamed-chunk-5-1.png" alt="Density plots of performance at each time point" width="75%" />
 <p class="caption">
@@ -670,18 +670,18 @@ Figure 6.1: Density plots of performance at each time point
 </div>
 <div id="plot-the-means-2" class="section level3" number="6.4.5">
 <h3><span class="header-section-number">6.4.5</span> Plot the means</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="anova2.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the ggpubr package</span></span>
-<span id="cb5-2"><a href="anova2.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb5-3"><a href="anova2.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="anova2.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use ggline() to plot the means</span></span>
-<span id="cb5-5"><a href="anova2.html#cb5-5" aria-hidden="true" tabindex="-1"></a>discriminate_long <span class="sc">%&gt;%</span> </span>
-<span id="cb5-6"><a href="anova2.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggline</span>(<span class="at">x =</span> <span class="st">&quot;time&quot;</span> , <span class="at">y =</span> <span class="st">&quot;performance&quot;</span>, <span class="at">add =</span> <span class="st">&quot;mean&quot;</span>) <span class="sc">+</span></span>
-<span id="cb5-7"><a href="anova2.html#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Performance&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb5-8"><a href="anova2.html#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="anova2.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the ggpubr package</span></span>
+<span id="cb164-2"><a href="anova2.html#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb164-3"><a href="anova2.html#cb164-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-4"><a href="anova2.html#cb164-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use ggline() to plot the means</span></span>
+<span id="cb164-5"><a href="anova2.html#cb164-5" aria-hidden="true" tabindex="-1"></a>discriminate_long <span class="sc">%&gt;%</span> </span>
+<span id="cb164-6"><a href="anova2.html#cb164-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggline</span>(<span class="at">x =</span> <span class="st">&quot;time&quot;</span> , <span class="at">y =</span> <span class="st">&quot;performance&quot;</span>, <span class="at">add =</span> <span class="st">&quot;mean&quot;</span>) <span class="sc">+</span></span>
+<span id="cb164-7"><a href="anova2.html#cb164-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Performance&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb164-8"><a href="anova2.html#cb164-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
 <img src="06_anova_repeated_measures_files/figure-html/unnamed-chunk-6-1.png" alt="Mean proportion correct at each time point" width="75%" />
 <p class="caption">
-Figure 6.2: Mean proportion correct at each time point
+Figure 1.2: Mean proportion correct at each time point
 </p>
 </div>
 <div class="webex-solution">
@@ -691,7 +691,7 @@ Error bars
 <p>Previously, we used <code>desc_stat = "mean_se"</code> to add errorbars to the plot. Doing so here would add error bars representing the standard error of the mean to each of the points in the plot. These are appropriate for between-subjects designs, but for within-subjects designs, these are not as appropriate. Refer to the Further Knowledge section at the end of the worksheet to see how to add within-subject error bars (and see Morey, 2008, for more detail).</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-6" class="exercise"><strong>Exercise 6.6  </strong></span>Describe the trend shown in the line plot:</p>
+<p><span id="exr:unlabeled-div-32" class="exercise"><strong>Exercise 6.6  </strong></span>Describe the trend shown in the line plot:</p>
 <ul>
 <li>Between <code>pre</code> and <code>day3</code>, performance appeared to <select class='webex-select'><option value='blank'></option><option value='answer'>improve</option><option value=''>show no change</option><option value=''>decline</option></select></li>
 <li>Between <code>pre</code> and <code>month2</code>, performance appeared to <select class='webex-select'><option value='blank'></option><option value='answer'>improve</option><option value=''>show no change</option><option value=''>decline</option></select></li>
@@ -704,9 +704,9 @@ Error bars
 <div id="descriptives-mean-of-each-condition" class="section level3" number="6.4.6">
 <h3><span class="header-section-number">6.4.6</span> Descriptives: Mean of each condition</h3>
 <p>Obtain the mean proportion correct at each time point using <code>summarise()</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="anova2.html#cb6-1" aria-hidden="true" tabindex="-1"></a>discriminate_long <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a href="anova2.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(time) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a href="anova2.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">M =</span> <span class="fu">mean</span>(performance))</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="anova2.html#cb165-1" aria-hidden="true" tabindex="-1"></a>discriminate_long <span class="sc">%&gt;%</span> </span>
+<span id="cb165-2"><a href="anova2.html#cb165-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(time) <span class="sc">%&gt;%</span> </span>
+<span id="cb165-3"><a href="anova2.html#cb165-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">M =</span> <span class="fu">mean</span>(performance))</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -745,9 +745,9 @@ Error bars
 <p><br />
 </p>
 <p>Using <code>anovaBF()</code>:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="anova2.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(BayesFactor)</span></span>
-<span id="cb7-2"><a href="anova2.html#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="anova2.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(performance <span class="sc">~</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(discriminate_long))</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="anova2.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(BayesFactor)</span></span>
+<span id="cb166-2"><a href="anova2.html#cb166-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-3"><a href="anova2.html#cb166-3" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(performance <span class="sc">~</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(discriminate_long))</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] time + ppt : 331.4158 ±0.66%
@@ -758,7 +758,7 @@ Error bars
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
 <p>In the output, the Bayes factor provided is for the model of <code>performance ~ time + ppt</code> vs. the model of <code>performance ~ ppt</code>. The latter is the null model containing only <code>ppt</code> as a predictor variable. The Bayes factor therefore represents evidence for the (unique) effect of <code>time</code> on performance, over and above a model containing <code>ppt</code> only. This differs to between-subject designs, where the null model (in the denominator) is the intercept-only model (representing the grand mean).</p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-7" class="exercise"><strong>Exercise 6.7  </strong></span>The Bayes factor for the effect of time on performance is <input class='webex-solveme nospaces' data-tol='15' size='3' data-answer='["331"]'/></p>
+<p><span id="exr:unlabeled-div-33" class="exercise"><strong>Exercise 6.7  </strong></span>The Bayes factor for the effect of time on performance is <input class='webex-solveme nospaces' data-tol='15' size='3' data-answer='["331"]'/></p>
 <p><br />
 </p>
 <p>This indicates that (select one):</p>
@@ -774,16 +774,16 @@ Error bars
 Equivalent BFs using lmBF()
 </button>
 <p>It is possible to obtain the same result as <code>anovaBF()</code> using <code>lmBF()</code>. Doing so can help us to understand what <code>anovaBF()</code> is doing. Again, we must tell <code>lmBF()</code> that <code>ppt</code> is a random factor, using <code>whichRandom =</code>.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="anova2.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalent results with lmBF()</span></span>
-<span id="cb9-2"><a href="anova2.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="anova2.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># model with time and ppt only</span></span>
-<span id="cb9-4"><a href="anova2.html#cb9-4" aria-hidden="true" tabindex="-1"></a>BF_time_ppt <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(performance <span class="sc">~</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(discriminate_long))</span>
-<span id="cb9-5"><a href="anova2.html#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="anova2.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># model with ppt only</span></span>
-<span id="cb9-7"><a href="anova2.html#cb9-7" aria-hidden="true" tabindex="-1"></a>BF_ppt_only <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(performance <span class="sc">~</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(discriminate_long))</span>
-<span id="cb9-8"><a href="anova2.html#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="anova2.html#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># compare model with vs. without time</span></span>
-<span id="cb9-10"><a href="anova2.html#cb9-10" aria-hidden="true" tabindex="-1"></a>BF_time_ppt <span class="sc">/</span> BF_ppt_only</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="anova2.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalent results with lmBF()</span></span>
+<span id="cb168-2"><a href="anova2.html#cb168-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-3"><a href="anova2.html#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="co"># model with time and ppt only</span></span>
+<span id="cb168-4"><a href="anova2.html#cb168-4" aria-hidden="true" tabindex="-1"></a>BF_time_ppt <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(performance <span class="sc">~</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(discriminate_long))</span>
+<span id="cb168-5"><a href="anova2.html#cb168-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-6"><a href="anova2.html#cb168-6" aria-hidden="true" tabindex="-1"></a><span class="co"># model with ppt only</span></span>
+<span id="cb168-7"><a href="anova2.html#cb168-7" aria-hidden="true" tabindex="-1"></a>BF_ppt_only <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(performance <span class="sc">~</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(discriminate_long))</span>
+<span id="cb168-8"><a href="anova2.html#cb168-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-9"><a href="anova2.html#cb168-9" aria-hidden="true" tabindex="-1"></a><span class="co"># compare model with vs. without time</span></span>
+<span id="cb168-10"><a href="anova2.html#cb168-10" aria-hidden="true" tabindex="-1"></a>BF_time_ppt <span class="sc">/</span> BF_ppt_only</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] time + ppt : 332.6118 ±0.51%
@@ -805,12 +805,12 @@ Equivalent BFs using lmBF()
 </p>
 <div id="pre-vs.-day3-conditions" class="section level4" number="6.4.8.1">
 <h4><span class="header-section-number">6.4.8.1</span> Pre vs. day3 conditions</h4>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="anova2.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pre vs. day3 </span></span>
-<span id="cb11-2"><a href="anova2.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># filter the data for the relevant conditions</span></span>
-<span id="cb11-3"><a href="anova2.html#cb11-3" aria-hidden="true" tabindex="-1"></a>pre_v_day3 <span class="ot">&lt;-</span> discriminate_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">==</span> <span class="st">&quot;pre&quot;</span> <span class="sc">|</span> time <span class="sc">==</span> <span class="st">&quot;day3&quot;</span>)</span>
-<span id="cb11-4"><a href="anova2.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb11-5"><a href="anova2.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the means of the conditions, using anovaBF()</span></span>
-<span id="cb11-6"><a href="anova2.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(performance <span class="sc">~</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(pre_v_day3))</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="anova2.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pre vs. day3 </span></span>
+<span id="cb170-2"><a href="anova2.html#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="co"># filter the data for the relevant conditions</span></span>
+<span id="cb170-3"><a href="anova2.html#cb170-3" aria-hidden="true" tabindex="-1"></a>pre_v_day3 <span class="ot">&lt;-</span> discriminate_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">==</span> <span class="st">&quot;pre&quot;</span> <span class="sc">|</span> time <span class="sc">==</span> <span class="st">&quot;day3&quot;</span>)</span>
+<span id="cb170-4"><a href="anova2.html#cb170-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb170-5"><a href="anova2.html#cb170-5" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the means of the conditions, using anovaBF()</span></span>
+<span id="cb170-6"><a href="anova2.html#cb170-6" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(performance <span class="sc">~</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(pre_v_day3))</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] time + ppt : 79.75876 ±0.59%
@@ -829,12 +829,12 @@ Equivalent BFs using lmBF()
 </div>
 <div id="pre-vs.-month2-conditions" class="section level4" number="6.4.8.2">
 <h4><span class="header-section-number">6.4.8.2</span> Pre vs. month2 conditions</h4>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="anova2.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pre vs. month2</span></span>
-<span id="cb13-2"><a href="anova2.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># filter the data for these conditions</span></span>
-<span id="cb13-3"><a href="anova2.html#cb13-3" aria-hidden="true" tabindex="-1"></a>pre_v_month2 <span class="ot">&lt;-</span> discriminate_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">==</span> <span class="st">&quot;pre&quot;</span> <span class="sc">|</span> time <span class="sc">==</span> <span class="st">&quot;month2&quot;</span>) </span>
-<span id="cb13-4"><a href="anova2.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb13-5"><a href="anova2.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the means of the conditions, using anovaBF() </span></span>
-<span id="cb13-6"><a href="anova2.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(performance <span class="sc">~</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(pre_v_month2))</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="anova2.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pre vs. month2</span></span>
+<span id="cb172-2"><a href="anova2.html#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="co"># filter the data for these conditions</span></span>
+<span id="cb172-3"><a href="anova2.html#cb172-3" aria-hidden="true" tabindex="-1"></a>pre_v_month2 <span class="ot">&lt;-</span> discriminate_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">==</span> <span class="st">&quot;pre&quot;</span> <span class="sc">|</span> time <span class="sc">==</span> <span class="st">&quot;month2&quot;</span>) </span>
+<span id="cb172-4"><a href="anova2.html#cb172-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb172-5"><a href="anova2.html#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the means of the conditions, using anovaBF() </span></span>
+<span id="cb172-6"><a href="anova2.html#cb172-6" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(performance <span class="sc">~</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(pre_v_month2))</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] time + ppt : 55.06891 ±1.89%
@@ -853,12 +853,12 @@ Equivalent BFs using lmBF()
 </div>
 <div id="day3-vs.-month2-conditions" class="section level4" number="6.4.8.3">
 <h4><span class="header-section-number">6.4.8.3</span> day3 vs. month2 conditions</h4>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="anova2.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># day3 vs. month2</span></span>
-<span id="cb15-2"><a href="anova2.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># filter the data for these conditions</span></span>
-<span id="cb15-3"><a href="anova2.html#cb15-3" aria-hidden="true" tabindex="-1"></a>day3_v_month2 <span class="ot">&lt;-</span> discriminate_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">==</span> <span class="st">&quot;day3&quot;</span> <span class="sc">|</span> time <span class="sc">==</span> <span class="st">&quot;month2&quot;</span>) </span>
-<span id="cb15-4"><a href="anova2.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb15-5"><a href="anova2.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the means of the conditions, using anovaBF()</span></span>
-<span id="cb15-6"><a href="anova2.html#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(performance <span class="sc">~</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(day3_v_month2))</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="anova2.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="co"># day3 vs. month2</span></span>
+<span id="cb174-2"><a href="anova2.html#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="co"># filter the data for these conditions</span></span>
+<span id="cb174-3"><a href="anova2.html#cb174-3" aria-hidden="true" tabindex="-1"></a>day3_v_month2 <span class="ot">&lt;-</span> discriminate_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">==</span> <span class="st">&quot;day3&quot;</span> <span class="sc">|</span> time <span class="sc">==</span> <span class="st">&quot;month2&quot;</span>) </span>
+<span id="cb174-4"><a href="anova2.html#cb174-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb174-5"><a href="anova2.html#cb174-5" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the means of the conditions, using anovaBF()</span></span>
+<span id="cb174-6"><a href="anova2.html#cb174-6" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(performance <span class="sc">~</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(day3_v_month2))</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] time + ppt : 0.4776541 ±1.94%
@@ -877,17 +877,17 @@ Equivalent BFs using lmBF()
 Equivalent results with lmBF()
 </button>
 <p>As before, it's possible to conduct the same comparisons and obtain the same BFs using <code>lmBF()</code>:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="anova2.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pre vs. day3</span></span>
-<span id="cb17-2"><a href="anova2.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(performance <span class="sc">~</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(pre_v_day3)) <span class="sc">/</span></span>
-<span id="cb17-3"><a href="anova2.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(performance <span class="sc">~</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(pre_v_day3))</span>
-<span id="cb17-4"><a href="anova2.html#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="anova2.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># pre vs. month2</span></span>
-<span id="cb17-6"><a href="anova2.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(performance <span class="sc">~</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(pre_v_month2)) <span class="sc">/</span></span>
-<span id="cb17-7"><a href="anova2.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(performance <span class="sc">~</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(pre_v_month2))</span>
-<span id="cb17-8"><a href="anova2.html#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-9"><a href="anova2.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># day3 vs. month2</span></span>
-<span id="cb17-10"><a href="anova2.html#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(performance <span class="sc">~</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(day3_v_month2)) <span class="sc">/</span></span>
-<span id="cb17-11"><a href="anova2.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(performance <span class="sc">~</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(day3_v_month2))</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="anova2.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pre vs. day3</span></span>
+<span id="cb176-2"><a href="anova2.html#cb176-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(performance <span class="sc">~</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(pre_v_day3)) <span class="sc">/</span></span>
+<span id="cb176-3"><a href="anova2.html#cb176-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(performance <span class="sc">~</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(pre_v_day3))</span>
+<span id="cb176-4"><a href="anova2.html#cb176-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-5"><a href="anova2.html#cb176-5" aria-hidden="true" tabindex="-1"></a><span class="co"># pre vs. month2</span></span>
+<span id="cb176-6"><a href="anova2.html#cb176-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(performance <span class="sc">~</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(pre_v_month2)) <span class="sc">/</span></span>
+<span id="cb176-7"><a href="anova2.html#cb176-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(performance <span class="sc">~</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(pre_v_month2))</span>
+<span id="cb176-8"><a href="anova2.html#cb176-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-9"><a href="anova2.html#cb176-9" aria-hidden="true" tabindex="-1"></a><span class="co"># day3 vs. month2</span></span>
+<span id="cb176-10"><a href="anova2.html#cb176-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(performance <span class="sc">~</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(day3_v_month2)) <span class="sc">/</span></span>
+<span id="cb176-11"><a href="anova2.html#cb176-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(performance <span class="sc">~</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(day3_v_month2))</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] time + ppt : 79.62382 ±0.67%
@@ -934,7 +934,7 @@ Equivalent results with lmBF()
 <h3><span class="header-section-number">6.5.1</span> Worked Example</h3>
 <p>Kreysa et al. (2016) analysed RTs to statements made by faces that had different gaze directions - the eyes of the face were either averted to the left, averted to the right, or were looking directly at the participant when the statement was made. RTs were further broken down according to whether the participant had agreed with the statement or not (they responded 'yes' or 'no').</p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-8" class="exercise"><strong>Exercise 6.8  </strong></span>Design check.</p>
+<p><span id="exr:unlabeled-div-34" class="exercise"><strong>Exercise 6.8  </strong></span>Design check.</p>
 <ul>
 <li><p>What is the first independent variable (or <em>factor</em>) that is mentioned in this design? <select class='webex-select'><option value='blank'></option><option value=''>RT</option><option value='answer'>gaze direction</option><option value=''>agreement with statement</option></select></p></li>
 <li><p>How many levels does the first factor have? <select class='webex-select'><option value='blank'></option><option value=''>1</option><option value=''>2</option><option value='answer'>3</option><option value=''>4</option></select></p></li>
@@ -952,9 +952,9 @@ Equivalent results with lmBF()
 <h3><span class="header-section-number">6.5.2</span> Read in the data</h3>
 <p>Read in the data from the link below:</p>
 <p><a href="https://raw.githubusercontent.com/chrisjberry/Teaching/master/6_gaze_data.csv" class="uri">https://raw.githubusercontent.com/chrisjberry/Teaching/master/6_gaze_data.csv</a></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="anova2.html#cb19-1" aria-hidden="true" tabindex="-1"></a>gaze <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/6_gaze_data.csv&#39;</span>)</span>
-<span id="cb19-2"><a href="anova2.html#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="anova2.html#cb19-3" aria-hidden="true" tabindex="-1"></a>gaze <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="anova2.html#cb178-1" aria-hidden="true" tabindex="-1"></a>gaze <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/6_gaze_data.csv&#39;</span>)</span>
+<span id="cb178-2"><a href="anova2.html#cb178-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-3"><a href="anova2.html#cb178-3" aria-hidden="true" tabindex="-1"></a>gaze <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -1037,27 +1037,27 @@ Explain
 <p><br />
 </p>
 <p>To see the positive skew, inspect the (untransformed) RTs in <code>RT</code>:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="anova2.html#cb20-1" aria-hidden="true" tabindex="-1"></a>gaze <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a href="anova2.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>RT)) <span class="sc">+</span></span>
-<span id="cb20-3"><a href="anova2.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> gaze_direction <span class="sc">*</span> agreement) <span class="sc">+</span> </span>
-<span id="cb20-4"><a href="anova2.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="anova2.html#cb179-1" aria-hidden="true" tabindex="-1"></a>gaze <span class="sc">%&gt;%</span> </span>
+<span id="cb179-2"><a href="anova2.html#cb179-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>RT)) <span class="sc">+</span></span>
+<span id="cb179-3"><a href="anova2.html#cb179-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> gaze_direction <span class="sc">*</span> agreement) <span class="sc">+</span> </span>
+<span id="cb179-4"><a href="anova2.html#cb179-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-15"></span>
 <img src="06_anova_repeated_measures_files/figure-html/unnamed-chunk-15-1.png" alt="Mean RT according to gaze direction and agreement" width="75%" />
 <p class="caption">
-Figure 6.3: Mean RT according to gaze direction and agreement
+Figure 5.1: Mean RT according to gaze direction and agreement
 </p>
 </div>
 <p><br />
 </p>
 <p>Now inspect the log transformed RTs in <code>logRT</code>:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="anova2.html#cb21-1" aria-hidden="true" tabindex="-1"></a>gaze <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a href="anova2.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> logRT)) <span class="sc">+</span></span>
-<span id="cb21-3"><a href="anova2.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> gaze_direction <span class="sc">*</span> agreement) <span class="sc">+</span> </span>
-<span id="cb21-4"><a href="anova2.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="anova2.html#cb180-1" aria-hidden="true" tabindex="-1"></a>gaze <span class="sc">%&gt;%</span> </span>
+<span id="cb180-2"><a href="anova2.html#cb180-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> logRT)) <span class="sc">+</span></span>
+<span id="cb180-3"><a href="anova2.html#cb180-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> gaze_direction <span class="sc">*</span> agreement) <span class="sc">+</span> </span>
+<span id="cb180-4"><a href="anova2.html#cb180-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-16"></span>
 <img src="06_anova_repeated_measures_files/figure-html/unnamed-chunk-16-1.png" alt="Mean logRT according to gaze direction and agreement" width="75%" />
 <p class="caption">
-Figure 6.4: Mean logRT according to gaze direction and agreement
+Figure 5.2: Mean logRT according to gaze direction and agreement
 </p>
 </div>
 <ul>
@@ -1069,17 +1069,17 @@ Figure 6.4: Mean logRT according to gaze direction and agreement
 <div id="plot-the-means-3" class="section level3" number="6.5.4">
 <h3><span class="header-section-number">6.5.4</span> Plot the means</h3>
 <p><code>ggline()</code> in the <code>ggpubr</code> package can be used to plot the mean of each condition.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="anova2.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the ggpubr package</span></span>
-<span id="cb22-2"><a href="anova2.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#library(ggpubr)</span></span>
-<span id="cb22-3"><a href="anova2.html#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="anova2.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use ggline to plot the means</span></span>
-<span id="cb22-5"><a href="anova2.html#cb22-5" aria-hidden="true" tabindex="-1"></a>gaze <span class="sc">%&gt;%</span> </span>
-<span id="cb22-6"><a href="anova2.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggline</span>(<span class="at">x =</span> <span class="st">&quot;gaze_direction&quot;</span> , <span class="at">y =</span> <span class="st">&quot;logRT&quot;</span>, <span class="at">add =</span> <span class="st">&quot;mean&quot;</span>, <span class="at">color=</span> <span class="st">&quot;agreement&quot;</span>) <span class="sc">+</span></span>
-<span id="cb22-7"><a href="anova2.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Mean log RT&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="anova2.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the ggpubr package</span></span>
+<span id="cb181-2"><a href="anova2.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="co">#library(ggpubr)</span></span>
+<span id="cb181-3"><a href="anova2.html#cb181-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb181-4"><a href="anova2.html#cb181-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use ggline to plot the means</span></span>
+<span id="cb181-5"><a href="anova2.html#cb181-5" aria-hidden="true" tabindex="-1"></a>gaze <span class="sc">%&gt;%</span> </span>
+<span id="cb181-6"><a href="anova2.html#cb181-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggline</span>(<span class="at">x =</span> <span class="st">&quot;gaze_direction&quot;</span> , <span class="at">y =</span> <span class="st">&quot;logRT&quot;</span>, <span class="at">add =</span> <span class="st">&quot;mean&quot;</span>, <span class="at">color=</span> <span class="st">&quot;agreement&quot;</span>) <span class="sc">+</span></span>
+<span id="cb181-7"><a href="anova2.html#cb181-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Mean log RT&quot;</span>) </span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-17"></span>
 <img src="06_anova_repeated_measures_files/figure-html/unnamed-chunk-17-1.png" alt="Mean logRT according to gaze direction and agreement" width="75%" />
 <p class="caption">
-Figure 6.5: Mean logRT according to gaze direction and agreement
+Figure 2.3: Mean logRT according to gaze direction and agreement
 </p>
 </div>
 <p>It appears as if people took longer to respond when the gaze was direct and they said 'no' to the statement that was made.</p>
@@ -1089,14 +1089,14 @@ Figure 6.5: Mean logRT according to gaze direction and agreement
 <div id="descriptive-statistics---mean" class="section level3" number="6.5.5">
 <h3><span class="header-section-number">6.5.5</span> Descriptive statistics - mean</h3>
 <p>To obtain the mean of each condition, use <code>group_by()</code> to group the results of <code>summarise()</code> by the two factors in the design:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="anova2.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take the data in gaze</span></span>
-<span id="cb23-2"><a href="anova2.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pipe to group_by()</span></span>
-<span id="cb23-3"><a href="anova2.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># group by the gaze_direction and agreement factors</span></span>
-<span id="cb23-4"><a href="anova2.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a table of the mean of each condition</span></span>
-<span id="cb23-5"><a href="anova2.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># and label the column &#39;M&#39;</span></span>
-<span id="cb23-6"><a href="anova2.html#cb23-6" aria-hidden="true" tabindex="-1"></a>gaze <span class="sc">%&gt;%</span> </span>
-<span id="cb23-7"><a href="anova2.html#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gaze_direction, agreement) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-8"><a href="anova2.html#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">M =</span> <span class="fu">mean</span>(RT))</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="anova2.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take the data in gaze</span></span>
+<span id="cb182-2"><a href="anova2.html#cb182-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pipe to group_by()</span></span>
+<span id="cb182-3"><a href="anova2.html#cb182-3" aria-hidden="true" tabindex="-1"></a><span class="co"># group by the gaze_direction and agreement factors</span></span>
+<span id="cb182-4"><a href="anova2.html#cb182-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a table of the mean of each condition</span></span>
+<span id="cb182-5"><a href="anova2.html#cb182-5" aria-hidden="true" tabindex="-1"></a><span class="co"># and label the column &#39;M&#39;</span></span>
+<span id="cb182-6"><a href="anova2.html#cb182-6" aria-hidden="true" tabindex="-1"></a>gaze <span class="sc">%&gt;%</span> </span>
+<span id="cb182-7"><a href="anova2.html#cb182-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gaze_direction, agreement) <span class="sc">%&gt;%</span> </span>
+<span id="cb182-8"><a href="anova2.html#cb182-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">M =</span> <span class="fu">mean</span>(RT))</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -1146,17 +1146,17 @@ Figure 6.5: Mean logRT according to gaze direction and agreement
 <div id="convert-participant-and-categorical-variables-to-factors" class="section level3" number="6.5.6">
 <h3><span class="header-section-number">6.5.6</span> Convert participant and categorical variables to factors</h3>
 <p>Convert the <code>ppt</code>, <code>gaze_direction</code>, and <code>agreement</code> variables to factors so that R will treat them as such in the ANOVA.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="anova2.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use mutate() to transform </span></span>
-<span id="cb24-2"><a href="anova2.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ppt, gaze_direction and agreement to factors</span></span>
-<span id="cb24-3"><a href="anova2.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and overwrite existing variables</span></span>
-<span id="cb24-4"><a href="anova2.html#cb24-4" aria-hidden="true" tabindex="-1"></a>gaze <span class="ot">&lt;-</span> </span>
-<span id="cb24-5"><a href="anova2.html#cb24-5" aria-hidden="true" tabindex="-1"></a>  gaze <span class="sc">%&gt;%</span> </span>
-<span id="cb24-6"><a href="anova2.html#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ppt =</span> <span class="fu">factor</span>(ppt),</span>
-<span id="cb24-7"><a href="anova2.html#cb24-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">gaze_direction =</span> <span class="fu">factor</span>(gaze_direction),</span>
-<span id="cb24-8"><a href="anova2.html#cb24-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">agreement =</span> <span class="fu">factor</span>(agreement))</span>
-<span id="cb24-9"><a href="anova2.html#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-10"><a href="anova2.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># check changes</span></span>
-<span id="cb24-11"><a href="anova2.html#cb24-11" aria-hidden="true" tabindex="-1"></a>gaze <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="anova2.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use mutate() to transform </span></span>
+<span id="cb183-2"><a href="anova2.html#cb183-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ppt, gaze_direction and agreement to factors</span></span>
+<span id="cb183-3"><a href="anova2.html#cb183-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and overwrite existing variables</span></span>
+<span id="cb183-4"><a href="anova2.html#cb183-4" aria-hidden="true" tabindex="-1"></a>gaze <span class="ot">&lt;-</span> </span>
+<span id="cb183-5"><a href="anova2.html#cb183-5" aria-hidden="true" tabindex="-1"></a>  gaze <span class="sc">%&gt;%</span> </span>
+<span id="cb183-6"><a href="anova2.html#cb183-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ppt =</span> <span class="fu">factor</span>(ppt),</span>
+<span id="cb183-7"><a href="anova2.html#cb183-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">gaze_direction =</span> <span class="fu">factor</span>(gaze_direction),</span>
+<span id="cb183-8"><a href="anova2.html#cb183-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">agreement =</span> <span class="fu">factor</span>(agreement))</span>
+<span id="cb183-9"><a href="anova2.html#cb183-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-10"><a href="anova2.html#cb183-10" aria-hidden="true" tabindex="-1"></a><span class="co"># check changes</span></span>
+<span id="cb183-11"><a href="anova2.html#cb183-11" aria-hidden="true" tabindex="-1"></a>gaze <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -1228,14 +1228,14 @@ Figure 6.5: Mean logRT according to gaze direction and agreement
 </ul>
 <p>Obtain the Bayes factors for each of the above using <code>anovaBF()</code>. To specify the full model with the interaction, use <code>factor1 * factor2</code>. This will automatically specify a model with the main effects of <code>factor1</code> and <code>factor2</code>, in addition to the interaction term:</p>
 <p>As before, add <code>ppt</code> to the model using <code>...+ ppt</code>, and tell R it is a random factor using <code>whichRandom = ppt</code>.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="anova2.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain BFs for the anova</span></span>
-<span id="cb25-2"><a href="anova2.html#cb25-2" aria-hidden="true" tabindex="-1"></a>BFs_gaze <span class="ot">&lt;-</span> </span>
-<span id="cb25-3"><a href="anova2.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anovaBF</span>(logRT <span class="sc">~</span> gaze_direction<span class="sc">*</span>agreement <span class="sc">+</span> ppt, </span>
-<span id="cb25-4"><a href="anova2.html#cb25-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, </span>
-<span id="cb25-5"><a href="anova2.html#cb25-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> <span class="fu">data.frame</span>(gaze) )</span>
-<span id="cb25-6"><a href="anova2.html#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="anova2.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># look at BFs</span></span>
-<span id="cb25-8"><a href="anova2.html#cb25-8" aria-hidden="true" tabindex="-1"></a>BFs_gaze</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="anova2.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain BFs for the anova</span></span>
+<span id="cb184-2"><a href="anova2.html#cb184-2" aria-hidden="true" tabindex="-1"></a>BFs_gaze <span class="ot">&lt;-</span> </span>
+<span id="cb184-3"><a href="anova2.html#cb184-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anovaBF</span>(logRT <span class="sc">~</span> gaze_direction<span class="sc">*</span>agreement <span class="sc">+</span> ppt, </span>
+<span id="cb184-4"><a href="anova2.html#cb184-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, </span>
+<span id="cb184-5"><a href="anova2.html#cb184-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> <span class="fu">data.frame</span>(gaze) )</span>
+<span id="cb184-6"><a href="anova2.html#cb184-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb184-7"><a href="anova2.html#cb184-7" aria-hidden="true" tabindex="-1"></a><span class="co"># look at BFs</span></span>
+<span id="cb184-8"><a href="anova2.html#cb184-8" aria-hidden="true" tabindex="-1"></a>BFs_gaze</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] gaze_direction + ppt                                        : 26.22868 ±0.87%
@@ -1253,7 +1253,7 @@ Figure 6.5: Mean logRT according to gaze direction and agreement
 <div id="main-effect-of-gaze_direction" class="section level4" number="6.5.7.1">
 <h4><span class="header-section-number">6.5.7.1</span> Main effect of gaze_direction</h4>
 <p>The main effect of gaze direction:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="anova2.html#cb27-1" aria-hidden="true" tabindex="-1"></a>BFs_gaze[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="anova2.html#cb186-1" aria-hidden="true" tabindex="-1"></a>BFs_gaze[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] gaze_direction + ppt : 26.22868 ±0.87%
@@ -1270,7 +1270,7 @@ Figure 6.5: Mean logRT according to gaze direction and agreement
 </div>
 <div id="the-main-effect-of-agreement" class="section level4" number="6.5.7.2">
 <h4><span class="header-section-number">6.5.7.2</span> The main effect of agreement</h4>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="anova2.html#cb29-1" aria-hidden="true" tabindex="-1"></a>BFs_gaze[<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="anova2.html#cb188-1" aria-hidden="true" tabindex="-1"></a>BFs_gaze[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] agreement + ppt : 0.26817 ±2.12%
@@ -1287,7 +1287,7 @@ Figure 6.5: Mean logRT according to gaze direction and agreement
 </div>
 <div id="the-gaze_direction-x-agreement-interaction" class="section level4" number="6.5.7.3">
 <h4><span class="header-section-number">6.5.7.3</span> The gaze_direction x agreement interaction</h4>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="anova2.html#cb31-1" aria-hidden="true" tabindex="-1"></a>BFs_gaze[<span class="dv">4</span>] <span class="sc">/</span> BFs_gaze[<span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="anova2.html#cb190-1" aria-hidden="true" tabindex="-1"></a>BFs_gaze[<span class="dv">4</span>] <span class="sc">/</span> BFs_gaze[<span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] gaze_direction + agreement + gaze_direction:agreement + ppt : 13.74232 ±54.34%
@@ -1312,13 +1312,13 @@ Figure 6.5: Mean logRT according to gaze direction and agreement
 </p>
 <div id="averted_left" class="section level4" number="6.5.8.1">
 <h4><span class="header-section-number">6.5.8.1</span> averted_left</h4>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="anova2.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter data for averted_left condition</span></span>
-<span id="cb33-2"><a href="anova2.html#cb33-2" aria-hidden="true" tabindex="-1"></a>averted_left <span class="ot">&lt;-</span> </span>
-<span id="cb33-3"><a href="anova2.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  gaze <span class="sc">%&gt;%</span> </span>
-<span id="cb33-4"><a href="anova2.html#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gaze_direction <span class="sc">==</span> <span class="st">&quot;averted_left&quot;</span>)</span>
-<span id="cb33-5"><a href="anova2.html#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-6"><a href="anova2.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># use anovaBF() to compare the agreement conditions</span></span>
-<span id="cb33-7"><a href="anova2.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(logRT <span class="sc">~</span> agreement <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(averted_left))</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="anova2.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter data for averted_left condition</span></span>
+<span id="cb192-2"><a href="anova2.html#cb192-2" aria-hidden="true" tabindex="-1"></a>averted_left <span class="ot">&lt;-</span> </span>
+<span id="cb192-3"><a href="anova2.html#cb192-3" aria-hidden="true" tabindex="-1"></a>  gaze <span class="sc">%&gt;%</span> </span>
+<span id="cb192-4"><a href="anova2.html#cb192-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gaze_direction <span class="sc">==</span> <span class="st">&quot;averted_left&quot;</span>)</span>
+<span id="cb192-5"><a href="anova2.html#cb192-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-6"><a href="anova2.html#cb192-6" aria-hidden="true" tabindex="-1"></a><span class="co"># use anovaBF() to compare the agreement conditions</span></span>
+<span id="cb192-7"><a href="anova2.html#cb192-7" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(logRT <span class="sc">~</span> agreement <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(averted_left))</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] agreement + ppt : 0.2466716 ±0.85%
@@ -1333,13 +1333,13 @@ Figure 6.5: Mean logRT according to gaze direction and agreement
 </div>
 <div id="averted_right" class="section level4" number="6.5.8.2">
 <h4><span class="header-section-number">6.5.8.2</span> averted_right</h4>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="anova2.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter data for averted right condition</span></span>
-<span id="cb35-2"><a href="anova2.html#cb35-2" aria-hidden="true" tabindex="-1"></a>averted_right <span class="ot">&lt;-</span> </span>
-<span id="cb35-3"><a href="anova2.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  gaze <span class="sc">%&gt;%</span> </span>
-<span id="cb35-4"><a href="anova2.html#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gaze_direction <span class="sc">==</span> <span class="st">&quot;averted_right&quot;</span>)</span>
-<span id="cb35-5"><a href="anova2.html#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-6"><a href="anova2.html#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co"># use anovaBF() to compare the agreement conditions</span></span>
-<span id="cb35-7"><a href="anova2.html#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(logRT <span class="sc">~</span> agreement <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(averted_right))</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="anova2.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter data for averted right condition</span></span>
+<span id="cb194-2"><a href="anova2.html#cb194-2" aria-hidden="true" tabindex="-1"></a>averted_right <span class="ot">&lt;-</span> </span>
+<span id="cb194-3"><a href="anova2.html#cb194-3" aria-hidden="true" tabindex="-1"></a>  gaze <span class="sc">%&gt;%</span> </span>
+<span id="cb194-4"><a href="anova2.html#cb194-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gaze_direction <span class="sc">==</span> <span class="st">&quot;averted_right&quot;</span>)</span>
+<span id="cb194-5"><a href="anova2.html#cb194-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-6"><a href="anova2.html#cb194-6" aria-hidden="true" tabindex="-1"></a><span class="co"># use anovaBF() to compare the agreement conditions</span></span>
+<span id="cb194-7"><a href="anova2.html#cb194-7" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(logRT <span class="sc">~</span> agreement <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(averted_right))</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] agreement + ppt : 0.3535601 ±1%
@@ -1354,13 +1354,13 @@ Figure 6.5: Mean logRT according to gaze direction and agreement
 </div>
 <div id="direct" class="section level4" number="6.5.8.3">
 <h4><span class="header-section-number">6.5.8.3</span> direct</h4>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="anova2.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter data for direct condition</span></span>
-<span id="cb37-2"><a href="anova2.html#cb37-2" aria-hidden="true" tabindex="-1"></a>direct <span class="ot">&lt;-</span> </span>
-<span id="cb37-3"><a href="anova2.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  gaze <span class="sc">%&gt;%</span> </span>
-<span id="cb37-4"><a href="anova2.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gaze_direction <span class="sc">==</span> <span class="st">&quot;direct&quot;</span>)</span>
-<span id="cb37-5"><a href="anova2.html#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-6"><a href="anova2.html#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co"># use anovaBF() to compare the agreement conditions</span></span>
-<span id="cb37-7"><a href="anova2.html#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(logRT <span class="sc">~</span> agreement <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(direct))</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="anova2.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter data for direct condition</span></span>
+<span id="cb196-2"><a href="anova2.html#cb196-2" aria-hidden="true" tabindex="-1"></a>direct <span class="ot">&lt;-</span> </span>
+<span id="cb196-3"><a href="anova2.html#cb196-3" aria-hidden="true" tabindex="-1"></a>  gaze <span class="sc">%&gt;%</span> </span>
+<span id="cb196-4"><a href="anova2.html#cb196-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gaze_direction <span class="sc">==</span> <span class="st">&quot;direct&quot;</span>)</span>
+<span id="cb196-5"><a href="anova2.html#cb196-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb196-6"><a href="anova2.html#cb196-6" aria-hidden="true" tabindex="-1"></a><span class="co"># use anovaBF() to compare the agreement conditions</span></span>
+<span id="cb196-7"><a href="anova2.html#cb196-7" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(logRT <span class="sc">~</span> agreement <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(direct))</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] agreement + ppt : 33.84858 ±0.81%
@@ -1381,7 +1381,7 @@ Figure 6.5: Mean logRT according to gaze direction and agreement
 <div id="exercise-two-way-mixed-anova" class="section level2" number="6.6">
 <h2><span class="header-section-number">6.6</span> Exercise: two-way mixed ANOVA</h2>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-9" class="exercise"><strong>Exercise 6.9  </strong></span>Mixed ANOVA</p>
+<p><span id="exr:unlabeled-div-35" class="exercise"><strong>Exercise 6.9  </strong></span>Mixed ANOVA</p>
 <p>When one of the factors is manipulated within-subjects and the other is manipulated between-subjects, the design is said to be a <strong>mixed design</strong>. It is also sometimes called a <em>split-plot</em> design.</p>
 <p>Hammel and Chan (2016) looked at the <code>duration</code> (in seconds) that participants were able to balance on a balance-board on three successive occasions (<code>trials</code>). There were three <code>groups</code> of participants: one group (<code>counterfactual</code>) engaged in counterfactual thinking, another group (<code>prefactual</code>) engaged in prefactual thinking, and another group (<code>control</code>) engaged in an unrelated thinking task.</p>
 <p>The data (already in long format) are located at the link below:</p>
@@ -1407,15 +1407,15 @@ Hints
 <button>
 Solution - code
 </button>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="anova2.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the data</span></span>
-<span id="cb39-2"><a href="anova2.html#cb39-2" aria-hidden="true" tabindex="-1"></a>balance <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/6_improve_long.csv&#39;</span>)</span>
-<span id="cb39-3"><a href="anova2.html#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="anova2.html#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-5"><a href="anova2.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb39-6"><a href="anova2.html#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb39-7"><a href="anova2.html#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co"># library(ggpubr)</span></span>
-<span id="cb39-8"><a href="anova2.html#cb39-8" aria-hidden="true" tabindex="-1"></a>balance <span class="sc">%&gt;%</span> </span>
-<span id="cb39-9"><a href="anova2.html#cb39-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggline</span>(<span class="at">x =</span> <span class="st">&quot;trial&quot;</span>, <span class="at">y =</span> <span class="st">&quot;duration&quot;</span>, <span class="at">color =</span> <span class="st">&quot;group&quot;</span>, <span class="at">add =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="anova2.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the data</span></span>
+<span id="cb198-2"><a href="anova2.html#cb198-2" aria-hidden="true" tabindex="-1"></a>balance <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/6_improve_long.csv&#39;</span>)</span>
+<span id="cb198-3"><a href="anova2.html#cb198-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-4"><a href="anova2.html#cb198-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-5"><a href="anova2.html#cb198-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb198-6"><a href="anova2.html#cb198-6" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb198-7"><a href="anova2.html#cb198-7" aria-hidden="true" tabindex="-1"></a><span class="co"># library(ggpubr)</span></span>
+<span id="cb198-8"><a href="anova2.html#cb198-8" aria-hidden="true" tabindex="-1"></a>balance <span class="sc">%&gt;%</span> </span>
+<span id="cb198-9"><a href="anova2.html#cb198-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggline</span>(<span class="at">x =</span> <span class="st">&quot;trial&quot;</span>, <span class="at">y =</span> <span class="st">&quot;duration&quot;</span>, <span class="at">color =</span> <span class="st">&quot;group&quot;</span>, <span class="at">add =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1430,34 +1430,34 @@ Solution - code
 <button>
 Solution - code
 </button>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="anova2.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert ppt and independent variables to factors</span></span>
-<span id="cb40-2"><a href="anova2.html#cb40-2" aria-hidden="true" tabindex="-1"></a>balance <span class="ot">&lt;-</span> </span>
-<span id="cb40-3"><a href="anova2.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  balance <span class="sc">%&gt;%</span> </span>
-<span id="cb40-4"><a href="anova2.html#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ppt =</span> <span class="fu">factor</span>(ppt),</span>
-<span id="cb40-5"><a href="anova2.html#cb40-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">factor</span>(group),</span>
-<span id="cb40-6"><a href="anova2.html#cb40-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">trial =</span> <span class="fu">factor</span>(trial))</span>
-<span id="cb40-7"><a href="anova2.html#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-8"><a href="anova2.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co"># anovaBF</span></span>
-<span id="cb40-9"><a href="anova2.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co">#library(BayesFactor)</span></span>
-<span id="cb40-10"><a href="anova2.html#cb40-10" aria-hidden="true" tabindex="-1"></a>bfs <span class="ot">&lt;-</span> <span class="fu">anovaBF</span>(duration <span class="sc">~</span> ppt <span class="sc">+</span> group <span class="sc">+</span> trial, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(balance))</span>
-<span id="cb40-11"><a href="anova2.html#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-12"><a href="anova2.html#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="co"># main effect of group</span></span>
-<span id="cb40-13"><a href="anova2.html#cb40-13" aria-hidden="true" tabindex="-1"></a>bfs[<span class="dv">1</span>]</span>
-<span id="cb40-14"><a href="anova2.html#cb40-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-15"><a href="anova2.html#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="co"># main effect of trial</span></span>
-<span id="cb40-16"><a href="anova2.html#cb40-16" aria-hidden="true" tabindex="-1"></a>bfs[<span class="dv">2</span>]</span>
-<span id="cb40-17"><a href="anova2.html#cb40-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-18"><a href="anova2.html#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="co"># group*trial interaction</span></span>
-<span id="cb40-19"><a href="anova2.html#cb40-19" aria-hidden="true" tabindex="-1"></a>bfs[<span class="dv">4</span>] <span class="sc">/</span> bfs[<span class="dv">3</span>]</span>
-<span id="cb40-20"><a href="anova2.html#cb40-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-21"><a href="anova2.html#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="co"># You&#39;ll notice there is a large amount of error on the interaction term</span></span>
-<span id="cb40-22"><a href="anova2.html#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="co"># If you have time to wait, then we can recompute the BF with a larger number of iterations,</span></span>
-<span id="cb40-23"><a href="anova2.html#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="co"># which should reduce the error. The BFs come out very similarly, but with smaller error.</span></span>
-<span id="cb40-24"><a href="anova2.html#cb40-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Try this:</span></span>
-<span id="cb40-25"><a href="anova2.html#cb40-25" aria-hidden="true" tabindex="-1"></a><span class="co"># bfs2 &lt;- recompute(bfs, iterations = 100000)</span></span>
-<span id="cb40-26"><a href="anova2.html#cb40-26" aria-hidden="true" tabindex="-1"></a><span class="co"># bfs2[1]</span></span>
-<span id="cb40-27"><a href="anova2.html#cb40-27" aria-hidden="true" tabindex="-1"></a><span class="co"># bfs2[2]</span></span>
-<span id="cb40-28"><a href="anova2.html#cb40-28" aria-hidden="true" tabindex="-1"></a><span class="co"># bfs2[4]/bfs2[3]</span></span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="anova2.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert ppt and independent variables to factors</span></span>
+<span id="cb199-2"><a href="anova2.html#cb199-2" aria-hidden="true" tabindex="-1"></a>balance <span class="ot">&lt;-</span> </span>
+<span id="cb199-3"><a href="anova2.html#cb199-3" aria-hidden="true" tabindex="-1"></a>  balance <span class="sc">%&gt;%</span> </span>
+<span id="cb199-4"><a href="anova2.html#cb199-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ppt =</span> <span class="fu">factor</span>(ppt),</span>
+<span id="cb199-5"><a href="anova2.html#cb199-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">factor</span>(group),</span>
+<span id="cb199-6"><a href="anova2.html#cb199-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">trial =</span> <span class="fu">factor</span>(trial))</span>
+<span id="cb199-7"><a href="anova2.html#cb199-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-8"><a href="anova2.html#cb199-8" aria-hidden="true" tabindex="-1"></a><span class="co"># anovaBF</span></span>
+<span id="cb199-9"><a href="anova2.html#cb199-9" aria-hidden="true" tabindex="-1"></a><span class="co">#library(BayesFactor)</span></span>
+<span id="cb199-10"><a href="anova2.html#cb199-10" aria-hidden="true" tabindex="-1"></a>bfs <span class="ot">&lt;-</span> <span class="fu">anovaBF</span>(duration <span class="sc">~</span> ppt <span class="sc">+</span> group <span class="sc">+</span> trial, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(balance))</span>
+<span id="cb199-11"><a href="anova2.html#cb199-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-12"><a href="anova2.html#cb199-12" aria-hidden="true" tabindex="-1"></a><span class="co"># main effect of group</span></span>
+<span id="cb199-13"><a href="anova2.html#cb199-13" aria-hidden="true" tabindex="-1"></a>bfs[<span class="dv">1</span>]</span>
+<span id="cb199-14"><a href="anova2.html#cb199-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-15"><a href="anova2.html#cb199-15" aria-hidden="true" tabindex="-1"></a><span class="co"># main effect of trial</span></span>
+<span id="cb199-16"><a href="anova2.html#cb199-16" aria-hidden="true" tabindex="-1"></a>bfs[<span class="dv">2</span>]</span>
+<span id="cb199-17"><a href="anova2.html#cb199-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-18"><a href="anova2.html#cb199-18" aria-hidden="true" tabindex="-1"></a><span class="co"># group*trial interaction</span></span>
+<span id="cb199-19"><a href="anova2.html#cb199-19" aria-hidden="true" tabindex="-1"></a>bfs[<span class="dv">4</span>] <span class="sc">/</span> bfs[<span class="dv">3</span>]</span>
+<span id="cb199-20"><a href="anova2.html#cb199-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-21"><a href="anova2.html#cb199-21" aria-hidden="true" tabindex="-1"></a><span class="co"># You&#39;ll notice there is a large amount of error on the interaction term</span></span>
+<span id="cb199-22"><a href="anova2.html#cb199-22" aria-hidden="true" tabindex="-1"></a><span class="co"># If you have time to wait, then we can recompute the BF with a larger number of iterations,</span></span>
+<span id="cb199-23"><a href="anova2.html#cb199-23" aria-hidden="true" tabindex="-1"></a><span class="co"># which should reduce the error. The BFs come out very similarly, but with smaller error.</span></span>
+<span id="cb199-24"><a href="anova2.html#cb199-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Try this:</span></span>
+<span id="cb199-25"><a href="anova2.html#cb199-25" aria-hidden="true" tabindex="-1"></a><span class="co"># bfs2 &lt;- recompute(bfs, iterations = 100000)</span></span>
+<span id="cb199-26"><a href="anova2.html#cb199-26" aria-hidden="true" tabindex="-1"></a><span class="co"># bfs2[1]</span></span>
+<span id="cb199-27"><a href="anova2.html#cb199-27" aria-hidden="true" tabindex="-1"></a><span class="co"># bfs2[2]</span></span>
+<span id="cb199-28"><a href="anova2.html#cb199-28" aria-hidden="true" tabindex="-1"></a><span class="co"># bfs2[4]/bfs2[3]</span></span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1485,27 +1485,27 @@ Hint
 <button>
 Solution - code
 </button>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="anova2.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows corresponding to prefactual group</span></span>
-<span id="cb41-2"><a href="anova2.html#cb41-2" aria-hidden="true" tabindex="-1"></a>prefactual <span class="ot">&lt;-</span> balance <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;prefactual&quot;</span>)</span>
-<span id="cb41-3"><a href="anova2.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb41-4"><a href="anova2.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># one-way ANOVA, comparing trial_1, trial_2, trial_3</span></span>
-<span id="cb41-5"><a href="anova2.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(duration <span class="sc">~</span> trial <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(prefactual))</span>
-<span id="cb41-6"><a href="anova2.html#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-7"><a href="anova2.html#cb41-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-8"><a href="anova2.html#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-9"><a href="anova2.html#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows corresponding to counterfactual group</span></span>
-<span id="cb41-10"><a href="anova2.html#cb41-10" aria-hidden="true" tabindex="-1"></a>counterfactual <span class="ot">&lt;-</span> balance <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;counterfactual&quot;</span>)</span>
-<span id="cb41-11"><a href="anova2.html#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb41-12"><a href="anova2.html#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="co"># one-way ANOVA, comparing trial_1, trial_2, trial_3</span></span>
-<span id="cb41-13"><a href="anova2.html#cb41-13" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(duration <span class="sc">~</span> trial <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(counterfactual))</span>
-<span id="cb41-14"><a href="anova2.html#cb41-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-15"><a href="anova2.html#cb41-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-16"><a href="anova2.html#cb41-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-17"><a href="anova2.html#cb41-17" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows corresponding to control group</span></span>
-<span id="cb41-18"><a href="anova2.html#cb41-18" aria-hidden="true" tabindex="-1"></a>control <span class="ot">&lt;-</span> balance <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;control&quot;</span>)</span>
-<span id="cb41-19"><a href="anova2.html#cb41-19" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb41-20"><a href="anova2.html#cb41-20" aria-hidden="true" tabindex="-1"></a><span class="co"># one-way ANOVA, comparing trial_1, trial_2, trial_3</span></span>
-<span id="cb41-21"><a href="anova2.html#cb41-21" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(duration <span class="sc">~</span> trial <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(control))</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="anova2.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows corresponding to prefactual group</span></span>
+<span id="cb200-2"><a href="anova2.html#cb200-2" aria-hidden="true" tabindex="-1"></a>prefactual <span class="ot">&lt;-</span> balance <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;prefactual&quot;</span>)</span>
+<span id="cb200-3"><a href="anova2.html#cb200-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb200-4"><a href="anova2.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="co"># one-way ANOVA, comparing trial_1, trial_2, trial_3</span></span>
+<span id="cb200-5"><a href="anova2.html#cb200-5" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(duration <span class="sc">~</span> trial <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(prefactual))</span>
+<span id="cb200-6"><a href="anova2.html#cb200-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-7"><a href="anova2.html#cb200-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-8"><a href="anova2.html#cb200-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-9"><a href="anova2.html#cb200-9" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows corresponding to counterfactual group</span></span>
+<span id="cb200-10"><a href="anova2.html#cb200-10" aria-hidden="true" tabindex="-1"></a>counterfactual <span class="ot">&lt;-</span> balance <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;counterfactual&quot;</span>)</span>
+<span id="cb200-11"><a href="anova2.html#cb200-11" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb200-12"><a href="anova2.html#cb200-12" aria-hidden="true" tabindex="-1"></a><span class="co"># one-way ANOVA, comparing trial_1, trial_2, trial_3</span></span>
+<span id="cb200-13"><a href="anova2.html#cb200-13" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(duration <span class="sc">~</span> trial <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(counterfactual))</span>
+<span id="cb200-14"><a href="anova2.html#cb200-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-15"><a href="anova2.html#cb200-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-16"><a href="anova2.html#cb200-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-17"><a href="anova2.html#cb200-17" aria-hidden="true" tabindex="-1"></a><span class="co"># filter rows corresponding to control group</span></span>
+<span id="cb200-18"><a href="anova2.html#cb200-18" aria-hidden="true" tabindex="-1"></a>control <span class="ot">&lt;-</span> balance <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;control&quot;</span>)</span>
+<span id="cb200-19"><a href="anova2.html#cb200-19" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb200-20"><a href="anova2.html#cb200-20" aria-hidden="true" tabindex="-1"></a><span class="co"># one-way ANOVA, comparing trial_1, trial_2, trial_3</span></span>
+<span id="cb200-21"><a href="anova2.html#cb200-21" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(duration <span class="sc">~</span> trial <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(control))</span></code></pre></div>
 </div>
 </div>
 <p><br />
@@ -1519,47 +1519,47 @@ Within-subject errorbars
 </button>
 <p>Here I show you how to plot the means with within-subject error bars (following Morey, 2008) for the first dataset in the worksheet <code>discriminate_long</code>.</p>
 <p>I use <code>summarySEwithin()</code> from the <code>Rmisc</code> package for this. The functions from this package have similar names to other <code>tidyverse</code> functions, which can lead to problems/conflicts later. For that reason, I unload <code>Rmisc</code> after using the functions from it, then reload the <code>tidyverse.</code></p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="anova2.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># within-subjects error bars</span></span>
-<span id="cb42-2"><a href="anova2.html#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-3"><a href="anova2.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load Rmisc package for the summarySEwithin() function</span></span>
-<span id="cb42-4"><a href="anova2.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rmisc)</span>
-<span id="cb42-5"><a href="anova2.html#cb42-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb42-6"><a href="anova2.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co"># get within-subject intervals</span></span>
-<span id="cb42-7"><a href="anova2.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># can also specify between-subjects vars with &#39;betweenvars = &#39;</span></span>
-<span id="cb42-8"><a href="anova2.html#cb42-8" aria-hidden="true" tabindex="-1"></a>intervals_RM <span class="ot">&lt;-</span> </span>
-<span id="cb42-9"><a href="anova2.html#cb42-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarySEwithin</span>(discriminate_long, </span>
-<span id="cb42-10"><a href="anova2.html#cb42-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">measurevar =</span> <span class="st">&quot;performance&quot;</span>, </span>
-<span id="cb42-11"><a href="anova2.html#cb42-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">withinvars =</span> <span class="st">&quot;time&quot;</span>, </span>
-<span id="cb42-12"><a href="anova2.html#cb42-12" aria-hidden="true" tabindex="-1"></a>                  <span class="at">idvar =</span> <span class="st">&quot;ppt&quot;</span>)</span>
-<span id="cb42-13"><a href="anova2.html#cb42-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-14"><a href="anova2.html#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="co"># look at what&#39;s produced</span></span>
-<span id="cb42-15"><a href="anova2.html#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="co"># intervals_RM</span></span>
-<span id="cb42-16"><a href="anova2.html#cb42-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-17"><a href="anova2.html#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="co"># select time, performance and se columns</span></span>
-<span id="cb42-18"><a href="anova2.html#cb42-18" aria-hidden="true" tabindex="-1"></a><span class="co"># rename &#39;performance&#39; to M</span></span>
-<span id="cb42-19"><a href="anova2.html#cb42-19" aria-hidden="true" tabindex="-1"></a>intervals_RM <span class="ot">&lt;-</span> </span>
-<span id="cb42-20"><a href="anova2.html#cb42-20" aria-hidden="true" tabindex="-1"></a>  intervals_RM <span class="sc">%&gt;%</span> </span>
-<span id="cb42-21"><a href="anova2.html#cb42-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(time, performance, se) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-22"><a href="anova2.html#cb42-22" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">M =</span> performance,</span>
-<span id="cb42-23"><a href="anova2.html#cb42-23" aria-hidden="true" tabindex="-1"></a>                <span class="at">SE =</span> se) </span>
-<span id="cb42-24"><a href="anova2.html#cb42-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-25"><a href="anova2.html#cb42-25" aria-hidden="true" tabindex="-1"></a><span class="co"># compare with between subject intervals (they should be larger)</span></span>
-<span id="cb42-26"><a href="anova2.html#cb42-26" aria-hidden="true" tabindex="-1"></a><span class="co"># summarySE(discriminate_long, measurevar = &quot;performance&quot;, groupvars = &quot;time&quot;)</span></span>
-<span id="cb42-27"><a href="anova2.html#cb42-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-28"><a href="anova2.html#cb42-28" aria-hidden="true" tabindex="-1"></a><span class="co"># unload the Rmisc package due to conflicts with other packages</span></span>
-<span id="cb42-29"><a href="anova2.html#cb42-29" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(<span class="st">&quot;package:Rmisc&quot;</span>, <span class="at">unload =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb42-30"><a href="anova2.html#cb42-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-31"><a href="anova2.html#cb42-31" aria-hidden="true" tabindex="-1"></a><span class="co"># now use the M and within-subjects SE to create a plot of means</span></span>
-<span id="cb42-32"><a href="anova2.html#cb42-32" aria-hidden="true" tabindex="-1"></a>intervals_RM <span class="sc">%&gt;%</span> </span>
-<span id="cb42-33"><a href="anova2.html#cb42-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> M)) <span class="sc">+</span> </span>
-<span id="cb42-34"><a href="anova2.html#cb42-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb42-35"><a href="anova2.html#cb42-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> M <span class="sc">-</span> SE, <span class="at">ymax =</span> M <span class="sc">+</span> SE), <span class="at">width=</span>.<span class="dv">2</span>,</span>
-<span id="cb42-36"><a href="anova2.html#cb42-36" aria-hidden="true" tabindex="-1"></a>                 <span class="at">position =</span> <span class="fu">position_dodge</span>(.<span class="dv">9</span>)) <span class="sc">+</span></span>
-<span id="cb42-37"><a href="anova2.html#cb42-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="anova2.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="co"># within-subjects error bars</span></span>
+<span id="cb201-2"><a href="anova2.html#cb201-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-3"><a href="anova2.html#cb201-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load Rmisc package for the summarySEwithin() function</span></span>
+<span id="cb201-4"><a href="anova2.html#cb201-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rmisc)</span>
+<span id="cb201-5"><a href="anova2.html#cb201-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb201-6"><a href="anova2.html#cb201-6" aria-hidden="true" tabindex="-1"></a><span class="co"># get within-subject intervals</span></span>
+<span id="cb201-7"><a href="anova2.html#cb201-7" aria-hidden="true" tabindex="-1"></a><span class="co"># can also specify between-subjects vars with &#39;betweenvars = &#39;</span></span>
+<span id="cb201-8"><a href="anova2.html#cb201-8" aria-hidden="true" tabindex="-1"></a>intervals_RM <span class="ot">&lt;-</span> </span>
+<span id="cb201-9"><a href="anova2.html#cb201-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarySEwithin</span>(discriminate_long, </span>
+<span id="cb201-10"><a href="anova2.html#cb201-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">measurevar =</span> <span class="st">&quot;performance&quot;</span>, </span>
+<span id="cb201-11"><a href="anova2.html#cb201-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">withinvars =</span> <span class="st">&quot;time&quot;</span>, </span>
+<span id="cb201-12"><a href="anova2.html#cb201-12" aria-hidden="true" tabindex="-1"></a>                  <span class="at">idvar =</span> <span class="st">&quot;ppt&quot;</span>)</span>
+<span id="cb201-13"><a href="anova2.html#cb201-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-14"><a href="anova2.html#cb201-14" aria-hidden="true" tabindex="-1"></a><span class="co"># look at what&#39;s produced</span></span>
+<span id="cb201-15"><a href="anova2.html#cb201-15" aria-hidden="true" tabindex="-1"></a><span class="co"># intervals_RM</span></span>
+<span id="cb201-16"><a href="anova2.html#cb201-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-17"><a href="anova2.html#cb201-17" aria-hidden="true" tabindex="-1"></a><span class="co"># select time, performance and se columns</span></span>
+<span id="cb201-18"><a href="anova2.html#cb201-18" aria-hidden="true" tabindex="-1"></a><span class="co"># rename &#39;performance&#39; to M</span></span>
+<span id="cb201-19"><a href="anova2.html#cb201-19" aria-hidden="true" tabindex="-1"></a>intervals_RM <span class="ot">&lt;-</span> </span>
+<span id="cb201-20"><a href="anova2.html#cb201-20" aria-hidden="true" tabindex="-1"></a>  intervals_RM <span class="sc">%&gt;%</span> </span>
+<span id="cb201-21"><a href="anova2.html#cb201-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(time, performance, se) <span class="sc">%&gt;%</span> </span>
+<span id="cb201-22"><a href="anova2.html#cb201-22" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">M =</span> performance,</span>
+<span id="cb201-23"><a href="anova2.html#cb201-23" aria-hidden="true" tabindex="-1"></a>                <span class="at">SE =</span> se) </span>
+<span id="cb201-24"><a href="anova2.html#cb201-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-25"><a href="anova2.html#cb201-25" aria-hidden="true" tabindex="-1"></a><span class="co"># compare with between subject intervals (they should be larger)</span></span>
+<span id="cb201-26"><a href="anova2.html#cb201-26" aria-hidden="true" tabindex="-1"></a><span class="co"># summarySE(discriminate_long, measurevar = &quot;performance&quot;, groupvars = &quot;time&quot;)</span></span>
+<span id="cb201-27"><a href="anova2.html#cb201-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-28"><a href="anova2.html#cb201-28" aria-hidden="true" tabindex="-1"></a><span class="co"># unload the Rmisc package due to conflicts with other packages</span></span>
+<span id="cb201-29"><a href="anova2.html#cb201-29" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(<span class="st">&quot;package:Rmisc&quot;</span>, <span class="at">unload =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb201-30"><a href="anova2.html#cb201-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-31"><a href="anova2.html#cb201-31" aria-hidden="true" tabindex="-1"></a><span class="co"># now use the M and within-subjects SE to create a plot of means</span></span>
+<span id="cb201-32"><a href="anova2.html#cb201-32" aria-hidden="true" tabindex="-1"></a>intervals_RM <span class="sc">%&gt;%</span> </span>
+<span id="cb201-33"><a href="anova2.html#cb201-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> M)) <span class="sc">+</span> </span>
+<span id="cb201-34"><a href="anova2.html#cb201-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb201-35"><a href="anova2.html#cb201-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> M <span class="sc">-</span> SE, <span class="at">ymax =</span> M <span class="sc">+</span> SE), <span class="at">width=</span>.<span class="dv">2</span>,</span>
+<span id="cb201-36"><a href="anova2.html#cb201-36" aria-hidden="true" tabindex="-1"></a>                 <span class="at">position =</span> <span class="fu">position_dodge</span>(.<span class="dv">9</span>)) <span class="sc">+</span></span>
+<span id="cb201-37"><a href="anova2.html#cb201-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-30"></span>
 <img src="06_anova_repeated_measures_files/figure-html/unnamed-chunk-30-1.png" alt="Mean proportion correct at each time point. Error bars represent within-subjects standard error of the mean" width="75%" />
 <p class="caption">
-Figure 6.6: Mean proportion correct at each time point. Error bars represent within-subjects standard error of the mean
+Figure 6.2: Mean proportion correct at each time point. Error bars represent within-subjects standard error of the mean
 </p>
 </div>
 <p><br />
@@ -1825,6 +1825,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

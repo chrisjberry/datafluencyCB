@@ -264,7 +264,7 @@ BF_without_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group : 0.1041619 ±2.2%
+## [1] attitude + group : 0.1032236 ±2%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -323,7 +323,7 @@ BF_with_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 31.4508 ±1.31%
+## [1] attitude + group + attitude * group : 32.30543 ±1.75%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -369,7 +369,7 @@ BF_with_interaction / BF_without_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 301.9415 ±2.56%
+## [1] attitude + group + attitude * group : 312.9657 ±2.65%
 ## 
 ## Against denominator:
 ##   trustworthiness ~ attitude + group 
@@ -397,7 +397,7 @@ Assessing the interaction
 
 * According to comparison of BFs for the models, which statement is true?
 
-<div class='webex-radiogroup' id='radio_KRRTNDJIHY'><label><input type="radio" autocomplete="off" name="radio_KRRTNDJIHY" value=""></input> <span>There&apos;s substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_KRRTNDJIHY" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_KRRTNDJIHY" value="answer"></input> <span>There&apos;s substantial evidence for an interaction between attitude and group</span></label></div>
+<div class='webex-radiogroup' id='radio_SPSQLCYEHV'><label><input type="radio" autocomplete="off" name="radio_SPSQLCYEHV" value=""></input> <span>There&apos;s substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_SPSQLCYEHV" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_SPSQLCYEHV" value="answer"></input> <span>There&apos;s substantial evidence for an interaction between attitude and group</span></label></div>
 
 
 
