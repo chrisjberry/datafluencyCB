@@ -297,11 +297,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.8" data-path="anova2.html"><a href="anova2.html#summary-4"><i class="fa fa-check"></i><b>6.8</b> Summary</a></li>
 <li class="chapter" data-level="6.9" data-path="anova2.html"><a href="anova2.html#references-5"><i class="fa fa-check"></i><b>6.9</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="prepost.html"><a href="prepost.html"><i class="fa fa-check"></i><b>7</b> Pre-post data, effect sizes, clinically significant change</a></li>
+<li class="chapter" data-level="7" data-path="prepost.html"><a href="prepost.html"><i class="fa fa-check"></i><b>7</b> Pre-post data, effect sizes, clinically significant change</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="prepost.html"><a href="prepost.html#pre-post-data"><i class="fa fa-check"></i><b>7.1</b> Pre-Post-data</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="prepost.html"><a href="prepost.html#worked-example-7"><i class="fa fa-check"></i><b>7.1.1</b> Worked example</a></li>
+<li class="chapter" data-level="7.1.2" data-path="prepost.html"><a href="prepost.html#read-in-the-data-6"><i class="fa fa-check"></i><b>7.1.2</b> Read in the data</a></li>
+<li class="chapter" data-level="7.1.3" data-path="prepost.html"><a href="prepost.html#plot-the-means-4"><i class="fa fa-check"></i><b>7.1.3</b> Plot the means</a></li>
+<li class="chapter" data-level="7.1.4" data-path="prepost.html"><a href="prepost.html#method-1---difference-scores"><i class="fa fa-check"></i><b>7.1.4</b> Method 1 - Difference scores</a></li>
+<li class="chapter" data-level="7.1.5" data-path="prepost.html"><a href="prepost.html#method-2---mixed-anova"><i class="fa fa-check"></i><b>7.1.5</b> Method 2 - Mixed ANOVA</a></li>
+<li class="chapter" data-level="7.1.6" data-path="prepost.html"><a href="prepost.html#method-3---ancova"><i class="fa fa-check"></i><b>7.1.6</b> Method 3 - ANCOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="prepost.html"><a href="prepost.html#which-method-should-i-use"><i class="fa fa-check"></i><b>7.2</b> Which method should I use?</a></li>
+<li class="chapter" data-level="7.3" data-path="prepost.html"><a href="prepost.html#clinical-significance"><i class="fa fa-check"></i><b>7.3</b> Clinical Significance</a></li>
+<li class="chapter" data-level="7.4" data-path="prepost.html"><a href="prepost.html#exercises-1"><i class="fa fa-check"></i><b>7.4</b> Exercises</a></li>
+<li class="chapter" data-level="7.5" data-path="prepost.html"><a href="prepost.html#further-knowledge-2"><i class="fa fa-check"></i><b>7.5</b> Further Knowledge</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="prepost.html"><a href="prepost.html#reliable-change-rc-index"><i class="fa fa-check"></i><b>7.5.1</b> Reliable Change (RC) index</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="prepost.html"><a href="prepost.html#summary-5"><i class="fa fa-check"></i><b>7.6</b> Summary</a></li>
+<li class="chapter" data-level="7.7" data-path="prepost.html"><a href="prepost.html#references-6"><i class="fa fa-check"></i><b>7.7</b> References</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="assessment2022.html"><a href="assessment2022.html"><i class="fa fa-check"></i><b>8</b> Data Analysis Assessment 2022</a></li>
 <li class="chapter" data-level="9" data-path="faqs.html"><a href="faqs.html"><i class="fa fa-check"></i><b>9</b> FAQs</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="faqs.html"><a href="faqs.html#e-meaning"><i class="fa fa-check"></i><b>9.1</b> What does it mean if RStudio prints out "e-" next to a number?</a></li>
+<li class="chapter" data-level="9.2" data-path="faqs.html"><a href="faqs.html#how-should-i-write-up-the-report"><i class="fa fa-check"></i><b>9.2</b> How should I write up the report?</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="divider"></li>
@@ -360,7 +381,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <h2><span class="header-section-number">6.2</span> One-way repeated measures ANOVA</h2>
 <div class="tip">
 <p><strong>A one-way repeated measures ANOVA</strong> is used to compare the scores from a dependent variable for the same individuals across different time points. For example, do depression scores differ in a group of individuals across three time points: before CBT therapy, during therapy, and 1 year after therapy?</p>
-<p><strong>One-way within-subjects ANOVA</strong> refers to the same analysis. The scores for each level of the independent variable manipualted within-subjects come from the same group of participants. For example, we can say that the independent variable of <em>time</em> is manipulated <em>within-subjects</em>.</p>
+<p><strong>One-way within-subjects ANOVA</strong> refers to the same analysis. The scores for each level of the independent variable manipulated within-subjects come from the same group of participants. For example, we can say that the independent variable of <em>time</em> is manipulated <em>within-subjects</em>.</p>
 </div>
 <p><br />
 </p>
@@ -382,16 +403,16 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <ul>
 <li>When the data are in <em>wide</em> format, all of the data for a single participant is stored:</li>
 </ul>
-<div id="radio_CNOJUFNLOW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CNOJUFNLOW" value="answer"></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_CNOJUFNLOW" value=""></input> <span>on multiple rows, with each row representing a separate observation</span></label>
+<div id="radio_OQUUGESSSV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OQUUGESSSV" value="answer"></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_OQUUGESSSV" value=""></input> <span>on multiple rows, with each row representing a separate observation</span></label>
 </div>
 <p><br />
 </p>
 <ul>
 <li>When the data are in <em>long</em> format, all of the data for a single participant is stored:</li>
 </ul>
-<div id="radio_VOQCKPYHHR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_VOQCKPYHHR" value=""></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_VOQCKPYHHR" value="answer"></input> <span>on multiple rows, with each row representing a separate observation</span></label>
+<div id="radio_GTGBGZRPOY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GTGBGZRPOY" value=""></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_GTGBGZRPOY" value="answer"></input> <span>on multiple rows, with each row representing a separate observation</span></label>
 </div>
 </div>
 <p><br />
@@ -1587,6 +1608,7 @@ and prefactual thinking. <em>PLoS ONE</em>, <em>11</em>(12): e0168181. <a href="
 <p>Kreysa, H., Kessler, L., Schweinberger, S.R. (2016). Direct Speaker Gaze Promotes Trust in
 Truth-Ambiguous Statements. <em>PLoS ONE</em>, <em>11</em>(9): e0162291. <a href="doi:10.1371/journal.pone.0162291" class="uri">doi:10.1371/journal.pone.0162291</a></p>
 <p>Morey, R. D. (2008). Confidence intervals from normalized data: A correction to Cousineau (2005). <em>Reason</em>, <em>4</em>(2), 61-64.</p>
+<p>Rouder, J. N., Morey, R. D., Speckman, P. L., &amp; Province, J. M. (2012). Default Bayes factors for ANOVA designs. <em>Journal of Mathematical Psychology</em>, <em>56</em>(5), 356-374.</p>
 
 </div>
 </div>
