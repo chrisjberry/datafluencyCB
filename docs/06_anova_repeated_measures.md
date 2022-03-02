@@ -28,9 +28,11 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 
 Previously, we saw that when all of the predictor variables in a multiple regression are categorical then the analysis has the name ANOVA (in Session 3). 
 
-Here we will analyse _repeated measures_ (or _within-subjects_) designs. In a repeated measures design, the scores for the different levels of an independent variable come from the same participants, rather than separate groups of participants (as was the case with between-subjects designs in Session 3).
+Here we will analyse _repeated measures_ (or _within-subjects_) designs with ANOVA. In a repeated measures design, the scores for the different levels of an independent variable come from the same participants, rather than separate groups of participants.
 
 We consider two types of ANOVA for within-subjects designs: one-way ANOVA and two-way factorial ANOVA. 
+
+The methods are similar to those in Session 3, where we analysed between-subjects designs with ANOVA. 
 
 The exercise at the end is for a mixed factorial design, where one of the factors is manipulated between-subjects, and the other is manipulated within-subjects. 
 
@@ -42,7 +44,7 @@ The exercise at the end is for a mixed factorial design, where one of the factor
 :::{.tip}
 **A one-way repeated measures ANOVA** is used to compare the scores from a dependent variable for the same individuals across different time points. For example, do depression scores differ in a group of individuals across three time points: before CBT therapy, during therapy, and 1 year after therapy?
 
-**One-way within-subjects ANOVA** refers to the same analysis. The scores for each level of the independent variable manipualted within-subjects come from the same group of participants. For example, we can say that the independent variable of _time_ is manipulated _within-subjects_.  
+**One-way within-subjects ANOVA** refers to the same analysis. The scores for each level of the independent variable manipulated within-subjects come from the same group of participants. For example, we can say that the independent variable of _time_ is manipulated _within-subjects_.  
 :::
 
 \
@@ -65,14 +67,14 @@ Wide vs. long format
 
 * When the data are in _wide_ format, all of the data for a single participant is stored:
 
-<div class='webex-radiogroup' id='radio_OCQFOGEVTQ'><label><input type="radio" autocomplete="off" name="radio_OCQFOGEVTQ" value="answer"></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_OCQFOGEVTQ" value=""></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
+<div class='webex-radiogroup' id='radio_QQMJRZWYPQ'><label><input type="radio" autocomplete="off" name="radio_QQMJRZWYPQ" value="answer"></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_QQMJRZWYPQ" value=""></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
 
 
 \
 
 * When the data are in _long_ format, all of the data for a single participant is stored:
 
-<div class='webex-radiogroup' id='radio_DPHEMGEABW'><label><input type="radio" autocomplete="off" name="radio_DPHEMGEABW" value=""></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_DPHEMGEABW" value="answer"></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
+<div class='webex-radiogroup' id='radio_HTXXSQXTWR'><label><input type="radio" autocomplete="off" name="radio_HTXXSQXTWR" value=""></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_HTXXSQXTWR" value="answer"></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
 
 
 :::
@@ -1187,7 +1189,7 @@ anovaBF(duration ~ trial + ppt, whichRandom = "ppt", data = data.frame(control))
 
 \
 
-## Further knowledge
+## Further knowledge - within-subject errorbars
 
 
 <div class='webex-solution'><button>Within-subject errorbars</button>
@@ -1242,7 +1244,111 @@ intervals_RM %>%
 <p class="caption">(\#fig:unnamed-chunk-30)Mean proportion correct at each time point. Error bars represent within-subjects standard error of the mean</p>
 </div>
 
+</div>
+
+
 \
+
+## Further knowledge - R-squared
+
+
+<div class='webex-solution'><button>One-way within-subjects ANOVA</button>
+
+
+It's possible to obtain R^2^ for the ANOVA model as we have done previously, by specifying the model with `lm()`, and then using `glance()`:
+
+For the one-way repeated measures ANOVA:
+
+
+```r
+# specify full model with ppt and time using lm()
+ppt_and_time <- lm(performance ~ ppt + time, data = discriminate_long)
+
+# look at R-squared
+glance(ppt_and_time)
+```
+
+* This produces an R^2^ value, which is relatively high, R^2^ = <input class='webex-solveme nospaces' size='4' data-answer='["0.81"]'/> (non-corrected, as a proportion, to two decimal places).  
+
+\
+
+This value of R^2^ is, however, for the _full_ ANOVA model, which includes the random factor `ppt` too. Given that we are interested in the R^2^ associated with `time` only, we need to work out the _change_ in R^2^ as a result of adding `time` to the model containing `ppt`.  
+
+To do this, obtain R^2^ for the model with `ppt` alone:
+
+
+```r
+# specify model with ppt only using lm()
+ppt_alone <- lm(performance ~ ppt, data = discriminate_long)
+
+# look at R-squared
+glance(ppt)
+```
+
+* R^2^ for the model with `ppt` alone = <input class='webex-solveme nospaces' size='4' data-answer='["0.15"]'/>
+
+\
+
+The R^2^ associated with the `time` factor can be calculated as the difference in R^2^ values for the models:
+
+
+```r
+glance(ppt_and_time)$r.squared - glance(ppt)$r.squared
+```
+
+* Thus, R^2^ for the `time` factor = <input class='webex-solveme nospaces' size='4' data-answer='["0.66"]'/>
+
+\
+
+The value of R^2^ that we have calculated for `time` is the one that we would provide in a journal article, and could be reported as a measure of effect size. 
+
+In the literature, this R^2^ value actually goes by the name _generalised eta-squared_, and is the recommended measure of effect size for repeated measures designs (see Bakeman, 2005, for more details).
+
+
+
+</div>
+
+
+
+<div class='webex-solution'><button>Two-way repeated measures ANOVA</button>
+
+
+To calculate generalised eta-squared for each factor and the interaction term in a repeated measures ANOVA, each model in the design must be separately specified with `lm()`. The change in R^2^ value for each factor and the interaction must then be separately determined, by subtracting the relevant R^2^ value:
+
+
+```r
+# specify each model in the design
+gaze_ppt_only <- lm(logRT ~ ppt, data = gaze)
+gaze_ppt_agreement <- lm(logRT ~ ppt + agreement, data = gaze)
+gaze_ppt_gaze <- lm(logRT ~ ppt + gaze_direction, data = gaze)
+gaze_ppt_agreement_gaze <- lm(logRT ~ ppt + agreement + gaze_direction, data = gaze)
+gaze_ppt_agreement_gaze_interaction <- lm(logRT ~ ppt + agreement + gaze_direction + agreement*gaze_direction, data = gaze)
+
+# work out change in R-squared (equivalent to Generalised Eta Squared or ges)
+glance(gaze_ppt_agreement)$r.squared - glance(gaze_ppt_only)$r.squared # ges for agreement
+glance(gaze_ppt_gaze)$r.squared - glance(gaze_ppt_only)$r.squared # ges for gaze_direction
+glance(gaze_ppt_agreement_gaze_interaction)$r.squared - glance(gaze_ppt_agreement_gaze)$r.squared # ges for interaction
+```
+
+This is clearly quite cumbersome, and potentially error prone. For this reason, you may wish to use a package that will determine generalised eta-squared automatically, such as the `afex` package, which stands for Analysis of Factorial EXperiments. The package performs an ANOVA using frequentist methods, but provides generalised eta squared by default in the output.
+
+
+```r
+library(afex)
+
+anova2way <- afex::aov_ez(id = c("ppt"),
+                          dv = c("logRT"),
+                          within = c("agreement","gaze_direction"), # two factors
+                          data = gaze)
+```
+
+The `ges` column provides the generalised eta squared values for each effect.
+
+</div>
+
+
+\
+
 
 ## Summary
 
@@ -1257,6 +1363,8 @@ intervals_RM %>%
 
 ## References
 
+Bakeman, R. (2005). Recommended effect size statistics for repeated measures designs. _Behavior Research Methods_, _37_(3), 379-384. https://doi.org/10.3758/BF03192707
+
 Chang, M., Ando, H., Maeda, T., Naruse, Y. (2021). Behavioral effect of mismatch negativity neurofeedback on foreign language learning. _PLoS ONE_, _16_(7): e0254771. https://doi.org/10.1371/journal.pone.0254771
 
 Hammell, C., Chan, A.Y.C. (2016). Improving physical task performance with counterfactual
@@ -1266,4 +1374,6 @@ Kreysa, H., Kessler, L., Schweinberger, S.R. (2016). Direct Speaker Gaze Promote
 Truth-Ambiguous Statements. _PLoS ONE_, _11_(9): e0162291. doi:10.1371/journal.pone.0162291
 
 Morey, R. D. (2008). Confidence intervals from normalized data: A correction to Cousineau (2005). _Reason_, _4_(2), 61-64.
+
+Rouder, J. N., Morey, R. D., Speckman, P. L., & Province, J. M. (2012). Default Bayes factors for ANOVA designs. _Journal of Mathematical Psychology_, _56_(5), 356-374.
 

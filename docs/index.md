@@ -41,7 +41,7 @@ This workbook contains worksheets for the seven sessions given by **Chris Berry*
 
 - 28/02/22. [ANOVA 2](#anova2)
 
-- 07/03/22. Pre-post data, effect sizes, clinically significant change
+- 07/03/22. [Pre-post data and clinically significant change](#prepost)
 
 \
 

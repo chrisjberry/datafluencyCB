@@ -49,3 +49,14 @@ So:
 ---
 
 \
+
+## How should I write up the report?
+
+My guidance is to write this up in a similar style to that of a results section in an article, but you will obviously want to provide a bit of context to your analysis so you can explain what you’ve done. In the worksheets I’ve provided examples of interpretation of analyses, and reporting of statistics and you can use this to give you an idea of the kinds of things that could be mentioned when reporting the results. 
+
+In the [Rmd support lecture](slides/PSYC753_Rmd_Support.pptx) I provided guidance on how the knitted html document should look.
+
+\
+
+---
+
