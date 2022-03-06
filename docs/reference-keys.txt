@@ -48,9 +48,10 @@ exr:unlabeled-div-35
 fig:unnamed-chunk-30
 exr:unlabeled-div-36
 exr:unlabeled-div-37
-fig:unnamed-chunk-13
+fig:unnamed-chunk-14
 exr:unlabeled-div-38
 fig:unnamed-chunk-21
+fig:unnamed-chunk-22
 simple1
 overview-1
 worked-example
@@ -202,3 +203,9 @@ assessment2022
 faqs
 e-meaning
 how-should-i-write-up-the-report
+how-can-i-find-out-more-about-a-particular-function-so-i-can-explore-its-settings-etc.
+after-downloading-my-.rmd-file-to-my-computer-how-do-i-open-it-again-in-rstudio
+how-do-i-apply-for-extenuating-circumstances
+can-a-book-a-slot-in-your-office-hours
+approach-3---ancova
+which-approach-should-you-use

@@ -176,7 +176,7 @@ Each dot represents one participant's data. The solid circles indicate the mean 
 
 \
 
-### Approach 1 - Difference scores
+## Approach 1 - Difference scores
 
 One approach to analysing pre-post data is to compare the _change_ in symptom scores from `baseline` to `week3` across groups. This is achieved by 1) calculating the difference in scores between `baseline` and `week3`, and then 2) comparing the difference scores between the two groups using a between-subjects ANOVA (or, equivalently, a _t_-test).  
 
@@ -277,7 +277,7 @@ ttestBF(x = diet$change[ diet$group == "habitual_diet" ],
 
 \
 
-### Approach 2 - Mixed ANOVA
+## Approach 2 - Mixed ANOVA
 
 Given that we have two independent variables, each with two levels, and where one is manipulated between-subjects and the other within-subjects, it is also possible to treat the design as a **2 x 2 mixed factorial design** and analyse the data using `anovaBF()`.
 
@@ -331,7 +331,7 @@ bfs_more[4] / bfs_more[3]
 
 \
 
-### Method 3 - ANCOVA
+## Approach 3 - ANCOVA
 
 A third approach to analysing pre-post data is to use ANCOVA, which stands for Analysis of COvariance. This approach is particularly appropriate if our focus were solely on comparing the scores at the second time point between groups, but controlling for baseline symptom severity.
 
@@ -370,10 +370,40 @@ full / baseline
 * There is <select class='webex-select'><option value='blank'></option><option value=''>no</option><option value=''>weak</option><option value='answer'>substantial</option></select> evidence for a difference in the `week3` scores between groups, after controlling for `baseline` scores.
 * As a result of using the ANCOVA approach, can we conclude that the dietary intervention led to a reduction in depression symptom severity? <select class='webex-select'><option value='blank'></option><option value='answer'>yes</option><option value=''>no</option></select>
 
+
+
+<div class='webex-solution'><button>R-squared</button>
+
+In Approach 3 R^2^ for the effect of `group` can be determined using methods from earlier sessions. The method is equivalent to obtaining R^2^ for the unique contribution of a predictor.
+
+
+```r
+# specify the full model with lm()
+full_model    <- lm(week3 ~ group + baseline, data = diet)
+
+# specify the model with baseline only
+baseline_only <- lm(week3 ~ baseline, data = diet)
+
+# R-squared full model
+glance(full_model)$r.squared
+
+# R-squared baseline only
+glance(baseline_only)$r.squared
+
+# Unique contribution of group 
+# (effect size associated with difference in groups)
+glance(full_model)$r.squared - glance(baseline_only)$r.squared # R-sq = 0.05817
+```
+
+
+
+</div>
+
+
 \
 
 
-## Which method should you use?
+## Which approach should you use?
 
 Which method you use depends on the _research question_ you are asking. 
 
@@ -385,9 +415,9 @@ If your question is whether one group has a higher mean at the second timepoint,
 
 ## Clinical Significance
 
-The measure of depressive symptoms used by Francis et al. (2019) was the Centre for Epidemiological Studies Depression scale-Revised (CESD-R; Radloff, 1977). The scale ranges from 0-60, and the criterion for clinical significance is a score equal to **16** or above.  
+The measure of depressive symptoms used by Francis et al. (2019) was the Centre for Epidemiological Studies Depression scale-Revised (CESD-R; Radloff, 1977). The scale ranges from 0-60, and the criterion for being the elevated range of depressive symptoms is a score equal to **16** or above.  
 
-Re-plot the data, but with a horizontal line to indicate the clinical significance cut-off. (Because of the way that `ggpubr` works, to add the line, the plot created with `ggdotplot` first needs to be stored in `plot1`; then `geom_hline()` is added to `plot1`.)
+Re-plot the data, but with a horizontal line to indicate this criterion. (Because of the way that `ggpubr` works, to add the line, the plot created with `ggdotplot` first needs to be stored in `plot1`; then `geom_hline()` is added to `plot1`.)
 
 
 
@@ -404,14 +434,14 @@ plot1 + geom_hline(yintercept = 16, colour = "red", lty = 2)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="07_pre_post_files/figure-html/unnamed-chunk-13-1.png" alt="Mean depression symptom severity score in each condition. The dotted line indicates the criterion for clinical significance" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-13)Mean depression symptom severity score in each condition. The dotted line indicates the criterion for clinical significance</p>
+<img src="07_pre_post_files/figure-html/unnamed-chunk-14-1.png" alt="Mean depression symptom severity score in each condition. The dotted line indicates the criterion for the elevated range of depressive symptoms" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-14)Mean depression symptom severity score in each condition. The dotted line indicates the criterion for the elevated range of depressive symptoms</p>
 </div>
 
-* At baseline, was the mean of the `diet_change` group above or below the level of clinical significance? <select class='webex-select'><option value='blank'></option><option value='answer'>above</option><option value=''>below</option></select>
-* After 3 weeks, was the mean of the `diet_change` group above or below the level of clinical significance? <select class='webex-select'><option value='blank'></option><option value=''>above</option><option value='answer'>below</option></select>
+* At baseline, was the mean of the `diet_change` group above or below the criterion for clinical significance in the severity of depression symptoms? <select class='webex-select'><option value='blank'></option><option value='answer'>above</option><option value=''>below</option></select>
+* After 3 weeks, was the mean of the `diet_change` above or below the criterion for clinical significance in the severity of depression symptoms? <select class='webex-select'><option value='blank'></option><option value=''>above</option><option value='answer'>below</option></select>
 
-Note that these statements apply to the conditions as a whole, rather than the _individuals_ in each condition. For instance, there may be individuals whose symptoms did not improve. To learn more about whether a given _individual_ shows a clinically significant change, see the Further Knowledge section below.
+Note that these statements apply to the conditions as a whole, rather than the _individuals_ in each condition. For instance, there may be individuals whose symptoms did not improve. To learn more about whether a given _individual_ can be said to have improved or not, see the Further Knowledge section below.
 
 \
 
@@ -612,9 +642,9 @@ BF_group_baseline / BF_baseline
 
 ### Reliable Change (RC) index
 
-In the main part of the worksheet, the dietary intervention resulted in a clinically significant change in depression symptoms on average.  
+In the main part of the worksheet, the mean symptom severity in the dietary intervention group moved from being above the criterion for the elevated range before the intervention to being below the criterion afterwards.
 
-One way to determine whether a particular _individual_ shows a clinically significant change is by using the Reliable Change index (Christensen & Mendoza, 1986; Jacobson & Trurax, 1991). The Reliable Change (RC) index can be calculated for each individual as follows:
+One way to determine whether a particular **individual** shows a clinically significant change involves calculating a Reliable Change (RC) index (Christensen & Mendoza, 1986; Jacobson & Trurax, 1991). The RC index can be calculated for each individual as follows:
 
 \
 
@@ -633,13 +663,13 @@ $\sqrt{2(SD_{Pre}\sqrt{(1-\alpha)})^2}$
 
 \
 
-where $SD_{pre}$ is the standard deviation of the pre-test scores and $\alpha$ is the reliability of the measure (e.g., with Cronbach's alpha). 
+where $SD_{pre}$ is the standard deviation of the pre-test scores and $\alpha$ is the reliability of the measure (e.g., Cronbach's alpha). 
 
-$\alpha$ is necessary for the calculation of $SE_D$, but was not reported by Francis et al. (2019). The CESD-R scale is widely used though, and Busch et al. (2011) derived an estimate of $SE_D$ to be 5.05, using an $\alpha$ of .914 and $SD_{Pre}$ score of 12.187. For the purposes of illustration, we'll assume the value of $SE_D$ is the same as in Busch et al. (2011).
+$\alpha$ is necessary for the calculation of $SE_D$, but was not reported by Francis et al. (2019). The CESD-R scale is widely used though, and Busch et al. (2011) derived an estimate of $SE_D$ to be 5.05, using an $\alpha$ of .914 and $SD_{Pre}$ score of 12.187. For the purposes of illustration, we'll assume the value of $SE_D$ is the same as in Busch et al. (2011) (i.e., 5.05).
 
-If RC > 1.96 (or RC < -1.96, depending on the way the difference is calculated), then the individual can be said to show clinically significant change.
+If RC > 1.96 (or RC < -1.96, depending on the way the difference is calculated), then the individual can be said to show a _reliable change_.
 
-Thus, to calculate RC for each individual in `diet`:
+Thus, to calculate RC for each individual in the `diet_change` group:
 
 
 ```r
@@ -672,7 +702,7 @@ diet_change %>% head()
 
 </div>
 
-`RC` scores less than -1.96 indicate that the individual's score showed a clinically significant reduction.  
+`RC` scores less than -1.96 indicate that the individual's score showed a reliable improvement in depressive symptoms (i.e., reliably lower scores on the CESD-R).  
 
 \
 
@@ -705,7 +735,7 @@ improved_ppts
 
 #### Scatterplot with RC bounds
 
-All the data can be represented on a plot with bounds for the clinically significant change as follows:
+All the data can be represented on a plot with bounds for reliable change as follows:
 
 
 ```r
@@ -718,21 +748,21 @@ diet_change %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="07_pre_post_files/figure-html/unnamed-chunk-20-1.png" alt="Baseline vs. week 3 depressive symptom severity in the diet change group. Dotted lines denoted Reliable Change index bounds" width="85%" />
-<p class="caption">(\#fig:unnamed-chunk-20)Baseline vs. week 3 depressive symptom severity in the diet change group. Dotted lines denoted Reliable Change index bounds</p>
+<img src="07_pre_post_files/figure-html/unnamed-chunk-21-1.png" alt="Baseline vs. week 3 depressive symptom severity in the diet change group. Dotted lines denoted Reliable Change index bounds" width="85%" />
+<p class="caption">(\#fig:unnamed-chunk-21)Baseline vs. week 3 depressive symptom severity in the diet change group. Dotted lines denoted Reliable Change index bounds</p>
 </div>
 
 The black dashed lines are those plotted with `geom_abline()` and are created by multiplying `se_diff` by +1.96 and -1.96. 
 
-The points falling above the upper black dashed line indicate participants showing clinically significant worsening of depressive symptoms at the posttest compared to the the pretest. 
+The points falling above the upper black dashed line indicate participants showing reliable worsening of depressive symptoms at the posttest compared to the the pretest. 
 
-The points falling below the lower black dashed line are individuals showing a clinically significant improvement (i.e., fewer depressive symptoms) at the posttest. 
+The points falling below the lower black dashed line are individuals showing a reliable improvement (i.e., fewer depressive symptoms) at the posttest. 
 
-Francis et al. (2019) reported that 10 individuals showed a clinically significant improvement in the diet change group, as indicated by their RC scores. Only 4 individuals in the habitual diet group showed clinically significant change.
+Francis et al. (2019) reported that 10 individuals showed a reliable improvement in the diet change group, as indicated by their RC scores. Only 4 individuals in the habitual diet group were reported to show a reliable improvement.
 
-Count how many individuals fall below the lower black dashed line on the scatterplot, and can therefore be considered to meet the criteria for showing clinically significant change, as defined by the RC index? <select class='webex-select'><option value='blank'></option><option value=''>8</option><option value=''>9</option><option value='answer'>10</option><option value=''>11</option><option value=''>12</option></select>
+Count how many individuals fall below the lower black dashed line on the scatterplot, and can therefore be considered to meet the criteria for showing reliable improvement, as defined by the RC index? <select class='webex-select'><option value='blank'></option><option value=''>8</option><option value=''>9</option><option value='answer'>10</option><option value=''>11</option><option value=''>12</option></select>
 
-The same process could be followed for the `habitual_diet` group to compare the number of individuals showing clinically significant change according to the RC index between groups. Francis et al. (2019) reported that only 4 individuals in this group showed a clinically significant change. The code for this group is below. With the value of `se_diff` we've used here, a fifth person in this group has an RC index exceeding -1.96 (just). There's still half as many participants showing a clinically significant change, compared to the `diet_change` group.
+The same process could be followed for the `habitual_diet` group to compare the number of individuals showing reliable change according to the RC index between groups. The code for this group is below. With the value of `se_diff` we've used here, a fifth person in this group has an RC index (just) exceeding -1.96. There's still half as many participants showing a reliable change, compared to the `diet_change` group.
 
 The results obtained with RC index converge with those of the ANCOVA, and support the notion that a healthy diet can lead to improvement in the severity of depression symptoms. 
 
@@ -763,8 +793,8 @@ habitual_diet %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="07_pre_post_files/figure-html/unnamed-chunk-21-1.png" alt="Baseline vs. week 3 depressive symptom severity in the habitual diet group. Dotted lines denoted Reliable Change index bounds" width="85%" />
-<p class="caption">(\#fig:unnamed-chunk-21)Baseline vs. week 3 depressive symptom severity in the habitual diet group. Dotted lines denoted Reliable Change index bounds</p>
+<img src="07_pre_post_files/figure-html/unnamed-chunk-22-1.png" alt="Baseline vs. week 3 depressive symptom severity in the habitual diet group. Dotted lines denoted Reliable Change index bounds" width="85%" />
+<p class="caption">(\#fig:unnamed-chunk-22)Baseline vs. week 3 depressive symptom severity in the habitual diet group. Dotted lines denoted Reliable Change index bounds</p>
 </div>
 
 
@@ -784,7 +814,7 @@ There are three main approaches for measuring pre-post data when there is a trea
 * Analysis of the difference scores in a between-subjects ANOVA.
 * A 2 x 2 mixed ANOVA, with time (pre, post) as the within-subjects factor, and group (treatment, control) as the between-subjects factor.
 * An ANCOVA comparing posttest scores between groups, after accounting for pretest scores as a covariate. This is equivalent to a multiple regression of posttest scores on the basis of pretest scores and group (i.e., one continuous and one categorical predictor).
-* A result can be statistically significant, but not necessarily clinically significant. Various methods exist for establishing clinical significance, including using established scale cutoffs and the Reliable Change Index.
+* A result can be statistically significant, but not necessarily clinically significant. Various methods exist for establishing clinical significance, including using established scale cutoffs and using the Reliable Change Index.
 
 \
 
@@ -797,6 +827,6 @@ Francis H.M., Stevenson R.J., Chambers J.R., Gupta D., Newey B., Lim C.K. (2019)
 
 Jacobson, N. S., & Truax, P. (1991). Clinical significance: A statistical approach to defining meaningful change in psychotherapy research. _Journal of Consulting and Clinical Psychology_, _59_(1), 12–19. https://doi.org/10.1037/0022-006X.59.1.12
 
-O'Connell, N. S., Dai, L., Jiang, Y., Speiser, J. L., Ward, R., Wei, W., ... & Gebregziabher, M. (2017). Methods for analysis of pre-post data in clinical research: a comparison of five common methods._Journal of Biometrics & Biostatistics_, _8_(1), 1.
+O'Connell, N. S., Dai, L., Jiang, Y., Speiser, J. L., Ward, R., Wei, W., ... & Gebregziabher, M. (2017). Methods for analysis of pre-post data in clinical research: a comparison of five common methods. _Journal of Biometrics & Biostatistics_, _8_(1), 1.
 
 Radloff, L. S. (1977). The CES-D scale: A self-report depression scale for research in the general population. _Applied Psychological Measurement_, _1_(3), 385-401.
