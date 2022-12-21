@@ -8,7 +8,7 @@ bibliography:
 - packages.bib
 biblio-style: apalike
 link-citations: yes
-description: Course materials for PSYC753 2022
+description: Course materials for PSYC753 2023
 url: https://chrisjberry.github.io/datafluencyCB/
 github-repo: datafluencyCB
 ---
@@ -25,29 +25,31 @@ commented text
 # Overview {-}
 
 
-This workbook contains worksheets for the seven sessions given by **Chris Berry**:  
+This workbook contains worksheets for the seven sessions given by **Chris Berry**.  
 
-- 17/01/22. [Simple regression](#simple1)
+\
+
+- **Session 1.** 16/01/23 (Group 2) & 17/01/22 (Group 1). [Simple regression](#simple1)
  
-- 24/01/22. [Multiple regression 1: multiple continuous predictors](#multiple1)
+- **Session 2.** 23/01/23 (Group 2) & 24/01/23 (Group 1). [Multiple regression 1: multiple continuous](#multiple1)
 
-- 31/01/22. [ANOVA 1](#anova1)
+- **Session 3.** 30/01/23. [ANOVA 1](#anova1)
 
-- 07/02/22. [Multiple regression 2: one continuous, one categorical](#multiple2)
+- **Session 4.** 06/02/23. [Multiple regression 2: one continuous, one categorical](#multiple2)
 
-- 14/02/22. [Multiple regression 3: hierarchical regression](#multiple3)
+  (13/02/23. No session) 
 
-  (21/02/22. No session)
+- **Session 5.** 20/02/23. [Multiple regression 3: hierarchical regression](#multiple3)
 
-- 28/02/22. [ANOVA 2](#anova2)
+- **Session 6.** 27/02/23. [ANOVA 2](#anova2)
 
-- 07/03/22. [Pre-post data and clinically significant change](#prepost)
+- **Session 7.** 06/03/23. [Pre-post data and clinically significant change](#prepost)
 
 \
 
 It also contains a link to the:
 
-- the [Analysis Assessment](#assessment2022) (50% of module grade)
+- the [Analysis Assessment](#assessment2023) (50% of module grade)
 
 - [FAQs](#faqs)
 
@@ -62,9 +64,9 @@ Ben Whalley's materials from part 1 of PSYC753:
 
 * https://benwhalley.github.io/datafluency/
 
-The PSYC753 DLE page 2021-22:
+The PSYC753 DLE page 2022-23:
 
-* https://dle.plymouth.ac.uk/course/view.php?id=56923
+* https://dle.plymouth.ac.uk/course/view.php?id=63157
 
 
 \

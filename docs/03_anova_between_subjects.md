@@ -2,7 +2,7 @@
 
 *Chris Berry*
 \
-*2022*
+*2023*
 
 
 
@@ -498,7 +498,7 @@ anovaBF(score ~ group, data = data.frame(groups_Low_High))
 ## 
 ## Bayes factor analysis
 ## --------------
-## [1] group : 0.1774611 ±0%
+## [1] group : 0.1774611 ±0.06%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -894,7 +894,7 @@ anovaBF( distress ~ adversity, data = data.frame(resilience_high) )
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] adversity : 1.026598 ±0%
+## [1] adversity : 1.026598 ±0.02%
 ## 
 ## Against denominator:
 ##   Intercept only 

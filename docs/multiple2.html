@@ -5,20 +5,19 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Session 4 Multiple regression: one continuous, one categorical | PSYC753 Data Fluency: Analysis</title>
-  <meta name="description" content="Course materials for PSYC753 2022" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="Course materials for PSYC753 2023" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Session 4 Multiple regression: one continuous, one categorical | PSYC753 Data Fluency: Analysis" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://chrisjberry.github.io/datafluencyCB/" />
   
-  <meta property="og:description" content="Course materials for PSYC753 2022" />
+  <meta property="og:description" content="Course materials for PSYC753 2023" />
   <meta name="github-repo" content="datafluencyCB" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Session 4 Multiple regression: one continuous, one categorical | PSYC753 Data Fluency: Analysis" />
   
-  <meta name="twitter:description" content="Course materials for PSYC753 2022" />
+  <meta name="twitter:description" content="Course materials for PSYC753 2023" />
   
 
 <meta name="author" content="Chris Berry" />
@@ -32,7 +31,6 @@
   
 <link rel="prev" href="anova1.html"/>
 <link rel="next" href="multiple3.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -95,7 +94,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -108,7 +107,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -305,26 +304,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.1" data-path="prepost.html"><a href="prepost.html#worked-example-7"><i class="fa fa-check"></i><b>7.1.1</b> Worked example</a></li>
 <li class="chapter" data-level="7.1.2" data-path="prepost.html"><a href="prepost.html#read-in-the-data-6"><i class="fa fa-check"></i><b>7.1.2</b> Read in the data</a></li>
 <li class="chapter" data-level="7.1.3" data-path="prepost.html"><a href="prepost.html#plot-the-means-4"><i class="fa fa-check"></i><b>7.1.3</b> Plot the means</a></li>
-<li class="chapter" data-level="7.1.4" data-path="prepost.html"><a href="prepost.html#approach-1---difference-scores"><i class="fa fa-check"></i><b>7.1.4</b> Approach 1 - Difference scores</a></li>
-<li class="chapter" data-level="7.1.5" data-path="prepost.html"><a href="prepost.html#approach-2---mixed-anova"><i class="fa fa-check"></i><b>7.1.5</b> Approach 2 - Mixed ANOVA</a></li>
-<li class="chapter" data-level="7.1.6" data-path="prepost.html"><a href="prepost.html#method-3---ancova"><i class="fa fa-check"></i><b>7.1.6</b> Method 3 - ANCOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="prepost.html"><a href="prepost.html#which-method-should-you-use"><i class="fa fa-check"></i><b>7.2</b> Which method should you use?</a></li>
-<li class="chapter" data-level="7.3" data-path="prepost.html"><a href="prepost.html#clinical-significance"><i class="fa fa-check"></i><b>7.3</b> Clinical Significance</a></li>
-<li class="chapter" data-level="7.4" data-path="prepost.html"><a href="prepost.html#exercises-1"><i class="fa fa-check"></i><b>7.4</b> Exercises</a></li>
-<li class="chapter" data-level="7.5" data-path="prepost.html"><a href="prepost.html#further-knowledge-1"><i class="fa fa-check"></i><b>7.5</b> Further Knowledge</a></li>
-<li class="chapter" data-level="7.6" data-path="prepost.html"><a href="prepost.html#summary-5"><i class="fa fa-check"></i><b>7.6</b> Summary</a></li>
-<li class="chapter" data-level="7.7" data-path="prepost.html"><a href="prepost.html#references-6"><i class="fa fa-check"></i><b>7.7</b> References</a></li>
+<li class="chapter" data-level="7.2" data-path="prepost.html"><a href="prepost.html#approach-1---difference-scores"><i class="fa fa-check"></i><b>7.2</b> Approach 1 - Difference scores</a></li>
+<li class="chapter" data-level="7.3" data-path="prepost.html"><a href="prepost.html#approach-2---mixed-anova"><i class="fa fa-check"></i><b>7.3</b> Approach 2 - Mixed ANOVA</a></li>
+<li class="chapter" data-level="7.4" data-path="prepost.html"><a href="prepost.html#approach-3---ancova"><i class="fa fa-check"></i><b>7.4</b> Approach 3 - ANCOVA</a></li>
+<li class="chapter" data-level="7.5" data-path="prepost.html"><a href="prepost.html#which-approach-should-you-use"><i class="fa fa-check"></i><b>7.5</b> Which approach should you use?</a></li>
+<li class="chapter" data-level="7.6" data-path="prepost.html"><a href="prepost.html#clinical-significance"><i class="fa fa-check"></i><b>7.6</b> Clinical Significance</a></li>
+<li class="chapter" data-level="7.7" data-path="prepost.html"><a href="prepost.html#exercises-1"><i class="fa fa-check"></i><b>7.7</b> Exercises</a></li>
+<li class="chapter" data-level="7.8" data-path="prepost.html"><a href="prepost.html#further-knowledge-1"><i class="fa fa-check"></i><b>7.8</b> Further Knowledge</a></li>
+<li class="chapter" data-level="7.9" data-path="prepost.html"><a href="prepost.html#summary-5"><i class="fa fa-check"></i><b>7.9</b> Summary</a></li>
+<li class="chapter" data-level="7.10" data-path="prepost.html"><a href="prepost.html#references-6"><i class="fa fa-check"></i><b>7.10</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="assessment2022.html"><a href="assessment2022.html"><i class="fa fa-check"></i><b>8</b> Data Analysis Assessment 2022</a></li>
+<li class="chapter" data-level="8" data-path="assessment2023.html"><a href="assessment2023.html"><i class="fa fa-check"></i><b>8</b> Data Analysis Assessment 2023</a></li>
 <li class="chapter" data-level="9" data-path="faqs.html"><a href="faqs.html"><i class="fa fa-check"></i><b>9</b> FAQs</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="faqs.html"><a href="faqs.html#e-meaning"><i class="fa fa-check"></i><b>9.1</b> What does it mean if RStudio prints out "e-" next to a number?</a></li>
-<li class="chapter" data-level="9.2" data-path="faqs.html"><a href="faqs.html#how-should-i-write-up-the-report"><i class="fa fa-check"></i><b>9.2</b> How should I write up the report?</a></li>
-<li class="chapter" data-level="9.3" data-path="faqs.html"><a href="faqs.html#how-can-i-find-out-more-about-a-particular-function-so-i-can-explore-its-settings-etc."><i class="fa fa-check"></i><b>9.3</b> How can I find out more about a particular function, so I can explore its settings etc.?</a></li>
-<li class="chapter" data-level="9.4" data-path="faqs.html"><a href="faqs.html#after-downloading-my-.rmd-file-to-my-computer-how-do-i-open-it-again-in-rstudio"><i class="fa fa-check"></i><b>9.4</b> After downloading my .Rmd file to my computer, how do I open it again in RStudio?</a></li>
-<li class="chapter" data-level="9.5" data-path="faqs.html"><a href="faqs.html#how-do-i-apply-for-extenuating-circumstances"><i class="fa fa-check"></i><b>9.5</b> How do I apply for extenuating circumstances?</a></li>
-<li class="chapter" data-level="9.6" data-path="faqs.html"><a href="faqs.html#can-a-book-a-slot-in-your-office-hours"><i class="fa fa-check"></i><b>9.6</b> Can a book a slot in your office hours?</a></li>
+<li class="chapter" data-level="9.2" data-path="faqs.html"><a href="faqs.html#how-can-i-find-out-more-about-a-particular-function-so-i-can-explore-its-settings-etc."><i class="fa fa-check"></i><b>9.2</b> How can I find out more about a particular function, so I can explore its settings etc.?</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="divider"></li>
@@ -350,10 +345,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="multiple2" class="section level1" number="4">
-<h1><span class="header-section-number">Session 4</span> Multiple regression: one continuous, one categorical</h1>
+<div id="multiple2" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Session 4</span> Multiple regression: one continuous, one categorical<a href="multiple2.html#multiple2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>Chris Berry</em><br />
-<em>2022</em></p>
+<em>2023</em></p>
 <!--
 commented text
 commented text
@@ -364,8 +359,8 @@ div.exercise { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 <style>
 div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 </style>
-<div id="overview-4" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Overview</h2>
+<div id="overview-4" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Overview<a href="multiple2.html#overview-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><strong>Slides</strong> from the lecture part of the session: <a href="slides/PSYC753_L4_MultipleRegression2.pptx">Download</a></li>
 <li><strong>Slides</strong> for <a href="slides/PSYC753_Rmd_Support.pptx">Rmd support</a></li>
@@ -377,8 +372,8 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <p>This type of analysis can be used to see whether the relationship between two variables is the same or different across groups of individuals. For example, adherence to a particular treatment may be associated with attitudes towards the efficacy of the treatment, but the nature of the association may differ according to the type of psychological disorder a person has.</p>
 <p>Thus, in this type of analysis, in addition to looking at the ability of individual predictors to explain an outcome variable, we're able to look at their <em>combined</em> effect in explaining the outcome. This is referred to as an <strong>interaction effect</strong>. The interaction can tell us whether the relationship between one of the predictors and the outcome differs as a function of the levels of the other predictor variable.</p>
 </div>
-<div id="worked-example-4" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Worked example</h2>
+<div id="worked-example-4" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Worked example<a href="multiple2.html#worked-example-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Scientists often research things that are of personal interest to themselves. Do people end up trusting the researcher more when they have some personal investment in what they are researching? Altenmuller et al. (2021) looked at whether participants' trust in the researcher is related to 1) whether they are told that the researcher is personally affected by the research or not affected by their research, and 2) the participant's attitude towards the research topic.</p>
 <p>The data from Altenmuller et al.'s (2021) study (Experiment 2) are stored at the link below.</p>
 <p><a href="https://raw.githubusercontent.com/chrisjberry/Teaching/master/4_trust_data.csv" class="uri">https://raw.githubusercontent.com/chrisjberry/Teaching/master/4_trust_data.csv</a></p>
@@ -410,17 +405,17 @@ More about the data
 <p><br />
 </p>
 </div>
-<div id="read-in-the-data-2" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Read in the data</h2>
+<div id="read-in-the-data-2" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Read in the data<a href="multiple2.html#read-in-the-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Read in the data to <code>trust_data</code></p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="multiple2.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ensure tidyverse is loaded</span></span>
-<span id="cb100-2"><a href="multiple2.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(tidyverse)</span></span>
-<span id="cb100-3"><a href="multiple2.html#cb100-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-4"><a href="multiple2.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the data</span></span>
-<span id="cb100-5"><a href="multiple2.html#cb100-5" aria-hidden="true" tabindex="-1"></a>trust_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/4_trust_data.csv&#39;</span>)</span>
-<span id="cb100-6"><a href="multiple2.html#cb100-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-7"><a href="multiple2.html#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the data</span></span>
-<span id="cb100-8"><a href="multiple2.html#cb100-8" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="multiple2.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ensure tidyverse is loaded</span></span>
+<span id="cb101-2"><a href="multiple2.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(tidyverse)</span></span>
+<span id="cb101-3"><a href="multiple2.html#cb101-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-4"><a href="multiple2.html#cb101-4" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the data</span></span>
+<span id="cb101-5"><a href="multiple2.html#cb101-5" aria-hidden="true" tabindex="-1"></a>trust_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/4_trust_data.csv&#39;</span>)</span>
+<span id="cb101-6"><a href="multiple2.html#cb101-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-7"><a href="multiple2.html#cb101-7" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the data</span></span>
+<span id="cb101-8"><a href="multiple2.html#cb101-8" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -488,14 +483,14 @@ More about the data
 <p><br />
 </p>
 </div>
-<div id="visualise-the-data-2" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Visualise the data</h2>
+<div id="visualise-the-data-2" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Visualise the data<a href="multiple2.html#visualise-the-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Use a scatterplot to look at the relationship between <code>trustworthiness</code>, <code>attitude</code> and <code>group</code>. Use different colours for each <code>group</code> by specifying <code>colour = group</code> in <code>aes()</code>:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="multiple2.html#cb101-1" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
-<span id="cb101-2"><a href="multiple2.html#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> attitude, <span class="at">y =</span> trustworthiness, <span class="at">colour =</span> group )) <span class="sc">+</span></span>
-<span id="cb101-3"><a href="multiple2.html#cb101-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb101-4"><a href="multiple2.html#cb101-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb101-5"><a href="multiple2.html#cb101-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="multiple2.html#cb102-1" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
+<span id="cb102-2"><a href="multiple2.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> attitude, <span class="at">y =</span> trustworthiness, <span class="at">colour =</span> group )) <span class="sc">+</span></span>
+<span id="cb102-3"><a href="multiple2.html#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb102-4"><a href="multiple2.html#cb102-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb102-5"><a href="multiple2.html#cb102-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() </span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
 <img src="04_multiple_regression_2_files/figure-html/unnamed-chunk-3-1.png" alt="Trustworthiness vs. participant attitude to research" width="75%" />
 <p class="caption">
@@ -535,26 +530,26 @@ Go further with ggplot
 Further inspection
 </button>
 <p>It is good practice to inspect the distributions of the data prior to analysis, for example, with <code>geom_histogram()</code> or <code>geom_density()</code>. We can check if the data appear normally distributed, or positively or negatively skewed. We can also check for outliers using <code>geom_boxplot()</code>. Get to know your data!</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="multiple2.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the distribution of trustworthiness</span></span>
-<span id="cb102-2"><a href="multiple2.html#cb102-2" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
-<span id="cb102-3"><a href="multiple2.html#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(trustworthiness)) <span class="sc">+</span></span>
-<span id="cb102-4"><a href="multiple2.html#cb102-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() </span>
-<span id="cb102-5"><a href="multiple2.html#cb102-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-6"><a href="multiple2.html#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the distribution of attitude</span></span>
-<span id="cb102-7"><a href="multiple2.html#cb102-7" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
-<span id="cb102-8"><a href="multiple2.html#cb102-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(attitude)) <span class="sc">+</span></span>
-<span id="cb102-9"><a href="multiple2.html#cb102-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() </span>
-<span id="cb102-10"><a href="multiple2.html#cb102-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-11"><a href="multiple2.html#cb102-11" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain n in affected &amp; not_affected groups</span></span>
-<span id="cb102-12"><a href="multiple2.html#cb102-12" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
-<span id="cb102-13"><a href="multiple2.html#cb102-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
-<span id="cb102-14"><a href="multiple2.html#cb102-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="multiple2.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the distribution of trustworthiness</span></span>
+<span id="cb103-2"><a href="multiple2.html#cb103-2" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
+<span id="cb103-3"><a href="multiple2.html#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(trustworthiness)) <span class="sc">+</span></span>
+<span id="cb103-4"><a href="multiple2.html#cb103-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() </span>
+<span id="cb103-5"><a href="multiple2.html#cb103-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-6"><a href="multiple2.html#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the distribution of attitude</span></span>
+<span id="cb103-7"><a href="multiple2.html#cb103-7" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
+<span id="cb103-8"><a href="multiple2.html#cb103-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(attitude)) <span class="sc">+</span></span>
+<span id="cb103-9"><a href="multiple2.html#cb103-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() </span>
+<span id="cb103-10"><a href="multiple2.html#cb103-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-11"><a href="multiple2.html#cb103-11" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain n in affected &amp; not_affected groups</span></span>
+<span id="cb103-12"><a href="multiple2.html#cb103-12" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
+<span id="cb103-13"><a href="multiple2.html#cb103-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb103-14"><a href="multiple2.html#cb103-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
 </div>
 <p><br />
 </p>
 </div>
-<div id="evidence-for-the-interaction" class="section level2" number="4.5">
-<h2><span class="header-section-number">4.5</span> Evidence for the interaction</h2>
+<div id="evidence-for-the-interaction" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Evidence for the interaction<a href="multiple2.html#evidence-for-the-interaction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>An interaction between the <code>attitude</code> and <code>group</code> predictors is suggested by the scatterplot. That is, the association between <code>trustworthiness</code> and <code>attitude</code> appears to be different in the <code>affected</code> and <code>non_affected</code> groups. We may therefore want to include the interaction term in our multiple regression model and determine whether we have evidence for the interaction or not using Bayes factors.</p>
 <p>We'll do this in three steps:</p>
 <ul>
@@ -570,22 +565,22 @@ Further inspection
 </ul>
 <p><br />
 </p>
-<div id="model-without-the-interaction" class="section level3" number="4.5.1">
-<h3><span class="header-section-number">4.5.1</span> Model without the interaction</h3>
+<div id="model-without-the-interaction" class="section level3 hasAnchor" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> Model without the interaction<a href="multiple2.html#model-without-the-interaction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The model without an interaction looks like a typical multiple regression model with two predictors (from Session 2):</p>
 <p><code>model &lt;- lm(outcome ~ predictor_1 + predictor_2, data = mydata)</code></p>
 <p>As we did in the previous session, we need to also convert the categorical variable (<code>group</code>) to a <code>factor()</code> to ensure it's treated as categorical by R.</p>
 <p>Thus, for our data:</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="multiple2.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert group to a factor</span></span>
-<span id="cb103-2"><a href="multiple2.html#cb103-2" aria-hidden="true" tabindex="-1"></a>trust_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">factor</span>(group))</span>
-<span id="cb103-3"><a href="multiple2.html#cb103-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-4"><a href="multiple2.html#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model without the interaction</span></span>
-<span id="cb103-5"><a href="multiple2.html#cb103-5" aria-hidden="true" tabindex="-1"></a>without_interaction <span class="ot">&lt;-</span> <span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude <span class="sc">+</span> group, </span>
-<span id="cb103-6"><a href="multiple2.html#cb103-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data =</span> trust_data)</span>
-<span id="cb103-7"><a href="multiple2.html#cb103-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-8"><a href="multiple2.html#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="co"># R² for the model</span></span>
-<span id="cb103-9"><a href="multiple2.html#cb103-9" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
-<span id="cb103-10"><a href="multiple2.html#cb103-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(without_interaction)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="multiple2.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert group to a factor</span></span>
+<span id="cb104-2"><a href="multiple2.html#cb104-2" aria-hidden="true" tabindex="-1"></a>trust_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">factor</span>(group))</span>
+<span id="cb104-3"><a href="multiple2.html#cb104-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-4"><a href="multiple2.html#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model without the interaction</span></span>
+<span id="cb104-5"><a href="multiple2.html#cb104-5" aria-hidden="true" tabindex="-1"></a>without_interaction <span class="ot">&lt;-</span> <span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude <span class="sc">+</span> group, </span>
+<span id="cb104-6"><a href="multiple2.html#cb104-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data =</span> trust_data)</span>
+<span id="cb104-7"><a href="multiple2.html#cb104-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-8"><a href="multiple2.html#cb104-8" aria-hidden="true" tabindex="-1"></a><span class="co"># R² for the model</span></span>
+<span id="cb104-9"><a href="multiple2.html#cb104-9" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
+<span id="cb104-10"><a href="multiple2.html#cb104-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(without_interaction)</span></code></pre></div>
 <div class="kable-table">
 <table>
 <colgroup>
@@ -642,17 +637,17 @@ Further inspection
 <p><br />
 </p>
 <p>Next use <code>lmBF()</code> to obtain the BF for the model with no interaction:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="multiple2.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(BayesFactor)</span></span>
-<span id="cb104-2"><a href="multiple2.html#cb104-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-3"><a href="multiple2.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain BF for the model</span></span>
-<span id="cb104-4"><a href="multiple2.html#cb104-4" aria-hidden="true" tabindex="-1"></a>BF_without_interaction <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(trustworthiness <span class="sc">~</span> attitude <span class="sc">+</span> group,</span>
-<span id="cb104-5"><a href="multiple2.html#cb104-5" aria-hidden="true" tabindex="-1"></a>                               <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span>
-<span id="cb104-6"><a href="multiple2.html#cb104-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-7"><a href="multiple2.html#cb104-7" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the BF</span></span>
-<span id="cb104-8"><a href="multiple2.html#cb104-8" aria-hidden="true" tabindex="-1"></a>BF_without_interaction </span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="multiple2.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(BayesFactor)</span></span>
+<span id="cb105-2"><a href="multiple2.html#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-3"><a href="multiple2.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain BF for the model</span></span>
+<span id="cb105-4"><a href="multiple2.html#cb105-4" aria-hidden="true" tabindex="-1"></a>BF_without_interaction <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(trustworthiness <span class="sc">~</span> attitude <span class="sc">+</span> group,</span>
+<span id="cb105-5"><a href="multiple2.html#cb105-5" aria-hidden="true" tabindex="-1"></a>                               <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span>
+<span id="cb105-6"><a href="multiple2.html#cb105-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-7"><a href="multiple2.html#cb105-7" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the BF</span></span>
+<span id="cb105-8"><a href="multiple2.html#cb105-8" aria-hidden="true" tabindex="-1"></a>BF_without_interaction </span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] attitude + group : 0.1060058 ±2.38%
+## [1] attitude + group : 0.1054996 ±4.03%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -662,18 +657,18 @@ Further inspection
 <p><br />
 </p>
 </div>
-<div id="model-with-the-interaction" class="section level3" number="4.5.2">
-<h3><span class="header-section-number">4.5.2</span> Model with the interaction</h3>
+<div id="model-with-the-interaction" class="section level3 hasAnchor" number="4.5.2">
+<h3><span class="header-section-number">4.5.2</span> Model with the interaction<a href="multiple2.html#model-with-the-interaction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="tip">
 <p>To specify an interaction between two predictors, use the term <code>predictor1 * predictor2</code>. The <code>*</code> symbol means multiply, so the interaction term is simply the predictors multiplied together.</p>
 </div>
 <p>To specify the model with the interaction, add the interaction term <code>predictor1 * predictor2</code> to the model without the interaction term:</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="multiple2.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model with the interaction</span></span>
-<span id="cb106-2"><a href="multiple2.html#cb106-2" aria-hidden="true" tabindex="-1"></a>with_interaction <span class="ot">&lt;-</span> <span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group,</span>
-<span id="cb106-3"><a href="multiple2.html#cb106-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data =</span> trust_data)</span>
-<span id="cb106-4"><a href="multiple2.html#cb106-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-5"><a href="multiple2.html#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="co"># R² for the model</span></span>
-<span id="cb106-6"><a href="multiple2.html#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(with_interaction)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="multiple2.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model with the interaction</span></span>
+<span id="cb107-2"><a href="multiple2.html#cb107-2" aria-hidden="true" tabindex="-1"></a>with_interaction <span class="ot">&lt;-</span> <span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group,</span>
+<span id="cb107-3"><a href="multiple2.html#cb107-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data =</span> trust_data)</span>
+<span id="cb107-4"><a href="multiple2.html#cb107-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-5"><a href="multiple2.html#cb107-5" aria-hidden="true" tabindex="-1"></a><span class="co"># R² for the model</span></span>
+<span id="cb107-6"><a href="multiple2.html#cb107-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(with_interaction)</span></code></pre></div>
 <div class="kable-table">
 <table style="width:100%;">
 <colgroup>
@@ -730,16 +725,16 @@ Further inspection
 <p><br />
 </p>
 <p>Use <code>lmBF()</code> to obtain the BF for the model with the interaction:</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="multiple2.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain BF for the model</span></span>
-<span id="cb107-2"><a href="multiple2.html#cb107-2" aria-hidden="true" tabindex="-1"></a>BF_with_interaction <span class="ot">&lt;-</span> </span>
-<span id="cb107-3"><a href="multiple2.html#cb107-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(trustworthiness <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group,</span>
-<span id="cb107-4"><a href="multiple2.html#cb107-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span>
-<span id="cb107-5"><a href="multiple2.html#cb107-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-6"><a href="multiple2.html#cb107-6" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the BF</span></span>
-<span id="cb107-7"><a href="multiple2.html#cb107-7" aria-hidden="true" tabindex="-1"></a>BF_with_interaction </span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="multiple2.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain BF for the model</span></span>
+<span id="cb108-2"><a href="multiple2.html#cb108-2" aria-hidden="true" tabindex="-1"></a>BF_with_interaction <span class="ot">&lt;-</span> </span>
+<span id="cb108-3"><a href="multiple2.html#cb108-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(trustworthiness <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group,</span>
+<span id="cb108-4"><a href="multiple2.html#cb108-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span>
+<span id="cb108-5"><a href="multiple2.html#cb108-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-6"><a href="multiple2.html#cb108-6" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the BF</span></span>
+<span id="cb108-7"><a href="multiple2.html#cb108-7" aria-hidden="true" tabindex="-1"></a>BF_with_interaction </span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 30.59435 ±1.08%
+## [1] attitude + group + attitude * group : 31.85769 ±1.41%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -749,8 +744,8 @@ Further inspection
 <p><br />
 </p>
 </div>
-<div id="compare-the-model-with-and-without-the-interaction" class="section level3" number="4.5.3">
-<h3><span class="header-section-number">4.5.3</span> Compare the model with and without the interaction</h3>
+<div id="compare-the-model-with-and-without-the-interaction" class="section level3 hasAnchor" number="4.5.3">
+<h3><span class="header-section-number">4.5.3</span> Compare the model with and without the interaction<a href="multiple2.html#compare-the-model-with-and-without-the-interaction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To determine whether there's evidence for the interaction, we need to compare the Bayes factor for the model with and without the interaction.</p>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-17" class="exercise"><strong>Exercise 4.3  </strong></span>Bayes factors can be compared with the formula:</p>
@@ -764,12 +759,12 @@ Further inspection
 </div>
 <p><br />
 </p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="multiple2.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare BFs of models</span></span>
-<span id="cb109-2"><a href="multiple2.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to determine evidence for the interaction</span></span>
-<span id="cb109-3"><a href="multiple2.html#cb109-3" aria-hidden="true" tabindex="-1"></a>BF_with_interaction <span class="sc">/</span> BF_without_interaction</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="multiple2.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare BFs of models</span></span>
+<span id="cb110-2"><a href="multiple2.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to determine evidence for the interaction</span></span>
+<span id="cb110-3"><a href="multiple2.html#cb110-3" aria-hidden="true" tabindex="-1"></a>BF_with_interaction <span class="sc">/</span> BF_without_interaction</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 288.6101 ±2.61%
+## [1] attitude + group + attitude * group : 301.9698 ±4.27%
 ## 
 ## Against denominator:
 ##   trustworthiness ~ attitude + group 
@@ -792,8 +787,8 @@ Further inspection
 <ul>
 <li>According to comparison of BFs for the models, which statement is true?</li>
 </ul>
-<div id="radio_AYCDTPJLGE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_AYCDTPJLGE" value=""></input> <span>There's substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_AYCDTPJLGE" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_AYCDTPJLGE" value="answer"></input> <span>There's substantial evidence for an interaction between attitude and group</span></label>
+<div id="radio_WKWVFEOINN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WKWVFEOINN" value=""></input> <span>There's substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_WKWVFEOINN" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_WKWVFEOINN" value="answer"></input> <span>There's substantial evidence for an interaction between attitude and group</span></label>
 </div>
 <div class="webex-solution">
 <button>
@@ -807,8 +802,8 @@ Explanation
 </p>
 </div>
 </div>
-<div id="simple-slopes-analysis" class="section level2" number="4.6">
-<h2><span class="header-section-number">4.6</span> Simple slopes analysis</h2>
+<div id="simple-slopes-analysis" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Simple slopes analysis<a href="multiple2.html#simple-slopes-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Given evidence for the interaction, we can conduct follow-up analyses to further characterise it.</p>
 <div class="tip">
 <p>In a <strong>simple slopes analysis</strong> the relationship between the outcome and first predictor is examined at each level of the second predictor.</p>
@@ -819,21 +814,21 @@ Explanation
 <p><br />
 </p>
 <p>First, filter <code>trust_data</code> for each <code>group</code>:</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="multiple2.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;affected&quot;</span></span>
-<span id="cb111-2"><a href="multiple2.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="co"># store in affected_data</span></span>
-<span id="cb111-3"><a href="multiple2.html#cb111-3" aria-hidden="true" tabindex="-1"></a>affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;affected&quot;</span>)</span>
-<span id="cb111-4"><a href="multiple2.html#cb111-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-5"><a href="multiple2.html#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;not_affected&quot;</span></span>
-<span id="cb111-6"><a href="multiple2.html#cb111-6" aria-hidden="true" tabindex="-1"></a><span class="co"># store in not_affected_data</span></span>
-<span id="cb111-7"><a href="multiple2.html#cb111-7" aria-hidden="true" tabindex="-1"></a>not_affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;not_affected&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="multiple2.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;affected&quot;</span></span>
+<span id="cb112-2"><a href="multiple2.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="co"># store in affected_data</span></span>
+<span id="cb112-3"><a href="multiple2.html#cb112-3" aria-hidden="true" tabindex="-1"></a>affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;affected&quot;</span>)</span>
+<span id="cb112-4"><a href="multiple2.html#cb112-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-5"><a href="multiple2.html#cb112-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;not_affected&quot;</span></span>
+<span id="cb112-6"><a href="multiple2.html#cb112-6" aria-hidden="true" tabindex="-1"></a><span class="co"># store in not_affected_data</span></span>
+<span id="cb112-7"><a href="multiple2.html#cb112-7" aria-hidden="true" tabindex="-1"></a>not_affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;not_affected&quot;</span>)</span></code></pre></div>
 <p><br />
 </p>
 <p>Now run a simple regression of <code>trustworthiness ~ attitude</code> in each group. First, do the <code>affected</code> group:</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="multiple2.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group: simple regression coefficients</span></span>
-<span id="cb112-2"><a href="multiple2.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude, <span class="at">data =</span> affected_data)</span>
-<span id="cb112-3"><a href="multiple2.html#cb112-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb112-4"><a href="multiple2.html#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group: BF</span></span>
-<span id="cb112-5"><a href="multiple2.html#cb112-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(trustworthiness <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(affected_data))</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="multiple2.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group: simple regression coefficients</span></span>
+<span id="cb113-2"><a href="multiple2.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude, <span class="at">data =</span> affected_data)</span>
+<span id="cb113-3"><a href="multiple2.html#cb113-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-4"><a href="multiple2.html#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group: BF</span></span>
+<span id="cb113-5"><a href="multiple2.html#cb113-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(trustworthiness <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(affected_data))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = trustworthiness ~ attitude, data = affected_data)
@@ -863,11 +858,11 @@ Explanation
 <p><br />
 </p>
 <p>For the <code>not_affected</code> group:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="multiple2.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not_affected group: simple regression coefficients</span></span>
-<span id="cb114-2"><a href="multiple2.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude, <span class="at">data =</span> not_affected_data)</span>
-<span id="cb114-3"><a href="multiple2.html#cb114-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-4"><a href="multiple2.html#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="co"># not_affected group BF</span></span>
-<span id="cb114-5"><a href="multiple2.html#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(trustworthiness <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(not_affected_data))</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="multiple2.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not_affected group: simple regression coefficients</span></span>
+<span id="cb115-2"><a href="multiple2.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude, <span class="at">data =</span> not_affected_data)</span>
+<span id="cb115-3"><a href="multiple2.html#cb115-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-4"><a href="multiple2.html#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="co"># not_affected group BF</span></span>
+<span id="cb115-5"><a href="multiple2.html#cb115-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(trustworthiness <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(not_affected_data))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = trustworthiness ~ attitude, data = not_affected_data)
@@ -899,8 +894,8 @@ Explanation
 <p><br />
 </p>
 </div>
-<div id="exercises" class="section level2" number="4.7">
-<h2><span class="header-section-number">4.7</span> Exercises</h2>
+<div id="exercises" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Exercises<a href="multiple2.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-21" class="exercise"><strong>Exercise 4.7  </strong></span>Credibility</p>
 <p>In addition to asking about <em>trustworthiness</em>, Altenmuller et al. (2021) also asked participants how <em>credible</em> they found the researcher. The scores are stored in <code>credibility</code> in the <code>trust_data</code>; higher scores indicate greater perceived credibility. As with <code>trustworthiness</code>, the authors looked at whether <code>attitude</code> and <code>group</code> predicted <code>credibility</code>.</p>
@@ -920,11 +915,11 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="multiple2.html#cb116-1" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
-<span id="cb116-2"><a href="multiple2.html#cb116-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> attitude, <span class="at">y =</span> credibility, <span class="at">colour =</span> group )) <span class="sc">+</span></span>
-<span id="cb116-3"><a href="multiple2.html#cb116-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb116-4"><a href="multiple2.html#cb116-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb116-5"><a href="multiple2.html#cb116-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="multiple2.html#cb117-1" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
+<span id="cb117-2"><a href="multiple2.html#cb117-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> attitude, <span class="at">y =</span> credibility, <span class="at">colour =</span> group )) <span class="sc">+</span></span>
+<span id="cb117-3"><a href="multiple2.html#cb117-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb117-4"><a href="multiple2.html#cb117-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb117-5"><a href="multiple2.html#cb117-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() </span></code></pre></div>
 </div>
 <ul>
 <li>The slope for the <code>affected</code> group appears to be <select class='webex-select'><option value='blank'></option><option value=''>close to zero</option><option value='answer'>positive</option><option value=''>negative</option></select></li>
@@ -947,16 +942,16 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="multiple2.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model without an interaction</span></span>
-<span id="cb117-2"><a href="multiple2.html#cb117-2" aria-hidden="true" tabindex="-1"></a>credibility_no_interaction <span class="ot">&lt;-</span> </span>
-<span id="cb117-3"><a href="multiple2.html#cb117-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(credibility <span class="sc">~</span> attitude <span class="sc">+</span> group, <span class="at">data =</span> trust_data)</span>
-<span id="cb117-4"><a href="multiple2.html#cb117-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb117-5"><a href="multiple2.html#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
-<span id="cb117-6"><a href="multiple2.html#cb117-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(credibility_no_interaction)</span>
-<span id="cb117-7"><a href="multiple2.html#cb117-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb117-8"><a href="multiple2.html#cb117-8" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
-<span id="cb117-9"><a href="multiple2.html#cb117-9" aria-hidden="true" tabindex="-1"></a>BF_credibility_no_interaction <span class="ot">&lt;-</span></span>
-<span id="cb117-10"><a href="multiple2.html#cb117-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(credibility <span class="sc">~</span> attitude <span class="sc">+</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="multiple2.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model without an interaction</span></span>
+<span id="cb118-2"><a href="multiple2.html#cb118-2" aria-hidden="true" tabindex="-1"></a>credibility_no_interaction <span class="ot">&lt;-</span> </span>
+<span id="cb118-3"><a href="multiple2.html#cb118-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(credibility <span class="sc">~</span> attitude <span class="sc">+</span> group, <span class="at">data =</span> trust_data)</span>
+<span id="cb118-4"><a href="multiple2.html#cb118-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-5"><a href="multiple2.html#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
+<span id="cb118-6"><a href="multiple2.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(credibility_no_interaction)</span>
+<span id="cb118-7"><a href="multiple2.html#cb118-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-8"><a href="multiple2.html#cb118-8" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
+<span id="cb118-9"><a href="multiple2.html#cb118-9" aria-hidden="true" tabindex="-1"></a>BF_credibility_no_interaction <span class="ot">&lt;-</span></span>
+<span id="cb118-10"><a href="multiple2.html#cb118-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(credibility <span class="sc">~</span> attitude <span class="sc">+</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -975,16 +970,16 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="multiple2.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model with an interaction</span></span>
-<span id="cb118-2"><a href="multiple2.html#cb118-2" aria-hidden="true" tabindex="-1"></a>credibility_with_interaction <span class="ot">&lt;-</span> </span>
-<span id="cb118-3"><a href="multiple2.html#cb118-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(credibility <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group, <span class="at">data =</span> trust_data)</span>
-<span id="cb118-4"><a href="multiple2.html#cb118-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-5"><a href="multiple2.html#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
-<span id="cb118-6"><a href="multiple2.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(credibility_with_interaction)</span>
-<span id="cb118-7"><a href="multiple2.html#cb118-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-8"><a href="multiple2.html#cb118-8" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
-<span id="cb118-9"><a href="multiple2.html#cb118-9" aria-hidden="true" tabindex="-1"></a>BF_credibility_with_interaction <span class="ot">&lt;-</span></span>
-<span id="cb118-10"><a href="multiple2.html#cb118-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(credibility <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group, <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="multiple2.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model with an interaction</span></span>
+<span id="cb119-2"><a href="multiple2.html#cb119-2" aria-hidden="true" tabindex="-1"></a>credibility_with_interaction <span class="ot">&lt;-</span> </span>
+<span id="cb119-3"><a href="multiple2.html#cb119-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(credibility <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group, <span class="at">data =</span> trust_data)</span>
+<span id="cb119-4"><a href="multiple2.html#cb119-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-5"><a href="multiple2.html#cb119-5" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
+<span id="cb119-6"><a href="multiple2.html#cb119-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(credibility_with_interaction)</span>
+<span id="cb119-7"><a href="multiple2.html#cb119-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-8"><a href="multiple2.html#cb119-8" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
+<span id="cb119-9"><a href="multiple2.html#cb119-9" aria-hidden="true" tabindex="-1"></a>BF_credibility_with_interaction <span class="ot">&lt;-</span></span>
+<span id="cb119-10"><a href="multiple2.html#cb119-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(credibility <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group, <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1008,11 +1003,11 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="multiple2.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adj R-square difference</span></span>
-<span id="cb119-2"><a href="multiple2.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fl">0.21</span> <span class="sc">-</span> <span class="fl">0.15</span></span>
-<span id="cb119-3"><a href="multiple2.html#cb119-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-4"><a href="multiple2.html#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare BFs</span></span>
-<span id="cb119-5"><a href="multiple2.html#cb119-5" aria-hidden="true" tabindex="-1"></a>BF_credibility_with_interaction <span class="sc">/</span> BF_credibility_no_interaction</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="multiple2.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adj R-square difference</span></span>
+<span id="cb120-2"><a href="multiple2.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fl">0.21</span> <span class="sc">-</span> <span class="fl">0.15</span></span>
+<span id="cb120-3"><a href="multiple2.html#cb120-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-4"><a href="multiple2.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare BFs</span></span>
+<span id="cb120-5"><a href="multiple2.html#cb120-5" aria-hidden="true" tabindex="-1"></a>BF_credibility_with_interaction <span class="sc">/</span> BF_credibility_no_interaction</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1046,23 +1041,23 @@ Conduct one simple regression for the <code>not_affected</code> group.</p>
 <button>
 Code
 </button>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="multiple2.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;affected&quot;</span></span>
-<span id="cb120-2"><a href="multiple2.html#cb120-2" aria-hidden="true" tabindex="-1"></a>affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;affected&quot;</span>)</span>
-<span id="cb120-3"><a href="multiple2.html#cb120-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-4"><a href="multiple2.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;not_affected&quot;</span></span>
-<span id="cb120-5"><a href="multiple2.html#cb120-5" aria-hidden="true" tabindex="-1"></a>not_affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;not_affected&quot;</span>)</span>
-<span id="cb120-6"><a href="multiple2.html#cb120-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-7"><a href="multiple2.html#cb120-7" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group coefficients</span></span>
-<span id="cb120-8"><a href="multiple2.html#cb120-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(credibility <span class="sc">~</span> attitude, <span class="at">data =</span> affected_data)</span>
-<span id="cb120-9"><a href="multiple2.html#cb120-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-10"><a href="multiple2.html#cb120-10" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group BF</span></span>
-<span id="cb120-11"><a href="multiple2.html#cb120-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(credibility <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(affected_data))</span>
-<span id="cb120-12"><a href="multiple2.html#cb120-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-13"><a href="multiple2.html#cb120-13" aria-hidden="true" tabindex="-1"></a><span class="co"># not_affected group coefficients</span></span>
-<span id="cb120-14"><a href="multiple2.html#cb120-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(credibility <span class="sc">~</span> attitude, <span class="at">data =</span> not_affected_data)</span>
-<span id="cb120-15"><a href="multiple2.html#cb120-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-16"><a href="multiple2.html#cb120-16" aria-hidden="true" tabindex="-1"></a><span class="co"># not_affected group BF</span></span>
-<span id="cb120-17"><a href="multiple2.html#cb120-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(credibility <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(not_affected_data))</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="multiple2.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;affected&quot;</span></span>
+<span id="cb121-2"><a href="multiple2.html#cb121-2" aria-hidden="true" tabindex="-1"></a>affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;affected&quot;</span>)</span>
+<span id="cb121-3"><a href="multiple2.html#cb121-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-4"><a href="multiple2.html#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;not_affected&quot;</span></span>
+<span id="cb121-5"><a href="multiple2.html#cb121-5" aria-hidden="true" tabindex="-1"></a>not_affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;not_affected&quot;</span>)</span>
+<span id="cb121-6"><a href="multiple2.html#cb121-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-7"><a href="multiple2.html#cb121-7" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group coefficients</span></span>
+<span id="cb121-8"><a href="multiple2.html#cb121-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(credibility <span class="sc">~</span> attitude, <span class="at">data =</span> affected_data)</span>
+<span id="cb121-9"><a href="multiple2.html#cb121-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-10"><a href="multiple2.html#cb121-10" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group BF</span></span>
+<span id="cb121-11"><a href="multiple2.html#cb121-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(credibility <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(affected_data))</span>
+<span id="cb121-12"><a href="multiple2.html#cb121-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-13"><a href="multiple2.html#cb121-13" aria-hidden="true" tabindex="-1"></a><span class="co"># not_affected group coefficients</span></span>
+<span id="cb121-14"><a href="multiple2.html#cb121-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(credibility <span class="sc">~</span> attitude, <span class="at">data =</span> not_affected_data)</span>
+<span id="cb121-15"><a href="multiple2.html#cb121-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-16"><a href="multiple2.html#cb121-16" aria-hidden="true" tabindex="-1"></a><span class="co"># not_affected group BF</span></span>
+<span id="cb121-17"><a href="multiple2.html#cb121-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(credibility <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(not_affected_data))</span></code></pre></div>
 </div>
 </div>
 <p><br />
@@ -1086,11 +1081,11 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="multiple2.html#cb121-1" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
-<span id="cb121-2"><a href="multiple2.html#cb121-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> attitude, <span class="at">y =</span> evaluation, <span class="at">colour =</span> group )) <span class="sc">+</span></span>
-<span id="cb121-3"><a href="multiple2.html#cb121-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb121-4"><a href="multiple2.html#cb121-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb121-5"><a href="multiple2.html#cb121-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="multiple2.html#cb122-1" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> </span>
+<span id="cb122-2"><a href="multiple2.html#cb122-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> attitude, <span class="at">y =</span> evaluation, <span class="at">colour =</span> group )) <span class="sc">+</span></span>
+<span id="cb122-3"><a href="multiple2.html#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb122-4"><a href="multiple2.html#cb122-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb122-5"><a href="multiple2.html#cb122-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() </span></code></pre></div>
 </div>
 <ul>
 <li>The slope for the <code>affected</code> group appears to be <select class='webex-select'><option value='blank'></option><option value=''>close to zero</option><option value=''>positive</option><option value='answer'>negative</option></select></li>
@@ -1113,16 +1108,16 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="multiple2.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model without an interaction</span></span>
-<span id="cb122-2"><a href="multiple2.html#cb122-2" aria-hidden="true" tabindex="-1"></a>evaluation_no_interaction <span class="ot">&lt;-</span> </span>
-<span id="cb122-3"><a href="multiple2.html#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(evaluation <span class="sc">~</span> attitude <span class="sc">+</span> group, <span class="at">data =</span> trust_data)</span>
-<span id="cb122-4"><a href="multiple2.html#cb122-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-5"><a href="multiple2.html#cb122-5" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
-<span id="cb122-6"><a href="multiple2.html#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(evaluation_no_interaction)</span>
-<span id="cb122-7"><a href="multiple2.html#cb122-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-8"><a href="multiple2.html#cb122-8" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
-<span id="cb122-9"><a href="multiple2.html#cb122-9" aria-hidden="true" tabindex="-1"></a>BF_evaluation_no_interaction <span class="ot">&lt;-</span></span>
-<span id="cb122-10"><a href="multiple2.html#cb122-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(evaluation <span class="sc">~</span> attitude <span class="sc">+</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="multiple2.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model without an interaction</span></span>
+<span id="cb123-2"><a href="multiple2.html#cb123-2" aria-hidden="true" tabindex="-1"></a>evaluation_no_interaction <span class="ot">&lt;-</span> </span>
+<span id="cb123-3"><a href="multiple2.html#cb123-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(evaluation <span class="sc">~</span> attitude <span class="sc">+</span> group, <span class="at">data =</span> trust_data)</span>
+<span id="cb123-4"><a href="multiple2.html#cb123-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-5"><a href="multiple2.html#cb123-5" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
+<span id="cb123-6"><a href="multiple2.html#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(evaluation_no_interaction)</span>
+<span id="cb123-7"><a href="multiple2.html#cb123-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-8"><a href="multiple2.html#cb123-8" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
+<span id="cb123-9"><a href="multiple2.html#cb123-9" aria-hidden="true" tabindex="-1"></a>BF_evaluation_no_interaction <span class="ot">&lt;-</span></span>
+<span id="cb123-10"><a href="multiple2.html#cb123-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(evaluation <span class="sc">~</span> attitude <span class="sc">+</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1141,16 +1136,16 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="multiple2.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model with an interaction</span></span>
-<span id="cb123-2"><a href="multiple2.html#cb123-2" aria-hidden="true" tabindex="-1"></a>evaluation_with_interaction <span class="ot">&lt;-</span> </span>
-<span id="cb123-3"><a href="multiple2.html#cb123-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(evaluation <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group, <span class="at">data =</span> trust_data)</span>
-<span id="cb123-4"><a href="multiple2.html#cb123-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-5"><a href="multiple2.html#cb123-5" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
-<span id="cb123-6"><a href="multiple2.html#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(evaluation_with_interaction)</span>
-<span id="cb123-7"><a href="multiple2.html#cb123-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-8"><a href="multiple2.html#cb123-8" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
-<span id="cb123-9"><a href="multiple2.html#cb123-9" aria-hidden="true" tabindex="-1"></a>BF_evaluation_with_interaction <span class="ot">&lt;-</span></span>
-<span id="cb123-10"><a href="multiple2.html#cb123-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(evaluation <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group, <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="multiple2.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model with an interaction</span></span>
+<span id="cb124-2"><a href="multiple2.html#cb124-2" aria-hidden="true" tabindex="-1"></a>evaluation_with_interaction <span class="ot">&lt;-</span> </span>
+<span id="cb124-3"><a href="multiple2.html#cb124-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(evaluation <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group, <span class="at">data =</span> trust_data)</span>
+<span id="cb124-4"><a href="multiple2.html#cb124-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-5"><a href="multiple2.html#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
+<span id="cb124-6"><a href="multiple2.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(evaluation_with_interaction)</span>
+<span id="cb124-7"><a href="multiple2.html#cb124-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-8"><a href="multiple2.html#cb124-8" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
+<span id="cb124-9"><a href="multiple2.html#cb124-9" aria-hidden="true" tabindex="-1"></a>BF_evaluation_with_interaction <span class="ot">&lt;-</span></span>
+<span id="cb124-10"><a href="multiple2.html#cb124-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(evaluation <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group, <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1174,11 +1169,11 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="multiple2.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adj R-square difference</span></span>
-<span id="cb124-2"><a href="multiple2.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fl">0.27</span> <span class="sc">-</span> <span class="fl">0.20</span></span>
-<span id="cb124-3"><a href="multiple2.html#cb124-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-4"><a href="multiple2.html#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare BFs</span></span>
-<span id="cb124-5"><a href="multiple2.html#cb124-5" aria-hidden="true" tabindex="-1"></a>BF_evaluation_with_interaction <span class="sc">/</span> BF_evaluation_no_interaction</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="multiple2.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adj R-square difference</span></span>
+<span id="cb125-2"><a href="multiple2.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fl">0.27</span> <span class="sc">-</span> <span class="fl">0.20</span></span>
+<span id="cb125-3"><a href="multiple2.html#cb125-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-4"><a href="multiple2.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare BFs</span></span>
+<span id="cb125-5"><a href="multiple2.html#cb125-5" aria-hidden="true" tabindex="-1"></a>BF_evaluation_with_interaction <span class="sc">/</span> BF_evaluation_no_interaction</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1212,30 +1207,30 @@ Conduct one simple regression for the <code>not_affected</code> group.</p>
 <button>
 Code
 </button>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="multiple2.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;affected&quot;</span></span>
-<span id="cb125-2"><a href="multiple2.html#cb125-2" aria-hidden="true" tabindex="-1"></a>affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;affected&quot;</span>)</span>
-<span id="cb125-3"><a href="multiple2.html#cb125-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb125-4"><a href="multiple2.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;not_affected&quot;</span></span>
-<span id="cb125-5"><a href="multiple2.html#cb125-5" aria-hidden="true" tabindex="-1"></a>not_affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;not_affected&quot;</span>)</span>
-<span id="cb125-6"><a href="multiple2.html#cb125-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb125-7"><a href="multiple2.html#cb125-7" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group</span></span>
-<span id="cb125-8"><a href="multiple2.html#cb125-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(evaluation <span class="sc">~</span> attitude, <span class="at">data =</span> affected_data)</span>
-<span id="cb125-9"><a href="multiple2.html#cb125-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb125-10"><a href="multiple2.html#cb125-10" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group BF</span></span>
-<span id="cb125-11"><a href="multiple2.html#cb125-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(evaluation <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(affected_data))</span>
-<span id="cb125-12"><a href="multiple2.html#cb125-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb125-13"><a href="multiple2.html#cb125-13" aria-hidden="true" tabindex="-1"></a><span class="co"># not_affected group</span></span>
-<span id="cb125-14"><a href="multiple2.html#cb125-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(evaluation <span class="sc">~</span> attitude, <span class="at">data =</span> not_affected_data)</span>
-<span id="cb125-15"><a href="multiple2.html#cb125-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb125-16"><a href="multiple2.html#cb125-16" aria-hidden="true" tabindex="-1"></a><span class="co"># not affected group BF</span></span>
-<span id="cb125-17"><a href="multiple2.html#cb125-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(evaluation <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(not_affected_data))</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="multiple2.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;affected&quot;</span></span>
+<span id="cb126-2"><a href="multiple2.html#cb126-2" aria-hidden="true" tabindex="-1"></a>affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;affected&quot;</span>)</span>
+<span id="cb126-3"><a href="multiple2.html#cb126-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-4"><a href="multiple2.html#cb126-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for when group is equal to &quot;not_affected&quot;</span></span>
+<span id="cb126-5"><a href="multiple2.html#cb126-5" aria-hidden="true" tabindex="-1"></a>not_affected_data <span class="ot">&lt;-</span> trust_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;not_affected&quot;</span>)</span>
+<span id="cb126-6"><a href="multiple2.html#cb126-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-7"><a href="multiple2.html#cb126-7" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group</span></span>
+<span id="cb126-8"><a href="multiple2.html#cb126-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(evaluation <span class="sc">~</span> attitude, <span class="at">data =</span> affected_data)</span>
+<span id="cb126-9"><a href="multiple2.html#cb126-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-10"><a href="multiple2.html#cb126-10" aria-hidden="true" tabindex="-1"></a><span class="co"># affected group BF</span></span>
+<span id="cb126-11"><a href="multiple2.html#cb126-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(evaluation <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(affected_data))</span>
+<span id="cb126-12"><a href="multiple2.html#cb126-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-13"><a href="multiple2.html#cb126-13" aria-hidden="true" tabindex="-1"></a><span class="co"># not_affected group</span></span>
+<span id="cb126-14"><a href="multiple2.html#cb126-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(evaluation <span class="sc">~</span> attitude, <span class="at">data =</span> not_affected_data)</span>
+<span id="cb126-15"><a href="multiple2.html#cb126-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-16"><a href="multiple2.html#cb126-16" aria-hidden="true" tabindex="-1"></a><span class="co"># not affected group BF</span></span>
+<span id="cb126-17"><a href="multiple2.html#cb126-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(evaluation <span class="sc">~</span> attitude, <span class="at">data =</span> <span class="fu">data.frame</span>(not_affected_data))</span></code></pre></div>
 </div>
 </div>
 <p><br />
 </p>
 </div>
-<div id="further-exercise" class="section level2" number="4.8">
-<h2><span class="header-section-number">4.8</span> Further exercise</h2>
+<div id="further-exercise" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> Further exercise<a href="multiple2.html#further-exercise" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-23" class="exercise"><strong>Exercise 4.9  </strong></span>No interaction</p>
 <p>Using the data from Teychenne and Hinkley (2016) that we used in Session 1, determine whether there is evidence for an interaction between <code>anxiety_score</code> and level of <code>education</code> in the prediction of <code>screen_time</code>. <code>education</code> is made up of groups 'No uni degree' and 'University degree'.</p>
@@ -1257,61 +1252,61 @@ Code
 <button>
 Solution code
 </button>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="multiple2.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read the data to R using read_csv()</span></span>
-<span id="cb126-2"><a href="multiple2.html#cb126-2" aria-hidden="true" tabindex="-1"></a>mentalh <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/1_mental_health_data.csv&#39;</span>)</span>
-<span id="cb126-3"><a href="multiple2.html#cb126-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb126-4"><a href="multiple2.html#cb126-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot</span></span>
-<span id="cb126-5"><a href="multiple2.html#cb126-5" aria-hidden="true" tabindex="-1"></a>mentalh <span class="sc">%&gt;%</span> </span>
-<span id="cb126-6"><a href="multiple2.html#cb126-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> anxiety_score, <span class="at">y =</span> screen_time, <span class="at">colour =</span> education )) <span class="sc">+</span></span>
-<span id="cb126-7"><a href="multiple2.html#cb126-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb126-8"><a href="multiple2.html#cb126-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb126-9"><a href="multiple2.html#cb126-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() </span>
-<span id="cb126-10"><a href="multiple2.html#cb126-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb126-11"><a href="multiple2.html#cb126-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model without an interaction</span></span>
-<span id="cb126-12"><a href="multiple2.html#cb126-12" aria-hidden="true" tabindex="-1"></a>screen_time_no_interaction <span class="ot">&lt;-</span> </span>
-<span id="cb126-13"><a href="multiple2.html#cb126-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(screen_time <span class="sc">~</span> anxiety_score <span class="sc">+</span> education, <span class="at">data =</span> mentalh)</span>
-<span id="cb126-14"><a href="multiple2.html#cb126-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb126-15"><a href="multiple2.html#cb126-15" aria-hidden="true" tabindex="-1"></a><span class="co"># in library(broom)</span></span>
-<span id="cb126-16"><a href="multiple2.html#cb126-16" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(screen_time_no_interaction) <span class="co"># adj R² = 0.06</span></span>
-<span id="cb126-17"><a href="multiple2.html#cb126-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb126-18"><a href="multiple2.html#cb126-18" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
-<span id="cb126-19"><a href="multiple2.html#cb126-19" aria-hidden="true" tabindex="-1"></a>BF_screen_time_no_interaction <span class="ot">&lt;-</span></span>
-<span id="cb126-20"><a href="multiple2.html#cb126-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(screen_time <span class="sc">~</span> anxiety_score <span class="sc">+</span> education, <span class="at">data =</span> <span class="fu">data.frame</span>(mentalh))</span>
-<span id="cb126-21"><a href="multiple2.html#cb126-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb126-22"><a href="multiple2.html#cb126-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model with an interaction</span></span>
-<span id="cb126-23"><a href="multiple2.html#cb126-23" aria-hidden="true" tabindex="-1"></a>screen_time_with_interaction <span class="ot">&lt;-</span> </span>
-<span id="cb126-24"><a href="multiple2.html#cb126-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(screen_time <span class="sc">~</span> anxiety_score <span class="sc">+</span> education <span class="sc">+</span> anxiety_score<span class="sc">*</span>education, <span class="at">data =</span> mentalh)</span>
-<span id="cb126-25"><a href="multiple2.html#cb126-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb126-26"><a href="multiple2.html#cb126-26" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
-<span id="cb126-27"><a href="multiple2.html#cb126-27" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(screen_time_with_interaction)  <span class="co"># adj R² = 0.06</span></span>
-<span id="cb126-28"><a href="multiple2.html#cb126-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb126-29"><a href="multiple2.html#cb126-29" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
-<span id="cb126-30"><a href="multiple2.html#cb126-30" aria-hidden="true" tabindex="-1"></a>BF_screen_time_with_interaction <span class="ot">&lt;-</span></span>
-<span id="cb126-31"><a href="multiple2.html#cb126-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(screen_time <span class="sc">~</span> anxiety_score <span class="sc">+</span> education <span class="sc">+</span> anxiety_score<span class="sc">*</span>education, <span class="at">data =</span> <span class="fu">data.frame</span>(mentalh))</span>
-<span id="cb126-32"><a href="multiple2.html#cb126-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb126-33"><a href="multiple2.html#cb126-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Adj R-square difference</span></span>
-<span id="cb126-34"><a href="multiple2.html#cb126-34" aria-hidden="true" tabindex="-1"></a><span class="fl">0.06</span> <span class="sc">-</span> <span class="fl">0.06</span></span>
-<span id="cb126-35"><a href="multiple2.html#cb126-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb126-36"><a href="multiple2.html#cb126-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare BFs</span></span>
-<span id="cb126-37"><a href="multiple2.html#cb126-37" aria-hidden="true" tabindex="-1"></a>BF_screen_time_with_interaction <span class="sc">/</span> BF_screen_time_no_interaction</span>
-<span id="cb126-38"><a href="multiple2.html#cb126-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb126-39"><a href="multiple2.html#cb126-39" aria-hidden="true" tabindex="-1"></a><span class="co"># There&#39;s no evidence for the interaction, </span></span>
-<span id="cb126-40"><a href="multiple2.html#cb126-40" aria-hidden="true" tabindex="-1"></a><span class="co"># therefore assume additive model</span></span>
-<span id="cb126-41"><a href="multiple2.html#cb126-41" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb126-42"><a href="multiple2.html#cb126-42" aria-hidden="true" tabindex="-1"></a><span class="co"># BF of unique contribution of anxiety_score in model with education</span></span>
-<span id="cb126-43"><a href="multiple2.html#cb126-43" aria-hidden="true" tabindex="-1"></a>BF_screen_time_no_interaction <span class="sc">/</span> <span class="fu">lmBF</span>(screen_time <span class="sc">~</span> education, <span class="at">data =</span> <span class="fu">data.frame</span>(mentalh))</span>
-<span id="cb126-44"><a href="multiple2.html#cb126-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb126-45"><a href="multiple2.html#cb126-45" aria-hidden="true" tabindex="-1"></a><span class="co"># BF of unique contribution of education in model with anxiety_score</span></span>
-<span id="cb126-46"><a href="multiple2.html#cb126-46" aria-hidden="true" tabindex="-1"></a>BF_screen_time_no_interaction <span class="sc">/</span> <span class="fu">lmBF</span>(screen_time <span class="sc">~</span> anxiety_score, <span class="at">data =</span> <span class="fu">data.frame</span>(mentalh))</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="multiple2.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read the data to R using read_csv()</span></span>
+<span id="cb127-2"><a href="multiple2.html#cb127-2" aria-hidden="true" tabindex="-1"></a>mentalh <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/1_mental_health_data.csv&#39;</span>)</span>
+<span id="cb127-3"><a href="multiple2.html#cb127-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-4"><a href="multiple2.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot</span></span>
+<span id="cb127-5"><a href="multiple2.html#cb127-5" aria-hidden="true" tabindex="-1"></a>mentalh <span class="sc">%&gt;%</span> </span>
+<span id="cb127-6"><a href="multiple2.html#cb127-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> anxiety_score, <span class="at">y =</span> screen_time, <span class="at">colour =</span> education )) <span class="sc">+</span></span>
+<span id="cb127-7"><a href="multiple2.html#cb127-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb127-8"><a href="multiple2.html#cb127-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb127-9"><a href="multiple2.html#cb127-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() </span>
+<span id="cb127-10"><a href="multiple2.html#cb127-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-11"><a href="multiple2.html#cb127-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model without an interaction</span></span>
+<span id="cb127-12"><a href="multiple2.html#cb127-12" aria-hidden="true" tabindex="-1"></a>screen_time_no_interaction <span class="ot">&lt;-</span> </span>
+<span id="cb127-13"><a href="multiple2.html#cb127-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(screen_time <span class="sc">~</span> anxiety_score <span class="sc">+</span> education, <span class="at">data =</span> mentalh)</span>
+<span id="cb127-14"><a href="multiple2.html#cb127-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-15"><a href="multiple2.html#cb127-15" aria-hidden="true" tabindex="-1"></a><span class="co"># in library(broom)</span></span>
+<span id="cb127-16"><a href="multiple2.html#cb127-16" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(screen_time_no_interaction) <span class="co"># adj R² = 0.06</span></span>
+<span id="cb127-17"><a href="multiple2.html#cb127-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-18"><a href="multiple2.html#cb127-18" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
+<span id="cb127-19"><a href="multiple2.html#cb127-19" aria-hidden="true" tabindex="-1"></a>BF_screen_time_no_interaction <span class="ot">&lt;-</span></span>
+<span id="cb127-20"><a href="multiple2.html#cb127-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(screen_time <span class="sc">~</span> anxiety_score <span class="sc">+</span> education, <span class="at">data =</span> <span class="fu">data.frame</span>(mentalh))</span>
+<span id="cb127-21"><a href="multiple2.html#cb127-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-22"><a href="multiple2.html#cb127-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the model with an interaction</span></span>
+<span id="cb127-23"><a href="multiple2.html#cb127-23" aria-hidden="true" tabindex="-1"></a>screen_time_with_interaction <span class="ot">&lt;-</span> </span>
+<span id="cb127-24"><a href="multiple2.html#cb127-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(screen_time <span class="sc">~</span> anxiety_score <span class="sc">+</span> education <span class="sc">+</span> anxiety_score<span class="sc">*</span>education, <span class="at">data =</span> mentalh)</span>
+<span id="cb127-25"><a href="multiple2.html#cb127-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-26"><a href="multiple2.html#cb127-26" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom)</span></span>
+<span id="cb127-27"><a href="multiple2.html#cb127-27" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(screen_time_with_interaction)  <span class="co"># adj R² = 0.06</span></span>
+<span id="cb127-28"><a href="multiple2.html#cb127-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-29"><a href="multiple2.html#cb127-29" aria-hidden="true" tabindex="-1"></a><span class="co"># BF model</span></span>
+<span id="cb127-30"><a href="multiple2.html#cb127-30" aria-hidden="true" tabindex="-1"></a>BF_screen_time_with_interaction <span class="ot">&lt;-</span></span>
+<span id="cb127-31"><a href="multiple2.html#cb127-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(screen_time <span class="sc">~</span> anxiety_score <span class="sc">+</span> education <span class="sc">+</span> anxiety_score<span class="sc">*</span>education, <span class="at">data =</span> <span class="fu">data.frame</span>(mentalh))</span>
+<span id="cb127-32"><a href="multiple2.html#cb127-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-33"><a href="multiple2.html#cb127-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Adj R-square difference</span></span>
+<span id="cb127-34"><a href="multiple2.html#cb127-34" aria-hidden="true" tabindex="-1"></a><span class="fl">0.06</span> <span class="sc">-</span> <span class="fl">0.06</span></span>
+<span id="cb127-35"><a href="multiple2.html#cb127-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-36"><a href="multiple2.html#cb127-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare BFs</span></span>
+<span id="cb127-37"><a href="multiple2.html#cb127-37" aria-hidden="true" tabindex="-1"></a>BF_screen_time_with_interaction <span class="sc">/</span> BF_screen_time_no_interaction</span>
+<span id="cb127-38"><a href="multiple2.html#cb127-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-39"><a href="multiple2.html#cb127-39" aria-hidden="true" tabindex="-1"></a><span class="co"># There&#39;s no evidence for the interaction, </span></span>
+<span id="cb127-40"><a href="multiple2.html#cb127-40" aria-hidden="true" tabindex="-1"></a><span class="co"># therefore assume additive model</span></span>
+<span id="cb127-41"><a href="multiple2.html#cb127-41" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb127-42"><a href="multiple2.html#cb127-42" aria-hidden="true" tabindex="-1"></a><span class="co"># BF of unique contribution of anxiety_score in model with education</span></span>
+<span id="cb127-43"><a href="multiple2.html#cb127-43" aria-hidden="true" tabindex="-1"></a>BF_screen_time_no_interaction <span class="sc">/</span> <span class="fu">lmBF</span>(screen_time <span class="sc">~</span> education, <span class="at">data =</span> <span class="fu">data.frame</span>(mentalh))</span>
+<span id="cb127-44"><a href="multiple2.html#cb127-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-45"><a href="multiple2.html#cb127-45" aria-hidden="true" tabindex="-1"></a><span class="co"># BF of unique contribution of education in model with anxiety_score</span></span>
+<span id="cb127-46"><a href="multiple2.html#cb127-46" aria-hidden="true" tabindex="-1"></a>BF_screen_time_no_interaction <span class="sc">/</span> <span class="fu">lmBF</span>(screen_time <span class="sc">~</span> anxiety_score, <span class="at">data =</span> <span class="fu">data.frame</span>(mentalh))</span></code></pre></div>
 </div>
 </div>
 <p><br />
 </p>
 </div>
-<div id="further-knowledge" class="section level2" number="4.9">
-<h2><span class="header-section-number">4.9</span> Further knowledge</h2>
-<div id="moderation" class="section level3" number="4.9.1">
-<h3><span class="header-section-number">4.9.1</span> Moderation</h3>
+<div id="further-knowledge" class="section level2 hasAnchor" number="4.9">
+<h2><span class="header-section-number">4.9</span> Further knowledge<a href="multiple2.html#further-knowledge" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="moderation" class="section level3 hasAnchor" number="4.9.1">
+<h3><span class="header-section-number">4.9.1</span> Moderation<a href="multiple2.html#moderation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="webex-solution">
 <button>
 Moderation
@@ -1330,15 +1325,15 @@ Moderation
 <p><br />
 </p>
 </div>
-<div id="coefficients" class="section level3" number="4.9.2">
-<h3><span class="header-section-number">4.9.2</span> Coefficients</h3>
+<div id="coefficients" class="section level3 hasAnchor" number="4.9.2">
+<h3><span class="header-section-number">4.9.2</span> Coefficients<a href="multiple2.html#coefficients" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Only for those wanting a deeper understanding.</p>
 <div class="webex-solution">
 <button>
 Coefficients
 </button>
 <p>If we obtain the coefficients for the full regression model (with the interaction), we can write out the regression equation:</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="multiple2.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group, <span class="at">data =</span> trust_data)</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="multiple2.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude <span class="sc">+</span> group <span class="sc">+</span> attitude<span class="sc">*</span>group, <span class="at">data =</span> trust_data)</span></code></pre></div>
 <p><br />
 </p>
 <p><span class="math inline">\(Predicted\ outcome = a + b_1X_1 + b_2X_2 + b_3X_1X_2\)</span></p>
@@ -1353,18 +1348,18 @@ Coefficients
 <p><br />
 </p>
 <p>Thus, taking the regression equation and substituting <code>group</code> = 0 for the <code>affected</code> group:</p>
-<p><span class="math display">\[ 
+<p><span class="math display">\[
 \begin{align}
 Predicted\ trustworthiness    &amp;= 3.96 + 0.18(attitude) + (1.13\times0) - 0.28(attitude\times0)\\
                               &amp;= 3.96 + 0.18(attitude) + 0 - 0 \\
-                              &amp;= 3.96 + 0.18(attitude) 
+                              &amp;= 3.96 + 0.18(attitude)
 \end{align}
 \]</span>
 The intercept (3.96) and slope (0.18) in this simple regression equation match those obtained for the <code>affected</code> group in the earlier simple slopes analysis.</p>
 <p><br />
 </p>
 <p>Next, taking the full regression equation and substituting <code>group</code> = 1 for the <code>not_affected</code> group:</p>
-<p><span class="math display">\[ 
+<p><span class="math display">\[
 \begin{align}
 Predicted\ trustworthiness    &amp;= 3.96 + 0.18(attitude) + (1.13\times1) - 0.28(attitude\times1)\\
                               &amp;= 3.96 + 0.18(attitude) + 1.13 - 0.28(attitude) \\
@@ -1378,8 +1373,8 @@ Predicted\ trustworthiness    &amp;= 3.96 + 0.18(attitude) + (1.13\times1) - 0.2
 <p><br />
 </p>
 </div>
-<div id="centering" class="section level3" number="4.9.3">
-<h3><span class="header-section-number">4.9.3</span> Centering</h3>
+<div id="centering" class="section level3 hasAnchor" number="4.9.3">
+<h3><span class="header-section-number">4.9.3</span> Centering<a href="multiple2.html#centering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Again, only for those wanting deeper knowledge.</p>
 <div class="webex-solution">
 <button>
@@ -1388,28 +1383,28 @@ Centering
 <p>When testing for moderation effects, it is common to <em>center</em> the predictor variables prior to the analysis. (Indeed, Altenmuller et al. (2021) centered <code>attitude</code> prior to running their analyses.) Centering is where you subtract the mean of a variable from every score of that variable. For example, to center the <code>attitude</code> scores, we'd obtain the mean of <code>attitude</code>, and then subtract that value from each of our <code>attitude</code> scores. Thus, a participant with a score of 0 on the centered attitude score would therefore have an attitude value that is equal to the mean.</p>
 <p>Centering is usually performed to help increase the interpretability of the coefficients of the predictor variables in a model with an interaction. It can also help to reduce the chances of multicollinearity between the predictor variables and the interaction term. Multicollinearity can occur because the interaction term is derived from the individual predictors themselves (by multiplying them together).</p>
 <p><code>scale()</code> can be used to center variables automatically. Set the option <code>center = TRUE</code> to center the variable. Setting the option <code>scale = TRUE</code> would also standardise the variable (i.e., divide each score by the standard deviation, to create <em>z</em>-scores), so <code>scale = FALSE</code> means that we won't also standardise the scores:</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="multiple2.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># center the attitude scores</span></span>
-<span id="cb128-2"><a href="multiple2.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use mutate() to create a new variable in trust_data</span></span>
-<span id="cb128-3"><a href="multiple2.html#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="co"># called attitude_centered</span></span>
-<span id="cb128-4"><a href="multiple2.html#cb128-4" aria-hidden="true" tabindex="-1"></a>trust_data <span class="ot">&lt;-</span> </span>
-<span id="cb128-5"><a href="multiple2.html#cb128-5" aria-hidden="true" tabindex="-1"></a>  trust_data <span class="sc">%&gt;%</span> </span>
-<span id="cb128-6"><a href="multiple2.html#cb128-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">attitude_centered =</span> <span class="fu">scale</span>(attitude, <span class="at">center =</span> <span class="cn">TRUE</span>, <span class="at">scale =</span> <span class="cn">FALSE</span>)[,<span class="dv">1</span>] )</span>
-<span id="cb128-7"><a href="multiple2.html#cb128-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb128-8"><a href="multiple2.html#cb128-8" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the means to check that centered scores have mean of 0</span></span>
-<span id="cb128-9"><a href="multiple2.html#cb128-9" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">mean</span>(attitude), <span class="fu">mean</span>(attitude_centered))</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="multiple2.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># center the attitude scores</span></span>
+<span id="cb129-2"><a href="multiple2.html#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use mutate() to create a new variable in trust_data</span></span>
+<span id="cb129-3"><a href="multiple2.html#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="co"># called attitude_centered</span></span>
+<span id="cb129-4"><a href="multiple2.html#cb129-4" aria-hidden="true" tabindex="-1"></a>trust_data <span class="ot">&lt;-</span> </span>
+<span id="cb129-5"><a href="multiple2.html#cb129-5" aria-hidden="true" tabindex="-1"></a>  trust_data <span class="sc">%&gt;%</span> </span>
+<span id="cb129-6"><a href="multiple2.html#cb129-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">attitude_centered =</span> <span class="fu">scale</span>(attitude, <span class="at">center =</span> <span class="cn">TRUE</span>, <span class="at">scale =</span> <span class="cn">FALSE</span>)[,<span class="dv">1</span>] )</span>
+<span id="cb129-7"><a href="multiple2.html#cb129-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-8"><a href="multiple2.html#cb129-8" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the means to check that centered scores have mean of 0</span></span>
+<span id="cb129-9"><a href="multiple2.html#cb129-9" aria-hidden="true" tabindex="-1"></a>trust_data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">mean</span>(attitude), <span class="fu">mean</span>(attitude_centered))</span></code></pre></div>
 <p>Before centering, the mean of the <code>attitude</code> scores was 4.26. After centering, the mean (of <code>attitude_centered</code>) is 0, or close enough to zero, being 4.08 x 10<sup>-16</sup>, more precisely because there's some rounding error along the way.</p>
 <p><br />
 </p>
 <p>Now re-run the analysis using <code>attitude_centered</code> in place of <code>attitude</code> and look at adjusted R<sup>2</sup> and the BF:</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="multiple2.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># full model with attitude_centered</span></span>
-<span id="cb129-2"><a href="multiple2.html#cb129-2" aria-hidden="true" tabindex="-1"></a>full_centered <span class="ot">&lt;-</span> <span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude_centered <span class="sc">+</span> group <span class="sc">+</span> attitude_centered<span class="sc">*</span>group, <span class="at">data =</span> trust_data)</span>
-<span id="cb129-3"><a href="multiple2.html#cb129-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb129-4"><a href="multiple2.html#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="co"># R-squared</span></span>
-<span id="cb129-5"><a href="multiple2.html#cb129-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(full_centered)</span>
-<span id="cb129-6"><a href="multiple2.html#cb129-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb129-7"><a href="multiple2.html#cb129-7" aria-hidden="true" tabindex="-1"></a><span class="co"># BF</span></span>
-<span id="cb129-8"><a href="multiple2.html#cb129-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(trustworthiness <span class="sc">~</span> attitude_centered <span class="sc">+</span> group <span class="sc">+</span> attitude_centered<span class="sc">*</span>group, </span>
-<span id="cb129-9"><a href="multiple2.html#cb129-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="multiple2.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># full model with attitude_centered</span></span>
+<span id="cb130-2"><a href="multiple2.html#cb130-2" aria-hidden="true" tabindex="-1"></a>full_centered <span class="ot">&lt;-</span> <span class="fu">lm</span>(trustworthiness <span class="sc">~</span> attitude_centered <span class="sc">+</span> group <span class="sc">+</span> attitude_centered<span class="sc">*</span>group, <span class="at">data =</span> trust_data)</span>
+<span id="cb130-3"><a href="multiple2.html#cb130-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb130-4"><a href="multiple2.html#cb130-4" aria-hidden="true" tabindex="-1"></a><span class="co"># R-squared</span></span>
+<span id="cb130-5"><a href="multiple2.html#cb130-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(full_centered)</span>
+<span id="cb130-6"><a href="multiple2.html#cb130-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb130-7"><a href="multiple2.html#cb130-7" aria-hidden="true" tabindex="-1"></a><span class="co"># BF</span></span>
+<span id="cb130-8"><a href="multiple2.html#cb130-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(trustworthiness <span class="sc">~</span> attitude_centered <span class="sc">+</span> group <span class="sc">+</span> attitude_centered<span class="sc">*</span>group, </span>
+<span id="cb130-9"><a href="multiple2.html#cb130-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> <span class="fu">data.frame</span>(trust_data))</span></code></pre></div>
 <ul>
 <li>The adjusted R<sup>2</sup> for the full model is <input class='webex-solveme nospaces' size='4' data-answer='["0.05"]'/>, which is the same as we found previously when <code>attitude</code> was not centered.</li>
 <li>The BF for the model is approximately 33, which is the same as we found previously with the non-centered version of <code>attitude</code>.</li>
@@ -1427,22 +1422,22 @@ Centering
 <p><br />
 </p>
 <p>Using <code>attitude_centered</code>, the coefficients for the regression equation are obtained from:</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="multiple2.html#cb130-1" aria-hidden="true" tabindex="-1"></a>full_centered</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="multiple2.html#cb131-1" aria-hidden="true" tabindex="-1"></a>full_centered</span></code></pre></div>
 <p>And so the regression equation is:</p>
 <p><span class="math inline">\(Predicted\ trustworthiness = 4.75 + 0.18(attitude) -0.06(group) - 0.28(attitude\times group)\)</span></p>
 <p>Notice that the intercept has changed and so has the coefficient for <code>group</code>.</p>
 <p><br />
 </p>
 <p>As before, to obtain the simple regression equations for each <code>group</code> we can once again substitute in the dummy codes for <code>group</code>. Thus, for the <code>affected</code> group:</p>
-<p><span class="math display">\[ 
+<p><span class="math display">\[
 \begin{align}
 Predicted\ trustworthiness    &amp;= 4.75 + 0.18(attitude) - (0.06\times0) - 0.28(attitude\times0)\\
                               &amp;= 4.75 + 0.18(attitude) + 0 - 0 \\
-                              &amp;= 4.75 + 0.18(attitude) 
+                              &amp;= 4.75 + 0.18(attitude)
 \end{align}
 \]</span></p>
 <p>For the <code>not_affected</code> group:</p>
-<p><span class="math display">\[ 
+<p><span class="math display">\[
 \begin{align}
 Predicted\ trustworthiness    &amp;= 4.75 + 0.18(attitude) - (0.06\times1) - 0.28(attitude\times0)\\
                               &amp;= 4.75 + 0.18(attitude) -0.06 - 0.28(attitude) \\
@@ -1459,8 +1454,8 @@ The values in the simple regression equations come out slightly differently when
 </p>
 </div>
 </div>
-<div id="summary-2" class="section level2" number="4.10">
-<h2><span class="header-section-number">4.10</span> Summary</h2>
+<div id="summary-2" class="section level2 hasAnchor" number="4.10">
+<h2><span class="header-section-number">4.10</span> Summary<a href="multiple2.html#summary-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>A multiple regression model can consist of a mixture of continuous and categorical predictors,</li>
 <li>Predictors may have a combined effect in explaining the outcome variable. Evidence for this <em>interaction effect</em> can be examined by adding the interaction term to the model, i.e., with <code>lm(outcome ~ predictor1 + predictor2 + predictor1*predictor2)</code></li>
@@ -1470,8 +1465,8 @@ The values in the simple regression equations come out slightly differently when
 <p><br />
 </p>
 </div>
-<div id="references-3" class="section level2" number="4.11">
-<h2><span class="header-section-number">4.11</span> References</h2>
+<div id="references-3" class="section level2 hasAnchor" number="4.11">
+<h2><span class="header-section-number">4.11</span> References<a href="multiple2.html#references-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Altenmuller M.S., Lange L.L., Gollwitzer M. (2021). When research is me-search: How researchers’ motivation to pursue a topic affects laypeople’s trust in science. <em>PLoS ONE</em> <em>16</em>(7): e0253911. <a href="https://doi.org/10.1371/journal.pone.0253911" class="uri">https://doi.org/10.1371/journal.pone.0253911</a></p>
 <p>Baron, R. M., &amp; Kenny, D. A. (1986). The moderator–mediator variable distinction in social psychological research: Conceptual, strategic, and statistical considerations. <em>Journal of Personality and Social Psychology</em>, <em>51</em>(6), 1173. <a href="https://psycnet.apa.org/doi/10.1037/0022-3514.51.6.1173" class="uri">https://psycnet.apa.org/doi/10.1037/0022-3514.51.6.1173</a></p>
 
@@ -1719,7 +1714,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

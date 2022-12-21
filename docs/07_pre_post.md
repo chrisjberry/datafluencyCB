@@ -2,7 +2,7 @@
 
 *Chris Berry*
 \
-*2022*
+*2023*
 
 
 
@@ -226,7 +226,7 @@ anovaBF(change ~ group, data = data.frame(diet))
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] group : 2.262527 ±0%
+## [1] group : 2.262527 ±0.01%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -250,7 +250,7 @@ ttestBF(x = diet$change[ diet$group == "habitual_diet" ],
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] group : 2.262527 ±0%
+## [1] group : 2.262527 ±0.01%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -259,7 +259,7 @@ ttestBF(x = diet$change[ diet$group == "habitual_diet" ],
 ## 
 ## Bayes factor analysis
 ## --------------
-## [1] Alt., r=0.707 : 2.262527 ±0%
+## [1] Alt., r=0.707 : 2.262527 ±0.01%
 ## 
 ## Against denominator:
 ##   Null, mu1-mu2 = 0 

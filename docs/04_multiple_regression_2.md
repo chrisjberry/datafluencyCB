@@ -2,7 +2,7 @@
 
 *Chris Berry*
 \
-*2022*
+*2023*
 
 
 
@@ -264,7 +264,7 @@ BF_without_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group : 0.1060058 ±2.38%
+## [1] attitude + group : 0.1085594 ±3.69%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -323,7 +323,7 @@ BF_with_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 30.59435 ±1.08%
+## [1] attitude + group + attitude * group : 32.18687 ±1.99%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -369,7 +369,7 @@ BF_with_interaction / BF_without_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 288.6101 ±2.61%
+## [1] attitude + group + attitude * group : 296.4907 ±4.19%
 ## 
 ## Against denominator:
 ##   trustworthiness ~ attitude + group 
@@ -397,7 +397,7 @@ Assessing the interaction
 
 * According to comparison of BFs for the models, which statement is true?
 
-<div class='webex-radiogroup' id='radio_AYCDTPJLGE'><label><input type="radio" autocomplete="off" name="radio_AYCDTPJLGE" value=""></input> <span>There&apos;s substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_AYCDTPJLGE" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_AYCDTPJLGE" value="answer"></input> <span>There&apos;s substantial evidence for an interaction between attitude and group</span></label></div>
+<div class='webex-radiogroup' id='radio_GZPQZFYLOD'><label><input type="radio" autocomplete="off" name="radio_GZPQZFYLOD" value=""></input> <span>There&apos;s substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_GZPQZFYLOD" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_GZPQZFYLOD" value="answer"></input> <span>There&apos;s substantial evidence for an interaction between attitude and group</span></label></div>
 
 
 

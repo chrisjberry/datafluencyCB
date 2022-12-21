@@ -5,20 +5,19 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Session 5 Multiple regression: hierarchical regression | PSYC753 Data Fluency: Analysis</title>
-  <meta name="description" content="Course materials for PSYC753 2022" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="Course materials for PSYC753 2023" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Session 5 Multiple regression: hierarchical regression | PSYC753 Data Fluency: Analysis" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://chrisjberry.github.io/datafluencyCB/" />
   
-  <meta property="og:description" content="Course materials for PSYC753 2022" />
+  <meta property="og:description" content="Course materials for PSYC753 2023" />
   <meta name="github-repo" content="datafluencyCB" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Session 5 Multiple regression: hierarchical regression | PSYC753 Data Fluency: Analysis" />
   
-  <meta name="twitter:description" content="Course materials for PSYC753 2022" />
+  <meta name="twitter:description" content="Course materials for PSYC753 2023" />
   
 
 <meta name="author" content="Chris Berry" />
@@ -32,7 +31,6 @@
   
 <link rel="prev" href="multiple2.html"/>
 <link rel="next" href="anova2.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -95,7 +94,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -108,7 +107,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -305,26 +304,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.1" data-path="prepost.html"><a href="prepost.html#worked-example-7"><i class="fa fa-check"></i><b>7.1.1</b> Worked example</a></li>
 <li class="chapter" data-level="7.1.2" data-path="prepost.html"><a href="prepost.html#read-in-the-data-6"><i class="fa fa-check"></i><b>7.1.2</b> Read in the data</a></li>
 <li class="chapter" data-level="7.1.3" data-path="prepost.html"><a href="prepost.html#plot-the-means-4"><i class="fa fa-check"></i><b>7.1.3</b> Plot the means</a></li>
-<li class="chapter" data-level="7.1.4" data-path="prepost.html"><a href="prepost.html#approach-1---difference-scores"><i class="fa fa-check"></i><b>7.1.4</b> Approach 1 - Difference scores</a></li>
-<li class="chapter" data-level="7.1.5" data-path="prepost.html"><a href="prepost.html#approach-2---mixed-anova"><i class="fa fa-check"></i><b>7.1.5</b> Approach 2 - Mixed ANOVA</a></li>
-<li class="chapter" data-level="7.1.6" data-path="prepost.html"><a href="prepost.html#method-3---ancova"><i class="fa fa-check"></i><b>7.1.6</b> Method 3 - ANCOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="prepost.html"><a href="prepost.html#which-method-should-you-use"><i class="fa fa-check"></i><b>7.2</b> Which method should you use?</a></li>
-<li class="chapter" data-level="7.3" data-path="prepost.html"><a href="prepost.html#clinical-significance"><i class="fa fa-check"></i><b>7.3</b> Clinical Significance</a></li>
-<li class="chapter" data-level="7.4" data-path="prepost.html"><a href="prepost.html#exercises-1"><i class="fa fa-check"></i><b>7.4</b> Exercises</a></li>
-<li class="chapter" data-level="7.5" data-path="prepost.html"><a href="prepost.html#further-knowledge-1"><i class="fa fa-check"></i><b>7.5</b> Further Knowledge</a></li>
-<li class="chapter" data-level="7.6" data-path="prepost.html"><a href="prepost.html#summary-5"><i class="fa fa-check"></i><b>7.6</b> Summary</a></li>
-<li class="chapter" data-level="7.7" data-path="prepost.html"><a href="prepost.html#references-6"><i class="fa fa-check"></i><b>7.7</b> References</a></li>
+<li class="chapter" data-level="7.2" data-path="prepost.html"><a href="prepost.html#approach-1---difference-scores"><i class="fa fa-check"></i><b>7.2</b> Approach 1 - Difference scores</a></li>
+<li class="chapter" data-level="7.3" data-path="prepost.html"><a href="prepost.html#approach-2---mixed-anova"><i class="fa fa-check"></i><b>7.3</b> Approach 2 - Mixed ANOVA</a></li>
+<li class="chapter" data-level="7.4" data-path="prepost.html"><a href="prepost.html#approach-3---ancova"><i class="fa fa-check"></i><b>7.4</b> Approach 3 - ANCOVA</a></li>
+<li class="chapter" data-level="7.5" data-path="prepost.html"><a href="prepost.html#which-approach-should-you-use"><i class="fa fa-check"></i><b>7.5</b> Which approach should you use?</a></li>
+<li class="chapter" data-level="7.6" data-path="prepost.html"><a href="prepost.html#clinical-significance"><i class="fa fa-check"></i><b>7.6</b> Clinical Significance</a></li>
+<li class="chapter" data-level="7.7" data-path="prepost.html"><a href="prepost.html#exercises-1"><i class="fa fa-check"></i><b>7.7</b> Exercises</a></li>
+<li class="chapter" data-level="7.8" data-path="prepost.html"><a href="prepost.html#further-knowledge-1"><i class="fa fa-check"></i><b>7.8</b> Further Knowledge</a></li>
+<li class="chapter" data-level="7.9" data-path="prepost.html"><a href="prepost.html#summary-5"><i class="fa fa-check"></i><b>7.9</b> Summary</a></li>
+<li class="chapter" data-level="7.10" data-path="prepost.html"><a href="prepost.html#references-6"><i class="fa fa-check"></i><b>7.10</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="assessment2022.html"><a href="assessment2022.html"><i class="fa fa-check"></i><b>8</b> Data Analysis Assessment 2022</a></li>
+<li class="chapter" data-level="8" data-path="assessment2023.html"><a href="assessment2023.html"><i class="fa fa-check"></i><b>8</b> Data Analysis Assessment 2023</a></li>
 <li class="chapter" data-level="9" data-path="faqs.html"><a href="faqs.html"><i class="fa fa-check"></i><b>9</b> FAQs</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="faqs.html"><a href="faqs.html#e-meaning"><i class="fa fa-check"></i><b>9.1</b> What does it mean if RStudio prints out "e-" next to a number?</a></li>
-<li class="chapter" data-level="9.2" data-path="faqs.html"><a href="faqs.html#how-should-i-write-up-the-report"><i class="fa fa-check"></i><b>9.2</b> How should I write up the report?</a></li>
-<li class="chapter" data-level="9.3" data-path="faqs.html"><a href="faqs.html#how-can-i-find-out-more-about-a-particular-function-so-i-can-explore-its-settings-etc."><i class="fa fa-check"></i><b>9.3</b> How can I find out more about a particular function, so I can explore its settings etc.?</a></li>
-<li class="chapter" data-level="9.4" data-path="faqs.html"><a href="faqs.html#after-downloading-my-.rmd-file-to-my-computer-how-do-i-open-it-again-in-rstudio"><i class="fa fa-check"></i><b>9.4</b> After downloading my .Rmd file to my computer, how do I open it again in RStudio?</a></li>
-<li class="chapter" data-level="9.5" data-path="faqs.html"><a href="faqs.html#how-do-i-apply-for-extenuating-circumstances"><i class="fa fa-check"></i><b>9.5</b> How do I apply for extenuating circumstances?</a></li>
-<li class="chapter" data-level="9.6" data-path="faqs.html"><a href="faqs.html#can-a-book-a-slot-in-your-office-hours"><i class="fa fa-check"></i><b>9.6</b> Can a book a slot in your office hours?</a></li>
+<li class="chapter" data-level="9.2" data-path="faqs.html"><a href="faqs.html#how-can-i-find-out-more-about-a-particular-function-so-i-can-explore-its-settings-etc."><i class="fa fa-check"></i><b>9.2</b> How can I find out more about a particular function, so I can explore its settings etc.?</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="divider"></li>
@@ -350,18 +345,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="multiple3" class="section level1" number="5">
-<h1><span class="header-section-number">Session 5</span> Multiple regression: hierarchical regression</h1>
+<div id="multiple3" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Session 5</span> Multiple regression: hierarchical regression<a href="multiple3.html#multiple3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>Chris Berry</em><br />
-<em>2022</em></p>
+<em>2023</em></p>
 <style>
 div.exercise { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
 <style>
 div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 </style>
-<div id="overview-5" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Overview</h2>
+<div id="overview-5" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Overview<a href="multiple3.html#overview-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><strong>Slides</strong> from the lecture part of the session: <a href="slides/PSYC753_L5_MultipleRegression3.pptx">Download</a></li>
 </ul>
@@ -374,24 +369,24 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <p><br />
 </p>
 </div>
-<div id="worked-example-1-wellbeing" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Worked example 1: wellbeing</h2>
+<div id="worked-example-1-wellbeing" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Worked example 1: wellbeing<a href="multiple3.html#worked-example-1-wellbeing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In Session 2, we analysed some of the data from Iani et al. (2019) and found evidence that <code>brooding</code> and <code>worry</code> predicted <code>wellbeing</code> in a multiple regression.</p>
 <p>Iani et al. (2019) were actually primarily interested in whether mindfulness and emotional intelligence predicted psychological wellbeing scores, but <em>after</em> controlling for <code>brooding</code> and <code>worry</code>. The reason for asking the question in this way is because it's a well-established finding that <code>brooding</code> and <code>worry</code> explain <code>wellbeing</code>, but less is known about <code>mindfulness</code> and <code>emotional intelligence</code>.</p>
 <p>To control for <code>brooding</code> and <code>worry</code>, these variables are entered into a regression first. Next, mindfulness and emotional intelligence are added, and the <em>change</em> in R<sup>2</sup> associated with their addition to the model can be evaluated. Bayes factors can also be used to assess the unique contribution of the predictors added at each step.</p>
 <p><br />
 </p>
-<div id="read-in-the-data-3" class="section level3" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> Read in the data</h3>
+<div id="read-in-the-data-3" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Read in the data<a href="multiple3.html#read-in-the-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Read the data to R, and store in <code>pwb_data</code> (to stand for Psychological WellBeing data). The data we'll use are located at:</p>
 <p><a href="https://raw.githubusercontent.com/chrisjberry/Teaching/master/2_wellbeing_data.csv" class="uri">https://raw.githubusercontent.com/chrisjberry/Teaching/master/2_wellbeing_data.csv</a></p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="multiple3.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First ensure tidyverse is loaded, i.e., &#39;library(tidyverse)&#39;</span></span>
-<span id="cb131-2"><a href="multiple3.html#cb131-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb131-3"><a href="multiple3.html#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the data using read_csv(), store in pwb_data</span></span>
-<span id="cb131-4"><a href="multiple3.html#cb131-4" aria-hidden="true" tabindex="-1"></a>pwb_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/2_wellbeing_data.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="multiple3.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First ensure tidyverse is loaded, i.e., &#39;library(tidyverse)&#39;</span></span>
+<span id="cb132-2"><a href="multiple3.html#cb132-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-3"><a href="multiple3.html#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the data using read_csv(), store in pwb_data</span></span>
+<span id="cb132-4"><a href="multiple3.html#cb132-4" aria-hidden="true" tabindex="-1"></a>pwb_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/2_wellbeing_data.csv&#39;</span>)</span></code></pre></div>
 <p>(<em>Note.</em> The data are publicly available, but I've changed the variable names for clarity. As in Iani et al., missing values were replaced with the mean of the relevant variable.)</p>
 <p>Preview the data with <code>head()</code>:</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="multiple3.html#cb132-1" aria-hidden="true" tabindex="-1"></a>pwb_data <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="multiple3.html#cb133-1" aria-hidden="true" tabindex="-1"></a>pwb_data <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <div class="kable-table">
 <table>
 <colgroup>
@@ -540,23 +535,23 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <p><br />
 </p>
 </div>
-<div id="visualisation" class="section level3" number="5.2.2">
-<h3><span class="header-section-number">5.2.2</span> Visualisation</h3>
+<div id="visualisation" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Visualisation<a href="multiple3.html#visualisation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are a number of continuous variables in the dataset that we can visualise with density plots or histograms. We've done this individually, variable by variable in past worksheets. Here I'd like to show you a more advanced way of plotting. The code below uses will create a density plot of every variable in a dataset that is numeric (continuous) in nature, using different facets:</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="multiple3.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot density plots of all the numeric (continuous) variables</span></span>
-<span id="cb133-2"><a href="multiple3.html#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The code below:</span></span>
-<span id="cb133-3"><a href="multiple3.html#cb133-3" aria-hidden="true" tabindex="-1"></a><span class="co"># -Keeps only the numeric columns in a data frame</span></span>
-<span id="cb133-4"><a href="multiple3.html#cb133-4" aria-hidden="true" tabindex="-1"></a><span class="co"># -Uses pivot_longer() to code each set of scores by its variable name</span></span>
-<span id="cb133-5"><a href="multiple3.html#cb133-5" aria-hidden="true" tabindex="-1"></a><span class="co"># -Specifies the &#39;score&#39; to plot in aes()</span></span>
-<span id="cb133-6"><a href="multiple3.html#cb133-6" aria-hidden="true" tabindex="-1"></a><span class="co"># -Uses facet_wrap() to plot each variable in a separate panel</span></span>
-<span id="cb133-7"><a href="multiple3.html#cb133-7" aria-hidden="true" tabindex="-1"></a><span class="co"># -Uses scales = &quot;free&quot; to allow the range on the x- and y-axis to be different across panels</span></span>
-<span id="cb133-8"><a href="multiple3.html#cb133-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-9"><a href="multiple3.html#cb133-9" aria-hidden="true" tabindex="-1"></a>pwb_data <span class="sc">%&gt;%</span></span>
-<span id="cb133-10"><a href="multiple3.html#cb133-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">keep</span>(is.numeric) <span class="sc">%&gt;%</span>                     </span>
-<span id="cb133-11"><a href="multiple3.html#cb133-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;score&quot;</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb133-12"><a href="multiple3.html#cb133-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(score)) <span class="sc">+</span>                     </span>
-<span id="cb133-13"><a href="multiple3.html#cb133-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> variable, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span>     </span>
-<span id="cb133-14"><a href="multiple3.html#cb133-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()        </span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="multiple3.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot density plots of all the numeric (continuous) variables</span></span>
+<span id="cb134-2"><a href="multiple3.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The code below:</span></span>
+<span id="cb134-3"><a href="multiple3.html#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="co"># -Keeps only the numeric columns in a data frame</span></span>
+<span id="cb134-4"><a href="multiple3.html#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="co"># -Uses pivot_longer() to code each set of scores by its variable name</span></span>
+<span id="cb134-5"><a href="multiple3.html#cb134-5" aria-hidden="true" tabindex="-1"></a><span class="co"># -Specifies the &#39;score&#39; to plot in aes()</span></span>
+<span id="cb134-6"><a href="multiple3.html#cb134-6" aria-hidden="true" tabindex="-1"></a><span class="co"># -Uses facet_wrap() to plot each variable in a separate panel</span></span>
+<span id="cb134-7"><a href="multiple3.html#cb134-7" aria-hidden="true" tabindex="-1"></a><span class="co"># -Uses scales = &quot;free&quot; to allow the range on the x- and y-axis to be different across panels</span></span>
+<span id="cb134-8"><a href="multiple3.html#cb134-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-9"><a href="multiple3.html#cb134-9" aria-hidden="true" tabindex="-1"></a>pwb_data <span class="sc">%&gt;%</span></span>
+<span id="cb134-10"><a href="multiple3.html#cb134-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">keep</span>(is.numeric) <span class="sc">%&gt;%</span>                     </span>
+<span id="cb134-11"><a href="multiple3.html#cb134-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;score&quot;</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb134-12"><a href="multiple3.html#cb134-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(score)) <span class="sc">+</span>                     </span>
+<span id="cb134-13"><a href="multiple3.html#cb134-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> variable, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span>     </span>
+<span id="cb134-14"><a href="multiple3.html#cb134-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()        </span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
 <img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-4-1.png" alt="Density plots for each continous predictor in pwb_data" width="100%" />
 <p class="caption">
@@ -566,18 +561,18 @@ Figure 2.1: Density plots for each continous predictor in pwb_data
 <p><br />
 </p>
 </div>
-<div id="correlations" class="section level3" number="5.2.3">
-<h3><span class="header-section-number">5.2.3</span> Correlations</h3>
+<div id="correlations" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Correlations<a href="multiple3.html#correlations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>With many variables being used in a multiple regression, it is good practice to inspect the correlations between all continuous variables to get an idea of the inter-relations and to check for multicollinearity between predictors.</p>
 <p>Obtain a correlation matrix of all of the numeric variables. Ensure the <code>corrr</code> package is loaded, then use <code>correlate()</code>:</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="multiple3.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(corrr) # ensure this is loaded</span></span>
-<span id="cb134-2"><a href="multiple3.html#cb134-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb134-3"><a href="multiple3.html#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="co"># correlations of all numeric variables</span></span>
-<span id="cb134-4"><a href="multiple3.html#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use mutate() with round() to round to 2 D.P.</span></span>
-<span id="cb134-5"><a href="multiple3.html#cb134-5" aria-hidden="true" tabindex="-1"></a>pwb_data <span class="sc">%&gt;%</span></span>
-<span id="cb134-6"><a href="multiple3.html#cb134-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">keep</span>(is.numeric) <span class="sc">%&gt;%</span></span>
-<span id="cb134-7"><a href="multiple3.html#cb134-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlate</span>(<span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb134-8"><a href="multiple3.html#cb134-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), round, <span class="at">digits =</span> <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="multiple3.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(corrr) # ensure this is loaded</span></span>
+<span id="cb135-2"><a href="multiple3.html#cb135-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-3"><a href="multiple3.html#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="co"># correlations of all numeric variables</span></span>
+<span id="cb135-4"><a href="multiple3.html#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use mutate() with round() to round to 2 D.P.</span></span>
+<span id="cb135-5"><a href="multiple3.html#cb135-5" aria-hidden="true" tabindex="-1"></a>pwb_data <span class="sc">%&gt;%</span></span>
+<span id="cb135-6"><a href="multiple3.html#cb135-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">keep</span>(is.numeric) <span class="sc">%&gt;%</span></span>
+<span id="cb135-7"><a href="multiple3.html#cb135-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlate</span>(<span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb135-8"><a href="multiple3.html#cb135-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), round, <span class="at">digits =</span> <span class="dv">2</span>))</span></code></pre></div>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-24" class="exercise"><strong>Exercise 5.1  </strong></span>Before conducting the hierarchical regression, Iani et al. (2019) reported the Pearson correlations between <code>wellbeing</code> and <code>gad</code> and the mindfulness and emotional intelligence variables. We'll report a subset of those here. Report the correlations below to two decimal places:</p>
 <ul>
@@ -596,8 +591,8 @@ Figure 2.1: Density plots for each continous predictor in pwb_data
 <p><br />
 </p>
 </div>
-<div id="hierarchical-regression" class="section level3" number="5.2.4">
-<h3><span class="header-section-number">5.2.4</span> Hierarchical regression</h3>
+<div id="hierarchical-regression" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Hierarchical regression<a href="multiple3.html#hierarchical-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To conduct the hierarchical regression, variables will be entered to the multiple regression in progressive steps, and the change in R<sup>2</sup> associated with the predictors added to the model at each step obtained. Likewise, Bayes factors can be used to determine whether there is evidence that the predictors added at each step make a unique contribution to the prediction of the outcome variable.</p>
 <p>Iani et al. (2019) wanted to explain variance in <code>wellbeing</code> (the outcome variable). They reported the non-adjusted R<sup>2</sup>, so that's what we'll do too. Due to theoretical considerations, the variables in each step were entered as follows:</p>
 <ul>
@@ -608,22 +603,22 @@ Figure 2.1: Density plots for each continous predictor in pwb_data
 </ul>
 <p><br />
 </p>
-<div id="step-1-brooding" class="section level4" number="5.2.4.1">
-<h4><span class="header-section-number">5.2.4.1</span> Step 1: brooding</h4>
+<div id="step-1-brooding" class="section level4 hasAnchor" number="5.2.4.1">
+<h4><span class="header-section-number">5.2.4.1</span> Step 1: brooding<a href="multiple3.html#step-1-brooding" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>First, use <code>brooding</code> to predict <code>wellbeing</code>. Use <code>lm()</code> and <code>glance()</code> to obtain the R<sup>2</sup> for the model, then use <code>lmBF()</code> to obtain the BF for the model.</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="multiple3.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model in the step</span></span>
-<span id="cb135-2"><a href="multiple3.html#cb135-2" aria-hidden="true" tabindex="-1"></a>step1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> brooding, <span class="at">data =</span> pwb_data)</span>
-<span id="cb135-3"><a href="multiple3.html#cb135-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb135-4"><a href="multiple3.html#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="co"># R^2^</span></span>
-<span id="cb135-5"><a href="multiple3.html#cb135-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ensure broom package loaded, i.e., &#39;library(broom)&#39;</span></span>
-<span id="cb135-6"><a href="multiple3.html#cb135-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(step1)</span>
-<span id="cb135-7"><a href="multiple3.html#cb135-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb135-8"><a href="multiple3.html#cb135-8" aria-hidden="true" tabindex="-1"></a><span class="co"># store the BF</span></span>
-<span id="cb135-9"><a href="multiple3.html#cb135-9" aria-hidden="true" tabindex="-1"></a><span class="co"># library(BayesFactor)</span></span>
-<span id="cb135-10"><a href="multiple3.html#cb135-10" aria-hidden="true" tabindex="-1"></a>BF_step1 <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> brooding, <span class="at">data =</span> <span class="fu">data.frame</span>(pwb_data))</span>
-<span id="cb135-11"><a href="multiple3.html#cb135-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb135-12"><a href="multiple3.html#cb135-12" aria-hidden="true" tabindex="-1"></a><span class="co"># look at BF</span></span>
-<span id="cb135-13"><a href="multiple3.html#cb135-13" aria-hidden="true" tabindex="-1"></a>BF_step1</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="multiple3.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model in the step</span></span>
+<span id="cb136-2"><a href="multiple3.html#cb136-2" aria-hidden="true" tabindex="-1"></a>step1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> brooding, <span class="at">data =</span> pwb_data)</span>
+<span id="cb136-3"><a href="multiple3.html#cb136-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-4"><a href="multiple3.html#cb136-4" aria-hidden="true" tabindex="-1"></a><span class="co"># R^2^</span></span>
+<span id="cb136-5"><a href="multiple3.html#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ensure broom package loaded, i.e., &#39;library(broom)&#39;</span></span>
+<span id="cb136-6"><a href="multiple3.html#cb136-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(step1)</span>
+<span id="cb136-7"><a href="multiple3.html#cb136-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-8"><a href="multiple3.html#cb136-8" aria-hidden="true" tabindex="-1"></a><span class="co"># store the BF</span></span>
+<span id="cb136-9"><a href="multiple3.html#cb136-9" aria-hidden="true" tabindex="-1"></a><span class="co"># library(BayesFactor)</span></span>
+<span id="cb136-10"><a href="multiple3.html#cb136-10" aria-hidden="true" tabindex="-1"></a>BF_step1 <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> brooding, <span class="at">data =</span> <span class="fu">data.frame</span>(pwb_data))</span>
+<span id="cb136-11"><a href="multiple3.html#cb136-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-12"><a href="multiple3.html#cb136-12" aria-hidden="true" tabindex="-1"></a><span class="co"># look at BF</span></span>
+<span id="cb136-13"><a href="multiple3.html#cb136-13" aria-hidden="true" tabindex="-1"></a>BF_step1</span></code></pre></div>
 <div class="kable-table">
 <table>
 <colgroup>
@@ -689,24 +684,24 @@ Figure 2.1: Density plots for each continous predictor in pwb_data
 <p><br />
 </p>
 </div>
-<div id="step-2-brooding-worry" class="section level4" number="5.2.4.2">
-<h4><span class="header-section-number">5.2.4.2</span> Step 2: brooding + worry</h4>
+<div id="step-2-brooding-worry" class="section level4 hasAnchor" number="5.2.4.2">
+<h4><span class="header-section-number">5.2.4.2</span> Step 2: brooding + worry<a href="multiple3.html#step-2-brooding-worry" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Next, add <code>worry</code> to the model in Step 1, using <code>+ worry</code> and look at R<sup>2</sup> again and obtain the BF. We'll look at:</p>
 <ul>
 <li>whether the model in Step 2 explains more variance in <code>wellbeing</code> by looking at whether R<sup>2</sup> increases.</li>
 <li>whether there's evidence for a contribution of <code>worry</code> after controlling for <code>brooding</code>, by dividing the Bayes factor for the model in Step 2 by the BF for the model in Step 1</li>
 </ul>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="multiple3.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model in the step</span></span>
-<span id="cb137-2"><a href="multiple3.html#cb137-2" aria-hidden="true" tabindex="-1"></a>step2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> brooding <span class="sc">+</span> worry, <span class="at">data =</span> pwb_data)</span>
-<span id="cb137-3"><a href="multiple3.html#cb137-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb137-4"><a href="multiple3.html#cb137-4" aria-hidden="true" tabindex="-1"></a><span class="co"># R-sq</span></span>
-<span id="cb137-5"><a href="multiple3.html#cb137-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(step2)</span>
-<span id="cb137-6"><a href="multiple3.html#cb137-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb137-7"><a href="multiple3.html#cb137-7" aria-hidden="true" tabindex="-1"></a><span class="co"># store the BF</span></span>
-<span id="cb137-8"><a href="multiple3.html#cb137-8" aria-hidden="true" tabindex="-1"></a>BF_step2 <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> brooding <span class="sc">+</span> worry, <span class="at">data =</span> <span class="fu">data.frame</span>(pwb_data))</span>
-<span id="cb137-9"><a href="multiple3.html#cb137-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb137-10"><a href="multiple3.html#cb137-10" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BFs for the models in Step 2 and Step 1</span></span>
-<span id="cb137-11"><a href="multiple3.html#cb137-11" aria-hidden="true" tabindex="-1"></a>BF_step2 <span class="sc">/</span> BF_step1</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="multiple3.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model in the step</span></span>
+<span id="cb138-2"><a href="multiple3.html#cb138-2" aria-hidden="true" tabindex="-1"></a>step2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> brooding <span class="sc">+</span> worry, <span class="at">data =</span> pwb_data)</span>
+<span id="cb138-3"><a href="multiple3.html#cb138-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-4"><a href="multiple3.html#cb138-4" aria-hidden="true" tabindex="-1"></a><span class="co"># R-sq</span></span>
+<span id="cb138-5"><a href="multiple3.html#cb138-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(step2)</span>
+<span id="cb138-6"><a href="multiple3.html#cb138-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-7"><a href="multiple3.html#cb138-7" aria-hidden="true" tabindex="-1"></a><span class="co"># store the BF</span></span>
+<span id="cb138-8"><a href="multiple3.html#cb138-8" aria-hidden="true" tabindex="-1"></a>BF_step2 <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> brooding <span class="sc">+</span> worry, <span class="at">data =</span> <span class="fu">data.frame</span>(pwb_data))</span>
+<span id="cb138-9"><a href="multiple3.html#cb138-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-10"><a href="multiple3.html#cb138-10" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BFs for the models in Step 2 and Step 1</span></span>
+<span id="cb138-11"><a href="multiple3.html#cb138-11" aria-hidden="true" tabindex="-1"></a>BF_step2 <span class="sc">/</span> BF_step1</span></code></pre></div>
 <div class="kable-table">
 <table>
 <colgroup>
@@ -776,7 +771,7 @@ calculatoR
 </button>
 <p>Did you know that R can function like a calculator too? Simply type the formula next to <code>&gt;</code> in the console window and hit enter, e.g., <code>&gt; 2 + 2</code></p>
 <p>Or use code in your script:</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="multiple3.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.33</span> <span class="sc">-</span> <span class="fl">0.19</span></span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="multiple3.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.33</span> <span class="sc">-</span> <span class="fl">0.19</span></span></code></pre></div>
 </div>
 <div class="webex-solution">
 <button>
@@ -787,24 +782,24 @@ Change in R-squared symbol
 <p><br />
 </p>
 </div>
-<div id="step-3-brooding-worry-mindfulness-variables" class="section level4" number="5.2.4.3">
-<h4><span class="header-section-number">5.2.4.3</span> Step 3: brooding + worry + mindfulness variables</h4>
+<div id="step-3-brooding-worry-mindfulness-variables" class="section level4 hasAnchor" number="5.2.4.3">
+<h4><span class="header-section-number">5.2.4.3</span> Step 3: brooding + worry + mindfulness variables<a href="multiple3.html#step-3-brooding-worry-mindfulness-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Next, add the variables associated with mindfulness to the model. The mindfulness measures are <code>observing</code>, <code>describing</code>, <code>acting</code>, <code>nonjudging</code>, and <code>nonreactivity</code>. Add these five variables to the model all in the same step. As before, note R<sup>2</sup> for the model and the BF. To determine whether there's evidence for the addition of the mindfulness variables, compare the BF for the model in Step 3 and the BF of the model in Step 2.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="multiple3.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model in the step</span></span>
-<span id="cb140-2"><a href="multiple3.html#cb140-2" aria-hidden="true" tabindex="-1"></a>step3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
-<span id="cb140-3"><a href="multiple3.html#cb140-3" aria-hidden="true" tabindex="-1"></a>             observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> nonjudging <span class="sc">+</span> nonreactivity, </span>
-<span id="cb140-4"><a href="multiple3.html#cb140-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> pwb_data)</span>
-<span id="cb140-5"><a href="multiple3.html#cb140-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb140-6"><a href="multiple3.html#cb140-6" aria-hidden="true" tabindex="-1"></a><span class="co"># R-sq</span></span>
-<span id="cb140-7"><a href="multiple3.html#cb140-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(step3)</span>
-<span id="cb140-8"><a href="multiple3.html#cb140-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb140-9"><a href="multiple3.html#cb140-9" aria-hidden="true" tabindex="-1"></a><span class="co"># store the BF</span></span>
-<span id="cb140-10"><a href="multiple3.html#cb140-10" aria-hidden="true" tabindex="-1"></a>BF_step3 <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
-<span id="cb140-11"><a href="multiple3.html#cb140-11" aria-hidden="true" tabindex="-1"></a>                   observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> nonjudging <span class="sc">+</span> nonreactivity, </span>
-<span id="cb140-12"><a href="multiple3.html#cb140-12" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> <span class="fu">data.frame</span>(pwb_data))</span>
-<span id="cb140-13"><a href="multiple3.html#cb140-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb140-14"><a href="multiple3.html#cb140-14" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BFs for the models in step 3 and step 2</span></span>
-<span id="cb140-15"><a href="multiple3.html#cb140-15" aria-hidden="true" tabindex="-1"></a>BF_step3 <span class="sc">/</span> BF_step2</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="multiple3.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model in the step</span></span>
+<span id="cb141-2"><a href="multiple3.html#cb141-2" aria-hidden="true" tabindex="-1"></a>step3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
+<span id="cb141-3"><a href="multiple3.html#cb141-3" aria-hidden="true" tabindex="-1"></a>             observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> nonjudging <span class="sc">+</span> nonreactivity, </span>
+<span id="cb141-4"><a href="multiple3.html#cb141-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> pwb_data)</span>
+<span id="cb141-5"><a href="multiple3.html#cb141-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-6"><a href="multiple3.html#cb141-6" aria-hidden="true" tabindex="-1"></a><span class="co"># R-sq</span></span>
+<span id="cb141-7"><a href="multiple3.html#cb141-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(step3)</span>
+<span id="cb141-8"><a href="multiple3.html#cb141-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-9"><a href="multiple3.html#cb141-9" aria-hidden="true" tabindex="-1"></a><span class="co"># store the BF</span></span>
+<span id="cb141-10"><a href="multiple3.html#cb141-10" aria-hidden="true" tabindex="-1"></a>BF_step3 <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
+<span id="cb141-11"><a href="multiple3.html#cb141-11" aria-hidden="true" tabindex="-1"></a>                   observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> nonjudging <span class="sc">+</span> nonreactivity, </span>
+<span id="cb141-12"><a href="multiple3.html#cb141-12" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> <span class="fu">data.frame</span>(pwb_data))</span>
+<span id="cb141-13"><a href="multiple3.html#cb141-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-14"><a href="multiple3.html#cb141-14" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BFs for the models in step 3 and step 2</span></span>
+<span id="cb141-15"><a href="multiple3.html#cb141-15" aria-hidden="true" tabindex="-1"></a>BF_step3 <span class="sc">/</span> BF_step2</span></code></pre></div>
 <div class="kable-table">
 <table>
 <colgroup>
@@ -878,26 +873,26 @@ Explain
 <p><br />
 </p>
 </div>
-<div id="step-4-brooding-worry-mindfulness-emotional-intelligence-variables" class="section level4" number="5.2.4.4">
-<h4><span class="header-section-number">5.2.4.4</span> Step 4: brooding + worry + mindfulness + emotional intelligence variables</h4>
+<div id="step-4-brooding-worry-mindfulness-emotional-intelligence-variables" class="section level4 hasAnchor" number="5.2.4.4">
+<h4><span class="header-section-number">5.2.4.4</span> Step 4: brooding + worry + mindfulness + emotional intelligence variables<a href="multiple3.html#step-4-brooding-worry-mindfulness-emotional-intelligence-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Next, add the variables associated with emotional intelligence to the model. The emotional intelligence variables are <code>attention</code>, <code>clarity</code>, and <code>repair</code>. These three variables are added to the model all in the same step. Once again, note R<sup>2</sup> for the model and the BF. To determine whether there's evidence for the addition of the emotional intelligence variables, compare the BF for the model in Step 4 and the BF of the model in Step 3.</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="multiple3.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model in step 4</span></span>
-<span id="cb142-2"><a href="multiple3.html#cb142-2" aria-hidden="true" tabindex="-1"></a>step4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
-<span id="cb142-3"><a href="multiple3.html#cb142-3" aria-hidden="true" tabindex="-1"></a>              observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> nonjudging <span class="sc">+</span> nonreactivity <span class="sc">+</span> </span>
-<span id="cb142-4"><a href="multiple3.html#cb142-4" aria-hidden="true" tabindex="-1"></a>              attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, </span>
-<span id="cb142-5"><a href="multiple3.html#cb142-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> pwb_data)</span>
-<span id="cb142-6"><a href="multiple3.html#cb142-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb142-7"><a href="multiple3.html#cb142-7" aria-hidden="true" tabindex="-1"></a><span class="co"># R-sq</span></span>
-<span id="cb142-8"><a href="multiple3.html#cb142-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(step4)</span>
-<span id="cb142-9"><a href="multiple3.html#cb142-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb142-10"><a href="multiple3.html#cb142-10" aria-hidden="true" tabindex="-1"></a><span class="co"># store the BF</span></span>
-<span id="cb142-11"><a href="multiple3.html#cb142-11" aria-hidden="true" tabindex="-1"></a>BF_step4 <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
-<span id="cb142-12"><a href="multiple3.html#cb142-12" aria-hidden="true" tabindex="-1"></a>                   observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> nonjudging <span class="sc">+</span> nonreactivity <span class="sc">+</span> </span>
-<span id="cb142-13"><a href="multiple3.html#cb142-13" aria-hidden="true" tabindex="-1"></a>                   attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, </span>
-<span id="cb142-14"><a href="multiple3.html#cb142-14" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> <span class="fu">data.frame</span>(pwb_data))</span>
-<span id="cb142-15"><a href="multiple3.html#cb142-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb142-16"><a href="multiple3.html#cb142-16" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BFs for the models in step 4 and step 3</span></span>
-<span id="cb142-17"><a href="multiple3.html#cb142-17" aria-hidden="true" tabindex="-1"></a>BF_step4 <span class="sc">/</span> BF_step3</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="multiple3.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model in step 4</span></span>
+<span id="cb143-2"><a href="multiple3.html#cb143-2" aria-hidden="true" tabindex="-1"></a>step4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
+<span id="cb143-3"><a href="multiple3.html#cb143-3" aria-hidden="true" tabindex="-1"></a>              observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> nonjudging <span class="sc">+</span> nonreactivity <span class="sc">+</span> </span>
+<span id="cb143-4"><a href="multiple3.html#cb143-4" aria-hidden="true" tabindex="-1"></a>              attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, </span>
+<span id="cb143-5"><a href="multiple3.html#cb143-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> pwb_data)</span>
+<span id="cb143-6"><a href="multiple3.html#cb143-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb143-7"><a href="multiple3.html#cb143-7" aria-hidden="true" tabindex="-1"></a><span class="co"># R-sq</span></span>
+<span id="cb143-8"><a href="multiple3.html#cb143-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(step4)</span>
+<span id="cb143-9"><a href="multiple3.html#cb143-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb143-10"><a href="multiple3.html#cb143-10" aria-hidden="true" tabindex="-1"></a><span class="co"># store the BF</span></span>
+<span id="cb143-11"><a href="multiple3.html#cb143-11" aria-hidden="true" tabindex="-1"></a>BF_step4 <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
+<span id="cb143-12"><a href="multiple3.html#cb143-12" aria-hidden="true" tabindex="-1"></a>                   observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> nonjudging <span class="sc">+</span> nonreactivity <span class="sc">+</span> </span>
+<span id="cb143-13"><a href="multiple3.html#cb143-13" aria-hidden="true" tabindex="-1"></a>                   attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, </span>
+<span id="cb143-14"><a href="multiple3.html#cb143-14" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> <span class="fu">data.frame</span>(pwb_data))</span>
+<span id="cb143-15"><a href="multiple3.html#cb143-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb143-16"><a href="multiple3.html#cb143-16" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BFs for the models in step 4 and step 3</span></span>
+<span id="cb143-17"><a href="multiple3.html#cb143-17" aria-hidden="true" tabindex="-1"></a>BF_step4 <span class="sc">/</span> BF_step3</span></code></pre></div>
 <div class="kable-table">
 <table>
 <colgroup>
@@ -975,8 +970,8 @@ Explain
 </div>
 </div>
 </div>
-<div id="exercise-1-1" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Exercise 1</h2>
+<div id="exercise-1-1" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Exercise 1<a href="multiple3.html#exercise-1-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-25" class="exercise"><strong>Exercise 5.2  </strong></span>Hierarchical regression</p>
 <p>Iani et al. (2019) were also interested in whether whether mindfulness and emotional intelligence predicted <code>gad</code> (anxiety symptoms) after controlling for <code>brooding</code> and <code>worry</code>.</p>
@@ -996,17 +991,17 @@ Explain
 <button>
 Solution - code
 </button>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="multiple3.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model in step 1, store in gad1</span></span>
-<span id="cb144-2"><a href="multiple3.html#cb144-2" aria-hidden="true" tabindex="-1"></a>gad1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(gad <span class="sc">~</span> brooding, <span class="at">data =</span> pwb_data)</span>
-<span id="cb144-3"><a href="multiple3.html#cb144-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-4"><a href="multiple3.html#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="co"># R-sq</span></span>
-<span id="cb144-5"><a href="multiple3.html#cb144-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(gad1)</span>
-<span id="cb144-6"><a href="multiple3.html#cb144-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-7"><a href="multiple3.html#cb144-7" aria-hidden="true" tabindex="-1"></a><span class="co"># store BF</span></span>
-<span id="cb144-8"><a href="multiple3.html#cb144-8" aria-hidden="true" tabindex="-1"></a>BF_gad1 <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(gad <span class="sc">~</span> brooding, <span class="at">data =</span> <span class="fu">data.frame</span>(pwb_data))</span>
-<span id="cb144-9"><a href="multiple3.html#cb144-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-10"><a href="multiple3.html#cb144-10" aria-hidden="true" tabindex="-1"></a><span class="co"># show BF</span></span>
-<span id="cb144-11"><a href="multiple3.html#cb144-11" aria-hidden="true" tabindex="-1"></a>BF_gad1</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="multiple3.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model in step 1, store in gad1</span></span>
+<span id="cb145-2"><a href="multiple3.html#cb145-2" aria-hidden="true" tabindex="-1"></a>gad1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(gad <span class="sc">~</span> brooding, <span class="at">data =</span> pwb_data)</span>
+<span id="cb145-3"><a href="multiple3.html#cb145-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-4"><a href="multiple3.html#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="co"># R-sq</span></span>
+<span id="cb145-5"><a href="multiple3.html#cb145-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(gad1)</span>
+<span id="cb145-6"><a href="multiple3.html#cb145-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-7"><a href="multiple3.html#cb145-7" aria-hidden="true" tabindex="-1"></a><span class="co"># store BF</span></span>
+<span id="cb145-8"><a href="multiple3.html#cb145-8" aria-hidden="true" tabindex="-1"></a>BF_gad1 <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(gad <span class="sc">~</span> brooding, <span class="at">data =</span> <span class="fu">data.frame</span>(pwb_data))</span>
+<span id="cb145-9"><a href="multiple3.html#cb145-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-10"><a href="multiple3.html#cb145-10" aria-hidden="true" tabindex="-1"></a><span class="co"># show BF</span></span>
+<span id="cb145-11"><a href="multiple3.html#cb145-11" aria-hidden="true" tabindex="-1"></a>BF_gad1</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1030,17 +1025,17 @@ Hint
 <button>
 Solution - code
 </button>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="multiple3.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model in Step 2</span></span>
-<span id="cb145-2"><a href="multiple3.html#cb145-2" aria-hidden="true" tabindex="-1"></a>gad2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> worry, <span class="at">data =</span> pwb_data)</span>
-<span id="cb145-3"><a href="multiple3.html#cb145-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb145-4"><a href="multiple3.html#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="co"># R sq</span></span>
-<span id="cb145-5"><a href="multiple3.html#cb145-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(gad2)</span>
-<span id="cb145-6"><a href="multiple3.html#cb145-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb145-7"><a href="multiple3.html#cb145-7" aria-hidden="true" tabindex="-1"></a><span class="co"># store the BF</span></span>
-<span id="cb145-8"><a href="multiple3.html#cb145-8" aria-hidden="true" tabindex="-1"></a>BF_gad2 <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> worry, <span class="at">data =</span> <span class="fu">data.frame</span>(pwb_data))</span>
-<span id="cb145-9"><a href="multiple3.html#cb145-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb145-10"><a href="multiple3.html#cb145-10" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BFs for the models in Step 2 and Step 1</span></span>
-<span id="cb145-11"><a href="multiple3.html#cb145-11" aria-hidden="true" tabindex="-1"></a>BF_gad2 <span class="sc">/</span> BF_gad1</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="multiple3.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model in Step 2</span></span>
+<span id="cb146-2"><a href="multiple3.html#cb146-2" aria-hidden="true" tabindex="-1"></a>gad2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> worry, <span class="at">data =</span> pwb_data)</span>
+<span id="cb146-3"><a href="multiple3.html#cb146-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-4"><a href="multiple3.html#cb146-4" aria-hidden="true" tabindex="-1"></a><span class="co"># R sq</span></span>
+<span id="cb146-5"><a href="multiple3.html#cb146-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(gad2)</span>
+<span id="cb146-6"><a href="multiple3.html#cb146-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-7"><a href="multiple3.html#cb146-7" aria-hidden="true" tabindex="-1"></a><span class="co"># store the BF</span></span>
+<span id="cb146-8"><a href="multiple3.html#cb146-8" aria-hidden="true" tabindex="-1"></a>BF_gad2 <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> worry, <span class="at">data =</span> <span class="fu">data.frame</span>(pwb_data))</span>
+<span id="cb146-9"><a href="multiple3.html#cb146-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-10"><a href="multiple3.html#cb146-10" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BFs for the models in Step 2 and Step 1</span></span>
+<span id="cb146-11"><a href="multiple3.html#cb146-11" aria-hidden="true" tabindex="-1"></a>BF_gad2 <span class="sc">/</span> BF_gad1</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1067,23 +1062,23 @@ Hint
 <button>
 Solution - code
 </button>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="multiple3.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model in Step 3</span></span>
-<span id="cb146-2"><a href="multiple3.html#cb146-2" aria-hidden="true" tabindex="-1"></a>gad3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
-<span id="cb146-3"><a href="multiple3.html#cb146-3" aria-hidden="true" tabindex="-1"></a>              observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> </span>
-<span id="cb146-4"><a href="multiple3.html#cb146-4" aria-hidden="true" tabindex="-1"></a>              nonjudging <span class="sc">+</span> nonreactivity, </span>
-<span id="cb146-5"><a href="multiple3.html#cb146-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> pwb_data)</span>
-<span id="cb146-6"><a href="multiple3.html#cb146-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-7"><a href="multiple3.html#cb146-7" aria-hidden="true" tabindex="-1"></a><span class="co"># R-sq</span></span>
-<span id="cb146-8"><a href="multiple3.html#cb146-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(gad3)</span>
-<span id="cb146-9"><a href="multiple3.html#cb146-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-10"><a href="multiple3.html#cb146-10" aria-hidden="true" tabindex="-1"></a><span class="co"># store the BF</span></span>
-<span id="cb146-11"><a href="multiple3.html#cb146-11" aria-hidden="true" tabindex="-1"></a>BF_gad3 <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
-<span id="cb146-12"><a href="multiple3.html#cb146-12" aria-hidden="true" tabindex="-1"></a>                   observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> </span>
-<span id="cb146-13"><a href="multiple3.html#cb146-13" aria-hidden="true" tabindex="-1"></a>                   nonjudging <span class="sc">+</span> nonreactivity, </span>
-<span id="cb146-14"><a href="multiple3.html#cb146-14" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> <span class="fu">data.frame</span>(pwb_data))</span>
-<span id="cb146-15"><a href="multiple3.html#cb146-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-16"><a href="multiple3.html#cb146-16" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BFs for the models in Step 3 and Step 2</span></span>
-<span id="cb146-17"><a href="multiple3.html#cb146-17" aria-hidden="true" tabindex="-1"></a>BF_gad3 <span class="sc">/</span> BF_gad2</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="multiple3.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model in Step 3</span></span>
+<span id="cb147-2"><a href="multiple3.html#cb147-2" aria-hidden="true" tabindex="-1"></a>gad3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
+<span id="cb147-3"><a href="multiple3.html#cb147-3" aria-hidden="true" tabindex="-1"></a>              observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> </span>
+<span id="cb147-4"><a href="multiple3.html#cb147-4" aria-hidden="true" tabindex="-1"></a>              nonjudging <span class="sc">+</span> nonreactivity, </span>
+<span id="cb147-5"><a href="multiple3.html#cb147-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> pwb_data)</span>
+<span id="cb147-6"><a href="multiple3.html#cb147-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-7"><a href="multiple3.html#cb147-7" aria-hidden="true" tabindex="-1"></a><span class="co"># R-sq</span></span>
+<span id="cb147-8"><a href="multiple3.html#cb147-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(gad3)</span>
+<span id="cb147-9"><a href="multiple3.html#cb147-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-10"><a href="multiple3.html#cb147-10" aria-hidden="true" tabindex="-1"></a><span class="co"># store the BF</span></span>
+<span id="cb147-11"><a href="multiple3.html#cb147-11" aria-hidden="true" tabindex="-1"></a>BF_gad3 <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
+<span id="cb147-12"><a href="multiple3.html#cb147-12" aria-hidden="true" tabindex="-1"></a>                   observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> </span>
+<span id="cb147-13"><a href="multiple3.html#cb147-13" aria-hidden="true" tabindex="-1"></a>                   nonjudging <span class="sc">+</span> nonreactivity, </span>
+<span id="cb147-14"><a href="multiple3.html#cb147-14" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> <span class="fu">data.frame</span>(pwb_data))</span>
+<span id="cb147-15"><a href="multiple3.html#cb147-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-16"><a href="multiple3.html#cb147-16" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BFs for the models in Step 3 and Step 2</span></span>
+<span id="cb147-17"><a href="multiple3.html#cb147-17" aria-hidden="true" tabindex="-1"></a>BF_gad3 <span class="sc">/</span> BF_gad2</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1109,23 +1104,23 @@ Hint
 <button>
 Solution - code
 </button>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="multiple3.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model in Step 4</span></span>
-<span id="cb147-2"><a href="multiple3.html#cb147-2" aria-hidden="true" tabindex="-1"></a>gad4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
-<span id="cb147-3"><a href="multiple3.html#cb147-3" aria-hidden="true" tabindex="-1"></a>                  observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> nonjudging <span class="sc">+</span> nonreactivity <span class="sc">+</span> </span>
-<span id="cb147-4"><a href="multiple3.html#cb147-4" aria-hidden="true" tabindex="-1"></a>                  attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, </span>
-<span id="cb147-5"><a href="multiple3.html#cb147-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> pwb_data)</span>
-<span id="cb147-6"><a href="multiple3.html#cb147-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-7"><a href="multiple3.html#cb147-7" aria-hidden="true" tabindex="-1"></a><span class="co"># R-sq</span></span>
-<span id="cb147-8"><a href="multiple3.html#cb147-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(gad4)</span>
-<span id="cb147-9"><a href="multiple3.html#cb147-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-10"><a href="multiple3.html#cb147-10" aria-hidden="true" tabindex="-1"></a><span class="co"># store the BF</span></span>
-<span id="cb147-11"><a href="multiple3.html#cb147-11" aria-hidden="true" tabindex="-1"></a>BF_gad4 <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
-<span id="cb147-12"><a href="multiple3.html#cb147-12" aria-hidden="true" tabindex="-1"></a>                       observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> nonjudging <span class="sc">+</span> nonreactivity <span class="sc">+</span></span>
-<span id="cb147-13"><a href="multiple3.html#cb147-13" aria-hidden="true" tabindex="-1"></a>                       attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, </span>
-<span id="cb147-14"><a href="multiple3.html#cb147-14" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data =</span> <span class="fu">data.frame</span>(pwb_data))</span>
-<span id="cb147-15"><a href="multiple3.html#cb147-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-16"><a href="multiple3.html#cb147-16" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BFs for the models in Step 3 and Step 2</span></span>
-<span id="cb147-17"><a href="multiple3.html#cb147-17" aria-hidden="true" tabindex="-1"></a>BF_gad4 <span class="sc">/</span> BF_gad3</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="multiple3.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model in Step 4</span></span>
+<span id="cb148-2"><a href="multiple3.html#cb148-2" aria-hidden="true" tabindex="-1"></a>gad4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
+<span id="cb148-3"><a href="multiple3.html#cb148-3" aria-hidden="true" tabindex="-1"></a>                  observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> nonjudging <span class="sc">+</span> nonreactivity <span class="sc">+</span> </span>
+<span id="cb148-4"><a href="multiple3.html#cb148-4" aria-hidden="true" tabindex="-1"></a>                  attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, </span>
+<span id="cb148-5"><a href="multiple3.html#cb148-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> pwb_data)</span>
+<span id="cb148-6"><a href="multiple3.html#cb148-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-7"><a href="multiple3.html#cb148-7" aria-hidden="true" tabindex="-1"></a><span class="co"># R-sq</span></span>
+<span id="cb148-8"><a href="multiple3.html#cb148-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(gad4)</span>
+<span id="cb148-9"><a href="multiple3.html#cb148-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-10"><a href="multiple3.html#cb148-10" aria-hidden="true" tabindex="-1"></a><span class="co"># store the BF</span></span>
+<span id="cb148-11"><a href="multiple3.html#cb148-11" aria-hidden="true" tabindex="-1"></a>BF_gad4 <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
+<span id="cb148-12"><a href="multiple3.html#cb148-12" aria-hidden="true" tabindex="-1"></a>                       observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> nonjudging <span class="sc">+</span> nonreactivity <span class="sc">+</span></span>
+<span id="cb148-13"><a href="multiple3.html#cb148-13" aria-hidden="true" tabindex="-1"></a>                       attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, </span>
+<span id="cb148-14"><a href="multiple3.html#cb148-14" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data =</span> <span class="fu">data.frame</span>(pwb_data))</span>
+<span id="cb148-15"><a href="multiple3.html#cb148-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-16"><a href="multiple3.html#cb148-16" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BFs for the models in Step 3 and Step 2</span></span>
+<span id="cb148-17"><a href="multiple3.html#cb148-17" aria-hidden="true" tabindex="-1"></a>BF_gad4 <span class="sc">/</span> BF_gad3</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1137,8 +1132,8 @@ Solution - code
 <p><br />
 </p>
 </div>
-<div id="worked-exercise-2-controlling-for-categorical-variables" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> Worked Exercise 2: Controlling for categorical variables</h2>
+<div id="worked-exercise-2-controlling-for-categorical-variables" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Worked Exercise 2: Controlling for categorical variables<a href="multiple3.html#worked-exercise-2-controlling-for-categorical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>All of the variables considered in the previous exercise were continuous (or at were least assumed to be). It is also possible to use hierarchical regression to control for the influence of variables that are <em>categorical</em> in nature.</p>
 <p>How do human-animal relationships affect mental health? Ratschen et al. (2020) looked at the impact of relationships with animals (e.g., pets) on mental health and loneliness in individuals during the Covid-19 pandemic.</p>
 <p>Data from their study are located at the link below.</p>
@@ -1166,28 +1161,28 @@ More on the data
 </ul>
 <p><br />
 </p>
-<div id="visualisation-1" class="section level3" number="5.4.1">
-<h3><span class="header-section-number">5.4.1</span> Visualisation</h3>
+<div id="visualisation-1" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Visualisation<a href="multiple3.html#visualisation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Inspect the distributions of the continuous variables:</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="multiple3.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the data</span></span>
-<span id="cb148-2"><a href="multiple3.html#cb148-2" aria-hidden="true" tabindex="-1"></a>animal_data <span class="ot">&lt;-</span> </span>
-<span id="cb148-3"><a href="multiple3.html#cb148-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/5_animal_data.csv&#39;</span>)</span>
-<span id="cb148-4"><a href="multiple3.html#cb148-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb148-5"><a href="multiple3.html#cb148-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb148-6"><a href="multiple3.html#cb148-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot density plots of all the numeric (continuous) variables</span></span>
-<span id="cb148-7"><a href="multiple3.html#cb148-7" aria-hidden="true" tabindex="-1"></a><span class="co"># The code below:</span></span>
-<span id="cb148-8"><a href="multiple3.html#cb148-8" aria-hidden="true" tabindex="-1"></a><span class="co"># -Keeps only the numeric columns in a data frame</span></span>
-<span id="cb148-9"><a href="multiple3.html#cb148-9" aria-hidden="true" tabindex="-1"></a><span class="co"># -Uses pivot_longer() to code each set of scores by its variable name</span></span>
-<span id="cb148-10"><a href="multiple3.html#cb148-10" aria-hidden="true" tabindex="-1"></a><span class="co"># -Specifies the &#39;score&#39; to plot in aes()</span></span>
-<span id="cb148-11"><a href="multiple3.html#cb148-11" aria-hidden="true" tabindex="-1"></a><span class="co"># -Uses facet_wrap() to plot each variable in a separate panel</span></span>
-<span id="cb148-12"><a href="multiple3.html#cb148-12" aria-hidden="true" tabindex="-1"></a><span class="co"># -Uses scales = &quot;free&quot; to allow the range on the x- and y-axis to be different across panels</span></span>
-<span id="cb148-13"><a href="multiple3.html#cb148-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb148-14"><a href="multiple3.html#cb148-14" aria-hidden="true" tabindex="-1"></a>animal_data <span class="sc">%&gt;%</span></span>
-<span id="cb148-15"><a href="multiple3.html#cb148-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">keep</span>(is.numeric) <span class="sc">%&gt;%</span>                     </span>
-<span id="cb148-16"><a href="multiple3.html#cb148-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;score&quot;</span>) <span class="sc">%&gt;%</span>   </span>
-<span id="cb148-17"><a href="multiple3.html#cb148-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(score)) <span class="sc">+</span>     </span>
-<span id="cb148-18"><a href="multiple3.html#cb148-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> variable, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span>     </span>
-<span id="cb148-19"><a href="multiple3.html#cb148-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()            </span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="multiple3.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the data</span></span>
+<span id="cb149-2"><a href="multiple3.html#cb149-2" aria-hidden="true" tabindex="-1"></a>animal_data <span class="ot">&lt;-</span> </span>
+<span id="cb149-3"><a href="multiple3.html#cb149-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/5_animal_data.csv&#39;</span>)</span>
+<span id="cb149-4"><a href="multiple3.html#cb149-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-5"><a href="multiple3.html#cb149-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-6"><a href="multiple3.html#cb149-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot density plots of all the numeric (continuous) variables</span></span>
+<span id="cb149-7"><a href="multiple3.html#cb149-7" aria-hidden="true" tabindex="-1"></a><span class="co"># The code below:</span></span>
+<span id="cb149-8"><a href="multiple3.html#cb149-8" aria-hidden="true" tabindex="-1"></a><span class="co"># -Keeps only the numeric columns in a data frame</span></span>
+<span id="cb149-9"><a href="multiple3.html#cb149-9" aria-hidden="true" tabindex="-1"></a><span class="co"># -Uses pivot_longer() to code each set of scores by its variable name</span></span>
+<span id="cb149-10"><a href="multiple3.html#cb149-10" aria-hidden="true" tabindex="-1"></a><span class="co"># -Specifies the &#39;score&#39; to plot in aes()</span></span>
+<span id="cb149-11"><a href="multiple3.html#cb149-11" aria-hidden="true" tabindex="-1"></a><span class="co"># -Uses facet_wrap() to plot each variable in a separate panel</span></span>
+<span id="cb149-12"><a href="multiple3.html#cb149-12" aria-hidden="true" tabindex="-1"></a><span class="co"># -Uses scales = &quot;free&quot; to allow the range on the x- and y-axis to be different across panels</span></span>
+<span id="cb149-13"><a href="multiple3.html#cb149-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-14"><a href="multiple3.html#cb149-14" aria-hidden="true" tabindex="-1"></a>animal_data <span class="sc">%&gt;%</span></span>
+<span id="cb149-15"><a href="multiple3.html#cb149-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">keep</span>(is.numeric) <span class="sc">%&gt;%</span>                     </span>
+<span id="cb149-16"><a href="multiple3.html#cb149-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;score&quot;</span>) <span class="sc">%&gt;%</span>   </span>
+<span id="cb149-17"><a href="multiple3.html#cb149-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(score)) <span class="sc">+</span>     </span>
+<span id="cb149-18"><a href="multiple3.html#cb149-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> variable, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span>     </span>
+<span id="cb149-19"><a href="multiple3.html#cb149-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()            </span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-15"></span>
 <img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-15-1.png" alt="Histogram plots for each continous predictor" width="100%" />
 <p class="caption">
@@ -1197,20 +1192,20 @@ Figure 5.1: Histogram plots for each continous predictor
 <p><br />
 </p>
 <p>The code can be modified to obtain histograms of all of the categorical variables:</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="multiple3.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot histograms of all the categorical vars (i.e., count data)</span></span>
-<span id="cb149-2"><a href="multiple3.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The code:</span></span>
-<span id="cb149-3"><a href="multiple3.html#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="co"># -Keeps only the character columns in the dataset</span></span>
-<span id="cb149-4"><a href="multiple3.html#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="co"># -Uses pivot_longer() to code each set of scores by variable</span></span>
-<span id="cb149-5"><a href="multiple3.html#cb149-5" aria-hidden="true" tabindex="-1"></a><span class="co"># -Specifies the &#39;score&#39; to plot in aes()</span></span>
-<span id="cb149-6"><a href="multiple3.html#cb149-6" aria-hidden="true" tabindex="-1"></a><span class="co"># -Uses facet_wrap() to plot in separate panels</span></span>
-<span id="cb149-7"><a href="multiple3.html#cb149-7" aria-hidden="true" tabindex="-1"></a><span class="co"># -Tells geom_histogram() to plot count data </span></span>
-<span id="cb149-8"><a href="multiple3.html#cb149-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-9"><a href="multiple3.html#cb149-9" aria-hidden="true" tabindex="-1"></a>animal_data <span class="sc">%&gt;%</span> </span>
-<span id="cb149-10"><a href="multiple3.html#cb149-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">keep</span>(is.character)  <span class="sc">%&gt;%</span> </span>
-<span id="cb149-11"><a href="multiple3.html#cb149-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;score&quot;</span>) <span class="sc">%&gt;%</span>   </span>
-<span id="cb149-12"><a href="multiple3.html#cb149-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(score)) <span class="sc">+</span>     </span>
-<span id="cb149-13"><a href="multiple3.html#cb149-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> variable, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span>     </span>
-<span id="cb149-14"><a href="multiple3.html#cb149-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">stat =</span> <span class="st">&quot;count&quot;</span>)        </span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="multiple3.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot histograms of all the categorical vars (i.e., count data)</span></span>
+<span id="cb150-2"><a href="multiple3.html#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The code:</span></span>
+<span id="cb150-3"><a href="multiple3.html#cb150-3" aria-hidden="true" tabindex="-1"></a><span class="co"># -Keeps only the character columns in the dataset</span></span>
+<span id="cb150-4"><a href="multiple3.html#cb150-4" aria-hidden="true" tabindex="-1"></a><span class="co"># -Uses pivot_longer() to code each set of scores by variable</span></span>
+<span id="cb150-5"><a href="multiple3.html#cb150-5" aria-hidden="true" tabindex="-1"></a><span class="co"># -Specifies the &#39;score&#39; to plot in aes()</span></span>
+<span id="cb150-6"><a href="multiple3.html#cb150-6" aria-hidden="true" tabindex="-1"></a><span class="co"># -Uses facet_wrap() to plot in separate panels</span></span>
+<span id="cb150-7"><a href="multiple3.html#cb150-7" aria-hidden="true" tabindex="-1"></a><span class="co"># -Tells geom_histogram() to plot count data </span></span>
+<span id="cb150-8"><a href="multiple3.html#cb150-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb150-9"><a href="multiple3.html#cb150-9" aria-hidden="true" tabindex="-1"></a>animal_data <span class="sc">%&gt;%</span> </span>
+<span id="cb150-10"><a href="multiple3.html#cb150-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">keep</span>(is.character)  <span class="sc">%&gt;%</span> </span>
+<span id="cb150-11"><a href="multiple3.html#cb150-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;score&quot;</span>) <span class="sc">%&gt;%</span>   </span>
+<span id="cb150-12"><a href="multiple3.html#cb150-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(score)) <span class="sc">+</span>     </span>
+<span id="cb150-13"><a href="multiple3.html#cb150-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> variable, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span>     </span>
+<span id="cb150-14"><a href="multiple3.html#cb150-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">stat =</span> <span class="st">&quot;count&quot;</span>)        </span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-16"></span>
 <img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-16-1.png" alt="Histograms for each categorical predictor" width="100%" />
 <p class="caption">
@@ -1228,31 +1223,31 @@ Figure 5.2: Histograms for each categorical predictor
 </p>
 <p>The scores on the <code>loneliness_pre</code> variable range from 3 to 9, so there are only 7 possible scores. When there are many data points, this can create issues when visualising the variable in a scatterplot because there are only so many combinations of scores for the variable, so they overlap.</p>
 <p>The code below uses the <code>gridExtra</code> package to display two plots created with <code>ggplot()</code>. Each plot is stored in a separate variable <code>panel1</code> and <code>panel2</code>, then placed side-by-side using <code>grid.arrange()</code> from the <code>gridExtra</code> package:</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="multiple3.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load library(gridExtra)</span></span>
-<span id="cb150-2"><a href="multiple3.html#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="co"># for displaying different plots on multiple panels</span></span>
-<span id="cb150-3"><a href="multiple3.html#cb150-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb150-4"><a href="multiple3.html#cb150-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb150-5"><a href="multiple3.html#cb150-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create a scatterplot of loneliness scores</span></span>
-<span id="cb150-6"><a href="multiple3.html#cb150-6" aria-hidden="true" tabindex="-1"></a><span class="co"># without random jittering of points</span></span>
-<span id="cb150-7"><a href="multiple3.html#cb150-7" aria-hidden="true" tabindex="-1"></a><span class="co"># store in panel1</span></span>
-<span id="cb150-8"><a href="multiple3.html#cb150-8" aria-hidden="true" tabindex="-1"></a>panel1 <span class="ot">&lt;-</span> </span>
-<span id="cb150-9"><a href="multiple3.html#cb150-9" aria-hidden="true" tabindex="-1"></a>  animal_data <span class="sc">%&gt;%</span> </span>
-<span id="cb150-10"><a href="multiple3.html#cb150-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>loneliness_pre, <span class="at">y =</span> loneliness_since)) <span class="sc">+</span></span>
-<span id="cb150-11"><a href="multiple3.html#cb150-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb150-12"><a href="multiple3.html#cb150-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> F) <span class="sc">+</span></span>
-<span id="cb150-13"><a href="multiple3.html#cb150-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;Without geom_jitter()&quot;</span>)</span>
-<span id="cb150-14"><a href="multiple3.html#cb150-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb150-15"><a href="multiple3.html#cb150-15" aria-hidden="true" tabindex="-1"></a><span class="co"># create a scatterplot of loneliness scores</span></span>
-<span id="cb150-16"><a href="multiple3.html#cb150-16" aria-hidden="true" tabindex="-1"></a><span class="co"># with random jittering of points using geom_jitter()</span></span>
-<span id="cb150-17"><a href="multiple3.html#cb150-17" aria-hidden="true" tabindex="-1"></a><span class="co"># store in panel2</span></span>
-<span id="cb150-18"><a href="multiple3.html#cb150-18" aria-hidden="true" tabindex="-1"></a>panel2 <span class="ot">&lt;-</span> </span>
-<span id="cb150-19"><a href="multiple3.html#cb150-19" aria-hidden="true" tabindex="-1"></a>  animal_data <span class="sc">%&gt;%</span> </span>
-<span id="cb150-20"><a href="multiple3.html#cb150-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>loneliness_pre, <span class="at">y =</span> loneliness_since)) <span class="sc">+</span></span>
-<span id="cb150-21"><a href="multiple3.html#cb150-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
-<span id="cb150-22"><a href="multiple3.html#cb150-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> F)<span class="sc">+</span></span>
-<span id="cb150-23"><a href="multiple3.html#cb150-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;With geom_jitter()&quot;</span>)</span>
-<span id="cb150-24"><a href="multiple3.html#cb150-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb150-25"><a href="multiple3.html#cb150-25" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(panel1, panel2, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="multiple3.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load library(gridExtra)</span></span>
+<span id="cb151-2"><a href="multiple3.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="co"># for displaying different plots on multiple panels</span></span>
+<span id="cb151-3"><a href="multiple3.html#cb151-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb151-4"><a href="multiple3.html#cb151-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-5"><a href="multiple3.html#cb151-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create a scatterplot of loneliness scores</span></span>
+<span id="cb151-6"><a href="multiple3.html#cb151-6" aria-hidden="true" tabindex="-1"></a><span class="co"># without random jittering of points</span></span>
+<span id="cb151-7"><a href="multiple3.html#cb151-7" aria-hidden="true" tabindex="-1"></a><span class="co"># store in panel1</span></span>
+<span id="cb151-8"><a href="multiple3.html#cb151-8" aria-hidden="true" tabindex="-1"></a>panel1 <span class="ot">&lt;-</span> </span>
+<span id="cb151-9"><a href="multiple3.html#cb151-9" aria-hidden="true" tabindex="-1"></a>  animal_data <span class="sc">%&gt;%</span> </span>
+<span id="cb151-10"><a href="multiple3.html#cb151-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>loneliness_pre, <span class="at">y =</span> loneliness_since)) <span class="sc">+</span></span>
+<span id="cb151-11"><a href="multiple3.html#cb151-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb151-12"><a href="multiple3.html#cb151-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> F) <span class="sc">+</span></span>
+<span id="cb151-13"><a href="multiple3.html#cb151-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;Without geom_jitter()&quot;</span>)</span>
+<span id="cb151-14"><a href="multiple3.html#cb151-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-15"><a href="multiple3.html#cb151-15" aria-hidden="true" tabindex="-1"></a><span class="co"># create a scatterplot of loneliness scores</span></span>
+<span id="cb151-16"><a href="multiple3.html#cb151-16" aria-hidden="true" tabindex="-1"></a><span class="co"># with random jittering of points using geom_jitter()</span></span>
+<span id="cb151-17"><a href="multiple3.html#cb151-17" aria-hidden="true" tabindex="-1"></a><span class="co"># store in panel2</span></span>
+<span id="cb151-18"><a href="multiple3.html#cb151-18" aria-hidden="true" tabindex="-1"></a>panel2 <span class="ot">&lt;-</span> </span>
+<span id="cb151-19"><a href="multiple3.html#cb151-19" aria-hidden="true" tabindex="-1"></a>  animal_data <span class="sc">%&gt;%</span> </span>
+<span id="cb151-20"><a href="multiple3.html#cb151-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>loneliness_pre, <span class="at">y =</span> loneliness_since)) <span class="sc">+</span></span>
+<span id="cb151-21"><a href="multiple3.html#cb151-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb151-22"><a href="multiple3.html#cb151-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> F)<span class="sc">+</span></span>
+<span id="cb151-23"><a href="multiple3.html#cb151-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;With geom_jitter()&quot;</span>)</span>
+<span id="cb151-24"><a href="multiple3.html#cb151-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-25"><a href="multiple3.html#cb151-25" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(panel1, panel2, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-17"></span>
 <img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-17-1.png" alt="Using geom_jitter(): loneliness_since vs. londliness_pre" width="100%" />
 <p class="caption">
@@ -1263,18 +1258,18 @@ Figure 2.3: Using geom_jitter(): loneliness_since vs. londliness_pre
 <p><br />
 </p>
 <p>The next step isn't strictly necessary because the categorical variables are stored as character variables (i.e., <code>&lt;chr&gt;</code>), but it is good practice to convert the categorical variables to <code>factors</code> before the analysis.</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="multiple3.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert categorical variables to factors</span></span>
-<span id="cb151-2"><a href="multiple3.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (remember, age is grouped, so is categorical here)</span></span>
-<span id="cb151-3"><a href="multiple3.html#cb151-3" aria-hidden="true" tabindex="-1"></a>animal_data <span class="ot">&lt;-</span> </span>
-<span id="cb151-4"><a href="multiple3.html#cb151-4" aria-hidden="true" tabindex="-1"></a>  animal_data <span class="sc">%&gt;%</span> </span>
-<span id="cb151-5"><a href="multiple3.html#cb151-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">factor</span>(gender),</span>
-<span id="cb151-6"><a href="multiple3.html#cb151-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">age =</span> <span class="fu">factor</span>(age),</span>
-<span id="cb151-7"><a href="multiple3.html#cb151-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">partner =</span> <span class="fu">factor</span>(age),</span>
-<span id="cb151-8"><a href="multiple3.html#cb151-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">species =</span> <span class="fu">factor</span>(species))</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="multiple3.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert categorical variables to factors</span></span>
+<span id="cb152-2"><a href="multiple3.html#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (remember, age is grouped, so is categorical here)</span></span>
+<span id="cb152-3"><a href="multiple3.html#cb152-3" aria-hidden="true" tabindex="-1"></a>animal_data <span class="ot">&lt;-</span> </span>
+<span id="cb152-4"><a href="multiple3.html#cb152-4" aria-hidden="true" tabindex="-1"></a>  animal_data <span class="sc">%&gt;%</span> </span>
+<span id="cb152-5"><a href="multiple3.html#cb152-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">factor</span>(gender),</span>
+<span id="cb152-6"><a href="multiple3.html#cb152-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">age =</span> <span class="fu">factor</span>(age),</span>
+<span id="cb152-7"><a href="multiple3.html#cb152-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">partner =</span> <span class="fu">factor</span>(age),</span>
+<span id="cb152-8"><a href="multiple3.html#cb152-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">species =</span> <span class="fu">factor</span>(species))</span></code></pre></div>
 </div>
 </div>
-<div id="exercise-2" class="section level2" number="5.5">
-<h2><span class="header-section-number">5.5</span> Exercise 2</h2>
+<div id="exercise-2" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Exercise 2<a href="multiple3.html#exercise-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-26" class="exercise"><strong>Exercise 5.3  </strong></span>Hierarchical regression</p>
 <p>Using the <code>animal_data</code>, we'll look at whether <code>comfort</code> scores predict <code>mental_health_pre</code> after controlling for <code>gender</code>, <code>age</code>, <code>partner</code>, <code>species</code> and <code>loneliness_pre</code>.</p>
@@ -1311,21 +1306,21 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="multiple3.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store model with covariates only</span></span>
-<span id="cb152-2"><a href="multiple3.html#cb152-2" aria-hidden="true" tabindex="-1"></a>step1_covariates <span class="ot">&lt;-</span> </span>
-<span id="cb152-3"><a href="multiple3.html#cb152-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(mental_health_pre <span class="sc">~</span> gender <span class="sc">+</span> age <span class="sc">+</span> partner <span class="sc">+</span> species <span class="sc">+</span> loneliness_pre,</span>
-<span id="cb152-4"><a href="multiple3.html#cb152-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> animal_data)</span>
-<span id="cb152-5"><a href="multiple3.html#cb152-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb152-6"><a href="multiple3.html#cb152-6" aria-hidden="true" tabindex="-1"></a><span class="co"># R-sq</span></span>
-<span id="cb152-7"><a href="multiple3.html#cb152-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(step1_covariates)</span>
-<span id="cb152-8"><a href="multiple3.html#cb152-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb152-9"><a href="multiple3.html#cb152-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the BF</span></span>
-<span id="cb152-10"><a href="multiple3.html#cb152-10" aria-hidden="true" tabindex="-1"></a>BF_step1_covariates <span class="ot">&lt;-</span> </span>
-<span id="cb152-11"><a href="multiple3.html#cb152-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(mental_health_pre <span class="sc">~</span> gender <span class="sc">+</span> age <span class="sc">+</span> partner <span class="sc">+</span> species <span class="sc">+</span> loneliness_pre, </span>
-<span id="cb152-12"><a href="multiple3.html#cb152-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> <span class="fu">data.frame</span>(animal_data))</span>
-<span id="cb152-13"><a href="multiple3.html#cb152-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb152-14"><a href="multiple3.html#cb152-14" aria-hidden="true" tabindex="-1"></a><span class="co"># View the BF for step 1</span></span>
-<span id="cb152-15"><a href="multiple3.html#cb152-15" aria-hidden="true" tabindex="-1"></a>BF_step1_covariates</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="multiple3.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store model with covariates only</span></span>
+<span id="cb153-2"><a href="multiple3.html#cb153-2" aria-hidden="true" tabindex="-1"></a>step1_covariates <span class="ot">&lt;-</span> </span>
+<span id="cb153-3"><a href="multiple3.html#cb153-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(mental_health_pre <span class="sc">~</span> gender <span class="sc">+</span> age <span class="sc">+</span> partner <span class="sc">+</span> species <span class="sc">+</span> loneliness_pre,</span>
+<span id="cb153-4"><a href="multiple3.html#cb153-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> animal_data)</span>
+<span id="cb153-5"><a href="multiple3.html#cb153-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-6"><a href="multiple3.html#cb153-6" aria-hidden="true" tabindex="-1"></a><span class="co"># R-sq</span></span>
+<span id="cb153-7"><a href="multiple3.html#cb153-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(step1_covariates)</span>
+<span id="cb153-8"><a href="multiple3.html#cb153-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-9"><a href="multiple3.html#cb153-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the BF</span></span>
+<span id="cb153-10"><a href="multiple3.html#cb153-10" aria-hidden="true" tabindex="-1"></a>BF_step1_covariates <span class="ot">&lt;-</span> </span>
+<span id="cb153-11"><a href="multiple3.html#cb153-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(mental_health_pre <span class="sc">~</span> gender <span class="sc">+</span> age <span class="sc">+</span> partner <span class="sc">+</span> species <span class="sc">+</span> loneliness_pre, </span>
+<span id="cb153-12"><a href="multiple3.html#cb153-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> <span class="fu">data.frame</span>(animal_data))</span>
+<span id="cb153-13"><a href="multiple3.html#cb153-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-14"><a href="multiple3.html#cb153-14" aria-hidden="true" tabindex="-1"></a><span class="co"># View the BF for step 1</span></span>
+<span id="cb153-15"><a href="multiple3.html#cb153-15" aria-hidden="true" tabindex="-1"></a>BF_step1_covariates</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1354,33 +1349,33 @@ Hint
 <button>
 Solution - code
 </button>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="multiple3.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="co"># covariates + comfort</span></span>
-<span id="cb153-2"><a href="multiple3.html#cb153-2" aria-hidden="true" tabindex="-1"></a>step2_full <span class="ot">&lt;-</span> </span>
-<span id="cb153-3"><a href="multiple3.html#cb153-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(mental_health_pre <span class="sc">~</span> comfort <span class="sc">+</span> gender <span class="sc">+</span> age <span class="sc">+</span> partner <span class="sc">+</span> species <span class="sc">+</span> loneliness_pre, </span>
-<span id="cb153-4"><a href="multiple3.html#cb153-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> animal_data)</span>
-<span id="cb153-5"><a href="multiple3.html#cb153-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb153-6"><a href="multiple3.html#cb153-6" aria-hidden="true" tabindex="-1"></a><span class="co"># R-sq</span></span>
-<span id="cb153-7"><a href="multiple3.html#cb153-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(step2_full) </span>
-<span id="cb153-8"><a href="multiple3.html#cb153-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb153-9"><a href="multiple3.html#cb153-9" aria-hidden="true" tabindex="-1"></a><span class="co"># store BF</span></span>
-<span id="cb153-10"><a href="multiple3.html#cb153-10" aria-hidden="true" tabindex="-1"></a>BF_step2_full <span class="ot">&lt;-</span> </span>
-<span id="cb153-11"><a href="multiple3.html#cb153-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(mental_health_pre <span class="sc">~</span> comfort <span class="sc">+</span> gender <span class="sc">+</span> age <span class="sc">+</span> partner <span class="sc">+</span> species <span class="sc">+</span> loneliness_pre, </span>
-<span id="cb153-12"><a href="multiple3.html#cb153-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> <span class="fu">data.frame</span>(animal_data))</span>
-<span id="cb153-13"><a href="multiple3.html#cb153-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb153-14"><a href="multiple3.html#cb153-14" aria-hidden="true" tabindex="-1"></a><span class="co"># evidence for comfort, controlling for covariates</span></span>
-<span id="cb153-15"><a href="multiple3.html#cb153-15" aria-hidden="true" tabindex="-1"></a>BF_step2_full <span class="sc">/</span> BF_step1_covariates</span>
-<span id="cb153-16"><a href="multiple3.html#cb153-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb153-17"><a href="multiple3.html#cb153-17" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the sign on the coefficient for comfort</span></span>
-<span id="cb153-18"><a href="multiple3.html#cb153-18" aria-hidden="true" tabindex="-1"></a>step2_full</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="multiple3.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="co"># covariates + comfort</span></span>
+<span id="cb154-2"><a href="multiple3.html#cb154-2" aria-hidden="true" tabindex="-1"></a>step2_full <span class="ot">&lt;-</span> </span>
+<span id="cb154-3"><a href="multiple3.html#cb154-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(mental_health_pre <span class="sc">~</span> comfort <span class="sc">+</span> gender <span class="sc">+</span> age <span class="sc">+</span> partner <span class="sc">+</span> species <span class="sc">+</span> loneliness_pre, </span>
+<span id="cb154-4"><a href="multiple3.html#cb154-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> animal_data)</span>
+<span id="cb154-5"><a href="multiple3.html#cb154-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-6"><a href="multiple3.html#cb154-6" aria-hidden="true" tabindex="-1"></a><span class="co"># R-sq</span></span>
+<span id="cb154-7"><a href="multiple3.html#cb154-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(step2_full) </span>
+<span id="cb154-8"><a href="multiple3.html#cb154-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-9"><a href="multiple3.html#cb154-9" aria-hidden="true" tabindex="-1"></a><span class="co"># store BF</span></span>
+<span id="cb154-10"><a href="multiple3.html#cb154-10" aria-hidden="true" tabindex="-1"></a>BF_step2_full <span class="ot">&lt;-</span> </span>
+<span id="cb154-11"><a href="multiple3.html#cb154-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(mental_health_pre <span class="sc">~</span> comfort <span class="sc">+</span> gender <span class="sc">+</span> age <span class="sc">+</span> partner <span class="sc">+</span> species <span class="sc">+</span> loneliness_pre, </span>
+<span id="cb154-12"><a href="multiple3.html#cb154-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> <span class="fu">data.frame</span>(animal_data))</span>
+<span id="cb154-13"><a href="multiple3.html#cb154-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-14"><a href="multiple3.html#cb154-14" aria-hidden="true" tabindex="-1"></a><span class="co"># evidence for comfort, controlling for covariates</span></span>
+<span id="cb154-15"><a href="multiple3.html#cb154-15" aria-hidden="true" tabindex="-1"></a>BF_step2_full <span class="sc">/</span> BF_step1_covariates</span>
+<span id="cb154-16"><a href="multiple3.html#cb154-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-17"><a href="multiple3.html#cb154-17" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the sign on the coefficient for comfort</span></span>
+<span id="cb154-18"><a href="multiple3.html#cb154-18" aria-hidden="true" tabindex="-1"></a>step2_full</span></code></pre></div>
 </div>
 </div>
 <p><br />
 </p>
 </div>
-<div id="further-knowledge-and-exercises" class="section level2" number="5.6">
-<h2><span class="header-section-number">5.6</span> Further knowledge and exercises</h2>
-<div id="standardised-coefficients" class="section level3" number="5.6.1">
-<h3><span class="header-section-number">5.6.1</span> Standardised Coefficients</h3>
+<div id="further-knowledge-and-exercises" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Further knowledge and exercises<a href="multiple3.html#further-knowledge-and-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="standardised-coefficients" class="section level3 hasAnchor" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> Standardised Coefficients<a href="multiple3.html#standardised-coefficients" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class='webex-solution'>
 <button>
 Standardised coefficients
@@ -1394,25 +1389,25 @@ Standardised coefficients
 <p><br />
 </p>
 <p>To standardise all the numeric variables in the <code>pwb_data</code>:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="multiple3.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the result in std_pwb_data</span></span>
-<span id="cb154-2"><a href="multiple3.html#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Take pwb_data, pipe it to</span></span>
-<span id="cb154-3"><a href="multiple3.html#cb154-3" aria-hidden="true" tabindex="-1"></a><span class="co"># mutate_if().</span></span>
-<span id="cb154-4"><a href="multiple3.html#cb154-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Tell mutate_if() to standardise a column</span></span>
-<span id="cb154-5"><a href="multiple3.html#cb154-5" aria-hidden="true" tabindex="-1"></a><span class="co"># using &#39;scale&#39; if the variable type &#39;is.numeric&#39;</span></span>
-<span id="cb154-6"><a href="multiple3.html#cb154-6" aria-hidden="true" tabindex="-1"></a><span class="co"># (note, it&#39;s not possible to standardise non-numeric variables)</span></span>
-<span id="cb154-7"><a href="multiple3.html#cb154-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-8"><a href="multiple3.html#cb154-8" aria-hidden="true" tabindex="-1"></a>std_pwb_data <span class="ot">&lt;-</span></span>
-<span id="cb154-9"><a href="multiple3.html#cb154-9" aria-hidden="true" tabindex="-1"></a>  pwb_data <span class="sc">%&gt;%</span> </span>
-<span id="cb154-10"><a href="multiple3.html#cb154-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.numeric, scale)</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="multiple3.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the result in std_pwb_data</span></span>
+<span id="cb155-2"><a href="multiple3.html#cb155-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Take pwb_data, pipe it to</span></span>
+<span id="cb155-3"><a href="multiple3.html#cb155-3" aria-hidden="true" tabindex="-1"></a><span class="co"># mutate_if().</span></span>
+<span id="cb155-4"><a href="multiple3.html#cb155-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Tell mutate_if() to standardise a column</span></span>
+<span id="cb155-5"><a href="multiple3.html#cb155-5" aria-hidden="true" tabindex="-1"></a><span class="co"># using &#39;scale&#39; if the variable type &#39;is.numeric&#39;</span></span>
+<span id="cb155-6"><a href="multiple3.html#cb155-6" aria-hidden="true" tabindex="-1"></a><span class="co"># (note, it&#39;s not possible to standardise non-numeric variables)</span></span>
+<span id="cb155-7"><a href="multiple3.html#cb155-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-8"><a href="multiple3.html#cb155-8" aria-hidden="true" tabindex="-1"></a>std_pwb_data <span class="ot">&lt;-</span></span>
+<span id="cb155-9"><a href="multiple3.html#cb155-9" aria-hidden="true" tabindex="-1"></a>  pwb_data <span class="sc">%&gt;%</span> </span>
+<span id="cb155-10"><a href="multiple3.html#cb155-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.numeric, scale)</span></code></pre></div>
 <p>Now re-run Step 4 (i.e., the final model) of the hierarchical regression in Iani et al. (2019), but with <code>std_pwb_data</code> instead of <code>pwb_data</code>:</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="multiple3.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run the regression using standardised data</span></span>
-<span id="cb155-2"><a href="multiple3.html#cb155-2" aria-hidden="true" tabindex="-1"></a>std_step4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
-<span id="cb155-3"><a href="multiple3.html#cb155-3" aria-hidden="true" tabindex="-1"></a>              observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> nonjudging <span class="sc">+</span> nonreactivity <span class="sc">+</span> </span>
-<span id="cb155-4"><a href="multiple3.html#cb155-4" aria-hidden="true" tabindex="-1"></a>              attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, </span>
-<span id="cb155-5"><a href="multiple3.html#cb155-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> std_pwb_data)</span>
-<span id="cb155-6"><a href="multiple3.html#cb155-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb155-7"><a href="multiple3.html#cb155-7" aria-hidden="true" tabindex="-1"></a><span class="co"># look at standardised coefficients</span></span>
-<span id="cb155-8"><a href="multiple3.html#cb155-8" aria-hidden="true" tabindex="-1"></a>std_step4</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="multiple3.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run the regression using standardised data</span></span>
+<span id="cb156-2"><a href="multiple3.html#cb156-2" aria-hidden="true" tabindex="-1"></a>std_step4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> brooding <span class="sc">+</span> worry <span class="sc">+</span> </span>
+<span id="cb156-3"><a href="multiple3.html#cb156-3" aria-hidden="true" tabindex="-1"></a>              observing <span class="sc">+</span> describing <span class="sc">+</span> acting <span class="sc">+</span> nonjudging <span class="sc">+</span> nonreactivity <span class="sc">+</span> </span>
+<span id="cb156-4"><a href="multiple3.html#cb156-4" aria-hidden="true" tabindex="-1"></a>              attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, </span>
+<span id="cb156-5"><a href="multiple3.html#cb156-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> std_pwb_data)</span>
+<span id="cb156-6"><a href="multiple3.html#cb156-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb156-7"><a href="multiple3.html#cb156-7" aria-hidden="true" tabindex="-1"></a><span class="co"># look at standardised coefficients</span></span>
+<span id="cb156-8"><a href="multiple3.html#cb156-8" aria-hidden="true" tabindex="-1"></a>std_step4</span></code></pre></div>
 <p>The standardised coefficients are called the <strong>beta</strong> coefficients, and have the symbol <span class="math inline">\(\beta\)</span>. Beta coefficients range from -1 to +1, so the zero is usually omitted when reporting, e.g., <span class="math inline">\(\beta(brooding) = -.12\)</span></p>
 <p>Make a note of the standardised (beta) coefficients for the model in Iani et al. (2019):</p>
 <ul>
@@ -1435,72 +1430,72 @@ Standardised coefficients
 <p><br />
 </p>
 </div>
-<div id="prediction" class="section level3" number="5.6.2">
-<h3><span class="header-section-number">5.6.2</span> Prediction</h3>
+<div id="prediction" class="section level3 hasAnchor" number="5.6.2">
+<h3><span class="header-section-number">5.6.2</span> Prediction<a href="multiple3.html#prediction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="webex-solution">
 <button>
 Prediction
 </button>
 <p>The final model can be used to predict new data points (as in earlier sessions). For the model with continuous predictors:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="multiple3.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify data for new ppt</span></span>
-<span id="cb156-2"><a href="multiple3.html#cb156-2" aria-hidden="true" tabindex="-1"></a>new_pwb <span class="ot">&lt;-</span> <span class="fu">tibble</span>(  <span class="at">brooding =</span> <span class="dv">6</span>,</span>
-<span id="cb156-3"><a href="multiple3.html#cb156-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">worry =</span> <span class="dv">12</span>,</span>
-<span id="cb156-4"><a href="multiple3.html#cb156-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">observing =</span> <span class="dv">12</span>,</span>
-<span id="cb156-5"><a href="multiple3.html#cb156-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">describing =</span> <span class="dv">18</span>,</span>
-<span id="cb156-6"><a href="multiple3.html#cb156-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">acting =</span> <span class="dv">17</span>,</span>
-<span id="cb156-7"><a href="multiple3.html#cb156-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">nonjudging =</span> <span class="dv">20</span>,</span>
-<span id="cb156-8"><a href="multiple3.html#cb156-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">nonreactivity =</span> <span class="dv">19</span>,</span>
-<span id="cb156-9"><a href="multiple3.html#cb156-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">attention =</span> <span class="dv">30</span>,</span>
-<span id="cb156-10"><a href="multiple3.html#cb156-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">clarity =</span> <span class="dv">27</span>,</span>
-<span id="cb156-11"><a href="multiple3.html#cb156-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">repair =</span> <span class="dv">27</span> )</span>
-<span id="cb156-12"><a href="multiple3.html#cb156-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-13"><a href="multiple3.html#cb156-13" aria-hidden="true" tabindex="-1"></a><span class="co"># use augment() in broom package. </span></span>
-<span id="cb156-14"><a href="multiple3.html#cb156-14" aria-hidden="true" tabindex="-1"></a><span class="co"># .fitted = predicted wellbeing value</span></span>
-<span id="cb156-15"><a href="multiple3.html#cb156-15" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(step4, <span class="at">newdata =</span> new_pwb)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="multiple3.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify data for new ppt</span></span>
+<span id="cb157-2"><a href="multiple3.html#cb157-2" aria-hidden="true" tabindex="-1"></a>new_pwb <span class="ot">&lt;-</span> <span class="fu">tibble</span>(  <span class="at">brooding =</span> <span class="dv">6</span>,</span>
+<span id="cb157-3"><a href="multiple3.html#cb157-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">worry =</span> <span class="dv">12</span>,</span>
+<span id="cb157-4"><a href="multiple3.html#cb157-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">observing =</span> <span class="dv">12</span>,</span>
+<span id="cb157-5"><a href="multiple3.html#cb157-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">describing =</span> <span class="dv">18</span>,</span>
+<span id="cb157-6"><a href="multiple3.html#cb157-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">acting =</span> <span class="dv">17</span>,</span>
+<span id="cb157-7"><a href="multiple3.html#cb157-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">nonjudging =</span> <span class="dv">20</span>,</span>
+<span id="cb157-8"><a href="multiple3.html#cb157-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">nonreactivity =</span> <span class="dv">19</span>,</span>
+<span id="cb157-9"><a href="multiple3.html#cb157-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">attention =</span> <span class="dv">30</span>,</span>
+<span id="cb157-10"><a href="multiple3.html#cb157-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">clarity =</span> <span class="dv">27</span>,</span>
+<span id="cb157-11"><a href="multiple3.html#cb157-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">repair =</span> <span class="dv">27</span> )</span>
+<span id="cb157-12"><a href="multiple3.html#cb157-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-13"><a href="multiple3.html#cb157-13" aria-hidden="true" tabindex="-1"></a><span class="co"># use augment() in broom package. </span></span>
+<span id="cb157-14"><a href="multiple3.html#cb157-14" aria-hidden="true" tabindex="-1"></a><span class="co"># .fitted = predicted wellbeing value</span></span>
+<span id="cb157-15"><a href="multiple3.html#cb157-15" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(step4, <span class="at">newdata =</span> new_pwb)</span></code></pre></div>
 <p>The predicted value of wellbeing for the new participant in <code>new_pwb</code> is <input class='webex-solveme nospaces' size='5' data-answer='["73.29"]'/>.</p>
 <p><br />
 </p>
 <p>For the model with categorical predictors:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="multiple3.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify data for new ppt</span></span>
-<span id="cb157-2"><a href="multiple3.html#cb157-2" aria-hidden="true" tabindex="-1"></a>new_animal_dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>( <span class="at">comfort =</span> <span class="dv">45</span>,</span>
-<span id="cb157-3"><a href="multiple3.html#cb157-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">gender =</span> <span class="st">&#39;female&#39;</span>,</span>
-<span id="cb157-4"><a href="multiple3.html#cb157-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">age =</span> <span class="st">&#39;18_24&#39;</span>,</span>
-<span id="cb157-5"><a href="multiple3.html#cb157-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">partner =</span> <span class="st">&#39;living_partner&#39;</span>,</span>
-<span id="cb157-6"><a href="multiple3.html#cb157-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">species =</span> <span class="st">&#39;cat&#39;</span>,</span>
-<span id="cb157-7"><a href="multiple3.html#cb157-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">loneliness_pre =</span> <span class="dv">7</span>)</span>
-<span id="cb157-8"><a href="multiple3.html#cb157-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb157-9"><a href="multiple3.html#cb157-9" aria-hidden="true" tabindex="-1"></a><span class="co"># use augment() in broom package. </span></span>
-<span id="cb157-10"><a href="multiple3.html#cb157-10" aria-hidden="true" tabindex="-1"></a><span class="co"># .fitted = predicted value</span></span>
-<span id="cb157-11"><a href="multiple3.html#cb157-11" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(step2_full, <span class="at">newdata =</span> new_animal_dat)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="multiple3.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify data for new ppt</span></span>
+<span id="cb158-2"><a href="multiple3.html#cb158-2" aria-hidden="true" tabindex="-1"></a>new_animal_dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>( <span class="at">comfort =</span> <span class="dv">45</span>,</span>
+<span id="cb158-3"><a href="multiple3.html#cb158-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">gender =</span> <span class="st">&#39;female&#39;</span>,</span>
+<span id="cb158-4"><a href="multiple3.html#cb158-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">age =</span> <span class="st">&#39;18_24&#39;</span>,</span>
+<span id="cb158-5"><a href="multiple3.html#cb158-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">partner =</span> <span class="st">&#39;living_partner&#39;</span>,</span>
+<span id="cb158-6"><a href="multiple3.html#cb158-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">species =</span> <span class="st">&#39;cat&#39;</span>,</span>
+<span id="cb158-7"><a href="multiple3.html#cb158-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">loneliness_pre =</span> <span class="dv">7</span>)</span>
+<span id="cb158-8"><a href="multiple3.html#cb158-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-9"><a href="multiple3.html#cb158-9" aria-hidden="true" tabindex="-1"></a><span class="co"># use augment() in broom package. </span></span>
+<span id="cb158-10"><a href="multiple3.html#cb158-10" aria-hidden="true" tabindex="-1"></a><span class="co"># .fitted = predicted value</span></span>
+<span id="cb158-11"><a href="multiple3.html#cb158-11" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(step2_full, <span class="at">newdata =</span> new_animal_dat)</span></code></pre></div>
 <p>The predicted value of <code>mental_health_pre</code> for the new participant in <code>new_animal_dat</code> is <input class='webex-solveme nospaces' size='5' data-answer='["18.03"]'/>.</p>
 </div>
 <p><br />
 </p>
 </div>
-<div id="residuals-1" class="section level3" number="5.6.3">
-<h3><span class="header-section-number">5.6.3</span> Residuals</h3>
+<div id="residuals-1" class="section level3 hasAnchor" number="5.6.3">
+<h3><span class="header-section-number">5.6.3</span> Residuals<a href="multiple3.html#residuals-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="webex-solution">
 <button>
 Residuals
 </button>
 <p>As in earlier sessions, the residuals can be inspected in a plot of the predicted values vs. the residuals:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="multiple3.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot of the predicted outcome values vs. residuals</span></span>
-<span id="cb158-2"><a href="multiple3.html#cb158-2" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(step4) <span class="sc">%&gt;%</span> </span>
-<span id="cb158-3"><a href="multiple3.html#cb158-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fitted, <span class="at">y=</span>.resid)) <span class="sc">+</span> </span>
-<span id="cb158-4"><a href="multiple3.html#cb158-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb158-5"><a href="multiple3.html#cb158-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>)</span></code></pre></div>
-<p>We can also inspect the histogram of the residuals for normality:</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="multiple3.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram of the residuals</span></span>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="multiple3.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot of the predicted outcome values vs. residuals</span></span>
 <span id="cb159-2"><a href="multiple3.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(step4) <span class="sc">%&gt;%</span> </span>
-<span id="cb159-3"><a href="multiple3.html#cb159-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.resid)) <span class="sc">+</span> </span>
-<span id="cb159-4"><a href="multiple3.html#cb159-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() </span></code></pre></div>
+<span id="cb159-3"><a href="multiple3.html#cb159-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fitted, <span class="at">y=</span>.resid)) <span class="sc">+</span> </span>
+<span id="cb159-4"><a href="multiple3.html#cb159-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb159-5"><a href="multiple3.html#cb159-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>)</span></code></pre></div>
+<p>We can also inspect the histogram of the residuals for normality:</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="multiple3.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram of the residuals</span></span>
+<span id="cb160-2"><a href="multiple3.html#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(step4) <span class="sc">%&gt;%</span> </span>
+<span id="cb160-3"><a href="multiple3.html#cb160-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.resid)) <span class="sc">+</span> </span>
+<span id="cb160-4"><a href="multiple3.html#cb160-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() </span></code></pre></div>
 </div>
 <p><br />
 </p>
 </div>
 </div>
-<div id="summary-3" class="section level2" number="5.7">
-<h2><span class="header-section-number">5.7</span> Summary</h2>
+<div id="summary-3" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Summary<a href="multiple3.html#summary-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Hierarchical regression</strong></p>
 <ul>
 <li>In hierarchical regression, predictors are added to a regression model in successive steps.</li>
@@ -1521,8 +1516,8 @@ Residuals
 <p><br />
 </p>
 </div>
-<div id="references-4" class="section level2" number="5.8">
-<h2><span class="header-section-number">5.8</span> References</h2>
+<div id="references-4" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> References<a href="multiple3.html#references-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Iani, L., Quinto, R. M., Lauriola, M., Crosta, M. L., &amp; Pozzi, G. (2019). Psychological well-being and distress in patients with generalized anxiety disorder: The roles of positive and negative functioning. <em>PloS ONE</em>, <em>14</em>(11), e0225646. <a href="https://doi.org/10.1371/journal.pone.0225646" class="uri">https://doi.org/10.1371/journal.pone.0225646</a></p>
 <p>Ratschen E., Shoesmith E., Shahab L., Silva K., Kale D., Toner P., et al. (2020) Human-animal relationships and interactions during the Covid-19 lockdown phase in the UK: Investigating links with mental health and loneliness. <em>PLoS ONE</em>, <em>15</em>(9):e0239397. <a href="https://doi.org/10.1371/journal.pone.0239397" class="uri">https://doi.org/10.1371/journal.pone.0239397</a></p>
 
@@ -1770,7 +1765,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
