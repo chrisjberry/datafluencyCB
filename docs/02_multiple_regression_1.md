@@ -781,7 +781,7 @@ What is the value of the coefficient for `observing` (to two decimal places)? <i
 
 What is the regression equation?
 
-<div class='webex-radiogroup' id='radio_ARBZEBBZLD'><label><input type="radio" autocomplete="off" name="radio_ARBZEBBZLD" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_ARBZEBBZLD" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_ARBZEBBZLD" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label></div>
+<div class='webex-radiogroup' id='radio_QJQXMYDNIV'><label><input type="radio" autocomplete="off" name="radio_QJQXMYDNIV" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_QJQXMYDNIV" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_QJQXMYDNIV" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label></div>
 
 
 

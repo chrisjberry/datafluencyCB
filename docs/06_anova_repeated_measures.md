@@ -67,14 +67,14 @@ Wide vs. long format
 
 * When the data are in _wide_ format, all of the data for a single participant is stored:
 
-<div class='webex-radiogroup' id='radio_XNXTOZPRDD'><label><input type="radio" autocomplete="off" name="radio_XNXTOZPRDD" value="answer"></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_XNXTOZPRDD" value=""></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
+<div class='webex-radiogroup' id='radio_EEFLFOXKGB'><label><input type="radio" autocomplete="off" name="radio_EEFLFOXKGB" value="answer"></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_EEFLFOXKGB" value=""></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
 
 
 \
 
 * When the data are in _long_ format, all of the data for a single participant is stored:
 
-<div class='webex-radiogroup' id='radio_OIWCCXDSZW'><label><input type="radio" autocomplete="off" name="radio_OIWCCXDSZW" value=""></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_OIWCCXDSZW" value="answer"></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
+<div class='webex-radiogroup' id='radio_VJJSOFLJNA'><label><input type="radio" autocomplete="off" name="radio_VJJSOFLJNA" value=""></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_VJJSOFLJNA" value="answer"></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
 
 
 :::

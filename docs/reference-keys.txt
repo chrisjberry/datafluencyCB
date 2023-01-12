@@ -214,3 +214,4 @@ can-i-include-more-than-one-figure
 can-i-include-categorical-predictor-variables-in-a-hierarchical-regression
 how-do-i-apply-for-extenuating-circumstances
 can-a-book-a-slot-in-your-office-hours
+fig:unnamed-chunk-11

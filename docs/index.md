@@ -29,7 +29,7 @@ This workbook contains worksheets for the seven sessions given by **Chris Berry*
 
 \
 
-- **Session 1.** 16/01/23 (Group 2) & 17/01/22 (Group 1). [Simple regression](#simple1)
+- **Session 1.** 16/01/23 (Group 2) & 17/01/23 (Group 1). [Simple regression](#simple1)
  
 - **Session 2.** 23/01/23 (Group 2) & 24/01/23 (Group 1). [Multiple regression 1: multiple continuous](#multiple1)
 
