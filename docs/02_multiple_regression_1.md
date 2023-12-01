@@ -2,7 +2,7 @@
 
 *Chris Berry*
 \
-*2023*
+*2024*
 
 
 
@@ -20,7 +20,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 
 \
 
-* **Slides** from the lecture part of the session: [Download](slides/PSYC753_L2_MultipleRegression1.pptx)
+* **Slides** from the lecture part of the session: [Download](slides/PSYC761_L2_MultipleRegression1.pptx)
 
 \
 
@@ -129,9 +129,11 @@ The above trends are also apparent in the Pearson correlations between variables
 
 
 ```r
+# load the corrr package first
+library(corrr)
+
 # select the relevant columns from wellbeing_data and 
 # use correlate() to obtain the correlations
-
 wellbeing_data %>% 
   select(wellbeing, worry, describing) %>% 
   correlate(method = "pearson")
@@ -239,6 +241,9 @@ We can obtain a plot of the predicted values vs. the residuals in the same way a
 
 
 ```r
+# ensure the broom package is loaded (it contains augment())
+library(broom)
+
 augment(multiple1) %>% 
   ggplot(aes(x = .fitted, y = .resid)) +
   geom_hline(yintercept = 0) +
@@ -246,8 +251,8 @@ augment(multiple1) %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02_multiple_regression_1_files/figure-html/unnamed-chunk-8-1.png" alt="Scatterplot of the predicted values vs. residuals" width="60%" />
-<p class="caption">(\#fig:unnamed-chunk-8)Scatterplot of the predicted values vs. residuals</p>
+<img src="02_multiple_regression_1_files/figure-html/unnamed-chunk-8-1.png" alt="Scatterplot of the fitted (predicted) values vs. residuals" width="60%" />
+<p class="caption">(\#fig:unnamed-chunk-8)Scatterplot of the fitted (predicted) values vs. residuals</p>
 </div>
 
 The points seem randomly and evenly distributed around the horizontal, in line with assumptions of homoscedasticity (equal variance of residuals at each predicted value), and independence of residuals. 
@@ -257,12 +262,12 @@ The points seem randomly and evenly distributed around the horizontal, in line w
 
 
 
-### Evaluating the model: Bayes Factor
+### Evaluating the model: Bayes factor
 
 \
 
 :::{.tip}
-The Bayes Factor tells us how many more times likely the multiple regression model is, relative to the intercept-only model.
+The Bayes factor for a multiple regression model tells us how many more times likely the model is, relative to the intercept-only model.
 :::
 
 \
@@ -271,6 +276,9 @@ Use `lmBF()` to obtain the Bayes Factor for the multiple regression model:
 
 
 ```r
+# ensure the BayesFactor package is loaded
+library(BayesFactor)
+
 # store the BF for the model in multiple1_BF
 multiple1_BF <- lmBF(wellbeing ~ worry + describing, data = data.frame(wellbeing_data))
 
@@ -289,7 +297,7 @@ multiple1_BF
 ## Bayes factor type: BFlinearModel, JZS
 ```
 
-The Bayes Factor for the model is <input class='webex-solveme nospaces' size='4,190,994' data-answer='["4190994"]'/>. This tells us that the model with `worry` and `describing` is over four million times more likely than an `Intercept only` model (one with no predictors). Thus, there's strong evidence that the multiple regression model explains `wellbeing`.
+The Bayes factor for the model is <input class='webex-solveme nospaces' size='9' data-answer='["4190994","4,190,994"]'/>. This tells us that the model with `worry` and `describing` is over four million times more likely than an `Intercept only` model (one with no predictors). Thus, there's extremely strong evidence that the multiple regression model explains `wellbeing`.
 
 \
 
@@ -514,12 +522,12 @@ Given that the **unique** contributions of `worry` and `describing` are lower in
 ### Using Bayes factors to assess the unique contribution of predictors
 
 :::{.tip}
-We can compare Bayes Factors to determine whether a given predictor in a multiple regression model makes a unique contribution to the prediction of the outcome variable.
+We can compare Bayes factors to determine whether a given predictor in a multiple regression model makes a unique contribution to the prediction of the outcome variable.
 :::
 
 \
 
-First, obtain the Bayes Factor for the model in which `predictor_1` has been left out of the full model. Then obtain the Bayes Factor for model in which `predictor_2` has been left out of the model. Repeat this for as many predictors you have in the model. 
+First, obtain the Bayes factor for the model in which `predictor_1` has been left out of the full model. Then obtain the Bayes factor for model in which `predictor_2` has been left out of the model. Repeat this for as many predictors you have in the model. 
 
 In our example, this involves obtaining the BFs of the model of `wellbeing ~ describing`, and the BF of the model of `wellbeing ~ worry`:
 
@@ -560,7 +568,7 @@ For example, if `BF_more_complex_model = 10` and `BF_simpler_model = 2`, then th
 
 \
 
-In our case, we can compare Bayes Factor of the full model (`worry_describing_BF`) with that of our simpler models (`describing_BF`) and (`worry_BF`) in order to determine whether each predictor makes a unique contribution to the full model or not.
+In our case, we can compare Bayes factor of the full model (`worry_describing_BF`) with that of our simpler models (`describing_BF`) and (`worry_BF`) in order to determine whether each predictor makes a unique contribution to the full model or not.
 
 \
 
@@ -608,7 +616,7 @@ worry_describing_BF / worry_BF
 The BF comparing the full model with one containing `worry` alone is **738.41**. This indicates that the model with both `worry` and `describing` is over seven hundred times more likely than the model with `worry` alone. The BF is greater than 3, so this indicates substantial evidence for the unique contribution of `describing` to the prediction of `wellbeing`.
 
 
-Thus, in a multiple regression model, there's substantial evidence that both `worry` and `describing` predict `wellbeing` overall (BF = 4,190,994). There's also substantial evidence that `worry` (BF = 981.49) and `describing` (BF = 738.41) make unique contributions to this model. The model with both predictors included therefore seems justified.
+Thus, in a multiple regression model, there's substantial evidence that both `worry` and `describing` predict `wellbeing` overall (BF~10~ = 4,190,994). There's also substantial evidence that `worry` (BF~10~ = 981.49) and `describing` (BF~10~ = 738.41) make unique contributions to this model. The model with both predictors included therefore seems justified.
 
 
 \
@@ -781,7 +789,7 @@ What is the value of the coefficient for `observing` (to two decimal places)? <i
 
 What is the regression equation?
 
-<div class='webex-radiogroup' id='radio_QJQXMYDNIV'><label><input type="radio" autocomplete="off" name="radio_QJQXMYDNIV" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_QJQXMYDNIV" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_QJQXMYDNIV" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label></div>
+<div class='webex-radiogroup' id='radio_HOZUNNOUWR'><label><input type="radio" autocomplete="off" name="radio_HOZUNNOUWR" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_HOZUNNOUWR" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_HOZUNNOUWR" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label></div>
 
 
 
@@ -809,12 +817,12 @@ glance(multiple2)
 
 What proportion of variance in the GAD score is explained by the model containing `brooding` and `observing`? (Report the adjusted R-squared value as a proportion, to two decimal places) <input class='webex-solveme nospaces' size='4' data-answer='["0.34",".34"]'/>
 
-Report the value of adjusted R-squared as a percentage, to two decimal places: The adjusted R^2^ value is equal to <input class='webex-solveme nospaces' size='5' data-answer='["34.50"]'/>%
+Report the value of adjusted R-squared as a percentage, to two decimal places. Hint: multiply the proportion given in the output by 100 to obtain the percentage value. The adjusted R^2^ value is equal to <input class='webex-solveme nospaces' size='5' data-answer='["34.50"]'/>%
 
 
 \
 
-**5. Obtain the Bayes Factor for the model**
+**5. Obtain the Bayes factor for the model**
 
 <div class='webex-solution'><button>Hint</button>
 
@@ -870,14 +878,14 @@ augment(multiple2) %>%
 
 <div class='webex-solution'><button>Further interpretation</button>
 
-Although there's a slight negative association for lower predicted values, the assumptions of homoscedasticity and independence of residuals appear to be met. You could also try adding the code `+ geom_smooth(method = "lm", se = FALSE)` to your plot to see what the (linear) trend line would actually be.
+Although there's a slight negative association for lower predicted values, the assumptions of homoscedasticity and independence of residuals appear to be met. You could also try adding the code `+ geom_smooth(method = "lm", se = FALSE)` to your plot to see what the (linear) trend line would actually be (a flat line, confirming there's no association).
 
 </div>
 
 
 \
 
-**7. Using `lmBF()`, determine whether there's evidence for a unique contribution of `brooding` and `observing` to prediction of `gad`**
+**7. Using `lmBF()`, determine whether there's evidence for a unique contribution of `brooding` and `observing` to prediction of `gad`** Report your answer to two decimal places.
 
 
 * The BF associated with the unique contribution of `observing` is <input class='webex-solveme nospaces' size='4' data-answer='["0.19"]'/>
@@ -960,7 +968,7 @@ Look at BF for the unique contributions. If the BF is greater than 3, this indic
 
 <div class='webex-solution'><button>Solution</button>
 
-Together, `brooding` and `observing` explain 34.50% of the variance in GAD scores (adjusted R^2^), and there was strong evidence for this model, compared to an intercept only model, BF = 26889.69. There was, however, no evidence for a unique contribution of `observing` to the model (BF = 0.19), but there was substantial evidence for a unique contribution of `brooding` to the model, BF = 741841.28, whereby greater GAD scores were associated with higher `brooding` scores. In the interest of parsimony (not making models more complex than they need to be), the results suggest that only `brooding` predicts GAD and `observing` should not be included in the model that also contains `brooding`. 
+Together, `brooding` and `observing` explain 34.50% of the variance in GAD scores (adjusted R^2^), and there was strong evidence for this model, compared to an intercept only model, BF~10~ = 26889.69. There was, however, no evidence for a unique contribution of `observing` to the model (BF~10~ = 0.19), but there was substantial evidence for a unique contribution of `brooding` to the model, BF~10~ = 741841.28, whereby greater GAD scores were associated with higher `brooding` scores. In the interest of parsimony (not making models more complex than they need to be), the results suggest that only `brooding` predicts GAD and `observing` should not be included in the model that also contains `brooding`. 
 
 
 </div>
@@ -1309,9 +1317,9 @@ all_BFs[7] / all_BFs[4]
 
 - In multiple regression, it's important to understand that each predictor makes a contribution to explaining the outcome variable only **after taking into account the other predictors in the model**.
 
-- The Bayes Factor for a multiple regression model tells us how much more likely it is, compared to an intercept-only model. 
+- The Bayes factor for a multiple regression model tells us how much more likely it is, compared to an intercept-only (i.e., the null) model. 
 
-- To know whether there's evidence for the unique contribution of a predictor, we have to compare Bayes Factors for the more complex model (which includes it), versus the simpler model (in which the predictor is left out). i.e., `BF_more_complex_model / BF_simpler_model`.
+- To know whether there's evidence for the unique contribution of a predictor, we have to compare Bayes factors for the more complex model (which includes it), versus the simpler model (in which the predictor is left out). i.e., `BF_more_complex_model / BF_simpler_model`.
 
 - **Multicollinearity** exists when predictors are highly correlated (_r_ above 0.8 or below -0.8) and should be avoided by dropping one of the predictors.
 

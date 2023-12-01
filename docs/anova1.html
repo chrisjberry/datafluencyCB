@@ -4,20 +4,20 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Session 3 ANOVA: between-subjects designs | PSYC753 Data Fluency: Analysis</title>
-  <meta name="description" content="Course materials for PSYC753 2023" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <title>Session 3 ANOVA: between-subjects designs | PSYC761 Data Fluency: Analysis</title>
+  <meta name="description" content="Course materials for PSYC761 2024" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Session 3 ANOVA: between-subjects designs | PSYC753 Data Fluency: Analysis" />
+  <meta property="og:title" content="Session 3 ANOVA: between-subjects designs | PSYC761 Data Fluency: Analysis" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="Course materials for PSYC753 2023" />
+  <meta property="og:description" content="Course materials for PSYC761 2024" />
   <meta name="github-repo" content="datafluencyCB" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Session 3 ANOVA: between-subjects designs | PSYC753 Data Fluency: Analysis" />
+  <meta name="twitter:title" content="Session 3 ANOVA: between-subjects designs | PSYC761 Data Fluency: Analysis" />
   
-  <meta name="twitter:description" content="Course materials for PSYC753 2023" />
+  <meta name="twitter:description" content="Course materials for PSYC761 2024" />
   
 
 <meta name="author" content="Chris Berry" />
@@ -121,6 +121,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="include/psyteachr.css" type="text/css" />
 <link rel="stylesheet" href="include/webex.css" type="text/css" />
@@ -137,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">PSYC753 Analysis</a></li>
+<li><a href="./">PSYC761 Analysis</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
@@ -311,29 +315,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5" data-path="prepost.html"><a href="prepost.html#which-approach-should-you-use"><i class="fa fa-check"></i><b>7.5</b> Which approach should you use?</a></li>
 <li class="chapter" data-level="7.6" data-path="prepost.html"><a href="prepost.html#clinical-significance"><i class="fa fa-check"></i><b>7.6</b> Clinical Significance</a></li>
 <li class="chapter" data-level="7.7" data-path="prepost.html"><a href="prepost.html#exercises-1"><i class="fa fa-check"></i><b>7.7</b> Exercises</a></li>
-<li class="chapter" data-level="7.8" data-path="prepost.html"><a href="prepost.html#further-knowledge-1"><i class="fa fa-check"></i><b>7.8</b> Further Knowledge</a>
-<ul>
-<li class="chapter" data-level="7.8.1" data-path="prepost.html"><a href="prepost.html#reliable-change-rc-index"><i class="fa fa-check"></i><b>7.8.1</b> Reliable Change (RC) index</a></li>
-</ul></li>
+<li class="chapter" data-level="7.8" data-path="prepost.html"><a href="prepost.html#further-knowledge-1"><i class="fa fa-check"></i><b>7.8</b> Further Knowledge</a></li>
 <li class="chapter" data-level="7.9" data-path="prepost.html"><a href="prepost.html#summary-5"><i class="fa fa-check"></i><b>7.9</b> Summary</a></li>
 <li class="chapter" data-level="7.10" data-path="prepost.html"><a href="prepost.html#references-6"><i class="fa fa-check"></i><b>7.10</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="assessment2023.html"><a href="assessment2023.html"><i class="fa fa-check"></i><b>8</b> Data Analysis Assessment 2023</a></li>
-<li class="chapter" data-level="9" data-path="faqs.html"><a href="faqs.html"><i class="fa fa-check"></i><b>9</b> FAQs</a>
+<li class="chapter" data-level="8" data-path="mixed.html"><a href="mixed.html"><i class="fa fa-check"></i><b>8</b> Mixed Models</a></li>
+<li class="chapter" data-level="9" data-path="assessment2024.html"><a href="assessment2024.html"><i class="fa fa-check"></i><b>9</b> Data Analysis Assessment 2024</a></li>
+<li class="chapter" data-level="10" data-path="faqs.html"><a href="faqs.html"><i class="fa fa-check"></i><b>10</b> FAQs</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="faqs.html"><a href="faqs.html#e-meaning"><i class="fa fa-check"></i><b>9.1</b> What does it mean if RStudio prints out "e-" next to a number?</a></li>
-<li class="chapter" data-level="9.2" data-path="faqs.html"><a href="faqs.html#how-can-i-find-out-more-about-a-particular-function-so-i-can-explore-its-settings-etc."><i class="fa fa-check"></i><b>9.2</b> How can I find out more about a particular function, so I can explore its settings etc.?</a></li>
-<li class="chapter" data-level="9.3" data-path="faqs.html"><a href="faqs.html#how-should-i-write-up-the-report"><i class="fa fa-check"></i><b>9.3</b> How should I write up the report?</a></li>
-<li class="chapter" data-level="9.4" data-path="faqs.html"><a href="faqs.html#after-downloading-my-.rmd-file-to-my-computer-how-do-i-open-it-again-in-rstudio"><i class="fa fa-check"></i><b>9.4</b> After downloading my .Rmd file to my computer, how do I open it again in RStudio?</a></li>
-<li class="chapter" data-level="9.5" data-path="faqs.html"><a href="faqs.html#on-the-word-count-are-figure-captions-included"><i class="fa fa-check"></i><b>9.5</b> On the word count, are figure captions included?</a></li>
-<li class="chapter" data-level="9.6" data-path="faqs.html"><a href="faqs.html#should-i-make-code-visible-in-my-html-report"><i class="fa fa-check"></i><b>9.6</b> Should I make code visible in my html report?</a></li>
-<li class="chapter" data-level="9.7" data-path="faqs.html"><a href="faqs.html#do-i-need-to-include-references"><i class="fa fa-check"></i><b>9.7</b> Do I need to include references?</a></li>
-<li class="chapter" data-level="9.8" data-path="faqs.html"><a href="faqs.html#can-there-be-overlap-in-the-variables-used-in-each-question"><i class="fa fa-check"></i><b>9.8</b> Can there be overlap in the variables used in each question?</a></li>
-<li class="chapter" data-level="9.9" data-path="faqs.html"><a href="faqs.html#do-we-have-to-include-a-certain-number-of-variables-to-achieve-a-good-grade"><i class="fa fa-check"></i><b>9.9</b> Do we have to include a certain number of variables to achieve a good grade?</a></li>
-<li class="chapter" data-level="9.10" data-path="faqs.html"><a href="faqs.html#can-i-include-more-than-one-figure"><i class="fa fa-check"></i><b>9.10</b> Can I include more than one figure?</a></li>
-<li class="chapter" data-level="9.11" data-path="faqs.html"><a href="faqs.html#can-i-include-categorical-predictor-variables-in-a-hierarchical-regression"><i class="fa fa-check"></i><b>9.11</b> Can I include categorical predictor variables in a hierarchical regression?</a></li>
-<li class="chapter" data-level="9.12" data-path="faqs.html"><a href="faqs.html#how-do-i-apply-for-extenuating-circumstances"><i class="fa fa-check"></i><b>9.12</b> How do I apply for extenuating circumstances?</a></li>
-<li class="chapter" data-level="9.13" data-path="faqs.html"><a href="faqs.html#can-a-book-a-slot-in-your-office-hours"><i class="fa fa-check"></i><b>9.13</b> Can a book a slot in your office hours?</a></li>
+<li class="chapter" data-level="10.1" data-path="faqs.html"><a href="faqs.html#e-meaning"><i class="fa fa-check"></i><b>10.1</b> What does it mean if RStudio prints out "e-" next to a number?</a></li>
+<li class="chapter" data-level="10.2" data-path="faqs.html"><a href="faqs.html#how-can-i-find-out-more-about-a-particular-function-so-i-can-explore-its-settings-etc."><i class="fa fa-check"></i><b>10.2</b> How can I find out more about a particular function, so I can explore its settings etc.?</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="reading.html"><a href="reading.html"><i class="fa fa-check"></i><b>11</b> Reading: Go further!</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="reading.html"><a href="reading.html#recommended-texts"><i class="fa fa-check"></i><b>11.1</b> Recommended texts</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="divider"></li>
@@ -351,7 +346,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSYC753 Data Fluency: Analysis</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSYC761 Data Fluency: Analysis</a>
           </h1>
         </div>
 
@@ -362,7 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="anova1" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Session 3</span> ANOVA: between-subjects designs<a href="anova1.html#anova1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>Chris Berry</em><br />
-<em>2023</em></p>
+<em>2024</em></p>
 <!--
 commented text
 commented text
@@ -376,7 +371,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <div id="overview-3" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Overview<a href="anova1.html#overview-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><strong>Slides</strong> from the lecture part of the session: <a href="slides/PSYC753_L3_ANOVA_1.pptx">Download</a></li>
+<li><strong>Slides</strong> from the lecture part of the session: <a href="slides/PSYC761_L3_ANOVA_1.pptx">Download</a></li>
 </ul>
 <p><br />
 </p>
@@ -400,7 +395,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <h3><span class="header-section-number">3.2.1</span> Worked Example<a href="anova1.html#worked-example-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>What is the effect of viewing pictures of different aesthetic value on a person's mood? To investigate, Meidenbauer et al. (2020) showed three groups of participants pictures of urban environments that were either very low in aesthetic value (<em>n</em> = 102), low in aesthetic value (<em>n</em> = 100), or high (<em>n</em> = 104). Participants' change in State Trait Anxiety Inventory (STAI: a measure of negative symptoms such as upset, tense, worried) as a result of viewing the pictures was measured.</p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-1" class="exercise"><strong>Exercise 3.1  </strong></span>Design check.</p>
+<p><span id="exr:unlabeled-div-11" class="exercise"><strong>Exercise 3.1  </strong></span>Design check.</p>
 <ul>
 <li><p>What is the independent variable (or <em>factor</em>) in this design? <select class='webex-select'><option value='blank'></option><option value=''>change in STAI score</option><option value='answer'>aesthetic appeal of the pictures</option></select></p></li>
 <li><p>How many levels does the factor have? <select class='webex-select'><option value='blank'></option><option value=''>1</option><option value=''>2</option><option value='answer'>3</option><option value=''>4</option></select></p></li>
@@ -418,11 +413,11 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <p>Read in the data at the link below and store in <code>affect_data</code>. Preview the data using <code>head()</code>.</p>
 <p><a href="https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_affect.csv" class="uri">https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_affect.csv</a></p>
 <p>(Note. The data in are taken from the Urban condition of Meidenbauer et al. (2020, Experiment 1). The data are publicly available through the links in their article. The variable names have been changed here for clarity.)</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="anova1.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the data</span></span>
-<span id="cb1-2"><a href="anova1.html#cb1-2" aria-hidden="true" tabindex="-1"></a>affect_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_affect.csv&#39;</span>)</span>
-<span id="cb1-3"><a href="anova1.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="anova1.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first 6 rows</span></span>
-<span id="cb1-5"><a href="anova1.html#cb1-5" aria-hidden="true" tabindex="-1"></a>affect_data <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="anova1.html#cb60-1" tabindex="-1"></a><span class="co"># Read in the data</span></span>
+<span id="cb60-2"><a href="anova1.html#cb60-2" tabindex="-1"></a>affect_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_affect.csv&#39;</span>)</span>
+<span id="cb60-3"><a href="anova1.html#cb60-3" tabindex="-1"></a></span>
+<span id="cb60-4"><a href="anova1.html#cb60-4" tabindex="-1"></a><span class="co"># look at the first 6 rows</span></span>
+<span id="cb60-5"><a href="anova1.html#cb60-5" tabindex="-1"></a>affect_data <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <p>Key variables of interest in <code>affect_data</code>:</p>
 <ul>
 <li><code>group</code>: the aesthetic value group, with levels <code>VeryLow</code>, <code>Low</code> and <code>High</code></li>
@@ -440,13 +435,13 @@ Variable labels
 <div id="convert-the-independent-variable-to-a-factor" class="section level3 hasAnchor" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> Convert the independent variable to a factor<a href="anova1.html#convert-the-independent-variable-to-a-factor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To enable us to use the <code>group</code> column in an ANOVA, we need to tell R that <code>group</code> is a <em>factor</em>. Use <code>mutate()</code> and <code>factor()</code> to convert <code>group</code> to a factor.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="anova1.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use mutate() to convert the group variable to a factor</span></span>
-<span id="cb2-2"><a href="anova1.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># store the changes back in affect_data </span></span>
-<span id="cb2-3"><a href="anova1.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (i.e., overwrite what&#39;s already in affect_data)</span></span>
-<span id="cb2-4"><a href="anova1.html#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="anova1.html#cb2-5" aria-hidden="true" tabindex="-1"></a>affect_data <span class="ot">&lt;-</span></span>
-<span id="cb2-6"><a href="anova1.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  affect_data <span class="sc">%&gt;%</span> </span>
-<span id="cb2-7"><a href="anova1.html#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">factor</span>(group))</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="anova1.html#cb61-1" tabindex="-1"></a><span class="co"># use mutate() to convert the group variable to a factor</span></span>
+<span id="cb61-2"><a href="anova1.html#cb61-2" tabindex="-1"></a><span class="co"># store the changes back in affect_data </span></span>
+<span id="cb61-3"><a href="anova1.html#cb61-3" tabindex="-1"></a><span class="co"># (i.e., overwrite what&#39;s already in affect_data)</span></span>
+<span id="cb61-4"><a href="anova1.html#cb61-4" tabindex="-1"></a></span>
+<span id="cb61-5"><a href="anova1.html#cb61-5" tabindex="-1"></a>affect_data <span class="ot">&lt;-</span></span>
+<span id="cb61-6"><a href="anova1.html#cb61-6" tabindex="-1"></a>  affect_data <span class="sc">%&gt;%</span> </span>
+<span id="cb61-7"><a href="anova1.html#cb61-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">factor</span>(group))</span></code></pre></div>
 <div class="webex-solution">
 <button>
 Remember
@@ -476,7 +471,7 @@ Tip
 Check
 </button>
 <p>Check that the variable label for <code>group</code> has now changed from <code>&lt;chr&gt;</code> to <code>&lt;fct&gt;</code> (i.e., a factor) by looking at the dataset again.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="anova1.html#cb3-1" aria-hidden="true" tabindex="-1"></a>affect_data</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="anova1.html#cb62-1" tabindex="-1"></a>affect_data</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -484,12 +479,12 @@ Check
 <div id="n-of-each-group" class="section level3 hasAnchor" number="3.2.4">
 <h3><span class="header-section-number">3.2.4</span> n of each group<a href="anova1.html#n-of-each-group" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Use <code>group_by()</code> and <code>count()</code> to obtain the number of participants in each group:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="anova1.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use group_by() to group the output by &#39;group&#39; column, </span></span>
-<span id="cb4-2"><a href="anova1.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># then obtain number of rows in each group with count()</span></span>
-<span id="cb4-3"><a href="anova1.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="anova1.html#cb4-4" aria-hidden="true" tabindex="-1"></a>affect_data <span class="sc">%&gt;%</span> </span>
-<span id="cb4-5"><a href="anova1.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-6"><a href="anova1.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="anova1.html#cb63-1" tabindex="-1"></a><span class="co"># use group_by() to group the output by &#39;group&#39; column, </span></span>
+<span id="cb63-2"><a href="anova1.html#cb63-2" tabindex="-1"></a><span class="co"># then obtain number of rows in each group with count()</span></span>
+<span id="cb63-3"><a href="anova1.html#cb63-3" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="anova1.html#cb63-4" tabindex="-1"></a>affect_data <span class="sc">%&gt;%</span> </span>
+<span id="cb63-5"><a href="anova1.html#cb63-5" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb63-6"><a href="anova1.html#cb63-6" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
 <ul>
 <li>How many participants were there in the <code>VeryLow</code> aesthetic value group? <input class='webex-solveme nospaces' size='3' data-answer='["102"]'/></li>
 <li>How many participants were there in the <code>Low</code> aesthetic value group? <input class='webex-solveme nospaces' size='3' data-answer='["100"]'/></li>
@@ -501,18 +496,18 @@ Check
 <div id="visualise-the-data" class="section level3 hasAnchor" number="3.2.5">
 <h3><span class="header-section-number">3.2.5</span> Visualise the data<a href="anova1.html#visualise-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The way the data are distributed in each group can be inspected with histograms or density plots:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="anova1.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram of scores in each group </span></span>
-<span id="cb5-2"><a href="anova1.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Use facet_wrap(~group) to create a separate</span></span>
-<span id="cb5-3"><a href="anova1.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># panel for each group</span></span>
-<span id="cb5-4"><a href="anova1.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="anova1.html#cb5-5" aria-hidden="true" tabindex="-1"></a>affect_data <span class="sc">%&gt;%</span> </span>
-<span id="cb5-6"><a href="anova1.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(score)) <span class="sc">+</span></span>
-<span id="cb5-7"><a href="anova1.html#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span> </span>
-<span id="cb5-8"><a href="anova1.html#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>group)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="anova1.html#cb64-1" tabindex="-1"></a><span class="co"># Histogram of scores in each group </span></span>
+<span id="cb64-2"><a href="anova1.html#cb64-2" tabindex="-1"></a><span class="co"># Use facet_wrap(~group) to create a separate</span></span>
+<span id="cb64-3"><a href="anova1.html#cb64-3" tabindex="-1"></a><span class="co"># panel for each group</span></span>
+<span id="cb64-4"><a href="anova1.html#cb64-4" tabindex="-1"></a></span>
+<span id="cb64-5"><a href="anova1.html#cb64-5" tabindex="-1"></a>affect_data <span class="sc">%&gt;%</span> </span>
+<span id="cb64-6"><a href="anova1.html#cb64-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(score)) <span class="sc">+</span></span>
+<span id="cb64-7"><a href="anova1.html#cb64-7" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span> </span>
+<span id="cb64-8"><a href="anova1.html#cb64-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>group)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
 <img src="03_anova_between_subjects_files/figure-html/unnamed-chunk-6-1.png" alt="Histogram of scores in each aesthetic value group" width="75%" />
 <p class="caption">
-Figure 3.1: Histogram of scores in each aesthetic value group
+Figure 1.2: Histogram of scores in each aesthetic value group
 </p>
 </div>
 <div class="webex-solution">
@@ -534,20 +529,20 @@ Comments on the histograms
 <h3><span class="header-section-number">3.2.6</span> Plot the means<a href="anova1.html#plot-the-means" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Visualise the data further by obtaining a plot of the mean score in each group.</p>
 <p>The package <code>ggpubr</code> can produce high quality plots with ease. Using <code>ggerrorplot()</code> in <code>ggpubr</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="anova1.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the ggpubr package</span></span>
-<span id="cb6-2"><a href="anova1.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb6-3"><a href="anova1.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="anova1.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the mean of each group </span></span>
-<span id="cb6-5"><a href="anova1.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># specify desc_stat = &quot;mean_se&quot; to </span></span>
-<span id="cb6-6"><a href="anova1.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># add error bars representing the standard error </span></span>
-<span id="cb6-7"><a href="anova1.html#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="anova1.html#cb6-8" aria-hidden="true" tabindex="-1"></a>affect_data <span class="sc">%&gt;%</span> </span>
-<span id="cb6-9"><a href="anova1.html#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggerrorplot</span>(<span class="at">x =</span> <span class="st">&quot;group&quot;</span> , <span class="at">y =</span> <span class="st">&quot;score&quot;</span>, <span class="at">desc_stat =</span> <span class="st">&quot;mean_se&quot;</span>) <span class="sc">+</span></span>
-<span id="cb6-10"><a href="anova1.html#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Aesthetic value group&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="anova1.html#cb65-1" tabindex="-1"></a><span class="co"># load the ggpubr package</span></span>
+<span id="cb65-2"><a href="anova1.html#cb65-2" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb65-3"><a href="anova1.html#cb65-3" tabindex="-1"></a></span>
+<span id="cb65-4"><a href="anova1.html#cb65-4" tabindex="-1"></a><span class="co"># plot the mean of each group </span></span>
+<span id="cb65-5"><a href="anova1.html#cb65-5" tabindex="-1"></a><span class="co"># specify desc_stat = &quot;mean_se&quot; to </span></span>
+<span id="cb65-6"><a href="anova1.html#cb65-6" tabindex="-1"></a><span class="co"># add error bars representing the standard error </span></span>
+<span id="cb65-7"><a href="anova1.html#cb65-7" tabindex="-1"></a></span>
+<span id="cb65-8"><a href="anova1.html#cb65-8" tabindex="-1"></a>affect_data <span class="sc">%&gt;%</span> </span>
+<span id="cb65-9"><a href="anova1.html#cb65-9" tabindex="-1"></a>  <span class="fu">ggerrorplot</span>(<span class="at">x =</span> <span class="st">&quot;group&quot;</span> , <span class="at">y =</span> <span class="st">&quot;score&quot;</span>, <span class="at">desc_stat =</span> <span class="st">&quot;mean_se&quot;</span>) <span class="sc">+</span></span>
+<span id="cb65-10"><a href="anova1.html#cb65-10" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Aesthetic value group&quot;</span>) </span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
 <img src="03_anova_between_subjects_files/figure-html/unnamed-chunk-7-1.png" alt="Mean change in STAI score across aesthetic value groups (error bars indicate SE)" width="75%" />
 <p class="caption">
-Figure 3.2: Mean change in STAI score across aesthetic value groups (error bars indicate SE)
+Figure 3.1: Mean change in STAI score across aesthetic value groups (error bars indicate SE)
 </p>
 </div>
 <p><br />
@@ -584,9 +579,9 @@ Developing the plot
 <div id="descriptives-mean-of-each-group" class="section level3 hasAnchor" number="3.2.7">
 <h3><span class="header-section-number">3.2.7</span> Descriptives: Mean of each group<a href="anova1.html#descriptives-mean-of-each-group" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Use <code>summarise()</code> and <code>group_by()</code> to obtain the mean (<em>M</em>) in each group:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="anova1.html#cb7-1" aria-hidden="true" tabindex="-1"></a>affect_data <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a href="anova1.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="anova1.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">M =</span> <span class="fu">mean</span>(score))</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="anova1.html#cb66-1" tabindex="-1"></a>affect_data <span class="sc">%&gt;%</span> </span>
+<span id="cb66-2"><a href="anova1.html#cb66-2" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb66-3"><a href="anova1.html#cb66-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">M =</span> <span class="fu">mean</span>(score))</span></code></pre></div>
 <ul>
 <li>The mean score in the <code>High</code> group is (to 2 decimal places) <input class='webex-solveme nospaces' size='4' data-answer='["0.11"]'/></li>
 <li>The mean score in the <code>Low</code> group is (to 2 decimal places) <input class='webex-solveme nospaces' size='4' data-answer='["0.08"]'/></li>
@@ -597,14 +592,14 @@ Developing the plot
 Tip - Standard Error
 </button>
 <p>The formula for the standard error of the mean is <span class="math inline">\(SD / \sqrt{n}\)</span>. We can therefore obtain the standard error of the mean for each group as follows:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="anova1.html#cb8-1" aria-hidden="true" tabindex="-1"></a>affect_data <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a href="anova1.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-3"><a href="anova1.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">SE =</span> <span class="fu">sd</span>(score) <span class="sc">/</span> <span class="fu">sqrt</span>( <span class="fu">n</span>() ))</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="anova1.html#cb67-1" tabindex="-1"></a>affect_data <span class="sc">%&gt;%</span> </span>
+<span id="cb67-2"><a href="anova1.html#cb67-2" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb67-3"><a href="anova1.html#cb67-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">SE =</span> <span class="fu">sd</span>(score) <span class="sc">/</span> <span class="fu">sqrt</span>( <span class="fu">n</span>() ))</span></code></pre></div>
 <p>To show the mean and SE in the same output:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="anova1.html#cb9-1" aria-hidden="true" tabindex="-1"></a>affect_data <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="anova1.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-3"><a href="anova1.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>( <span class="at">M =</span> <span class="fu">mean</span>(score), </span>
-<span id="cb9-4"><a href="anova1.html#cb9-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">SE =</span> <span class="fu">sd</span>(score) <span class="sc">/</span> <span class="fu">sqrt</span>( <span class="fu">n</span>() ) )</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="anova1.html#cb68-1" tabindex="-1"></a>affect_data <span class="sc">%&gt;%</span> </span>
+<span id="cb68-2"><a href="anova1.html#cb68-2" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb68-3"><a href="anova1.html#cb68-3" tabindex="-1"></a>  <span class="fu">summarise</span>( <span class="at">M =</span> <span class="fu">mean</span>(score), </span>
+<span id="cb68-4"><a href="anova1.html#cb68-4" tabindex="-1"></a>             <span class="at">SE =</span> <span class="fu">sd</span>(score) <span class="sc">/</span> <span class="fu">sqrt</span>( <span class="fu">n</span>() ) )</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -617,11 +612,11 @@ Tip - Standard Error
 <p><br />
 </p>
 <p>To obtain the BF for the one-way ANOVA model, use <code>anovaBF()</code>:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="anova1.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ensure BayesFactor package is loaded</span></span>
-<span id="cb10-2"><a href="anova1.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(BayesFactor)</span></span>
-<span id="cb10-3"><a href="anova1.html#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="anova1.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain the BF for the ANOVA model with lmBF()</span></span>
-<span id="cb10-5"><a href="anova1.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>( score <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(affect_data) )</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="anova1.html#cb69-1" tabindex="-1"></a><span class="co"># ensure BayesFactor package is loaded</span></span>
+<span id="cb69-2"><a href="anova1.html#cb69-2" tabindex="-1"></a><span class="co"># library(BayesFactor)</span></span>
+<span id="cb69-3"><a href="anova1.html#cb69-3" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="anova1.html#cb69-4" tabindex="-1"></a><span class="co"># obtain the BF for the ANOVA model with lmBF()</span></span>
+<span id="cb69-5"><a href="anova1.html#cb69-5" tabindex="-1"></a><span class="fu">anovaBF</span>( score <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(affect_data) )</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] group : 66.65842 ±0.04%
@@ -636,7 +631,7 @@ Tip - Standard Error
 Tip - lmBF()
 </button>
 <p><code>lmBF()</code> in the <code>BayesFactor</code> package can be used in place of <code>lmBF()</code> to produce exactly the same result:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="anova1.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>( score <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(affect_data) )</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="anova1.html#cb71-1" tabindex="-1"></a><span class="fu">lmBF</span>( score <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(affect_data) )</span></code></pre></div>
 <p>Remember, this works because ANOVA is a special case of regression.</p>
 </div>
 <p><br />
@@ -650,12 +645,12 @@ Tip - lmBF()
 <p><br />
 </p>
 <p>To obtain R<sup>2</sup>, first use <code>lm()</code> to specify the model, then use <code>glance()</code> from the <code>broom</code> package:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="anova1.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify and store the anova</span></span>
-<span id="cb13-2"><a href="anova1.html#cb13-2" aria-hidden="true" tabindex="-1"></a>anova_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> group, <span class="at">data =</span> affect_data)</span>
-<span id="cb13-3"><a href="anova1.html#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="anova1.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure broom package is loaded with library(broom), then</span></span>
-<span id="cb13-5"><a href="anova1.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># use glance() with anova_1 </span></span>
-<span id="cb13-6"><a href="anova1.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(anova_1)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="anova1.html#cb72-1" tabindex="-1"></a><span class="co"># specify and store the anova</span></span>
+<span id="cb72-2"><a href="anova1.html#cb72-2" tabindex="-1"></a>anova_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> group, <span class="at">data =</span> affect_data)</span>
+<span id="cb72-3"><a href="anova1.html#cb72-3" tabindex="-1"></a></span>
+<span id="cb72-4"><a href="anova1.html#cb72-4" tabindex="-1"></a><span class="co"># make sure broom package is loaded with library(broom), then</span></span>
+<span id="cb72-5"><a href="anova1.html#cb72-5" tabindex="-1"></a><span class="co"># use glance() with anova_1 </span></span>
+<span id="cb72-6"><a href="anova1.html#cb72-6" tabindex="-1"></a><span class="fu">glance</span>(anova_1)</span></code></pre></div>
 <div class="kable-table">
 <table>
 <colgroup>
@@ -720,40 +715,40 @@ Tip - lmBF()
 <li><code>Low</code> vs. <code>High</code></li>
 </ul>
 <p>To compare scores from two groups, we can use <code>filter()</code> to filter the <code>affect_data</code> so that it contains only the two groups we want to compare. Then use <code>anovaBF()</code> again to compare the scores across groups. The BF will tell us how many times more likely it is that there's a difference between means, compared to no difference.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="anova1.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare scores of VeryLow vs. Low groups</span></span>
-<span id="cb14-2"><a href="anova1.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb14-3"><a href="anova1.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1. Filter affect_data for VeryLow and Low groups only</span></span>
-<span id="cb14-4"><a href="anova1.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Store in &#39;groups_VeryLow_Low&#39;</span></span>
-<span id="cb14-5"><a href="anova1.html#cb14-5" aria-hidden="true" tabindex="-1"></a>groups_VeryLow_Low <span class="ot">&lt;-</span> </span>
-<span id="cb14-6"><a href="anova1.html#cb14-6" aria-hidden="true" tabindex="-1"></a>  affect_data <span class="sc">%&gt;%</span> </span>
-<span id="cb14-7"><a href="anova1.html#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;VeryLow&quot;</span> <span class="sc">|</span> group <span class="sc">==</span> <span class="st">&quot;Low&quot;</span>)</span>
-<span id="cb14-8"><a href="anova1.html#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb14-9"><a href="anova1.html#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2. Obtain BF for VeryLow vs. Low groups</span></span>
-<span id="cb14-10"><a href="anova1.html#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(score <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(groups_VeryLow_Low))</span>
-<span id="cb14-11"><a href="anova1.html#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-12"><a href="anova1.html#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-13"><a href="anova1.html#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare scores of VeryLow vs. High groups</span></span>
-<span id="cb14-14"><a href="anova1.html#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb14-15"><a href="anova1.html#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1. Filter affect_data for VeryLow and High groups only</span></span>
-<span id="cb14-16"><a href="anova1.html#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Store in &#39;groups_VeryLow_High&#39;</span></span>
-<span id="cb14-17"><a href="anova1.html#cb14-17" aria-hidden="true" tabindex="-1"></a>groups_VeryLow_High <span class="ot">&lt;-</span> </span>
-<span id="cb14-18"><a href="anova1.html#cb14-18" aria-hidden="true" tabindex="-1"></a>  affect_data <span class="sc">%&gt;%</span> </span>
-<span id="cb14-19"><a href="anova1.html#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;VeryLow&quot;</span> <span class="sc">|</span> group <span class="sc">==</span> <span class="st">&quot;High&quot;</span>)</span>
-<span id="cb14-20"><a href="anova1.html#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb14-21"><a href="anova1.html#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2. Obtain BF for VeryLow vs. Low groups</span></span>
-<span id="cb14-22"><a href="anova1.html#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(score <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(groups_VeryLow_High))</span>
-<span id="cb14-23"><a href="anova1.html#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-24"><a href="anova1.html#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-25"><a href="anova1.html#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare scores of Low vs. High groups</span></span>
-<span id="cb14-26"><a href="anova1.html#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb14-27"><a href="anova1.html#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1. Filter affect_data to store Low and High groups only</span></span>
-<span id="cb14-28"><a href="anova1.html#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Store in &#39;groups_Low_High&#39;</span></span>
-<span id="cb14-29"><a href="anova1.html#cb14-29" aria-hidden="true" tabindex="-1"></a>groups_Low_High <span class="ot">&lt;-</span> </span>
-<span id="cb14-30"><a href="anova1.html#cb14-30" aria-hidden="true" tabindex="-1"></a>  affect_data <span class="sc">%&gt;%</span> </span>
-<span id="cb14-31"><a href="anova1.html#cb14-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;Low&quot;</span> <span class="sc">|</span> group <span class="sc">==</span> <span class="st">&quot;High&quot;</span>)</span>
-<span id="cb14-32"><a href="anova1.html#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb14-33"><a href="anova1.html#cb14-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2. Obtain BF for VeryLow vs. Low groups</span></span>
-<span id="cb14-34"><a href="anova1.html#cb14-34" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(score <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(groups_Low_High))</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="anova1.html#cb73-1" tabindex="-1"></a><span class="co"># Compare scores of VeryLow vs. Low groups</span></span>
+<span id="cb73-2"><a href="anova1.html#cb73-2" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb73-3"><a href="anova1.html#cb73-3" tabindex="-1"></a><span class="co"># Step 1. Filter affect_data for VeryLow and Low groups only</span></span>
+<span id="cb73-4"><a href="anova1.html#cb73-4" tabindex="-1"></a><span class="co"># Store in &#39;groups_VeryLow_Low&#39;</span></span>
+<span id="cb73-5"><a href="anova1.html#cb73-5" tabindex="-1"></a>groups_VeryLow_Low <span class="ot">&lt;-</span> </span>
+<span id="cb73-6"><a href="anova1.html#cb73-6" tabindex="-1"></a>  affect_data <span class="sc">%&gt;%</span> </span>
+<span id="cb73-7"><a href="anova1.html#cb73-7" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;VeryLow&quot;</span> <span class="sc">|</span> group <span class="sc">==</span> <span class="st">&quot;Low&quot;</span>)</span>
+<span id="cb73-8"><a href="anova1.html#cb73-8" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb73-9"><a href="anova1.html#cb73-9" tabindex="-1"></a><span class="co"># Step 2. Obtain BF for VeryLow vs. Low groups</span></span>
+<span id="cb73-10"><a href="anova1.html#cb73-10" tabindex="-1"></a><span class="fu">anovaBF</span>(score <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(groups_VeryLow_Low))</span>
+<span id="cb73-11"><a href="anova1.html#cb73-11" tabindex="-1"></a></span>
+<span id="cb73-12"><a href="anova1.html#cb73-12" tabindex="-1"></a></span>
+<span id="cb73-13"><a href="anova1.html#cb73-13" tabindex="-1"></a><span class="co"># Compare scores of VeryLow vs. High groups</span></span>
+<span id="cb73-14"><a href="anova1.html#cb73-14" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb73-15"><a href="anova1.html#cb73-15" tabindex="-1"></a><span class="co"># Step 1. Filter affect_data for VeryLow and High groups only</span></span>
+<span id="cb73-16"><a href="anova1.html#cb73-16" tabindex="-1"></a><span class="co"># Store in &#39;groups_VeryLow_High&#39;</span></span>
+<span id="cb73-17"><a href="anova1.html#cb73-17" tabindex="-1"></a>groups_VeryLow_High <span class="ot">&lt;-</span> </span>
+<span id="cb73-18"><a href="anova1.html#cb73-18" tabindex="-1"></a>  affect_data <span class="sc">%&gt;%</span> </span>
+<span id="cb73-19"><a href="anova1.html#cb73-19" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;VeryLow&quot;</span> <span class="sc">|</span> group <span class="sc">==</span> <span class="st">&quot;High&quot;</span>)</span>
+<span id="cb73-20"><a href="anova1.html#cb73-20" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb73-21"><a href="anova1.html#cb73-21" tabindex="-1"></a><span class="co"># Step 2. Obtain BF for VeryLow vs. Low groups</span></span>
+<span id="cb73-22"><a href="anova1.html#cb73-22" tabindex="-1"></a><span class="fu">anovaBF</span>(score <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(groups_VeryLow_High))</span>
+<span id="cb73-23"><a href="anova1.html#cb73-23" tabindex="-1"></a></span>
+<span id="cb73-24"><a href="anova1.html#cb73-24" tabindex="-1"></a></span>
+<span id="cb73-25"><a href="anova1.html#cb73-25" tabindex="-1"></a><span class="co"># Compare scores of Low vs. High groups</span></span>
+<span id="cb73-26"><a href="anova1.html#cb73-26" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb73-27"><a href="anova1.html#cb73-27" tabindex="-1"></a><span class="co"># Step 1. Filter affect_data to store Low and High groups only</span></span>
+<span id="cb73-28"><a href="anova1.html#cb73-28" tabindex="-1"></a><span class="co"># Store in &#39;groups_Low_High&#39;</span></span>
+<span id="cb73-29"><a href="anova1.html#cb73-29" tabindex="-1"></a>groups_Low_High <span class="ot">&lt;-</span> </span>
+<span id="cb73-30"><a href="anova1.html#cb73-30" tabindex="-1"></a>  affect_data <span class="sc">%&gt;%</span> </span>
+<span id="cb73-31"><a href="anova1.html#cb73-31" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;Low&quot;</span> <span class="sc">|</span> group <span class="sc">==</span> <span class="st">&quot;High&quot;</span>)</span>
+<span id="cb73-32"><a href="anova1.html#cb73-32" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb73-33"><a href="anova1.html#cb73-33" tabindex="-1"></a><span class="co"># Step 2. Obtain BF for VeryLow vs. Low groups</span></span>
+<span id="cb73-34"><a href="anova1.html#cb73-34" tabindex="-1"></a><span class="fu">anovaBF</span>(score <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(groups_Low_High))</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] group : 10.25237 ±0%
@@ -802,17 +797,17 @@ Further information on filter()
 An equivalent approach: ttestBF()
 </button>
 <p><code>anovaBF()</code> was used to conduct follow-up tests. Because each test had two groups, this is equivalent to a <a href="http://www.andywills.info/rminr/evidence.html">Bayesian <em>t</em>-test</a>, and so the exact same BFs could have been obtained using <code>ttestBF()</code>:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="anova1.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare scores of VeryLow vs. Low groups</span></span>
-<span id="cb16-2"><a href="anova1.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestBF</span>( <span class="at">x =</span> affect_data<span class="sc">$</span>score[ affect_data<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;VeryLow&quot;</span> ], </span>
-<span id="cb16-3"><a href="anova1.html#cb16-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> affect_data<span class="sc">$</span>score[ affect_data<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;Low&quot;</span> ] )</span>
-<span id="cb16-4"><a href="anova1.html#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="anova1.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># compare scores of VeryLow vs. High groups</span></span>
-<span id="cb16-6"><a href="anova1.html#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestBF</span>( <span class="at">x =</span> affect_data<span class="sc">$</span>score[ affect_data<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;VeryLow&quot;</span> ], </span>
-<span id="cb16-7"><a href="anova1.html#cb16-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> affect_data<span class="sc">$</span>score[ affect_data<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;High&quot;</span> ] )</span>
-<span id="cb16-8"><a href="anova1.html#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="anova1.html#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># compare scores of Low vs. High groups</span></span>
-<span id="cb16-10"><a href="anova1.html#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestBF</span>( <span class="at">x =</span> affect_data<span class="sc">$</span>score[ affect_data<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;Low&quot;</span> ], </span>
-<span id="cb16-11"><a href="anova1.html#cb16-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> affect_data<span class="sc">$</span>score[ affect_data<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;High&quot;</span> ] )</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="anova1.html#cb75-1" tabindex="-1"></a><span class="co"># Compare scores of VeryLow vs. Low groups</span></span>
+<span id="cb75-2"><a href="anova1.html#cb75-2" tabindex="-1"></a><span class="fu">ttestBF</span>( <span class="at">x =</span> affect_data<span class="sc">$</span>score[ affect_data<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;VeryLow&quot;</span> ], </span>
+<span id="cb75-3"><a href="anova1.html#cb75-3" tabindex="-1"></a>         <span class="at">y =</span> affect_data<span class="sc">$</span>score[ affect_data<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;Low&quot;</span> ] )</span>
+<span id="cb75-4"><a href="anova1.html#cb75-4" tabindex="-1"></a></span>
+<span id="cb75-5"><a href="anova1.html#cb75-5" tabindex="-1"></a><span class="co"># compare scores of VeryLow vs. High groups</span></span>
+<span id="cb75-6"><a href="anova1.html#cb75-6" tabindex="-1"></a><span class="fu">ttestBF</span>( <span class="at">x =</span> affect_data<span class="sc">$</span>score[ affect_data<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;VeryLow&quot;</span> ], </span>
+<span id="cb75-7"><a href="anova1.html#cb75-7" tabindex="-1"></a>         <span class="at">y =</span> affect_data<span class="sc">$</span>score[ affect_data<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;High&quot;</span> ] )</span>
+<span id="cb75-8"><a href="anova1.html#cb75-8" tabindex="-1"></a></span>
+<span id="cb75-9"><a href="anova1.html#cb75-9" tabindex="-1"></a><span class="co"># compare scores of Low vs. High groups</span></span>
+<span id="cb75-10"><a href="anova1.html#cb75-10" tabindex="-1"></a><span class="fu">ttestBF</span>( <span class="at">x =</span> affect_data<span class="sc">$</span>score[ affect_data<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;Low&quot;</span> ], </span>
+<span id="cb75-11"><a href="anova1.html#cb75-11" tabindex="-1"></a>         <span class="at">y =</span> affect_data<span class="sc">$</span>score[ affect_data<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;High&quot;</span> ] )</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -829,7 +824,7 @@ An equivalent approach: ttestBF()
 <h3><span class="header-section-number">3.3.1</span> Worked example<a href="anova1.html#worked-example-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>What is the role of resilience in the distress experienced from childhood adversities? Beutel et al. (2017) analysed the distress scores from 2,437 individuals who were either low or high in trait resilience and had experienced either low or high levels of childhood adversity.</p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-2" class="exercise"><strong>Exercise 3.2  </strong></span>Design check.</p>
+<p><span id="exr:unlabeled-div-12" class="exercise"><strong>Exercise 3.2  </strong></span>Design check.</p>
 <ul>
 <li><p>What is the first independent variable (or <em>factor</em>) that is mentioned in this design? <select class='webex-select'><option value='blank'></option><option value=''>distress score</option><option value=''>childhood adversity</option><option value='answer'>resilience</option></select></p></li>
 <li><p>How many levels does the first factor have? <select class='webex-select'><option value='blank'></option><option value=''>1</option><option value='answer'>2</option><option value=''>3</option><option value=''>4</option></select></p></li>
@@ -845,11 +840,11 @@ An equivalent approach: ttestBF()
 <h3><span class="header-section-number">3.3.2</span> Read in the data<a href="anova1.html#read-in-the-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Read in the data at the link below and store in <code>resilience_data</code>:</p>
 <p><a href="https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_resilience_data.csv" class="uri">https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_resilience_data.csv</a></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="anova1.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the data</span></span>
-<span id="cb17-2"><a href="anova1.html#cb17-2" aria-hidden="true" tabindex="-1"></a>resilience_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_resilience_data.csv&#39;</span>)</span>
-<span id="cb17-3"><a href="anova1.html#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="anova1.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># preview</span></span>
-<span id="cb17-5"><a href="anova1.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(resilience_data)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="anova1.html#cb76-1" tabindex="-1"></a><span class="co"># read in the data</span></span>
+<span id="cb76-2"><a href="anova1.html#cb76-2" tabindex="-1"></a>resilience_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_resilience_data.csv&#39;</span>)</span>
+<span id="cb76-3"><a href="anova1.html#cb76-3" tabindex="-1"></a></span>
+<span id="cb76-4"><a href="anova1.html#cb76-4" tabindex="-1"></a><span class="co"># preview</span></span>
+<span id="cb76-5"><a href="anova1.html#cb76-5" tabindex="-1"></a><span class="fu">head</span>(resilience_data)</span></code></pre></div>
 <div class="kable-table">
 <table>
 <colgroup>
@@ -950,22 +945,22 @@ An equivalent approach: ttestBF()
 <div id="convert-the-independent-variables-to-factors" class="section level3 hasAnchor" number="3.3.3">
 <h3><span class="header-section-number">3.3.3</span> Convert the independent variables to factors<a href="anova1.html#convert-the-independent-variables-to-factors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To enable the factors to be used as such in ANOVA, we need to convert them to factors using <code>factor()</code>:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="anova1.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use mutate() and factor() to convert </span></span>
-<span id="cb18-2"><a href="anova1.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># resilience and adversity to factors</span></span>
-<span id="cb18-3"><a href="anova1.html#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="anova1.html#cb18-4" aria-hidden="true" tabindex="-1"></a>resilience_data <span class="ot">&lt;-</span> </span>
-<span id="cb18-5"><a href="anova1.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  resilience_data <span class="sc">%&gt;%</span> </span>
-<span id="cb18-6"><a href="anova1.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">resilience =</span> <span class="fu">factor</span>(resilience),</span>
-<span id="cb18-7"><a href="anova1.html#cb18-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">adversity  =</span> <span class="fu">factor</span>(adversity))</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="anova1.html#cb77-1" tabindex="-1"></a><span class="co"># use mutate() and factor() to convert </span></span>
+<span id="cb77-2"><a href="anova1.html#cb77-2" tabindex="-1"></a><span class="co"># resilience and adversity to factors</span></span>
+<span id="cb77-3"><a href="anova1.html#cb77-3" tabindex="-1"></a></span>
+<span id="cb77-4"><a href="anova1.html#cb77-4" tabindex="-1"></a>resilience_data <span class="ot">&lt;-</span> </span>
+<span id="cb77-5"><a href="anova1.html#cb77-5" tabindex="-1"></a>  resilience_data <span class="sc">%&gt;%</span> </span>
+<span id="cb77-6"><a href="anova1.html#cb77-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">resilience =</span> <span class="fu">factor</span>(resilience),</span>
+<span id="cb77-7"><a href="anova1.html#cb77-7" tabindex="-1"></a>         <span class="at">adversity  =</span> <span class="fu">factor</span>(adversity))</span></code></pre></div>
 </div>
 <div id="n-in-each-group" class="section level3 hasAnchor" number="3.3.4">
 <h3><span class="header-section-number">3.3.4</span> n in each group<a href="anova1.html#n-in-each-group" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Obtain the number of participants in each group:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="anova1.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use count() to obtain the number of rows in the dataset, </span></span>
-<span id="cb19-2"><a href="anova1.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># group_by() both resilience AND adversity</span></span>
-<span id="cb19-3"><a href="anova1.html#cb19-3" aria-hidden="true" tabindex="-1"></a>resilience_data <span class="sc">%&gt;%</span> </span>
-<span id="cb19-4"><a href="anova1.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(resilience, adversity) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-5"><a href="anova1.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="anova1.html#cb78-1" tabindex="-1"></a><span class="co"># use count() to obtain the number of rows in the dataset, </span></span>
+<span id="cb78-2"><a href="anova1.html#cb78-2" tabindex="-1"></a><span class="co"># group_by() both resilience AND adversity</span></span>
+<span id="cb78-3"><a href="anova1.html#cb78-3" tabindex="-1"></a>resilience_data <span class="sc">%&gt;%</span> </span>
+<span id="cb78-4"><a href="anova1.html#cb78-4" tabindex="-1"></a>  <span class="fu">group_by</span>(resilience, adversity) <span class="sc">%&gt;%</span> </span>
+<span id="cb78-5"><a href="anova1.html#cb78-5" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -1012,19 +1007,19 @@ An equivalent approach: ttestBF()
 <div id="visualise-the-data-1" class="section level3 hasAnchor" number="3.3.5">
 <h3><span class="header-section-number">3.3.5</span> Visualise the data<a href="anova1.html#visualise-the-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The way the data are distributed in each group can be inspected with histograms or density plots.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="anova1.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use `facet_wrap(~ resilience * adversity)`</span></span>
-<span id="cb20-2"><a href="anova1.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to plot scores for all combinations of </span></span>
-<span id="cb20-3"><a href="anova1.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># resilience x adversity levels</span></span>
-<span id="cb20-4"><a href="anova1.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use &#39;labeller = label_both&#39; to label levels by factor name</span></span>
-<span id="cb20-5"><a href="anova1.html#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="anova1.html#cb20-6" aria-hidden="true" tabindex="-1"></a>resilience_data <span class="sc">%&gt;%</span> </span>
-<span id="cb20-7"><a href="anova1.html#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(distress)) <span class="sc">+</span> </span>
-<span id="cb20-8"><a href="anova1.html#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
-<span id="cb20-9"><a href="anova1.html#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> resilience <span class="sc">*</span> adversity, <span class="at">labeller =</span> label_both)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="anova1.html#cb79-1" tabindex="-1"></a><span class="co"># Use `facet_wrap(~ resilience * adversity)`</span></span>
+<span id="cb79-2"><a href="anova1.html#cb79-2" tabindex="-1"></a><span class="co"># to plot scores for all combinations of </span></span>
+<span id="cb79-3"><a href="anova1.html#cb79-3" tabindex="-1"></a><span class="co"># resilience x adversity levels</span></span>
+<span id="cb79-4"><a href="anova1.html#cb79-4" tabindex="-1"></a><span class="co"># use &#39;labeller = label_both&#39; to label levels by factor name</span></span>
+<span id="cb79-5"><a href="anova1.html#cb79-5" tabindex="-1"></a></span>
+<span id="cb79-6"><a href="anova1.html#cb79-6" tabindex="-1"></a>resilience_data <span class="sc">%&gt;%</span> </span>
+<span id="cb79-7"><a href="anova1.html#cb79-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(distress)) <span class="sc">+</span> </span>
+<span id="cb79-8"><a href="anova1.html#cb79-8" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb79-9"><a href="anova1.html#cb79-9" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> resilience <span class="sc">*</span> adversity, <span class="at">labeller =</span> label_both)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-19"></span>
 <img src="03_anova_between_subjects_files/figure-html/unnamed-chunk-19-1.png" alt="Density plots showing distress scores in each group)" width="75%" />
 <p class="caption">
-Figure 3.3: Density plots showing distress scores in each group)
+Figure 3.2: Density plots showing distress scores in each group)
 </p>
 </div>
 <p><strong>Interpretation:</strong> The data in each group appear positively skewed - the tail of the distribution goes towards the right (i.e., towards more positive values of distress). Beutel et al. (2017) took no further action and analysed the scores as they were.</p>
@@ -1034,21 +1029,21 @@ Figure 3.3: Density plots showing distress scores in each group)
 <div id="plot-the-means-1" class="section level3 hasAnchor" number="3.3.6">
 <h3><span class="header-section-number">3.3.6</span> Plot the means<a href="anova1.html#plot-the-means-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Use <code>ggbarplot()</code> in the <code>ggpubr</code> package:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="anova1.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb21-2"><a href="anova1.html#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="anova1.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the mean of each group</span></span>
-<span id="cb21-4"><a href="anova1.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use &#39;desc_stat = &quot;mean_se&quot; to add SE error bars</span></span>
-<span id="cb21-5"><a href="anova1.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># use &#39;position = position_dodge(0.3)&#39; so that points are spaced</span></span>
-<span id="cb21-6"><a href="anova1.html#cb21-6" aria-hidden="true" tabindex="-1"></a>resilience_data <span class="sc">%&gt;%</span> </span>
-<span id="cb21-7"><a href="anova1.html#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggerrorplot</span>(<span class="at">x =</span> <span class="st">&quot;resilience&quot;</span>, <span class="at">y =</span> <span class="st">&quot;distress&quot;</span>,  <span class="at">color =</span> <span class="st">&quot;adversity&quot;</span>,</span>
-<span id="cb21-8"><a href="anova1.html#cb21-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">desc_stat =</span> <span class="st">&quot;mean_se&quot;</span>, </span>
-<span id="cb21-9"><a href="anova1.html#cb21-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.3</span>)) <span class="sc">+</span></span>
-<span id="cb21-10"><a href="anova1.html#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Resilience&quot;</span>) <span class="sc">+</span></span>
-<span id="cb21-11"><a href="anova1.html#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Distress&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="anova1.html#cb80-1" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb80-2"><a href="anova1.html#cb80-2" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="anova1.html#cb80-3" tabindex="-1"></a><span class="co"># plot the mean of each group</span></span>
+<span id="cb80-4"><a href="anova1.html#cb80-4" tabindex="-1"></a><span class="co"># use &#39;desc_stat = &quot;mean_se&quot; to add SE error bars</span></span>
+<span id="cb80-5"><a href="anova1.html#cb80-5" tabindex="-1"></a><span class="co"># use &#39;position = position_dodge(0.3)&#39; so that points are spaced</span></span>
+<span id="cb80-6"><a href="anova1.html#cb80-6" tabindex="-1"></a>resilience_data <span class="sc">%&gt;%</span> </span>
+<span id="cb80-7"><a href="anova1.html#cb80-7" tabindex="-1"></a>  <span class="fu">ggerrorplot</span>(<span class="at">x =</span> <span class="st">&quot;resilience&quot;</span>, <span class="at">y =</span> <span class="st">&quot;distress&quot;</span>,  <span class="at">color =</span> <span class="st">&quot;adversity&quot;</span>,</span>
+<span id="cb80-8"><a href="anova1.html#cb80-8" tabindex="-1"></a>              <span class="at">desc_stat =</span> <span class="st">&quot;mean_se&quot;</span>, </span>
+<span id="cb80-9"><a href="anova1.html#cb80-9" tabindex="-1"></a>              <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.3</span>)) <span class="sc">+</span></span>
+<span id="cb80-10"><a href="anova1.html#cb80-10" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Resilience&quot;</span>) <span class="sc">+</span></span>
+<span id="cb80-11"><a href="anova1.html#cb80-11" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Distress&quot;</span>) </span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-20"></span>
 <img src="03_anova_between_subjects_files/figure-html/unnamed-chunk-20-1.png" alt="Distress as a function of adversity and resilience (error bars indicate SE of the mean)" width="75%" />
 <p class="caption">
-Figure 3.4: Distress as a function of adversity and resilience (error bars indicate SE of the mean)
+Figure 3.3: Distress as a function of adversity and resilience (error bars indicate SE of the mean)
 </p>
 </div>
 <p><br />
@@ -1081,17 +1076,17 @@ Figure 3.4: Distress as a function of adversity and resilience (error bars indic
 <p><br />
 </p>
 <p>For the resilience data:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="anova1.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain the Bayes Factors for the ANOVA model</span></span>
-<span id="cb22-2"><a href="anova1.html#cb22-2" aria-hidden="true" tabindex="-1"></a>anova2x2_BF <span class="ot">&lt;-</span> <span class="fu">anovaBF</span>( distress <span class="sc">~</span> resilience <span class="sc">*</span> adversity, <span class="at">data =</span> <span class="fu">data.frame</span>(resilience_data) )</span>
-<span id="cb22-3"><a href="anova1.html#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="anova1.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the output</span></span>
-<span id="cb22-5"><a href="anova1.html#cb22-5" aria-hidden="true" tabindex="-1"></a>anova2x2_BF</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="anova1.html#cb81-1" tabindex="-1"></a><span class="co"># Obtain the Bayes Factors for the ANOVA model</span></span>
+<span id="cb81-2"><a href="anova1.html#cb81-2" tabindex="-1"></a>anova2x2_BF <span class="ot">&lt;-</span> <span class="fu">anovaBF</span>( distress <span class="sc">~</span> resilience <span class="sc">*</span> adversity, <span class="at">data =</span> <span class="fu">data.frame</span>(resilience_data) )</span>
+<span id="cb81-3"><a href="anova1.html#cb81-3" tabindex="-1"></a></span>
+<span id="cb81-4"><a href="anova1.html#cb81-4" tabindex="-1"></a><span class="co"># look at the output</span></span>
+<span id="cb81-5"><a href="anova1.html#cb81-5" tabindex="-1"></a>anova2x2_BF</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] resilience                                    : 1.822053e+27 ±0%
 ## [2] adversity                                     : 7.870878e+25 ±0%
-## [3] resilience + adversity                        : 3.339074e+46 ±2.16%
-## [4] resilience + adversity + resilience:adversity : 3.130195e+49 ±2.06%
+## [3] resilience + adversity                        : 3.29781e+46  ±1.46%
+## [4] resilience + adversity + resilience:adversity : 3.243508e+49 ±1.02%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -1116,11 +1111,11 @@ What does 1.82e+27 mean?
 </ul>
 <p><code>[1]</code> and <code>[2]</code> correspond to the main effects of <code>resilience</code> and <code>adversity</code>, respectively.</p>
 <p>To obtain the BF for the interaction, we need to divide <code>[4]</code> by <code>[3]</code>:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="anova1.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BF for the interaction</span></span>
-<span id="cb24-2"><a href="anova1.html#cb24-2" aria-hidden="true" tabindex="-1"></a>anova2x2_BF[<span class="dv">4</span>] <span class="sc">/</span> anova2x2_BF[<span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="anova1.html#cb83-1" tabindex="-1"></a><span class="co"># BF for the interaction</span></span>
+<span id="cb83-2"><a href="anova1.html#cb83-2" tabindex="-1"></a>anova2x2_BF[<span class="dv">4</span>] <span class="sc">/</span> anova2x2_BF[<span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] resilience + adversity + resilience:adversity : 937.444 ±2.98%
+## [1] resilience + adversity + resilience:adversity : 983.534 ±1.78%
 ## 
 ## Against denominator:
 ##   distress ~ resilience + adversity 
@@ -1149,11 +1144,11 @@ Meaning of ±number%
 </div>
 <p><br />
 </p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="anova1.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the ANOVA model using lm()</span></span>
-<span id="cb26-2"><a href="anova1.html#cb26-2" aria-hidden="true" tabindex="-1"></a>anova2x2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(distress <span class="sc">~</span> resilience <span class="sc">*</span> adversity, <span class="at">data =</span> resilience_data)</span>
-<span id="cb26-3"><a href="anova1.html#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="anova1.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># R^2^</span></span>
-<span id="cb26-5"><a href="anova1.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(anova2x2)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="anova1.html#cb85-1" tabindex="-1"></a><span class="co"># specify the ANOVA model using lm()</span></span>
+<span id="cb85-2"><a href="anova1.html#cb85-2" tabindex="-1"></a>anova2x2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(distress <span class="sc">~</span> resilience <span class="sc">*</span> adversity, <span class="at">data =</span> resilience_data)</span>
+<span id="cb85-3"><a href="anova1.html#cb85-3" tabindex="-1"></a></span>
+<span id="cb85-4"><a href="anova1.html#cb85-4" tabindex="-1"></a><span class="co"># R^2^</span></span>
+<span id="cb85-5"><a href="anova1.html#cb85-5" tabindex="-1"></a><span class="fu">glance</span>(anova2x2)</span></code></pre></div>
 <div class="kable-table">
 <table>
 <colgroup>
@@ -1211,24 +1206,24 @@ Going further - R<sup>2</sup> for each model component
 </button>
 <p>Rather than report the R<sup>2</sup> for the overall model in an article, we often would rather report the R<sup>2</sup> value associated with each of the main effects and interaction.</p>
 <p>It is easiest to obtain this by running the ANOVA using the <code>afex</code> package. We'll do this in more detail in Session 6.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="anova1.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load afex</span></span>
-<span id="cb27-2"><a href="anova1.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(afex)</span>
-<span id="cb27-3"><a href="anova1.html#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="anova1.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add a column to code the ppt in the dataset</span></span>
-<span id="cb27-5"><a href="anova1.html#cb27-5" aria-hidden="true" tabindex="-1"></a>resilience_data <span class="ot">&lt;-</span> </span>
-<span id="cb27-6"><a href="anova1.html#cb27-6" aria-hidden="true" tabindex="-1"></a>  resilience_data <span class="sc">%&gt;%</span> </span>
-<span id="cb27-7"><a href="anova1.html#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ppt =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()))</span>
-<span id="cb27-8"><a href="anova1.html#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="anova1.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># use the afex package to run a two-way ANOVA</span></span>
-<span id="cb27-10"><a href="anova1.html#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co"># id is the column of participant identifiers (&quot;ppt&quot;)</span></span>
-<span id="cb27-11"><a href="anova1.html#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co"># dv is the dependent variable (&quot;distress&quot;)</span></span>
-<span id="cb27-12"><a href="anova1.html#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co"># between specifies the between-subjects factor</span></span>
-<span id="cb27-13"><a href="anova1.html#cb27-13" aria-hidden="true" tabindex="-1"></a>anova2bet <span class="ot">&lt;-</span> afex<span class="sc">::</span><span class="fu">aov_ez</span>(<span class="at">id =</span> <span class="fu">c</span>(<span class="st">&quot;ppt&quot;</span>),</span>
-<span id="cb27-14"><a href="anova1.html#cb27-14" aria-hidden="true" tabindex="-1"></a>                          <span class="at">dv =</span> <span class="fu">c</span>(<span class="st">&quot;distress&quot;</span>),</span>
-<span id="cb27-15"><a href="anova1.html#cb27-15" aria-hidden="true" tabindex="-1"></a>                          <span class="at">between =</span> <span class="fu">c</span>(<span class="st">&quot;resilience&quot;</span>,<span class="st">&quot;adversity&quot;</span>), <span class="co"># two factors</span></span>
-<span id="cb27-16"><a href="anova1.html#cb27-16" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data =</span> resilience_data)</span>
-<span id="cb27-17"><a href="anova1.html#cb27-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-18"><a href="anova1.html#cb27-18" aria-hidden="true" tabindex="-1"></a>anova2bet</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="anova1.html#cb86-1" tabindex="-1"></a><span class="co"># load afex</span></span>
+<span id="cb86-2"><a href="anova1.html#cb86-2" tabindex="-1"></a><span class="fu">library</span>(afex)</span>
+<span id="cb86-3"><a href="anova1.html#cb86-3" tabindex="-1"></a></span>
+<span id="cb86-4"><a href="anova1.html#cb86-4" tabindex="-1"></a><span class="co"># add a column to code the ppt in the dataset</span></span>
+<span id="cb86-5"><a href="anova1.html#cb86-5" tabindex="-1"></a>resilience_data <span class="ot">&lt;-</span> </span>
+<span id="cb86-6"><a href="anova1.html#cb86-6" tabindex="-1"></a>  resilience_data <span class="sc">%&gt;%</span> </span>
+<span id="cb86-7"><a href="anova1.html#cb86-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ppt =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()))</span>
+<span id="cb86-8"><a href="anova1.html#cb86-8" tabindex="-1"></a></span>
+<span id="cb86-9"><a href="anova1.html#cb86-9" tabindex="-1"></a><span class="co"># use the afex package to run a two-way ANOVA</span></span>
+<span id="cb86-10"><a href="anova1.html#cb86-10" tabindex="-1"></a><span class="co"># id is the column of participant identifiers (&quot;ppt&quot;)</span></span>
+<span id="cb86-11"><a href="anova1.html#cb86-11" tabindex="-1"></a><span class="co"># dv is the dependent variable (&quot;distress&quot;)</span></span>
+<span id="cb86-12"><a href="anova1.html#cb86-12" tabindex="-1"></a><span class="co"># between specifies the between-subjects factor</span></span>
+<span id="cb86-13"><a href="anova1.html#cb86-13" tabindex="-1"></a>anova2bet <span class="ot">&lt;-</span> afex<span class="sc">::</span><span class="fu">aov_ez</span>(<span class="at">id =</span> <span class="fu">c</span>(<span class="st">&quot;ppt&quot;</span>),</span>
+<span id="cb86-14"><a href="anova1.html#cb86-14" tabindex="-1"></a>                          <span class="at">dv =</span> <span class="fu">c</span>(<span class="st">&quot;distress&quot;</span>),</span>
+<span id="cb86-15"><a href="anova1.html#cb86-15" tabindex="-1"></a>                          <span class="at">between =</span> <span class="fu">c</span>(<span class="st">&quot;resilience&quot;</span>,<span class="st">&quot;adversity&quot;</span>), <span class="co"># two factors</span></span>
+<span id="cb86-16"><a href="anova1.html#cb86-16" tabindex="-1"></a>                          <span class="at">data =</span> resilience_data)</span>
+<span id="cb86-17"><a href="anova1.html#cb86-17" tabindex="-1"></a></span>
+<span id="cb86-18"><a href="anova1.html#cb86-18" tabindex="-1"></a>anova2bet</span></code></pre></div>
 <p>The R<sup>2</sup> values are referred to as generalised eta squared. The values for each main effect and the interaction term are in the column <code>ges</code>.</p>
 </div>
 <p><br />
@@ -1239,16 +1234,16 @@ Going further - R<sup>2</sup> for each model component
 <p>Given that we have evidence for an interaction, <code>anovaBF()</code> can be used to conduct follow-up comparisons to explore the nature of the interaction. (Note, we would not do this if the BF did not show evidence for the interaction, i.e., if the BF was less than 3.)</p>
 <p>The interaction implies the effect of <code>adversity</code> is different in individuals with <code>high</code> resilience, and those with <code>low</code> resilience.</p>
 <p>To determine the evidence for the effect of adversity in individuals with high resilience:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="anova1.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. The effect of adversity in individuals with high resilience</span></span>
-<span id="cb28-2"><a href="anova1.html#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-3"><a href="anova1.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># First use filter() to store only </span></span>
-<span id="cb28-4"><a href="anova1.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the data from the &#39;high&#39; resilience groups</span></span>
-<span id="cb28-5"><a href="anova1.html#cb28-5" aria-hidden="true" tabindex="-1"></a>resilience_high <span class="ot">&lt;-</span> </span>
-<span id="cb28-6"><a href="anova1.html#cb28-6" aria-hidden="true" tabindex="-1"></a>  resilience_data <span class="sc">%&gt;%</span> </span>
-<span id="cb28-7"><a href="anova1.html#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(resilience <span class="sc">==</span> <span class="st">&quot;high&quot;</span>)</span>
-<span id="cb28-8"><a href="anova1.html#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-9"><a href="anova1.html#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Then use `anovaBF()` to look at effect of adversity in resilience_high</span></span>
-<span id="cb28-10"><a href="anova1.html#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>( distress <span class="sc">~</span> adversity, <span class="at">data =</span> <span class="fu">data.frame</span>(resilience_high) )</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="anova1.html#cb87-1" tabindex="-1"></a><span class="co"># 1. The effect of adversity in individuals with high resilience</span></span>
+<span id="cb87-2"><a href="anova1.html#cb87-2" tabindex="-1"></a></span>
+<span id="cb87-3"><a href="anova1.html#cb87-3" tabindex="-1"></a><span class="co"># First use filter() to store only </span></span>
+<span id="cb87-4"><a href="anova1.html#cb87-4" tabindex="-1"></a><span class="co"># the data from the &#39;high&#39; resilience groups</span></span>
+<span id="cb87-5"><a href="anova1.html#cb87-5" tabindex="-1"></a>resilience_high <span class="ot">&lt;-</span> </span>
+<span id="cb87-6"><a href="anova1.html#cb87-6" tabindex="-1"></a>  resilience_data <span class="sc">%&gt;%</span> </span>
+<span id="cb87-7"><a href="anova1.html#cb87-7" tabindex="-1"></a>  <span class="fu">filter</span>(resilience <span class="sc">==</span> <span class="st">&quot;high&quot;</span>)</span>
+<span id="cb87-8"><a href="anova1.html#cb87-8" tabindex="-1"></a></span>
+<span id="cb87-9"><a href="anova1.html#cb87-9" tabindex="-1"></a><span class="co"># Then use `anovaBF()` to look at effect of adversity in resilience_high</span></span>
+<span id="cb87-10"><a href="anova1.html#cb87-10" tabindex="-1"></a><span class="fu">anovaBF</span>( distress <span class="sc">~</span> adversity, <span class="at">data =</span> <span class="fu">data.frame</span>(resilience_high) )</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] adversity : 1.026598 ±0.02%
@@ -1258,16 +1253,16 @@ Going further - R<sup>2</sup> for each model component
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
 <p>To determine the evidence for the effect of <code>adversity</code> in individuals with <code>low</code> resilience:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="anova1.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. The effect of adversity in individuals with low resilience</span></span>
-<span id="cb30-2"><a href="anova1.html#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="anova1.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># First use filter() to store only </span></span>
-<span id="cb30-4"><a href="anova1.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the data from the &#39;low&#39; resilience groups</span></span>
-<span id="cb30-5"><a href="anova1.html#cb30-5" aria-hidden="true" tabindex="-1"></a>resilience_low <span class="ot">&lt;-</span> </span>
-<span id="cb30-6"><a href="anova1.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  resilience_data <span class="sc">%&gt;%</span> </span>
-<span id="cb30-7"><a href="anova1.html#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(resilience <span class="sc">==</span> <span class="st">&quot;low&quot;</span>)</span>
-<span id="cb30-8"><a href="anova1.html#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-9"><a href="anova1.html#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Then use `anovaBF()` to look at effect of adversity in resilience_low</span></span>
-<span id="cb30-10"><a href="anova1.html#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>( distress <span class="sc">~</span> adversity, <span class="at">data =</span> <span class="fu">data.frame</span>(resilience_low) )</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="anova1.html#cb89-1" tabindex="-1"></a><span class="co"># 2. The effect of adversity in individuals with low resilience</span></span>
+<span id="cb89-2"><a href="anova1.html#cb89-2" tabindex="-1"></a></span>
+<span id="cb89-3"><a href="anova1.html#cb89-3" tabindex="-1"></a><span class="co"># First use filter() to store only </span></span>
+<span id="cb89-4"><a href="anova1.html#cb89-4" tabindex="-1"></a><span class="co"># the data from the &#39;low&#39; resilience groups</span></span>
+<span id="cb89-5"><a href="anova1.html#cb89-5" tabindex="-1"></a>resilience_low <span class="ot">&lt;-</span> </span>
+<span id="cb89-6"><a href="anova1.html#cb89-6" tabindex="-1"></a>  resilience_data <span class="sc">%&gt;%</span> </span>
+<span id="cb89-7"><a href="anova1.html#cb89-7" tabindex="-1"></a>  <span class="fu">filter</span>(resilience <span class="sc">==</span> <span class="st">&quot;low&quot;</span>)</span>
+<span id="cb89-8"><a href="anova1.html#cb89-8" tabindex="-1"></a></span>
+<span id="cb89-9"><a href="anova1.html#cb89-9" tabindex="-1"></a><span class="co"># Then use `anovaBF()` to look at effect of adversity in resilience_low</span></span>
+<span id="cb89-10"><a href="anova1.html#cb89-10" tabindex="-1"></a><span class="fu">anovaBF</span>( distress <span class="sc">~</span> adversity, <span class="at">data =</span> <span class="fu">data.frame</span>(resilience_low) )</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] adversity : 2.389569e+17 ±0%
@@ -1285,7 +1280,7 @@ Going further - R<sup>2</sup> for each model component
 <div id="exercise-one-way" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Exercise: one-way<a href="anova1.html#exercise-one-way" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-3" class="exercise"><strong>Exercise 3.3  </strong></span>One-way ANOVA</p>
+<p><span id="exr:unlabeled-div-13" class="exercise"><strong>Exercise 3.3  </strong></span>One-way ANOVA</p>
 <p>The data at the link below are from a study by Bobak et al. (2016). They looked at the face matching <code>performance</code> of individuals with superior face recognition abilities, so called "super recognisers". Their performance was compared to two control groups. In one control group, payment was linked to performance (labelled "motivated_control"). The individuals in the other control group were not paid (labelled "control"). The column <code>face_group</code> contains the labels for each group.</p>
 <p><a href="https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_super_data.csv" class="uri">https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_super_data.csv</a></p>
 <p>Conduct a one-way ANOVA to compare the <code>performance</code> across the three groups.</p>
@@ -1304,10 +1299,10 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="anova1.html#cb32-1" aria-hidden="true" tabindex="-1"></a>super_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_super_data.csv&#39;</span>)</span>
-<span id="cb32-2"><a href="anova1.html#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="anova1.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the raw data</span></span>
-<span id="cb32-4"><a href="anova1.html#cb32-4" aria-hidden="true" tabindex="-1"></a>super_data</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="anova1.html#cb91-1" tabindex="-1"></a>super_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_super_data.csv&#39;</span>)</span>
+<span id="cb91-2"><a href="anova1.html#cb91-2" tabindex="-1"></a></span>
+<span id="cb91-3"><a href="anova1.html#cb91-3" tabindex="-1"></a><span class="co"># look at the raw data</span></span>
+<span id="cb91-4"><a href="anova1.html#cb91-4" tabindex="-1"></a>super_data</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1322,9 +1317,9 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="anova1.html#cb33-1" aria-hidden="true" tabindex="-1"></a>super_data <span class="ot">&lt;-</span> </span>
-<span id="cb33-2"><a href="anova1.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  super_data <span class="sc">%&gt;%</span> </span>
-<span id="cb33-3"><a href="anova1.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">face_group =</span> <span class="fu">factor</span>(face_group) )</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="anova1.html#cb92-1" tabindex="-1"></a>super_data <span class="ot">&lt;-</span> </span>
+<span id="cb92-2"><a href="anova1.html#cb92-2" tabindex="-1"></a>  super_data <span class="sc">%&gt;%</span> </span>
+<span id="cb92-3"><a href="anova1.html#cb92-3" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">face_group =</span> <span class="fu">factor</span>(face_group) )</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1339,9 +1334,9 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="anova1.html#cb34-1" aria-hidden="true" tabindex="-1"></a>super_data <span class="sc">%&gt;%</span> </span>
-<span id="cb34-2"><a href="anova1.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(face_group) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-3"><a href="anova1.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="anova1.html#cb93-1" tabindex="-1"></a>super_data <span class="sc">%&gt;%</span> </span>
+<span id="cb93-2"><a href="anova1.html#cb93-2" tabindex="-1"></a>  <span class="fu">group_by</span>(face_group) <span class="sc">%&gt;%</span> </span>
+<span id="cb93-3"><a href="anova1.html#cb93-3" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
 </div>
 <ul>
 <li><em>n</em> super recognisers = <input class='webex-solveme nospaces' size='1' data-answer='["7"]'/></li>
@@ -1361,10 +1356,10 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="anova1.html#cb35-1" aria-hidden="true" tabindex="-1"></a>super_data <span class="sc">%&gt;%</span> </span>
-<span id="cb35-2"><a href="anova1.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(performance)) <span class="sc">+</span></span>
-<span id="cb35-3"><a href="anova1.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb35-4"><a href="anova1.html#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>face_group)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="anova1.html#cb94-1" tabindex="-1"></a>super_data <span class="sc">%&gt;%</span> </span>
+<span id="cb94-2"><a href="anova1.html#cb94-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(performance)) <span class="sc">+</span></span>
+<span id="cb94-3"><a href="anova1.html#cb94-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb94-4"><a href="anova1.html#cb94-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>face_group)</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1379,12 +1374,12 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="anova1.html#cb36-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># produce means plot</span></span>
-<span id="cb36-2"><a href="anova1.html#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="anova1.html#cb36-3" aria-hidden="true" tabindex="-1"></a>super_data <span class="sc">%&gt;%</span> </span>
-<span id="cb36-4"><a href="anova1.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggerrorplot</span>(<span class="at">x =</span> <span class="st">&quot;face_group&quot;</span>, <span class="at">y =</span><span class="st">&quot;performance&quot;</span>, <span class="at">desc_stat =</span> <span class="st">&quot;mean_se&quot;</span>) <span class="sc">+</span></span>
-<span id="cb36-5"><a href="anova1.html#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Group&quot;</span>) <span class="sc">+</span></span>
-<span id="cb36-6"><a href="anova1.html#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Face matching performance&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="anova1.html#cb95-1" tabindex="-1"></a> <span class="co"># produce means plot</span></span>
+<span id="cb95-2"><a href="anova1.html#cb95-2" tabindex="-1"></a></span>
+<span id="cb95-3"><a href="anova1.html#cb95-3" tabindex="-1"></a>super_data <span class="sc">%&gt;%</span> </span>
+<span id="cb95-4"><a href="anova1.html#cb95-4" tabindex="-1"></a>  <span class="fu">ggerrorplot</span>(<span class="at">x =</span> <span class="st">&quot;face_group&quot;</span>, <span class="at">y =</span><span class="st">&quot;performance&quot;</span>, <span class="at">desc_stat =</span> <span class="st">&quot;mean_se&quot;</span>) <span class="sc">+</span></span>
+<span id="cb95-5"><a href="anova1.html#cb95-5" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Group&quot;</span>) <span class="sc">+</span></span>
+<span id="cb95-6"><a href="anova1.html#cb95-6" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Face matching performance&quot;</span>)</span></code></pre></div>
 </div>
 <p>Face matching performance appears to be highest in the <select class='webex-select'><option value='blank'></option><option value=''>control group</option><option value=''>motivated control group</option><option value='answer'>super_recogniser group</option></select>, followed by the <select class='webex-select'><option value='blank'></option><option value=''>control group</option><option value='answer'>motivated control group</option><option value=''>super_recogniser group</option></select>, followed lastly by the <select class='webex-select'><option value='blank'></option><option value='answer'>control group</option><option value=''>motivated control group</option><option value=''>super_recogniser group</option></select>.</p>
 <p><br />
@@ -1400,10 +1395,10 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="anova1.html#cb37-1" aria-hidden="true" tabindex="-1"></a>super_data <span class="sc">%&gt;%</span> </span>
-<span id="cb37-2"><a href="anova1.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(face_group) <span class="sc">%&gt;%</span> </span>
-<span id="cb37-3"><a href="anova1.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>( <span class="at">M  =</span> <span class="fu">mean</span>(performance), </span>
-<span id="cb37-4"><a href="anova1.html#cb37-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">SE =</span> <span class="fu">sd</span>(performance) <span class="sc">/</span> <span class="fu">sqrt</span>( <span class="fu">n</span>() ) )</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="anova1.html#cb96-1" tabindex="-1"></a>super_data <span class="sc">%&gt;%</span> </span>
+<span id="cb96-2"><a href="anova1.html#cb96-2" tabindex="-1"></a>  <span class="fu">group_by</span>(face_group) <span class="sc">%&gt;%</span> </span>
+<span id="cb96-3"><a href="anova1.html#cb96-3" tabindex="-1"></a>  <span class="fu">summarise</span>( <span class="at">M  =</span> <span class="fu">mean</span>(performance), </span>
+<span id="cb96-4"><a href="anova1.html#cb96-4" tabindex="-1"></a>             <span class="at">SE =</span> <span class="fu">sd</span>(performance) <span class="sc">/</span> <span class="fu">sqrt</span>( <span class="fu">n</span>() ) )</span></code></pre></div>
 </div>
 <ul>
 <li>The mean score of the <code>super_recogniser</code> group is <input class='webex-solveme nospaces' size='4' data-answer='["4.23"]'/>, SE = <input class='webex-solveme nospaces' size='4' data-answer='["0.28"]'/></li>
@@ -1427,7 +1422,7 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="anova1.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(performance <span class="sc">~</span> face_group, <span class="at">data =</span> <span class="fu">data.frame</span>(super_data))</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="anova1.html#cb97-1" tabindex="-1"></a><span class="fu">anovaBF</span>(performance <span class="sc">~</span> face_group, <span class="at">data =</span> <span class="fu">data.frame</span>(super_data))</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1443,11 +1438,11 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="anova1.html#cb39-1" aria-hidden="true" tabindex="-1"></a>super_anova <span class="ot">&lt;-</span> <span class="fu">lm</span>(performance <span class="sc">~</span> face_group, <span class="at">data =</span> super_data)</span>
-<span id="cb39-2"><a href="anova1.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(super_anova)</span>
-<span id="cb39-3"><a href="anova1.html#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="anova1.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># multiply the adj.r.squared value by 100 to obtain the percentage</span></span>
-<span id="cb39-5"><a href="anova1.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fl">0.301</span><span class="sc">*</span><span class="dv">100</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="anova1.html#cb98-1" tabindex="-1"></a>super_anova <span class="ot">&lt;-</span> <span class="fu">lm</span>(performance <span class="sc">~</span> face_group, <span class="at">data =</span> super_data)</span>
+<span id="cb98-2"><a href="anova1.html#cb98-2" tabindex="-1"></a><span class="fu">glance</span>(super_anova)</span>
+<span id="cb98-3"><a href="anova1.html#cb98-3" tabindex="-1"></a></span>
+<span id="cb98-4"><a href="anova1.html#cb98-4" tabindex="-1"></a><span class="co"># multiply the adj.r.squared value by 100 to obtain the percentage</span></span>
+<span id="cb98-5"><a href="anova1.html#cb98-5" tabindex="-1"></a><span class="fl">0.301</span><span class="sc">*</span><span class="dv">100</span></span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1465,44 +1460,44 @@ Hint
 <button>
 Solution using anovaBF()
 </button>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="anova1.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># super_recognisers vs. motivated_control</span></span>
-<span id="cb40-2"><a href="anova1.html#cb40-2" aria-hidden="true" tabindex="-1"></a>super_vs_motivated_controls <span class="ot">&lt;-</span> </span>
-<span id="cb40-3"><a href="anova1.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  super_data <span class="sc">%&gt;%</span></span>
-<span id="cb40-4"><a href="anova1.html#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(face_group <span class="sc">==</span> <span class="st">&quot;super_recogniser&quot;</span> <span class="sc">|</span> face_group <span class="sc">==</span> <span class="st">&quot;motivated_control&quot;</span>)</span>
-<span id="cb40-5"><a href="anova1.html#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-6"><a href="anova1.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(performance <span class="sc">~</span> face_group, <span class="at">data =</span> <span class="fu">data.frame</span>(super_vs_motivated_controls))</span>
-<span id="cb40-7"><a href="anova1.html#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-8"><a href="anova1.html#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-9"><a href="anova1.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co"># super_recognisers vs. control</span></span>
-<span id="cb40-10"><a href="anova1.html#cb40-10" aria-hidden="true" tabindex="-1"></a>super_vs_controls <span class="ot">&lt;-</span> </span>
-<span id="cb40-11"><a href="anova1.html#cb40-11" aria-hidden="true" tabindex="-1"></a>  super_data <span class="sc">%&gt;%</span></span>
-<span id="cb40-12"><a href="anova1.html#cb40-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(face_group <span class="sc">==</span> <span class="st">&quot;super_recogniser&quot;</span> <span class="sc">|</span> face_group <span class="sc">==</span> <span class="st">&quot;control&quot;</span>)</span>
-<span id="cb40-13"><a href="anova1.html#cb40-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-14"><a href="anova1.html#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(performance <span class="sc">~</span> face_group, <span class="at">data =</span> <span class="fu">data.frame</span>(super_vs_controls))</span>
-<span id="cb40-15"><a href="anova1.html#cb40-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-16"><a href="anova1.html#cb40-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-17"><a href="anova1.html#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="co"># motivated_control vs. control</span></span>
-<span id="cb40-18"><a href="anova1.html#cb40-18" aria-hidden="true" tabindex="-1"></a>motivated_control_vs_control <span class="ot">&lt;-</span> </span>
-<span id="cb40-19"><a href="anova1.html#cb40-19" aria-hidden="true" tabindex="-1"></a>  super_data <span class="sc">%&gt;%</span></span>
-<span id="cb40-20"><a href="anova1.html#cb40-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(face_group <span class="sc">==</span> <span class="st">&quot;motivated_control&quot;</span> <span class="sc">|</span> face_group <span class="sc">==</span> <span class="st">&quot;control&quot;</span>)</span>
-<span id="cb40-21"><a href="anova1.html#cb40-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-22"><a href="anova1.html#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(performance <span class="sc">~</span> face_group, <span class="at">data =</span> <span class="fu">data.frame</span>(motivated_control_vs_control))</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="anova1.html#cb99-1" tabindex="-1"></a><span class="co"># super_recognisers vs. motivated_control</span></span>
+<span id="cb99-2"><a href="anova1.html#cb99-2" tabindex="-1"></a>super_vs_motivated_controls <span class="ot">&lt;-</span> </span>
+<span id="cb99-3"><a href="anova1.html#cb99-3" tabindex="-1"></a>  super_data <span class="sc">%&gt;%</span></span>
+<span id="cb99-4"><a href="anova1.html#cb99-4" tabindex="-1"></a>  <span class="fu">filter</span>(face_group <span class="sc">==</span> <span class="st">&quot;super_recogniser&quot;</span> <span class="sc">|</span> face_group <span class="sc">==</span> <span class="st">&quot;motivated_control&quot;</span>)</span>
+<span id="cb99-5"><a href="anova1.html#cb99-5" tabindex="-1"></a></span>
+<span id="cb99-6"><a href="anova1.html#cb99-6" tabindex="-1"></a><span class="fu">anovaBF</span>(performance <span class="sc">~</span> face_group, <span class="at">data =</span> <span class="fu">data.frame</span>(super_vs_motivated_controls))</span>
+<span id="cb99-7"><a href="anova1.html#cb99-7" tabindex="-1"></a></span>
+<span id="cb99-8"><a href="anova1.html#cb99-8" tabindex="-1"></a></span>
+<span id="cb99-9"><a href="anova1.html#cb99-9" tabindex="-1"></a><span class="co"># super_recognisers vs. control</span></span>
+<span id="cb99-10"><a href="anova1.html#cb99-10" tabindex="-1"></a>super_vs_controls <span class="ot">&lt;-</span> </span>
+<span id="cb99-11"><a href="anova1.html#cb99-11" tabindex="-1"></a>  super_data <span class="sc">%&gt;%</span></span>
+<span id="cb99-12"><a href="anova1.html#cb99-12" tabindex="-1"></a>  <span class="fu">filter</span>(face_group <span class="sc">==</span> <span class="st">&quot;super_recogniser&quot;</span> <span class="sc">|</span> face_group <span class="sc">==</span> <span class="st">&quot;control&quot;</span>)</span>
+<span id="cb99-13"><a href="anova1.html#cb99-13" tabindex="-1"></a></span>
+<span id="cb99-14"><a href="anova1.html#cb99-14" tabindex="-1"></a><span class="fu">anovaBF</span>(performance <span class="sc">~</span> face_group, <span class="at">data =</span> <span class="fu">data.frame</span>(super_vs_controls))</span>
+<span id="cb99-15"><a href="anova1.html#cb99-15" tabindex="-1"></a></span>
+<span id="cb99-16"><a href="anova1.html#cb99-16" tabindex="-1"></a></span>
+<span id="cb99-17"><a href="anova1.html#cb99-17" tabindex="-1"></a><span class="co"># motivated_control vs. control</span></span>
+<span id="cb99-18"><a href="anova1.html#cb99-18" tabindex="-1"></a>motivated_control_vs_control <span class="ot">&lt;-</span> </span>
+<span id="cb99-19"><a href="anova1.html#cb99-19" tabindex="-1"></a>  super_data <span class="sc">%&gt;%</span></span>
+<span id="cb99-20"><a href="anova1.html#cb99-20" tabindex="-1"></a>  <span class="fu">filter</span>(face_group <span class="sc">==</span> <span class="st">&quot;motivated_control&quot;</span> <span class="sc">|</span> face_group <span class="sc">==</span> <span class="st">&quot;control&quot;</span>)</span>
+<span id="cb99-21"><a href="anova1.html#cb99-21" tabindex="-1"></a></span>
+<span id="cb99-22"><a href="anova1.html#cb99-22" tabindex="-1"></a><span class="fu">anovaBF</span>(performance <span class="sc">~</span> face_group, <span class="at">data =</span> <span class="fu">data.frame</span>(motivated_control_vs_control))</span></code></pre></div>
 </div>
 <div class="webex-solution">
 <button>
 Solution using ttestBF()
 </button>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="anova1.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># super_recognisers vs. motivated_control</span></span>
-<span id="cb41-2"><a href="anova1.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestBF</span>(<span class="at">x =</span> super_data<span class="sc">$</span>performance[super_data<span class="sc">$</span>face_group <span class="sc">==</span> <span class="st">&quot;super_recogniser&quot;</span>],</span>
-<span id="cb41-3"><a href="anova1.html#cb41-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> super_data<span class="sc">$</span>performance[super_data<span class="sc">$</span>face_group <span class="sc">==</span> <span class="st">&quot;motivated_control&quot;</span>])</span>
-<span id="cb41-4"><a href="anova1.html#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="anova1.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co"># super_recognisers vs. control</span></span>
-<span id="cb41-6"><a href="anova1.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestBF</span>(<span class="at">x =</span> super_data<span class="sc">$</span>performance[super_data<span class="sc">$</span>face_group <span class="sc">==</span> <span class="st">&quot;super_recogniser&quot;</span>],</span>
-<span id="cb41-7"><a href="anova1.html#cb41-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> super_data<span class="sc">$</span>performance[super_data<span class="sc">$</span>face_group <span class="sc">==</span> <span class="st">&quot;control&quot;</span>])</span>
-<span id="cb41-8"><a href="anova1.html#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-9"><a href="anova1.html#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co"># motivated_control vs. control</span></span>
-<span id="cb41-10"><a href="anova1.html#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestBF</span>(<span class="at">x =</span> super_data<span class="sc">$</span>performance[super_data<span class="sc">$</span>face_group <span class="sc">==</span> <span class="st">&quot;motivated_control&quot;</span>],</span>
-<span id="cb41-11"><a href="anova1.html#cb41-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> super_data<span class="sc">$</span>performance[super_data<span class="sc">$</span>face_group <span class="sc">==</span> <span class="st">&quot;control&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="anova1.html#cb100-1" tabindex="-1"></a><span class="co"># super_recognisers vs. motivated_control</span></span>
+<span id="cb100-2"><a href="anova1.html#cb100-2" tabindex="-1"></a><span class="fu">ttestBF</span>(<span class="at">x =</span> super_data<span class="sc">$</span>performance[super_data<span class="sc">$</span>face_group <span class="sc">==</span> <span class="st">&quot;super_recogniser&quot;</span>],</span>
+<span id="cb100-3"><a href="anova1.html#cb100-3" tabindex="-1"></a>        <span class="at">y =</span> super_data<span class="sc">$</span>performance[super_data<span class="sc">$</span>face_group <span class="sc">==</span> <span class="st">&quot;motivated_control&quot;</span>])</span>
+<span id="cb100-4"><a href="anova1.html#cb100-4" tabindex="-1"></a></span>
+<span id="cb100-5"><a href="anova1.html#cb100-5" tabindex="-1"></a><span class="co"># super_recognisers vs. control</span></span>
+<span id="cb100-6"><a href="anova1.html#cb100-6" tabindex="-1"></a><span class="fu">ttestBF</span>(<span class="at">x =</span> super_data<span class="sc">$</span>performance[super_data<span class="sc">$</span>face_group <span class="sc">==</span> <span class="st">&quot;super_recogniser&quot;</span>],</span>
+<span id="cb100-7"><a href="anova1.html#cb100-7" tabindex="-1"></a>        <span class="at">y =</span> super_data<span class="sc">$</span>performance[super_data<span class="sc">$</span>face_group <span class="sc">==</span> <span class="st">&quot;control&quot;</span>])</span>
+<span id="cb100-8"><a href="anova1.html#cb100-8" tabindex="-1"></a></span>
+<span id="cb100-9"><a href="anova1.html#cb100-9" tabindex="-1"></a><span class="co"># motivated_control vs. control</span></span>
+<span id="cb100-10"><a href="anova1.html#cb100-10" tabindex="-1"></a><span class="fu">ttestBF</span>(<span class="at">x =</span> super_data<span class="sc">$</span>performance[super_data<span class="sc">$</span>face_group <span class="sc">==</span> <span class="st">&quot;motivated_control&quot;</span>],</span>
+<span id="cb100-11"><a href="anova1.html#cb100-11" tabindex="-1"></a>        <span class="at">y =</span> super_data<span class="sc">$</span>performance[super_data<span class="sc">$</span>face_group <span class="sc">==</span> <span class="st">&quot;control&quot;</span>])</span></code></pre></div>
 </div>
 <ul>
 <li>The Bayes factor comparing the <code>super_recogniser</code> and <code>motivated_control</code> groups is <input class='webex-solveme nospaces' size='5' data-answer='["47.28"]'/>, indicating <select class='webex-select'><option value='blank'></option><option value='answer'>substantial evidence for</option><option value=''>substantial evidence against there being</option></select> a difference between groups.</li>
@@ -1518,7 +1513,7 @@ Solution using ttestBF()
 <div id="exercise-two-way" class="section level2 hasAnchor" number="3.5">
 <h2><span class="header-section-number">3.5</span> Exercise: two-way<a href="anova1.html#exercise-two-way" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-4" class="exercise"><strong>Exercise 3.4  </strong></span>Two-way ANOVA</p>
+<p><span id="exr:unlabeled-div-14" class="exercise"><strong>Exercise 3.4  </strong></span>Two-way ANOVA</p>
 <p>Horstmann et al. (2018) looked at whether the type of <code>exchange</code> that people had with a robot would affect how long it would then take for them to switch it off. The type of <code>exchange</code> was either 'functional' or 'social'. Additionally, the researchers looked at the effect of the type of <code>objection</code> that the robot made during the conversation. The robot either voiced an 'objection' to being switched off, or voiced 'no objection'.</p>
 <p><br />
 </p>
@@ -1582,94 +1577,94 @@ Hint - code
 <button>
 Solution - code
 </button>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="anova1.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ensure following packages have been loaded</span></span>
-<span id="cb42-2"><a href="anova1.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(tidyverse)</span></span>
-<span id="cb42-3"><a href="anova1.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># library(BayesFactor)</span></span>
-<span id="cb42-4"><a href="anova1.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># library(ggpubr)</span></span>
-<span id="cb42-5"><a href="anova1.html#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-6"><a href="anova1.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co"># read the data</span></span>
-<span id="cb42-7"><a href="anova1.html#cb42-7" aria-hidden="true" tabindex="-1"></a>robot_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_robot_data.csv&#39;</span>)</span>
-<span id="cb42-8"><a href="anova1.html#cb42-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-9"><a href="anova1.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="co"># convert IVs to factors</span></span>
-<span id="cb42-10"><a href="anova1.html#cb42-10" aria-hidden="true" tabindex="-1"></a>robot_data <span class="ot">&lt;-</span></span>
-<span id="cb42-11"><a href="anova1.html#cb42-11" aria-hidden="true" tabindex="-1"></a>  robot_data <span class="sc">%&gt;%</span> </span>
-<span id="cb42-12"><a href="anova1.html#cb42-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">exchange  =</span> <span class="fu">factor</span>(exchange),</span>
-<span id="cb42-13"><a href="anova1.html#cb42-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">objection =</span> <span class="fu">factor</span>(objection)) </span>
-<span id="cb42-14"><a href="anova1.html#cb42-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-15"><a href="anova1.html#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect distributions</span></span>
-<span id="cb42-16"><a href="anova1.html#cb42-16" aria-hidden="true" tabindex="-1"></a>robot_data <span class="sc">%&gt;%</span> </span>
-<span id="cb42-17"><a href="anova1.html#cb42-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>( <span class="fu">aes</span>(time) ) <span class="sc">+</span> </span>
-<span id="cb42-18"><a href="anova1.html#cb42-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb42-19"><a href="anova1.html#cb42-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> exchange<span class="sc">*</span>objection)</span>
-<span id="cb42-20"><a href="anova1.html#cb42-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-21"><a href="anova1.html#cb42-21" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain M and SE each group</span></span>
-<span id="cb42-22"><a href="anova1.html#cb42-22" aria-hidden="true" tabindex="-1"></a>robot_data <span class="sc">%&gt;%</span> </span>
-<span id="cb42-23"><a href="anova1.html#cb42-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(exchange, objection) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-24"><a href="anova1.html#cb42-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>( <span class="at">M =</span> <span class="fu">mean</span>(time), <span class="at">SE =</span> <span class="fu">sd</span>(time)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()) )</span>
-<span id="cb42-25"><a href="anova1.html#cb42-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-26"><a href="anova1.html#cb42-26" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of means</span></span>
-<span id="cb42-27"><a href="anova1.html#cb42-27" aria-hidden="true" tabindex="-1"></a>robot_data <span class="sc">%&gt;%</span> </span>
-<span id="cb42-28"><a href="anova1.html#cb42-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggerrorplot</span>(<span class="at">x =</span> <span class="st">&quot;objection&quot;</span>, <span class="at">y =</span> <span class="st">&quot;time&quot;</span>, <span class="at">color =</span> <span class="st">&quot;exchange&quot;</span>,</span>
-<span id="cb42-29"><a href="anova1.html#cb42-29" aria-hidden="true" tabindex="-1"></a>              <span class="at">desc_stat =</span> <span class="st">&quot;mean_se&quot;</span>, </span>
-<span id="cb42-30"><a href="anova1.html#cb42-30" aria-hidden="true" tabindex="-1"></a>              <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.3</span>)) <span class="sc">+</span></span>
-<span id="cb42-31"><a href="anova1.html#cb42-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Type of objection&quot;</span>) <span class="sc">+</span></span>
-<span id="cb42-32"><a href="anova1.html#cb42-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Switch off time (seconds)&quot;</span>) </span>
-<span id="cb42-33"><a href="anova1.html#cb42-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-34"><a href="anova1.html#cb42-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 2x2 ANOVA</span></span>
-<span id="cb42-35"><a href="anova1.html#cb42-35" aria-hidden="true" tabindex="-1"></a>BF_robot <span class="ot">&lt;-</span> <span class="fu">anovaBF</span>( time <span class="sc">~</span> exchange<span class="sc">*</span>objection, <span class="at">data =</span> <span class="fu">data.frame</span>(robot_data) )</span>
-<span id="cb42-36"><a href="anova1.html#cb42-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-37"><a href="anova1.html#cb42-37" aria-hidden="true" tabindex="-1"></a><span class="co"># look at BFs</span></span>
-<span id="cb42-38"><a href="anova1.html#cb42-38" aria-hidden="true" tabindex="-1"></a>BF_robot</span>
-<span id="cb42-39"><a href="anova1.html#cb42-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-40"><a href="anova1.html#cb42-40" aria-hidden="true" tabindex="-1"></a><span class="co"># main effect objection</span></span>
-<span id="cb42-41"><a href="anova1.html#cb42-41" aria-hidden="true" tabindex="-1"></a>BF_robot[<span class="dv">1</span>]</span>
-<span id="cb42-42"><a href="anova1.html#cb42-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-43"><a href="anova1.html#cb42-43" aria-hidden="true" tabindex="-1"></a><span class="co"># main effect exchange</span></span>
-<span id="cb42-44"><a href="anova1.html#cb42-44" aria-hidden="true" tabindex="-1"></a>BF_robot[<span class="dv">2</span>]</span>
-<span id="cb42-45"><a href="anova1.html#cb42-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-46"><a href="anova1.html#cb42-46" aria-hidden="true" tabindex="-1"></a><span class="co"># interaction</span></span>
-<span id="cb42-47"><a href="anova1.html#cb42-47" aria-hidden="true" tabindex="-1"></a>BF_robot[<span class="dv">4</span>] <span class="sc">/</span> BF_robot[<span class="dv">3</span>]</span>
-<span id="cb42-48"><a href="anova1.html#cb42-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-49"><a href="anova1.html#cb42-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-50"><a href="anova1.html#cb42-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Given the evidence for an interaction, conduct further comparisons</span></span>
-<span id="cb42-51"><a href="anova1.html#cb42-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-52"><a href="anova1.html#cb42-52" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. The effect of exchange when the robot objected (i.e., `objection`)</span></span>
-<span id="cb42-53"><a href="anova1.html#cb42-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-54"><a href="anova1.html#cb42-54" aria-hidden="true" tabindex="-1"></a><span class="co"># use filter() to store only </span></span>
-<span id="cb42-55"><a href="anova1.html#cb42-55" aria-hidden="true" tabindex="-1"></a><span class="co"># the data from the &#39;objection&#39; groups</span></span>
-<span id="cb42-56"><a href="anova1.html#cb42-56" aria-hidden="true" tabindex="-1"></a>robot_objection <span class="ot">&lt;-</span> </span>
-<span id="cb42-57"><a href="anova1.html#cb42-57" aria-hidden="true" tabindex="-1"></a>  robot_data <span class="sc">%&gt;%</span> </span>
-<span id="cb42-58"><a href="anova1.html#cb42-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(objection <span class="sc">==</span> <span class="st">&quot;objection&quot;</span>)</span>
-<span id="cb42-59"><a href="anova1.html#cb42-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-60"><a href="anova1.html#cb42-60" aria-hidden="true" tabindex="-1"></a><span class="co"># use `anovaBF()` to look at effect of exchange in the objection groups</span></span>
-<span id="cb42-61"><a href="anova1.html#cb42-61" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>( time <span class="sc">~</span> exchange, <span class="at">data =</span> <span class="fu">data.frame</span>(robot_objection) )</span>
-<span id="cb42-62"><a href="anova1.html#cb42-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-63"><a href="anova1.html#cb42-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-64"><a href="anova1.html#cb42-64" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. The effect of exchange when the robot did not object</span></span>
-<span id="cb42-65"><a href="anova1.html#cb42-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-66"><a href="anova1.html#cb42-66" aria-hidden="true" tabindex="-1"></a><span class="co"># use filter() to store only </span></span>
-<span id="cb42-67"><a href="anova1.html#cb42-67" aria-hidden="true" tabindex="-1"></a><span class="co"># the data from the &#39;no_objection&#39; groups</span></span>
-<span id="cb42-68"><a href="anova1.html#cb42-68" aria-hidden="true" tabindex="-1"></a>robot_no_objection <span class="ot">&lt;-</span> </span>
-<span id="cb42-69"><a href="anova1.html#cb42-69" aria-hidden="true" tabindex="-1"></a>  robot_data <span class="sc">%&gt;%</span> </span>
-<span id="cb42-70"><a href="anova1.html#cb42-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(objection <span class="sc">==</span> <span class="st">&quot;no_objection&quot;</span>)</span>
-<span id="cb42-71"><a href="anova1.html#cb42-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-72"><a href="anova1.html#cb42-72" aria-hidden="true" tabindex="-1"></a><span class="co"># use `anovaBF()` to look at effect of exchange in the no objection groups</span></span>
-<span id="cb42-73"><a href="anova1.html#cb42-73" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>( time <span class="sc">~</span> exchange, <span class="at">data =</span> <span class="fu">data.frame</span>(robot_no_objection) )</span>
-<span id="cb42-74"><a href="anova1.html#cb42-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-75"><a href="anova1.html#cb42-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-76"><a href="anova1.html#cb42-76" aria-hidden="true" tabindex="-1"></a><span class="co"># For the interpretation of main effects:</span></span>
-<span id="cb42-77"><a href="anova1.html#cb42-77" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb42-78"><a href="anova1.html#cb42-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain M and SE for the main effect of objection</span></span>
-<span id="cb42-79"><a href="anova1.html#cb42-79" aria-hidden="true" tabindex="-1"></a>robot_data <span class="sc">%&gt;%</span> </span>
-<span id="cb42-80"><a href="anova1.html#cb42-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(objection) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-81"><a href="anova1.html#cb42-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>( <span class="at">M =</span> <span class="fu">mean</span>(time), </span>
-<span id="cb42-82"><a href="anova1.html#cb42-82" aria-hidden="true" tabindex="-1"></a>             <span class="at">SE =</span> <span class="fu">sd</span>(time)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()) )</span>
-<span id="cb42-83"><a href="anova1.html#cb42-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-84"><a href="anova1.html#cb42-84" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain M and SE for the main effect of exchange</span></span>
-<span id="cb42-85"><a href="anova1.html#cb42-85" aria-hidden="true" tabindex="-1"></a>robot_data <span class="sc">%&gt;%</span> </span>
-<span id="cb42-86"><a href="anova1.html#cb42-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(exchange) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-87"><a href="anova1.html#cb42-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>( <span class="at">M =</span> <span class="fu">mean</span>(time), </span>
-<span id="cb42-88"><a href="anova1.html#cb42-88" aria-hidden="true" tabindex="-1"></a>             <span class="at">SE =</span> <span class="fu">sd</span>(time)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()) )</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="anova1.html#cb101-1" tabindex="-1"></a><span class="co"># ensure following packages have been loaded</span></span>
+<span id="cb101-2"><a href="anova1.html#cb101-2" tabindex="-1"></a><span class="co"># library(tidyverse)</span></span>
+<span id="cb101-3"><a href="anova1.html#cb101-3" tabindex="-1"></a><span class="co"># library(BayesFactor)</span></span>
+<span id="cb101-4"><a href="anova1.html#cb101-4" tabindex="-1"></a><span class="co"># library(ggpubr)</span></span>
+<span id="cb101-5"><a href="anova1.html#cb101-5" tabindex="-1"></a></span>
+<span id="cb101-6"><a href="anova1.html#cb101-6" tabindex="-1"></a><span class="co"># read the data</span></span>
+<span id="cb101-7"><a href="anova1.html#cb101-7" tabindex="-1"></a>robot_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_robot_data.csv&#39;</span>)</span>
+<span id="cb101-8"><a href="anova1.html#cb101-8" tabindex="-1"></a></span>
+<span id="cb101-9"><a href="anova1.html#cb101-9" tabindex="-1"></a><span class="co"># convert IVs to factors</span></span>
+<span id="cb101-10"><a href="anova1.html#cb101-10" tabindex="-1"></a>robot_data <span class="ot">&lt;-</span></span>
+<span id="cb101-11"><a href="anova1.html#cb101-11" tabindex="-1"></a>  robot_data <span class="sc">%&gt;%</span> </span>
+<span id="cb101-12"><a href="anova1.html#cb101-12" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">exchange  =</span> <span class="fu">factor</span>(exchange),</span>
+<span id="cb101-13"><a href="anova1.html#cb101-13" tabindex="-1"></a>         <span class="at">objection =</span> <span class="fu">factor</span>(objection)) </span>
+<span id="cb101-14"><a href="anova1.html#cb101-14" tabindex="-1"></a></span>
+<span id="cb101-15"><a href="anova1.html#cb101-15" tabindex="-1"></a><span class="co"># inspect distributions</span></span>
+<span id="cb101-16"><a href="anova1.html#cb101-16" tabindex="-1"></a>robot_data <span class="sc">%&gt;%</span> </span>
+<span id="cb101-17"><a href="anova1.html#cb101-17" tabindex="-1"></a>  <span class="fu">ggplot</span>( <span class="fu">aes</span>(time) ) <span class="sc">+</span> </span>
+<span id="cb101-18"><a href="anova1.html#cb101-18" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb101-19"><a href="anova1.html#cb101-19" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> exchange<span class="sc">*</span>objection)</span>
+<span id="cb101-20"><a href="anova1.html#cb101-20" tabindex="-1"></a></span>
+<span id="cb101-21"><a href="anova1.html#cb101-21" tabindex="-1"></a><span class="co"># obtain M and SE each group</span></span>
+<span id="cb101-22"><a href="anova1.html#cb101-22" tabindex="-1"></a>robot_data <span class="sc">%&gt;%</span> </span>
+<span id="cb101-23"><a href="anova1.html#cb101-23" tabindex="-1"></a>  <span class="fu">group_by</span>(exchange, objection) <span class="sc">%&gt;%</span> </span>
+<span id="cb101-24"><a href="anova1.html#cb101-24" tabindex="-1"></a>  <span class="fu">summarise</span>( <span class="at">M =</span> <span class="fu">mean</span>(time), <span class="at">SE =</span> <span class="fu">sd</span>(time)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()) )</span>
+<span id="cb101-25"><a href="anova1.html#cb101-25" tabindex="-1"></a></span>
+<span id="cb101-26"><a href="anova1.html#cb101-26" tabindex="-1"></a><span class="co"># plot of means</span></span>
+<span id="cb101-27"><a href="anova1.html#cb101-27" tabindex="-1"></a>robot_data <span class="sc">%&gt;%</span> </span>
+<span id="cb101-28"><a href="anova1.html#cb101-28" tabindex="-1"></a>  <span class="fu">ggerrorplot</span>(<span class="at">x =</span> <span class="st">&quot;objection&quot;</span>, <span class="at">y =</span> <span class="st">&quot;time&quot;</span>, <span class="at">color =</span> <span class="st">&quot;exchange&quot;</span>,</span>
+<span id="cb101-29"><a href="anova1.html#cb101-29" tabindex="-1"></a>              <span class="at">desc_stat =</span> <span class="st">&quot;mean_se&quot;</span>, </span>
+<span id="cb101-30"><a href="anova1.html#cb101-30" tabindex="-1"></a>              <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.3</span>)) <span class="sc">+</span></span>
+<span id="cb101-31"><a href="anova1.html#cb101-31" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Type of objection&quot;</span>) <span class="sc">+</span></span>
+<span id="cb101-32"><a href="anova1.html#cb101-32" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Switch off time (seconds)&quot;</span>) </span>
+<span id="cb101-33"><a href="anova1.html#cb101-33" tabindex="-1"></a></span>
+<span id="cb101-34"><a href="anova1.html#cb101-34" tabindex="-1"></a><span class="co"># 2x2 ANOVA</span></span>
+<span id="cb101-35"><a href="anova1.html#cb101-35" tabindex="-1"></a>BF_robot <span class="ot">&lt;-</span> <span class="fu">anovaBF</span>( time <span class="sc">~</span> exchange<span class="sc">*</span>objection, <span class="at">data =</span> <span class="fu">data.frame</span>(robot_data) )</span>
+<span id="cb101-36"><a href="anova1.html#cb101-36" tabindex="-1"></a></span>
+<span id="cb101-37"><a href="anova1.html#cb101-37" tabindex="-1"></a><span class="co"># look at BFs</span></span>
+<span id="cb101-38"><a href="anova1.html#cb101-38" tabindex="-1"></a>BF_robot</span>
+<span id="cb101-39"><a href="anova1.html#cb101-39" tabindex="-1"></a></span>
+<span id="cb101-40"><a href="anova1.html#cb101-40" tabindex="-1"></a><span class="co"># main effect objection</span></span>
+<span id="cb101-41"><a href="anova1.html#cb101-41" tabindex="-1"></a>BF_robot[<span class="dv">1</span>]</span>
+<span id="cb101-42"><a href="anova1.html#cb101-42" tabindex="-1"></a></span>
+<span id="cb101-43"><a href="anova1.html#cb101-43" tabindex="-1"></a><span class="co"># main effect exchange</span></span>
+<span id="cb101-44"><a href="anova1.html#cb101-44" tabindex="-1"></a>BF_robot[<span class="dv">2</span>]</span>
+<span id="cb101-45"><a href="anova1.html#cb101-45" tabindex="-1"></a></span>
+<span id="cb101-46"><a href="anova1.html#cb101-46" tabindex="-1"></a><span class="co"># interaction</span></span>
+<span id="cb101-47"><a href="anova1.html#cb101-47" tabindex="-1"></a>BF_robot[<span class="dv">4</span>] <span class="sc">/</span> BF_robot[<span class="dv">3</span>]</span>
+<span id="cb101-48"><a href="anova1.html#cb101-48" tabindex="-1"></a></span>
+<span id="cb101-49"><a href="anova1.html#cb101-49" tabindex="-1"></a></span>
+<span id="cb101-50"><a href="anova1.html#cb101-50" tabindex="-1"></a><span class="co"># Given the evidence for an interaction, conduct further comparisons</span></span>
+<span id="cb101-51"><a href="anova1.html#cb101-51" tabindex="-1"></a></span>
+<span id="cb101-52"><a href="anova1.html#cb101-52" tabindex="-1"></a><span class="co"># 1. The effect of exchange when the robot objected (i.e., `objection`)</span></span>
+<span id="cb101-53"><a href="anova1.html#cb101-53" tabindex="-1"></a></span>
+<span id="cb101-54"><a href="anova1.html#cb101-54" tabindex="-1"></a><span class="co"># use filter() to store only </span></span>
+<span id="cb101-55"><a href="anova1.html#cb101-55" tabindex="-1"></a><span class="co"># the data from the &#39;objection&#39; groups</span></span>
+<span id="cb101-56"><a href="anova1.html#cb101-56" tabindex="-1"></a>robot_objection <span class="ot">&lt;-</span> </span>
+<span id="cb101-57"><a href="anova1.html#cb101-57" tabindex="-1"></a>  robot_data <span class="sc">%&gt;%</span> </span>
+<span id="cb101-58"><a href="anova1.html#cb101-58" tabindex="-1"></a>  <span class="fu">filter</span>(objection <span class="sc">==</span> <span class="st">&quot;objection&quot;</span>)</span>
+<span id="cb101-59"><a href="anova1.html#cb101-59" tabindex="-1"></a></span>
+<span id="cb101-60"><a href="anova1.html#cb101-60" tabindex="-1"></a><span class="co"># use `anovaBF()` to look at effect of exchange in the objection groups</span></span>
+<span id="cb101-61"><a href="anova1.html#cb101-61" tabindex="-1"></a><span class="fu">anovaBF</span>( time <span class="sc">~</span> exchange, <span class="at">data =</span> <span class="fu">data.frame</span>(robot_objection) )</span>
+<span id="cb101-62"><a href="anova1.html#cb101-62" tabindex="-1"></a></span>
+<span id="cb101-63"><a href="anova1.html#cb101-63" tabindex="-1"></a></span>
+<span id="cb101-64"><a href="anova1.html#cb101-64" tabindex="-1"></a><span class="co"># 2. The effect of exchange when the robot did not object</span></span>
+<span id="cb101-65"><a href="anova1.html#cb101-65" tabindex="-1"></a></span>
+<span id="cb101-66"><a href="anova1.html#cb101-66" tabindex="-1"></a><span class="co"># use filter() to store only </span></span>
+<span id="cb101-67"><a href="anova1.html#cb101-67" tabindex="-1"></a><span class="co"># the data from the &#39;no_objection&#39; groups</span></span>
+<span id="cb101-68"><a href="anova1.html#cb101-68" tabindex="-1"></a>robot_no_objection <span class="ot">&lt;-</span> </span>
+<span id="cb101-69"><a href="anova1.html#cb101-69" tabindex="-1"></a>  robot_data <span class="sc">%&gt;%</span> </span>
+<span id="cb101-70"><a href="anova1.html#cb101-70" tabindex="-1"></a>  <span class="fu">filter</span>(objection <span class="sc">==</span> <span class="st">&quot;no_objection&quot;</span>)</span>
+<span id="cb101-71"><a href="anova1.html#cb101-71" tabindex="-1"></a></span>
+<span id="cb101-72"><a href="anova1.html#cb101-72" tabindex="-1"></a><span class="co"># use `anovaBF()` to look at effect of exchange in the no objection groups</span></span>
+<span id="cb101-73"><a href="anova1.html#cb101-73" tabindex="-1"></a><span class="fu">anovaBF</span>( time <span class="sc">~</span> exchange, <span class="at">data =</span> <span class="fu">data.frame</span>(robot_no_objection) )</span>
+<span id="cb101-74"><a href="anova1.html#cb101-74" tabindex="-1"></a></span>
+<span id="cb101-75"><a href="anova1.html#cb101-75" tabindex="-1"></a></span>
+<span id="cb101-76"><a href="anova1.html#cb101-76" tabindex="-1"></a><span class="co"># For the interpretation of main effects:</span></span>
+<span id="cb101-77"><a href="anova1.html#cb101-77" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb101-78"><a href="anova1.html#cb101-78" tabindex="-1"></a><span class="co"># Obtain M and SE for the main effect of objection</span></span>
+<span id="cb101-79"><a href="anova1.html#cb101-79" tabindex="-1"></a>robot_data <span class="sc">%&gt;%</span> </span>
+<span id="cb101-80"><a href="anova1.html#cb101-80" tabindex="-1"></a>  <span class="fu">group_by</span>(objection) <span class="sc">%&gt;%</span> </span>
+<span id="cb101-81"><a href="anova1.html#cb101-81" tabindex="-1"></a>  <span class="fu">summarise</span>( <span class="at">M =</span> <span class="fu">mean</span>(time), </span>
+<span id="cb101-82"><a href="anova1.html#cb101-82" tabindex="-1"></a>             <span class="at">SE =</span> <span class="fu">sd</span>(time)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()) )</span>
+<span id="cb101-83"><a href="anova1.html#cb101-83" tabindex="-1"></a></span>
+<span id="cb101-84"><a href="anova1.html#cb101-84" tabindex="-1"></a><span class="co"># Obtain M and SE for the main effect of exchange</span></span>
+<span id="cb101-85"><a href="anova1.html#cb101-85" tabindex="-1"></a>robot_data <span class="sc">%&gt;%</span> </span>
+<span id="cb101-86"><a href="anova1.html#cb101-86" tabindex="-1"></a>  <span class="fu">group_by</span>(exchange) <span class="sc">%&gt;%</span> </span>
+<span id="cb101-87"><a href="anova1.html#cb101-87" tabindex="-1"></a>  <span class="fu">summarise</span>( <span class="at">M =</span> <span class="fu">mean</span>(time), </span>
+<span id="cb101-88"><a href="anova1.html#cb101-88" tabindex="-1"></a>             <span class="at">SE =</span> <span class="fu">sd</span>(time)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()) )</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1725,25 +1720,41 @@ robot’s social skills and its objection discourage interactants from switching
 update_total_correct = function() {
   console.log("webex: update total_correct");
 
-  if (t = document.getElementById("webex-total_correct")) {
-    var correct = document.getElementsByClassName("webex-correct").length;
-    var solvemes = document.getElementsByClassName("webex-solveme").length;
-    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
-    var selects = document.getElementsByClassName("webex-select").length;
-    
-    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
   }
 }
 
 /* webex-solution button toggling function */
 b_func = function() {
   console.log("webex: toggle hide");
-  
+
   var cl = this.parentElement.classList;
   if (cl.contains('open')) {
     cl.remove("open");
   } else {
     cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
   }
 }
 
@@ -1797,9 +1808,9 @@ solveme_func = function(e) {
 /* function for checking select answers */
 select_func = function(e) {
   console.log("webex: check select");
-  
+
   var cl = this.classList
-  
+
   /* add style */
   cl.remove("webex-incorrect");
   cl.remove("webex-correct");
@@ -1808,7 +1819,7 @@ select_func = function(e) {
   } else if (this.value != "blank") {
     cl.add("webex-incorrect");
   }
-  
+
   update_total_correct();
 }
 
@@ -1819,25 +1830,25 @@ radiogroups_func = function(e) {
   var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
   var cl = checked_button.parentElement.classList;
   var labels = checked_button.parentElement.parentElement.children;
-  
+
   /* get rid of styles */
   for (i = 0; i < labels.length; i++) {
     labels[i].classList.remove("webex-incorrect");
     labels[i].classList.remove("webex-correct");
   }
-  
+
   /* add style */
   if (checked_button.value == "answer") {
     cl.add("webex-correct");
   } else {
     cl.add("webex-incorrect");
   }
-  
+
   update_total_correct();
 }
 
 window.onload = function() {
-  console.log("onload");
+  console.log("webex onload");
   /* set up solution buttons */
   var buttons = document.getElementsByTagName("button");
 
@@ -1845,6 +1856,22 @@ window.onload = function() {
     if (buttons[i].parentElement.classList.contains('webex-solution')) {
       buttons[i].onclick = b_func;
     }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
   }
 
   /* set up webex-solveme inputs */
@@ -1872,18 +1899,21 @@ window.onload = function() {
     /* attach checking function */
     solveme[i].onkeyup = solveme_func;
     solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
   }
-  
+
   /* set up radiogroups */
   var radiogroups = document.getElementsByClassName("webex-radiogroup");
   for (var i = 0; i < radiogroups.length; i++) {
     radiogroups[i].onchange = radiogroups_func;
   }
-  
+
   /* set up selects */
   var selects = document.getElementsByClassName("webex-select");
   for (var i = 0; i < selects.length; i++) {
     selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
   }
 
   update_total_correct();

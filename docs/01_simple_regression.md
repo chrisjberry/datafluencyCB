@@ -7,7 +7,7 @@ editor_options:
 # Simple Regression {#simple1}
 
 *Chris Berry*\
-*2023*
+*2024*
 
 
 
@@ -24,9 +24,9 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 ## Overview
 
 -   **Slides** from the lecture part of the session:
-    [Download](slides/PSYC753_L1_SimpleRegression.pptx)
+    [Download](slides/PSYC761_L1_SimpleRegression.pptx)
 -   **R Studio online** [Access here using University
-    log-in](https://psyrstudio.plymouth.ac.uk/auth-sign-in?appUri=%2F)
+    log-in](https://psyrstudio.plymouth.ac.uk/)
 
 \
 
@@ -138,7 +138,7 @@ mentalh %>%
 **Describe the relationship between screen time and anxiety evident in
 the scatterplot** (pick one; green = correct):
 
-<div class='webex-radiogroup' id='radio_UDRUYLJXLH'><label><input type="radio" autocomplete="off" name="radio_UDRUYLJXLH" value=""></input> <span>Individuals with lower levels of screen time tend to have higher anxiety scores</span></label><label><input type="radio" autocomplete="off" name="radio_UDRUYLJXLH" value=""></input> <span>No association between screen time and anxiety scores is apparent</span></label><label><input type="radio" autocomplete="off" name="radio_UDRUYLJXLH" value="answer"></input> <span>Individuals with higher levels of screen time tend to have higher anxiety scores</span></label></div>
+<div class='webex-radiogroup' id='radio_THETYSQXCP'><label><input type="radio" autocomplete="off" name="radio_THETYSQXCP" value=""></input> <span>Individuals with lower levels of screen time tend to have higher anxiety scores</span></label><label><input type="radio" autocomplete="off" name="radio_THETYSQXCP" value=""></input> <span>No association between screen time and anxiety scores is apparent</span></label><label><input type="radio" autocomplete="off" name="radio_THETYSQXCP" value="answer"></input> <span>Individuals with higher levels of screen time tend to have higher anxiety scores</span></label></div>
 
 :::
 
@@ -193,7 +193,7 @@ simple1
 **The regression equation Predicted Outcome = a + b(Predictor) can
 therefore be written as what?**
 
-<div class='webex-radiogroup' id='radio_LNZEZEGSLS'><label><input type="radio" autocomplete="off" name="radio_LNZEZEGSLS" value=""></input> <span>Predicted screen time = 5.59 + 0.13(anxiety score)</span></label><label><input type="radio" autocomplete="off" name="radio_LNZEZEGSLS" value="answer"></input> <span>Predicted anxiety score = 5.59 + 0.13(screen time)</span></label><label><input type="radio" autocomplete="off" name="radio_LNZEZEGSLS" value=""></input> <span>Predicted
+<div class='webex-radiogroup' id='radio_LZBERXTEPR'><label><input type="radio" autocomplete="off" name="radio_LZBERXTEPR" value=""></input> <span>Predicted screen time = 5.59 + 0.13(anxiety score)</span></label><label><input type="radio" autocomplete="off" name="radio_LZBERXTEPR" value="answer"></input> <span>Predicted anxiety score = 5.59 + 0.13(screen time)</span></label><label><input type="radio" autocomplete="off" name="radio_LZBERXTEPR" value=""></input> <span>Predicted
 anxiety score = 0.13 + 5.59(screen time)</span></label></div>
 
 :::
@@ -391,7 +391,7 @@ augment(simple1) %>%
 <img src="01_simple_regression_files/figure-html/unnamed-chunk-11-1.png" alt="Histogram of the residuals" width="50%" />
 <p class="caption">(\#fig:unnamed-chunk-11)Histogram of the residuals</p>
 </div>
-**Explanation**: Inspection of the histogram of residuals reveals that the distribution is approximately normal.
+**Explanation**: Inspection of the histogram of residuals reveals that the distribution is approximately normal. 
 
 \
 
@@ -579,9 +579,9 @@ mentalh %>%
 *Describe the relationship between age and screen time in the
 scatterplot* (pick one):
 
-<div class='webex-radiogroup' id='radio_FXURPTRQJQ'><label><input type="radio" autocomplete="off" name="radio_FXURPTRQJQ" value=""></input> <span>Older individuals tend to have higher screen time
-scores</span></label><label><input type="radio" autocomplete="off" name="radio_FXURPTRQJQ" value="answer"></input> <span>Older individuals tend to have lower screen time
-scores</span></label><label><input type="radio" autocomplete="off" name="radio_FXURPTRQJQ" value=""></input> <span>No association between age and screen time appears to be
+<div class='webex-radiogroup' id='radio_GOOZTLWETM'><label><input type="radio" autocomplete="off" name="radio_GOOZTLWETM" value=""></input> <span>Older individuals tend to have higher screen time
+scores</span></label><label><input type="radio" autocomplete="off" name="radio_GOOZTLWETM" value="answer"></input> <span>Older individuals tend to have lower screen time
+scores</span></label><label><input type="radio" autocomplete="off" name="radio_GOOZTLWETM" value=""></input> <span>No association between age and screen time appears to be
 present</span></label></div>
 
 
@@ -621,7 +621,7 @@ What is the value of the slope b (to two decimal places)?
 
 What is the regression equation?
 
-<div class='webex-radiogroup' id='radio_WKBIFENGPY'><label><input type="radio" autocomplete="off" name="radio_WKBIFENGPY" value="answer"></input> <span>Predicted screen time = 7.48 - 0.10(age)</span></label><label><input type="radio" autocomplete="off" name="radio_WKBIFENGPY" value=""></input> <span>Predicted screen time = 0.10 - 7.48(age)</span></label><label><input type="radio" autocomplete="off" name="radio_WKBIFENGPY" value=""></input> <span>Predicted screen time =
+<div class='webex-radiogroup' id='radio_SWJRESDQUU'><label><input type="radio" autocomplete="off" name="radio_SWJRESDQUU" value="answer"></input> <span>Predicted screen time = 7.48 - 0.10(age)</span></label><label><input type="radio" autocomplete="off" name="radio_SWJRESDQUU" value=""></input> <span>Predicted screen time = 0.10 - 7.48(age)</span></label><label><input type="radio" autocomplete="off" name="radio_SWJRESDQUU" value=""></input> <span>Predicted screen time =
 7.48 + 0.10(age)</span></label></div>
 
 
@@ -735,7 +735,7 @@ analysis).
 **6. On balance, does age seem to be a good predictor of a person's
 daily screen time use?**
 
-<div class='webex-radiogroup' id='radio_WNMAGEKSAN'><label><input type="radio" autocomplete="off" name="radio_WNMAGEKSAN" value=""></input> <span>No</span></label><label><input type="radio" autocomplete="off" name="radio_WNMAGEKSAN" value="answer"></input> <span>Yes</span></label><label><input type="radio" autocomplete="off" name="radio_WNMAGEKSAN" value=""></input> <span>Cannot determine</span></label></div>
+<div class='webex-radiogroup' id='radio_SUOWHGNFOQ'><label><input type="radio" autocomplete="off" name="radio_SUOWHGNFOQ" value=""></input> <span>No</span></label><label><input type="radio" autocomplete="off" name="radio_SUOWHGNFOQ" value="answer"></input> <span>Yes</span></label><label><input type="radio" autocomplete="off" name="radio_SUOWHGNFOQ" value=""></input> <span>Cannot determine</span></label></div>
 
 
 

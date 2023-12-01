@@ -2,7 +2,7 @@
 
 *Chris Berry*
 \
-*2023*
+*2024*
 
 
 
@@ -22,7 +22,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 
 ## Overview
 
-* **Slides** from the lecture part of the session: [Download](slides/PSYC753_L7_PrePostData.pptx)
+* **Slides** from the lecture part of the session: [Download](slides/PSYC761_L7_PrePostData.pptx)
 
 \
 
@@ -34,7 +34,7 @@ Pre-post data in the treatment group is often compared with that of a control gr
 
 \
 
-There are numerous ways to analyse the data from such designs. Three approaches are presented here, alongside an introductions to methods for calculating clinically significant change.
+There are numerous ways to analyse the data from such designs. Three approaches are presented here, alongside an introduction to methods for calculating clinically significant change.
 
 \
 
@@ -157,9 +157,9 @@ Now use `diet_long` with `ggdotplot()` in the `ggpubr` package.
 library(ggpubr)
 
 diet_long %>% 
-  ggdotplot(x = "group", 
+  ggdotplot(x = "time", 
             y = "symptoms", 
-            color = "time", 
+            color = "group", 
             add = "mean_se", 
             ylim = c(0,65),
             position_dodge = 0.1) 
@@ -314,7 +314,7 @@ bfs[4] / bfs[3]
 
 * The Bayes factor representing evidence for the interaction term is <input class='webex-solveme nospaces' data-tol='5' size='4' data-answer='["2.25"]'/>.
 
-The Bayes factor for the interaction should come out at around 2.25, but because `anovaBF()` calculates the BF using random sampling methods, your value may not match this exactly. For greater precision, it's possible to `recompute()` the Bayes factor with a greater number of random samples, e.g., 1,000,000 (note, this could take a short while):
+The Bayes factor for the interaction should come out at around 2.25, but because `anovaBF()` calculates the BF using random sampling methods, your value may not match this exactly (note the large error associated with the BF in the output). For greater precision, it's possible to `recompute()` the Bayes factor with a greater number of random samples, e.g., 1,000,000 (note, this could take a short while):
 
 
 ```r
@@ -358,7 +358,7 @@ full / baseline
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] group + baseline : 6.017305 ±0.83%
+## [1] group + baseline : 6.124479 ±0.83%
 ## 
 ## Against denominator:
 ##   week3 ~ baseline 
@@ -378,6 +378,9 @@ In Approach 3 R^2^ for the effect of `group` can be determined using methods fro
 
 
 ```r
+# ensure broom is loaded
+# library(broom) 
+
 # specify the full model with lm()
 full_model    <- lm(week3 ~ group + baseline, data = diet)
 
@@ -417,20 +420,19 @@ If your question is whether one group has a higher mean at the second timepoint,
 
 The measure of depressive symptoms used by Francis et al. (2019) was the Centre for Epidemiological Studies Depression scale-Revised (CESD-R; Radloff, 1977). The scale ranges from 0-60, and the criterion for being the elevated range of depressive symptoms is a score equal to **16** or above.  
 
-Re-plot the data, but with a horizontal line to indicate this criterion. (Because of the way that `ggpubr` works, to add the line, the plot created with `ggdotplot` first needs to be stored in `plot1`; then `geom_hline()` is added to `plot1`.)
+Re-plot the data, but with a horizontal line to indicate this criterion. 
 
 
 
 ```r
-plot1 <- diet_long %>% 
-  ggdotplot(x = "group", 
+diet_long %>% 
+  ggdotplot(x = "time", 
             y = "symptoms", 
-            color = "time", 
+            color = "group", 
             add = "mean_se", 
             ylim = c(0,65),
-            position_dodge = 0.1) 
-
-plot1 + geom_hline(yintercept = 16, colour = "red", lty = 2)
+            position_dodge = 0.1) +
+  geom_hline(yintercept = 16, colour = "red", lty = 2)
 ```
 
 <div class="figure" style="text-align: center">
@@ -492,7 +494,7 @@ self_efficacy_long <-
 
 # plot
 self_efficacy_long %>% 
-  ggdotplot(x = "group", y = "score", color = "time", add = "mean_se",
+  ggdotplot(x = "time", y = "score", color = "group", add = "mean_se",
             ylab = "Self-efficacy score")
 ```
 
@@ -591,7 +593,7 @@ self_efficacy_long <-
          group = factor(group))
 
 # get bfs
-BFs <- anovaBF(symptoms ~ group + time + ppt, whichRandom = "ppt", data = data.frame(self_efficacy_long))
+BFs <- anovaBF(score ~ group + time + ppt, whichRandom = "ppt", data = data.frame(self_efficacy_long))
 
 BFs[4] / BFs[3]  
 
@@ -827,6 +829,6 @@ Francis H.M., Stevenson R.J., Chambers J.R., Gupta D., Newey B., Lim C.K. (2019)
 
 Jacobson, N. S., & Truax, P. (1991). Clinical significance: A statistical approach to defining meaningful change in psychotherapy research. _Journal of Consulting and Clinical Psychology_, _59_(1), 12–19. https://doi.org/10.1037/0022-006X.59.1.12
 
-O'Connell, N. S., Dai, L., Jiang, Y., Speiser, J. L., Ward, R., Wei, W., ... & Gebregziabher, M. (2017). Methods for analysis of pre-post data in clinical research: a comparison of five common methods. _Journal of Biometrics & Biostatistics_, _8_(1), 1.
+O'Connell, N. S., Dai, L., Jiang, Y., Speiser, J. L., Ward, R., Wei, W., ... & Gebregziabher, M. (2017). Methods for analysis of pre-post data in clinical research: a comparison of five common methods. _Journal of Biometrics & Biostatistics_, _8_(1), 1. https://doi.org/10.4172/2155-6180.1000334
 
 Radloff, L. S. (1977). The CES-D scale: A self-report depression scale for research in the general population. _Applied Psychological Measurement_, _1_(3), 385-401.

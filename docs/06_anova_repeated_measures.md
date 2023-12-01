@@ -2,7 +2,7 @@
 
 *Chris Berry*
 \
-*2023*
+*2024*
 
 
 
@@ -21,7 +21,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 
 ## Overview
 
-* **Slides** from the lecture part of the session: [Download](slides/PSYC753_L6_ANOVA_2.pptx)
+* **Slides** from the lecture part of the session: [Download](slides/PSYC761_L6_ANOVA_2.pptx)
 
 \
 
@@ -67,14 +67,14 @@ Wide vs. long format
 
 * When the data are in _wide_ format, all of the data for a single participant is stored:
 
-<div class='webex-radiogroup' id='radio_EEFLFOXKGB'><label><input type="radio" autocomplete="off" name="radio_EEFLFOXKGB" value="answer"></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_EEFLFOXKGB" value=""></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
+<div class='webex-radiogroup' id='radio_EHZFDPZNVE'><label><input type="radio" autocomplete="off" name="radio_EHZFDPZNVE" value="answer"></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_EHZFDPZNVE" value=""></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
 
 
 \
 
 * When the data are in _long_ format, all of the data for a single participant is stored:
 
-<div class='webex-radiogroup' id='radio_VJJSOFLJNA'><label><input type="radio" autocomplete="off" name="radio_VJJSOFLJNA" value=""></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_VJJSOFLJNA" value="answer"></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
+<div class='webex-radiogroup' id='radio_ZALQUOENPK'><label><input type="radio" autocomplete="off" name="radio_ZALQUOENPK" value=""></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_ZALQUOENPK" value="answer"></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
 
 
 :::
@@ -381,7 +381,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(discrim
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 331.4158 ±0.66%
+## [1] time + ppt : 336.1911 ±1.15%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -399,7 +399,7 @@ The Bayes factor for the effect of time on performance is <input class='webex-so
 
 This indicates that (select one):
 
-<div class='webex-radiogroup' id='radio_VKHHPSSEMF'><label><input type="radio" autocomplete="off" name="radio_VKHHPSSEMF" value="answer"></input> <span>it is approximately 300 times more likely that there is difference between the means of the three time conditions, compared to there being no difference.</span></label><label><input type="radio" autocomplete="off" name="radio_VKHHPSSEMF" value=""></input> <span>it is approximately 300 times more likely that there is no difference between the means of the three time conditions, compared to there being a difference.</span></label></div>
+<div class='webex-radiogroup' id='radio_MKDPCRNWKK'><label><input type="radio" autocomplete="off" name="radio_MKDPCRNWKK" value="answer"></input> <span>it is approximately 300 times more likely that there is difference between the means of the three time conditions, compared to there being no difference.</span></label><label><input type="radio" autocomplete="off" name="radio_MKDPCRNWKK" value=""></input> <span>it is approximately 300 times more likely that there is no difference between the means of the three time conditions, compared to there being a difference.</span></label></div>
 
 
 \
@@ -430,7 +430,7 @@ BF_time_ppt / BF_ppt_only
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 332.6118 ±0.51%
+## [1] time + ppt : 340.8888 ±2.49%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -468,7 +468,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(pre_v_d
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 79.75876 ±0.59%
+## [1] time + ppt : 81.8354 ±1.34%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -496,7 +496,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(pre_v_m
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 55.06891 ±1.89%
+## [1] time + ppt : 52.95435 ±0.54%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -525,7 +525,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(day3_v_
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 0.4776541 ±1.94%
+## [1] time + ppt : 0.5000511 ±6.41%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -563,7 +563,7 @@ lmBF(performance ~ ppt, whichRandom = "ppt", data = data.frame(day3_v_month2))
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 79.62382 ±0.67%
+## [1] time + ppt : 79.36412 ±0.55%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -572,7 +572,7 @@ lmBF(performance ~ ppt, whichRandom = "ppt", data = data.frame(day3_v_month2))
 ## 
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 54.85038 ±0.96%
+## [1] time + ppt : 57.68876 ±6.57%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -581,7 +581,7 @@ lmBF(performance ~ ppt, whichRandom = "ppt", data = data.frame(day3_v_month2))
 ## 
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 0.4636084 ±1.2%
+## [1] time + ppt : 0.4566256 ±0.86%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -604,7 +604,7 @@ When there are multiple factors, the ANOVA is referred to as _factorial_ ANOVA.
 
 For example, if the design has two factors, and each factor has two levels, then we refer to the design as a 2 x 2 factorial design. The first number (2) denotes the number of levels of the first factor. The second number (2) denotes the number of levels of the second factor. If, instead, the second factor had three levels, we'd say we have a 2 x 3 factorial design. 
 
-The **cells** of the design are produced by crossing the levels of one factor with each level of the other factor. If both factors are manipulated within-subjects, then the scores from each cell of the design come from the same group of participants.
+The **cells** of the design are produced by crossing the levels of one factor with each level of the other factor. If both factors are manipulated within-subjects, then the scores from each cell of the design come from the same group of participants. For example, in a 2 x 2 factorial design, there will be four cells of the design.
 
 :::
 
@@ -752,7 +752,9 @@ It appears as if people took longer to respond when the gaze was direct and they
 
 ### Descriptive statistics - mean
 
-To obtain the mean of each condition, use `group_by()` to group the results of `summarise()` by the two factors in the design:
+To obtain the mean of each condition, use `group_by()` to group the results of `summarise()` by the two factors in the design.
+
+Since the log RT values are analysed, we'll obtain the mean of these.
 
 
 ```r
@@ -763,21 +765,25 @@ To obtain the mean of each condition, use `group_by()` to group the results of `
 # and label the column 'M'
 gaze %>% 
   group_by(gaze_direction, agreement) %>% 
-  summarise(M = mean(RT))
+  summarise(M = mean(logRT))
 ```
 
 <div class="kable-table">
 
 |gaze_direction |agreement |        M|
 |:--------------|:---------|--------:|
-|averted_left   |no        | 793.5092|
-|averted_left   |yes       | 818.7174|
-|averted_right  |no        | 756.4577|
-|averted_right  |yes       | 774.9986|
-|direct         |no        | 970.6278|
-|direct         |yes       | 800.4069|
+|averted_left   |no        | 6.461225|
+|averted_left   |yes       | 6.476511|
+|averted_right  |no        | 6.364156|
+|averted_right  |yes       | 6.420004|
+|direct         |no        | 6.645607|
+|direct         |yes       | 6.456804|
 
 </div>
+\
+
+The mean log RT when participants disagreed with a statement made by a face looking directly at them was (to 2 decimal places) <input class='webex-solveme nospaces' data-tol='0' size='4' data-answer='["6.65"]'/>.
+
 \
 
 ### Convert participant and categorical variables to factors 
@@ -814,11 +820,19 @@ gaze %>% head()
 
 As before, you could double check that the relevant variable labels in `gaze` have changed to `<fct>`. 
 
+After using `mutate()` and `factor()` above:
+
+* In `gaze`, what type of variable is `ppt`? <select class='webex-select'><option value='blank'></option><option value='answer'><fct> factor</option><option value=''><chr> character</option><option value=''><dbl> double (numeric)</option></select> 
+
+* In `gaze`, what type of variable is `gaze_direction`? <select class='webex-select'><option value='blank'></option><option value='answer'><fct> factor</option><option value=''><chr> character</option><option value=''><dbl> double (numeric)</option></select> 
+
+* In `gaze`, what type of variable is `agreement`? <select class='webex-select'><option value='blank'></option><option value='answer'><fct> factor</option><option value=''><chr> character</option><option value=''><dbl> double (numeric)</option></select> 
+
 \
 
 ### Bayes factor
 
-As with between-subjects two-way designs, researchers are interested in three things in a two-way repeated measures design:
+As with between-subjects two-way designs, researchers are typically interested in obtaining three things in a two-way repeated measures ANOVA:
 
 * the main effect of `factor1`
 * the main effect of `factor2`
@@ -844,10 +858,10 @@ BFs_gaze
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] gaze_direction + ppt                                        : 26.22868 ±0.87%
-## [2] agreement + ppt                                             : 0.26817  ±2.12%
-## [3] gaze_direction + agreement + ppt                            : 7.382171 ±1.57%
-## [4] gaze_direction + agreement + gaze_direction:agreement + ppt : 101.4481 ±54.32%
+## [1] gaze_direction + ppt                                        : 26.48498  ±1.29%
+## [2] agreement + ppt                                             : 0.2659145 ±1.27%
+## [3] gaze_direction + agreement + ppt                            : 7.438576  ±1.53%
+## [4] gaze_direction + agreement + gaze_direction:agreement + ppt : 46.43286  ±4.02%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -871,7 +885,7 @@ BFs_gaze[1]
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] gaze_direction + ppt : 26.22868 ±0.87%
+## [1] gaze_direction + ppt : 26.48498 ±1.29%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -893,7 +907,7 @@ BFs_gaze[2]
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] agreement + ppt : 0.26817 ±2.12%
+## [1] agreement + ppt : 0.2659145 ±1.27%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -916,7 +930,7 @@ BFs_gaze[4] / BFs_gaze[3]
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] gaze_direction + agreement + gaze_direction:agreement + ppt : 13.74232 ±54.34%
+## [1] gaze_direction + agreement + gaze_direction:agreement + ppt : 6.24217 ±4.31%
 ## 
 ## Against denominator:
 ##   logRT ~ gaze_direction + agreement + ppt 
@@ -954,7 +968,7 @@ anovaBF(logRT ~ agreement + ppt, whichRandom = "ppt", data = data.frame(averted_
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] agreement + ppt : 0.2466716 ±0.85%
+## [1] agreement + ppt : 0.2535206 ±1.48%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -981,7 +995,7 @@ anovaBF(logRT ~ agreement + ppt, whichRandom = "ppt", data = data.frame(averted_
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] agreement + ppt : 0.3535601 ±1%
+## [1] agreement + ppt : 0.3601523 ±1.18%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -1009,7 +1023,7 @@ anovaBF(logRT ~ agreement + ppt, whichRandom = "ppt", data = data.frame(direct))
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] agreement + ppt : 33.84858 ±0.81%
+## [1] agreement + ppt : 33.75359 ±0.86%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -1281,8 +1295,11 @@ To do this, obtain R^2^ for the model with `ppt` alone:
 # specify model with ppt only using lm()
 ppt_alone <- lm(performance ~ ppt, data = discriminate_long)
 
+# make sure the broom package is loaded
+#library(broom)
+
 # look at R-squared
-glance(ppt)
+glance(ppt_alone)
 ```
 
 * R^2^ for the model with `ppt` alone = <input class='webex-solveme nospaces' size='4' data-answer='["0.15"]'/>
@@ -1336,6 +1353,10 @@ This is clearly quite cumbersome, and potentially error prone. For this reason, 
 ```r
 library(afex)
 
+# use the afex package to run a 2 x 2 ANOVA
+# id is the column of participant identifiers ("ppt")
+# dv is the dependent variable ("logRT")
+# within specifies the within-subjects factors
 anova2way <- afex::aov_ez(id = c("ppt"),
                           dv = c("logRT"),
                           within = c("agreement","gaze_direction"), # two factors
@@ -1345,6 +1366,83 @@ anova2way <- afex::aov_ez(id = c("ppt"),
 The `ges` column provides the generalised eta squared values for each effect.
 
 </div>
+
+
+
+
+<div class='webex-solution'><button>One-way between-subjects ANOVA</button>
+
+The `afex` package can also be used to obtain generalised eta squared for one-way between-subjects ANOVA designs. 
+
+
+For the one-way between-subjects ANOVA performed on the `affect_data` in [Session 3](https://chrisjberry.github.io/datafluencyCB/anova1.html):
+
+```r
+# Read in the data
+affect_data <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_affect.csv')
+
+# use mutate() to convert the group variable to a factor
+# store the changes back in affect_data 
+# (i.e., overwrite what's already in affect_data)
+affect_data <-
+  affect_data %>% 
+  mutate(group = factor(group))
+
+# use the afex package to a one-way ANOVA
+# id is the column of participant identifiers ("ppt")
+# dv is the dependent variable ("logRT")
+# between specifies the between-subjects factor
+anova1way <- afex::aov_ez(id = c("ppt"),
+                          dv = c("score"),
+                          between = c("group"), # one factor
+                          data = affect_data)
+
+# look at output
+anova1way
+```
+The `ges` column provides the generalised eta squared value for the effect of `group` on `score`. The value (0.052) matches the value of R^2^ we found using `lm()` and `glance()`. Generalised eta squared is the same as R^2^ in this design.
+
+
+</div>
+
+
+
+<div class='webex-solution'><button>Two-way between-subjects ANOVA</button>
+
+The `afex` package can also be used to obtain generalised eta squared for two-way between-subjects ANOVA designs. 
+
+For the two-way between-subjects ANOVA performed on the `resilience_data` in [Session 3](https://chrisjberry.github.io/datafluencyCB/anova1.html):
+
+
+```r
+# read in the data
+resilience_data <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_resilience_data.csv')
+
+# use mutate() and factor() to convert 
+# resilience and adversity to factors
+# add a ppt column
+resilience_data <- 
+  resilience_data %>% 
+  mutate(resilience = factor(resilience),
+         adversity  = factor(adversity),
+         ppt = c(1:n()))
+
+# use the afex package to a two-way ANOVA
+# id is the column of participant identifiers ("ppt")
+# dv is the dependent variable ("logRT")
+# between specifies the between-subjects factor
+anova2bet <- afex::aov_ez(id = c("ppt"),
+                          dv = c("distress"),
+                          between = c("resilience","adversity"), # two factors
+                          data = resilience_data)
+
+anova2bet
+```
+The generalised eta squared values are in the column `ges`.
+
+
+</div>
+
 
 
 \

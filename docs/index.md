@@ -1,5 +1,5 @@
 --- 
-title: 'PSYC753 Data Fluency: Analysis'
+title: 'PSYC761 Data Fluency: Analysis'
 author: "Chris Berry"
 site: bookdown::bookdown_site
 documentclass: book
@@ -8,7 +8,7 @@ bibliography:
 - packages.bib
 biblio-style: apalike
 link-citations: yes
-description: Course materials for PSYC753 2023
+description: Course materials for PSYC761 2024
 url: https://chrisjberry.github.io/datafluencyCB/
 github-repo: datafluencyCB
 ---
@@ -29,29 +29,33 @@ This workbook contains worksheets for the seven sessions given by **Chris Berry*
 
 \
 
-- **Session 1.** 16/01/23 (Group 2) & 17/01/23 (Group 1). [Simple regression](#simple1)
+- **Session 1.** 22/01/24. [Simple regression](#simple1)
  
-- **Session 2.** 23/01/23 (Group 2) & 24/01/23 (Group 1). [Multiple regression 1: multiple continuous](#multiple1)
+- **Session 2.** 29/01/24. [Multiple regression 1: multiple continuous](#multiple1)
 
-- **Session 3.** 30/01/23. [ANOVA 1](#anova1)
+- **Session 3.** 05/02/24. [ANOVA 1](#anova1)
 
-- **Session 4.** 06/02/23. [Multiple regression 2: one continuous, one categorical](#multiple2)
+  (12/02/24. No session) 
 
-  (13/02/23. No session) 
+- **Session 4.** 19/02/24. [Multiple regression 2: one continuous, one categorical](#multiple2)
 
-- **Session 5.** 20/02/23. [Multiple regression 3: hierarchical regression](#multiple3)
+- **Session 5.** 26/02/24. [Multiple regression 3: hierarchical regression](#multiple3)
 
-- **Session 6.** 27/02/23. [ANOVA 2](#anova2)
+- **Session 6.** 04/03/24. [ANOVA 2](#anova2)
 
-- **Session 7.** 06/03/23. [Pre-post data and clinically significant change](#prepost)
+- **Session 7.** 11/03/24. [Pre-post data and clinically significant change](#prepost)
+
+- **Session 8.** 18/03/24. [Mixed models](#mixed)
 
 \
 
 It also contains a link to the:
 
-- the [Analysis Assessment](#assessment2023) (50% of module grade)
+- the [Analysis Assessment](#assessment2024) (50% of module grade)
 
 - [FAQs](#faqs)
+
+- Recommended further [reading](#reading)
 
 
 \
@@ -60,13 +64,13 @@ Use the **left** and **right** arrow keys to navigate this workbook
 
 \
 
-Ben Whalley's materials from part 1 of PSYC753:
+Ben Whalley's materials from PSYC760:
 
 * https://benwhalley.github.io/datafluency/
 
-The PSYC753 DLE page 2022-23:
+The PSYC761 DLE page 2023-24:
 
-* https://dle.plymouth.ac.uk/course/view.php?id=63157
+* https://dle.plymouth.ac.uk/course/view.php?id=71519
 
 
 \

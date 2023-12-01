@@ -4,20 +4,20 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Session 2 Multiple regression: multiple continuous predictors | PSYC753 Data Fluency: Analysis</title>
-  <meta name="description" content="Course materials for PSYC753 2023" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <title>Session 2 Multiple regression: multiple continuous predictors | PSYC761 Data Fluency: Analysis</title>
+  <meta name="description" content="Course materials for PSYC761 2024" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Session 2 Multiple regression: multiple continuous predictors | PSYC753 Data Fluency: Analysis" />
+  <meta property="og:title" content="Session 2 Multiple regression: multiple continuous predictors | PSYC761 Data Fluency: Analysis" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="Course materials for PSYC753 2023" />
+  <meta property="og:description" content="Course materials for PSYC761 2024" />
   <meta name="github-repo" content="datafluencyCB" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Session 2 Multiple regression: multiple continuous predictors | PSYC753 Data Fluency: Analysis" />
+  <meta name="twitter:title" content="Session 2 Multiple regression: multiple continuous predictors | PSYC761 Data Fluency: Analysis" />
   
-  <meta name="twitter:description" content="Course materials for PSYC753 2023" />
+  <meta name="twitter:description" content="Course materials for PSYC761 2024" />
   
 
 <meta name="author" content="Chris Berry" />
@@ -121,6 +121,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="include/psyteachr.css" type="text/css" />
 <link rel="stylesheet" href="include/webex.css" type="text/css" />
@@ -137,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">PSYC753 Analysis</a></li>
+<li><a href="./">PSYC761 Analysis</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
@@ -311,29 +315,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5" data-path="prepost.html"><a href="prepost.html#which-approach-should-you-use"><i class="fa fa-check"></i><b>7.5</b> Which approach should you use?</a></li>
 <li class="chapter" data-level="7.6" data-path="prepost.html"><a href="prepost.html#clinical-significance"><i class="fa fa-check"></i><b>7.6</b> Clinical Significance</a></li>
 <li class="chapter" data-level="7.7" data-path="prepost.html"><a href="prepost.html#exercises-1"><i class="fa fa-check"></i><b>7.7</b> Exercises</a></li>
-<li class="chapter" data-level="7.8" data-path="prepost.html"><a href="prepost.html#further-knowledge-1"><i class="fa fa-check"></i><b>7.8</b> Further Knowledge</a>
-<ul>
-<li class="chapter" data-level="7.8.1" data-path="prepost.html"><a href="prepost.html#reliable-change-rc-index"><i class="fa fa-check"></i><b>7.8.1</b> Reliable Change (RC) index</a></li>
-</ul></li>
+<li class="chapter" data-level="7.8" data-path="prepost.html"><a href="prepost.html#further-knowledge-1"><i class="fa fa-check"></i><b>7.8</b> Further Knowledge</a></li>
 <li class="chapter" data-level="7.9" data-path="prepost.html"><a href="prepost.html#summary-5"><i class="fa fa-check"></i><b>7.9</b> Summary</a></li>
 <li class="chapter" data-level="7.10" data-path="prepost.html"><a href="prepost.html#references-6"><i class="fa fa-check"></i><b>7.10</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="assessment2023.html"><a href="assessment2023.html"><i class="fa fa-check"></i><b>8</b> Data Analysis Assessment 2023</a></li>
-<li class="chapter" data-level="9" data-path="faqs.html"><a href="faqs.html"><i class="fa fa-check"></i><b>9</b> FAQs</a>
+<li class="chapter" data-level="8" data-path="mixed.html"><a href="mixed.html"><i class="fa fa-check"></i><b>8</b> Mixed Models</a></li>
+<li class="chapter" data-level="9" data-path="assessment2024.html"><a href="assessment2024.html"><i class="fa fa-check"></i><b>9</b> Data Analysis Assessment 2024</a></li>
+<li class="chapter" data-level="10" data-path="faqs.html"><a href="faqs.html"><i class="fa fa-check"></i><b>10</b> FAQs</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="faqs.html"><a href="faqs.html#e-meaning"><i class="fa fa-check"></i><b>9.1</b> What does it mean if RStudio prints out "e-" next to a number?</a></li>
-<li class="chapter" data-level="9.2" data-path="faqs.html"><a href="faqs.html#how-can-i-find-out-more-about-a-particular-function-so-i-can-explore-its-settings-etc."><i class="fa fa-check"></i><b>9.2</b> How can I find out more about a particular function, so I can explore its settings etc.?</a></li>
-<li class="chapter" data-level="9.3" data-path="faqs.html"><a href="faqs.html#how-should-i-write-up-the-report"><i class="fa fa-check"></i><b>9.3</b> How should I write up the report?</a></li>
-<li class="chapter" data-level="9.4" data-path="faqs.html"><a href="faqs.html#after-downloading-my-.rmd-file-to-my-computer-how-do-i-open-it-again-in-rstudio"><i class="fa fa-check"></i><b>9.4</b> After downloading my .Rmd file to my computer, how do I open it again in RStudio?</a></li>
-<li class="chapter" data-level="9.5" data-path="faqs.html"><a href="faqs.html#on-the-word-count-are-figure-captions-included"><i class="fa fa-check"></i><b>9.5</b> On the word count, are figure captions included?</a></li>
-<li class="chapter" data-level="9.6" data-path="faqs.html"><a href="faqs.html#should-i-make-code-visible-in-my-html-report"><i class="fa fa-check"></i><b>9.6</b> Should I make code visible in my html report?</a></li>
-<li class="chapter" data-level="9.7" data-path="faqs.html"><a href="faqs.html#do-i-need-to-include-references"><i class="fa fa-check"></i><b>9.7</b> Do I need to include references?</a></li>
-<li class="chapter" data-level="9.8" data-path="faqs.html"><a href="faqs.html#can-there-be-overlap-in-the-variables-used-in-each-question"><i class="fa fa-check"></i><b>9.8</b> Can there be overlap in the variables used in each question?</a></li>
-<li class="chapter" data-level="9.9" data-path="faqs.html"><a href="faqs.html#do-we-have-to-include-a-certain-number-of-variables-to-achieve-a-good-grade"><i class="fa fa-check"></i><b>9.9</b> Do we have to include a certain number of variables to achieve a good grade?</a></li>
-<li class="chapter" data-level="9.10" data-path="faqs.html"><a href="faqs.html#can-i-include-more-than-one-figure"><i class="fa fa-check"></i><b>9.10</b> Can I include more than one figure?</a></li>
-<li class="chapter" data-level="9.11" data-path="faqs.html"><a href="faqs.html#can-i-include-categorical-predictor-variables-in-a-hierarchical-regression"><i class="fa fa-check"></i><b>9.11</b> Can I include categorical predictor variables in a hierarchical regression?</a></li>
-<li class="chapter" data-level="9.12" data-path="faqs.html"><a href="faqs.html#how-do-i-apply-for-extenuating-circumstances"><i class="fa fa-check"></i><b>9.12</b> How do I apply for extenuating circumstances?</a></li>
-<li class="chapter" data-level="9.13" data-path="faqs.html"><a href="faqs.html#can-a-book-a-slot-in-your-office-hours"><i class="fa fa-check"></i><b>9.13</b> Can a book a slot in your office hours?</a></li>
+<li class="chapter" data-level="10.1" data-path="faqs.html"><a href="faqs.html#e-meaning"><i class="fa fa-check"></i><b>10.1</b> What does it mean if RStudio prints out "e-" next to a number?</a></li>
+<li class="chapter" data-level="10.2" data-path="faqs.html"><a href="faqs.html#how-can-i-find-out-more-about-a-particular-function-so-i-can-explore-its-settings-etc."><i class="fa fa-check"></i><b>10.2</b> How can I find out more about a particular function, so I can explore its settings etc.?</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="reading.html"><a href="reading.html"><i class="fa fa-check"></i><b>11</b> Reading: Go further!</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="reading.html"><a href="reading.html#recommended-texts"><i class="fa fa-check"></i><b>11.1</b> Recommended texts</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="divider"></li>
@@ -351,7 +346,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSYC753 Data Fluency: Analysis</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSYC761 Data Fluency: Analysis</a>
           </h1>
         </div>
 
@@ -362,7 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="multiple1" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Session 2</span> Multiple regression: multiple continuous predictors<a href="multiple1.html#multiple1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>Chris Berry</em><br />
-<em>2023</em></p>
+<em>2024</em></p>
 <style>
 div.exercise { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
@@ -374,7 +369,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <p><br />
 </p>
 <ul>
-<li><strong>Slides</strong> from the lecture part of the session: <a href="slides/PSYC753_L2_MultipleRegression1.pptx">Download</a></li>
+<li><strong>Slides</strong> from the lecture part of the session: <a href="slides/PSYC761_L2_MultipleRegression1.pptx">Download</a></li>
 </ul>
 <p><br />
 </p>
@@ -400,12 +395,12 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 </p>
 <p>Read the data to R. The data are stored at:</p>
 <p><a href="https://raw.githubusercontent.com/chrisjberry/Teaching/master/2_wellbeing_data.csv" class="uri">https://raw.githubusercontent.com/chrisjberry/Teaching/master/2_wellbeing_data.csv</a></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="multiple1.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First ensure tidyverse is loaded, i.e., &#39;library(tidyverse)&#39;</span></span>
-<span id="cb1-2"><a href="multiple1.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="multiple1.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the data using read_csv(), store in wellbeing_data</span></span>
-<span id="cb1-4"><a href="multiple1.html#cb1-4" aria-hidden="true" tabindex="-1"></a>wellbeing_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/2_wellbeing_data.csv&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="multiple1.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># preview the data with glimpse()</span></span>
-<span id="cb2-2"><a href="multiple1.html#cb2-2" aria-hidden="true" tabindex="-1"></a>wellbeing_data <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="multiple1.html#cb21-1" tabindex="-1"></a><span class="co"># First ensure tidyverse is loaded, i.e., &#39;library(tidyverse)&#39;</span></span>
+<span id="cb21-2"><a href="multiple1.html#cb21-2" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="multiple1.html#cb21-3" tabindex="-1"></a><span class="co"># read in the data using read_csv(), store in wellbeing_data</span></span>
+<span id="cb21-4"><a href="multiple1.html#cb21-4" tabindex="-1"></a>wellbeing_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/2_wellbeing_data.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="multiple1.html#cb22-1" tabindex="-1"></a><span class="co"># preview the data with glimpse()</span></span>
+<span id="cb22-2"><a href="multiple1.html#cb22-2" tabindex="-1"></a>wellbeing_data <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>() </span></code></pre></div>
 <p>We'll use these three variables in the dataset:</p>
 <ul>
 <li><code>wellbeing</code>: Higher scores indicate higher wellbeing.</li>
@@ -416,13 +411,13 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <p><br />
 </p>
 <p>Visualise the data with a scatterplot. Place the outcome variable <code>wellbeing</code> on the y-axis, the predictor <code>worry</code> on the x-axis, and let the <em>size</em> of each point represent the second predictor, the <code>describing</code> score:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="multiple1.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot of all three variables</span></span>
-<span id="cb3-2"><a href="multiple1.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Use alpha to alter transparency of points</span></span>
-<span id="cb3-3"><a href="multiple1.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to make overlap easier to see</span></span>
-<span id="cb3-4"><a href="multiple1.html#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="multiple1.html#cb3-5" aria-hidden="true" tabindex="-1"></a>wellbeing_data <span class="sc">%&gt;%</span> </span>
-<span id="cb3-6"><a href="multiple1.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> worry, <span class="at">y =</span> wellbeing, <span class="at">size =</span> describing)) <span class="sc">+</span></span>
-<span id="cb3-7"><a href="multiple1.html#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">colour =</span> <span class="st">&quot;cornflowerblue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="multiple1.html#cb23-1" tabindex="-1"></a><span class="co"># Scatterplot of all three variables</span></span>
+<span id="cb23-2"><a href="multiple1.html#cb23-2" tabindex="-1"></a><span class="co"># Use alpha to alter transparency of points</span></span>
+<span id="cb23-3"><a href="multiple1.html#cb23-3" tabindex="-1"></a><span class="co"># to make overlap easier to see</span></span>
+<span id="cb23-4"><a href="multiple1.html#cb23-4" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="multiple1.html#cb23-5" tabindex="-1"></a>wellbeing_data <span class="sc">%&gt;%</span> </span>
+<span id="cb23-6"><a href="multiple1.html#cb23-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> worry, <span class="at">y =</span> wellbeing, <span class="at">size =</span> describing)) <span class="sc">+</span></span>
+<span id="cb23-7"><a href="multiple1.html#cb23-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">colour =</span> <span class="st">&quot;cornflowerblue&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
 <img src="02_multiple_regression_1_files/figure-html/unnamed-chunk-4-1.png" alt="Scatterplot of wellbeing scores vs. worry and describing" width="75%" />
 <p class="caption">
@@ -430,7 +425,7 @@ Figure 2.1: Scatterplot of wellbeing scores vs. worry and describing
 </p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-1" class="exercise"><strong>Exercise 2.1  </strong></span>From inspection of the scatterplot:</p>
+<p><span id="exr:unlabeled-div-6" class="exercise"><strong>Exercise 2.1  </strong></span>From inspection of the scatterplot:</p>
 <ul>
 <li>Greater <code>worry</code> scores tend to be associated with <select class='webex-select'><option value='blank'></option><option value='answer'>lower</option><option value=''>constant</option><option value=''>higher</option></select> <code>wellbeing</code> scores.</li>
 </ul>
@@ -454,14 +449,14 @@ Explain
 <p><br />
 </p>
 <p>The above trends are also apparent in the Pearson correlations between variables:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="multiple1.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the corrr package first</span></span>
-<span id="cb4-2"><a href="multiple1.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrr)</span>
-<span id="cb4-3"><a href="multiple1.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="multiple1.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># select the relevant columns from wellbeing_data and </span></span>
-<span id="cb4-5"><a href="multiple1.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># use correlate() to obtain the correlations</span></span>
-<span id="cb4-6"><a href="multiple1.html#cb4-6" aria-hidden="true" tabindex="-1"></a>wellbeing_data <span class="sc">%&gt;%</span> </span>
-<span id="cb4-7"><a href="multiple1.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(wellbeing, worry, describing) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-8"><a href="multiple1.html#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlate</span>(<span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="multiple1.html#cb24-1" tabindex="-1"></a><span class="co"># load the corrr package first</span></span>
+<span id="cb24-2"><a href="multiple1.html#cb24-2" tabindex="-1"></a><span class="fu">library</span>(corrr)</span>
+<span id="cb24-3"><a href="multiple1.html#cb24-3" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="multiple1.html#cb24-4" tabindex="-1"></a><span class="co"># select the relevant columns from wellbeing_data and </span></span>
+<span id="cb24-5"><a href="multiple1.html#cb24-5" tabindex="-1"></a><span class="co"># use correlate() to obtain the correlations</span></span>
+<span id="cb24-6"><a href="multiple1.html#cb24-6" tabindex="-1"></a>wellbeing_data <span class="sc">%&gt;%</span> </span>
+<span id="cb24-7"><a href="multiple1.html#cb24-7" tabindex="-1"></a>  <span class="fu">select</span>(wellbeing, worry, describing) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-8"><a href="multiple1.html#cb24-8" tabindex="-1"></a>  <span class="fu">correlate</span>(<span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -544,11 +539,11 @@ NA
 </div>
 <p><br />
 </p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="multiple1.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># conduct a multiple regression, store it in multiple1</span></span>
-<span id="cb5-2"><a href="multiple1.html#cb5-2" aria-hidden="true" tabindex="-1"></a>multiple1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> worry <span class="sc">+</span> describing, <span class="at">data =</span> wellbeing_data) </span>
-<span id="cb5-3"><a href="multiple1.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="multiple1.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the coefficients</span></span>
-<span id="cb5-5"><a href="multiple1.html#cb5-5" aria-hidden="true" tabindex="-1"></a>multiple1</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="multiple1.html#cb25-1" tabindex="-1"></a><span class="co"># conduct a multiple regression, store it in multiple1</span></span>
+<span id="cb25-2"><a href="multiple1.html#cb25-2" tabindex="-1"></a>multiple1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> worry <span class="sc">+</span> describing, <span class="at">data =</span> wellbeing_data) </span>
+<span id="cb25-3"><a href="multiple1.html#cb25-3" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="multiple1.html#cb25-4" tabindex="-1"></a><span class="co"># look at the coefficients</span></span>
+<span id="cb25-5"><a href="multiple1.html#cb25-5" tabindex="-1"></a>multiple1</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = wellbeing ~ worry + describing, data = wellbeing_data)
@@ -572,13 +567,13 @@ NA
 <div id="residual-plot" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Residual plot<a href="multiple1.html#residual-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can obtain a plot of the predicted values vs. the residuals in the same way as for simple regression by using <code>augment()</code> in the <code>broom</code> package.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="multiple1.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ensure the broom package is loaded (it contains augment())</span></span>
-<span id="cb7-2"><a href="multiple1.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb7-3"><a href="multiple1.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="multiple1.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(multiple1) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-5"><a href="multiple1.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="multiple1.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="multiple1.html#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="multiple1.html#cb27-1" tabindex="-1"></a><span class="co"># ensure the broom package is loaded (it contains augment())</span></span>
+<span id="cb27-2"><a href="multiple1.html#cb27-2" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb27-3"><a href="multiple1.html#cb27-3" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="multiple1.html#cb27-4" tabindex="-1"></a><span class="fu">augment</span>(multiple1) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-5"><a href="multiple1.html#cb27-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb27-6"><a href="multiple1.html#cb27-6" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb27-7"><a href="multiple1.html#cb27-7" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
 <img src="02_multiple_regression_1_files/figure-html/unnamed-chunk-8-1.png" alt="Scatterplot of the fitted (predicted) values vs. residuals" width="60%" />
 <p class="caption">
@@ -599,14 +594,14 @@ Figure 2.2: Scatterplot of the fitted (predicted) values vs. residuals
 <p><br />
 </p>
 <p>Use <code>lmBF()</code> to obtain the Bayes Factor for the multiple regression model:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="multiple1.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ensure the BayesFactor package is loaded</span></span>
-<span id="cb8-2"><a href="multiple1.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(BayesFactor)</span>
-<span id="cb8-3"><a href="multiple1.html#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="multiple1.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># store the BF for the model in multiple1_BF</span></span>
-<span id="cb8-5"><a href="multiple1.html#cb8-5" aria-hidden="true" tabindex="-1"></a>multiple1_BF <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> worry <span class="sc">+</span> describing, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
-<span id="cb8-6"><a href="multiple1.html#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="multiple1.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># show the BF</span></span>
-<span id="cb8-8"><a href="multiple1.html#cb8-8" aria-hidden="true" tabindex="-1"></a>multiple1_BF</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="multiple1.html#cb28-1" tabindex="-1"></a><span class="co"># ensure the BayesFactor package is loaded</span></span>
+<span id="cb28-2"><a href="multiple1.html#cb28-2" tabindex="-1"></a><span class="fu">library</span>(BayesFactor)</span>
+<span id="cb28-3"><a href="multiple1.html#cb28-3" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="multiple1.html#cb28-4" tabindex="-1"></a><span class="co"># store the BF for the model in multiple1_BF</span></span>
+<span id="cb28-5"><a href="multiple1.html#cb28-5" tabindex="-1"></a>multiple1_BF <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> worry <span class="sc">+</span> describing, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<span id="cb28-6"><a href="multiple1.html#cb28-6" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="multiple1.html#cb28-7" tabindex="-1"></a><span class="co"># show the BF</span></span>
+<span id="cb28-8"><a href="multiple1.html#cb28-8" tabindex="-1"></a>multiple1_BF</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] worry + describing : 4190994 ±0%
@@ -615,7 +610,7 @@ Figure 2.2: Scatterplot of the fitted (predicted) values vs. residuals
 ##   Intercept only 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
-<p>The Bayes factor for the model is <input class='webex-solveme nospaces' size='4,190,994' data-answer='["4190994"]'/>. This tells us that the model with <code>worry</code> and <code>describing</code> is over four million times more likely than an <code>Intercept only</code> model (one with no predictors). Thus, there's extremely strong evidence that the multiple regression model explains <code>wellbeing</code>.</p>
+<p>The Bayes factor for the model is <input class='webex-solveme nospaces' size='9' data-answer='["4190994","4,190,994"]'/>. This tells us that the model with <code>worry</code> and <code>describing</code> is over four million times more likely than an <code>Intercept only</code> model (one with no predictors). Thus, there's extremely strong evidence that the multiple regression model explains <code>wellbeing</code>.</p>
 <p><br />
 </p>
 </div>
@@ -629,7 +624,7 @@ Figure 2.2: Scatterplot of the fitted (predicted) values vs. residuals
 <p><br />
 </p>
 <p>Use <code>glance()</code> in the <code>broom</code> package to obtain the R<sup>2</sup> for the model:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="multiple1.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(multiple1)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="multiple1.html#cb30-1" tabindex="-1"></a><span class="fu">glance</span>(multiple1)</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -731,8 +726,8 @@ nobs
 <div id="r2-in-simple-vs.-multiple-regression" class="section level3 hasAnchor" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> R<sup>2</sup> in simple vs. multiple regression<a href="multiple1.html#r2-in-simple-vs.-multiple-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In a simple regression of <code>wellbeing ~ worry</code>, the variance in <code>wellbeing</code> explained by <code>worry</code> is <strong>R<sup>2</sup> = 29.37%</strong>:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="multiple1.html#cb11-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> worry, <span class="at">data =</span> wellbeing_data)</span>
-<span id="cb11-2"><a href="multiple1.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(s1)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="multiple1.html#cb31-1" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> worry, <span class="at">data =</span> wellbeing_data)</span>
+<span id="cb31-2"><a href="multiple1.html#cb31-2" tabindex="-1"></a><span class="fu">glance</span>(s1)</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -820,8 +815,8 @@ nobs
 <p><br />
 </p>
 <p>In a simple regression of <code>wellbeing ~ describing</code>, the variance in <code>wellbeing</code> explained by <code>describing</code> is <strong>R<sup>2</sup> = 28.69%</strong></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="multiple1.html#cb12-1" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> describing, <span class="at">data =</span> wellbeing_data)</span>
-<span id="cb12-2"><a href="multiple1.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(s2)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="multiple1.html#cb32-1" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> describing, <span class="at">data =</span> wellbeing_data)</span>
+<span id="cb32-2"><a href="multiple1.html#cb32-2" tabindex="-1"></a><span class="fu">glance</span>(s2)</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -947,16 +942,16 @@ nobs
 </p>
 <p>First, obtain the Bayes factor for the model in which <code>predictor_1</code> has been left out of the full model. Then obtain the Bayes factor for model in which <code>predictor_2</code> has been left out of the model. Repeat this for as many predictors you have in the model.</p>
 <p>In our example, this involves obtaining the BFs of the model of <code>wellbeing ~ describing</code>, and the BF of the model of <code>wellbeing ~ worry</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="multiple1.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BF for wellbeing ~ describing</span></span>
-<span id="cb13-2"><a href="multiple1.html#cb13-2" aria-hidden="true" tabindex="-1"></a>describing_BF <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> describing, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
-<span id="cb13-3"><a href="multiple1.html#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="multiple1.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># BF for wellbeing ~ worry</span></span>
-<span id="cb13-5"><a href="multiple1.html#cb13-5" aria-hidden="true" tabindex="-1"></a>worry_BF <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> worry, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="multiple1.html#cb33-1" tabindex="-1"></a><span class="co"># BF for wellbeing ~ describing</span></span>
+<span id="cb33-2"><a href="multiple1.html#cb33-2" tabindex="-1"></a>describing_BF <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> describing, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<span id="cb33-3"><a href="multiple1.html#cb33-3" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="multiple1.html#cb33-4" tabindex="-1"></a><span class="co"># BF for wellbeing ~ worry</span></span>
+<span id="cb33-5"><a href="multiple1.html#cb33-5" tabindex="-1"></a>worry_BF <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> worry, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span></code></pre></div>
 <p>We also need the BF for the full model:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="multiple1.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BF for wellbeing ~ worry + describing</span></span>
-<span id="cb14-2"><a href="multiple1.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (this is the same as multiple1_BF above, but </span></span>
-<span id="cb14-3"><a href="multiple1.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  with a different name, which will help us see what&#39;s going on later)</span></span>
-<span id="cb14-4"><a href="multiple1.html#cb14-4" aria-hidden="true" tabindex="-1"></a>worry_describing_BF <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> worry <span class="sc">+</span> describing, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="multiple1.html#cb34-1" tabindex="-1"></a><span class="co"># BF for wellbeing ~ worry + describing</span></span>
+<span id="cb34-2"><a href="multiple1.html#cb34-2" tabindex="-1"></a><span class="co"># (this is the same as multiple1_BF above, but </span></span>
+<span id="cb34-3"><a href="multiple1.html#cb34-3" tabindex="-1"></a><span class="co">#  with a different name, which will help us see what&#39;s going on later)</span></span>
+<span id="cb34-4"><a href="multiple1.html#cb34-4" tabindex="-1"></a>worry_describing_BF <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> worry <span class="sc">+</span> describing, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span></code></pre></div>
 <p><br />
 </p>
 <div class="tip">
@@ -972,8 +967,8 @@ nobs
 <p><br />
 </p>
 <p>To determine if there's evidence for the unique contribution of <code>worry</code> to the model:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="multiple1.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare BFs for the full model and one in which worry is left out</span></span>
-<span id="cb15-2"><a href="multiple1.html#cb15-2" aria-hidden="true" tabindex="-1"></a>worry_describing_BF <span class="sc">/</span> describing_BF</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="multiple1.html#cb35-1" tabindex="-1"></a><span class="co"># compare BFs for the full model and one in which worry is left out</span></span>
+<span id="cb35-2"><a href="multiple1.html#cb35-2" tabindex="-1"></a>worry_describing_BF <span class="sc">/</span> describing_BF</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] worry + describing : 981.4912 ±0%
@@ -986,8 +981,8 @@ nobs
 <p><br />
 </p>
 <p>To determine if there's evidence for the unique contribution of <code>describing</code> to the model:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="multiple1.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BFs for the full model and one in which describing is left out</span></span>
-<span id="cb17-2"><a href="multiple1.html#cb17-2" aria-hidden="true" tabindex="-1"></a>worry_describing_BF <span class="sc">/</span> worry_BF</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="multiple1.html#cb37-1" tabindex="-1"></a><span class="co"># compare the BFs for the full model and one in which describing is left out</span></span>
+<span id="cb37-2"><a href="multiple1.html#cb37-2" tabindex="-1"></a>worry_describing_BF <span class="sc">/</span> worry_BF</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] worry + describing : 738.4095 ±0%
@@ -1026,7 +1021,7 @@ nobs
 <div id="exercise-1" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Exercise<a href="multiple1.html#exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-2" class="exercise"><strong>Exercise 2.2  </strong></span>Main Exercise</p>
+<p><span id="exr:unlabeled-div-7" class="exercise"><strong>Exercise 2.2  </strong></span>Main Exercise</p>
 <p>The <code>wellbeing_data</code> also contain these columns:</p>
 <ul>
 <li><code>gad</code> : Severity of symptoms of GAD (Generalised Anxiety Disorder). Higher scores indicate greater severity of symptoms.</li>
@@ -1049,12 +1044,12 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="multiple1.html#cb19-1" aria-hidden="true" tabindex="-1"></a>wellbeing_data <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a href="multiple1.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> brooding, <span class="at">y =</span> gad, <span class="at">size =</span> observing)) <span class="sc">+</span></span>
-<span id="cb19-3"><a href="multiple1.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb19-4"><a href="multiple1.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Brooding&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb19-5"><a href="multiple1.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;GAD severity of symptoms score&quot;</span>) <span class="sc">+</span></span>
-<span id="cb19-6"><a href="multiple1.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="multiple1.html#cb39-1" tabindex="-1"></a>wellbeing_data <span class="sc">%&gt;%</span> </span>
+<span id="cb39-2"><a href="multiple1.html#cb39-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> brooding, <span class="at">y =</span> gad, <span class="at">size =</span> observing)) <span class="sc">+</span></span>
+<span id="cb39-3"><a href="multiple1.html#cb39-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb39-4"><a href="multiple1.html#cb39-4" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Brooding&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb39-5"><a href="multiple1.html#cb39-5" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;GAD severity of symptoms score&quot;</span>) <span class="sc">+</span></span>
+<span id="cb39-6"><a href="multiple1.html#cb39-6" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-17"></span>
 <img src="02_multiple_regression_1_files/figure-html/unnamed-chunk-17-1.png" alt="GAD vs. brooding and observing scores" width="50%" />
 <p class="caption">
@@ -1080,9 +1075,9 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="multiple1.html#cb20-1" aria-hidden="true" tabindex="-1"></a>wellbeing_data <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a href="multiple1.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gad, brooding, observing) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-3"><a href="multiple1.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlate</span>(<span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="multiple1.html#cb40-1" tabindex="-1"></a>wellbeing_data <span class="sc">%&gt;%</span> </span>
+<span id="cb40-2"><a href="multiple1.html#cb40-2" tabindex="-1"></a>  <span class="fu">select</span>(gad, brooding, observing) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-3"><a href="multiple1.html#cb40-3" tabindex="-1"></a>  <span class="fu">correlate</span>(<span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
 </div>
 <p><strong>State the correlations to two decimal places:</strong></p>
 <ul>
@@ -1112,8 +1107,8 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="multiple1.html#cb21-1" aria-hidden="true" tabindex="-1"></a>multiple2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> observing, <span class="at">data =</span> wellbeing_data)</span>
-<span id="cb21-2"><a href="multiple1.html#cb21-2" aria-hidden="true" tabindex="-1"></a>multiple2</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="multiple1.html#cb41-1" tabindex="-1"></a>multiple2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> observing, <span class="at">data =</span> wellbeing_data)</span>
+<span id="cb41-2"><a href="multiple1.html#cb41-2" tabindex="-1"></a>multiple2</span></code></pre></div>
 </div>
 <p>What is the value of the intercept a (to two decimal places)? <input class='webex-solveme nospaces' size='4' data-answer='["0.07"]'/></p>
 <p>What is the value of the coefficient for <code>brooding</code> (to two decimal places)? <input class='webex-solveme nospaces' size='4' data-answer='["0.89"]'/></p>
@@ -1121,8 +1116,8 @@ Solution
 <p><br />
 </p>
 <p>What is the regression equation?</p>
-<div id="radio_HRYAQJRCSB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HRYAQJRCSB" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_HRYAQJRCSB" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_HRYAQJRCSB" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label>
+<div id="radio_HOZUNNOUWR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HOZUNNOUWR" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_HOZUNNOUWR" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_HOZUNNOUWR" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label>
 </div>
 <p><br />
 </p>
@@ -1137,7 +1132,7 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="multiple1.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(multiple2)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="multiple1.html#cb42-1" tabindex="-1"></a><span class="fu">glance</span>(multiple2)</span></code></pre></div>
 </div>
 <p>What proportion of variance in the GAD score is explained by the model containing <code>brooding</code> and <code>observing</code>? (Report the adjusted R-squared value as a proportion, to two decimal places) <input class='webex-solveme nospaces' size='4' data-answer='["0.34",".34"]'/></p>
 <p>Report the value of adjusted R-squared as a percentage, to two decimal places. Hint: multiply the proportion given in the output by 100 to obtain the percentage value. The adjusted R<sup>2</sup> value is equal to <input class='webex-solveme nospaces' size='5' data-answer='["34.50"]'/>%</p>
@@ -1154,7 +1149,7 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="multiple1.html#cb23-1" aria-hidden="true" tabindex="-1"></a>multiple2_BF <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> observing, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="multiple1.html#cb43-1" tabindex="-1"></a>multiple2_BF <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> observing, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span></code></pre></div>
 </div>
 <p>How many times more likely is the model with <code>brooding</code> and <code>observing</code> as a predictor of <code>gad</code>, compared to an intercept-only model? (to two decimal places) <input class='webex-solveme nospaces' size='8' data-answer='["26889.69"]'/></p>
 <p><br />
@@ -1170,10 +1165,10 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="multiple1.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(multiple2) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-2"><a href="multiple1.html#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span> </span>
-<span id="cb24-3"><a href="multiple1.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb24-4"><a href="multiple1.html#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="multiple1.html#cb44-1" tabindex="-1"></a><span class="fu">augment</span>(multiple2) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-2"><a href="multiple1.html#cb44-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span> </span>
+<span id="cb44-3"><a href="multiple1.html#cb44-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb44-4"><a href="multiple1.html#cb44-4" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)</span></code></pre></div>
 </div>
 <p><strong>What type of trend is evident between the predicted values and the residuals <select class='webex-select'><option value='blank'></option><option value=''>positive trend</option><option value='answer'>there's no association</option><option value=''>negative association</option></select></strong></p>
 <div class="webex-solution">
@@ -1217,21 +1212,21 @@ Then the BFs for relevant models need to be compared, using:</p>
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="multiple1.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BF for gad ~ brooding</span></span>
-<span id="cb25-2"><a href="multiple1.html#cb25-2" aria-hidden="true" tabindex="-1"></a>BF_brooding <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(gad <span class="sc">~</span> brooding, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
-<span id="cb25-3"><a href="multiple1.html#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="multiple1.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># BF for gad ~ observing</span></span>
-<span id="cb25-5"><a href="multiple1.html#cb25-5" aria-hidden="true" tabindex="-1"></a>BF_observing <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(gad <span class="sc">~</span> observing, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
-<span id="cb25-6"><a href="multiple1.html#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="multiple1.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># BF for full model</span></span>
-<span id="cb25-8"><a href="multiple1.html#cb25-8" aria-hidden="true" tabindex="-1"></a>BF_brooding_observing <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> observing, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
-<span id="cb25-9"><a href="multiple1.html#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-10"><a href="multiple1.html#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-11"><a href="multiple1.html#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co"># BF for the unique contribution of observing</span></span>
-<span id="cb25-12"><a href="multiple1.html#cb25-12" aria-hidden="true" tabindex="-1"></a>BF_brooding_observing <span class="sc">/</span> BF_brooding</span>
-<span id="cb25-13"><a href="multiple1.html#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-14"><a href="multiple1.html#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co"># BF for the unique contribution of brooding</span></span>
-<span id="cb25-15"><a href="multiple1.html#cb25-15" aria-hidden="true" tabindex="-1"></a>BF_brooding_observing <span class="sc">/</span> BF_observing</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="multiple1.html#cb45-1" tabindex="-1"></a><span class="co"># BF for gad ~ brooding</span></span>
+<span id="cb45-2"><a href="multiple1.html#cb45-2" tabindex="-1"></a>BF_brooding <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(gad <span class="sc">~</span> brooding, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<span id="cb45-3"><a href="multiple1.html#cb45-3" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="multiple1.html#cb45-4" tabindex="-1"></a><span class="co"># BF for gad ~ observing</span></span>
+<span id="cb45-5"><a href="multiple1.html#cb45-5" tabindex="-1"></a>BF_observing <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(gad <span class="sc">~</span> observing, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<span id="cb45-6"><a href="multiple1.html#cb45-6" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="multiple1.html#cb45-7" tabindex="-1"></a><span class="co"># BF for full model</span></span>
+<span id="cb45-8"><a href="multiple1.html#cb45-8" tabindex="-1"></a>BF_brooding_observing <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> observing, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<span id="cb45-9"><a href="multiple1.html#cb45-9" tabindex="-1"></a></span>
+<span id="cb45-10"><a href="multiple1.html#cb45-10" tabindex="-1"></a></span>
+<span id="cb45-11"><a href="multiple1.html#cb45-11" tabindex="-1"></a><span class="co"># BF for the unique contribution of observing</span></span>
+<span id="cb45-12"><a href="multiple1.html#cb45-12" tabindex="-1"></a>BF_brooding_observing <span class="sc">/</span> BF_brooding</span>
+<span id="cb45-13"><a href="multiple1.html#cb45-13" tabindex="-1"></a></span>
+<span id="cb45-14"><a href="multiple1.html#cb45-14" tabindex="-1"></a><span class="co"># BF for the unique contribution of brooding</span></span>
+<span id="cb45-15"><a href="multiple1.html#cb45-15" tabindex="-1"></a>BF_brooding_observing <span class="sc">/</span> BF_observing</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -1261,11 +1256,11 @@ Solution
 <h3><span class="header-section-number">2.6.1</span> <code>regressionBF()</code><a href="multiple1.html#regressionbf" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When determining the BF for the unique contribution of a predictor, as a shortcut, we could have used <code>regressionBF()</code>, rather than using <code>lmBF()</code> multiple times. <code>regressionBF()</code> automatically calculates the BFs for all permutations of a set of predictors in a model.</p>
 <p>For our first model of <code>wellbeing</code> on the basis of <code>worry</code> and <code>describing</code>:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="multiple1.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain BFs for all permutations of the model predictors</span></span>
-<span id="cb26-2"><a href="multiple1.html#cb26-2" aria-hidden="true" tabindex="-1"></a>all_BFs <span class="ot">&lt;-</span> <span class="fu">regressionBF</span>(wellbeing <span class="sc">~</span> worry <span class="sc">+</span> describing, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
-<span id="cb26-3"><a href="multiple1.html#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="multiple1.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the BFs</span></span>
-<span id="cb26-5"><a href="multiple1.html#cb26-5" aria-hidden="true" tabindex="-1"></a>all_BFs</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="multiple1.html#cb46-1" tabindex="-1"></a><span class="co"># obtain BFs for all permutations of the model predictors</span></span>
+<span id="cb46-2"><a href="multiple1.html#cb46-2" tabindex="-1"></a>all_BFs <span class="ot">&lt;-</span> <span class="fu">regressionBF</span>(wellbeing <span class="sc">~</span> worry <span class="sc">+</span> describing, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<span id="cb46-3"><a href="multiple1.html#cb46-3" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="multiple1.html#cb46-4" tabindex="-1"></a><span class="co"># look at the BFs</span></span>
+<span id="cb46-5"><a href="multiple1.html#cb46-5" tabindex="-1"></a>all_BFs</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] worry              : 5675.703 ±0%
@@ -1284,8 +1279,8 @@ Solution
 <p><br />
 </p>
 <p>Comparing the BF for [3] and [2] will tell us whether there's evidence that <code>worry</code> makes a unique contribution.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="multiple1.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare multiple regression with simple regression 2</span></span>
-<span id="cb28-2"><a href="multiple1.html#cb28-2" aria-hidden="true" tabindex="-1"></a>all_BFs[<span class="dv">3</span>] <span class="sc">/</span> all_BFs[<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="multiple1.html#cb48-1" tabindex="-1"></a><span class="co"># compare multiple regression with simple regression 2</span></span>
+<span id="cb48-2"><a href="multiple1.html#cb48-2" tabindex="-1"></a>all_BFs[<span class="dv">3</span>] <span class="sc">/</span> all_BFs[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] worry + describing : 981.4912 ±0%
@@ -1298,8 +1293,8 @@ Solution
 <p><br />
 </p>
 <p>Comparing the BF for [3] and [1] will therefore tell us whether there's evidence that <code>describing</code> makes a unique contribution to the model:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="multiple1.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the BF for [3] and [1]</span></span>
-<span id="cb30-2"><a href="multiple1.html#cb30-2" aria-hidden="true" tabindex="-1"></a>all_BFs[<span class="dv">3</span>] <span class="sc">/</span> all_BFs[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="multiple1.html#cb50-1" tabindex="-1"></a><span class="co"># compare the BF for [3] and [1]</span></span>
+<span id="cb50-2"><a href="multiple1.html#cb50-2" tabindex="-1"></a>all_BFs[<span class="dv">3</span>] <span class="sc">/</span> all_BFs[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] worry + describing : 738.4095 ±0%
@@ -1315,7 +1310,7 @@ Solution
 <p><br />
 </p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-3" class="exercise"><strong>Exercise 2.3  </strong></span>Further exercise 1</p>
+<p><span id="exr:unlabeled-div-8" class="exercise"><strong>Exercise 2.3  </strong></span>Further exercise 1</p>
 <p>Use <code>regressionBF()</code> to obtain the BFs for the unique contribution of <code>brooding</code> and <code>observation</code> in the model in the Main Exercise (i.e., <code>gad ~ brooding + observation</code>), and check that they are the same as the ones produced when you used <code>lmBF()</code></p>
 </div>
 <p><br />
@@ -1324,13 +1319,13 @@ Solution
 <div id="predicting-new-data" class="section level3 hasAnchor" number="2.6.2">
 <h3><span class="header-section-number">2.6.2</span> Predicting new data<a href="multiple1.html#predicting-new-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As with simple regression, we can use <code>augment()</code> to predict what the outcome variable would be, given new data. For example, for a new individual with a <code>worry</code> score of 20 and <code>describing</code> score of 15:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="multiple1.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the new data (for each predictor in the model)</span></span>
-<span id="cb32-2"><a href="multiple1.html#cb32-2" aria-hidden="true" tabindex="-1"></a>new_scores <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">worry =</span> <span class="dv">20</span>, </span>
-<span id="cb32-3"><a href="multiple1.html#cb32-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">describing =</span> <span class="dv">15</span>)</span>
-<span id="cb32-4"><a href="multiple1.html#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-5"><a href="multiple1.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># use augment() in the broom package to obtain the prediction</span></span>
-<span id="cb32-6"><a href="multiple1.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb32-7"><a href="multiple1.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(multiple1, <span class="at">newdata =</span> new_scores)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="multiple1.html#cb52-1" tabindex="-1"></a><span class="co"># specify the new data (for each predictor in the model)</span></span>
+<span id="cb52-2"><a href="multiple1.html#cb52-2" tabindex="-1"></a>new_scores <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">worry =</span> <span class="dv">20</span>, </span>
+<span id="cb52-3"><a href="multiple1.html#cb52-3" tabindex="-1"></a>                     <span class="at">describing =</span> <span class="dv">15</span>)</span>
+<span id="cb52-4"><a href="multiple1.html#cb52-4" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="multiple1.html#cb52-5" tabindex="-1"></a><span class="co"># use augment() in the broom package to obtain the prediction</span></span>
+<span id="cb52-6"><a href="multiple1.html#cb52-6" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb52-7"><a href="multiple1.html#cb52-7" tabindex="-1"></a><span class="fu">augment</span>(multiple1, <span class="at">newdata =</span> new_scores)</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -1365,12 +1360,12 @@ describing
 <p><br />
 </p>
 <p>To derive predictions for several new participants, use <code>c(score1, score2...)</code> when specifying the <code>new_scores</code>. To add another individual with a <code>worry</code> score of 25 and <code>describing</code> score of 10</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="multiple1.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the new data (for both predictors)</span></span>
-<span id="cb33-2"><a href="multiple1.html#cb33-2" aria-hidden="true" tabindex="-1"></a>new_scores <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">worry =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>), </span>
-<span id="cb33-3"><a href="multiple1.html#cb33-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">describing =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">10</span>))</span>
-<span id="cb33-4"><a href="multiple1.html#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="multiple1.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># use augment() in the broom package for the predictions</span></span>
-<span id="cb33-6"><a href="multiple1.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(multiple1, <span class="at">newdata =</span> new_scores)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="multiple1.html#cb53-1" tabindex="-1"></a><span class="co"># specify the new data (for both predictors)</span></span>
+<span id="cb53-2"><a href="multiple1.html#cb53-2" tabindex="-1"></a>new_scores <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">worry =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>), </span>
+<span id="cb53-3"><a href="multiple1.html#cb53-3" tabindex="-1"></a>                     <span class="at">describing =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">10</span>))</span>
+<span id="cb53-4"><a href="multiple1.html#cb53-4" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="multiple1.html#cb53-5" tabindex="-1"></a><span class="co"># use augment() in the broom package for the predictions</span></span>
+<span id="cb53-6"><a href="multiple1.html#cb53-6" tabindex="-1"></a><span class="fu">augment</span>(multiple1, <span class="at">newdata =</span> new_scores)</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -1416,7 +1411,7 @@ describing
 <p><br />
 </p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-4" class="exercise"><strong>Exercise 2.4  </strong></span>Predicting data</p>
+<p><span id="exr:unlabeled-div-9" class="exercise"><strong>Exercise 2.4  </strong></span>Predicting data</p>
 <p>For the model in the main exercise (i.e., <code>gad ~ brooding + observing</code>), what are the predicted values of <code>gad</code> for three new individuals with <code>brooding</code> scores of 10, 15, and 20, and <code>observing</code> scores of 3, 6 and 9, respectively.</p>
 <ul>
 <li>Predicted GAD of participant 1 (to one decimal place) = <input class='webex-solveme nospaces' size='3' data-answer='["8.9"]'/></li>
@@ -1427,18 +1422,18 @@ describing
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="multiple1.html#cb34-1" aria-hidden="true" tabindex="-1"></a>new_scores <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">brooding =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>),</span>
-<span id="cb34-2"><a href="multiple1.html#cb34-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">observing =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span>))</span>
-<span id="cb34-3"><a href="multiple1.html#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="multiple1.html#cb34-4" aria-hidden="true" tabindex="-1"></a>multiple2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> observing, <span class="at">data =</span> wellbeing_data)</span>
-<span id="cb34-5"><a href="multiple1.html#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-6"><a href="multiple1.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(multiple2, <span class="at">newdata =</span> new_scores)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="multiple1.html#cb54-1" tabindex="-1"></a>new_scores <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">brooding =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>),</span>
+<span id="cb54-2"><a href="multiple1.html#cb54-2" tabindex="-1"></a>                     <span class="at">observing =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span>))</span>
+<span id="cb54-3"><a href="multiple1.html#cb54-3" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="multiple1.html#cb54-4" tabindex="-1"></a>multiple2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(gad <span class="sc">~</span> brooding <span class="sc">+</span> observing, <span class="at">data =</span> wellbeing_data)</span>
+<span id="cb54-5"><a href="multiple1.html#cb54-5" tabindex="-1"></a></span>
+<span id="cb54-6"><a href="multiple1.html#cb54-6" tabindex="-1"></a><span class="fu">augment</span>(multiple2, <span class="at">newdata =</span> new_scores)</span></code></pre></div>
 </div>
 </div>
 <p><br />
 </p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-5" class="exercise"><strong>Exercise 2.5  </strong></span>Further exercise</p>
+<p><span id="exr:unlabeled-div-10" class="exercise"><strong>Exercise 2.5  </strong></span>Further exercise</p>
 <p>Not essential. Only for if you are <em>really</em> confident with everything.</p>
 <p>The variables <code>attention</code>, <code>clarity</code> and <code>repair</code> in the <code>wellbeing_data</code> are measures of emotional intelligence. To what extent do these three predictors uniquely explain <code>wellbeing</code> in a multiple regression?</p>
 <ul>
@@ -1459,56 +1454,56 @@ Hint
 Solution
 </button>
 <p>Check correlations:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="multiple1.html#cb35-1" aria-hidden="true" tabindex="-1"></a>wellbeing_data <span class="sc">%&gt;%</span> </span>
-<span id="cb35-2"><a href="multiple1.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(wellbeing, attention, clarity, repair) <span class="sc">%&gt;%</span> </span>
-<span id="cb35-3"><a href="multiple1.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlate</span>(<span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="multiple1.html#cb55-1" tabindex="-1"></a>wellbeing_data <span class="sc">%&gt;%</span> </span>
+<span id="cb55-2"><a href="multiple1.html#cb55-2" tabindex="-1"></a>  <span class="fu">select</span>(wellbeing, attention, clarity, repair) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-3"><a href="multiple1.html#cb55-3" tabindex="-1"></a>  <span class="fu">correlate</span>(<span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
 <p> </p>
 <p>Run multiple regression:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="multiple1.html#cb36-1" aria-hidden="true" tabindex="-1"></a>multiple3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, <span class="at">data =</span> wellbeing_data)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="multiple1.html#cb56-1" tabindex="-1"></a>multiple3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, <span class="at">data =</span> wellbeing_data)</span></code></pre></div>
 <p><br />
 </p>
 <p>Adjusted R<sup>2</sup> for the overall model:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="multiple1.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>( multiple3 )</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="multiple1.html#cb57-1" tabindex="-1"></a><span class="fu">glance</span>( multiple3 )</span></code></pre></div>
 <p><br />
 </p>
 <p>Using <code>lmBF()</code>:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="multiple1.html#cb38-1" aria-hidden="true" tabindex="-1"></a>BF_attention_clarity_repair <span class="ot">&lt;-</span></span>
-<span id="cb38-2"><a href="multiple1.html#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
-<span id="cb38-3"><a href="multiple1.html#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-4"><a href="multiple1.html#cb38-4" aria-hidden="true" tabindex="-1"></a>BF_attention_clarity <span class="ot">&lt;-</span></span>
-<span id="cb38-5"><a href="multiple1.html#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> clarity, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
-<span id="cb38-6"><a href="multiple1.html#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="multiple1.html#cb38-7" aria-hidden="true" tabindex="-1"></a>BF_attention_repair <span class="ot">&lt;-</span></span>
-<span id="cb38-8"><a href="multiple1.html#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> repair, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
-<span id="cb38-9"><a href="multiple1.html#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-10"><a href="multiple1.html#cb38-10" aria-hidden="true" tabindex="-1"></a>BF_clarity_repair <span class="ot">&lt;-</span></span>
-<span id="cb38-11"><a href="multiple1.html#cb38-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> clarity <span class="sc">+</span> repair, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
-<span id="cb38-12"><a href="multiple1.html#cb38-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-13"><a href="multiple1.html#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of attention</span></span>
-<span id="cb38-14"><a href="multiple1.html#cb38-14" aria-hidden="true" tabindex="-1"></a>BF_attention_clarity_repair <span class="sc">/</span> BF_clarity_repair</span>
-<span id="cb38-15"><a href="multiple1.html#cb38-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-16"><a href="multiple1.html#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of clarity</span></span>
-<span id="cb38-17"><a href="multiple1.html#cb38-17" aria-hidden="true" tabindex="-1"></a>BF_attention_clarity_repair <span class="sc">/</span> BF_attention_repair</span>
-<span id="cb38-18"><a href="multiple1.html#cb38-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-19"><a href="multiple1.html#cb38-19" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of repair</span></span>
-<span id="cb38-20"><a href="multiple1.html#cb38-20" aria-hidden="true" tabindex="-1"></a>BF_attention_clarity_repair <span class="sc">/</span> BF_attention_clarity</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="multiple1.html#cb58-1" tabindex="-1"></a>BF_attention_clarity_repair <span class="ot">&lt;-</span></span>
+<span id="cb58-2"><a href="multiple1.html#cb58-2" tabindex="-1"></a>  <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<span id="cb58-3"><a href="multiple1.html#cb58-3" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="multiple1.html#cb58-4" tabindex="-1"></a>BF_attention_clarity <span class="ot">&lt;-</span></span>
+<span id="cb58-5"><a href="multiple1.html#cb58-5" tabindex="-1"></a>  <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> clarity, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<span id="cb58-6"><a href="multiple1.html#cb58-6" tabindex="-1"></a></span>
+<span id="cb58-7"><a href="multiple1.html#cb58-7" tabindex="-1"></a>BF_attention_repair <span class="ot">&lt;-</span></span>
+<span id="cb58-8"><a href="multiple1.html#cb58-8" tabindex="-1"></a>  <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> repair, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<span id="cb58-9"><a href="multiple1.html#cb58-9" tabindex="-1"></a></span>
+<span id="cb58-10"><a href="multiple1.html#cb58-10" tabindex="-1"></a>BF_clarity_repair <span class="ot">&lt;-</span></span>
+<span id="cb58-11"><a href="multiple1.html#cb58-11" tabindex="-1"></a>  <span class="fu">lmBF</span>(wellbeing <span class="sc">~</span> clarity <span class="sc">+</span> repair, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<span id="cb58-12"><a href="multiple1.html#cb58-12" tabindex="-1"></a></span>
+<span id="cb58-13"><a href="multiple1.html#cb58-13" tabindex="-1"></a><span class="co"># unique contribution of attention</span></span>
+<span id="cb58-14"><a href="multiple1.html#cb58-14" tabindex="-1"></a>BF_attention_clarity_repair <span class="sc">/</span> BF_clarity_repair</span>
+<span id="cb58-15"><a href="multiple1.html#cb58-15" tabindex="-1"></a></span>
+<span id="cb58-16"><a href="multiple1.html#cb58-16" tabindex="-1"></a><span class="co"># unique contribution of clarity</span></span>
+<span id="cb58-17"><a href="multiple1.html#cb58-17" tabindex="-1"></a>BF_attention_clarity_repair <span class="sc">/</span> BF_attention_repair</span>
+<span id="cb58-18"><a href="multiple1.html#cb58-18" tabindex="-1"></a></span>
+<span id="cb58-19"><a href="multiple1.html#cb58-19" tabindex="-1"></a><span class="co"># unique contribution of repair</span></span>
+<span id="cb58-20"><a href="multiple1.html#cb58-20" tabindex="-1"></a>BF_attention_clarity_repair <span class="sc">/</span> BF_attention_clarity</span></code></pre></div>
 <p><br />
 </p>
 <p>Using <code>regressionBF()</code>:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="multiple1.html#cb39-1" aria-hidden="true" tabindex="-1"></a>all_BFs <span class="ot">&lt;-</span></span>
-<span id="cb39-2"><a href="multiple1.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">regressionBF</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
-<span id="cb39-3"><a href="multiple1.html#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="multiple1.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># look at output</span></span>
-<span id="cb39-5"><a href="multiple1.html#cb39-5" aria-hidden="true" tabindex="-1"></a>all_BFs</span>
-<span id="cb39-6"><a href="multiple1.html#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-7"><a href="multiple1.html#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of attention</span></span>
-<span id="cb39-8"><a href="multiple1.html#cb39-8" aria-hidden="true" tabindex="-1"></a>all_BFs[<span class="dv">7</span>] <span class="sc">/</span> all_BFs[<span class="dv">6</span>]</span>
-<span id="cb39-9"><a href="multiple1.html#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-10"><a href="multiple1.html#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of clarity</span></span>
-<span id="cb39-11"><a href="multiple1.html#cb39-11" aria-hidden="true" tabindex="-1"></a>all_BFs[<span class="dv">7</span>] <span class="sc">/</span> all_BFs[<span class="dv">5</span>]</span>
-<span id="cb39-12"><a href="multiple1.html#cb39-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-13"><a href="multiple1.html#cb39-13" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution of repair</span></span>
-<span id="cb39-14"><a href="multiple1.html#cb39-14" aria-hidden="true" tabindex="-1"></a>all_BFs[<span class="dv">7</span>] <span class="sc">/</span> all_BFs[<span class="dv">4</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="multiple1.html#cb59-1" tabindex="-1"></a>all_BFs <span class="ot">&lt;-</span></span>
+<span id="cb59-2"><a href="multiple1.html#cb59-2" tabindex="-1"></a>  <span class="fu">regressionBF</span>(wellbeing <span class="sc">~</span> attention <span class="sc">+</span> clarity <span class="sc">+</span> repair, <span class="at">data =</span> <span class="fu">data.frame</span>(wellbeing_data))</span>
+<span id="cb59-3"><a href="multiple1.html#cb59-3" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="multiple1.html#cb59-4" tabindex="-1"></a><span class="co"># look at output</span></span>
+<span id="cb59-5"><a href="multiple1.html#cb59-5" tabindex="-1"></a>all_BFs</span>
+<span id="cb59-6"><a href="multiple1.html#cb59-6" tabindex="-1"></a></span>
+<span id="cb59-7"><a href="multiple1.html#cb59-7" tabindex="-1"></a><span class="co"># unique contribution of attention</span></span>
+<span id="cb59-8"><a href="multiple1.html#cb59-8" tabindex="-1"></a>all_BFs[<span class="dv">7</span>] <span class="sc">/</span> all_BFs[<span class="dv">6</span>]</span>
+<span id="cb59-9"><a href="multiple1.html#cb59-9" tabindex="-1"></a></span>
+<span id="cb59-10"><a href="multiple1.html#cb59-10" tabindex="-1"></a><span class="co"># unique contribution of clarity</span></span>
+<span id="cb59-11"><a href="multiple1.html#cb59-11" tabindex="-1"></a>all_BFs[<span class="dv">7</span>] <span class="sc">/</span> all_BFs[<span class="dv">5</span>]</span>
+<span id="cb59-12"><a href="multiple1.html#cb59-12" tabindex="-1"></a></span>
+<span id="cb59-13"><a href="multiple1.html#cb59-13" tabindex="-1"></a><span class="co"># unique contribution of repair</span></span>
+<span id="cb59-14"><a href="multiple1.html#cb59-14" tabindex="-1"></a>all_BFs[<span class="dv">7</span>] <span class="sc">/</span> all_BFs[<span class="dv">4</span>]</span></code></pre></div>
 <p><br />
 </p>
 </div>
@@ -1548,25 +1543,41 @@ Solution
 update_total_correct = function() {
   console.log("webex: update total_correct");
 
-  if (t = document.getElementById("webex-total_correct")) {
-    var correct = document.getElementsByClassName("webex-correct").length;
-    var solvemes = document.getElementsByClassName("webex-solveme").length;
-    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
-    var selects = document.getElementsByClassName("webex-select").length;
-    
-    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
   }
 }
 
 /* webex-solution button toggling function */
 b_func = function() {
   console.log("webex: toggle hide");
-  
+
   var cl = this.parentElement.classList;
   if (cl.contains('open')) {
     cl.remove("open");
   } else {
     cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
   }
 }
 
@@ -1620,9 +1631,9 @@ solveme_func = function(e) {
 /* function for checking select answers */
 select_func = function(e) {
   console.log("webex: check select");
-  
+
   var cl = this.classList
-  
+
   /* add style */
   cl.remove("webex-incorrect");
   cl.remove("webex-correct");
@@ -1631,7 +1642,7 @@ select_func = function(e) {
   } else if (this.value != "blank") {
     cl.add("webex-incorrect");
   }
-  
+
   update_total_correct();
 }
 
@@ -1642,25 +1653,25 @@ radiogroups_func = function(e) {
   var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
   var cl = checked_button.parentElement.classList;
   var labels = checked_button.parentElement.parentElement.children;
-  
+
   /* get rid of styles */
   for (i = 0; i < labels.length; i++) {
     labels[i].classList.remove("webex-incorrect");
     labels[i].classList.remove("webex-correct");
   }
-  
+
   /* add style */
   if (checked_button.value == "answer") {
     cl.add("webex-correct");
   } else {
     cl.add("webex-incorrect");
   }
-  
+
   update_total_correct();
 }
 
 window.onload = function() {
-  console.log("onload");
+  console.log("webex onload");
   /* set up solution buttons */
   var buttons = document.getElementsByTagName("button");
 
@@ -1668,6 +1679,22 @@ window.onload = function() {
     if (buttons[i].parentElement.classList.contains('webex-solution')) {
       buttons[i].onclick = b_func;
     }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
   }
 
   /* set up webex-solveme inputs */
@@ -1695,18 +1722,21 @@ window.onload = function() {
     /* attach checking function */
     solveme[i].onkeyup = solveme_func;
     solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
   }
-  
+
   /* set up radiogroups */
   var radiogroups = document.getElementsByClassName("webex-radiogroup");
   for (var i = 0; i < radiogroups.length; i++) {
     radiogroups[i].onchange = radiogroups_func;
   }
-  
+
   /* set up selects */
   var selects = document.getElementsByClassName("webex-select");
   for (var i = 0; i < selects.length; i++) {
     selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
   }
 
   update_total_correct();

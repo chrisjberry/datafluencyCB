@@ -2,7 +2,7 @@
 
 *Chris Berry*
 \
-*2023*
+*2024*
 
 
 
@@ -22,8 +22,8 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 
 ## Overview
 
-* **Slides** from the lecture part of the session: [Download](slides/PSYC753_L4_MultipleRegression2.pptx)
-* **Slides** for [Rmd support](slides/PSYC753_Rmd_Support.pptx)
+* **Slides** from the lecture part of the session: [Download](slides/PSYC761_L4_MultipleRegression2.pptx)
+* **Slides** for [Rmd support](slides/PSYC761_Rmd_Support.pptx)
 
 \
 
@@ -32,12 +32,12 @@ So far we have looked at [simple](#simple1) and [multiple regression](#multiple1
 
 Here, we look at multiple regression with a mixture of continuous and categorical predictors. Specifically, one predictor is _continuous_, and the other is a _dichotomous categorical variable_ (i.e., made up of two levels or groups). 
 
-This type of analysis can be used to see whether the relationship between two variables is the same or different across groups of individuals. For example, adherence to a particular treatment may be associated with attitudes towards the efficacy of the treatment, but the nature of the association may differ according to the type of psychological disorder a person has.
+This type of analysis can be used to see whether the relationship between two variables is the same or different across groups of individuals. For example, adherence to a particular treatment (e.g., CBT) may be associated with attitudes towards the efficacy of the treatment, but the nature of the association may differ according to the type of psychological disorder a person has (e.g., depressed vs. not depressed).
 
 Thus, in this type of analysis, in addition to looking at the ability of individual predictors to explain an outcome variable, we're able to look at their _combined_ effect in explaining the outcome. This is referred to as an **interaction effect**. The interaction can tell us whether the relationship between one of the predictors and the outcome differs as a function of the levels of the other predictor variable.
 
 ## Worked example
-Scientists often research things that are of personal interest to themselves. Do people end up trusting the researcher more when they have some personal investment in what they are researching? Altenmuller et al. (2021) looked at whether participants' trust in the researcher is related to 1) whether they are told that the researcher is personally affected by the research or not affected by their research, and 2) the participant's attitude towards the research topic. 
+Scientists often research things that are of personal interest to themselves. Do we trust the researcher more when they have some personal investment in what they are researching? Altenmuller et al. (2021) looked at whether participants' trust in the researcher is related to 1) whether they are told that the researcher is personally affected by the research or not affected by their research, and 2) the participant's attitude towards the research topic. 
 
 The data from Altenmuller et al.'s (2021) study (Experiment 2) are stored at the link below. 
 
@@ -231,6 +231,7 @@ without_interaction <- lm(trustworthiness ~ attitude + group,
                           data = trust_data)
 
 # R² for the model
+# load the broom package if you haven't already
 # library(broom)
 glance(without_interaction)
 ```
@@ -243,9 +244,27 @@ glance(without_interaction)
 
 </div>
 
-* How much of the variance in `trustworthiness` is explained by the model with `attitude` and `group`? The adjusted R^2^ (as a proportion, to two decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["0.01"]'/>.
+* How much of the variance in `trustworthiness` is explained by the model with `attitude` and `group`? The adjusted R^2^ (as a **proportion**, to two decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["0.01"]'/>.
+
+
+
+<div class='webex-solution'><button>Hint: rounding</button>
+
+
+Did you know that R can round values to two decimal places for you?
+
+Use this code in your script:
+
+```r
+# round adjusted r-squared to 2.D.P
+round(0.0065555, 2)
+```
+
+</div>
+
 
 \
+
 
 Next use `lmBF()` to obtain the BF for the model with no interaction:
 
@@ -264,7 +283,7 @@ BF_without_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group : 0.1092231 ±1.1%
+## [1] attitude + group : 0.1065504 ±2.62%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -272,6 +291,14 @@ BF_without_interaction
 ## Bayes factor type: BFlinearModel, JZS
 ```
 The BF for the model without the interaction is equal to (to 2 decimal places) <input class='webex-solveme nospaces' data-tol='0.1' size='5' data-answer='["0.105",".105"]'/>.
+
+
+<div class='webex-solution'><button>Meaning of ±number%</button>
+
+You'll notice that the BF has `±4.03%` or similar next to it in the output. This is the error associated with the BF. It's like saying my height is 185 cm, plus or minus 4 cm or so. It can be non-zero because generation of the BFs involves random sampling processes. Larger error values mean that the exact same value of the BF won't necessarily be output each time the line of code containing `lmBF()` is run, so there's a chance that the BFs in your output differ slightly from those above. It should be very low, and approximately 0.10 though.
+
+</div>
+
 
 \
  
@@ -323,7 +350,7 @@ BF_with_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 31.78175 ±2.65%
+## [1] attitude + group + attitude * group : 31.92209 ±1.82%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -369,7 +396,7 @@ BF_with_interaction / BF_without_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 290.98 ±2.86%
+## [1] attitude + group + attitude * group : 299.5962 ±3.19%
 ## 
 ## Against denominator:
 ##   trustworthiness ~ attitude + group 
@@ -391,21 +418,37 @@ Assessing the interaction
 * What is the _increase_ in adjusted R^2^ as a result of the addition of the interaction term to the model? _Hint. Work out the difference between the two adjusted R^2^ values you noted above_ <input class='webex-solveme nospaces' size='4' data-answer='["0.04"]'/>
 
 
+
+<div class='webex-solution'><button>calculatoR</button>
+
+
+Did you know that R can function like a calculator too? Simply type the formula next to `>` in the console window and hit enter, e.g., `> 2 + 2`
+
+Or use code in your script:
+
+```r
+# work out difference in R-squared
+0.05 - 0.01
+```
+
+</div>
+
+
 \
 
 **Bayes factors**
 
-* According to comparison of BFs for the models, which statement is true?
+* According to comparison of BFs for the model with and without an interaction term included, which statement is true?
 
-<div class='webex-radiogroup' id='radio_XPPMTRIKLP'><label><input type="radio" autocomplete="off" name="radio_XPPMTRIKLP" value=""></input> <span>There&apos;s substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_XPPMTRIKLP" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_XPPMTRIKLP" value="answer"></input> <span>There&apos;s substantial evidence for an interaction between attitude and group</span></label></div>
+<div class='webex-radiogroup' id='radio_GDFQGMIKGF'><label><input type="radio" autocomplete="off" name="radio_GDFQGMIKGF" value=""></input> <span>There&apos;s substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_GDFQGMIKGF" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_GDFQGMIKGF" value="answer"></input> <span>There&apos;s substantial evidence for an interaction between attitude and group</span></label></div>
 
 
 
 <div class='webex-solution'><button>Explanation</button>
 
-As a result of adding in the interaction term to the model, the adjusted R^2^ value increases by approximately 0.04 (i.e., from 0.01 to 0.05). The comparison of BFs for the model with and without the interaction term indicates that there's substantial evidence for the interaction between `attitude` and `group` - it's around 300 times more likely that there is an interaction than there isn't one. 
+As a result of adding in the interaction term to the model, the adjusted R^2^ value increases by approximately 0.04 (i.e., from 0.01 to 0.05). The comparison of BFs for the model with and without the interaction term indicates that there's substantial evidence for the interaction between `attitude` and `group` - it's around 300 times more likely that there is an interaction than there isn't one, given the data. 
 
-Thus, as indicated in the scatterplot, there's evidence that the association between `trustworthiness` and `attitude` is different in each `group`. Namely, the association is positive in the `affected` group, whereas it appears to be negative in the `not_affected` group. 
+Thus, as indicated in the scatterplot, there's evidence that the association between `trustworthiness` and `attitude` is different in each `group`. Specifically, the association is positive in the `affected` group, whereas it appears to be negative in the `not_affected` group. 
 
 </div>
 
@@ -424,7 +467,7 @@ In a **simple slopes analysis** the relationship between the outcome and first p
 
 \
 
-Another way of thinking about the interaction is that it implies that the _slopes_ of the lines for the `affected` (red line in the scatterplot) and `not_affected` (blue line) groups are not the same. We'll conduct a simple slopes analysis by conducting two simple regressions. The first will be the regression of `trustworthiness` on the basis of `attitude` in the `affected` group. The second will be the regression of `trustworthiness` on the basis of `attitude` in the `not_affected` group. The simplest way to do this is to store the data for each group separately, then perform a simple regression with each dataset.
+Another way of thinking about the interaction is that it implies that the _slopes_ of the lines for the `affected` group (red line in the scatterplot) and `not_affected` group (blue line) are not the same. We'll conduct a simple slopes analysis by conducting two simple regressions. The first will be the regression of `trustworthiness` on the basis of `attitude` in the `affected` group. The second will be the regression of `trustworthiness` on the basis of `attitude` in the `not_affected` group. The simplest way to do this is to store the data for each group separately, then perform a simple regression with each dataset.
 
 \
 
@@ -478,9 +521,9 @@ For the `affected` group (the red line in the scatter plot)
 
 * The intercept of the regression line is = <input class='webex-solveme nospaces' size='4' data-answer='["3.96"]'/>
 * The slope of the regression line is = <input class='webex-solveme nospaces' size='4' data-answer='["0.18"]'/>
-* The BF for the model is <input class='webex-solveme nospaces' size='7' data-answer='["1483.22"]'/>
+* The BF for the model (to two decimal places) is <input class='webex-solveme nospaces' size='7' data-answer='["1483.22"]'/>
 * This is <select class='webex-select'><option value='blank'></option><option value=''>inconclusive</option><option value='answer'>substantial</option></select> evidence for <select class='webex-select'><option value='blank'></option><option value=''>a negative</option><option value=''>an absence of an</option><option value='answer'>a positive</option></select> association between `trustworthiness` and `attitude` in the `affected` group.
-* In this group, participants with more positive attitudes to the research topic perceived the researcher to <select class='webex-select'><option value='blank'></option><option value=''>be less</option><option value='answer'>be more</option></select> credible.
+* In this group, participants with more positive attitudes to the research topic perceived the researcher to be <select class='webex-select'><option value='blank'></option><option value=''>less</option><option value='answer'>more</option></select> credible.
 :::
 
 \
@@ -527,7 +570,7 @@ For the `not_affected` group (the blue line in the scatterplot)
 
 \
 
-In sum, this analysis has shown that when participants hold a more favourable attitude towards a research topic, they perceived researchers who were personally affected by their own research as being more trustworthy. The association appeared to be reversed for researchers who were not personally affected by their research, but a Bayes factor analysis indicated that there was no association between trustworthiness and attitude in this group.
+In sum, this analysis has shown that when participants hold a more favourable attitude towards a research topic, they perceived researchers who were personally affected by their own research as being more trustworthy. Although the association appeared to be reversed for researchers who were not personally affected by their research, a Bayes factor analysis indicated that there was insufficient evidence of an association between trustworthiness and attitude in this group.
 
 \
 
@@ -570,7 +613,7 @@ trust_data %>%
 
 
 * The slope for the `affected` group appears to be <select class='webex-select'><option value='blank'></option><option value=''>close to zero</option><option value='answer'>positive</option><option value=''>negative</option></select>
-* The slope for the `not_affected` group appears to be <select class='webex-select'><option value='blank'></option><option value='answer'>close to zero</option><option value='answer'>positive</option><option value=''>negative</option></select>
+* The slope for the `not_affected` group appears to be <select class='webex-select'><option value='blank'></option><option value='answer'>close to zero</option><option value='answer'>weakly positive</option><option value=''>negative</option></select>
 
 \
 
@@ -642,6 +685,17 @@ BF_credibility_with_interaction <-
 
 </div>
  
+
+
+<div class='webex-solution'><button>What does x 10^12 mean?</button>
+
+It means a very large number! For more information see:
+<a href="https://chrisjberry.github.io/datafluencyCB/faqs#e-meaning" target="_blank">FAQ</a> (Opens a new tab.)  
+
+Please take care to notice "e+" or "e-" in the output for your Bayes factors. As you can see, BF~10~ = 1.82 means something drastically different to BF~10~ = 1.82 x 10^27^, and you wouldn't want to make this kind of mistake when drawing statistical inferences! 
+
+</div>
+
 
 \
 
@@ -822,8 +876,8 @@ BF_evaluation_no_interaction <-
 
 **3. Obtain adjusted R^2^ and the BF for the model with an interaction**
 
-* Adjusted R^2^ (as a _proportion_, to 2 decimal places) for the model without an interaction is: <input class='webex-solveme nospaces' size='4' data-answer='["0.27"]'/>
-* The BF for the model without an interaction is <input class='webex-solveme nospaces' data-tol='1' size='3' data-answer='["2.9"]'/> x 10^18^
+* Adjusted R^2^ (as a _proportion_, to 2 decimal places) for the model with an interaction is: <input class='webex-solveme nospaces' size='4' data-answer='["0.27"]'/>
+* The BF for the model with an interaction is <input class='webex-solveme nospaces' data-tol='1' size='3' data-answer='["2.9"]'/> x 10^18^
 
 
 <div class='webex-solution'><button>Hint</button>
@@ -965,7 +1019,7 @@ The data are located at:
 
 https://raw.githubusercontent.com/chrisjberry/Teaching/master/1_mental_health_data.csv
 
-* The increase in Adjusted R^2^ associated with the addition of the interaction to the model is (as a proportion) <input class='webex-solveme nospaces' data-tol='0.01' size='1' data-answer='["0"]'/>
+* The increase in adjusted R^2^ associated with the addition of the interaction to the model is (as a proportion) <input class='webex-solveme nospaces' data-tol='0.01' size='1' data-answer='["0"]'/>
 * The Bayes factor comparing the model with and without the interaction is (to two decimal places) <input class='webex-solveme nospaces' data-tol='0.55' size='4' data-answer='["0.17",".17"]'/>
 * There's substantial evidence that the relationship between `anxiety_score` and `screen_time` is <select class='webex-select'><option value='blank'></option><option value='answer'>the same</option><option value=''>different</option></select> in those who have a degree and those who don't.
 
@@ -973,7 +1027,7 @@ https://raw.githubusercontent.com/chrisjberry/Teaching/master/1_mental_health_da
 
 Given the lack of evidence for an interaction, in an additive model containing only `anxiety_score` and `education` as predictors of `screen_time`:
 
-* Higher anxiety scores tended to be associated with <select class='webex-select'><option value='blank'></option><option value=''>fewer</option><option value=''>no change in</option><option value='answer'>greater</option></select> hours of screen time, BF = <input class='webex-solveme nospaces' data-tol='0.2' size='3' data-answer='["2.2"]'/>
+* Higher anxiety scores tended to be associated with <select class='webex-select'><option value='blank'></option><option value=''>fewer</option><option value=''>no change in</option><option value='answer'>greater</option></select> hours of screen time, but the Bayes factor indicated that there was insufficient evidence for this association, BF = <input class='webex-solveme nospaces' data-tol='0.2' size='3' data-answer='["2.2"]'/>.
 * Individuals without a university degree tended to spend <select class='webex-select'><option value='blank'></option><option value=''>a similar amount of time</option><option value='answer'>greater amounts of time</option><option value=''>lower amounts of time</option></select> using screens (e.g., devices, TV, computer) each week than those with a university degree, BF = <input class='webex-solveme nospaces' data-tol='1000' size='5' data-answer='["32604"]'/>
 
 
@@ -1025,11 +1079,47 @@ BF_screen_time_with_interaction / BF_screen_time_no_interaction
 # therefore assume additive model
 #
 # BF of unique contribution of anxiety_score in model with education
+# This is the BF for model with both anxiety AND education,
+# divided by the BF for the model where anxiety is left out
 BF_screen_time_no_interaction / lmBF(screen_time ~ education, data = data.frame(mentalh))
 
 # BF of unique contribution of education in model with anxiety_score
+# This is the BF for model with both anxiety AND education,
+# divided by the BF for the model where education is left out
 BF_screen_time_no_interaction / lmBF(screen_time ~ anxiety_score, data = data.frame(mentalh))
 ```
+
+
+
+</div>
+
+
+
+
+<div class='webex-solution'><button>Storing R^2^ values in variables</button>
+
+It's possible to store R^2^ values in variables. This can be handy if referring to them again in calculations, or if you want greater precision. 
+
+
+```r
+# Store adj r-sq for model with no interaction
+rsq_no <- glance(screen_time_no_interaction)$adj.r.squared
+
+# look at rsq
+rsq_no
+
+
+# Store adj r-sq for model with interaction
+rsq_with <- glance(screen_time_with_interaction)$adj.r.squared
+
+# look at rsq
+rsq_with
+
+# work out change in adj R^2^ as a result of adding the interaction 
+rsq_with - rsq_no
+```
+
+Interestingly the change in adjusted R^2^ is negative here. Remember that this is because the calculation of adjusted R^2^ adjusts R^2^ downwards, taking into account the additional predictor in the model. Performing the calculation with the non-adjusted R^2^ values returns a (very small) positive number.
 
 
 
@@ -1245,7 +1335,7 @@ The values in the simple regression equations come out slightly differently when
 
 \
 
-In sum, centering of predictor variables is often performed in moderation analyses, but does not affect the variance explained by the model, the evidence (i.e., the BF) for the model, nor the direction (positive/negative) of the associations in the simple slopes analyses (because it doesn't change the slope). Centering can be desirable to aid interpretation of the coefficients of individual predictors and can reduce multicollinearity. 
+In sum, centering of predictor variables is often performed in moderation analyses, but does not affect the variance explained by the model, nor the evidence (i.e., the BF) for the model, nor the direction (positive/negative) of the associations in the simple slopes analyses (because it doesn't change the slope). Centering can be desirable to aid interpretation of the coefficients of individual predictors and can reduce multicollinearity. 
 
 
 

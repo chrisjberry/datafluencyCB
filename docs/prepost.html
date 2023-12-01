@@ -4,20 +4,20 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Session 7 Pre-post data, clinically significant change | PSYC753 Data Fluency: Analysis</title>
-  <meta name="description" content="Course materials for PSYC753 2023" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <title>Session 7 Pre-post data, clinically significant change | PSYC761 Data Fluency: Analysis</title>
+  <meta name="description" content="Course materials for PSYC761 2024" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Session 7 Pre-post data, clinically significant change | PSYC753 Data Fluency: Analysis" />
+  <meta property="og:title" content="Session 7 Pre-post data, clinically significant change | PSYC761 Data Fluency: Analysis" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="Course materials for PSYC753 2023" />
+  <meta property="og:description" content="Course materials for PSYC761 2024" />
   <meta name="github-repo" content="datafluencyCB" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Session 7 Pre-post data, clinically significant change | PSYC753 Data Fluency: Analysis" />
+  <meta name="twitter:title" content="Session 7 Pre-post data, clinically significant change | PSYC761 Data Fluency: Analysis" />
   
-  <meta name="twitter:description" content="Course materials for PSYC753 2023" />
+  <meta name="twitter:description" content="Course materials for PSYC761 2024" />
   
 
 <meta name="author" content="Chris Berry" />
@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="anova2.html"/>
-<link rel="next" href="assessment2023.html"/>
+<link rel="next" href="mixed.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -121,6 +121,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="include/psyteachr.css" type="text/css" />
 <link rel="stylesheet" href="include/webex.css" type="text/css" />
@@ -137,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">PSYC753 Analysis</a></li>
+<li><a href="./">PSYC761 Analysis</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
@@ -315,22 +319,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.9" data-path="prepost.html"><a href="prepost.html#summary-5"><i class="fa fa-check"></i><b>7.9</b> Summary</a></li>
 <li class="chapter" data-level="7.10" data-path="prepost.html"><a href="prepost.html#references-6"><i class="fa fa-check"></i><b>7.10</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="assessment2023.html"><a href="assessment2023.html"><i class="fa fa-check"></i><b>8</b> Data Analysis Assessment 2023</a></li>
-<li class="chapter" data-level="9" data-path="faqs.html"><a href="faqs.html"><i class="fa fa-check"></i><b>9</b> FAQs</a>
+<li class="chapter" data-level="8" data-path="mixed.html"><a href="mixed.html"><i class="fa fa-check"></i><b>8</b> Mixed Models</a></li>
+<li class="chapter" data-level="9" data-path="assessment2024.html"><a href="assessment2024.html"><i class="fa fa-check"></i><b>9</b> Data Analysis Assessment 2024</a></li>
+<li class="chapter" data-level="10" data-path="faqs.html"><a href="faqs.html"><i class="fa fa-check"></i><b>10</b> FAQs</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="faqs.html"><a href="faqs.html#e-meaning"><i class="fa fa-check"></i><b>9.1</b> What does it mean if RStudio prints out "e-" next to a number?</a></li>
-<li class="chapter" data-level="9.2" data-path="faqs.html"><a href="faqs.html#how-can-i-find-out-more-about-a-particular-function-so-i-can-explore-its-settings-etc."><i class="fa fa-check"></i><b>9.2</b> How can I find out more about a particular function, so I can explore its settings etc.?</a></li>
-<li class="chapter" data-level="9.3" data-path="faqs.html"><a href="faqs.html#how-should-i-write-up-the-report"><i class="fa fa-check"></i><b>9.3</b> How should I write up the report?</a></li>
-<li class="chapter" data-level="9.4" data-path="faqs.html"><a href="faqs.html#after-downloading-my-.rmd-file-to-my-computer-how-do-i-open-it-again-in-rstudio"><i class="fa fa-check"></i><b>9.4</b> After downloading my .Rmd file to my computer, how do I open it again in RStudio?</a></li>
-<li class="chapter" data-level="9.5" data-path="faqs.html"><a href="faqs.html#on-the-word-count-are-figure-captions-included"><i class="fa fa-check"></i><b>9.5</b> On the word count, are figure captions included?</a></li>
-<li class="chapter" data-level="9.6" data-path="faqs.html"><a href="faqs.html#should-i-make-code-visible-in-my-html-report"><i class="fa fa-check"></i><b>9.6</b> Should I make code visible in my html report?</a></li>
-<li class="chapter" data-level="9.7" data-path="faqs.html"><a href="faqs.html#do-i-need-to-include-references"><i class="fa fa-check"></i><b>9.7</b> Do I need to include references?</a></li>
-<li class="chapter" data-level="9.8" data-path="faqs.html"><a href="faqs.html#can-there-be-overlap-in-the-variables-used-in-each-question"><i class="fa fa-check"></i><b>9.8</b> Can there be overlap in the variables used in each question?</a></li>
-<li class="chapter" data-level="9.9" data-path="faqs.html"><a href="faqs.html#do-we-have-to-include-a-certain-number-of-variables-to-achieve-a-good-grade"><i class="fa fa-check"></i><b>9.9</b> Do we have to include a certain number of variables to achieve a good grade?</a></li>
-<li class="chapter" data-level="9.10" data-path="faqs.html"><a href="faqs.html#can-i-include-more-than-one-figure"><i class="fa fa-check"></i><b>9.10</b> Can I include more than one figure?</a></li>
-<li class="chapter" data-level="9.11" data-path="faqs.html"><a href="faqs.html#can-i-include-categorical-predictor-variables-in-a-hierarchical-regression"><i class="fa fa-check"></i><b>9.11</b> Can I include categorical predictor variables in a hierarchical regression?</a></li>
-<li class="chapter" data-level="9.12" data-path="faqs.html"><a href="faqs.html#how-do-i-apply-for-extenuating-circumstances"><i class="fa fa-check"></i><b>9.12</b> How do I apply for extenuating circumstances?</a></li>
-<li class="chapter" data-level="9.13" data-path="faqs.html"><a href="faqs.html#can-a-book-a-slot-in-your-office-hours"><i class="fa fa-check"></i><b>9.13</b> Can a book a slot in your office hours?</a></li>
+<li class="chapter" data-level="10.1" data-path="faqs.html"><a href="faqs.html#e-meaning"><i class="fa fa-check"></i><b>10.1</b> What does it mean if RStudio prints out "e-" next to a number?</a></li>
+<li class="chapter" data-level="10.2" data-path="faqs.html"><a href="faqs.html#how-can-i-find-out-more-about-a-particular-function-so-i-can-explore-its-settings-etc."><i class="fa fa-check"></i><b>10.2</b> How can I find out more about a particular function, so I can explore its settings etc.?</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="reading.html"><a href="reading.html"><i class="fa fa-check"></i><b>11</b> Reading: Go further!</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="reading.html"><a href="reading.html#recommended-texts"><i class="fa fa-check"></i><b>11.1</b> Recommended texts</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="divider"></li>
@@ -348,7 +346,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSYC753 Data Fluency: Analysis</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSYC761 Data Fluency: Analysis</a>
           </h1>
         </div>
 
@@ -359,7 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="prepost" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">Session 7</span> Pre-post data, clinically significant change<a href="prepost.html#prepost" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>Chris Berry</em><br />
-<em>2023</em></p>
+<em>2024</em></p>
 <!--
 commented text
 commented text
@@ -373,7 +371,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <div id="overview-7" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> Overview<a href="prepost.html#overview-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><strong>Slides</strong> from the lecture part of the session: <a href="slides/PSYC753_L7_PrePostData.pptx">Download</a></li>
+<li><strong>Slides</strong> from the lecture part of the session: <a href="slides/PSYC761_L7_PrePostData.pptx">Download</a></li>
 </ul>
 <p><br />
 </p>
@@ -391,7 +389,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <p>Francis et al. (2019) investigated whether a shift to a healthy diet impacted on depression in a group of individuals that had diets that fell short of the criteria for healthy eating, as defined by the Australian Guide to Healthy Eating. There were 76 participants. All had moderate to severe symptoms of depression.</p>
 <p>Half of the participants received instruction on guidance regarding their diet. Severity of depression symptoms were measured at two time points: before the intervention, and again three weeks later.</p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-1" class="exercise"><strong>Exercise 7.1  </strong></span>Design Check</p>
+<p><span id="exr:unlabeled-div-36" class="exercise"><strong>Exercise 7.1  </strong></span>Design Check</p>
 <ul>
 <li><p>What is the name of the first independent variable mentioned? <select class='webex-select'><option value='blank'></option><option value=''>severity of depression symptoms</option><option value='answer'>dietary intervention</option></select></p></li>
 <li><p>Is the first independent variable manipulated between- or within-subjects? <select class='webex-select'><option value='blank'></option><option value='answer'>between-subjects</option><option value=''>within-subjects</option></select></p></li>
@@ -407,11 +405,11 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 </div>
 <div id="read-in-the-data-6" class="section level3 hasAnchor" number="7.1.2">
 <h3><span class="header-section-number">7.1.2</span> Read in the data<a href="prepost.html#read-in-the-data-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="prepost.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in</span></span>
-<span id="cb1-2"><a href="prepost.html#cb1-2" aria-hidden="true" tabindex="-1"></a>diet <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/7_diet_depression.csv&#39;</span>)</span>
-<span id="cb1-3"><a href="prepost.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="prepost.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># preview</span></span>
-<span id="cb1-5"><a href="prepost.html#cb1-5" aria-hidden="true" tabindex="-1"></a>diet <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="prepost.html#cb217-1" tabindex="-1"></a><span class="co"># read in</span></span>
+<span id="cb217-2"><a href="prepost.html#cb217-2" tabindex="-1"></a>diet <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/7_diet_depression.csv&#39;</span>)</span>
+<span id="cb217-3"><a href="prepost.html#cb217-3" tabindex="-1"></a></span>
+<span id="cb217-4"><a href="prepost.html#cb217-4" tabindex="-1"></a><span class="co"># preview</span></span>
+<span id="cb217-5"><a href="prepost.html#cb217-5" tabindex="-1"></a>diet <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -465,7 +463,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 <p><br />
 </p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-2" class="exercise"><strong>Exercise 7.2  </strong></span>Data Check</p>
+<p><span id="exr:unlabeled-div-37" class="exercise"><strong>Exercise 7.2  </strong></span>Data Check</p>
 <ul>
 <li><p>How many participants are there in <code>diet</code>? <select class='webex-select'><option value='blank'></option><option value=''>6</option><option value=''>38</option><option value=''>66</option><option value='answer'>76</option></select></p></li>
 <li><p>Are the data in <code>diet</code> in long format or wide format? <select class='webex-select'><option value='blank'></option><option value=''>long</option><option value='answer'>wide</option></select></p></li>
@@ -486,21 +484,21 @@ Explain
 <div id="plot-the-means-4" class="section level3 hasAnchor" number="7.1.3">
 <h3><span class="header-section-number">7.1.3</span> Plot the means<a href="prepost.html#plot-the-means-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To plot the means, we need the data to be in <strong>long format</strong>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="prepost.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The code below:</span></span>
-<span id="cb2-2"><a href="prepost.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># - stores the result in diet_long</span></span>
-<span id="cb2-3"><a href="prepost.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># - takes diet and pipes it to</span></span>
-<span id="cb2-4"><a href="prepost.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - pivot_longer()</span></span>
-<span id="cb2-5"><a href="prepost.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># - specifies which of the existing columns to make into a single new column (&#39;cols&#39;)</span></span>
-<span id="cb2-6"><a href="prepost.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># - specifies the name of the new column labeling the conditions (&#39;names_to&#39;)</span></span>
-<span id="cb2-7"><a href="prepost.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># - specifies the name of the column containing the dependent variable (&#39;values_to&#39;)</span></span>
-<span id="cb2-8"><a href="prepost.html#cb2-8" aria-hidden="true" tabindex="-1"></a>diet_long <span class="ot">&lt;-</span> </span>
-<span id="cb2-9"><a href="prepost.html#cb2-9" aria-hidden="true" tabindex="-1"></a>  diet <span class="sc">%&gt;%</span> </span>
-<span id="cb2-10"><a href="prepost.html#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(baseline, week3), </span>
-<span id="cb2-11"><a href="prepost.html#cb2-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>, </span>
-<span id="cb2-12"><a href="prepost.html#cb2-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;symptoms&quot;</span>)</span>
-<span id="cb2-13"><a href="prepost.html#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="prepost.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># preview</span></span>
-<span id="cb2-15"><a href="prepost.html#cb2-15" aria-hidden="true" tabindex="-1"></a>diet_long <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="prepost.html#cb218-1" tabindex="-1"></a><span class="co"># The code below:</span></span>
+<span id="cb218-2"><a href="prepost.html#cb218-2" tabindex="-1"></a><span class="co"># - stores the result in diet_long</span></span>
+<span id="cb218-3"><a href="prepost.html#cb218-3" tabindex="-1"></a><span class="co"># - takes diet and pipes it to</span></span>
+<span id="cb218-4"><a href="prepost.html#cb218-4" tabindex="-1"></a><span class="co"># - pivot_longer()</span></span>
+<span id="cb218-5"><a href="prepost.html#cb218-5" tabindex="-1"></a><span class="co"># - specifies which of the existing columns to make into a single new column (&#39;cols&#39;)</span></span>
+<span id="cb218-6"><a href="prepost.html#cb218-6" tabindex="-1"></a><span class="co"># - specifies the name of the new column labeling the conditions (&#39;names_to&#39;)</span></span>
+<span id="cb218-7"><a href="prepost.html#cb218-7" tabindex="-1"></a><span class="co"># - specifies the name of the column containing the dependent variable (&#39;values_to&#39;)</span></span>
+<span id="cb218-8"><a href="prepost.html#cb218-8" tabindex="-1"></a>diet_long <span class="ot">&lt;-</span> </span>
+<span id="cb218-9"><a href="prepost.html#cb218-9" tabindex="-1"></a>  diet <span class="sc">%&gt;%</span> </span>
+<span id="cb218-10"><a href="prepost.html#cb218-10" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(baseline, week3), </span>
+<span id="cb218-11"><a href="prepost.html#cb218-11" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>, </span>
+<span id="cb218-12"><a href="prepost.html#cb218-12" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;symptoms&quot;</span>)</span>
+<span id="cb218-13"><a href="prepost.html#cb218-13" tabindex="-1"></a></span>
+<span id="cb218-14"><a href="prepost.html#cb218-14" tabindex="-1"></a><span class="co"># preview</span></span>
+<span id="cb218-15"><a href="prepost.html#cb218-15" tabindex="-1"></a>diet_long <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -554,19 +552,19 @@ Explain
 <p><br />
 </p>
 <p>Now use <code>diet_long</code> with <code>ggdotplot()</code> in the <code>ggpubr</code> package.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="prepost.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb3-2"><a href="prepost.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="prepost.html#cb3-3" aria-hidden="true" tabindex="-1"></a>diet_long <span class="sc">%&gt;%</span> </span>
-<span id="cb3-4"><a href="prepost.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggdotplot</span>(<span class="at">x =</span> <span class="st">&quot;time&quot;</span>, </span>
-<span id="cb3-5"><a href="prepost.html#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> <span class="st">&quot;symptoms&quot;</span>, </span>
-<span id="cb3-6"><a href="prepost.html#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;group&quot;</span>, </span>
-<span id="cb3-7"><a href="prepost.html#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">add =</span> <span class="st">&quot;mean_se&quot;</span>, </span>
-<span id="cb3-8"><a href="prepost.html#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">65</span>),</span>
-<span id="cb3-9"><a href="prepost.html#cb3-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">position_dodge =</span> <span class="fl">0.1</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="prepost.html#cb219-1" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb219-2"><a href="prepost.html#cb219-2" tabindex="-1"></a></span>
+<span id="cb219-3"><a href="prepost.html#cb219-3" tabindex="-1"></a>diet_long <span class="sc">%&gt;%</span> </span>
+<span id="cb219-4"><a href="prepost.html#cb219-4" tabindex="-1"></a>  <span class="fu">ggdotplot</span>(<span class="at">x =</span> <span class="st">&quot;time&quot;</span>, </span>
+<span id="cb219-5"><a href="prepost.html#cb219-5" tabindex="-1"></a>            <span class="at">y =</span> <span class="st">&quot;symptoms&quot;</span>, </span>
+<span id="cb219-6"><a href="prepost.html#cb219-6" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;group&quot;</span>, </span>
+<span id="cb219-7"><a href="prepost.html#cb219-7" tabindex="-1"></a>            <span class="at">add =</span> <span class="st">&quot;mean_se&quot;</span>, </span>
+<span id="cb219-8"><a href="prepost.html#cb219-8" tabindex="-1"></a>            <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">65</span>),</span>
+<span id="cb219-9"><a href="prepost.html#cb219-9" tabindex="-1"></a>            <span class="at">position_dodge =</span> <span class="fl">0.1</span>) </span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
 <img src="07_pre_post_files/figure-html/unnamed-chunk-4-1.png" alt="Mean depression symptoms score. Solid circles denote the mean, error bars the SE." width="85%" />
 <p class="caption">
-Figure 7.1: Mean depression symptoms score. Solid circles denote the mean, error bars the SE.
+Figure 2.1: Mean depression symptoms score. Solid circles denote the mean, error bars the SE.
 </p>
 </div>
 <p>Each dot represents one participant's data. The solid circles indicate the mean severity of depression symptoms in each condition (with between-subject error bars added by using <code>add = mean_se</code>). (See Session 6 for further details on producing <em>within-subject</em> error bars, which may be more appropriate here.) Higher scores indicate greater severity.</p>
@@ -582,15 +580,15 @@ Figure 7.1: Mean depression symptoms score. Solid circles denote the mean, error
 <h2><span class="header-section-number">7.2</span> Approach 1 - Difference scores<a href="prepost.html#approach-1---difference-scores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>One approach to analysing pre-post data is to compare the <em>change</em> in symptom scores from <code>baseline</code> to <code>week3</code> across groups. This is achieved by 1) calculating the difference in scores between <code>baseline</code> and <code>week3</code>, and then 2) comparing the difference scores between the two groups using a between-subjects ANOVA (or, equivalently, a <em>t</em>-test).</p>
 <p>To calculate the change in severity score for each participant, it's simplest to use the wide format data since we can easily subtract scores in one column (<code>week3</code>) from another (<code>baseline</code>).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="prepost.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using the wide format data</span></span>
-<span id="cb4-2"><a href="prepost.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the difference in baseline and week3 scores</span></span>
-<span id="cb4-3"><a href="prepost.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># store in a new column called &#39;change&#39;</span></span>
-<span id="cb4-4"><a href="prepost.html#cb4-4" aria-hidden="true" tabindex="-1"></a>diet <span class="ot">&lt;-</span> </span>
-<span id="cb4-5"><a href="prepost.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  diet <span class="sc">%&gt;%</span> </span>
-<span id="cb4-6"><a href="prepost.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">change =</span> week3 <span class="sc">-</span> baseline)</span>
-<span id="cb4-7"><a href="prepost.html#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="prepost.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># look at new column</span></span>
-<span id="cb4-9"><a href="prepost.html#cb4-9" aria-hidden="true" tabindex="-1"></a>diet <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="prepost.html#cb220-1" tabindex="-1"></a><span class="co"># using the wide format data</span></span>
+<span id="cb220-2"><a href="prepost.html#cb220-2" tabindex="-1"></a><span class="co"># calculate the difference in baseline and week3 scores</span></span>
+<span id="cb220-3"><a href="prepost.html#cb220-3" tabindex="-1"></a><span class="co"># store in a new column called &#39;change&#39;</span></span>
+<span id="cb220-4"><a href="prepost.html#cb220-4" tabindex="-1"></a>diet <span class="ot">&lt;-</span> </span>
+<span id="cb220-5"><a href="prepost.html#cb220-5" tabindex="-1"></a>  diet <span class="sc">%&gt;%</span> </span>
+<span id="cb220-6"><a href="prepost.html#cb220-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">change =</span> week3 <span class="sc">-</span> baseline)</span>
+<span id="cb220-7"><a href="prepost.html#cb220-7" tabindex="-1"></a></span>
+<span id="cb220-8"><a href="prepost.html#cb220-8" tabindex="-1"></a><span class="co"># look at new column</span></span>
+<span id="cb220-9"><a href="prepost.html#cb220-9" tabindex="-1"></a>diet <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -650,13 +648,13 @@ Figure 7.1: Mean depression symptoms score. Solid circles denote the mean, error
 </div>
 <p>The column <code>change</code> now contains the change in symptom severity score from <code>baseline</code> to <code>week3</code>. A negative difference indicates an improvement in symptoms (i.e., the score at <code>week3</code> was lower).</p>
 <p>To compare the <code>change</code> scores between the two groups, use <code>anovaBF()</code>. The functions <code>lmBF()</code> or <code>ttestBF()</code> could also be used. They all give equivalent results because there are only two groups being compared.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="prepost.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the grouping variable &#39;group&#39; to a factor</span></span>
-<span id="cb5-2"><a href="prepost.html#cb5-2" aria-hidden="true" tabindex="-1"></a>diet <span class="ot">&lt;-</span> </span>
-<span id="cb5-3"><a href="prepost.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  diet <span class="sc">%&gt;%</span> </span>
-<span id="cb5-4"><a href="prepost.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">factor</span>(group))</span>
-<span id="cb5-5"><a href="prepost.html#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="prepost.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># anovaBF(): between-subjects ANOVA</span></span>
-<span id="cb5-7"><a href="prepost.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(change <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(diet))</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="prepost.html#cb221-1" tabindex="-1"></a><span class="co"># Convert the grouping variable &#39;group&#39; to a factor</span></span>
+<span id="cb221-2"><a href="prepost.html#cb221-2" tabindex="-1"></a>diet <span class="ot">&lt;-</span> </span>
+<span id="cb221-3"><a href="prepost.html#cb221-3" tabindex="-1"></a>  diet <span class="sc">%&gt;%</span> </span>
+<span id="cb221-4"><a href="prepost.html#cb221-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">factor</span>(group))</span>
+<span id="cb221-5"><a href="prepost.html#cb221-5" tabindex="-1"></a></span>
+<span id="cb221-6"><a href="prepost.html#cb221-6" tabindex="-1"></a><span class="co"># anovaBF(): between-subjects ANOVA</span></span>
+<span id="cb221-7"><a href="prepost.html#cb221-7" tabindex="-1"></a><span class="fu">anovaBF</span>(change <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(diet))</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] group : 2.262527 ±0.01%
@@ -669,12 +667,12 @@ Figure 7.1: Mean depression symptoms score. Solid circles denote the mean, error
 <button>
 Alternatively with lmBF and ttest
 </button>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="prepost.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lmBF(): between-subjects ANOVA</span></span>
-<span id="cb7-2"><a href="prepost.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(change <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(diet)) </span>
-<span id="cb7-3"><a href="prepost.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="prepost.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ttestBF: between-subjects</span></span>
-<span id="cb7-5"><a href="prepost.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestBF</span>(<span class="at">x =</span> diet<span class="sc">$</span>change[ diet<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;habitual_diet&quot;</span> ], </span>
-<span id="cb7-6"><a href="prepost.html#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> diet<span class="sc">$</span>change[ diet<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;diet_change&quot;</span> ]) </span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="prepost.html#cb223-1" tabindex="-1"></a><span class="co"># lmBF(): between-subjects ANOVA</span></span>
+<span id="cb223-2"><a href="prepost.html#cb223-2" tabindex="-1"></a><span class="fu">lmBF</span>(change <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(diet)) </span>
+<span id="cb223-3"><a href="prepost.html#cb223-3" tabindex="-1"></a></span>
+<span id="cb223-4"><a href="prepost.html#cb223-4" tabindex="-1"></a><span class="co"># ttestBF: between-subjects</span></span>
+<span id="cb223-5"><a href="prepost.html#cb223-5" tabindex="-1"></a><span class="fu">ttestBF</span>(<span class="at">x =</span> diet<span class="sc">$</span>change[ diet<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;habitual_diet&quot;</span> ], </span>
+<span id="cb223-6"><a href="prepost.html#cb223-6" tabindex="-1"></a>        <span class="at">y =</span> diet<span class="sc">$</span>change[ diet<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;diet_change&quot;</span> ]) </span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] group : 2.262527 ±0.01%
@@ -706,30 +704,30 @@ Alternatively with lmBF and ttest
 <p>Given that we have two independent variables, each with two levels, and where one is manipulated between-subjects and the other within-subjects, it is also possible to treat the design as a <strong>2 x 2 mixed factorial design</strong> and analyse the data using <code>anovaBF()</code>.</p>
 <p>Because one of the factors is manipulated within-subjects, we need to add <code>ppt</code> to the model and specify it as a random factor using <code>whichRandom = "ppt"</code> (see Session <a href="anova2.html#anova2">6</a>). We also need to convert <code>ppt</code> to a factor, along with the other independent variables, <code>group</code> and <code>time</code>.</p>
 <p>As with repeated measures ANOVA in Session 6, the long format data needs to be used for the analysis.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="prepost.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert ppt and IVs to factors</span></span>
-<span id="cb9-2"><a href="prepost.html#cb9-2" aria-hidden="true" tabindex="-1"></a>diet_long <span class="ot">&lt;-</span> </span>
-<span id="cb9-3"><a href="prepost.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  diet_long <span class="sc">%&gt;%</span> </span>
-<span id="cb9-4"><a href="prepost.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ppt   =</span> <span class="fu">factor</span>(ppt),</span>
-<span id="cb9-5"><a href="prepost.html#cb9-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">factor</span>(group),</span>
-<span id="cb9-6"><a href="prepost.html#cb9-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">time  =</span> <span class="fu">factor</span>(time))</span>
-<span id="cb9-7"><a href="prepost.html#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="prepost.html#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># anova model</span></span>
-<span id="cb9-9"><a href="prepost.html#cb9-9" aria-hidden="true" tabindex="-1"></a>bfs <span class="ot">&lt;-</span> <span class="fu">anovaBF</span>(symptoms <span class="sc">~</span> group <span class="sc">+</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(diet_long))</span>
-<span id="cb9-10"><a href="prepost.html#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-11"><a href="prepost.html#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the bfs</span></span>
-<span id="cb9-12"><a href="prepost.html#cb9-12" aria-hidden="true" tabindex="-1"></a>bfs</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="prepost.html#cb225-1" tabindex="-1"></a><span class="co"># convert ppt and IVs to factors</span></span>
+<span id="cb225-2"><a href="prepost.html#cb225-2" tabindex="-1"></a>diet_long <span class="ot">&lt;-</span> </span>
+<span id="cb225-3"><a href="prepost.html#cb225-3" tabindex="-1"></a>  diet_long <span class="sc">%&gt;%</span> </span>
+<span id="cb225-4"><a href="prepost.html#cb225-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ppt   =</span> <span class="fu">factor</span>(ppt),</span>
+<span id="cb225-5"><a href="prepost.html#cb225-5" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">factor</span>(group),</span>
+<span id="cb225-6"><a href="prepost.html#cb225-6" tabindex="-1"></a>         <span class="at">time  =</span> <span class="fu">factor</span>(time))</span>
+<span id="cb225-7"><a href="prepost.html#cb225-7" tabindex="-1"></a></span>
+<span id="cb225-8"><a href="prepost.html#cb225-8" tabindex="-1"></a><span class="co"># anova model</span></span>
+<span id="cb225-9"><a href="prepost.html#cb225-9" tabindex="-1"></a>bfs <span class="ot">&lt;-</span> <span class="fu">anovaBF</span>(symptoms <span class="sc">~</span> group <span class="sc">+</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(diet_long))</span>
+<span id="cb225-10"><a href="prepost.html#cb225-10" tabindex="-1"></a></span>
+<span id="cb225-11"><a href="prepost.html#cb225-11" tabindex="-1"></a><span class="co"># look at the bfs</span></span>
+<span id="cb225-12"><a href="prepost.html#cb225-12" tabindex="-1"></a>bfs</span></code></pre></div>
 <p>In this analysis, we are less interested in the main effects of <code>group</code> and <code>time</code> and are more interested in the interaction between the factors. The interaction will tell us whether the change in symptom severity differs between groups. As with previous two-way ANOVAs, the BF for the interaction can be obtained by dividing the BF in [4] by the BF in [3] (see Sessions <a href="anova1.html#anova1">3</a> and <a href="anova2.html#anova2">6</a>).</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="prepost.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bf for the interaction</span></span>
-<span id="cb10-2"><a href="prepost.html#cb10-2" aria-hidden="true" tabindex="-1"></a>bfs[<span class="dv">4</span>] <span class="sc">/</span> bfs[<span class="dv">3</span>]  </span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="prepost.html#cb226-1" tabindex="-1"></a><span class="co"># bf for the interaction</span></span>
+<span id="cb226-2"><a href="prepost.html#cb226-2" tabindex="-1"></a>bfs[<span class="dv">4</span>] <span class="sc">/</span> bfs[<span class="dv">3</span>]  </span></code></pre></div>
 <ul>
 <li>The Bayes factor representing evidence for the interaction term is <input class='webex-solveme nospaces' data-tol='5' size='4' data-answer='["2.25"]'/>.</li>
 </ul>
 <p>The Bayes factor for the interaction should come out at around 2.25, but because <code>anovaBF()</code> calculates the BF using random sampling methods, your value may not match this exactly (note the large error associated with the BF in the output). For greater precision, it's possible to <code>recompute()</code> the Bayes factor with a greater number of random samples, e.g., 1,000,000 (note, this could take a short while):</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="prepost.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recompute bfs, but with a million iterations</span></span>
-<span id="cb11-2"><a href="prepost.html#cb11-2" aria-hidden="true" tabindex="-1"></a>bfs_more <span class="ot">&lt;-</span> <span class="fu">recompute</span>(bfs, <span class="dv">1000000</span>)</span>
-<span id="cb11-3"><a href="prepost.html#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="prepost.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># re-obtain the BF for the interaction, using bf_more</span></span>
-<span id="cb11-5"><a href="prepost.html#cb11-5" aria-hidden="true" tabindex="-1"></a>bfs_more[<span class="dv">4</span>] <span class="sc">/</span> bfs_more[<span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="prepost.html#cb227-1" tabindex="-1"></a><span class="co"># recompute bfs, but with a million iterations</span></span>
+<span id="cb227-2"><a href="prepost.html#cb227-2" tabindex="-1"></a>bfs_more <span class="ot">&lt;-</span> <span class="fu">recompute</span>(bfs, <span class="dv">1000000</span>)</span>
+<span id="cb227-3"><a href="prepost.html#cb227-3" tabindex="-1"></a></span>
+<span id="cb227-4"><a href="prepost.html#cb227-4" tabindex="-1"></a><span class="co"># re-obtain the BF for the interaction, using bf_more</span></span>
+<span id="cb227-5"><a href="prepost.html#cb227-5" tabindex="-1"></a>bfs_more[<span class="dv">4</span>] <span class="sc">/</span> bfs_more[<span class="dv">3</span>]</span></code></pre></div>
 <ul>
 <li>The Bayes factor for the interaction, using <code>bf_more</code> is <input class='webex-solveme nospaces' data-tol='5' size='4' data-answer='["2.25"]'/>.</li>
 <li>Although there is <select class='webex-select'><option value='blank'></option><option value=''>no</option><option value='answer'>weak</option><option value=''>substantial</option></select> evidence for a difference in the change score between groups, the Bayes factor was <select class='webex-select'><option value='blank'></option><option value='answer'>inconclusive</option><option value=''>substantial</option></select>.</li>
@@ -745,17 +743,17 @@ Alternatively with lmBF and ttest
 <p>The ANCOVA is essentially a one-way between subjects ANOVA, with symptom severity at <code>week3</code> as the dependent variable, <code>group</code> as the independent variable, and symptoms at <code>baseline</code> as the covariate.</p>
 <p>Equivalently, the analysis can be conceptualised is a multiple regression of <code>week3</code> scores on the basis of <code>group</code> and <code>baseline</code>. Assessing the unique contribution of <code>group</code> will tell us whether there's a difference in symptom severity at <code>week3</code>, after accounting for the variance explained by <code>baseline</code> scores (see Sessions <a href="multiple1.html#multiple1">2</a> and <a href="multiple2.html#multiple2">4</a>)).</p>
 <p>Note that because effects of <code>time</code> are not analysed in this approach, there is no repeated measures factor, and <code>ppt</code> does not need to be included as a random factor.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="prepost.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The model with both group and baseline scores</span></span>
-<span id="cb12-2"><a href="prepost.html#cb12-2" aria-hidden="true" tabindex="-1"></a>full <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(week3 <span class="sc">~</span> group <span class="sc">+</span> baseline, <span class="at">data =</span> <span class="fu">data.frame</span>(diet))</span>
-<span id="cb12-3"><a href="prepost.html#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="prepost.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># The model with baseline scores only (for comparison)</span></span>
-<span id="cb12-5"><a href="prepost.html#cb12-5" aria-hidden="true" tabindex="-1"></a>baseline <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(week3 <span class="sc">~</span> baseline, <span class="at">data =</span> <span class="fu">data.frame</span>(diet))</span>
-<span id="cb12-6"><a href="prepost.html#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="prepost.html#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># The BF representing evidence for the unique contribution of group</span></span>
-<span id="cb12-8"><a href="prepost.html#cb12-8" aria-hidden="true" tabindex="-1"></a>full <span class="sc">/</span> baseline </span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="prepost.html#cb228-1" tabindex="-1"></a><span class="co"># The model with both group and baseline scores</span></span>
+<span id="cb228-2"><a href="prepost.html#cb228-2" tabindex="-1"></a>full <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(week3 <span class="sc">~</span> group <span class="sc">+</span> baseline, <span class="at">data =</span> <span class="fu">data.frame</span>(diet))</span>
+<span id="cb228-3"><a href="prepost.html#cb228-3" tabindex="-1"></a></span>
+<span id="cb228-4"><a href="prepost.html#cb228-4" tabindex="-1"></a><span class="co"># The model with baseline scores only (for comparison)</span></span>
+<span id="cb228-5"><a href="prepost.html#cb228-5" tabindex="-1"></a>baseline <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(week3 <span class="sc">~</span> baseline, <span class="at">data =</span> <span class="fu">data.frame</span>(diet))</span>
+<span id="cb228-6"><a href="prepost.html#cb228-6" tabindex="-1"></a></span>
+<span id="cb228-7"><a href="prepost.html#cb228-7" tabindex="-1"></a><span class="co"># The BF representing evidence for the unique contribution of group</span></span>
+<span id="cb228-8"><a href="prepost.html#cb228-8" tabindex="-1"></a>full <span class="sc">/</span> baseline </span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] group + baseline : 6.017305 ±0.83%
+## [1] group + baseline : 6.124479 ±0.83%
 ## 
 ## Against denominator:
 ##   week3 ~ baseline 
@@ -771,24 +769,24 @@ Alternatively with lmBF and ttest
 R-squared
 </button>
 <p>In Approach 3 R<sup>2</sup> for the effect of <code>group</code> can be determined using methods from earlier sessions. The method is equivalent to obtaining R<sup>2</sup> for the unique contribution of a predictor.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="prepost.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ensure broom is loaded</span></span>
-<span id="cb14-2"><a href="prepost.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(broom) </span></span>
-<span id="cb14-3"><a href="prepost.html#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="prepost.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the full model with lm()</span></span>
-<span id="cb14-5"><a href="prepost.html#cb14-5" aria-hidden="true" tabindex="-1"></a>full_model    <span class="ot">&lt;-</span> <span class="fu">lm</span>(week3 <span class="sc">~</span> group <span class="sc">+</span> baseline, <span class="at">data =</span> diet)</span>
-<span id="cb14-6"><a href="prepost.html#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="prepost.html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the model with baseline only</span></span>
-<span id="cb14-8"><a href="prepost.html#cb14-8" aria-hidden="true" tabindex="-1"></a>baseline_only <span class="ot">&lt;-</span> <span class="fu">lm</span>(week3 <span class="sc">~</span> baseline, <span class="at">data =</span> diet)</span>
-<span id="cb14-9"><a href="prepost.html#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="prepost.html#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># R-squared full model</span></span>
-<span id="cb14-11"><a href="prepost.html#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(full_model)<span class="sc">$</span>r.squared</span>
-<span id="cb14-12"><a href="prepost.html#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-13"><a href="prepost.html#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># R-squared baseline only</span></span>
-<span id="cb14-14"><a href="prepost.html#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(baseline_only)<span class="sc">$</span>r.squared</span>
-<span id="cb14-15"><a href="prepost.html#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-16"><a href="prepost.html#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Unique contribution of group </span></span>
-<span id="cb14-17"><a href="prepost.html#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co"># (effect size associated with difference in groups)</span></span>
-<span id="cb14-18"><a href="prepost.html#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(full_model)<span class="sc">$</span>r.squared <span class="sc">-</span> <span class="fu">glance</span>(baseline_only)<span class="sc">$</span>r.squared <span class="co"># R-sq = 0.05817</span></span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="prepost.html#cb230-1" tabindex="-1"></a><span class="co"># ensure broom is loaded</span></span>
+<span id="cb230-2"><a href="prepost.html#cb230-2" tabindex="-1"></a><span class="co"># library(broom) </span></span>
+<span id="cb230-3"><a href="prepost.html#cb230-3" tabindex="-1"></a></span>
+<span id="cb230-4"><a href="prepost.html#cb230-4" tabindex="-1"></a><span class="co"># specify the full model with lm()</span></span>
+<span id="cb230-5"><a href="prepost.html#cb230-5" tabindex="-1"></a>full_model    <span class="ot">&lt;-</span> <span class="fu">lm</span>(week3 <span class="sc">~</span> group <span class="sc">+</span> baseline, <span class="at">data =</span> diet)</span>
+<span id="cb230-6"><a href="prepost.html#cb230-6" tabindex="-1"></a></span>
+<span id="cb230-7"><a href="prepost.html#cb230-7" tabindex="-1"></a><span class="co"># specify the model with baseline only</span></span>
+<span id="cb230-8"><a href="prepost.html#cb230-8" tabindex="-1"></a>baseline_only <span class="ot">&lt;-</span> <span class="fu">lm</span>(week3 <span class="sc">~</span> baseline, <span class="at">data =</span> diet)</span>
+<span id="cb230-9"><a href="prepost.html#cb230-9" tabindex="-1"></a></span>
+<span id="cb230-10"><a href="prepost.html#cb230-10" tabindex="-1"></a><span class="co"># R-squared full model</span></span>
+<span id="cb230-11"><a href="prepost.html#cb230-11" tabindex="-1"></a><span class="fu">glance</span>(full_model)<span class="sc">$</span>r.squared</span>
+<span id="cb230-12"><a href="prepost.html#cb230-12" tabindex="-1"></a></span>
+<span id="cb230-13"><a href="prepost.html#cb230-13" tabindex="-1"></a><span class="co"># R-squared baseline only</span></span>
+<span id="cb230-14"><a href="prepost.html#cb230-14" tabindex="-1"></a><span class="fu">glance</span>(baseline_only)<span class="sc">$</span>r.squared</span>
+<span id="cb230-15"><a href="prepost.html#cb230-15" tabindex="-1"></a></span>
+<span id="cb230-16"><a href="prepost.html#cb230-16" tabindex="-1"></a><span class="co"># Unique contribution of group </span></span>
+<span id="cb230-17"><a href="prepost.html#cb230-17" tabindex="-1"></a><span class="co"># (effect size associated with difference in groups)</span></span>
+<span id="cb230-18"><a href="prepost.html#cb230-18" tabindex="-1"></a><span class="fu">glance</span>(full_model)<span class="sc">$</span>r.squared <span class="sc">-</span> <span class="fu">glance</span>(baseline_only)<span class="sc">$</span>r.squared <span class="co"># R-sq = 0.05817</span></span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -805,18 +803,18 @@ R-squared
 <h2><span class="header-section-number">7.6</span> Clinical Significance<a href="prepost.html#clinical-significance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The measure of depressive symptoms used by Francis et al. (2019) was the Centre for Epidemiological Studies Depression scale-Revised (CESD-R; Radloff, 1977). The scale ranges from 0-60, and the criterion for being the elevated range of depressive symptoms is a score equal to <strong>16</strong> or above.</p>
 <p>Re-plot the data, but with a horizontal line to indicate this criterion.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="prepost.html#cb15-1" aria-hidden="true" tabindex="-1"></a>diet_long <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a href="prepost.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggdotplot</span>(<span class="at">x =</span> <span class="st">&quot;time&quot;</span>, </span>
-<span id="cb15-3"><a href="prepost.html#cb15-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> <span class="st">&quot;symptoms&quot;</span>, </span>
-<span id="cb15-4"><a href="prepost.html#cb15-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;group&quot;</span>, </span>
-<span id="cb15-5"><a href="prepost.html#cb15-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">add =</span> <span class="st">&quot;mean_se&quot;</span>, </span>
-<span id="cb15-6"><a href="prepost.html#cb15-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">65</span>),</span>
-<span id="cb15-7"><a href="prepost.html#cb15-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">position_dodge =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb15-8"><a href="prepost.html#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">16</span>, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="prepost.html#cb231-1" tabindex="-1"></a>diet_long <span class="sc">%&gt;%</span> </span>
+<span id="cb231-2"><a href="prepost.html#cb231-2" tabindex="-1"></a>  <span class="fu">ggdotplot</span>(<span class="at">x =</span> <span class="st">&quot;time&quot;</span>, </span>
+<span id="cb231-3"><a href="prepost.html#cb231-3" tabindex="-1"></a>            <span class="at">y =</span> <span class="st">&quot;symptoms&quot;</span>, </span>
+<span id="cb231-4"><a href="prepost.html#cb231-4" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;group&quot;</span>, </span>
+<span id="cb231-5"><a href="prepost.html#cb231-5" tabindex="-1"></a>            <span class="at">add =</span> <span class="st">&quot;mean_se&quot;</span>, </span>
+<span id="cb231-6"><a href="prepost.html#cb231-6" tabindex="-1"></a>            <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">65</span>),</span>
+<span id="cb231-7"><a href="prepost.html#cb231-7" tabindex="-1"></a>            <span class="at">position_dodge =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb231-8"><a href="prepost.html#cb231-8" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">16</span>, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
 <img src="07_pre_post_files/figure-html/unnamed-chunk-14-1.png" alt="Mean depression symptom severity score in each condition. The dotted line indicates the criterion for the elevated range of depressive symptoms" width="100%" />
 <p class="caption">
-Figure 7.2: Mean depression symptom severity score in each condition. The dotted line indicates the criterion for the elevated range of depressive symptoms
+Figure 7.1: Mean depression symptom severity score in each condition. The dotted line indicates the criterion for the elevated range of depressive symptoms
 </p>
 </div>
 <ul>
@@ -830,7 +828,7 @@ Figure 7.2: Mean depression symptom severity score in each condition. The dotted
 <div id="exercises-1" class="section level2 hasAnchor" number="7.7">
 <h2><span class="header-section-number">7.7</span> Exercises<a href="prepost.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-3" class="exercise"><strong>Exercise 7.3  </strong></span>Pre-post self-efficacy scores</p>
+<p><span id="exr:unlabeled-div-38" class="exercise"><strong>Exercise 7.3  </strong></span>Pre-post self-efficacy scores</p>
 <p>Francis et al. (2019) also measured <strong>self-efficacy</strong> before and after the dietary intervention. Self-efficacy refers to a person's belief in their ability to exert control over their behaviours and circumstances they find themselves in. Higher scores indicate greater levels of self-efficacy.</p>
 <p>Read in the data at the link below to <code>self_efficacy</code> and answer the questions.</p>
 <p><a href="https://raw.githubusercontent.com/chrisjberry/Teaching/master/7_diet_self_efficacy.csv" class="uri">https://raw.githubusercontent.com/chrisjberry/Teaching/master/7_diet_self_efficacy.csv</a></p>
@@ -851,20 +849,20 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="prepost.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in</span></span>
-<span id="cb16-2"><a href="prepost.html#cb16-2" aria-hidden="true" tabindex="-1"></a>self_efficacy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/7_diet_self_efficacy.csv&#39;</span>)</span>
-<span id="cb16-3"><a href="prepost.html#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="prepost.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to long format</span></span>
-<span id="cb16-5"><a href="prepost.html#cb16-5" aria-hidden="true" tabindex="-1"></a>self_efficacy_long <span class="ot">&lt;-</span> </span>
-<span id="cb16-6"><a href="prepost.html#cb16-6" aria-hidden="true" tabindex="-1"></a>  self_efficacy <span class="sc">%&gt;%</span> </span>
-<span id="cb16-7"><a href="prepost.html#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;baseline&quot;</span>, <span class="st">&quot;week3&quot;</span>),</span>
-<span id="cb16-8"><a href="prepost.html#cb16-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>,</span>
-<span id="cb16-9"><a href="prepost.html#cb16-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;score&quot;</span>)</span>
-<span id="cb16-10"><a href="prepost.html#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="prepost.html#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb16-12"><a href="prepost.html#cb16-12" aria-hidden="true" tabindex="-1"></a>self_efficacy_long <span class="sc">%&gt;%</span> </span>
-<span id="cb16-13"><a href="prepost.html#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggdotplot</span>(<span class="at">x =</span> <span class="st">&quot;time&quot;</span>, <span class="at">y =</span> <span class="st">&quot;score&quot;</span>, <span class="at">color =</span> <span class="st">&quot;group&quot;</span>, <span class="at">add =</span> <span class="st">&quot;mean_se&quot;</span>,</span>
-<span id="cb16-14"><a href="prepost.html#cb16-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab =</span> <span class="st">&quot;Self-efficacy score&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="prepost.html#cb232-1" tabindex="-1"></a><span class="co"># read in</span></span>
+<span id="cb232-2"><a href="prepost.html#cb232-2" tabindex="-1"></a>self_efficacy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/chrisjberry/Teaching/master/7_diet_self_efficacy.csv&#39;</span>)</span>
+<span id="cb232-3"><a href="prepost.html#cb232-3" tabindex="-1"></a></span>
+<span id="cb232-4"><a href="prepost.html#cb232-4" tabindex="-1"></a><span class="co"># convert to long format</span></span>
+<span id="cb232-5"><a href="prepost.html#cb232-5" tabindex="-1"></a>self_efficacy_long <span class="ot">&lt;-</span> </span>
+<span id="cb232-6"><a href="prepost.html#cb232-6" tabindex="-1"></a>  self_efficacy <span class="sc">%&gt;%</span> </span>
+<span id="cb232-7"><a href="prepost.html#cb232-7" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;baseline&quot;</span>, <span class="st">&quot;week3&quot;</span>),</span>
+<span id="cb232-8"><a href="prepost.html#cb232-8" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>,</span>
+<span id="cb232-9"><a href="prepost.html#cb232-9" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;score&quot;</span>)</span>
+<span id="cb232-10"><a href="prepost.html#cb232-10" tabindex="-1"></a></span>
+<span id="cb232-11"><a href="prepost.html#cb232-11" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb232-12"><a href="prepost.html#cb232-12" tabindex="-1"></a>self_efficacy_long <span class="sc">%&gt;%</span> </span>
+<span id="cb232-13"><a href="prepost.html#cb232-13" tabindex="-1"></a>  <span class="fu">ggdotplot</span>(<span class="at">x =</span> <span class="st">&quot;time&quot;</span>, <span class="at">y =</span> <span class="st">&quot;score&quot;</span>, <span class="at">color =</span> <span class="st">&quot;group&quot;</span>, <span class="at">add =</span> <span class="st">&quot;mean_se&quot;</span>,</span>
+<span id="cb232-14"><a href="prepost.html#cb232-14" tabindex="-1"></a>            <span class="at">ylab =</span> <span class="st">&quot;Self-efficacy score&quot;</span>)</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -920,65 +918,65 @@ Hint - Approach 3
 <button>
 Solution - Approach 1
 </button>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="prepost.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Approach 1 - difference</span></span>
-<span id="cb17-2"><a href="prepost.html#cb17-2" aria-hidden="true" tabindex="-1"></a>self_efficacy <span class="ot">&lt;-</span> </span>
-<span id="cb17-3"><a href="prepost.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  self_efficacy <span class="sc">%&gt;%</span> </span>
-<span id="cb17-4"><a href="prepost.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">change =</span> week3 <span class="sc">-</span> baseline,</span>
-<span id="cb17-5"><a href="prepost.html#cb17-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">factor</span>(group))</span>
-<span id="cb17-6"><a href="prepost.html#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="prepost.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># using anovaBF</span></span>
-<span id="cb17-8"><a href="prepost.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaBF</span>(change <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(self_efficacy))</span>
-<span id="cb17-9"><a href="prepost.html#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-10"><a href="prepost.html#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># or lmBF</span></span>
-<span id="cb17-11"><a href="prepost.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lmBF</span>(change <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(self_efficacy)) </span>
-<span id="cb17-12"><a href="prepost.html#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="prepost.html#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># or ttest</span></span>
-<span id="cb17-14"><a href="prepost.html#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestBF</span>(self_efficacy<span class="sc">$</span>change[self_efficacy<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;habitual_diet&quot;</span>],</span>
-<span id="cb17-15"><a href="prepost.html#cb17-15" aria-hidden="true" tabindex="-1"></a>        self_efficacy<span class="sc">$</span>change[self_efficacy<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;diet_change&quot;</span>]) </span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="prepost.html#cb233-1" tabindex="-1"></a><span class="co"># Approach 1 - difference</span></span>
+<span id="cb233-2"><a href="prepost.html#cb233-2" tabindex="-1"></a>self_efficacy <span class="ot">&lt;-</span> </span>
+<span id="cb233-3"><a href="prepost.html#cb233-3" tabindex="-1"></a>  self_efficacy <span class="sc">%&gt;%</span> </span>
+<span id="cb233-4"><a href="prepost.html#cb233-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">change =</span> week3 <span class="sc">-</span> baseline,</span>
+<span id="cb233-5"><a href="prepost.html#cb233-5" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">factor</span>(group))</span>
+<span id="cb233-6"><a href="prepost.html#cb233-6" tabindex="-1"></a></span>
+<span id="cb233-7"><a href="prepost.html#cb233-7" tabindex="-1"></a><span class="co"># using anovaBF</span></span>
+<span id="cb233-8"><a href="prepost.html#cb233-8" tabindex="-1"></a><span class="fu">anovaBF</span>(change <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(self_efficacy))</span>
+<span id="cb233-9"><a href="prepost.html#cb233-9" tabindex="-1"></a></span>
+<span id="cb233-10"><a href="prepost.html#cb233-10" tabindex="-1"></a><span class="co"># or lmBF</span></span>
+<span id="cb233-11"><a href="prepost.html#cb233-11" tabindex="-1"></a><span class="fu">lmBF</span>(change <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">data.frame</span>(self_efficacy)) </span>
+<span id="cb233-12"><a href="prepost.html#cb233-12" tabindex="-1"></a></span>
+<span id="cb233-13"><a href="prepost.html#cb233-13" tabindex="-1"></a><span class="co"># or ttest</span></span>
+<span id="cb233-14"><a href="prepost.html#cb233-14" tabindex="-1"></a><span class="fu">ttestBF</span>(self_efficacy<span class="sc">$</span>change[self_efficacy<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;habitual_diet&quot;</span>],</span>
+<span id="cb233-15"><a href="prepost.html#cb233-15" tabindex="-1"></a>        self_efficacy<span class="sc">$</span>change[self_efficacy<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;diet_change&quot;</span>]) </span></code></pre></div>
 </div>
 <div class="webex-solution">
 <button>
 Solution - Approach 2
 </button>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="prepost.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Approach 2 - Mixed ANOVA</span></span>
-<span id="cb18-2"><a href="prepost.html#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="prepost.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># set factors</span></span>
-<span id="cb18-4"><a href="prepost.html#cb18-4" aria-hidden="true" tabindex="-1"></a>self_efficacy_long <span class="ot">&lt;-</span> </span>
-<span id="cb18-5"><a href="prepost.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  self_efficacy_long <span class="sc">%&gt;%</span> </span>
-<span id="cb18-6"><a href="prepost.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time  =</span> <span class="fu">factor</span>(time),</span>
-<span id="cb18-7"><a href="prepost.html#cb18-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">ppt   =</span> <span class="fu">factor</span>(ppt), </span>
-<span id="cb18-8"><a href="prepost.html#cb18-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">factor</span>(group))</span>
-<span id="cb18-9"><a href="prepost.html#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-10"><a href="prepost.html#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># get bfs</span></span>
-<span id="cb18-11"><a href="prepost.html#cb18-11" aria-hidden="true" tabindex="-1"></a>BFs <span class="ot">&lt;-</span> <span class="fu">anovaBF</span>(score <span class="sc">~</span> group <span class="sc">+</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(self_efficacy_long))</span>
-<span id="cb18-12"><a href="prepost.html#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-13"><a href="prepost.html#cb18-13" aria-hidden="true" tabindex="-1"></a>BFs[<span class="dv">4</span>] <span class="sc">/</span> BFs[<span class="dv">3</span>]  </span>
-<span id="cb18-14"><a href="prepost.html#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-15"><a href="prepost.html#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="co"># recompute</span></span>
-<span id="cb18-16"><a href="prepost.html#cb18-16" aria-hidden="true" tabindex="-1"></a>BFs2 <span class="ot">&lt;-</span> <span class="fu">recompute</span>(BFs, <span class="dv">1000000</span>)</span>
-<span id="cb18-17"><a href="prepost.html#cb18-17" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb18-18"><a href="prepost.html#cb18-18" aria-hidden="true" tabindex="-1"></a>BFs2[<span class="dv">4</span>] <span class="sc">/</span> BFs2[<span class="dv">3</span>]  </span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="prepost.html#cb234-1" tabindex="-1"></a><span class="co"># Approach 2 - Mixed ANOVA</span></span>
+<span id="cb234-2"><a href="prepost.html#cb234-2" tabindex="-1"></a></span>
+<span id="cb234-3"><a href="prepost.html#cb234-3" tabindex="-1"></a><span class="co"># set factors</span></span>
+<span id="cb234-4"><a href="prepost.html#cb234-4" tabindex="-1"></a>self_efficacy_long <span class="ot">&lt;-</span> </span>
+<span id="cb234-5"><a href="prepost.html#cb234-5" tabindex="-1"></a>  self_efficacy_long <span class="sc">%&gt;%</span> </span>
+<span id="cb234-6"><a href="prepost.html#cb234-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time  =</span> <span class="fu">factor</span>(time),</span>
+<span id="cb234-7"><a href="prepost.html#cb234-7" tabindex="-1"></a>         <span class="at">ppt   =</span> <span class="fu">factor</span>(ppt), </span>
+<span id="cb234-8"><a href="prepost.html#cb234-8" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">factor</span>(group))</span>
+<span id="cb234-9"><a href="prepost.html#cb234-9" tabindex="-1"></a></span>
+<span id="cb234-10"><a href="prepost.html#cb234-10" tabindex="-1"></a><span class="co"># get bfs</span></span>
+<span id="cb234-11"><a href="prepost.html#cb234-11" tabindex="-1"></a>BFs <span class="ot">&lt;-</span> <span class="fu">anovaBF</span>(score <span class="sc">~</span> group <span class="sc">+</span> time <span class="sc">+</span> ppt, <span class="at">whichRandom =</span> <span class="st">&quot;ppt&quot;</span>, <span class="at">data =</span> <span class="fu">data.frame</span>(self_efficacy_long))</span>
+<span id="cb234-12"><a href="prepost.html#cb234-12" tabindex="-1"></a></span>
+<span id="cb234-13"><a href="prepost.html#cb234-13" tabindex="-1"></a>BFs[<span class="dv">4</span>] <span class="sc">/</span> BFs[<span class="dv">3</span>]  </span>
+<span id="cb234-14"><a href="prepost.html#cb234-14" tabindex="-1"></a></span>
+<span id="cb234-15"><a href="prepost.html#cb234-15" tabindex="-1"></a><span class="co"># recompute</span></span>
+<span id="cb234-16"><a href="prepost.html#cb234-16" tabindex="-1"></a>BFs2 <span class="ot">&lt;-</span> <span class="fu">recompute</span>(BFs, <span class="dv">1000000</span>)</span>
+<span id="cb234-17"><a href="prepost.html#cb234-17" tabindex="-1"></a> </span>
+<span id="cb234-18"><a href="prepost.html#cb234-18" tabindex="-1"></a>BFs2[<span class="dv">4</span>] <span class="sc">/</span> BFs2[<span class="dv">3</span>]  </span></code></pre></div>
 </div>
 <div class="webex-solution">
 <button>
 Solution - Approach 3
 </button>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="prepost.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Approach 3 - ANCOVA</span></span>
-<span id="cb19-2"><a href="prepost.html#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="prepost.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># wide format</span></span>
-<span id="cb19-4"><a href="prepost.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to factors</span></span>
-<span id="cb19-5"><a href="prepost.html#cb19-5" aria-hidden="true" tabindex="-1"></a>self_efficacy <span class="ot">&lt;-</span> </span>
-<span id="cb19-6"><a href="prepost.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  self_efficacy <span class="sc">%&gt;%</span> </span>
-<span id="cb19-7"><a href="prepost.html#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">factor</span>(group))</span>
-<span id="cb19-8"><a href="prepost.html#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="prepost.html#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># specify group + baseline</span></span>
-<span id="cb19-10"><a href="prepost.html#cb19-10" aria-hidden="true" tabindex="-1"></a>BF_group_baseline <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(week3 <span class="sc">~</span> group <span class="sc">+</span> baseline, <span class="at">data =</span> <span class="fu">data.frame</span>(self_efficacy))</span>
-<span id="cb19-11"><a href="prepost.html#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-12"><a href="prepost.html#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># specify baseline only</span></span>
-<span id="cb19-13"><a href="prepost.html#cb19-13" aria-hidden="true" tabindex="-1"></a>BF_baseline <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(week3 <span class="sc">~</span> baseline, <span class="at">data =</span> <span class="fu">data.frame</span>(self_efficacy))</span>
-<span id="cb19-14"><a href="prepost.html#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-15"><a href="prepost.html#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co"># unique contribution group</span></span>
-<span id="cb19-16"><a href="prepost.html#cb19-16" aria-hidden="true" tabindex="-1"></a>BF_group_baseline <span class="sc">/</span> BF_baseline </span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="prepost.html#cb235-1" tabindex="-1"></a><span class="co"># Approach 3 - ANCOVA</span></span>
+<span id="cb235-2"><a href="prepost.html#cb235-2" tabindex="-1"></a></span>
+<span id="cb235-3"><a href="prepost.html#cb235-3" tabindex="-1"></a><span class="co"># wide format</span></span>
+<span id="cb235-4"><a href="prepost.html#cb235-4" tabindex="-1"></a><span class="co"># convert to factors</span></span>
+<span id="cb235-5"><a href="prepost.html#cb235-5" tabindex="-1"></a>self_efficacy <span class="ot">&lt;-</span> </span>
+<span id="cb235-6"><a href="prepost.html#cb235-6" tabindex="-1"></a>  self_efficacy <span class="sc">%&gt;%</span> </span>
+<span id="cb235-7"><a href="prepost.html#cb235-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">factor</span>(group))</span>
+<span id="cb235-8"><a href="prepost.html#cb235-8" tabindex="-1"></a></span>
+<span id="cb235-9"><a href="prepost.html#cb235-9" tabindex="-1"></a><span class="co"># specify group + baseline</span></span>
+<span id="cb235-10"><a href="prepost.html#cb235-10" tabindex="-1"></a>BF_group_baseline <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(week3 <span class="sc">~</span> group <span class="sc">+</span> baseline, <span class="at">data =</span> <span class="fu">data.frame</span>(self_efficacy))</span>
+<span id="cb235-11"><a href="prepost.html#cb235-11" tabindex="-1"></a></span>
+<span id="cb235-12"><a href="prepost.html#cb235-12" tabindex="-1"></a><span class="co"># specify baseline only</span></span>
+<span id="cb235-13"><a href="prepost.html#cb235-13" tabindex="-1"></a>BF_baseline <span class="ot">&lt;-</span> <span class="fu">lmBF</span>(week3 <span class="sc">~</span> baseline, <span class="at">data =</span> <span class="fu">data.frame</span>(self_efficacy))</span>
+<span id="cb235-14"><a href="prepost.html#cb235-14" tabindex="-1"></a></span>
+<span id="cb235-15"><a href="prepost.html#cb235-15" tabindex="-1"></a><span class="co"># unique contribution group</span></span>
+<span id="cb235-16"><a href="prepost.html#cb235-16" tabindex="-1"></a>BF_group_baseline <span class="sc">/</span> BF_baseline </span></code></pre></div>
 </div>
 </div>
 <p><br />
@@ -1010,20 +1008,20 @@ Reliable Change RC index
 <p><span class="math inline">\(\alpha\)</span> is necessary for the calculation of <span class="math inline">\(SE_D\)</span>, but was not reported by Francis et al. (2019). The CESD-R scale is widely used though, and Busch et al. (2011) derived an estimate of <span class="math inline">\(SE_D\)</span> to be 5.05, using an <span class="math inline">\(\alpha\)</span> of .914 and <span class="math inline">\(SD_{Pre}\)</span> score of 12.187. For the purposes of illustration, we'll assume the value of <span class="math inline">\(SE_D\)</span> is the same as in Busch et al. (2011) (i.e., 5.05).</p>
 <p>If RC &gt; 1.96 (or RC &lt; -1.96, depending on the way the difference is calculated), then the individual can be said to show a <em>reliable change</em>.</p>
 <p>Thus, to calculate RC for each individual in the <code>diet_change</code> group:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="prepost.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter the data for the diet_change group only</span></span>
-<span id="cb20-2"><a href="prepost.html#cb20-2" aria-hidden="true" tabindex="-1"></a>diet_change <span class="ot">&lt;-</span></span>
-<span id="cb20-3"><a href="prepost.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  diet <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;diet_change&quot;</span>)</span>
-<span id="cb20-4"><a href="prepost.html#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="prepost.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># SE of differences</span></span>
-<span id="cb20-6"><a href="prepost.html#cb20-6" aria-hidden="true" tabindex="-1"></a>se_diff <span class="ot">&lt;-</span> <span class="fl">5.05</span> <span class="co"># from Busch et al. (2011)</span></span>
-<span id="cb20-7"><a href="prepost.html#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-8"><a href="prepost.html#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Reliable Change index calculation</span></span>
-<span id="cb20-9"><a href="prepost.html#cb20-9" aria-hidden="true" tabindex="-1"></a>diet_change <span class="ot">&lt;-</span></span>
-<span id="cb20-10"><a href="prepost.html#cb20-10" aria-hidden="true" tabindex="-1"></a>  diet_change <span class="sc">%&gt;%</span></span>
-<span id="cb20-11"><a href="prepost.html#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">RC =</span> change <span class="sc">/</span> se_diff)</span>
-<span id="cb20-12"><a href="prepost.html#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-13"><a href="prepost.html#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co"># preview</span></span>
-<span id="cb20-14"><a href="prepost.html#cb20-14" aria-hidden="true" tabindex="-1"></a>diet_change <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="prepost.html#cb236-1" tabindex="-1"></a><span class="co"># filter the data for the diet_change group only</span></span>
+<span id="cb236-2"><a href="prepost.html#cb236-2" tabindex="-1"></a>diet_change <span class="ot">&lt;-</span></span>
+<span id="cb236-3"><a href="prepost.html#cb236-3" tabindex="-1"></a>  diet <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;diet_change&quot;</span>)</span>
+<span id="cb236-4"><a href="prepost.html#cb236-4" tabindex="-1"></a></span>
+<span id="cb236-5"><a href="prepost.html#cb236-5" tabindex="-1"></a><span class="co"># SE of differences</span></span>
+<span id="cb236-6"><a href="prepost.html#cb236-6" tabindex="-1"></a>se_diff <span class="ot">&lt;-</span> <span class="fl">5.05</span> <span class="co"># from Busch et al. (2011)</span></span>
+<span id="cb236-7"><a href="prepost.html#cb236-7" tabindex="-1"></a></span>
+<span id="cb236-8"><a href="prepost.html#cb236-8" tabindex="-1"></a><span class="co"># Reliable Change index calculation</span></span>
+<span id="cb236-9"><a href="prepost.html#cb236-9" tabindex="-1"></a>diet_change <span class="ot">&lt;-</span></span>
+<span id="cb236-10"><a href="prepost.html#cb236-10" tabindex="-1"></a>  diet_change <span class="sc">%&gt;%</span></span>
+<span id="cb236-11"><a href="prepost.html#cb236-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">RC =</span> change <span class="sc">/</span> se_diff)</span>
+<span id="cb236-12"><a href="prepost.html#cb236-12" tabindex="-1"></a></span>
+<span id="cb236-13"><a href="prepost.html#cb236-13" tabindex="-1"></a><span class="co"># preview</span></span>
+<span id="cb236-14"><a href="prepost.html#cb236-14" tabindex="-1"></a>diet_change <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -1092,8 +1090,8 @@ Reliable Change RC index
 <p><br />
 </p>
 <p>To see all the individuals who showed such a reduction:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="prepost.html#cb21-1" aria-hidden="true" tabindex="-1"></a>improved_ppts <span class="ot">&lt;-</span> diet_change <span class="sc">%&gt;%</span> <span class="fu">filter</span>(RC <span class="sc">&lt;</span> <span class="sc">-</span><span class="fl">1.96</span>) </span>
-<span id="cb21-2"><a href="prepost.html#cb21-2" aria-hidden="true" tabindex="-1"></a>improved_ppts</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="prepost.html#cb237-1" tabindex="-1"></a>improved_ppts <span class="ot">&lt;-</span> diet_change <span class="sc">%&gt;%</span> <span class="fu">filter</span>(RC <span class="sc">&lt;</span> <span class="sc">-</span><span class="fl">1.96</span>) </span>
+<span id="cb237-2"><a href="prepost.html#cb237-2" tabindex="-1"></a>improved_ppts</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -1195,16 +1193,16 @@ Reliable Change RC index
 <div id="scatterplot-with-rc-bounds" class="section level4 hasAnchor" number="7.8.1.1">
 <h4><span class="header-section-number">7.8.1.1</span> Scatterplot with RC bounds<a href="prepost.html#scatterplot-with-rc-bounds" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>All the data can be represented on a plot with bounds for reliable change as follows:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="prepost.html#cb22-1" aria-hidden="true" tabindex="-1"></a>diet_change <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="prepost.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> baseline, <span class="at">y =</span> week3)) <span class="sc">+</span> </span>
-<span id="cb22-3"><a href="prepost.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb22-4"><a href="prepost.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>() <span class="sc">+</span></span>
-<span id="cb22-5"><a href="prepost.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="sc">-</span><span class="fl">1.96</span><span class="sc">*</span>se_diff, <span class="at">lty =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb22-6"><a href="prepost.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="fl">1.96</span><span class="sc">*</span>se_diff, <span class="at">lty =</span> <span class="dv">2</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="prepost.html#cb238-1" tabindex="-1"></a>diet_change <span class="sc">%&gt;%</span> </span>
+<span id="cb238-2"><a href="prepost.html#cb238-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> baseline, <span class="at">y =</span> week3)) <span class="sc">+</span> </span>
+<span id="cb238-3"><a href="prepost.html#cb238-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb238-4"><a href="prepost.html#cb238-4" tabindex="-1"></a>  <span class="fu">geom_abline</span>() <span class="sc">+</span></span>
+<span id="cb238-5"><a href="prepost.html#cb238-5" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="sc">-</span><span class="fl">1.96</span><span class="sc">*</span>se_diff, <span class="at">lty =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb238-6"><a href="prepost.html#cb238-6" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="fl">1.96</span><span class="sc">*</span>se_diff, <span class="at">lty =</span> <span class="dv">2</span>) </span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-21"></span>
 <img src="07_pre_post_files/figure-html/unnamed-chunk-21-1.png" alt="Baseline vs. week 3 depressive symptom severity in the diet change group. Dotted lines denoted Reliable Change index bounds" width="85%" />
 <p class="caption">
-Figure 7.3: Baseline vs. week 3 depressive symptom severity in the diet change group. Dotted lines denoted Reliable Change index bounds
+Figure 7.2: Baseline vs. week 3 depressive symptom severity in the diet change group. Dotted lines denoted Reliable Change index bounds
 </p>
 </div>
 <p>The black dashed lines are those plotted with <code>geom_abline()</code> and are created by multiplying <code>se_diff</code> by +1.96 and -1.96.</p>
@@ -1218,29 +1216,29 @@ Figure 7.3: Baseline vs. week 3 depressive symptom severity in the diet change g
 <button>
 Habitual diet group
 </button>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="prepost.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter the data for the habitual_diet group only</span></span>
-<span id="cb23-2"><a href="prepost.html#cb23-2" aria-hidden="true" tabindex="-1"></a>habitual_diet <span class="ot">&lt;-</span></span>
-<span id="cb23-3"><a href="prepost.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  diet <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;habitual_diet&quot;</span>)</span>
-<span id="cb23-4"><a href="prepost.html#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="prepost.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># SE of differences</span></span>
-<span id="cb23-6"><a href="prepost.html#cb23-6" aria-hidden="true" tabindex="-1"></a>se_diff <span class="ot">&lt;-</span> <span class="fl">5.05</span> <span class="co"># from Busch et al. (2011)</span></span>
-<span id="cb23-7"><a href="prepost.html#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-8"><a href="prepost.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Reliable Change index calculation</span></span>
-<span id="cb23-9"><a href="prepost.html#cb23-9" aria-hidden="true" tabindex="-1"></a>habitual_diet <span class="ot">&lt;-</span></span>
-<span id="cb23-10"><a href="prepost.html#cb23-10" aria-hidden="true" tabindex="-1"></a>  habitual_diet <span class="sc">%&gt;%</span></span>
-<span id="cb23-11"><a href="prepost.html#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">RC =</span> change <span class="sc">/</span> se_diff)</span>
-<span id="cb23-12"><a href="prepost.html#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-13"><a href="prepost.html#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co"># RC plot</span></span>
-<span id="cb23-14"><a href="prepost.html#cb23-14" aria-hidden="true" tabindex="-1"></a>habitual_diet <span class="sc">%&gt;%</span> </span>
-<span id="cb23-15"><a href="prepost.html#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> baseline, <span class="at">y =</span> week3)) <span class="sc">+</span> </span>
-<span id="cb23-16"><a href="prepost.html#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb23-17"><a href="prepost.html#cb23-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>() <span class="sc">+</span></span>
-<span id="cb23-18"><a href="prepost.html#cb23-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="sc">-</span><span class="fl">1.96</span><span class="sc">*</span>se_diff, <span class="at">lty =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb23-19"><a href="prepost.html#cb23-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span>  <span class="fl">1.96</span><span class="sc">*</span>se_diff, <span class="at">lty =</span> <span class="dv">2</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="prepost.html#cb239-1" tabindex="-1"></a><span class="co"># filter the data for the habitual_diet group only</span></span>
+<span id="cb239-2"><a href="prepost.html#cb239-2" tabindex="-1"></a>habitual_diet <span class="ot">&lt;-</span></span>
+<span id="cb239-3"><a href="prepost.html#cb239-3" tabindex="-1"></a>  diet <span class="sc">%&gt;%</span> <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;habitual_diet&quot;</span>)</span>
+<span id="cb239-4"><a href="prepost.html#cb239-4" tabindex="-1"></a></span>
+<span id="cb239-5"><a href="prepost.html#cb239-5" tabindex="-1"></a><span class="co"># SE of differences</span></span>
+<span id="cb239-6"><a href="prepost.html#cb239-6" tabindex="-1"></a>se_diff <span class="ot">&lt;-</span> <span class="fl">5.05</span> <span class="co"># from Busch et al. (2011)</span></span>
+<span id="cb239-7"><a href="prepost.html#cb239-7" tabindex="-1"></a></span>
+<span id="cb239-8"><a href="prepost.html#cb239-8" tabindex="-1"></a><span class="co"># Reliable Change index calculation</span></span>
+<span id="cb239-9"><a href="prepost.html#cb239-9" tabindex="-1"></a>habitual_diet <span class="ot">&lt;-</span></span>
+<span id="cb239-10"><a href="prepost.html#cb239-10" tabindex="-1"></a>  habitual_diet <span class="sc">%&gt;%</span></span>
+<span id="cb239-11"><a href="prepost.html#cb239-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">RC =</span> change <span class="sc">/</span> se_diff)</span>
+<span id="cb239-12"><a href="prepost.html#cb239-12" tabindex="-1"></a></span>
+<span id="cb239-13"><a href="prepost.html#cb239-13" tabindex="-1"></a><span class="co"># RC plot</span></span>
+<span id="cb239-14"><a href="prepost.html#cb239-14" tabindex="-1"></a>habitual_diet <span class="sc">%&gt;%</span> </span>
+<span id="cb239-15"><a href="prepost.html#cb239-15" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> baseline, <span class="at">y =</span> week3)) <span class="sc">+</span> </span>
+<span id="cb239-16"><a href="prepost.html#cb239-16" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb239-17"><a href="prepost.html#cb239-17" tabindex="-1"></a>  <span class="fu">geom_abline</span>() <span class="sc">+</span></span>
+<span id="cb239-18"><a href="prepost.html#cb239-18" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="sc">-</span><span class="fl">1.96</span><span class="sc">*</span>se_diff, <span class="at">lty =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb239-19"><a href="prepost.html#cb239-19" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span>  <span class="fl">1.96</span><span class="sc">*</span>se_diff, <span class="at">lty =</span> <span class="dv">2</span>) </span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-22"></span>
 <img src="07_pre_post_files/figure-html/unnamed-chunk-22-1.png" alt="Baseline vs. week 3 depressive symptom severity in the habitual diet group. Dotted lines denoted Reliable Change index bounds" width="85%" />
 <p class="caption">
-Figure 7.4: Baseline vs. week 3 depressive symptom severity in the habitual diet group. Dotted lines denoted Reliable Change index bounds
+Figure 7.3: Baseline vs. week 3 depressive symptom severity in the habitual diet group. Dotted lines denoted Reliable Change index bounds
 </p>
 </div>
 </div>
@@ -1282,25 +1280,41 @@ Figure 7.4: Baseline vs. week 3 depressive symptom severity in the habitual diet
 update_total_correct = function() {
   console.log("webex: update total_correct");
 
-  if (t = document.getElementById("webex-total_correct")) {
-    var correct = document.getElementsByClassName("webex-correct").length;
-    var solvemes = document.getElementsByClassName("webex-solveme").length;
-    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
-    var selects = document.getElementsByClassName("webex-select").length;
-    
-    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
   }
 }
 
 /* webex-solution button toggling function */
 b_func = function() {
   console.log("webex: toggle hide");
-  
+
   var cl = this.parentElement.classList;
   if (cl.contains('open')) {
     cl.remove("open");
   } else {
     cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
   }
 }
 
@@ -1354,9 +1368,9 @@ solveme_func = function(e) {
 /* function for checking select answers */
 select_func = function(e) {
   console.log("webex: check select");
-  
+
   var cl = this.classList
-  
+
   /* add style */
   cl.remove("webex-incorrect");
   cl.remove("webex-correct");
@@ -1365,7 +1379,7 @@ select_func = function(e) {
   } else if (this.value != "blank") {
     cl.add("webex-incorrect");
   }
-  
+
   update_total_correct();
 }
 
@@ -1376,25 +1390,25 @@ radiogroups_func = function(e) {
   var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
   var cl = checked_button.parentElement.classList;
   var labels = checked_button.parentElement.parentElement.children;
-  
+
   /* get rid of styles */
   for (i = 0; i < labels.length; i++) {
     labels[i].classList.remove("webex-incorrect");
     labels[i].classList.remove("webex-correct");
   }
-  
+
   /* add style */
   if (checked_button.value == "answer") {
     cl.add("webex-correct");
   } else {
     cl.add("webex-incorrect");
   }
-  
+
   update_total_correct();
 }
 
 window.onload = function() {
-  console.log("onload");
+  console.log("webex onload");
   /* set up solution buttons */
   var buttons = document.getElementsByTagName("button");
 
@@ -1402,6 +1416,22 @@ window.onload = function() {
     if (buttons[i].parentElement.classList.contains('webex-solution')) {
       buttons[i].onclick = b_func;
     }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
   }
 
   /* set up webex-solveme inputs */
@@ -1429,18 +1459,21 @@ window.onload = function() {
     /* attach checking function */
     solveme[i].onkeyup = solveme_func;
     solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
   }
-  
+
   /* set up radiogroups */
   var radiogroups = document.getElementsByClassName("webex-radiogroup");
   for (var i = 0; i < radiogroups.length; i++) {
     radiogroups[i].onchange = radiogroups_func;
   }
-  
+
   /* set up selects */
   var selects = document.getElementsByClassName("webex-select");
   for (var i = 0; i < selects.length; i++) {
     selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
   }
 
   update_total_correct();
@@ -1453,7 +1486,7 @@ window.onload = function() {
         </div>
       </div>
 <a href="anova2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="assessment2023.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="mixed.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

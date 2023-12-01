@@ -2,7 +2,7 @@
 
 *Chris Berry*
 \
-*2023*
+*2024*
 
 
 
@@ -23,7 +23,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 
 ## Overview
 
-* **Slides** from the lecture part of the session: [Download](slides/PSYC753_L3_ANOVA_1.pptx)
+* **Slides** from the lecture part of the session: [Download](slides/PSYC761_L3_ANOVA_1.pptx)
 
 \
 
@@ -411,7 +411,7 @@ To obtain R^2^, first use `lm()` to specify the model, then use `glance()` from 
 # specify and store the anova
 anova_1 <- lm(score ~ group, data = affect_data)
 
-# make sure broom package is loaded, then
+# make sure broom package is loaded with library(broom), then
 # use glance() with anova_1 
 glance(anova_1)
 ```
@@ -423,7 +423,7 @@ glance(anova_1)
 | 0.0523547|     0.0460996| 0.4743|  8.369943| 0.0002896|  2| -204.4377| 416.8754| 431.7697| 68.16302|         303|  306|
 
 </div>
-Adjusted R^2^ (as a *percentage*, to two decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["4.61"]'/> %, which represents the percentage of the variance in the change in STAI scores is explained by the affect value of an image. (Remember, the values given by `glance()` are _proportions_, so need to be multiplied by 100 to get the percentage.)
+Adjusted R^2^ (as a *percentage*, to two decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["4.61"]'/> %, which represents the percentage of the variance in the change in STAI scores that is explained by the affect value of an image. (Remember, the values of R^2^ given by `glance()` are _proportions_, so need to be multiplied by 100 to get the percentage.)
 
 \
 
@@ -511,7 +511,7 @@ To two decimal places:
 * The BF for the comparison of `VeryLow` vs. `High` groups = <input class='webex-solveme nospaces' size='5' data-answer='["55.43"]'/>
 * The BF for the comparison of `Low` vs. `High` groups = <input class='webex-solveme nospaces' size='4' data-answer='["0.18"]'/>
 
-**Interpretation:** The one-way between subjects ANOVA indicated that there was evidence for an effect of aesthetic value on change in STAI scores (BF = 66.66). The scores in the `VeryLow` group were lower than those of the `Low` (BF = 10.25) and `High` groups (BF = 55.43), but scores in the `Low` and `High` groups did not differ (BF = 0.18). This indicates that STAI scores were lower (i.e., there were more negative symptoms) after viewing images that were very low in aesthetic value, compared to images that were low or high in aesthetic value. Viewing pictures that were low or high in aesthetic value resulted in similar changes in STAI scores.
+**Interpretation:** The one-way between subjects ANOVA indicated that there was evidence for an effect of aesthetic value on change in STAI scores (BF~10~ = 66.66). The scores in the `VeryLow` group were lower than those of the `Low` (BF~10~ = 10.25) and `High` groups (BF~10~ = 55.43), but scores in the `Low` and `High` groups did not differ (BF~10~ = 0.18). This indicates that STAI scores were lower (i.e., there were more negative symptoms) after viewing images that were very low in aesthetic value, compared to images that were low or high in aesthetic value. Viewing pictures that were low or high in aesthetic value resulted in similar changes in STAI scores.
 
 
 <div class='webex-solution'><button>Further information on filter()</button>
@@ -531,7 +531,7 @@ So `filter(group == "VeryLow" | group == "Low")` means "filter the rows of `affe
 <div class='webex-solution'><button>An equivalent approach: ttestBF()</button>
 
 
-`anovaBF()` was used to conduct follow-up tests. Because each test had two groups, this is equivalent to a Bayesian _t_-test, and so the exact same BFs could have been obtained using `ttestBF()`:
+`anovaBF()` was used to conduct follow-up tests. Because each test had two groups, this is equivalent to a [Bayesian _t_-test](http://www.andywills.info/rminr/evidence.html), and so the exact same BFs could have been obtained using `ttestBF()`:
 
 
 ```r
@@ -757,7 +757,7 @@ We can get some idea of the main effects and interaction by inspecting the plot 
 
 :::{.tip}
 
-Use `anovaBF()` in the `BayesFactor` package to obtain Bayes Factors corresponding to the main effect of factor 1, the main effect of factor 2, and the interaction between factor 1 and factor 2. 
+Use `anovaBF()` in the `BayesFactor` package to obtain Bayes factors corresponding to the main effect of factor 1, the main effect of factor 2, and the interaction between factor 1 and factor 2. 
 
 To specify the two-way ANOVA in `anovaBF()`, use `dependent_variable ~ factor1 * factor2`. 
 
@@ -780,8 +780,8 @@ anova2x2_BF
 ## --------------
 ## [1] resilience                                    : 1.822053e+27 ±0%
 ## [2] adversity                                     : 7.870878e+25 ±0%
-## [3] resilience + adversity                        : 3.339074e+46 ±2.16%
-## [4] resilience + adversity + resilience:adversity : 3.130195e+49 ±2.06%
+## [3] resilience + adversity                        : 3.29781e+46  ±1.46%
+## [4] resilience + adversity + resilience:adversity : 3.243508e+49 ±1.02%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -792,7 +792,9 @@ anova2x2_BF
 <div class='webex-solution'><button>What does 1.82e+27 mean?</button>
 
 It means 1.82 x 10^27^. Or 1820000000000000000000000000. A very large number! For more information see:
-<a href="https://chrisjberry.github.io/datafluencyCB/faqs#e-meaning" target="_blank">FAQ</a> (Opens a new tab.)
+<a href="https://chrisjberry.github.io/datafluencyCB/faqs#e-meaning" target="_blank">FAQ</a> (Opens a new tab.)  
+
+Please take care to notice "e+" or "e-" in the output for your Bayes factors. As you can see, BF~10~ = 1.82 means something drastically different to BF~10~ = 1.82 x 10^27^, and you wouldn't want to make this kind of mistake when drawing statistical inferences! 
 
 </div>
 
@@ -802,9 +804,11 @@ Each BF in the output compares how likely the model is, compared to an intercept
 * `[1] resilience` is the BF for the main effect of resilience. It's how much more likely a model with `resilience` alone is than an intercept-only model.
 * `[2] adversity` is the BF for the main effect of adversity. It's how much more likely a model with `adversity` alone is than an intercept-only model.  
 * `[3] resilience + adversity` is the BF for the main effects of resilience and adversity. It's how much more likely a model with main effects of `resilience` and `adversity` is than an intercept-only model.  
-* `[4] resilience + adversity + resilience:adversity` is the BF for the main effects of resilience and adversity **and** the interaction between them (`resilience:adversity`). It's how much more likely a model with main effects of `resilience` and `adversity` and also the interaction (`resilience:adversity`) is than an intercept-only model.  
+* `[4] resilience + adversity + resilience:adversity` is the BF for the main effects of resilience and adversity **and also** the interaction between them (`resilience:adversity`). It's how much more likely a model with main effects of `resilience` and `adversity` and also the interaction (`resilience:adversity`) is than an intercept-only model.  
 
-`[1]` and `[2]` correspond to the main effects of `resilience` and `adversity`, respectively. To obtain the BF for the interaction,  we need to divide `[4]` by `[3]`:
+`[1]` and `[2]` correspond to the main effects of `resilience` and `adversity`, respectively. 
+
+To obtain the BF for the interaction,  we need to divide `[4]` by `[3]`:
 
 
 ```r
@@ -815,26 +819,26 @@ anova2x2_BF[4] / anova2x2_BF[3]
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] resilience + adversity + resilience:adversity : 937.444 ±2.98%
+## [1] resilience + adversity + resilience:adversity : 983.534 ±1.78%
 ## 
 ## Against denominator:
 ##   distress ~ resilience + adversity 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS
 ```
-This BF then tells us whether there's evidence for the addition of an interaction term to a model containing the main effects of each factor. This is the BF for the interaction.
+This BF then tells us whether there's evidence for the _addition_ of an interaction term to a model containing the main effects of each factor. This is the BF for the interaction.
 
 
 Record the Bayes factors below:
 
-* The BF for the main effect of `resilience` is BF = <input class='webex-solveme nospaces' size='4' data-answer='["1.82"]'/> x 10^27^.
-* The BF for the main effect of `adversity` is BF = <input class='webex-solveme nospaces' size='4' data-answer='["7.87"]'/> x 10^25^.
-* The BF for the `resilience` and `adversity` interaction is approximately (to the nearest whole number). _Remember_, this is the BF you calculated by dividing `[4]` by `[3]`. BF = <input class='webex-solveme nospaces' data-tol='10' size='3' data-answer='["939"]'/>.
+* The BF for the main effect of `resilience` is BF~10~ = <input class='webex-solveme nospaces' size='4' data-answer='["1.82"]'/> x 10^27^.
+* The BF for the main effect of `adversity` is BF~10~ = <input class='webex-solveme nospaces' size='4' data-answer='["7.87"]'/> x 10^25^.
+* The BF for the `resilience` and `adversity` interaction is approximately (to the nearest whole number). _Remember_, this is the BF you calculated by dividing `[4]` by `[3]`. BF~10~ = <input class='webex-solveme nospaces' data-tol='10' size='3' data-answer='["939"]'/>.
 
 
 <div class='webex-solution'><button>Meaning of ±number%</button>
 
-You'll notice that some of BFs had `±1.03%` or similar next to them in the output. This is the error associated with the BF. It's like saying my height is 185 cm, plus or minus a millimeter or so. It can be non-zero because generation of the BFs involves random sampling processes. Larger error values mean that the exact same value of the BF won't necessarily be output each time the line of code containing `anovaBF()` is run, so there's a chance that the BFs in your output differ slightly from those above (particularly for the interaction). This is why I asked you to give your answer to the nearest whole number.
+You'll notice that some of the BFs had `±1.03%` or similar next to them in the output. This is the error associated with the BF. It's like saying my height is 185 cm, plus or minus a cm or so. It can be non-zero because generation of the BFs involves random sampling processes. Larger error values mean that the exact same value of the BF won't necessarily be output each time the line of code containing `anovaBF()` is run, so there's a chance that the BFs in your output differ slightly from those above (particularly for the interaction). This is why I asked you to give your answer to the nearest whole number.
 
 </div>
 
@@ -867,6 +871,41 @@ glance(anova2x2)
 </div>
 
 The adjusted R^2^ of the ANOVA model (to two decimal places, as a _percentage_) is <input class='webex-solveme nospaces' size='4' data-answer='["9.52"]'/> %, which is the percentage of variance in distress explained by the model.
+
+
+<div class='webex-solution'><button>Going further - R^2^ for each model component</button>
+
+Rather than report the R^2^ for the overall model in an article, we often would rather report the R^2^ value associated with each of the main effects and interaction.
+
+It is easiest to obtain this by running the ANOVA using the `afex` package. We'll do this in more detail in Session 6. 
+
+
+```r
+# load afex
+library(afex)
+
+# add a column to code the ppt in the dataset
+resilience_data <- 
+  resilience_data %>% 
+  mutate(ppt = c(1:n()))
+
+# use the afex package to run a two-way ANOVA
+# id is the column of participant identifiers ("ppt")
+# dv is the dependent variable ("distress")
+# between specifies the between-subjects factor
+anova2bet <- afex::aov_ez(id = c("ppt"),
+                          dv = c("distress"),
+                          between = c("resilience","adversity"), # two factors
+                          data = resilience_data)
+
+anova2bet
+```
+
+The R^2^ values are referred to as generalised eta squared. The values for each main effect and the interaction term are in the column `ges`.
+
+
+</div>
+
 
 \
 
@@ -929,7 +968,9 @@ anovaBF( distress ~ adversity, data = data.frame(resilience_low) )
 ## Bayes factor type: BFlinearModel, JZS
 ```
 
-This confirms the interaction that is apparent in the plot: There's no evidence for an effect of adversity within high resilience individuals (BF = <input class='webex-solveme nospaces' size='4' data-answer='["1.03"]'/>), but there's substantial evidence for an effect of adversity within low resilience individuals (BF = <input class='webex-solveme nospaces' size='4' data-answer='["2.39"]'/>x 10^17^), such that levels of distress are greatest when the level of adversity is highest. Interestingly, this suggests that resilience may have a _buffering effect_ on the distress experienced as a result of childhood adversity (see Beutel et al., 2017, for further discussion).
+This confirms the interaction that is apparent in the plot: There's no evidence for an effect of adversity within high resilience individuals (BF~10~ = <input class='webex-solveme nospaces' size='4' data-answer='["1.03"]'/>), but there's substantial evidence for an effect of adversity within low resilience individuals (BF~10~ = <input class='webex-solveme nospaces' size='4' data-answer='["2.39"]'/>x 10^17^), such that levels of distress are greatest when the level of adversity is highest.
+
+Interestingly, this suggests that resilience may have a _buffering effect_ on the distress experienced as a result of childhood adversity (see Beutel et al., 2017, for further discussion).
 
 \
 
@@ -1084,6 +1125,8 @@ super_data %>%
 </div>
 
 
+Face matching performance appears to be highest in the <select class='webex-select'><option value='blank'></option><option value=''>control group</option><option value=''>motivated control group</option><option value='answer'>super_recogniser group</option></select>, followed by the <select class='webex-select'><option value='blank'></option><option value=''>control group</option><option value='answer'>motivated control group</option><option value=''>super_recogniser group</option></select>, followed lastly by the <select class='webex-select'><option value='blank'></option><option value='answer'>control group</option><option value=''>motivated control group</option><option value=''>super_recogniser group</option></select>.
+
 \
 
 **6. Obtain the mean and SE of each group**
@@ -1145,7 +1188,7 @@ anovaBF(performance ~ face_group, data = data.frame(super_data))
 
 **8. What is R^2^ for the model?**
 
-The adjusted R^2^ for the effect of face group on matching performance is (as a _proportion_, to two decimal places) <input class='webex-solveme nospaces' size='4' data-answer='["0.30"]'/> 
+The adjusted R^2^ for the effect of face group on matching performance is (as a **percentage**, to **two** decimal places) <input class='webex-solveme nospaces' size='5' data-answer='["30.10","30.11"]'/> %.
 
 
 <div class='webex-solution'><button>Hint</button>
@@ -1162,6 +1205,9 @@ obtain the model with `lm()`, then use `glance()`
 ```r
 super_anova <- lm(performance ~ face_group, data = super_data)
 glance(super_anova)
+
+# multiply the adj.r.squared value by 100 to obtain the percentage
+0.301*100
 ```
 
 </div>
@@ -1256,6 +1302,31 @@ Two-way ANOVA
 
 Horstmann et al. (2018) looked at whether the type of `exchange` that people had with a robot would affect how long it would then take for them to switch it off. The type of `exchange` was either 'functional' or 'social'. Additionally, the researchers looked at the effect of the type of `objection` that the robot made during the conversation. The robot either voiced an 'objection' to being switched off, or voiced 'no objection'.
 
+\
+
+
+Design check.
+
+* What is the first independent variable (or _factor_) that is mentioned in this design? <select class='webex-select'><option value='blank'></option><option value=''>type of objection</option><option value=''>time to switch off</option><option value='answer'>type of exchange</option></select>
+
+* How many levels does the first factor have? <select class='webex-select'><option value='blank'></option><option value=''>1</option><option value='answer'>2</option><option value=''>3</option><option value=''>4</option></select>
+
+* What is the second independent variable (or _factor_)? <select class='webex-select'><option value='blank'></option><option value='answer'>type of objection</option><option value=''>time to switch off</option><option value=''>type of exchange</option></select>
+
+* How many levels does the second factor have? <select class='webex-select'><option value='blank'></option><option value=''>1</option><option value='answer'>2</option><option value=''>3</option><option value=''>4</option></select>
+
+* What is the dependent variable? <select class='webex-select'><option value='blank'></option><option value=''>type of objection</option><option value='answer'>time to switch off</option><option value=''>type of exchange</option></select>
+
+* What is the nature of the independent variables? <select class='webex-select'><option value='blank'></option><option value='answer'>categorical</option><option value=''>continuous</option></select>
+
+* What is the nature of the dependent variable? <select class='webex-select'><option value='blank'></option><option value=''>categorical</option><option value='answer'>continuous</option></select>
+
+* What type of design is this? <select class='webex-select'><option value='blank'></option><option value=''>2 x 2 x 2 between subjects factorial design</option><option value=''>2 x 3 between subjects factorial design</option><option value='answer'>2 x 2 between subjects factorial design</option><option value=''>correlational design</option></select>
+
+
+\
+
+
 The `robot_data` are located at the link below:
 
 https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_robot_data.csv
@@ -1266,16 +1337,16 @@ https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_robot_data.csv
 
 1. **Conduct a two-way ANOVA to compare the effects of `exchange` and `objection` on `time`. Determine whether there's sufficient evidence for the following:**
 
-* The main effect of `objection`: BF (to two decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["6.29"]'/>
-* The main effect of `exchange`: BF (to two decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["0.74"]'/>
-* The interaction between `exchange` and `objection`: BF (nearest whole number) = <input class='webex-solveme nospaces' data-tol='0.4' size='1' data-answer='["3"]'/>
+* The main effect of `objection`: BF~10~ (to two decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["6.29"]'/>
+* The main effect of `exchange`: BF~10~ (to two decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["0.74"]'/>
+* The interaction between `exchange` and `objection`: BF~10~ (nearest whole number) = <input class='webex-solveme nospaces' data-tol='0.4' size='1' data-answer='["3"]'/>
 
 \
 
 2. **Conduct any follow-up tests concerning the interaction (if necessary).**
 
-* The effect of `exchange` when the robot objected: BF (to two decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["1.55"]'/>
-* The effect of `exchange` when the robot did not object: BF (to two decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["0.47"]'/>
+* The effect of `exchange` when the robot objected: BF~10~ (to two decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["1.55"]'/>
+* The effect of `exchange` when the robot did not object: BF~10~ (to two decimal places) = <input class='webex-solveme nospaces' size='4' data-answer='["0.47"]'/>
 
 \
 
@@ -1418,11 +1489,13 @@ To aid your interpretation of the main effects and interaction, look at the mean
 <div class='webex-solution'><button>Solution - interpretation</button>
 
 
-There was substantial evidence for a main effect of objection on the time it took for a participant to switch off a robot (BF = 6.29). Participants took longer when the robot had previously mentioned that it objected to being switched off (_M_ = 10.00 seconds, _SE_ = 2.21), compared to when no objection was mentioned (_M_ = 4.69, _SE_ = 0.37).  
+There was substantial evidence for a main effect of the type of objection on the time it took for a participant to switch off a robot (BF~10~ = 6.29). Participants took longer when the robot had previously mentioned that it objected to being switched off (_M_ = 10.00 seconds, _SE_ = 2.21), compared to when no objection was mentioned (_M_ = 4.69, _SE_ = 0.37).  
 
-There was insufficient evidence for a main effect of exchange, given that the Bayes factor was inconclusive (BF = 0.74). Thus, there was no evidence to suggest that the time to switch off a robot differed according to whether the type of exchange was functional (_M_ = 8.69, _SE_ = 2.00) or social (_M_ = 5.54, _SE_ = 0.57).
+There was insufficient evidence for a main effect of the type of exchange, given that the Bayes factor was inconclusive (BF~10~ = 0.74). Thus, there was no evidence to suggest that the time to switch off a robot differed according to whether the type of exchange was functional (_M_ = 8.69, _SE_ = 2.00) or social (_M_ = 5.54, _SE_ = 0.57).
 
-The main effects should be viewed in light of the substantial evidence for an interaction between exchange and objection (BF = 3.28). This indicated that it took people longer to switch the robot off when the exchange had been functional, rather than social, but only if the robot had objected to being switched off (_M_ functional = 14.40, _SE_ = 4.11 vs. _M_ social = 6.19, _SE_ = 1.15). When the robot had not previously objected to being switched off, the times were similar following functional and social exchanges (_M_ functional = 4.28, SE = 0.59, vs. _M_ social = 5.05, SE = 0.48). Follow-up tests indicated insufficient evidence for the effect of exchange at each level of objection (i.e., BFs < 3 and BFs > 0.33): The Bayes factor for the effect of exchange when the robot objected was 1.55, and the Bayes factor for the effect of exchange when the robot did not object was 0.47. Thus, although there was evidence for an interaction, the pattern of differences within objection conditions was not confirmed.
+The main effects should be viewed in light of the substantial evidence for an interaction between exchange and objection (BF~10~ = 3.28). This indicated that it took people longer to switch the robot off when the exchange had been functional, rather than social, but only if the robot had objected to being switched off (_M_ functional = 14.40, _SE_ = 4.11 vs. _M_ social = 6.19, _SE_ = 1.15). When the robot had not previously objected to being switched off, the times were similar following functional and social exchanges (_M_ functional = 4.28, SE = 0.59, vs. _M_ social = 5.05, SE = 0.48). 
+
+Follow-up tests indicated insufficient evidence for the effect of exchange at each level of objection (i.e., BF~10~s were between 0.33 and 3): The Bayes factor for the effect of exchange when the robot objected was 1.55, and the Bayes factor for the effect of exchange when the robot did not object was 0.47. Thus, although there was evidence for an interaction, the pattern of differences within objection conditions was not confirmed by the follow-up tests.
 
 
 </div>

@@ -2,7 +2,7 @@
 
 *Chris Berry*
 \
-*2023*
+*2024*
 
 
 
@@ -17,7 +17,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 
 ## Overview
 
-* **Slides** from the lecture part of the session: [Download](slides/PSYC753_L5_MultipleRegression3.pptx)
+* **Slides** from the lecture part of the session: [Download](slides/PSYC761_L5_MultipleRegression3.pptx)
 
 \
 
@@ -111,7 +111,7 @@ Outcome variables:
 
 ### Visualisation
 
-There are a number of continuous variables in the dataset that we can visualise with density plots or histograms. We've done this individually, variable by variable in past worksheets. Here I'd like to show you a more advanced way of plotting. The code below uses will create a density plot of every variable in a dataset that is numeric (continuous) in nature, using different facets:
+There are a number of continuous variables in the dataset that we can visualise with density plots or histograms. We've done this individually, variable by variable in past worksheets. Here I'd like to show you a more advanced way of plotting. The code below  will create a density plot of every variable in a dataset that is numeric (continuous) in nature, using different facets:
 
 
 ```r
@@ -138,7 +138,7 @@ pwb_data %>%
 \
 
 ### Correlations
-With many variables being used in a multiple regression, it is good practice to inspect the correlations between all continuous variables to get an idea of the inter-relations and to check for multicollinearity between predictors. 
+With many variables being used in a multiple regression, it is good practice to inspect the correlations between all continuous variables first to get an idea of the inter-relations and to check for multicollinearity between predictors. 
 
 Obtain a correlation matrix of all of the numeric variables. Ensure the `corrr` package is loaded, then use `correlate()`:
 
@@ -155,7 +155,7 @@ pwb_data %>%
 ```
 
 :::{.exercise}
-Before conducting the hierarchical regression, Iani et al. (2019) reported the Pearson correlations between `wellbeing` and `gad` and the mindfulness and emotional intelligence variables. We'll report a subset of those here. Report the correlations below to two decimal places:
+Before conducting the hierarchical regression, Iani et al. (2019) reported the Pearson correlations between `wellbeing` and `gad` and the mindfulness and emotional intelligence variables. We'll report a subset of those here to check you can read the correlation matrix that's output. Report the correlations below to two decimal places:
 
 * `describing` and `clarity`, _r_ = <input class='webex-solveme nospaces' size='4' data-answer='["0.64",".64"]'/>
 * `describing` and `wellbeing`, _r_ = <input class='webex-solveme nospaces' size='4' data-answer='["0.54",".54"]'/>
@@ -165,7 +165,7 @@ Before conducting the hierarchical regression, Iani et al. (2019) reported the P
 
 \
 
-* Does multicollinearity seem an issue (check the correlations between the predictors for _r_ < -0.8 or _r_ > 0.8)? <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
+* Does multicollinearity seem an issue (check the correlations between the _predictor variables_ for _r_ < -0.8 or _r_ > 0.8)? <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
 :::
 
 
@@ -192,11 +192,11 @@ First, use `brooding` to predict `wellbeing`. Use `lm()` and `glance()` to obtai
 step1 <- lm(wellbeing ~ brooding, data = pwb_data)
 
 # R^2^
-# ensure broom package loaded, i.e., 'library(broom)'
+# ensure the broom package loaded, i.e., with 'library(broom)'
 glance(step1)
 
 # store the BF
-# library(BayesFactor)
+# ensure the BayesFactor package is loaded, i.e., with 'library(BayesFactor)
 BF_step1 <- lmBF(wellbeing ~ brooding, data = data.frame(pwb_data))
 
 # look at BF
@@ -222,7 +222,7 @@ BF_step1
 ## Bayes factor type: BFlinearModel, JZS
 ```
 
-* The R^2^ (non-adjusted, to 2 decimal places) for the model in Step 1 = <input class='webex-solveme nospaces' size='4' data-answer='["0.19"]'/>.
+* The R^2^ (non-adjusted, as a proportion, to 2 decimal places) for the model in Step 1 = <input class='webex-solveme nospaces' size='4' data-answer='["0.19"]'/>.
 * The BF for the model in Step 1 = <input class='webex-solveme nospaces' size='5' data-answer='["95.76"]'/>
 
 \
@@ -231,7 +231,7 @@ BF_step1
 
 Next, add `worry` to the model in Step 1, using `+ worry` and look at R^2^ again and obtain the BF. We'll look at: 
 
-* whether the model in Step 2 explains more variance in `wellbeing` by looking at whether R^2^ increases. 
+* whether the model in Step 2 explains more variance in `wellbeing` by looking at the amount that R^2^ increases. 
 * whether there's evidence for a contribution of `worry` after controlling for `brooding`, by dividing the Bayes factor for the model in Step 2 by the BF for the model in Step 1
 
 
@@ -269,7 +269,7 @@ BF_step2 / BF_step1
 ```
 
 * The R^2^ for the model in Step 2 is <input class='webex-solveme nospaces' size='4' data-answer='["0.33"]'/>
-* The _increase_ in R^2^ associated with the addition of `worry` to the model is <input class='webex-solveme nospaces' size='4' data-answer='["0.14"]'/> _Hint. To calculate this, take the R^2^ for the model in step 2 and subtract the R^2^ for the model in Step 1_.
+* The _increase_ in R^2^ associated with the addition of `worry` to the model is <input class='webex-solveme nospaces' size='4' data-answer='["0.14"]'/> _Hint. To calculate this, take the R^2^ that you recorded before for the model in Step 2 and subtract the R^2^ for the model in Step 1_.
 * The BF for the contribution of `worry` to the model is <input class='webex-solveme nospaces' size='5' data-answer='["56.11"]'/>. _Hint. This is the BF produced by dividing the BF for the model in Step 2, by the BF for the model in Step 1._
 
 
@@ -349,7 +349,7 @@ BF_step3 / BF_step2
 
 <div class='webex-solution'><button>Explain</button>
 
-The BF comparing the models in Steps 3 and 2 was BF = 34.59, indicating that the model in Step 3 is more than thirty five times more likely than the model in Step 2, given the data. Thus, there's substantial evidence that the mindfulness variables contribute to the prediction of `wellbeing` after controlling for `brooding` and `worry`. The mindfulness variables explain an additional R^2^ = 0.20, or 20%. of the variance in `wellbeing`, over and above `brooding` and `worry`. 
+The BF comparing the models in Steps 3 and 2 was BF = 34.59, indicating that the model in Step 3 is more than thirty five times more likely than the model in Step 2, given the data. Thus, there's substantial evidence that the mindfulness variables contribute to the prediction of `wellbeing` after controlling for `brooding` and `worry`. The mindfulness variables explain an additional R^2^ = 0.20, or 20% of the variance in `wellbeing`, over and above `brooding` and `worry`. 
 
 </div>
 
@@ -408,7 +408,7 @@ BF_step4 / BF_step3
 
 <div class='webex-solution'><button>Explain</button>
 
-The BF comparing the models in steps 4 and 3 was BF = 2.15. Although this indicates that the model in Step 4 is more than twice as likely than the model in Step 3, given the data, the BF is less than 3, and therefore falls short of the conventional level for declaring that there's substantial evidence for the addition of emotional intelligence. Thus, according to this Bayes factor analysis, there's insufficient evidence that the additional R^2^ = 0.07, or 7%, of the variance in `wellbeing` explained by emotional intelligence is meaningful. 
+The BF comparing the models in steps 4 and 3 was BF = 2.15. Although this indicates that the model in Step 4 is more than twice as likely than the model in Step 3, given the data, the BF is less than 3, and therefore falls short of the conventional level for declaring that there's substantial evidence for the addition of emotional intelligence. Thus, according to this Bayes factor analysis, there's insufficient evidence that the additional R^2^ = 0.07, or 7%, of the variance in `wellbeing` explained by emotional intelligence represents a genuine improvement in prediction. 
 
 </div>
 
@@ -438,6 +438,23 @@ Repeat the analysis conducted above, but now with `gad` as the outcome variable.
 
 * The R^2^ (non-adjusted, to two decimal places) for the model in Step 1 = <input class='webex-solveme nospaces' data-tol='0.01' size='4' data-answer='["0.36",".36"]'/>
 * The BF for the model in Step 1 = <input class='webex-solveme nospaces' data-tol='0.5' size='8' data-answer='["138455.1"]'/>
+
+
+<div class='webex-solution'><button>Hint</button>
+
+Rounding can sometimes be unclear when the last digit ends in a 5, and you are unsure of the precision to which something has been printed in the output R gives. 
+
+If in doubt, it's better to round from the more precise value. For R^2^, this can be obtained as follows from the glance function:
+
+
+```r
+# show R-squared to more decimal places, 
+# by calling value from function specifically
+glance(gad1)$r.squared
+```
+
+</div>
+
 
 
 <div class='webex-solution'><button>Solution - code</button>
@@ -509,7 +526,7 @@ BF_gad2 / BF_gad1
 
 * The R^2^ for the model in Step 3 is <input class='webex-solveme nospaces' size='4' data-answer='["0.48"]'/>
 * The increase in R^2^ associated with the addition of the mindfulness variables is <input class='webex-solveme nospaces' size='4' data-answer='["0.03"]'/> 
-* The BF for the contribution of the mindfulness variables to the model is <input class='webex-solveme nospaces' size='5' data-answer='["0.006"]'/>
+* The BF for the contribution of the mindfulness variables to the model is <input class='webex-solveme nospaces' size='5' data-answer='["0.006","0.01"]'/>
 * After controlling for `brooding` and `worry`, is there sufficient evidence for the contribution of mindfulness to the prediction of `gad`? <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
 * There's <select class='webex-select'><option value='blank'></option><option value='answer'>substantial</option><option value=''>inconclusive</option></select> evidence for the model in Step 2, compared to Step 3, because the Bayes factor for the model in Step 3 divided by that of the model in Step 2 is <select class='webex-select'><option value='blank'></option><option value='answer'>less than 0.33</option><option value=''>equal to 1</option><option value=''>greater than 3</option></select>.
 
@@ -653,7 +670,7 @@ About the data:
 
 ### Visualisation
 
-Inspect the distributions of the continuous variables:
+Inspect the distributions of the continuous variables: 
 
 
 ```r
@@ -679,8 +696,8 @@ animal_data %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-15-1.png" alt="Histogram plots for each continous predictor" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-15)Histogram plots for each continous predictor</p>
+<img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-16-1.png" alt="Histogram plots for each continous predictor" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-16)Histogram plots for each continous predictor</p>
 </div>
 \
 
@@ -688,7 +705,7 @@ The code can be modified to obtain histograms of all of the categorical variable
 
 
 ```r
-# Plot histograms of all the categorical vars (i.e., count data)
+# Plot histograms of all the categorical vars (i.e. count data)
 # The code:
 # -Keeps only the character columns in the dataset
 # -Uses pivot_longer() to code each set of scores by variable
@@ -705,8 +722,8 @@ animal_data %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-16-1.png" alt="Histograms for each categorical predictor" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-16)Histograms for each categorical predictor</p>
+<img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-17-1.png" alt="Histograms for each categorical predictor" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-17)Histograms for each categorical predictor</p>
 </div>
 
 By looking at the histograms of the categorical variables, answer the following:
@@ -752,8 +769,8 @@ grid.arrange(panel1, panel2, nrow = 1)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-17-1.png" alt="Using geom_jitter(): loneliness_since vs. londliness_pre" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-17)Using geom_jitter(): loneliness_since vs. londliness_pre</p>
+<img src="05_multiple_regression_3_files/figure-html/unnamed-chunk-18-1.png" alt="Using geom_jitter(): loneliness_since vs. londliness_pre" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-18)Using geom_jitter(): loneliness_since vs. londliness_pre</p>
 </div>
 
 Using `geom_jitter()` instead of `geom_point()` means that the scores will be randomly jittered by a tiny amount. This reduces overlap, making it much easier to see how the scores are distributed. It's useful to use `geom_jitter()` when the response variable is on an ordinal scale, but the responses are discrete (e.g., 1, 2, 3, 4, 5), as is often the case with survey data and likert scales. Thus, if you ever create a scatterplot of survey data and it ends up looking like the plot on the left, try using `geom_jitter()` instead of `geom_point()`.
@@ -770,7 +787,7 @@ animal_data <-
   animal_data %>% 
   mutate(gender = factor(gender),
          age = factor(age),
-         partner = factor(age),
+         partner = factor(partner),
          species = factor(species))
 ```
 
@@ -789,6 +806,25 @@ Using the `animal_data`, we'll look at whether `comfort` scores predict `mental_
 
 
 The variables we want to control for can go into the model in the Step 1. Then we can add `comfort` to the model in Step 2, to see whether it explains `mental_health_pre` over and above all the variables in Step 1.
+
+
+</div>
+
+
+\
+
+* How many participants are in this dataset? <input class='webex-solveme nospaces' size='4' data-answer='["4947"]'/>
+
+
+<div class='webex-solution'><button>Hint</button>
+
+
+The number of participants is the same as the number of rows. One way of checking is as follows:
+
+
+```r
+animal_data %>% count()
+```
 
 
 </div>
@@ -914,7 +950,7 @@ When a multiple regression has been performed using the raw data, the coefficien
 We'd like to be able to compare the coefficients of predictors to get some idea of their relative strength of the contribution to the model. The trouble is that predictors are often measured on different scales, with different ranges. For example, scores of `brooding` range from 5 to 20, and those of `clarity` range from 10 to 40. Use `summary(pwb_data)` to see this. Because the scales are so different, it doesn't make sense to directly compare the coefficients of the predictors.
 
 :::{.tip}
-To compare the coefficients of predictor variables in a model, we need to compare the **standardised regression coefficients**. These are the coefficients derived from the data after the scores of each predictor have been standardised. To standardise the scores of a variable, subtract the mean value from each score, and then divide each score by the standard deviation of the scores. The `scale()` function does this automatically for us. 
+To compare the coefficients of predictor variables in a model, we need to compare the **standardised regression coefficients**. These are the coefficients derived from the data after the scores of each predictor have been standardised. To standardise the scores of a variable, subtract the mean value from each score, and then divide each score by the standard deviation of the scores. The transformed scores will have a mean of zero and standard deviation of 1, and so will all be on the same scale. The `scale()` function does this automatically for us. 
 :::
 
 \
@@ -934,6 +970,34 @@ std_pwb_data <-
   pwb_data %>% 
   mutate_if(is.numeric, scale)
 ```
+
+\
+
+Let's compare the mean and standard deviation before and after standardising the scores:
+
+
+```r
+# use summarise() and across() to obtain 
+# the mean and sd of each column
+# see ?summarise()
+# see ?across()
+
+
+# before standardising
+pwb_data %>% 
+  summarise(across(.cols = everything(),
+                   list(mean = mean, sd = sd))) %>% 
+  glimpse()
+
+
+# after standardising
+std_pwb_data %>% 
+  summarise(across(.cols = everything(),
+                   list(mean = mean, sd = sd))) %>% 
+  glimpse()
+```
+
+\
 
 Now re-run Step 4 (i.e., the final model) of the hierarchical regression in Iani et al. (2019), but with `std_pwb_data` instead of `pwb_data`:
 
@@ -968,7 +1032,23 @@ Make a note of the standardised (beta) coefficients for the model in Iani et al.
 
 As with the unstandardised coefficients, the sign on the beta coefficient indicates the direction of the association with the outcome variable (i.e., positive or negative).
 
-Because the beta coefficients are now on the same scale, their magnitudes (i.e., their absolute size, ignoring the sign) can be compared to determine the relative "importance" of each predictor. For example, `describing` has the largest beta coeffcient (.38); it therefore makes the greatest contribution to the prediction of `wellbeing` in the full model. `clarity` makes the smallest contribution (beta = .02).
+Because the beta coefficients are now on the same scale, their magnitudes (i.e., their absolute size, ignoring the sign) can be compared to determine the relative "importance" of each predictor. 
+
+\
+
+Which predictor variable makes the strongest contribution to the prediction of `wellbeing`? <select class='webex-select'><option value='blank'></option><option value=''>brooding</option><option value=''>worry</option><option value=''>observing</option><option value='answer'>describing</option><option value=''>acting</option><option value=''>nonjudging</option><option value=''>nonreactivity</option><option value=''>attention</option><option value=''>clarity</option><option value=''>repair</option></select>
+
+Which predictor variable makes the weakest contribution to the prediction of `wellbeing`? <select class='webex-select'><option value='blank'></option><option value=''>brooding</option><option value=''>worry</option><option value=''>observing</option><option value=''>describing</option><option value=''>acting</option><option value=''>nonjudging</option><option value=''>nonreactivity</option><option value=''>attention</option><option value='answer'>clarity</option><option value=''>repair</option></select>
+
+
+<div class='webex-solution'><button>Explain</button>
+
+`describing` has the largest beta coeffcient (.38); it therefore makes the greatest contribution to the prediction of `wellbeing` in the full model. `clarity` makes the smallest contribution (beta = .02).
+
+</div>
+
+
+\
 
 Note, some of the beta coefficients differ slightly from those reported by Iani et al. (2019). This is most likely due to differences in rounding  introduced during standardisation by different software packages. The values are very close though and the ordinal pattern in the beta coefficients is the same.
 
@@ -1021,7 +1101,7 @@ new_animal_dat <- tibble( comfort = 45,
 augment(step2_full, newdata = new_animal_dat)
 ```
 
-The predicted value of `mental_health_pre` for the new participant in `new_animal_dat` is <input class='webex-solveme nospaces' size='5' data-answer='["18.03"]'/>.
+The predicted value of `mental_health_pre` for the new participant in `new_animal_dat` is <input class='webex-solveme nospaces' size='5' data-answer='["18.03","18.00"]'/>.
 
 
 </div>
@@ -1065,7 +1145,7 @@ augment(step4) %>%
 
 * In hierarchical regression, predictors are added to a regression model in successive steps.
 * It can be used to test particular theories or hypotheses.
-* It can also be used to control the influence of particular variables before analysing whether a predictor variable (or set of variables) of interest explains the outcome variable.
+* It can also be used to control the influence of particular variables (e.g., background variables) before analysing whether a predictor variable (or set of variables) of interest explains the outcome variable.
 * As before, `lm()` and `glance()` can be used to obtain R^2^ for the model at each step. 
 * The change in R^2^ associated with each step can be obtained to determine the unique contribution of the predictors in each step.
 * `lmBF()` can be used to obtain the Bayes factor for the model in each step. Bayes factors of models from successive steps can be compared to determine the evidence for the unique contribution of predictors in a step.
