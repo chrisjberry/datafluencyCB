@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Session 8 Mixed Models | PSYC761 Data Fluency: Analysis</title>
+  <title>Session 8 Mixed Models | PSYC761 Data Analysis</title>
   <meta name="description" content="Course materials for PSYC761 2024" />
   <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Session 8 Mixed Models | PSYC761 Data Fluency: Analysis" />
+  <meta property="og:title" content="Session 8 Mixed Models | PSYC761 Data Analysis" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course materials for PSYC761 2024" />
   <meta name="github-repo" content="datafluencyCB" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Session 8 Mixed Models | PSYC761 Data Fluency: Analysis" />
+  <meta name="twitter:title" content="Session 8 Mixed Models | PSYC761 Data Analysis" />
   
   <meta name="twitter:description" content="Course materials for PSYC761 2024" />
   
@@ -158,8 +158,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="simple1.html"><a href="simple1.html#exercise"><i class="fa fa-check"></i><b>1.6</b> Exercise</a></li>
 <li class="chapter" data-level="1.7" data-path="simple1.html"><a href="simple1.html#further-exercises"><i class="fa fa-check"></i><b>1.7</b> Further Exercises</a></li>
-<li class="chapter" data-level="1.8" data-path="simple1.html"><a href="simple1.html#summary"><i class="fa fa-check"></i><b>1.8</b> Summary</a></li>
-<li class="chapter" data-level="1.9" data-path="simple1.html"><a href="simple1.html#references"><i class="fa fa-check"></i><b>1.9</b> References</a></li>
+<li class="chapter" data-level="1.8" data-path="simple1.html"><a href="simple1.html#going-further-p-values"><i class="fa fa-check"></i><b>1.8</b> Going further: <em>p</em>-values</a></li>
+<li class="chapter" data-level="1.9" data-path="simple1.html"><a href="simple1.html#summary"><i class="fa fa-check"></i><b>1.9</b> Summary</a></li>
+<li class="chapter" data-level="1.10" data-path="simple1.html"><a href="simple1.html#references"><i class="fa fa-check"></i><b>1.10</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="multiple1.html"><a href="multiple1.html"><i class="fa fa-check"></i><b>2</b> Multiple regression: multiple continuous predictors</a>
 <ul>
@@ -183,8 +184,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6.1" data-path="multiple1.html"><a href="multiple1.html#regressionbf"><i class="fa fa-check"></i><b>2.6.1</b> <code>regressionBF()</code></a></li>
 <li class="chapter" data-level="2.6.2" data-path="multiple1.html"><a href="multiple1.html#predicting-new-data"><i class="fa fa-check"></i><b>2.6.2</b> Predicting new data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="multiple1.html"><a href="multiple1.html#summary-of-key-points"><i class="fa fa-check"></i><b>2.7</b> Summary of key points</a></li>
-<li class="chapter" data-level="2.8" data-path="multiple1.html"><a href="multiple1.html#references-1"><i class="fa fa-check"></i><b>2.8</b> References</a></li>
+<li class="chapter" data-level="2.7" data-path="multiple1.html"><a href="multiple1.html#going-further-p-values-1"><i class="fa fa-check"></i><b>2.7</b> Going further: <em>p</em>-values</a></li>
+<li class="chapter" data-level="2.8" data-path="multiple1.html"><a href="multiple1.html#summary-of-key-points"><i class="fa fa-check"></i><b>2.8</b> Summary of key points</a></li>
+<li class="chapter" data-level="2.9" data-path="multiple1.html"><a href="multiple1.html#references-1"><i class="fa fa-check"></i><b>2.9</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="anova1.html"><a href="anova1.html"><i class="fa fa-check"></i><b>3</b> ANOVA: between-subjects designs</a>
 <ul>
@@ -315,20 +317,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5" data-path="prepost.html"><a href="prepost.html#which-approach-should-you-use"><i class="fa fa-check"></i><b>7.5</b> Which approach should you use?</a></li>
 <li class="chapter" data-level="7.6" data-path="prepost.html"><a href="prepost.html#clinical-significance"><i class="fa fa-check"></i><b>7.6</b> Clinical Significance</a></li>
 <li class="chapter" data-level="7.7" data-path="prepost.html"><a href="prepost.html#exercises-1"><i class="fa fa-check"></i><b>7.7</b> Exercises</a></li>
-<li class="chapter" data-level="7.8" data-path="prepost.html"><a href="prepost.html#further-knowledge-1"><i class="fa fa-check"></i><b>7.8</b> Further Knowledge</a></li>
+<li class="chapter" data-level="7.8" data-path="prepost.html"><a href="prepost.html#further-knowledge-1"><i class="fa fa-check"></i><b>7.8</b> Further Knowledge</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="prepost.html"><a href="prepost.html#reliable-change-rc-index"><i class="fa fa-check"></i><b>7.8.1</b> Reliable Change (RC) index</a></li>
+</ul></li>
 <li class="chapter" data-level="7.9" data-path="prepost.html"><a href="prepost.html#summary-5"><i class="fa fa-check"></i><b>7.9</b> Summary</a></li>
 <li class="chapter" data-level="7.10" data-path="prepost.html"><a href="prepost.html#references-6"><i class="fa fa-check"></i><b>7.10</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="mixed.html"><a href="mixed.html"><i class="fa fa-check"></i><b>8</b> Mixed Models</a></li>
+<li class="chapter" data-level="8" data-path="mixed.html"><a href="mixed.html"><i class="fa fa-check"></i><b>8</b> Mixed Models</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="mixed.html"><a href="mixed.html#overview-8"><i class="fa fa-check"></i><b>8.1</b> Overview</a></li>
+<li class="chapter" data-level="8.2" data-path="mixed.html"><a href="mixed.html#types-of-mixed-model"><i class="fa fa-check"></i><b>8.2</b> Types of mixed model</a></li>
+<li class="chapter" data-level="8.3" data-path="mixed.html"><a href="mixed.html#lme4"><i class="fa fa-check"></i><b>8.3</b> <code>lme4</code></a></li>
+<li class="chapter" data-level="8.4" data-path="mixed.html"><a href="mixed.html#fixed-and-random-effects"><i class="fa fa-check"></i><b>8.4</b> Fixed and Random effects</a></li>
+<li class="chapter" data-level="8.5" data-path="mixed.html"><a href="mixed.html#specifying-the-model"><i class="fa fa-check"></i><b>8.5</b> Specifying the model</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="mixed.html"><a href="mixed.html#fixed-effect-model-with-random-intercepts"><i class="fa fa-check"></i><b>8.5.1</b> Fixed effect model with random intercepts</a></li>
+<li class="chapter" data-level="8.5.2" data-path="mixed.html"><a href="mixed.html#fixed-effect-model-with-random-intercepts-and-slopes"><i class="fa fa-check"></i><b>8.5.2</b> Fixed effect model with random intercepts AND slopes</a></li>
+<li class="chapter" data-level="8.5.3" data-path="mixed.html"><a href="mixed.html#multiple-fixed-effects-random-intercepts-and-slopes"><i class="fa fa-check"></i><b>8.5.3</b> Multiple fixed effects, random intercepts AND slopes</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="mixed.html"><a href="mixed.html#the-analysis-do-rts-differ-across-modality-conditions"><i class="fa fa-check"></i><b>8.6</b> The analysis: Do RTs differ across modality conditions?</a></li>
+<li class="chapter" data-level="8.7" data-path="mixed.html"><a href="mixed.html#inspecting-the-model"><i class="fa fa-check"></i><b>8.7</b> Inspecting the model</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="mixed.html"><a href="mixed.html#convergence-issues"><i class="fa fa-check"></i><b>8.7.1</b> Convergence issues</a></li>
+<li class="chapter" data-level="8.7.2" data-path="mixed.html"><a href="mixed.html#coefficients-1"><i class="fa fa-check"></i><b>8.7.2</b> Coefficients</a></li>
+<li class="chapter" data-level="8.7.3" data-path="mixed.html"><a href="mixed.html#graph"><i class="fa fa-check"></i><b>8.7.3</b> Graph</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="mixed.html"><a href="mixed.html#summary-6"><i class="fa fa-check"></i><b>8.8</b> Summary</a></li>
+<li class="chapter" data-level="8.9" data-path="mixed.html"><a href="mixed.html#references-7"><i class="fa fa-check"></i><b>8.9</b> References</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="assessment2024.html"><a href="assessment2024.html"><i class="fa fa-check"></i><b>9</b> Data Analysis Assessment 2024</a></li>
 <li class="chapter" data-level="10" data-path="faqs.html"><a href="faqs.html"><i class="fa fa-check"></i><b>10</b> FAQs</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="faqs.html"><a href="faqs.html#e-meaning"><i class="fa fa-check"></i><b>10.1</b> What does it mean if RStudio prints out "e-" next to a number?</a></li>
 <li class="chapter" data-level="10.2" data-path="faqs.html"><a href="faqs.html#how-can-i-find-out-more-about-a-particular-function-so-i-can-explore-its-settings-etc."><i class="fa fa-check"></i><b>10.2</b> How can I find out more about a particular function, so I can explore its settings etc.?</a></li>
+<li class="chapter" data-level="10.3" data-path="faqs.html"><a href="faqs.html#how-do-i-import-a-data-file-to-r-studio"><i class="fa fa-check"></i><b>10.3</b> How do I import a data file to R Studio?</a></li>
+<li class="chapter" data-level="10.4" data-path="faqs.html"><a href="faqs.html#how-should-i-write-up-the-report"><i class="fa fa-check"></i><b>10.4</b> How should I write up the report?</a></li>
+<li class="chapter" data-level="10.5" data-path="faqs.html"><a href="faqs.html#after-downloading-my-.rmd-file-to-my-computer-how-do-i-open-it-again-in-rstudio"><i class="fa fa-check"></i><b>10.5</b> After downloading my .Rmd file to my computer, how do I open it again in RStudio?</a></li>
+<li class="chapter" data-level="10.6" data-path="faqs.html"><a href="faqs.html#on-the-word-count-are-figure-captions-included"><i class="fa fa-check"></i><b>10.6</b> On the word count, are figure captions included?</a></li>
+<li class="chapter" data-level="10.7" data-path="faqs.html"><a href="faqs.html#should-i-make-code-visible-in-my-html-report"><i class="fa fa-check"></i><b>10.7</b> Should I make code visible in my html report?</a></li>
+<li class="chapter" data-level="10.8" data-path="faqs.html"><a href="faqs.html#do-i-need-to-include-references"><i class="fa fa-check"></i><b>10.8</b> Do I need to include references?</a></li>
+<li class="chapter" data-level="10.9" data-path="faqs.html"><a href="faqs.html#can-there-be-overlap-in-the-variables-used-in-each-question"><i class="fa fa-check"></i><b>10.9</b> Can there be overlap in the variables used in each question?</a></li>
+<li class="chapter" data-level="10.10" data-path="faqs.html"><a href="faqs.html#do-we-have-to-include-a-certain-number-of-variables-to-achieve-a-good-grade"><i class="fa fa-check"></i><b>10.10</b> Do we have to include a certain number of variables to achieve a good grade?</a></li>
+<li class="chapter" data-level="10.11" data-path="faqs.html"><a href="faqs.html#can-i-include-more-than-one-figure"><i class="fa fa-check"></i><b>10.11</b> Can I include more than one figure?</a></li>
+<li class="chapter" data-level="10.12" data-path="faqs.html"><a href="faqs.html#can-i-include-categorical-predictor-variables-in-a-hierarchical-regression"><i class="fa fa-check"></i><b>10.12</b> Can I include categorical predictor variables in a hierarchical regression?</a></li>
+<li class="chapter" data-level="10.13" data-path="faqs.html"><a href="faqs.html#how-do-i-apply-for-extenuating-circumstances"><i class="fa fa-check"></i><b>10.13</b> How do I apply for extenuating circumstances?</a></li>
+<li class="chapter" data-level="10.14" data-path="faqs.html"><a href="faqs.html#can-a-book-a-slot-in-your-office-hours"><i class="fa fa-check"></i><b>10.14</b> Can a book a slot in your office hours?</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="reading.html"><a href="reading.html"><i class="fa fa-check"></i><b>11</b> Reading: Go further!</a>
+<li class="chapter" data-level="11" data-path="reading.html"><a href="reading.html"><i class="fa fa-check"></i><b>11</b> Reading</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="reading.html"><a href="reading.html#recommended-texts"><i class="fa fa-check"></i><b>11.1</b> Recommended texts</a></li>
+<li class="chapter" data-level="11.1" data-path="reading.html"><a href="reading.html#recommended-texts-and-resources"><i class="fa fa-check"></i><b>11.1</b> Recommended texts and resources</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="reading.html"><a href="reading.html#library-books"><i class="fa fa-check"></i><b>11.1.1</b> Library books</a></li>
+<li class="chapter" data-level="11.1.2" data-path="reading.html"><a href="reading.html#electronic-resources-and-books"><i class="fa fa-check"></i><b>11.1.2</b> Electronic resources and books</a></li>
+</ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="divider"></li>
@@ -346,7 +388,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSYC761 Data Fluency: Analysis</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSYC761 Data Analysis</a>
           </h1>
         </div>
 
@@ -362,832 +404,681 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 commented text
 commented text
 -->
-<!--
-
 <style>
 div.exercise { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
-
 <style>
 div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 </style>
-
-
-## Overview
-
-* **Slides** from the lecture part of the session: [Download](slides/PSYC761_L8_MixedModels.pptx)
-
-\
-
-:::{.tip}
-To investigate the effect of an intervention, researchers may measure a dependent variable before and after the intervention. For example, a researcher might look at the impact of a particular treatment (or therapy) on the severity of depression symptoms. The data produced is sometimes referred to as _pre-post_ data. 
-
-Pre-post data in the treatment group is often compared with that of a control group. 
-:::
-
-\
-
-There are numerous ways to analyse the data from such designs. Three approaches are presented here, alongside an introduction to methods for calculating clinically significant change.
-
-\
-
-### Worked example
-
-Francis et al. (2019) investigated whether a shift to a healthy diet impacted on depression in a group of individuals that had diets that fell short of the criteria for healthy eating, as defined by the Australian Guide to Healthy Eating. There were 76 participants. All had moderate to severe symptoms of depression.
-
-Half of the participants received instruction on guidance regarding their diet. Severity of depression symptoms were measured at two time points: before the intervention, and again three weeks later. 
-
-
-:::{.exercise}
-Design Check
-
-* What is the name of the first independent variable mentioned? <select class='webex-select'><option value='blank'></option><option value=''>severity of depression symptoms</option><option value='answer'>dietary intervention</option></select>
-
-* Is the first independent variable manipulated between- or within-subjects? <select class='webex-select'><option value='blank'></option><option value='answer'>between-subjects</option><option value=''>within-subjects</option></select>
-
-* How many levels does the first independent variable have? <select class='webex-select'><option value='blank'></option><option value=''>1</option><option value='answer'>2</option><option value=''>4</option></select>
-
-* What is the name of the second independent variable mentioned in the study? <select class='webex-select'><option value='blank'></option><option value='answer'>time</option><option value=''>severity of depression symptoms</option></select>
-
-* Is the second independent variable manipulated between- or within-subjects? <select class='webex-select'><option value='blank'></option><option value=''>between-subjects</option><option value='answer'>within-subjects</option></select>
-
-* How many levels does the second independent variable have? <select class='webex-select'><option value='blank'></option><option value=''>1</option><option value='answer'>2</option><option value=''>4</option></select>
-
-* What is the dependent variable?  <select class='webex-select'><option value='blank'></option><option value='answer'>severity of depression symptoms</option><option value=''>dietary intervention</option></select>
-
-:::
-
-\
-
-### Read in the data
-
-
-```r
-# read in
-diet <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/7_diet_depression.csv')
-
-# preview
-diet %>% head()
-```
-
+<div id="overview-8" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Overview<a href="mixed.html#overview-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><strong>Slides</strong> from the lecture part of the session: <a href="slides/PSYC761_L8_MixedModels.pptx">Download</a></li>
+<li><strong>R Studio online</strong> <a href="https://psyrstudio.plymouth.ac.uk/">Access here using University log-in</a></li>
+</ul>
+<p><br />
+</p>
+<p>The use of mixed models is becoming more and more popular in the analysis of psychological experiments. This session is introductory, and for more detailed overviews, students should consult the Reference list.</p>
+<p><br />
+</p>
+<div class="tip">
+<p><strong>Mixed effects models</strong> or <strong>mixed models</strong> are an extension of multiple regression that allow the <em>dependencies</em> among groups of data points to be explicitly accounted for via additional random effects parameters. Dependency can arise because responses come from the same participant, stimulus set, or cluster (e.g., classroom or hospital).</p>
+<p>This can also be useful in experiments where researchers measure responses across a set of <strong>items</strong>. Rather than deriving a single score across all items or trials (e.g., an accuracy measure, or a mean), all the responses can be entered into the analysis and the variance associated with the responses to each item across participants explicitly modelled.</p>
+<p>This technique can also circumvent the need to discard participants or trials with missing responses from the analysis (provided data are missing at random).</p>
+</div>
+<p><br />
+</p>
+</div>
+<div id="types-of-mixed-model" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Types of mixed model<a href="mixed.html#types-of-mixed-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When the outcome variable is <strong>continuous</strong> (e.g., response time) the model is called a <strong>Linear Mixed Model (LMM)</strong>.</p>
+<p>If the outcome is <strong>binary</strong> (e.g., correct vs. incorrect), the model is called a <strong>Generalised Linear Mixed Model (GLMM)</strong> and a difference approach must be used to the one in this worksheet. (See the References for more detail.)</p>
+<p><br />
+</p>
+</div>
+<div id="lme4" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> <code>lme4</code><a href="mixed.html#lme4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Mixed models can be run using the <code>lme4</code> package (Bates et al., 2015).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="mixed.html#cb1-1" tabindex="-1"></a><span class="co"># load lme4</span></span>
+<span id="cb1-2"><a href="mixed.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(lme4)</span></code></pre></div>
+<p>We will use data from <a href="https://journals.sagepub.com/doi/10.1177/2515245920960351">Brown (2021)</a>:</p>
+<ul>
+<li>The data are from a response time (RT) experiment in which 53 participants were presented with a word on each trial.</li>
+<li>Each word was presented either auditorily (audio-only condition), or both auditorily and visually (they saw each word spoken in a video clip) (audiovisual condition). There were 543 words in total.</li>
+<li>The participant's task was to listen to and repeat back each word while simultaneously performing a response time task.</li>
+<li>Each participant was presented with words in both conditions.</li>
+</ul>
+<p><br />
+</p>
+<p>The data is publicly avaialble via the Open Science Framework at <a href="https://osf.io/download/53wc4/" class="uri">https://osf.io/download/53wc4/</a>.</p>
+<p><br />
+</p>
+<p>Load the data and store it in <code>rt_data</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="mixed.html#cb2-1" tabindex="-1"></a><span class="co"># load data from Brown (2021), located on OSF</span></span>
+<span id="cb2-2"><a href="mixed.html#cb2-2" tabindex="-1"></a>rt_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://osf.io/download/53wc4/&quot;</span>)</span></code></pre></div>
+<p><br />
+</p>
+<p>Take a look at the first six rows of the data:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="mixed.html#cb3-1" tabindex="-1"></a><span class="co"># preview the data using head()</span></span>
+<span id="cb3-2"><a href="mixed.html#cb3-2" tabindex="-1"></a>rt_data <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <div class="kable-table">
-
-| ppt|group       | baseline|    week3|
-|---:|:-----------|--------:|--------:|
-|   1|diet_change | 18.00000| 11.00000|
-|   2|diet_change | 34.00000| 11.00000|
-|   3|diet_change | 28.42105|  3.00000|
-|   4|diet_change | 25.00000| 14.00000|
-|   5|diet_change | 40.00000| 49.00000|
-|   6|diet_change | 15.00000| 14.73684|
-
+<table>
+<thead>
+<tr class="header">
+<th align="right">PID</th>
+<th align="right">RT</th>
+<th align="left">modality</th>
+<th align="left">stim</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">301</td>
+<td align="right">1024</td>
+<td align="left">Audio-only</td>
+<td align="left">gown</td>
+</tr>
+<tr class="even">
+<td align="right">301</td>
+<td align="right">838</td>
+<td align="left">Audio-only</td>
+<td align="left">might</td>
+</tr>
+<tr class="odd">
+<td align="right">301</td>
+<td align="right">1060</td>
+<td align="left">Audio-only</td>
+<td align="left">fern</td>
+</tr>
+<tr class="even">
+<td align="right">301</td>
+<td align="right">882</td>
+<td align="left">Audio-only</td>
+<td align="left">vane</td>
+</tr>
+<tr class="odd">
+<td align="right">301</td>
+<td align="right">971</td>
+<td align="left">Audio-only</td>
+<td align="left">pup</td>
+</tr>
+<tr class="even">
+<td align="right">301</td>
+<td align="right">1064</td>
+<td align="left">Audio-only</td>
+<td align="left">rise</td>
+</tr>
+</tbody>
+</table>
 </div>
-\
-
-:::{.exercise}
-Data Check
-
-* How many participants are there in `diet`? <select class='webex-select'><option value='blank'></option><option value=''>6</option><option value=''>38</option><option value=''>66</option><option value='answer'>76</option></select>
-
-* Are the data in `diet` in long format or wide format? <select class='webex-select'><option value='blank'></option><option value=''>long</option><option value='answer'>wide</option></select>
-
-
-<div class='webex-solution'><button>Explain</button>
-
-Each participant's data is on a separate row. There is a column to code the `group` membership. The scores for each time condition, `baseline` and `week3`, are in separate columns. Therefore the data are in wide format. You can inspect all the data in a separate data viewer with the code `View(diet)`. (Note that although there are 76 participants on 76 rows, the `ppt` identifiers go up to 77; this is because the data for participant 50 were incomplete and were therefore excluded.)
-
+<p>About the data in each column:</p>
+<ul>
+<li><code>PID</code> contains the unique identifier for each participant.</li>
+<li><code>RT</code> contains the response time for each trial.</li>
+<li><code>modality</code> contains the label for each condition (<code>Audio-only</code> or <code>Audiovisual</code>)</li>
+<li><code>stim</code> contains the word that was presented on each trial</li>
+</ul>
+<p><br />
+</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-1" class="exercise"><strong>Exercise 8.1  </strong></span><strong>Design Check</strong></p>
+<ul>
+<li><p>What is the name of the dependent variable? <select class='webex-select'><option value='blank'></option><option value=''>PID</option><option value='answer'>RT</option><option value=''>modality</option><option value=''>stim</option></select></p></li>
+<li><p>Is <code>modality</code> of presentation manipulated within- or between-subjects? <select class='webex-select'><option value='blank'></option><option value=''>between</option><option value='answer'>within</option></select></p></li>
+<li><p>How many levels does <code>modality</code> have? <select class='webex-select'><option value='blank'></option><option value=''>1</option><option value='answer'>2</option><option value=''>4</option></select></p></li>
+<li><p>How many participants were there? <select class='webex-select'><option value='blank'></option><option value=''>21,679</option><option value='answer'>53</option><option value=''>543</option><option value=''>4</option></select></p></li>
+<li><p>How many unique stimuli (words) were there? <select class='webex-select'><option value='blank'></option><option value=''>21,679</option><option value=''>53</option><option value='answer'>543</option><option value=''>4</option></select></p></li>
+<li><p>What format is the data in <code>rt_data</code> in? <select class='webex-select'><option value='blank'></option><option value=''>wide format</option><option value='answer'>long format</option></select></p></li>
+</ul>
+<div class="webex-solution">
+<button>
+Hint: count()
+</button>
+<p>A simple way to obtain the number of participants in long format data is as follows:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="mixed.html#cb4-1" tabindex="-1"></a><span class="co"># n ppts</span></span>
+<span id="cb4-2"><a href="mixed.html#cb4-2" tabindex="-1"></a><span class="co"># take rt_data, group_by ppt, then look at number of rows in tibble</span></span>
+<span id="cb4-3"><a href="mixed.html#cb4-3" tabindex="-1"></a>rt_data <span class="sc">%&gt;%</span> </span>
+<span id="cb4-4"><a href="mixed.html#cb4-4" tabindex="-1"></a>  <span class="fu">group_by</span>(PID) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-5"><a href="mixed.html#cb4-5" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
+<p><br />
+</p>
+<p>Likewise, for the number of items:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="mixed.html#cb5-1" tabindex="-1"></a><span class="co"># n items</span></span>
+<span id="cb5-2"><a href="mixed.html#cb5-2" tabindex="-1"></a><span class="co"># take rt_data, group_by item, then look at number of rows in tibble</span></span>
+<span id="cb5-3"><a href="mixed.html#cb5-3" tabindex="-1"></a>rt_data <span class="sc">%&gt;%</span> </span>
+<span id="cb5-4"><a href="mixed.html#cb5-4" tabindex="-1"></a>  <span class="fu">group_by</span>(stim) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-5"><a href="mixed.html#cb5-5" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
 </div>
-
-
-* What do the scores in the `baseline` and `week3` columns represent? <select class='webex-select'><option value='blank'></option><option value='answer'>severity of depression symptoms</option><option value=''>time</option><option value=''>dietary change</option></select>
-
-:::
-
-\
-
-### Plot the means
-
-To plot the means, we need the data to be in **long format**:
-
+</div>
+<p><br />
+</p>
+</div>
+<div id="fixed-and-random-effects" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Fixed and Random effects<a href="mixed.html#fixed-and-random-effects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Mixed models comprise fixed and random effects.</p>
+<p><strong>Fixed effect</strong>: A population-level effect, assumed to persist across experiments with different participants or items. They are used to model average trends. Typically the independent variable is the fixed effect, for example, levels of difficulty in an experiment, manipulated by an experimenter.</p>
+<p><strong>Random effect</strong>: Represents the extent to which the fixed effect randomly varies across a grouping variable (e.g., participants, or items). For example, the behaviour of individual participants or items may differ from the average trend (some may do better than others). The random effects are always <em>categorical variables</em>. They should have at least 5 or 6 levels.</p>
+<p><br />
+</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-2" class="exercise"><strong>Exercise 8.2  </strong></span>For the Brown (2021) dataset:</p>
+<ul>
+<li><p>What would be the fixed effect? <select class='webex-select'><option value='blank'></option><option value=''>PID</option><option value=''>RT</option><option value='answer'>modality</option><option value=''>stim</option></select></p></li>
+<li><p>What would be one random effect? <select class='webex-select'><option value='blank'></option><option value='answer'>PID</option><option value=''>RT</option><option value=''>modality</option><option value='answer'>stim</option></select></p></li>
+<li><p>What would be a second random effect? <select class='webex-select'><option value='blank'></option><option value='answer'>PID</option><option value=''>RT</option><option value=''>modality</option><option value='answer'>stim</option></select></p></li>
+</ul>
+</div>
+<p><br />
+</p>
+<p>In this design, we are justified in including both <code>participants</code> and <code>items</code> as random effects because you can think of modality as having been manipulated both within-subjects <strong>and</strong> within-items:</p>
+<ul>
+<li><p><strong>Within-subjects</strong>: The participants provided responses in <em>both</em> conditions.</p></li>
+<li><p><strong>Within-items</strong>: Each item was also presented in <em>both</em> conditions. That is, for some participants a word was presented in the <code>Audio-only</code> condition and for other participants it appeared in the <code>Audiovisual</code> condition.</p></li>
+</ul>
+<p>In other words, we have scores for each participant in each condition, and also scores for each item in each condition.</p>
+<!-- 
+### Visualise the data
 
 ```r
-# The code below:
-# - stores the result in diet_long
-# - takes diet and pipes it to
-# - pivot_longer()
-# - specifies which of the existing columns to make into a single new column ('cols')
-# - specifies the name of the new column labeling the conditions ('names_to')
-# - specifies the name of the column containing the dependent variable ('values_to')
-diet_long <- 
-  diet %>% 
-  pivot_longer(cols = c(baseline, week3), 
-               names_to = "time", 
-               values_to = "symptoms")
-
-# preview
-diet_long %>% head()
+rt_data_for_figure <- 
+  rt_data %>% 
+  mutate(modality = factor(modality)) %>% 
+  group_by(PID, modality) %>% 
+  summarise(Mean_RT = mean(RT))
 ```
 
-<div class="kable-table">
-
-| ppt|group       |time     | symptoms|
-|---:|:-----------|:--------|--------:|
-|   1|diet_change |baseline | 18.00000|
-|   1|diet_change |week3    | 11.00000|
-|   2|diet_change |baseline | 34.00000|
-|   2|diet_change |week3    | 11.00000|
-|   3|diet_change |baseline | 28.42105|
-|   3|diet_change |week3    |  3.00000|
-
-</div>
-
-\
-
-Now use `diet_long` with `ggdotplot()` in the `ggpubr` package. 
-
+```
+## `summarise()` has grouped output by 'PID'. You can override using the `.groups`
+## argument.
+```
 
 ```r
-library(ggpubr)
-
-diet_long %>% 
-  ggdotplot(x = "time", 
-            y = "symptoms", 
-            color = "group", 
-            add = "mean_se", 
-            ylim = c(0,65),
-            position_dodge = 0.1) 
+rt_data %>% 
+  group_by(PID, modality) %>% 
+  summarise(Mean_RT = mean(RT)) %>% 
+  ungroup() %>% 
+  group_by(modality) %>% 
+  summarise(mean(Mean_RT))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="08_mixed_models_files/figure-html/unnamed-chunk-4-1.png" alt="Mean depression symptoms score. Solid circles denote the mean, error bars the SE." width="85%" />
-<p class="caption">(\#fig:unnamed-chunk-4)Mean depression symptoms score. Solid circles denote the mean, error bars the SE.</p>
-</div>
-Each dot represents one participant's data. The solid circles indicate the mean severity of depression symptoms in each condition (with between-subject error bars added by using `add = mean_se`). (See Session 6 for further details on producing _within-subject_ error bars, which may be more appropriate here.) Higher scores indicate greater severity.
-
-* In the `diet_change` group, from baseline to week 3, the mean severity of symptoms appeared to <select class='webex-select'><option value='blank'></option><option value='answer'>lessen</option><option value=''>worsen</option><option value=''>stay about the same</option></select>.
-* In the `habitual_diet` group, from baseline to week 3, the mean severity of symptoms appeared to <select class='webex-select'><option value='blank'></option><option value=''>lessen</option><option value=''>worsen</option><option value='answer'>stay about the same</option></select>.
-
-\
-
-## Approach 1 - Difference scores
-
-One approach to analysing pre-post data is to compare the _change_ in symptom scores from `baseline` to `week3` across groups. This is achieved by 1) calculating the difference in scores between `baseline` and `week3`, and then 2) comparing the difference scores between the two groups using a between-subjects ANOVA (or, equivalently, a _t_-test).  
-
-To calculate the change in severity score for each participant, it's simplest to use the wide format data since we can easily subtract scores in one column (`week3`) from another (`baseline`).
-
+```
+## `summarise()` has grouped output by 'PID'. You can override using the `.groups`
+## argument.
+```
 
 ```r
-# using the wide format data
-# calculate the difference in baseline and week3 scores
-# store in a new column called 'change'
-diet <- 
-  diet %>% 
-  mutate(change = week3 - baseline)
-
-# look at new column
-diet %>% head()
-```
-
-<div class="kable-table">
-
-| ppt|group       | baseline|    week3|      change|
-|---:|:-----------|--------:|--------:|-----------:|
-|   1|diet_change | 18.00000| 11.00000|  -7.0000000|
-|   2|diet_change | 34.00000| 11.00000| -23.0000000|
-|   3|diet_change | 28.42105|  3.00000| -25.4210526|
-|   4|diet_change | 25.00000| 14.00000| -11.0000000|
-|   5|diet_change | 40.00000| 49.00000|   9.0000000|
-|   6|diet_change | 15.00000| 14.73684|  -0.2631579|
-
-</div>
-
-The column `change` now contains the change in symptom severity score from `baseline` to `week3`. A negative difference indicates an improvement in symptoms (i.e., the score at `week3` was lower).
-
-To compare the `change` scores between the two groups, use `anovaBF()`. The functions `lmBF()` or `ttestBF()` could also be used. They all give equivalent results because there are only two groups being compared.
-
-
-```r
-# Convert the grouping variable 'group' to a factor
-diet <- 
-  diet %>% 
-  mutate(group = factor(group))
-
-# anovaBF(): between-subjects ANOVA
-anovaBF(change ~ group, data = data.frame(diet))
-```
-
-```
-## Bayes factor analysis
-## --------------
-## [1] group : 2.262527 ±0.01%
-## 
-## Against denominator:
-##   Intercept only 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-```
-
-
-<div class='webex-solution'><button>Alternatively with lmBF and ttest</button>
-
-
-```r
-# lmBF(): between-subjects ANOVA
-lmBF(change ~ group, data = data.frame(diet)) 
-
-# ttestBF: between-subjects
-ttestBF(x = diet$change[ diet$group == "habitual_diet" ], 
-        y = diet$change[ diet$group == "diet_change" ]) 
-```
-
-```
-## Bayes factor analysis
-## --------------
-## [1] group : 2.262527 ±0.01%
-## 
-## Against denominator:
-##   Intercept only 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-## 
-## Bayes factor analysis
-## --------------
-## [1] Alt., r=0.707 : 2.262527 ±0.01%
-## 
-## Against denominator:
-##   Null, mu1-mu2 = 0 
-## ---
-## Bayes factor type: BFindepSample, JZS
-```
-
-</div>
-
-
-* The Bayes factor comparing the change in severity of depression symptoms between baseline and week 3 is (to two decimal places) <input class='webex-solveme nospaces' data-tol='0.02' size='4' data-answer='["2.26"]'/>.
-* Although there is <select class='webex-select'><option value='blank'></option><option value=''>no</option><option value='answer'>weak</option><option value=''>substantial</option></select> evidence for a difference in the change score between groups, the Bayes factor was <select class='webex-select'><option value='blank'></option><option value='answer'>inconclusive</option><option value=''>substantial</option></select>.
-* Thus, by the method of comparing change scores between groups, can we conclude that the dietary intervention led to a reduction in depression symptom severity? <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
-
-
-\
-
-## Approach 2 - Mixed ANOVA
-
-Given that we have two independent variables, each with two levels, and where one is manipulated between-subjects and the other within-subjects, it is also possible to treat the design as a **2 x 2 mixed factorial design** and analyse the data using `anovaBF()`.
-
-Because one of the factors is manipulated within-subjects, we need to add `ppt` to the model  and specify it as a random factor using `whichRandom = "ppt"` (see Session [6](#anova2)). We also need to convert `ppt` to a factor, along with the other independent variables, `group` and `time`.
-
-As with repeated measures ANOVA in Session 6, the long format data needs to be used for the analysis.
-
-
-```r
-# convert ppt and IVs to factors
-diet_long <- 
-  diet_long %>% 
-  mutate(ppt   = factor(ppt),
-         group = factor(group),
-         time  = factor(time))
-
-# anova model
-bfs <- anovaBF(symptoms ~ group + time + ppt, whichRandom = "ppt", data = data.frame(diet_long))
-
-# look at the bfs
-bfs
-```
-In this analysis, we are less interested in the main effects of `group` and `time` and are more interested in the interaction between the factors. The interaction will tell us whether the change in symptom severity differs between groups. As with previous two-way ANOVAs, the BF for the interaction can be obtained by dividing the BF in [4] by the BF in [3] (see Sessions [3](#anova1) and [6](#anova2)).
-
-
-
-
-
-
-```r
-# bf for the interaction
-bfs[4] / bfs[3]  
-```
-
-* The Bayes factor representing evidence for the interaction term is <input class='webex-solveme nospaces' data-tol='5' size='4' data-answer='["2.25"]'/>.
-
-The Bayes factor for the interaction should come out at around 2.25, but because `anovaBF()` calculates the BF using random sampling methods, your value may not match this exactly (note the large error associated with the BF in the output). For greater precision, it's possible to `recompute()` the Bayes factor with a greater number of random samples, e.g., 1,000,000 (note, this could take a short while):
-
-
-```r
-# recompute bfs, but with a million iterations
-bfs_more <- recompute(bfs, 1000000)
-
-# re-obtain the BF for the interaction, using bf_more
-bfs_more[4] / bfs_more[3]
-```
-* The Bayes factor for the interaction, using `bf_more` is <input class='webex-solveme nospaces' data-tol='5' size='4' data-answer='["2.25"]'/>.
-* Although there is <select class='webex-select'><option value='blank'></option><option value=''>no</option><option value='answer'>weak</option><option value=''>substantial</option></select> evidence for a difference in the change score between groups, the Bayes factor was <select class='webex-select'><option value='blank'></option><option value='answer'>inconclusive</option><option value=''>substantial</option></select>.
-* As a result of using a mixed ANOVA, can we conclude that the dietary intervention led to a reduction in depression symptom severity? <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
-
-
-\
-
-## Approach 3 - ANCOVA
-
-A third approach to analysing pre-post data is to use ANCOVA, which stands for Analysis of COvariance. This approach is particularly appropriate if our focus were solely on comparing the scores at the second time point between groups, but controlling for baseline symptom severity.
-
-A **covariate** is a background variable that may be associated with the outcome variable, but is not of primary interest. In ANCOVA, the variance explained by a covariate is first accounted for, before examining whether the dependent variable differs between groups or conditions. Because some of the error variance is explained by the covariate, ANCOVAs can have the advantage of being more powerful tests of the predictor of interest.
-
-The ANCOVA is essentially a one-way between subjects ANOVA, with symptom severity at `week3` as the dependent variable, `group` as the independent variable, and symptoms at `baseline` as the covariate. 
-
-Equivalently, the analysis can be conceptualised is a multiple regression of `week3` scores on the basis of `group` and `baseline`. Assessing the unique contribution of `group` will tell us whether there's a difference in symptom severity at `week3`, after accounting for the variance explained by `baseline` scores (see Sessions [2](#multiple1) and [4](#multiple2))).
-
-Note that because effects of `time` are not analysed in this approach, there is no repeated measures factor, and `ppt` does not need to be included as a random factor.
-
-
-```r
-# The model with both group and baseline scores
-full <- lmBF(week3 ~ group + baseline, data = data.frame(diet))
-
-# The model with baseline scores only (for comparison)
-baseline <- lmBF(week3 ~ baseline, data = data.frame(diet))
-
-# The BF representing evidence for the unique contribution of group
-full / baseline 
-```
-
-```
-## Bayes factor analysis
-## --------------
-## [1] group + baseline : 6.124479 ±0.83%
-## 
-## Against denominator:
-##   week3 ~ baseline 
-## ---
-## Bayes factor type: BFlinearModel, JZS
-```
-
-* The Bayes factor for the unique contribution of `group` is <input class='webex-solveme nospaces' data-tol='2' size='4' data-answer='["6.08"]'/>.
-* There is <select class='webex-select'><option value='blank'></option><option value=''>no</option><option value=''>weak</option><option value='answer'>substantial</option></select> evidence for a difference in the `week3` scores between groups, after controlling for `baseline` scores.
-* As a result of using the ANCOVA approach, can we conclude that the dietary intervention led to a reduction in depression symptom severity? <select class='webex-select'><option value='blank'></option><option value='answer'>yes</option><option value=''>no</option></select>
-
-
-
-<div class='webex-solution'><button>R-squared</button>
-
-In Approach 3 R^2^ for the effect of `group` can be determined using methods from earlier sessions. The method is equivalent to obtaining R^2^ for the unique contribution of a predictor.
-
-
-```r
-# ensure broom is loaded
-# library(broom) 
-
-# specify the full model with lm()
-full_model    <- lm(week3 ~ group + baseline, data = diet)
-
-# specify the model with baseline only
-baseline_only <- lm(week3 ~ baseline, data = diet)
-
-# R-squared full model
-glance(full_model)$r.squared
-
-# R-squared baseline only
-glance(baseline_only)$r.squared
-
-# Unique contribution of group 
-# (effect size associated with difference in groups)
-glance(full_model)$r.squared - glance(baseline_only)$r.squared # R-sq = 0.05817
-```
-
-
-
-</div>
-
-
-\
-
-
-## Which approach should you use?
-
-Which method you use depends on the _research question_ you are asking. 
-
-If your question is whether the _change_ in the dependent variable across timepoints differs between the two groups, then Methods 1 or 2 are appropriate.  
-
-If your question is whether one group has a higher mean at the second timepoint, then Method 3 seems most appropriate. Indeed, ANCOVA is often recommended for pre-post designs (see e.g., O'Connel et al., 2017). An advantage of the ANCOVA method is that is has greater statistical power. It is the approach that Francis et al. (2019) used.
-
-\
-
-## Clinical Significance
-
-The measure of depressive symptoms used by Francis et al. (2019) was the Centre for Epidemiological Studies Depression scale-Revised (CESD-R; Radloff, 1977). The scale ranges from 0-60, and the criterion for being the elevated range of depressive symptoms is a score equal to **16** or above.  
-
-Re-plot the data, but with a horizontal line to indicate this criterion. 
-
-
-
-```r
-diet_long %>% 
-  ggdotplot(x = "time", 
-            y = "symptoms", 
-            color = "group", 
-            add = "mean_se", 
-            ylim = c(0,65),
-            position_dodge = 0.1) +
-  geom_hline(yintercept = 16, colour = "red", lty = 2)
-```
-
-<div class="figure" style="text-align: center">
-<img src="08_mixed_models_files/figure-html/unnamed-chunk-14-1.png" alt="Mean depression symptom severity score in each condition. The dotted line indicates the criterion for the elevated range of depressive symptoms" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-14)Mean depression symptom severity score in each condition. The dotted line indicates the criterion for the elevated range of depressive symptoms</p>
-</div>
-
-* At baseline, was the mean of the `diet_change` group above or below the criterion for clinical significance in the severity of depression symptoms? <select class='webex-select'><option value='blank'></option><option value='answer'>above</option><option value=''>below</option></select>
-* After 3 weeks, was the mean of the `diet_change` above or below the criterion for clinical significance in the severity of depression symptoms? <select class='webex-select'><option value='blank'></option><option value=''>above</option><option value='answer'>below</option></select>
-
-Note that these statements apply to the conditions as a whole, rather than the _individuals_ in each condition. For instance, there may be individuals whose symptoms did not improve. To learn more about whether a given _individual_ can be said to have improved or not, see the Further Knowledge section below.
-
-\
-
-
-## Exercises
-
-:::{.exercise}
-
-Pre-post self-efficacy scores
-
-Francis et al. (2019) also measured **self-efficacy** before and after the dietary intervention. Self-efficacy refers to a person's belief in their ability to exert control over their behaviours and circumstances they find themselves in. Higher scores indicate greater levels of self-efficacy.
-
-Read in the data at the link below to `self_efficacy` and answer the questions.
-
-https://raw.githubusercontent.com/chrisjberry/Teaching/master/7_diet_self_efficacy.csv
-
-\
-
-**1. Create a plot of the mean self-efficacy before and after the intervention in each group**
-
-
-<div class='webex-solution'><button>Hint</button>
-
-
-* Read the data using `read_csv()`
-* Convert to long format
-* Use a suitable package to plot the data. For example, `ggdotplot()` in the `ggpubr` package.
-
-
-</div>
-
-
-
-
-<div class='webex-solution'><button>Solution</button>
-
-
-```r
-# read in
-self_efficacy <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/7_diet_self_efficacy.csv')
-
-# convert to long format
-self_efficacy_long <- 
-  self_efficacy %>% 
-  pivot_longer(cols = c("baseline", "week3"),
-               names_to = "time",
-               values_to = "score")
-
-# plot
-self_efficacy_long %>% 
-  ggdotplot(x = "time", y = "score", color = "group", add = "mean_se",
-            ylab = "Self-efficacy score")
-```
-
-
-</div>
-
-
-
-\
-
-**2. Evidence for the dietary intervention on self-efficacy**
-
-* Using Approach 1, determine the Bayes factor representing the evidence for a difference in the change in self-efficacy score between the `diet_change` and `habitual_diet` groups. BF = <input class='webex-solveme nospaces' data-tol='0.05' size='4' data-answer='["0.45",".45"]'/>
-* Using Approach 2, determine the Bayes factor, representing the evidence for a difference in the change in self-efficacy score score between groups. BF = <input class='webex-solveme nospaces' data-tol='1.5' size='4' data-answer='["0.45",".45"]'/>
-* Using Approach 3, determine the Bayes factor, representing the evidence for a difference in self-efficacy scores between groups at week 3, after controlling for self-efficacy scores at baseline. BF = <input class='webex-solveme nospaces' data-tol='0.2' size='1' data-answer='["1"]'/>
-
-\
-
-Is there substantial evidence for an effect of the dietary intervention on self-efficacy scores according to any of the approaches?
-
-* Approach 1: ANOVA of difference scores. <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
-* Approach 2: Mixed ANOVA. <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
-* Approach 3: ANCOVA. <select class='webex-select'><option value='blank'></option><option value=''>yes</option><option value='answer'>no</option></select>
-
-
-<div class='webex-solution'><button>Hint - Approach 1</button>
-
-* Use the data in wide format.
-* Create a column of difference scores using `mutate()`
-* Compare the difference scores between groups using `anovaBF()` (or `lmBF()` or `ttestBF()`).
-
-</div>
-
-
-
-<div class='webex-solution'><button>Hint - Approach 2</button>
-
-* Convert the data to long format using `pivot_longer()`.
-* Convert the columns labelling the participant and independent variables to factors using `factor()`.
-* Use `anovaBF()` to run the 2 x 2 ANOVA, with the participant column as a random factor.
-* Obtain the Bayes factor for the interaction.
-
-</div>
-
-
-
-<div class='webex-solution'><button>Hint - Approach 3</button>
-
-* Use the data in wide format.
-* Use `lmBF()` with the scores at `week3` as the outcome variable and `group` and `baseline` as predictors.
-* Use `lmBF()` with the scores at `week3` as the outcome variable and `baseline` as the predictor.
-* Divide the BF for the model with both `group` and `baseline` by the BF for the model with `baseline` alone in order to determine the evidence that the scores at `week3` differ between `group` after controlling for `baseline`.
-
-</div>
-
-
-\
-
-
-<div class='webex-solution'><button>Solution - Approach 1</button>
-
-
-```r
-# Approach 1 - difference
-self_efficacy <- 
-  self_efficacy %>% 
-  mutate(change = week3 - baseline,
-         group = factor(group))
-
-# using anovaBF
-anovaBF(change ~ group, data = data.frame(self_efficacy))
-
-# or lmBF
-lmBF(change ~ group, data = data.frame(self_efficacy)) 
-
-# or ttest
-ttestBF(self_efficacy$change[self_efficacy$group=="habitual_diet"],
-        self_efficacy$change[self_efficacy$group=="diet_change"]) 
-```
-
-</div>
-
-
-
-<div class='webex-solution'><button>Solution - Approach 2</button>
-
-
-```r
-# Approach 2 - Mixed ANOVA
-
-# set factors
-self_efficacy_long <- 
-  self_efficacy_long %>% 
-  mutate(time  = factor(time),
-         ppt   = factor(ppt), 
-         group = factor(group))
-
-# get bfs
-BFs <- anovaBF(score ~ group + time + ppt, whichRandom = "ppt", data = data.frame(self_efficacy_long))
-
-BFs[4] / BFs[3]  
-
-# recompute
-BFs2 <- recompute(BFs, 1000000)
- 
-BFs2[4] / BFs2[3]  
-```
-
-</div>
-
-
-
-<div class='webex-solution'><button>Solution - Approach 3</button>
-
-
-```r
-# Approach 3 - ANCOVA
-
-# wide format
-# convert to factors
-self_efficacy <- 
-  self_efficacy %>% 
-  mutate(group = factor(group))
-
-# specify group + baseline
-BF_group_baseline <- lmBF(week3 ~ group + baseline, data = data.frame(self_efficacy))
-
-# specify baseline only
-BF_baseline <- lmBF(week3 ~ baseline, data = data.frame(self_efficacy))
-
-# unique contribution group
-BF_group_baseline / BF_baseline 
-```
-
-</div>
-
-
-:::
-
-\
-
-## Further Knowledge
-
-
-<div class='webex-solution'><button>Reliable Change RC index</button>
-
-
-### Reliable Change (RC) index
-
-In the main part of the worksheet, the mean symptom severity in the dietary intervention group moved from being above the criterion for the elevated range before the intervention to being below the criterion afterwards.
-
-One way to determine whether a particular **individual** shows a clinically significant change involves calculating a Reliable Change (RC) index (Christensen & Mendoza, 1986; Jacobson & Trurax, 1991). The RC index can be calculated for each individual as follows:
-
-\
-
-$RC = \frac{X_1 - X_2}{SE_D}$
-
-\
-
-
-where $X_1$ is an individual's pretest score, $X_2$ is the posttest score, and $SE_D$ is the standard error of the difference scores.
-
-$SE_D$ is calculated with the equation:
-
-\
-
-$\sqrt{2(SD_{Pre}\sqrt{(1-\alpha)})^2}$
-
-\
-
-where $SD_{pre}$ is the standard deviation of the pre-test scores and $\alpha$ is the reliability of the measure (e.g., Cronbach's alpha). 
-
-$\alpha$ is necessary for the calculation of $SE_D$, but was not reported by Francis et al. (2019). The CESD-R scale is widely used though, and Busch et al. (2011) derived an estimate of $SE_D$ to be 5.05, using an $\alpha$ of .914 and $SD_{Pre}$ score of 12.187. For the purposes of illustration, we'll assume the value of $SE_D$ is the same as in Busch et al. (2011) (i.e., 5.05).
-
-If RC > 1.96 (or RC < -1.96, depending on the way the difference is calculated), then the individual can be said to show a _reliable change_.
-
-Thus, to calculate RC for each individual in the `diet_change` group:
-
-
-```r
-# filter the data for the diet_change group only
-diet_change <-
-  diet %>% filter(group == "diet_change")
-
-# SE of differences
-se_diff <- 5.05 # from Busch et al. (2011)
-
-# Reliable Change index calculation
-diet_change <-
-  diet_change %>%
-  mutate(RC = change / se_diff)
-
-# preview
-diet_change %>% head()
-```
-
-<div class="kable-table">
-
-| ppt|group       | baseline|    week3|      change|         RC|
-|---:|:-----------|--------:|--------:|-----------:|----------:|
-|   1|diet_change | 18.00000| 11.00000|  -7.0000000| -1.3861386|
-|   2|diet_change | 34.00000| 11.00000| -23.0000000| -4.5544554|
-|   3|diet_change | 28.42105|  3.00000| -25.4210526| -5.0338718|
-|   4|diet_change | 25.00000| 14.00000| -11.0000000| -2.1782178|
-|   5|diet_change | 40.00000| 49.00000|   9.0000000|  1.7821782|
-|   6|diet_change | 15.00000| 14.73684|  -0.2631579| -0.0521105|
-
-</div>
-
-`RC` scores less than -1.96 indicate that the individual's score showed a reliable improvement in depressive symptoms (i.e., reliably lower scores on the CESD-R).  
-
-\
-
-To see all the individuals who showed such a reduction:
-
-
-```r
-improved_ppts <- diet_change %>% filter(RC < -1.96) 
-improved_ppts
-```
-
-<div class="kable-table">
-
-| ppt|group       | baseline| week3|    change|        RC|
-|---:|:-----------|--------:|-----:|---------:|---------:|
-|   2|diet_change | 34.00000|    11| -23.00000| -4.554455|
-|   3|diet_change | 28.42105|     3| -25.42105| -5.033872|
-|   4|diet_change | 25.00000|    14| -11.00000| -2.178218|
-|   8|diet_change | 33.00000|     9| -24.00000| -4.752475|
-|  23|diet_change | 43.00000|    30| -13.00000| -2.574257|
-|  28|diet_change | 22.00000|     8| -14.00000| -2.772277|
-|  33|diet_change | 50.52632|    23| -27.52632| -5.450756|
-|  34|diet_change | 28.00000|    17| -11.00000| -2.178218|
-|  36|diet_change | 49.00000|    14| -35.00000| -6.930693|
-|  37|diet_change | 23.00000|    10| -13.00000| -2.574257|
-
-</div>
-
-\
-
-#### Scatterplot with RC bounds
-
-All the data can be represented on a plot with bounds for reliable change as follows:
-
-
-```r
-diet_change %>% 
-  ggplot(aes(x = baseline, y = week3)) + 
+rt_data_for_figure %>% 
+  ggplot(aes(x = modality, y = Mean_RT, color = modality)) +
   geom_point() +
-  geom_abline() +
-  geom_abline(slope = 1, intercept = -1.96*se_diff, lty = 2) +
-  geom_abline(slope = 1, intercept = 1.96*se_diff, lty = 2) 
+  stat_summary(fun = mean, geom = "point", color = "black")
 ```
 
 <div class="figure" style="text-align: center">
-<img src="08_mixed_models_files/figure-html/unnamed-chunk-21-1.png" alt="Baseline vs. week 3 depressive symptom severity in the diet change group. Dotted lines denoted Reliable Change index bounds" width="85%" />
-<p class="caption">(\#fig:unnamed-chunk-21)Baseline vs. week 3 depressive symptom severity in the diet change group. Dotted lines denoted Reliable Change index bounds</p>
-</div>
+<img src="08_mixed_models_files/figure-html/unnamed-chunk-7-1.png" alt="TRUE" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-7)TRUE</p>
+</div><div class="kable-table">
 
-The black dashed lines are those plotted with `geom_abline()` and are created by multiplying `se_diff` by +1.96 and -1.96. 
-
-The points falling above the upper black dashed line indicate participants showing reliable worsening of depressive symptoms at the posttest compared to the the pretest. 
-
-The points falling below the lower black dashed line are individuals showing a reliable improvement (i.e., fewer depressive symptoms) at the posttest. 
-
-Francis et al. (2019) reported that 10 individuals showed a reliable improvement in the diet change group, as indicated by their RC scores. Only 4 individuals in the habitual diet group were reported to show a reliable improvement.
-
-Count how many individuals fall below the lower black dashed line on the scatterplot, and can therefore be considered to meet the criteria for showing reliable improvement, as defined by the RC index? <select class='webex-select'><option value='blank'></option><option value=''>8</option><option value=''>9</option><option value='answer'>10</option><option value=''>11</option><option value=''>12</option></select>
-
-The same process could be followed for the `habitual_diet` group to compare the number of individuals showing reliable change according to the RC index between groups. The code for this group is below. With the value of `se_diff` we've used here, a fifth person in this group has an RC index (just) exceeding -1.96. There's still half as many participants showing a reliable change, compared to the `diet_change` group.
-
-The results obtained with RC index converge with those of the ANCOVA, and support the notion that a healthy diet can lead to improvement in the severity of depression symptoms. 
-
-
-<div class='webex-solution'><button>Habitual diet group</button>
-
-
-```r
-# filter the data for the habitual_diet group only
-habitual_diet <-
-  diet %>% filter(group == "habitual_diet")
-
-# SE of differences
-se_diff <- 5.05 # from Busch et al. (2011)
-
-# Reliable Change index calculation
-habitual_diet <-
-  habitual_diet %>%
-  mutate(RC = change / se_diff)
-
-# RC plot
-habitual_diet %>% 
-  ggplot(aes(x = baseline, y = week3)) + 
-  geom_point() +
-  geom_abline() +
-  geom_abline(slope = 1, intercept = -1.96*se_diff, lty = 2) +
-  geom_abline(slope = 1, intercept =  1.96*se_diff, lty = 2) 
-```
-
-<div class="figure" style="text-align: center">
-<img src="08_mixed_models_files/figure-html/unnamed-chunk-22-1.png" alt="Baseline vs. week 3 depressive symptom severity in the habitual diet group. Dotted lines denoted Reliable Change index bounds" width="85%" />
-<p class="caption">(\#fig:unnamed-chunk-22)Baseline vs. week 3 depressive symptom severity in the habitual diet group. Dotted lines denoted Reliable Change index bounds</p>
-</div>
-
+|modality    | mean(Mean_RT)|
+|:-----------|-------------:|
+|Audio-only  |      1044.073|
+|Audiovisual |      1127.233|
 
 </div>
-
-
-
-</div>
-
-
-\
-
-## Summary
-
-There are three main approaches for measuring pre-post data when there is a treatment and control group:
-
-* Analysis of the difference scores in a between-subjects ANOVA.
-* A 2 x 2 mixed ANOVA, with time (pre, post) as the within-subjects factor, and group (treatment, control) as the between-subjects factor.
-* An ANCOVA comparing posttest scores between groups, after accounting for pretest scores as a covariate. This is equivalent to a multiple regression of posttest scores on the basis of pretest scores and group (i.e., one continuous and one categorical predictor).
-* A result can be statistically significant, but not necessarily clinically significant. Various methods exist for establishing clinical significance, including using established scale cutoffs and using the Reliable Change Index.
-
-\
-
-## References
-Busch, A. M., Wagener, T. L., Gregor, K. L., Ring, K. T., & Borrelli, B. (2011). Utilizing reliable and clinically significant change criteria to assess for the development of depression during smoking cessation treatment: The importance of tracking idiographic change. _Addictive Behaviors_, _36_(12), 1228-1232.
-
-Christensen, L. & Mendoza, J. L. (1986). A method of assessing change in a single subject: an alteration of the RC index. _Behavior Therapy_. _17_, 305-308.
-
-Francis H.M., Stevenson R.J., Chambers J.R., Gupta D., Newey B., Lim C.K. (2019) A brief diet intervention can reduce symptoms of depression in young adults – A randomised controlled trial. _PLoS ONE_, _14_(10): e0222768. https://doi.org/10.1371/journal.pone.0222768
-
-Jacobson, N. S., & Truax, P. (1991). Clinical significance: A statistical approach to defining meaningful change in psychotherapy research. _Journal of Consulting and Clinical Psychology_, _59_(1), 12–19. https://doi.org/10.1037/0022-006X.59.1.12
-
-O'Connell, N. S., Dai, L., Jiang, Y., Speiser, J. L., Ward, R., Wei, W., ... & Gebregziabher, M. (2017). Methods for analysis of pre-post data in clinical research: a comparison of five common methods. _Journal of Biometrics & Biostatistics_, _8_(1), 1. https://doi.org/10.4172/2155-6180.1000334
-
-Radloff, L. S. (1977). The CES-D scale: A self-report depression scale for research in the general population. _Applied Psychological Measurement_, _1_(3), 385-401.
-
 -->
+<p><br />
+</p>
+</div>
+<div id="specifying-the-model" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Specifying the model<a href="mixed.html#specifying-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A mixed model approach allows for the variability across items and participants to be modelled via <strong>random intercepts</strong> and <strong>random slopes</strong>. For each, you can have by-participant and by-item effects.</p>
+<ul>
+<li><strong>Random intercepts</strong>:
+<ul>
+<li>by-participant: accounts for individual differences in participants' RTs.</li>
+<li>by-item: accounts for differences in RTs to particular words.</li>
+</ul></li>
+<li><strong>Random slopes</strong>:
+<ul>
+<li>by-participant: accounts for individual differences in the effect of modality on RT.</li>
+<li>by-item: accounts for differences in the effect of modality on particular words.</li>
+</ul></li>
+</ul>
+<p>Note that if random slopes and intercepts are included, correlations between them will also be estimated. A correlation could occur, for example, if slower participants show larger effects of modality.</p>
+<p><br />
+</p>
+<p>Models with different combinations of random effects can be specified and compared to test whether there's evidence for particular components or not.</p>
+<p><br />
+</p>
+<div id="fixed-effect-model-with-random-intercepts" class="section level3 hasAnchor" number="8.5.1">
+<h3><span class="header-section-number">8.5.1</span> Fixed effect model with random intercepts<a href="mixed.html#fixed-effect-model-with-random-intercepts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The simplest random effects model has random intercepts only.</p>
+<p><br />
+</p>
+<p>The general formula is:</p>
+<p><code>lmer(outcome ~ predictor + (1|participant) + (1|item), data = data)</code></p>
+<p><br />
+</p>
+<p>Note that fixed effects are specified <strong>outside</strong> parentheses:</p>
+<ul>
+<li><code>predictor</code> means include the fixed effect of predictor</li>
+</ul>
+<p><br />
+</p>
+<p>Random effects are specified <strong>inside</strong> parentheses:
+Things to the left of <code>|</code> vary according to things on the right.</p>
+<ul>
+<li><code>(1|participant)</code> means the intercept (represented with '1') varies according to <code>participant.</code></li>
+<li><code>(1|item)</code> means the intercept (1) varies according to <code>item.</code></li>
+</ul>
+<p><br />
+</p>
+<p>So, in words, the formula means "model the <code>outcome</code> variable as a function of the fixed effect of the <code>predictor</code>, with random intercepts for <code>participant</code> and <code>item</code>."</p>
+<p><br />
+</p>
+</div>
+<div id="fixed-effect-model-with-random-intercepts-and-slopes" class="section level3 hasAnchor" number="8.5.2">
+<h3><span class="header-section-number">8.5.2</span> Fixed effect model with random intercepts AND slopes<a href="mixed.html#fixed-effect-model-with-random-intercepts-and-slopes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The effect of modality can be allowed to differ across participants and items by including <strong>random slopes</strong>.</p>
+<p><br />
+</p>
+<p>The general formula is:</p>
+<p><code>lmer(outcome ~ predictor + (1 + predictor|participant) + (1 + predictor|item), data = data)</code></p>
+<p><br />
+</p>
+<p>Where:</p>
+<ul>
+<li><code>(1 + predictor|participant)</code> means the intercept (<code>1</code>) <em>and</em> fixed effect (<code>predictor</code>) varies according to <code>participant</code>.</li>
+<li><code>(1 + predictor|item)</code> means the intercept (<code>1</code>) and fixed effect (<code>predictor</code>) varies according to <code>item</code>.</li>
+</ul>
+<p><br />
+</p>
+</div>
+<div id="multiple-fixed-effects-random-intercepts-and-slopes" class="section level3 hasAnchor" number="8.5.3">
+<h3><span class="header-section-number">8.5.3</span> Multiple fixed effects, random intercepts AND slopes<a href="mixed.html#multiple-fixed-effects-random-intercepts-and-slopes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For multiple fixed effects, e.g., <code>predictor1</code> and <code>predictor2</code>, an example of the formula used could be:</p>
+<p><code>lmer(outcome ~ predictor1 + predictor2 + (1 + predictor1 + predictor2|participant) + (1 + predictor1|item), data = data)</code></p>
+<p><br />
+</p>
+<p>Where:</p>
+<ul>
+<li><code>predictor1</code> means include the fixed effect of <code>predictor1</code>.</li>
+<li><code>predictor2</code> means include the fixed effect of <code>predictor2</code>.</li>
+<li><code>(1 + predictor1 + predictor2|participant)</code> means include random intercepts (1) for <code>participant</code> and also by-participant random slopes for <code>predictor1</code> and <code>predictor2</code>.</li>
+<li><code>(1 + predictor1|item)</code> means include random intercepts for <code>item</code> and by-item random slopes for <code>predictor1</code>.</li>
+</ul>
+<p><br />
+</p>
+</div>
+</div>
+<div id="the-analysis-do-rts-differ-across-modality-conditions" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> The analysis: Do RTs differ across modality conditions?<a href="mixed.html#the-analysis-do-rts-differ-across-modality-conditions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The researchers wanted to know whether RTs differ according to the <code>modality</code> condition.</p>
+<p>As covered in the lecture, the first step is to specify the maximal (full) model permitted by the design. Here it's one that includes random intercepts and slopes for participant and stimulus.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="mixed.html#cb6-1" tabindex="-1"></a><span class="co"># Specify the full model and store in rt_full_model</span></span>
+<span id="cb6-2"><a href="mixed.html#cb6-2" tabindex="-1"></a>rt_full_model <span class="ot">&lt;-</span> </span>
+<span id="cb6-3"><a href="mixed.html#cb6-3" tabindex="-1"></a>  <span class="fu">lmer</span>(RT <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> modality <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> modality<span class="sc">|</span>PID) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> modality<span class="sc">|</span>stim), <span class="at">data =</span> rt_data)</span></code></pre></div>
+<p>This "maximal" model for the data includes:</p>
+<ul>
+<li>The <strong>fixed effect</strong> of <code>modality</code></li>
+<li>By-participant and by-item <strong>random intercepts</strong></li>
+<li>By-participant and by-item <strong>random slopes</strong></li>
+</ul>
+<p><br />
+</p>
+<p>For comparison, we need to specify the <em>reduced</em> model, which is identical except it does not contain the fixed effect.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="mixed.html#cb7-1" tabindex="-1"></a><span class="co"># Specify the reduced model and store in rt_reduced_model</span></span>
+<span id="cb7-2"><a href="mixed.html#cb7-2" tabindex="-1"></a>rt_reduced_model <span class="ot">&lt;-</span> <span class="fu">lmer</span>(RT <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> modality<span class="sc">|</span>PID) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> modality<span class="sc">|</span>stim), <span class="at">data =</span> rt_data)</span></code></pre></div>
+<p>To compare the full and reduced models use <code>anova(model_1, model_2)</code>, that is,</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="mixed.html#cb8-1" tabindex="-1"></a><span class="co"># compare the reduced and full models</span></span>
+<span id="cb8-2"><a href="mixed.html#cb8-2" tabindex="-1"></a><span class="fu">anova</span>(rt_reduced_model, rt_full_model)</span></code></pre></div>
+<p><br />
+</p>
+<p><img src="8_anova_lmm.png" /></p>
+<ul>
+<li>This tests a null hypothesis that the full and reduced models are statistically equivalent.</li>
+<li>Specifically, a <strong>likelihood ratio test</strong> is performed, which involves obtaining the likelihood of each model and then comparing the likelihoods.</li>
+<li>The <em>p</em>-value is the probability of obtaining a test statistic at least as extreme as the one observed, if the null hypothesis is true.</li>
+<li>If the <em>p</em>-value for the test is less than 0.05, then, by convention, we say the test is statistically significant.</li>
+<li>The <em>p</em>-value is shown in the <code>Pr(&gt;ChiSq)</code> column is a very small number (e.g., 1.26e-08), and is clearly less than 0.05.</li>
+<li>This means that the full model fits the data significantly better than the reduced model, and we have evidence for the fixed effect.</li>
+</ul>
+<p><br />
+</p>
+</div>
+<div id="inspecting-the-model" class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> Inspecting the model<a href="mixed.html#inspecting-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now we know that we have evidence for the full model containing the fixed effect, we can look at it in detail:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="mixed.html#cb9-1" tabindex="-1"></a><span class="co"># display results from the full model</span></span>
+<span id="cb9-2"><a href="mixed.html#cb9-2" tabindex="-1"></a><span class="fu">summary</span>(rt_full_model)</span></code></pre></div>
+<pre><code>## Linear mixed model fit by REML. t-tests use Satterthwaite&#39;s method [
+## lmerModLmerTest]
+## Formula: RT ~ 1 + modality + (1 + modality | PID) + (1 + modality | stim)
+##    Data: rt_data
+## 
+## REML criterion at convergence: 302385.7
+## 
+## Scaled residuals: 
+##     Min      1Q  Median      3Q     Max 
+## -3.3646 -0.6964 -0.0141  0.5886  5.0003 
+## 
+## Random effects:
+##  Groups   Name                Variance Std.Dev. Corr 
+##  stim     (Intercept)           304.0   17.44        
+##           modalityAudiovisual   216.9   14.73   0.16 
+##  PID      (Intercept)         28559.0  168.99        
+##           modalityAudiovisual  7709.0   87.80   -0.17
+##  Residual                     65258.8  255.46        
+## Number of obs: 21679, groups:  stim, 543; PID, 53
+## 
+## Fixed effects:
+##                     Estimate Std. Error      df t value Pr(&gt;|t|)    
+## (Intercept)          1044.14      23.36   52.12  44.700  &lt; 2e-16 ***
+## modalityAudiovisual    83.18      12.57   52.10   6.615 2.02e-08 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Correlation of Fixed Effects:
+##             (Intr)
+## modltyAdvsl -0.178</code></pre>
+<p>In the output:</p>
+<ul>
+<li>REML stands for <em>Restricted Maximum Likelihood</em>. This is method that was used to fit the model to the data.</li>
+<li>The formula entered for the mixed model is given again.</li>
+<li>Information about the variance in the residuals is given.</li>
+</ul>
+<p><br />
+</p>
+<p><strong>Random effects:</strong></p>
+<ul>
+<li>The values in <code>Std. Dev</code> are the estimates of the variance in the random intercepts and slopes in participants (<code>PID</code>) and items (<code>stim</code>).</li>
+<li>The values in <code>Corr</code> are the estimates of the correlation between the random intercept and random slopes (by-participant and by-item).
+<ul>
+<li>The correlation of 0.16 means that the effect was larger for items that took longer to respond to.</li>
+<li>The correlation of -0.17 means that the effect of modality was smaller in participants who took longer to respond.</li>
+</ul></li>
+</ul>
+<p><br />
+</p>
+<p>To interpret the fixed effects, we need to consider how the levels of modality were coded.</p>
+<ul>
+<li>R uses dummy coding (0s and 1s) to code the levels of a factor (or a character variable).</li>
+<li>modality has levels <code>Audio-only</code> and <code>Audiovisual</code></li>
+<li>R assigns the 0s and 1s in dummy coding alphabetically.</li>
+<li><code>Audio-only</code> is therefore coded with 0s.</li>
+<li><code>Audiovisual</code> is therefore coded with 1s.</li>
+</ul>
+<p><br />
+</p>
+<p><strong>Fixed effects:</strong></p>
+<ul>
+<li>The estimate of the intercept is given as 1044.14. This represents the average RT in the <code>Audio-only</code> group (the condition coded with zeros).</li>
+<li>The estimate of the fixed effect of modality is given as <strong>83.18</strong>. This represents how much greater the mean is in the <code>Audio-visual</code> condition (coded with 1s), <em>once participant and items have been taken into account</em>.</li>
+</ul>
+<p> </p>
+<p>The researchers in this experiment thought RTs would be slower in Audio-visual condition than the audio-only condition. Seeing a word in addition to hearing it may be associated with greater cognitive effort.</p>
+<p>Are the researchers correct or not? <select class='webex-select'><option value='blank'></option><option value=''>No</option><option value='answer'>Yes</option></select></p>
+<div class="webex-solution">
+<button>
+Explain
+</button>
+<p>Because the fixed effect of modality is 83.18, and because <code>Audio-visual</code> was (dummy) coded with 1s and <code>Audio-only</code> was coded with 0s, this means that the mean of the <code>Audiovisual</code> condition is 83.18 <em>greater</em> than that of the <code>Audiovisual</code> condition. The outcome variable is RT, which means that <strong>responses in the Audio-visual condition were 83 ms slower, on average, as expected by the researchers.</strong></p>
+</div>
+<p><br />
+</p>
+<div id="convergence-issues" class="section level3 hasAnchor" number="8.7.1">
+<h3><span class="header-section-number">8.7.1</span> Convergence issues<a href="mixed.html#convergence-issues" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It is common when running LMMs for the model to not successfully converge, meaning that R was unable to estimate all the parameters of the model.</p>
+<p>This is especially common with more complex models, such as those with with multiple fixed and random effects and their interactions.</p>
+<p>If you receive a warning saying that the model did not converge, or that the fit is singular, you should not report the results from the model.</p>
+<p><br />
+</p>
+<p>One solution is to explore all the fitting options in <code>lmer()</code> that do allow for convergence.</p>
+<p>Handily, this can be done for you automatically using the <code>allFit()</code> function in the <code>afex</code> package:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="mixed.html#cb11-1" tabindex="-1"></a><span class="fu">allFit</span>(rt_full_model)</span></code></pre></div>
+<pre><code>## bobyqa : [OK]
+## Nelder_Mead : [OK]
+## nlminbwrap : [OK]
+## nloptwrap.NLOPT_LN_NELDERMEAD : [OK]
+## nloptwrap.NLOPT_LN_BOBYQA : [OK]
+## original model:
+## RT ~ 1 + modality + (1 + modality | PID) + (1 + modality | stim) 
+## data:  rt_data 
+## optimizers (5): bobyqa, Nelder_Mead, nlminbwrap, nloptwrap.NLOPT_LN_NELDERMEAD,nloptwrap.NLO...
+## differences in negative log-likelihoods:
+## max= 3.14e-06 ; std dev= 1.34e-06</code></pre>
+<p>This will provide a list of the optimisers (e.g., <code>bobyqa</code>, <code>Nelder_Mead</code>) in <code>lmer()</code> that produce convergence warnings or singular fits.</p>
+<p><br />
+</p>
+<p>An optimiser from this list can then be manually specified using <code>lmerControl</code> when running the model:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="mixed.html#cb13-1" tabindex="-1"></a>rt_full_model <span class="ot">&lt;-</span> <span class="fu">lmer</span>(RT <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> modality <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> modality<span class="sc">|</span>PID) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> modality<span class="sc">|</span>stim), </span>
+<span id="cb13-2"><a href="mixed.html#cb13-2" tabindex="-1"></a>                      <span class="at">data =</span> rt_data,</span>
+<span id="cb13-3"><a href="mixed.html#cb13-3" tabindex="-1"></a>                      <span class="at">control =</span> <span class="fu">lmerControl</span>(<span class="at">optimizer =</span> <span class="st">&quot;bobyqa&quot;</span>))</span></code></pre></div>
+<p>Other things that may improve convergence are:</p>
+<ul>
+<li>increase the number of iterations the optimisation routine performs (with <code>control = lmerControl(optCtr = list(maxfun = 1e9))</code>)</li>
+<li>removing derivative calculations that occur after the model has reached a solution (via. <code>control = lmerControl(calc.derivs = FALSE)</code> )</li>
+</ul>
+<p><br />
+</p>
+<p>If the model still does not converge, then the complexity of the model should be systematically reduced. For example, remove a component such as a random slope term and re-run it, repeating the process of removing more and more components until it converges.</p>
+<p>Ideally, the random effects you include in the model should be psychologically principled and guided by theory.</p>
+<p><br />
+</p>
+</div>
+<div id="coefficients-1" class="section level3 hasAnchor" number="8.7.2">
+<h3><span class="header-section-number">8.7.2</span> Coefficients<a href="mixed.html#coefficients-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For learning purposes only, let's see the random intercepts and slopes for each participant, using <code>coef()</code></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="mixed.html#cb14-1" tabindex="-1"></a><span class="co"># get random intercept and slope for each participant</span></span>
+<span id="cb14-2"><a href="mixed.html#cb14-2" tabindex="-1"></a><span class="fu">coef</span>(rt_full_model)<span class="sc">$</span>PID <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">(Intercept)</th>
+<th align="right">modalityAudiovisual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">301</td>
+<td align="right">1024.0672</td>
+<td align="right">-16.936244</td>
+</tr>
+<tr class="even">
+<td align="left">302</td>
+<td align="right">1044.1377</td>
+<td align="right">1.843072</td>
+</tr>
+<tr class="odd">
+<td align="left">303</td>
+<td align="right">882.8292</td>
+<td align="right">57.790549</td>
+</tr>
+<tr class="even">
+<td align="left">304</td>
+<td align="right">1232.7548</td>
+<td align="right">-27.919783</td>
+</tr>
+<tr class="odd">
+<td align="left">306</td>
+<td align="right">1042.3427</td>
+<td align="right">33.886178</td>
+</tr>
+<tr class="even">
+<td align="left">307</td>
+<td align="right">1111.3621</td>
+<td align="right">-9.938361</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br />
+</p>
+<p>See also the random intercepts and slopes for each item:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="mixed.html#cb15-1" tabindex="-1"></a><span class="co"># get random intercept and slope for each stimulus</span></span>
+<span id="cb15-2"><a href="mixed.html#cb15-2" tabindex="-1"></a><span class="fu">coef</span>(rt_full_model)<span class="sc">$</span>stim <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">(Intercept)</th>
+<th align="right">modalityAudiovisual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">babe</td>
+<td align="right">1038.919</td>
+<td align="right">82.11841</td>
+</tr>
+<tr class="even">
+<td align="left">back</td>
+<td align="right">1050.914</td>
+<td align="right">86.52439</td>
+</tr>
+<tr class="odd">
+<td align="left">bad</td>
+<td align="right">1041.122</td>
+<td align="right">81.12280</td>
+</tr>
+<tr class="even">
+<td align="left">bag</td>
+<td align="right">1042.892</td>
+<td align="right">86.41081</td>
+</tr>
+<tr class="odd">
+<td align="left">bake</td>
+<td align="right">1039.394</td>
+<td align="right">81.75528</td>
+</tr>
+<tr class="even">
+<td align="left">balk</td>
+<td align="right">1042.558</td>
+<td align="right">84.17974</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You wouldn't report these, but looking at them helps to make it concrete that each participant and word has its own intercept and effect of modality (slope) in this model.</p>
+<p><br />
+</p>
+</div>
+<div id="graph" class="section level3 hasAnchor" number="8.7.3">
+<h3><span class="header-section-number">8.7.3</span> Graph<a href="mixed.html#graph" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>emmeans()</code> package can be used to obtain the means for a figure.</p>
+<p><strong>EMM</strong> stands for Estimated Marginal Means. These are means for conditions or contrasts, estimated by the model that was fit to the data.</p>
+<p><br />
+</p>
+<p>Obtain the estimates of mean RT in the two modality conditions:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="mixed.html#cb16-1" tabindex="-1"></a><span class="co"># obtain the emms from the model, for each level of modality</span></span>
+<span id="cb16-2"><a href="mixed.html#cb16-2" tabindex="-1"></a>emms <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(rt_full_model, <span class="sc">~</span> modality)</span></code></pre></div>
+<p>If you get a warning that tells us that it can't calculate the degrees of freedom, then don't worry since we don't need these right now.</p>
+<p><br />
+</p>
+<p>To see the EMMs:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="mixed.html#cb17-1" tabindex="-1"></a>emms</span></code></pre></div>
+<pre><code>##  modality    emmean   SE  df asymp.LCL asymp.UCL
+##  Audio-only    1044 23.4 Inf       998      1090
+##  Audiovisual   1127 24.5 Inf      1079      1175
+## 
+## Degrees-of-freedom method: asymptotic 
+## Confidence level used: 0.95</code></pre>
+<ul>
+<li>The EMMs are in the <code>emmean</code> column.</li>
+<li>Associated standard errors are in <code>SE</code>.</li>
+<li>The values in the <code>asymp.LCL</code> column are the lower 95% confidence interval limits of the means.</li>
+<li>The values in the <code>asymp.UCL</code> column are the upper 95% confidence interval limits of the means.</li>
+</ul>
+<p><br />
+</p>
+<ul>
+<li>The estimated mean of the <code>Audio-only</code> condition is <select class='webex-select'><option value='blank'></option><option value='answer'>1044</option><option value=''>23.4</option><option value=''>1127</option></select></li>
+<li>The estimated mean of the <code>Audiovisual</code> condition is <select class='webex-select'><option value='blank'></option><option value=''>1079</option><option value='answer'>1127</option><option value=''>23.4</option><option value=''>1044</option></select></li>
+</ul>
+<p><br />
+</p>
+<p>To create a figure showing these means in <code>ggplot()</code>:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="mixed.html#cb19-1" tabindex="-1"></a><span class="fu">as_tibble</span>(emms) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="mixed.html#cb19-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> modality, <span class="at">y =</span> emmean)) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="mixed.html#cb19-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">group =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="mixed.html#cb19-4" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>asymp.LCL,<span class="at">ymax=</span>asymp.UCL,<span class="at">width=</span><span class="fl">0.2</span>)) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="mixed.html#cb19-5" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Estimated marginal mean RT&quot;</span>) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="mixed.html#cb19-6" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Condition&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-18"></span>
+<img src="08_mixed_models_files/figure-html/unnamed-chunk-18-1.png" alt="Estimated marginal mean RT in each modality condition, controlling for participant and stimulus. Error bars denote the 95% confidence interval." width="75%" />
+<p class="caption">
+Figure 8.1: Estimated marginal mean RT in each modality condition, controlling for participant and stimulus. Error bars denote the 95% confidence interval.
+</p>
+</div>
+<p><br />
+</p>
+<p>These means in the figure are technically based on estimates of parameters from the model. That is, they are the mean of the levels of the fixed effect after accounting for the random effects, and so won't necessarily be the same as the means you may calculate directly from the data.</p>
+<p><br />
+</p>
+<div class="webex-solution">
+<button>
+Traditional analysis
+</button>
+<p>For learning purposes only, let's compare what the means would have been when calculated in the regular way (without accounting for the random effects).</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="mixed.html#cb20-1" tabindex="-1"></a><span class="co"># average RTs across participants in each condition</span></span>
+<span id="cb20-2"><a href="mixed.html#cb20-2" tabindex="-1"></a><span class="co"># then work out the mean across participants</span></span>
+<span id="cb20-3"><a href="mixed.html#cb20-3" tabindex="-1"></a>rt_data <span class="sc">%&gt;%</span> </span>
+<span id="cb20-4"><a href="mixed.html#cb20-4" tabindex="-1"></a>  <span class="fu">group_by</span>(PID, modality) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-5"><a href="mixed.html#cb20-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">M =</span> <span class="fu">mean</span>(RT)) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-6"><a href="mixed.html#cb20-6" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb20-7"><a href="mixed.html#cb20-7" tabindex="-1"></a>  <span class="fu">group_by</span>(modality) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-8"><a href="mixed.html#cb20-8" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">M_RT =</span> <span class="fu">mean</span>(M))</span></code></pre></div>
+<p>In this case, the means come out the same.</p>
+<p><br />
+</p>
+<p>Now see if the modality effect would be significant in a regular paired <em>t</em>-test. Again, this is for comparison for learning purposes only - most LMMs would be more complex than having a fixed factor with two levels!</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="mixed.html#cb21-1" tabindex="-1"></a>Ms <span class="ot">&lt;-</span> </span>
+<span id="cb21-2"><a href="mixed.html#cb21-2" tabindex="-1"></a>  rt_data <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="mixed.html#cb21-3" tabindex="-1"></a>    <span class="fu">group_by</span>(PID, modality) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-4"><a href="mixed.html#cb21-4" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">M =</span> <span class="fu">mean</span>(RT)) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-5"><a href="mixed.html#cb21-5" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from=</span>modality,<span class="at">values_from=</span>M)</span>
+<span id="cb21-6"><a href="mixed.html#cb21-6" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="mixed.html#cb21-7" tabindex="-1"></a><span class="fu">t.test</span>(Ms<span class="sc">$</span><span class="st">`</span><span class="at">Audio-only</span><span class="st">`</span>, Ms<span class="sc">$</span>Audiovisual, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Again, the pattern of significance (i.e., a significant effect of condition) is the same.</p>
+</div>
+<p><br />
+</p>
+<p>If you want to see this example extended to include an additional fixed factor and interaction, see Brown (2021).</p>
+<p><br />
+</p>
+</div>
+</div>
+<div id="summary-6" class="section level2 hasAnchor" number="8.8">
+<h2><span class="header-section-number">8.8</span> Summary<a href="mixed.html#summary-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Mixed models provide a way of estimating <strong>fixed effects</strong>, while accounting for <strong>random effects</strong>.</p></li>
+<li><p>They are becoming increasingly common in the psychological literature.</p></li>
+<li><p>Only a brief introduction to mixed models has been presented in the lecture and worksheet this week.</p></li>
+<li><p>Models can of course be more complex by having fixed effects with more than two levels, multiple fixed effects, and additional random effects.</p></li>
+<li><p>See <strong>Brown (2021)</strong> for an extension to the example above with two fixed effects and their interaction.</p></li>
+</ul>
+<p><br />
+</p>
+<p>Interested students should consult the articles below.</p>
+<p><br />
+</p>
+</div>
+<div id="references-7" class="section level2 hasAnchor" number="8.9">
+<h2><span class="header-section-number">8.9</span> References<a href="mixed.html#references-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Recommended introductory texts:</strong></p>
+<p>Brown, V. A. (2021). An introduction to linear mixed-effects modeling in R. <em>Advances in Methods and Practices in Psychological Science</em>, <em>4</em>(1), Article 2515245920960351. <a href="https://doi.org/10.1177/2515245920960351" class="uri">https://doi.org/10.1177/2515245920960351</a></p>
+<p>Singmann, H., &amp; Kellen, D.(2019). An Introduction to Mixed Models for Experimental Psychology. In D.H. Spieler &amp; E. Schumacher(Eds.), <em>New Methods in Cognitive Psychology</em> (pp.4–31).Psychology Press. <a href="http://singmann.org/download/publications/singmann_kellen-introduction-mixed-models.pdf">[PDF link]</a></p>
+<p><br />
+</p>
+<p><strong>Going further:</strong></p>
+<p>Bates, D., Mächler, M., Bolker, B., &amp; Walker, S. (2015). Fitting Linear Mixed-Effects Models Using lme4. <em>Journal of Statistical Software</em>, <em>67</em>, 1-48. <a href="https://www.jstatsoft.org/index.php/jss/article/view/v067i01/946">[PDF link]</a></p>
+<p>Bolker, B. M. (2015). Linear and generalized linear mixed models. <em>Ecological statistics: contemporary theory and application</em>, 309-333. <a href="https://ms.mcmaster.ca/~bolker/R/misc/foxchapter/14-Fox-Chap13.pdf">[PDF link]</a></p>
+<p>Bono, R., Alarcón R., &amp; Blanca M.J. (2021). Report quality of generalized linear mixed models in psychology: a systematic review. <em>Frontiers in Psychology</em>. 12:666182 <a href="https://doi.org/10.3389/fpsyg.2021.666182">[Article]</a></p>
+<p>Meteyard, L., &amp; Davies, R. A. (2020). Best practice guidance for linear mixed-effects models in psychological science. <em>Journal of Memory and Language</em>, <em>112</em>, 104092. <a href="https://doi.org/10.1016/j.jml.2020.104092">[Article]</a></p>
 
+</div>
 </div>
 <div class="psyteachr_footer">
   
@@ -1460,20 +1351,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
