@@ -598,8 +598,8 @@ Hint: count()
 <li>by-item: accounts for differences in the effect of modality on particular words.</li>
 </ul></li>
 </ul>
-</div>
 <p>Note that if random slopes and intercepts are included, correlations between them will also be estimated. A correlation could occur, for example, if slower participants show larger effects of modality.</p>
+</div>
 <p><br />
 </p>
 <p>Models with different combinations of random effects can be specified and compared to test whether there's evidence for particular components or not.</p>
@@ -779,8 +779,8 @@ Explain
 <p>This is especially common with more complex models, such as those with with multiple fixed and random effects and their interactions.</p>
 <p>If you receive a warning saying that the model did not converge, or that the fit is singular, you should not report the results from the model.</p>
 <p>One solution is to explore all the fitting options in <code>lmer()</code> that do allow for convergence.</p>
-</div>
 <p>Handily, this can be done for you automatically using the <code>allFit()</code> function in the <code>afex</code> package:</p>
+</div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="mixed.html#cb11-1" tabindex="-1"></a><span class="fu">allFit</span>(rt_full_model)</span></code></pre></div>
 <pre><code>## bobyqa : [OK]
 ## Nelder_Mead : [OK]
@@ -1001,6 +1001,8 @@ Traditional analysis
 <div class="tip">
 <p>The analysis above was for a very simple two-level scenario. It can be extended to include an additional fixed factor and interaction between the factors.</p>
 </div>
+<p><br />
+</p>
 <p>Load the extended data from Brown (2021) at "<a href="https://osf.io/download/vkfzn/" class="uri">https://osf.io/download/vkfzn/</a>" and store in <code>rt_data_interaction</code>.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="mixed.html#cb22-1" tabindex="-1"></a><span class="co"># load data with additional factor</span></span>
 <span id="cb22-2"><a href="mixed.html#cb22-2" tabindex="-1"></a>rt_data_interaction <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://osf.io/download/vkfzn/&quot;</span>) </span></code></pre></div>
