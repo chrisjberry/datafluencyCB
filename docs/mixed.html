@@ -556,9 +556,11 @@ Hint: count()
 </div>
 <div id="fixed-and-random-effects" class="section level2 hasAnchor" number="8.4">
 <h2><span class="header-section-number">8.4</span> Fixed and Random effects<a href="mixed.html#fixed-and-random-effects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="tip">
 <p>Mixed models comprise fixed and random effects.</p>
 <p><strong>Fixed effect</strong>: A population-level effect, assumed to persist across experiments with different participants or items. They are used to model average trends. Typically the independent variable is the fixed effect, for example, levels of difficulty in an experiment, manipulated by an experimenter.</p>
 <p><strong>Random effect</strong>: Represents the extent to which the fixed effect randomly varies across a grouping variable (e.g., participants, or items). For example, the behaviour of individual participants or items may differ from the average trend (some may do better than others). The random effects are always <em>categorical variables</em>. They should have at least 5 or 6 levels.</p>
+</div>
 <p><br />
 </p>
 <div class="exercise">
@@ -577,60 +579,12 @@ Hint: count()
 <li><p><strong>Within-items</strong>: Each item was also presented in <em>both</em> conditions. That is, for some participants a word was presented in the <code>Audio-only</code> condition and for other participants it appeared in the <code>Audiovisual</code> condition.</p></li>
 </ul>
 <p>In other words, we have scores for each participant in each condition, and also scores for each item in each condition.</p>
-<!-- 
-### Visualise the data
-
-```r
-rt_data_for_figure <- 
-  rt_data %>% 
-  mutate(modality = factor(modality)) %>% 
-  group_by(PID, modality) %>% 
-  summarise(Mean_RT = mean(RT))
-```
-
-```
-## `summarise()` has grouped output by 'PID'. You can override using the `.groups`
-## argument.
-```
-
-```r
-rt_data %>% 
-  group_by(PID, modality) %>% 
-  summarise(Mean_RT = mean(RT)) %>% 
-  ungroup() %>% 
-  group_by(modality) %>% 
-  summarise(mean(Mean_RT))
-```
-
-```
-## `summarise()` has grouped output by 'PID'. You can override using the `.groups`
-## argument.
-```
-
-```r
-rt_data_for_figure %>% 
-  ggplot(aes(x = modality, y = Mean_RT, color = modality)) +
-  geom_point() +
-  stat_summary(fun = mean, geom = "point", color = "black")
-```
-
-<div class="figure" style="text-align: center">
-<img src="08_mixed_models_files/figure-html/unnamed-chunk-7-1.png" alt="TRUE" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-7)TRUE</p>
-</div><div class="kable-table">
-
-|modality    | mean(Mean_RT)|
-|:-----------|-------------:|
-|Audio-only  |      1044.073|
-|Audiovisual |      1127.233|
-
-</div>
--->
 <p><br />
 </p>
 </div>
 <div id="specifying-the-model" class="section level2 hasAnchor" number="8.5">
 <h2><span class="header-section-number">8.5</span> Specifying the model<a href="mixed.html#specifying-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="tip">
 <p>A mixed model approach allows for the variability across items and participants to be modelled via <strong>random intercepts</strong> and <strong>random slopes</strong>. For each, you can have by-participant and by-item effects.</p>
 <ul>
 <li><strong>Random intercepts</strong>:
@@ -644,6 +598,7 @@ rt_data_for_figure %>%
 <li>by-item: accounts for differences in the effect of modality on particular words.</li>
 </ul></li>
 </ul>
+</div>
 <p>Note that if random slopes and intercepts are included, correlations between them will also be estimated. A correlation could occur, for example, if slower participants show larger effects of modality.</p>
 <p><br />
 </p>
@@ -732,15 +687,13 @@ Things to the left of <code>|</code> vary according to things on the right.</p>
 <p>To compare the full and reduced models use <code>anova(model_1, model_2)</code>, that is,</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="mixed.html#cb8-1" tabindex="-1"></a><span class="co"># compare the reduced and full models</span></span>
 <span id="cb8-2"><a href="mixed.html#cb8-2" tabindex="-1"></a><span class="fu">anova</span>(rt_reduced_model, rt_full_model)</span></code></pre></div>
-<p><br />
-</p>
 <p><img src="images/8_anova_lmm.png" /></p>
 <ul>
 <li>This tests a null hypothesis that the full and reduced models are statistically equivalent.</li>
 <li>Specifically, a <strong>likelihood ratio test</strong> is performed, which involves obtaining the likelihood of each model and then comparing the likelihoods.</li>
 <li>The <em>p</em>-value is the probability of obtaining a test statistic at least as extreme as the one observed, if the null hypothesis is true.</li>
 <li>If the <em>p</em>-value for the test is less than 0.05, then, by convention, we say the test is statistically significant.</li>
-<li>The <em>p</em>-value is shown in the <code>Pr(&gt;ChiSq)</code> column is a very small number (e.g., 1.26e-08), and is clearly less than 0.05.</li>
+<li>The <em>p</em>-value is shown in the <code>Pr(&gt;ChiSq)</code> column and is a very small number (e.g., 1.26e-08), being clearly less than 0.05.</li>
 <li>This means that the full model fits the data significantly better than the reduced model, and we have evidence for the fixed effect.</li>
 </ul>
 <p><br />
@@ -783,12 +736,10 @@ Things to the left of <code>|</code> vary according to things on the right.</p>
 ## modltyAdvsl -0.178</code></pre>
 <p>In the output:</p>
 <ul>
-<li>REML stands for <em>Restricted Maximum Likelihood</em>. This is method that was used to fit the model to the data.</li>
+<li>REML stands for <strong>Restricted Maximum Likelihood</strong>. This is method that was used to fit the model to the data.</li>
 <li>The formula entered for the mixed model is given again.</li>
 <li>Information about the variance in the residuals is given.</li>
 </ul>
-<p><br />
-</p>
 <p><strong>Random effects:</strong></p>
 <ul>
 <li>The values in <code>Std. Dev</code> are the estimates of the variance in the random intercepts and slopes in participants (<code>PID</code>) and items (<code>stim</code>).</li>
@@ -798,8 +749,6 @@ Things to the left of <code>|</code> vary according to things on the right.</p>
 <li>The correlation of -0.17 means that the effect of modality was smaller in participants who took longer to respond.</li>
 </ul></li>
 </ul>
-<p><br />
-</p>
 <p>To interpret the fixed effects, we need to consider how the levels of modality were coded.</p>
 <ul>
 <li>R uses dummy coding (0s and 1s) to code the levels of a factor (or a character variable).</li>
@@ -808,14 +757,11 @@ Things to the left of <code>|</code> vary according to things on the right.</p>
 <li><code>Audio-only</code> is therefore coded with 0s.</li>
 <li><code>Audiovisual</code> is therefore coded with 1s.</li>
 </ul>
-<p><br />
-</p>
 <p><strong>Fixed effects:</strong></p>
 <ul>
 <li>The estimate of the intercept is given as 1044.14. This represents the average RT in the <code>Audio-only</code> group (the condition coded with zeros).</li>
 <li>The estimate of the fixed effect of modality is given as <strong>83.18</strong>. This represents how much greater the mean is in the <code>Audio-visual</code> condition (coded with 1s), <em>once participant and items have been taken into account</em>.</li>
 </ul>
-<p> </p>
 <p>The researchers in this experiment thought RTs would be slower in Audio-visual condition than the audio-only condition. Seeing a word in addition to hearing it may be associated with greater cognitive effort.</p>
 <p>Are the researchers correct or not? <select class='webex-select'><option value='blank'></option><option value=''>No</option><option value='answer'>Yes</option></select></p>
 <div class="webex-solution">
@@ -828,12 +774,12 @@ Explain
 </p>
 <div id="convergence-issues" class="section level3 hasAnchor" number="8.7.1">
 <h3><span class="header-section-number">8.7.1</span> Convergence issues<a href="mixed.html#convergence-issues" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>It is common when running LMMs for the model to not successfully converge, meaning that R was unable to estimate all the parameters of the model.</p>
+<div class="tip">
+<p>It is common when running LMMs for the model to not successfully <strong>converge</strong>, meaning that R was unable to estimate all the parameters of the model.</p>
 <p>This is especially common with more complex models, such as those with with multiple fixed and random effects and their interactions.</p>
 <p>If you receive a warning saying that the model did not converge, or that the fit is singular, you should not report the results from the model.</p>
-<p><br />
-</p>
 <p>One solution is to explore all the fitting options in <code>lmer()</code> that do allow for convergence.</p>
+</div>
 <p>Handily, this can be done for you automatically using the <code>allFit()</code> function in the <code>afex</code> package:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="mixed.html#cb11-1" tabindex="-1"></a><span class="fu">allFit</span>(rt_full_model)</span></code></pre></div>
 <pre><code>## bobyqa : [OK]
@@ -969,7 +915,9 @@ Explain
 <div id="graph" class="section level3 hasAnchor" number="8.7.3">
 <h3><span class="header-section-number">8.7.3</span> Graph<a href="mixed.html#graph" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>emmeans()</code> package can be used to obtain the means for a figure.</p>
+<div class="tip">
 <p><strong>EMM</strong> stands for Estimated Marginal Means. These are means for conditions or contrasts, estimated by the model that was fit to the data.</p>
+</div>
 <p><br />
 </p>
 <p>Obtain the estimates of mean RT in the two modality conditions:</p>
@@ -1007,8 +955,8 @@ Explain
 <span id="cb19-4"><a href="mixed.html#cb19-4" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> asymp.LCL, <span class="at">ymax =</span> asymp.UCL, <span class="at">width =</span> <span class="fl">0.2</span>)) <span class="sc">+</span></span>
 <span id="cb19-5"><a href="mixed.html#cb19-5" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Estimated marginal mean RT&quot;</span>) <span class="sc">+</span></span>
 <span id="cb19-6"><a href="mixed.html#cb19-6" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Condition&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-18"></span>
-<img src="08_mixed_models_files/figure-html/unnamed-chunk-18-1.png" alt="Estimated marginal mean RT in each modality condition, controlling for participant and stimulus. Error bars denote the 95% confidence interval." width="75%" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-17"></span>
+<img src="08_mixed_models_files/figure-html/unnamed-chunk-17-1.png" alt="Estimated marginal mean RT in each modality condition, controlling for participant and stimulus. Error bars denote the 95% confidence interval." width="75%" />
 <p class="caption">
 Figure 8.1: Estimated marginal mean RT in each modality condition, controlling for participant and stimulus. Error bars denote the 95% confidence interval.
 </p>
@@ -1050,7 +998,9 @@ Traditional analysis
 </div>
 <div id="going-further-multiple-factors" class="section level2 hasAnchor" number="8.8">
 <h2><span class="header-section-number">8.8</span> Going further: Multiple factors<a href="mixed.html#going-further-multiple-factors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="tip">
 <p>The analysis above was for a very simple two-level scenario. It can be extended to include an additional fixed factor and interaction between the factors.</p>
+</div>
 <p>Load the extended data from Brown (2021) at "<a href="https://osf.io/download/vkfzn/" class="uri">https://osf.io/download/vkfzn/</a>" and store in <code>rt_data_interaction</code>.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="mixed.html#cb22-1" tabindex="-1"></a><span class="co"># load data with additional factor</span></span>
 <span id="cb22-2"><a href="mixed.html#cb22-2" tabindex="-1"></a>rt_data_interaction <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://osf.io/download/vkfzn/&quot;</span>) </span></code></pre></div>
@@ -1104,7 +1054,7 @@ Traditional analysis
 <li>The correlation between the random intercept for <code>stim</code> and the by-stimulus random slope for <code>modality</code> was also removed using <code>+ (0 + modality|stim)</code>. They weren't interested in that correlation.</li>
 <li>The <code>allFit()</code> function indicated that the bobyqa optimizer led to convergence.</li>
 </ul>
-<p>Thus, their final model:</p>
+<p>Thus, their final model is:</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="mixed.html#cb27-1" tabindex="-1"></a>rt_int.mod <span class="ot">&lt;-</span> <span class="fu">lmer</span>(RT <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> modality <span class="sc">+</span> SNR <span class="sc">+</span> modality<span class="sc">:</span>SNR <span class="sc">+</span></span>
 <span id="cb27-2"><a href="mixed.html#cb27-2" tabindex="-1"></a>                     (<span class="dv">0</span> <span class="sc">+</span> modality<span class="sc">|</span>stim) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>stim) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> modality <span class="sc">+</span> SNR<span class="sc">|</span>PID), </span>
 <span id="cb27-3"><a href="mixed.html#cb27-3" tabindex="-1"></a>                   <span class="at">data =</span> rt_data_interaction,</span>
@@ -1113,14 +1063,12 @@ Traditional analysis
 <p>This model doesn't converge here for us though!</p>
 <p><br />
 </p>
-<p>To remedy, we'll try removing the <code>+ (0 + modality|stim)</code> term:</p>
+<p>To help convergence, we'll try removing the <code>+ (0 + modality|stim)</code> term:</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="mixed.html#cb29-1" tabindex="-1"></a>rt_int.mod <span class="ot">&lt;-</span> <span class="fu">lmer</span>(RT <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> modality <span class="sc">+</span> SNR <span class="sc">+</span> modality<span class="sc">:</span>SNR <span class="sc">+</span></span>
 <span id="cb29-2"><a href="mixed.html#cb29-2" tabindex="-1"></a>                      (<span class="dv">1</span><span class="sc">|</span>stim) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> modality <span class="sc">+</span> SNR<span class="sc">|</span>PID), </span>
 <span id="cb29-3"><a href="mixed.html#cb29-3" tabindex="-1"></a>                   <span class="at">data =</span> rt_data_interaction,</span>
 <span id="cb29-4"><a href="mixed.html#cb29-4" tabindex="-1"></a>                   <span class="at">control =</span> <span class="fu">lmerControl</span>(<span class="at">optimizer =</span> <span class="st">&#39;bobyqa&#39;</span>))</span></code></pre></div>
-<ul>
-<li>This model now contains random intercepts (by-item and by-participant), and also by-participant random slopes for the effects of modality and SNR.</li>
-</ul>
+<p>This model now contains random intercepts (by-item and by-participant), and also by-participant random slopes for the effects of modality and SNR.</p>
 <p>The model converges!</p>
 <p><br />
 </p>
@@ -1163,22 +1111,15 @@ Traditional analysis
 ## SNRHard     -0.015 -0.354       
 ## mdltyA:SNRH  0.074 -0.247 -0.233</code></pre>
 <ul>
-<li>Significance tests on the main effects and interaction are conducted using Satterthwaite's method, which is a way of estimating degrees of freedom to enable a hypothesis test to be conducted.</li>
+<li>Significance tests on the main effects and interaction are conducted using <strong>Satterthwaite's method</strong>, which is a way of estimating degrees of freedom to enable a hypothesis test to be conducted.</li>
 <li>There are significant main effects of modality, <em>t</em>(58.89) = 44.96, <em>p</em> &lt; .001, and SNR, <em>t</em>(58.01) = 6.24, <em>p</em> &lt; .001, and there's also a significant interaction between the factors, <em>t</em>(21346.94) = -4.37, <em>p</em> &lt; .001.</li>
 </ul>
 <p>It is possible to interpret the main effects and interaction by looking at the values of the coefficients (see Brown, 2021, p.14). An alternative way, however, is to obtain and then plot the EMMs of each condition:</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="mixed.html#cb32-1" tabindex="-1"></a><span class="co"># obtain the EMMs for each condition</span></span>
-<span id="cb32-2"><a href="mixed.html#cb32-2" tabindex="-1"></a>emms_interaction <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(rt_int.mod, <span class="sc">~</span>modality<span class="sc">*</span>SNR)</span></code></pre></div>
-<pre><code>## Note: D.f. calculations have been disabled because the number of observations exceeds 3000.
-## To enable adjustments, add the argument &#39;pbkrtest.limit = 21679&#39; (or larger)
-## [or, globally, &#39;set emm_options(pbkrtest.limit = 21679)&#39; or larger];
-## but be warned that this may result in large computation time and memory use.</code></pre>
-<pre><code>## Note: D.f. calculations have been disabled because the number of observations exceeds 3000.
-## To enable adjustments, add the argument &#39;lmerTest.limit = 21679&#39; (or larger)
-## [or, globally, &#39;set emm_options(lmerTest.limit = 21679)&#39; or larger];
-## but be warned that this may result in large computation time and memory use.</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="mixed.html#cb35-1" tabindex="-1"></a><span class="co"># look at the emms</span></span>
-<span id="cb35-2"><a href="mixed.html#cb35-2" tabindex="-1"></a>emms_interaction</span></code></pre></div>
+<span id="cb32-2"><a href="mixed.html#cb32-2" tabindex="-1"></a>emms_interaction <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(rt_int.mod, <span class="sc">~</span>modality<span class="sc">*</span>SNR)</span>
+<span id="cb32-3"><a href="mixed.html#cb32-3" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="mixed.html#cb32-4" tabindex="-1"></a><span class="co"># look at the emms</span></span>
+<span id="cb32-5"><a href="mixed.html#cb32-5" tabindex="-1"></a>emms_interaction</span></code></pre></div>
 <pre><code>##  modality    SNR  emmean   SE  df asymp.LCL asymp.UCL
 ##  Audio-only  Easy    999 22.2 Inf       955      1042
 ##  Audiovisual Easy   1097 25.1 Inf      1048      1147
@@ -1190,17 +1131,17 @@ Traditional analysis
 <p><br />
 </p>
 <p>Now plot the means using <code>ggplot()</code>:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="mixed.html#cb37-1" tabindex="-1"></a><span class="co"># use ggplot to plot the emms as points, with line connectors, and errorbars</span></span>
-<span id="cb37-2"><a href="mixed.html#cb37-2" tabindex="-1"></a><span class="fu">as_tibble</span>(emms_interaction) <span class="sc">%&gt;%</span> </span>
-<span id="cb37-3"><a href="mixed.html#cb37-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> modality, <span class="at">y =</span> emmean, <span class="at">color =</span> SNR)) <span class="sc">+</span></span>
-<span id="cb37-4"><a href="mixed.html#cb37-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb37-5"><a href="mixed.html#cb37-5" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> SNR)) <span class="sc">+</span></span>
-<span id="cb37-6"><a href="mixed.html#cb37-6" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> asymp.LCL, <span class="at">ymax =</span> asymp.UCL, <span class="at">width =</span> <span class="fl">0.1</span>)) <span class="sc">+</span></span>
-<span id="cb37-7"><a href="mixed.html#cb37-7" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Estimated marginal mean RT&quot;</span>) <span class="sc">+</span></span>
-<span id="cb37-8"><a href="mixed.html#cb37-8" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;SNR condition&quot;</span>) <span class="sc">+</span></span>
-<span id="cb37-9"><a href="mixed.html#cb37-9" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">1300</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-28"></span>
-<img src="08_mixed_models_files/figure-html/unnamed-chunk-28-1.png" alt="Estimated marginal mean RT in each condition, controlling for participant and stimulus. Error bars denote the 95% confidence interval." width="75%" />
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="mixed.html#cb34-1" tabindex="-1"></a><span class="co"># use ggplot to plot the emms as points, with line connectors, and errorbars</span></span>
+<span id="cb34-2"><a href="mixed.html#cb34-2" tabindex="-1"></a><span class="fu">as_tibble</span>(emms_interaction) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-3"><a href="mixed.html#cb34-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> modality, <span class="at">y =</span> emmean, <span class="at">color =</span> SNR)) <span class="sc">+</span></span>
+<span id="cb34-4"><a href="mixed.html#cb34-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb34-5"><a href="mixed.html#cb34-5" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> SNR)) <span class="sc">+</span></span>
+<span id="cb34-6"><a href="mixed.html#cb34-6" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> asymp.LCL, <span class="at">ymax =</span> asymp.UCL, <span class="at">width =</span> <span class="fl">0.1</span>)) <span class="sc">+</span></span>
+<span id="cb34-7"><a href="mixed.html#cb34-7" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Estimated marginal mean RT&quot;</span>) <span class="sc">+</span></span>
+<span id="cb34-8"><a href="mixed.html#cb34-8" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;SNR condition&quot;</span>) <span class="sc">+</span></span>
+<span id="cb34-9"><a href="mixed.html#cb34-9" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">1300</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-27"></span>
+<img src="08_mixed_models_files/figure-html/unnamed-chunk-27-1.png" alt="Estimated marginal mean RT in each condition, controlling for participant and stimulus. Error bars denote the 95% confidence interval." width="75%" />
 <p class="caption">
 Figure 8.2: Estimated marginal mean RT in each condition, controlling for participant and stimulus. Error bars denote the 95% confidence interval.
 </p>
@@ -1216,9 +1157,8 @@ Figure 8.2: Estimated marginal mean RT in each condition, controlling for partic
 <ul>
 <li><p>Mixed models provide a way of estimating <strong>fixed effects</strong>, while accounting for <strong>random effects</strong> of participants and items.</p></li>
 <li><p>They are becoming increasingly common in the psychological literature.</p></li>
-<li><p>Only a brief introduction to mixed models has been presented in this lecture and worksheet.</p></li>
-<li><p>Models can of course be more complex by having fixed effects with more than two levels, multiple fixed effects, and additional random effects.</p></li>
-<li><p>Random effects structures of complex models often need to be simplified to allow the model to be fit successfully.</p></li>
+<li><p>Models can be more complex by having fixed effects with more than two levels, multiple fixed effects, and additional random effects.</p></li>
+<li><p>Random effects structures often need to be simplified to allow the model to be fit successfully.</p></li>
 <li><p>See <strong>Brown (2021)</strong> for an example with a binary response variable (e.g., accuracy = correct vs. incorrect); this analysis is called a generalised linear mixed model (GLMM). Jaeger (2008) also provides a tutorial.</p></li>
 <li><p>For more guidance on reporting mixed models, see Meteyard and Davies (2020).</p></li>
 </ul>
