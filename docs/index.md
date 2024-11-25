@@ -25,7 +25,7 @@ commented text
 # Overview {-}
 
 
-This workbook contains worksheets for the eight PSYC761 sessions given by **Chris Berry**.
+This workbook contains worksheets for the eight PSYC761 sessions on Data Analysis.
 
 These worksheets should be used in conjunction with the slides for each session.
 

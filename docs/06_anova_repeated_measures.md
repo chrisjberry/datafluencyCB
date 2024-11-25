@@ -68,14 +68,14 @@ Wide vs. long format
 
 * When the data are in _wide_ format, all of the data for a single participant is stored:
 
-<div class='webex-radiogroup' id='radio_MKNMVSNTXO'><label><input type="radio" autocomplete="off" name="radio_MKNMVSNTXO" value="answer"></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_MKNMVSNTXO" value=""></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
+<div class='webex-radiogroup' id='radio_YLMRKDPMTB'><label><input type="radio" autocomplete="off" name="radio_YLMRKDPMTB" value="answer"></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_YLMRKDPMTB" value=""></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
 
 
 \
 
 * When the data are in _long_ format, all of the data for a single participant is stored:
 
-<div class='webex-radiogroup' id='radio_WYSKEADIQH'><label><input type="radio" autocomplete="off" name="radio_WYSKEADIQH" value=""></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_WYSKEADIQH" value="answer"></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
+<div class='webex-radiogroup' id='radio_ZAXWSQZWJS'><label><input type="radio" autocomplete="off" name="radio_ZAXWSQZWJS" value=""></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_ZAXWSQZWJS" value="answer"></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
 
 
 :::
@@ -407,7 +407,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(discrim
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 331.7741 ±0.75%
+## [1] time + ppt : 331.4311 ±0.8%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -425,7 +425,7 @@ The Bayes factor for the effect of time on performance is <input class='webex-so
 
 This indicates that (select one):
 
-<div class='webex-radiogroup' id='radio_DVOWZSRNHB'><label><input type="radio" autocomplete="off" name="radio_DVOWZSRNHB" value="answer"></input> <span>it is approximately 300 times more likely that there is difference between the means of the three time conditions, compared to there being no difference.</span></label><label><input type="radio" autocomplete="off" name="radio_DVOWZSRNHB" value=""></input> <span>it is approximately 300 times more likely that there is no difference between the means of the three time conditions, compared to there being a difference.</span></label></div>
+<div class='webex-radiogroup' id='radio_YFOCLVOAFM'><label><input type="radio" autocomplete="off" name="radio_YFOCLVOAFM" value="answer"></input> <span>it is approximately 300 times more likely that there is difference between the means of the three time conditions, compared to there being no difference.</span></label><label><input type="radio" autocomplete="off" name="radio_YFOCLVOAFM" value=""></input> <span>it is approximately 300 times more likely that there is no difference between the means of the three time conditions, compared to there being a difference.</span></label></div>
 
 
 \
@@ -456,7 +456,7 @@ BF_time_ppt / BF_ppt_only
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 328.2954 ±0.46%
+## [1] time + ppt : 332.57 ±0.64%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -494,7 +494,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(pre_v_d
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 79.84536 ±0.66%
+## [1] time + ppt : 84.12187 ±3.07%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -522,7 +522,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(pre_v_m
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 54.35044 ±0.65%
+## [1] time + ppt : 53.5276 ±0.6%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -551,7 +551,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(day3_v_
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 0.4880315 ±3.96%
+## [1] time + ppt : 0.4749225 ±3.37%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -589,7 +589,7 @@ lmBF(performance ~ ppt, whichRandom = "ppt", data = data.frame(day3_v_month2))
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 80.35287 ±0.63%
+## [1] time + ppt : 80.97935 ±1.17%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -598,7 +598,7 @@ lmBF(performance ~ ppt, whichRandom = "ppt", data = data.frame(day3_v_month2))
 ## 
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 54.28283 ±0.98%
+## [1] time + ppt : 55.78918 ±2.35%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -607,7 +607,7 @@ lmBF(performance ~ ppt, whichRandom = "ppt", data = data.frame(day3_v_month2))
 ## 
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 0.4529353 ±1.03%
+## [1] time + ppt : 0.4535411 ±1.19%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -907,10 +907,10 @@ BFs_gaze
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] gaze_direction + ppt                                        : 25.88688  ±0.55%
-## [2] agreement + ppt                                             : 0.2735751 ±2.25%
-## [3] gaze_direction + agreement + ppt                            : 7.378033  ±2.38%
-## [4] gaze_direction + agreement + gaze_direction:agreement + ppt : 49.06062  ±5.84%
+## [1] gaze_direction + ppt                                        : 26.0167   ±1.11%
+## [2] agreement + ppt                                             : 0.2742816 ±2.57%
+## [3] gaze_direction + agreement + ppt                            : 7.442307  ±2.95%
+## [4] gaze_direction + agreement + gaze_direction:agreement + ppt : 44.25027  ±1.61%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -934,7 +934,7 @@ BFs_gaze[1]
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] gaze_direction + ppt : 25.88688 ±0.55%
+## [1] gaze_direction + ppt : 26.0167 ±1.11%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -956,7 +956,7 @@ BFs_gaze[2]
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] agreement + ppt : 0.2735751 ±2.25%
+## [1] agreement + ppt : 0.2742816 ±2.57%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -979,7 +979,7 @@ BFs_gaze[4] / BFs_gaze[3]
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] gaze_direction + agreement + gaze_direction:agreement + ppt : 6.649553 ±6.3%
+## [1] gaze_direction + agreement + gaze_direction:agreement + ppt : 5.945774 ±3.35%
 ## 
 ## Against denominator:
 ##   logRT ~ gaze_direction + agreement + ppt 
@@ -1017,7 +1017,7 @@ anovaBF(logRT ~ agreement + ppt, whichRandom = "ppt", data = data.frame(averted_
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] agreement + ppt : 0.2490369 ±1.01%
+## [1] agreement + ppt : 0.2457784 ±0.92%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -1044,7 +1044,7 @@ anovaBF(logRT ~ agreement + ppt, whichRandom = "ppt", data = data.frame(averted_
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] agreement + ppt : 0.3534678 ±0.92%
+## [1] agreement + ppt : 0.3511874 ±1.12%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -1072,7 +1072,7 @@ anovaBF(logRT ~ agreement + ppt, whichRandom = "ppt", data = data.frame(direct))
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] agreement + ppt : 33.46626 ±1%
+## [1] agreement + ppt : 33.88597 ±0.95%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 

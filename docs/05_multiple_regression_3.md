@@ -1054,6 +1054,9 @@ Which predictor variable makes the weakest contribution to the prediction of `we
 
 Note, some of the beta coefficients differ slightly from those reported by Iani et al. (2019). This is most likely due to differences in rounding  introduced during standardisation by different software packages. The values are very close though and the ordinal pattern in the beta coefficients is the same.
 
+
+</div>
+
 \
 
 ### Prediction

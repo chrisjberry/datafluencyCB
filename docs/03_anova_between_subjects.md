@@ -841,8 +841,8 @@ anova2x2_BF
 ## --------------
 ## [1] resilience                                    : 1.822053e+27 ±0%
 ## [2] adversity                                     : 7.870878e+25 ±0%
-## [3] resilience + adversity                        : 3.414797e+46 ±0.77%
-## [4] resilience + adversity + resilience:adversity : 3.255615e+49 ±1.02%
+## [3] resilience + adversity                        : 3.402827e+46 ±0.77%
+## [4] resilience + adversity + resilience:adversity : 3.561835e+49 ±14.22%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -880,7 +880,7 @@ anova2x2_BF[4] / anova2x2_BF[3]
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] resilience + adversity + resilience:adversity : 953.3845 ±1.28%
+## [1] resilience + adversity + resilience:adversity : 1046.728 ±14.25%
 ## 
 ## Against denominator:
 ##   distress ~ resilience + adversity 
