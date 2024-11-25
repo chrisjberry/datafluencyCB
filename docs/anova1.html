@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Session 3 ANOVA: between-subjects designs | PSYC761 Data Analysis</title>
   <meta name="description" content="Course materials for PSYC761 2025" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Session 3 ANOVA: between-subjects designs | PSYC761 Data Analysis" />
   <meta property="og:type" content="book" />
@@ -68,7 +68,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -1091,8 +1091,8 @@ Figure 3.5: Distress as a function of adversity and resilience (error bars indic
 ## --------------
 ## [1] resilience                                    : 1.822053e+27 ±0%
 ## [2] adversity                                     : 7.870878e+25 ±0%
-## [3] resilience + adversity                        : 3.303448e+46 ±1.35%
-## [4] resilience + adversity + resilience:adversity : 3.18965e+49  ±4.21%
+## [3] resilience + adversity                        : 3.414797e+46 ±0.77%
+## [4] resilience + adversity + resilience:adversity : 3.255615e+49 ±1.02%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -1121,7 +1121,7 @@ What does 1.82e+27 mean?
 <span id="cb92-2"><a href="anova1.html#cb92-2" tabindex="-1"></a>anova2x2_BF[<span class="dv">4</span>] <span class="sc">/</span> anova2x2_BF[<span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] resilience + adversity + resilience:adversity : 965.5518 ±4.42%
+## [1] resilience + adversity + resilience:adversity : 953.3845 ±1.28%
 ## 
 ## Against denominator:
 ##   distress ~ resilience + adversity 

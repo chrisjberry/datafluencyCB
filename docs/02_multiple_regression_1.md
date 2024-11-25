@@ -57,14 +57,14 @@ Read the data to R. The data are stored at:
 https://raw.githubusercontent.com/chrisjberry/Teaching/master/2_wellbeing_data.csv
 
 
-```r
+``` r
 # First ensure tidyverse is loaded, i.e., 'library(tidyverse)'
 
 # read in the data using read_csv(), store in wellbeing_data
 wellbeing_data <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/2_wellbeing_data.csv')
 ```
 
-```r
+``` r
 # preview the data with glimpse()
 wellbeing_data %>% glimpse() 
 ```
@@ -83,7 +83,7 @@ We'll use these three variables in the dataset:
 Visualise the data with a scatterplot. Place the outcome variable `wellbeing` on the y-axis, the predictor `worry` on the x-axis, and let the _size_ of each point represent the second predictor, the `describing` score:
 
 
-```r
+``` r
 # Scatterplot of all three variables
 # Use alpha to alter transparency of points
 # to make overlap easier to see
@@ -129,7 +129,7 @@ The size of the `describing` points tend to be larger when `wellbeing` scores ar
 The above trends are also apparent in the Pearson correlations between variables:
 
 
-```r
+``` r
 # load the corrr package first
 library(corrr)
 
@@ -181,7 +181,7 @@ wellbeing_data %>%
 The `describing` scores could alternatively be represented by the colour density of each point instead:
 
 
-```r
+``` r
 wellbeing_data %>% 
   ggplot(aes(x = worry, y = wellbeing, colour = describing)) +
   geom_point(size = 5, alpha = 0.9)
@@ -220,7 +220,7 @@ Note that we don't need to specify the intercept **a** in `lm()` since it is inc
 \
 
 
-```r
+``` r
 # conduct a multiple regression, store it in multiple1
 multiple1 <- lm(wellbeing ~ worry + describing, data = wellbeing_data) 
 
@@ -261,7 +261,7 @@ The regression equation is therefore written as:
 We can obtain a plot of the predicted values vs. the residuals in the same way as for simple regression by using `augment()` in the `broom` package.
 
 
-```r
+``` r
 # ensure the broom package is loaded (it contains augment())
 library(broom)
 
@@ -296,7 +296,7 @@ The Bayes factor for a multiple regression model tells us how many more times li
 Use `lmBF()` to obtain the Bayes factor for the multiple regression model:
 
 
-```r
+``` r
 # ensure the BayesFactor package is loaded
 library(BayesFactor)
 
@@ -335,7 +335,7 @@ As with simple regression, R^2^ is the proportion of variance in the outcome var
 Use `glance()` in the `broom` package to obtain the R^2^ for the model:
 
 
-```r
+``` r
 glance(multiple1)
 ```
 
@@ -367,7 +367,7 @@ Because predictor variables are often correlated to a degree, some of the varian
 In a simple regression of `wellbeing ~ worry`, the variance in `wellbeing` explained by `worry` is **R^2^ = 29.37%**:
 
 
-```r
+``` r
 s1 <- lm(wellbeing ~ worry, data = wellbeing_data)
 glance(s1)
 ```
@@ -384,7 +384,7 @@ glance(s1)
 In a simple regression of `wellbeing ~ describing`, the variance in `wellbeing` explained by `describing` is **R^2^ = 28.69%**
 
 
-```r
+``` r
 s2 <- lm(wellbeing ~ describing, data = wellbeing_data)
 glance(s2)
 ```
@@ -460,7 +460,7 @@ First, obtain the Bayes factor for the model in which `predictor_1` has been lef
 In our example, this involves obtaining the BFs of the model of `wellbeing ~ describing`, and the BF of the model of `wellbeing ~ worry`:
 
 
-```r
+``` r
 # BF for wellbeing ~ describing
 describing_BF <- lmBF(wellbeing ~ describing, data = data.frame(wellbeing_data))
 
@@ -471,7 +471,7 @@ worry_BF <- lmBF(wellbeing ~ worry, data = data.frame(wellbeing_data))
 We also need the BF for the full model:
 
 
-```r
+``` r
 # BF for wellbeing ~ worry + describing
 # (this is the same as multiple1_BF above, but 
 #  with a different name, which will help us see what's going on later)
@@ -502,7 +502,7 @@ In our case, we can compare the Bayes factor of the full model (`worry_describin
 
 To determine if there's evidence for the unique contribution of `worry` to the model:
 
-```r
+``` r
 # compare BFs for the full model and one in which worry is left out
 worry_describing_BF / describing_BF
 ```
@@ -525,7 +525,7 @@ The BF for the comparison is **981.49**, indicating that there's substantial evi
 To determine if there's evidence for the unique contribution of `describing` to the model:
 
 
-```r
+``` r
 # compare the BFs for the full model and one in which describing is left out
 worry_describing_BF / worry_BF
 ```
@@ -617,7 +617,7 @@ Pipe `wellbeing_data` to `ggplot()` and use `geom_point()`. Use the `size` optio
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 wellbeing_data %>% 
   ggplot(aes(x = brooding, y = gad, size = observing)) +
   geom_point() +
@@ -655,7 +655,7 @@ Pipe the `wellbeing_data` to `select()` and use `correlate()`
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 wellbeing_data %>% 
   select(gad, brooding, observing) %>% 
   correlate(method = "pearson")
@@ -699,7 +699,7 @@ Use `lm()` to specify the simple regression. Store it in `multiple2`.
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 multiple2 <- lm(gad ~ brooding + observing, data = wellbeing_data)
 multiple2
 ```
@@ -717,7 +717,7 @@ What is the value of the coefficient for `observing` (to two decimal places)? <i
 
 What is the regression equation?
 
-<div class='webex-radiogroup' id='radio_BSSBOVCFKM'><label><input type="radio" autocomplete="off" name="radio_BSSBOVCFKM" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_BSSBOVCFKM" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_BSSBOVCFKM" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label></div>
+<div class='webex-radiogroup' id='radio_LCXMEOFISC'><label><input type="radio" autocomplete="off" name="radio_LCXMEOFISC" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_LCXMEOFISC" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_LCXMEOFISC" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label></div>
 
 
 
@@ -736,7 +736,7 @@ Make sure you have stored the regression results (e.g., in `mutliple2`), then us
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 glance(multiple2)
 ```
 
@@ -763,7 +763,7 @@ Use `lmBF()` to specify the multiple regression model
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 multiple2_BF <- lmBF(gad ~ brooding + observing, data = data.frame(wellbeing_data))
 ```
 
@@ -790,7 +790,7 @@ Use `augment()` with `ggplot()` and `geom_point()`
 
 
 
-```r
+``` r
 augment(multiple2) %>% 
   ggplot(aes(x = .fitted, y = .resid)) + 
   geom_point() + 
@@ -857,7 +857,7 @@ Then the BFs for relevant models need to be compared, using:
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 # BF for gad ~ brooding
 BF_brooding <- lmBF(gad ~ brooding, data = data.frame(wellbeing_data))
 
@@ -920,7 +920,7 @@ When determining the BF for the unique contribution of a predictor, as a shortcu
 For our first model of `wellbeing` on the basis of `worry` and `describing`:
 
 
-```r
+``` r
 # obtain BFs for all permutations of the model predictors
 all_BFs <- regressionBF(wellbeing ~ worry + describing, data = data.frame(wellbeing_data))
 
@@ -949,7 +949,7 @@ all_BFs
 
 Comparing the BF for [3] and [2] will tell us whether there's evidence that `worry` makes a unique contribution.
 
-```r
+``` r
 # compare multiple regression with simple regression 2
 all_BFs[3] / all_BFs[2]
 ```
@@ -972,7 +972,7 @@ The BF for this comparison is **981.49**, which matches the BF for the unique co
 Comparing the BF for [3] and [1] will therefore tell us whether there's evidence that `describing` makes a unique contribution to the model:
 
 
-```r
+``` r
 # compare the BF for [3] and [1]
 all_BFs[3] / all_BFs[1]
 ```
@@ -1012,7 +1012,7 @@ Use `regressionBF()` to obtain the BFs for the unique contribution of `brooding`
 As with simple regression, we can use `augment()` to predict what the outcome variable would be, given new data. For example, for a new individual with a `worry` score of 20 and `describing` score of 15:
 
 
-```r
+``` r
 # specify the new data (for each predictor in the model)
 new_scores <- tibble(worry = 20, 
                      describing = 15)
@@ -1037,7 +1037,7 @@ augment(multiple1, newdata = new_scores)
 To derive predictions for several new participants, use `c(score1, score2...)` when specifying the `new_scores`. To add another individual with a `worry` score of 25 and `describing` score of 10
 
 
-```r
+``` r
 # specify the new data (for both predictors)
 new_scores <- tibble(worry = c(20, 25), 
                      describing = c(15, 10))
@@ -1072,7 +1072,7 @@ For the model in the main exercise (i.e., `gad ~ brooding + observing`), what ar
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 new_scores <- tibble(brooding = c(10, 15, 20),
                      observing = c(3, 6, 9))
 
@@ -1118,7 +1118,7 @@ Obtain the BF for the full model and the BFs for the models in which each of the
 Check correlations:
 
 
-```r
+``` r
 wellbeing_data %>% 
   select(wellbeing, attention, clarity, repair) %>% 
   correlate(method = "pearson")
@@ -1129,7 +1129,7 @@ wellbeing_data %>%
 Run multiple regression:
 
 
-```r
+``` r
 multiple3 <- lm(wellbeing ~ attention + clarity + repair, data = wellbeing_data)
 ```
 
@@ -1137,7 +1137,7 @@ multiple3 <- lm(wellbeing ~ attention + clarity + repair, data = wellbeing_data)
 
 Adjusted R^2^ for the overall model:
 
-```r
+``` r
 glance( multiple3 )
 ```
 
@@ -1147,7 +1147,7 @@ glance( multiple3 )
 Using `lmBF()`:
 
 
-```r
+``` r
 BF_attention_clarity_repair <-
   lmBF(wellbeing ~ attention + clarity + repair, data = data.frame(wellbeing_data))
 
@@ -1176,7 +1176,7 @@ BF_attention_clarity_repair / BF_attention_clarity
 Using `regressionBF()`:
 
 
-```r
+``` r
 all_BFs <-
   regressionBF(wellbeing ~ attention + clarity + repair, data = data.frame(wellbeing_data))
 
@@ -1214,7 +1214,7 @@ all_BFs[7] / all_BFs[4]
 As with simple regression, `summary(model_name)` can be used to obtain the results of the frequentist regression analyses. For the first model above:
 
 
-```r
+``` r
 summary(multiple1)
 ```
 

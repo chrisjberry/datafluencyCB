@@ -84,7 +84,7 @@ Read in the data at the link below and store in `affect_data`. Preview the data 
 
 
 
-```r
+``` r
 # Read in the data
 affect_data <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_affect.csv')
 
@@ -111,7 +111,7 @@ Notice that the `group` column is by default read into R as a _character variabl
 To enable us to use the `group` column in an ANOVA, we need to tell R that `group` is a _factor_. Use `mutate()` and `factor()` to convert `group` to a factor.
 
 
-```r
+``` r
 # use mutate() to convert the group variable to a factor
 # store the changes back in affect_data 
 # (i.e., overwrite what's already in affect_data)
@@ -164,7 +164,7 @@ This can be useful when plotting the data.
 
 Check that the variable label for `group` has now changed from `<chr>` to `<fct>` (i.e., a factor) by looking at the dataset again.
 
-```r
+``` r
 affect_data
 ```
 
@@ -179,7 +179,7 @@ affect_data
 Use `group_by()` and `count()` to obtain the number of participants in each group:
 
 
-```r
+``` r
 # use group_by() to group the output by 'group' column, 
 # then obtain number of rows in each group with count()
 
@@ -198,7 +198,7 @@ affect_data %>%
 The way the data are distributed in each group can be inspected with histograms or density plots:
 
 
-```r
+``` r
 # Histogram of scores in each group 
 # Use facet_wrap(~group) to create a separate
 # panel for each group
@@ -241,7 +241,7 @@ Visualise the data further by obtaining a plot of the mean score in each group.
 The package `ggpubr` can produce high quality plots with ease. Using `ggerrorplot()` in `ggpubr`:
 
 
-```r
+``` r
 # load the ggpubr package
 library(ggpubr)
 
@@ -301,7 +301,7 @@ To see more types of plot: `help(package = ggpubr)`
 It is of course possible to create the same figure using `ggplot`:
 
 
-```r
+``` r
 # pipe data to ggplot
 # use stat_summary() to plot the mean
 # and again to plot errorbars
@@ -332,7 +332,7 @@ affect_data %>%
 Use `summarise()` and `group_by()` to obtain the mean (_M_) in each group:
 
 
-```r
+``` r
 affect_data %>% 
   group_by(group) %>% 
   summarise(M = mean(score))
@@ -350,7 +350,7 @@ affect_data %>%
 The formula for the standard error of the mean is $SD / \sqrt{n}$. We can therefore obtain the standard error of the mean for each group as follows:
 
 
-```r
+``` r
 affect_data %>% 
   group_by(group) %>% 
   summarise(SE = sd(score) / sqrt( n() ))
@@ -360,7 +360,7 @@ affect_data %>%
 To show the mean and SE in the same output:
 
 
-```r
+``` r
 affect_data %>% 
   group_by(group) %>% 
   summarise( M = mean(score), 
@@ -387,7 +387,7 @@ A Bayes factor can be obtained for the one-way ANOVA model using `anovaBF()`. Th
 To obtain the BF for the one-way ANOVA model, use `anovaBF()`:
 
 
-```r
+``` r
 # ensure BayesFactor package is loaded
 # library(BayesFactor)
 
@@ -416,7 +416,7 @@ The Bayes Factor for the model is equal to BF = <input class='webex-solveme nosp
 `lmBF()` in the `BayesFactor` package can be used in place of `lmBF()` to produce exactly the same result:
 
 
-```r
+``` r
 lmBF( score ~ group, data = data.frame(affect_data) )
 ```
 
@@ -439,7 +439,7 @@ R^2^ can be reported for ANOVA models as a measure of _effect size_. As with sim
 To obtain R^2^, first use `lm()` to specify the model, then use `glance()` from the `broom` package:
 
 
-```r
+``` r
 # specify and store the anova
 anova_1 <- lm(score ~ group, data = affect_data)
 
@@ -472,7 +472,7 @@ With three groups, there are three possible pairwise comparisons that can be mad
 To compare scores from two groups, we can use `filter()` to filter the `affect_data` so that it contains only the two groups we want to compare. Then use `anovaBF()` again to compare the scores across groups. The BF will tell us how many times more likely it is that there's a difference between means, compared to no difference.
 
 
-```r
+``` r
 # Compare scores of VeryLow vs. Low groups
 #
 # Step 1. Filter affect_data for VeryLow and Low groups only
@@ -566,7 +566,7 @@ So `filter(group == "VeryLow" | group == "Low")` means "filter the rows of `affe
 `anovaBF()` was used to conduct follow-up tests. Because each test had two groups, this is equivalent to a [Bayesian _t_-test](http://www.andywills.info/rminr/evidence.html), and so the exact same BFs could have been obtained using `ttestBF()`:
 
 
-```r
+``` r
 # Compare scores of VeryLow vs. Low groups
 ttestBF( x = affect_data$score[ affect_data$group=="VeryLow" ], 
          y = affect_data$score[ affect_data$group=="Low" ] )
@@ -633,7 +633,7 @@ https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_resilience_data.
 
 
 
-```r
+``` r
 # read in the data
 resilience_data <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_resilience_data.csv')
 
@@ -667,7 +667,7 @@ head(resilience_data)
 To enable the factors to be used as such in ANOVA, we need to convert them to factors using `factor()`:
 
 
-```r
+``` r
 # use mutate() and factor() to convert 
 # resilience and adversity to factors
 
@@ -683,7 +683,7 @@ resilience_data <-
 Obtain the number of participants in each group:
 
 
-```r
+``` r
 # use count() to obtain the number of rows in the dataset, 
 # group_by() both resilience AND adversity
 resilience_data %>% 
@@ -717,7 +717,7 @@ In a between-subjects factorial design, participants are assigned to groups by c
 The way the data are distributed in each group can be inspected with histograms or density plots.
 
 
-```r
+``` r
 # Use `facet_wrap(~ resilience * adversity)`
 # to plot scores for all combinations of 
 # resilience x adversity levels
@@ -742,7 +742,7 @@ resilience_data %>%
 Use `ggbarplot()` in the `ggpubr` package:
 
 
-```r
+``` r
 library(ggpubr)
 
 # plot the mean of each group
@@ -768,7 +768,7 @@ resilience_data %>%
 
 
 
-```r
+``` r
 resilience_data %>% 
   ggplot(aes(x=resilience,y=distress,color=adversity))+
   stat_summary(fun.data = mean_se,geom = "errorbar", position = position_dodge(width=0.5))+
@@ -828,7 +828,7 @@ To specify the two-way ANOVA in `anovaBF()`, use `dependent_variable ~ factor1 *
 
 For the resilience data:
 
-```r
+``` r
 # Obtain the Bayes Factors for the ANOVA model
 anova2x2_BF <- anovaBF( distress ~ resilience * adversity, data = data.frame(resilience_data) )
 
@@ -841,8 +841,8 @@ anova2x2_BF
 ## --------------
 ## [1] resilience                                    : 1.822053e+27 ±0%
 ## [2] adversity                                     : 7.870878e+25 ±0%
-## [3] resilience + adversity                        : 3.303448e+46 ±1.35%
-## [4] resilience + adversity + resilience:adversity : 3.18965e+49  ±4.21%
+## [3] resilience + adversity                        : 3.414797e+46 ±0.77%
+## [4] resilience + adversity + resilience:adversity : 3.255615e+49 ±1.02%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -872,7 +872,7 @@ Each BF in the output compares how likely the model is, compared to an intercept
 To obtain the BF for the interaction,  we need to divide `[4]` by `[3]`:
 
 
-```r
+``` r
 # BF for the interaction
 anova2x2_BF[4] / anova2x2_BF[3]
 ```
@@ -880,7 +880,7 @@ anova2x2_BF[4] / anova2x2_BF[3]
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] resilience + adversity + resilience:adversity : 965.5518 ±4.42%
+## [1] resilience + adversity + resilience:adversity : 953.3845 ±1.28%
 ## 
 ## Against denominator:
 ##   distress ~ resilience + adversity 
@@ -915,7 +915,7 @@ Once again, `glance()` can be used to obtain R^2^ for the ANOVA model. The model
 \
 
 
-```r
+``` r
 # specify the ANOVA model using lm()
 anova2x2 <- lm(distress ~ resilience * adversity, data = resilience_data)
 
@@ -941,7 +941,7 @@ Rather than report the R^2^ for the overall model in an article, we often would 
 It is easiest to obtain this by running the ANOVA using the `afex` package. We'll do this in more detail in Session 6. 
 
 
-```r
+``` r
 # load afex
 library(afex)
 
@@ -978,7 +978,7 @@ The interaction implies the effect of `adversity` is different in individuals wi
 
 To determine the evidence for the effect of adversity in individuals with high resilience:
 
-```r
+``` r
 # 1. The effect of adversity in individuals with high resilience
 
 # First use filter() to store only 
@@ -1005,7 +1005,7 @@ anovaBF( distress ~ adversity, data = data.frame(resilience_high) )
 To determine the evidence for the effect of `adversity` in individuals with `low` resilience:
 
 
-```r
+``` r
 # 2. The effect of adversity in individuals with low resilience
 
 # First use filter() to store only 
@@ -1066,7 +1066,7 @@ Ensure the `tidyverse` package is loaded. See `?read_csv()`
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 super_data <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_super_data.csv')
 
 # look at the raw data
@@ -1093,7 +1093,7 @@ See `?mutate()` and `?factor()`
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 super_data <- 
   super_data %>% 
   mutate( face_group = factor(face_group) )
@@ -1118,7 +1118,7 @@ Pipe the data to `group_by()` and `count()`
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 super_data %>% 
   group_by(face_group) %>% 
   count()
@@ -1147,7 +1147,7 @@ Pipe the data to `ggplot()` and `geom_histogram()` and `facet_wrap()`
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 super_data %>% 
   ggplot(aes(performance)) +
   geom_histogram() +
@@ -1174,7 +1174,7 @@ super_data %>%
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
  # produce means plot
 
 super_data %>% 
@@ -1204,7 +1204,7 @@ Use `group_by()` and `summarise()`
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 super_data %>% 
   group_by(face_group) %>% 
   summarise( M  = mean(performance), 
@@ -1237,7 +1237,7 @@ super_data %>%
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 anovaBF(performance ~ face_group, data = data.frame(super_data))
 ```
 
@@ -1263,7 +1263,7 @@ obtain the model with `lm()`, then use `glance()`
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 super_anova <- lm(performance ~ face_group, data = super_data)
 glance(super_anova)
 
@@ -1292,7 +1292,7 @@ glance(super_anova)
 <div class='webex-solution'><button>Solution using anovaBF()</button>
 
 
-```r
+``` r
 # super_recognisers vs. motivated_control
 super_vs_motivated_controls <- 
   super_data %>%
@@ -1325,7 +1325,7 @@ anovaBF(performance ~ face_group, data = data.frame(motivated_control_vs_control
 <div class='webex-solution'><button>Solution using ttestBF()</button>
 
 
-```r
+``` r
 # super_recognisers vs. motivated_control
 ttestBF(x = super_data$performance[super_data$face_group == "super_recogniser"],
         y = super_data$performance[super_data$face_group == "motivated_control"])
@@ -1439,7 +1439,7 @@ https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_robot_data.csv
 
 
 
-```r
+``` r
 # ensure following packages have been loaded
 # library(tidyverse)
 # library(BayesFactor)

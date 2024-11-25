@@ -85,7 +85,7 @@ Design check.
 Read in the data to `trust_data` 
 
 
-```r
+``` r
 # ensure tidyverse is loaded
 # library(tidyverse)
 
@@ -115,7 +115,7 @@ trust_data %>% head()
 Use a scatterplot to look at the relationship between `trustworthiness`, `attitude` and `group`. Use different colours for each `group` by specifying `colour = group` in `aes()`:
 
 
-```r
+``` r
 trust_data %>% 
   ggplot(aes(x = attitude, y = trustworthiness, colour = group )) +
   geom_point() +
@@ -176,7 +176,7 @@ Feel free to customise the plot further if you feel it can be improved!
 It is good practice to inspect the distributions of the data prior to analysis, for example, with `geom_histogram()` or `geom_density()`. We can check if the data appear normally distributed, or positively or negatively skewed. We can also check for outliers using `geom_boxplot()`. Get to know your data!
 
 
-```r
+``` r
 # look at the distribution of trustworthiness
 trust_data %>% 
   ggplot(aes(trustworthiness)) +
@@ -222,7 +222,7 @@ As we did in the previous session, we need to also convert the categorical varia
 Thus, for our data:
 
 
-```r
+``` r
 # Convert group to a factor
 trust_data <- trust_data %>% mutate(group = factor(group))
 
@@ -255,7 +255,7 @@ Did you know that R can round values to two decimal places for you?
 
 Use this code in your script:
 
-```r
+``` r
 # round adjusted r-squared to 2.D.P
 round(0.0065555, 2)
 ```
@@ -269,7 +269,7 @@ round(0.0065555, 2)
 Next use `lmBF()` to obtain the BF for the model with no interaction:
 
 
-```r
+``` r
 # library(BayesFactor)
 
 # obtain BF for the model
@@ -283,7 +283,7 @@ BF_without_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group : 0.1028322 ±1.59%
+## [1] attitude + group : 0.1030316 ±1.83%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -312,7 +312,7 @@ To specify the model with the interaction, add the interaction term `predictor1 
 
 
 
-```r
+``` r
 # Specify the model with the interaction
 with_interaction <- lm(trustworthiness ~ attitude + group + attitude*group,
                        data = trust_data)
@@ -337,7 +337,7 @@ glance(with_interaction)
 Use `lmBF()` to obtain the BF for the model with the interaction:
 
 
-```r
+``` r
 # obtain BF for the model
 BF_with_interaction <- 
   lmBF(trustworthiness ~ attitude + group + attitude*group,
@@ -350,7 +350,7 @@ BF_with_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 34.01636 ±6.49%
+## [1] attitude + group + attitude * group : 33.16535 ±5.17%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -387,7 +387,7 @@ this will tell us how many times more likely the model _with_ the interaction is
 \
 
 
-```r
+``` r
 # compare BFs of models
 # to determine evidence for the interaction
 BF_with_interaction / BF_without_interaction
@@ -396,7 +396,7 @@ BF_with_interaction / BF_without_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 330.7947 ±6.69%
+## [1] attitude + group + attitude * group : 321.8949 ±5.48%
 ## 
 ## Against denominator:
 ##   trustworthiness ~ attitude + group 
@@ -426,7 +426,7 @@ Did you know that R can function like a calculator too? Simply type the formula 
 
 Or use code in your script:
 
-```r
+``` r
 # work out difference in R-squared
 0.05 - 0.01
 ```
@@ -440,7 +440,7 @@ Or use code in your script:
 
 * According to comparison of BFs for the model with and without an interaction term included, which statement is true?
 
-<div class='webex-radiogroup' id='radio_AJGDSXRQXF'><label><input type="radio" autocomplete="off" name="radio_AJGDSXRQXF" value=""></input> <span>There&apos;s substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_AJGDSXRQXF" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_AJGDSXRQXF" value="answer"></input> <span>There&apos;s substantial evidence for an interaction between attitude and group</span></label></div>
+<div class='webex-radiogroup' id='radio_IROWOYQAUH'><label><input type="radio" autocomplete="off" name="radio_IROWOYQAUH" value=""></input> <span>There&apos;s substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_IROWOYQAUH" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_IROWOYQAUH" value="answer"></input> <span>There&apos;s substantial evidence for an interaction between attitude and group</span></label></div>
 
 
 
@@ -474,7 +474,7 @@ Another way of thinking about the interaction is that it implies that the _slope
 First, filter `trust_data` for each `group`:
 
 
-```r
+``` r
 # Filter the dataset for when group is equal to "affected"
 # store in affected_data
 affected_data <- trust_data %>% filter(group == "affected")
@@ -489,7 +489,7 @@ not_affected_data <- trust_data %>% filter(group == "not_affected")
 Now run a simple regression of `trustworthiness ~ attitude` in each group. First, do the `affected` group:
 
 
-```r
+``` r
 # affected group: simple regression coefficients
 lm(trustworthiness ~ attitude, data = affected_data)
 
@@ -530,7 +530,7 @@ For the `affected` group (the red line in the scatter plot)
 
 For the `not_affected` group:
 
-```r
+``` r
 # not_affected group: simple regression coefficients
 lm(trustworthiness ~ attitude, data = not_affected_data)
 
@@ -601,7 +601,7 @@ Pipe the data to `ggplot()` and use `colour = group` in `aes`
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 trust_data %>% 
   ggplot(aes(x = attitude, y = credibility, colour = group )) +
   geom_point() +
@@ -635,7 +635,7 @@ Specify the model with `predictor1 + predictor2` with `lm()`, pass to `glance()`
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 # Specify the model without an interaction
 credibility_no_interaction <- 
   lm(credibility ~ attitude + group, data = trust_data)
@@ -670,7 +670,7 @@ Specify the model with `predictor1 + predictor2 + predictor1*predictor2` with `l
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 # Specify the model with an interaction
 credibility_with_interaction <- 
   lm(credibility ~ attitude + group + attitude*group, data = trust_data)
@@ -721,7 +721,7 @@ Please take care to notice "e+" or "e-" in the output for your Bayes factors. As
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 # Adj R-square difference
 0.21 - 0.15
 
@@ -771,7 +771,7 @@ Conduct one simple regression for the `not_affected` group.
 
 
 
-```r
+``` r
 # Filter the dataset for when group is equal to "affected"
 affected_data <- trust_data %>% filter(group == "affected")
 
@@ -822,7 +822,7 @@ Pipe the data to `ggplot()` and use `colour = group` in `aes()`
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 trust_data %>% 
   ggplot(aes(x = attitude, y = evaluation, colour = group )) +
   geom_point() +
@@ -856,7 +856,7 @@ Specify the model with `predictor1 + predictor2` with `lm()`, pass to `glance()`
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 # Specify the model without an interaction
 evaluation_no_interaction <- 
   lm(evaluation ~ attitude + group, data = trust_data)
@@ -891,7 +891,7 @@ Specify the model with `predictor1 + predictor2 + predictor1*predictor2` with `l
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 # Specify the model with an interaction
 evaluation_with_interaction <- 
   lm(evaluation ~ attitude + group + attitude*group, data = trust_data)
@@ -931,7 +931,7 @@ BF_evaluation_with_interaction <-
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 # Adj R-square difference
 0.27 - 0.20
 
@@ -980,7 +980,7 @@ Conduct one simple regression for the `not_affected` group.
 
 
 
-```r
+``` r
 # Filter the dataset for when group is equal to "affected"
 affected_data <- trust_data %>% filter(group == "affected")
 
@@ -1036,7 +1036,7 @@ Given the lack of evidence for an interaction, in an additive model containing o
 
 
 
-```r
+``` r
 # read the data to R using read_csv()
 mentalh <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/1_mental_health_data.csv')
 
@@ -1101,7 +1101,7 @@ BF_screen_time_no_interaction / lmBF(screen_time ~ anxiety_score, data = data.fr
 It's possible to store R^2^ values in variables. This can be handy if referring to them again in calculations, or if you want greater precision. 
 
 
-```r
+``` r
 # Store adj r-sq for model with no interaction
 rsq_no <- glance(screen_time_no_interaction)$adj.r.squared
 
@@ -1171,7 +1171,7 @@ Only for those wanting a deeper understanding.
 If we obtain the coefficients for the full regression model (with the interaction), we can write out the regression equation:
 
 
-```r
+``` r
 lm(trustworthiness ~ attitude + group + attitude*group, data = trust_data)
 ```
 
@@ -1244,7 +1244,7 @@ Centering is usually performed to help increase the interpretability of the coef
 `scale()` can be used to center variables automatically. Set the option `center = TRUE` to center the variable. Setting the option `scale = TRUE` would also standardise the variable (i.e., divide each score by the standard deviation, to create _z_-scores), so `scale = FALSE` means that we won't also standardise the scores:
 
 
-```r
+``` r
 # center the attitude scores
 # use mutate() to create a new variable in trust_data
 # called attitude_centered
@@ -1263,7 +1263,7 @@ Before centering, the mean of the `attitude` scores was 4.26. After centering, t
 Now re-run the analysis using `attitude_centered` in place of `attitude` and look at adjusted R^2^ and the BF:
 
 
-```r
+``` r
 # full model with attitude_centered
 full_centered <- lm(trustworthiness ~ attitude_centered + group + attitude_centered*group, data = trust_data)
 
@@ -1297,7 +1297,7 @@ $Predicted\ trustworthiness = 3.96 + 0.18(attitude) + 1.13(group) - 0.28(attitud
 Using `attitude_centered`, the coefficients for the regression equation are obtained from:
 
 
-```r
+``` r
 full_centered
 ```
 

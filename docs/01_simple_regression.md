@@ -94,7 +94,7 @@ Type or copy-paste the code to R Studio (e.g., in an Rmd file) to keep a
 record for your studies.
 
 
-```r
+``` r
 # ensure tidyverse is loaded
 library(tidyverse)
 
@@ -118,7 +118,7 @@ First, create a scatterplot of the two variables. Put the predictor
 variable on the x-axis, and the outcome variable on the y-axis.
 
 
-```r
+``` r
 # The code below takes mentalh and pipes it to ggplot() 
 # aes() is used to tell ggplot() to put 
 # screen_time on the x-axis, and anxiety_score on the y-axis
@@ -141,7 +141,7 @@ mentalh %>%
 **Describe the relationship between screen time and anxiety evident in
 the scatterplot** (pick one option; green = correct):
 
-<div class='webex-radiogroup' id='radio_LJGWALTMZR'><label><input type="radio" autocomplete="off" name="radio_LJGWALTMZR" value=""></input> <span>Individuals with lower levels of screen time tend to have higher anxiety scores</span></label><label><input type="radio" autocomplete="off" name="radio_LJGWALTMZR" value=""></input> <span>No association between screen time and anxiety scores is apparent</span></label><label><input type="radio" autocomplete="off" name="radio_LJGWALTMZR" value="answer"></input> <span>Individuals with higher levels of screen time tend to have higher anxiety scores</span></label></div>
+<div class='webex-radiogroup' id='radio_EUNOQGLMMC'><label><input type="radio" autocomplete="off" name="radio_EUNOQGLMMC" value=""></input> <span>Individuals with lower levels of screen time tend to have higher anxiety scores</span></label><label><input type="radio" autocomplete="off" name="radio_EUNOQGLMMC" value=""></input> <span>No association between screen time and anxiety scores is apparent</span></label><label><input type="radio" autocomplete="off" name="radio_EUNOQGLMMC" value="answer"></input> <span>Individuals with higher levels of screen time tend to have higher anxiety scores</span></label></div>
 
 :::
 
@@ -151,7 +151,7 @@ Use `lm()` to run the simple regression and store the results in
 `simple1`:
 
 
-```r
+``` r
 # conduct a simple regression to predict anxiety_score from screen_time
 # store the results in simple1
 simple1 <- lm(anxiety_score ~ screen_time, data = mentalh)
@@ -170,7 +170,7 @@ The intercept (a) and slope (b) are automatically calculated by R and
 stored in `simple1`:
 
 
-```r
+``` r
 # look at the results 
 simple1
 ```
@@ -196,7 +196,7 @@ simple1
 **The regression equation Predicted Outcome = a + b(Predictor) can
 therefore be written as what?**
 
-<div class='webex-radiogroup' id='radio_UGBAXVMOOD'><label><input type="radio" autocomplete="off" name="radio_UGBAXVMOOD" value=""></input> <span>Predicted screen time = 5.59 + 0.13(anxiety score)</span></label><label><input type="radio" autocomplete="off" name="radio_UGBAXVMOOD" value="answer"></input> <span>Predicted anxiety score = 5.59 + 0.13(screen time)</span></label><label><input type="radio" autocomplete="off" name="radio_UGBAXVMOOD" value=""></input> <span>Predicted
+<div class='webex-radiogroup' id='radio_NXXFGAXWSM'><label><input type="radio" autocomplete="off" name="radio_NXXFGAXWSM" value=""></input> <span>Predicted screen time = 5.59 + 0.13(anxiety score)</span></label><label><input type="radio" autocomplete="off" name="radio_NXXFGAXWSM" value="answer"></input> <span>Predicted anxiety score = 5.59 + 0.13(screen time)</span></label><label><input type="radio" autocomplete="off" name="radio_NXXFGAXWSM" value=""></input> <span>Predicted
 anxiety score = 0.13 + 5.59(screen time)</span></label></div>
 
 :::
@@ -222,7 +222,7 @@ function in the `broom` package can be used to work out the prediction
 for new data automatically:
 
 
-```r
+``` r
 # load the broom package
 library(broom)
 
@@ -250,7 +250,7 @@ obtain the predictions for two people with `screen_time` scores of 10
 and 15.
 
 
-```r
+``` r
 # store the scores we want predictions for in new_scores
 new_scores <- tibble(screen_time = c(10, 15))
 
@@ -296,7 +296,7 @@ package, this time without including `newdata`. The residual for each
 observation is given in the column `.resid`
 
 
-```r
+``` r
 # look at the residuals for simple1 (in .resid)
 # pipe to head() to only show the first 6 rows
 augment(simple1) %>% head()
@@ -347,7 +347,7 @@ values*, there should also be no trend evident in the datapoints in the plot.
 We can use this plot for checking this assumption of regression.
 
 
-```r
+``` r
 # Create a plot of the predicted values vs. residuals
 # Use the ".fitted" and ".resid" columns in augment()
 # Use geom_hline() to draw a black horizontal line at y = 0
@@ -384,7 +384,7 @@ is possible.
 Check the assumption that the residuals are normally distributed by obtaining a histogram:
 
 
-```r
+``` r
 # Create a histogram of the residuals using
 # ggplot(aes())
 # and geom_histogram()
@@ -418,7 +418,7 @@ by the predictor variable**.
 To obtain R^2^ for the model:
 
 
-```r
+``` r
 # use glance() to obtain R-squared
 glance(simple1)
 ```
@@ -443,7 +443,7 @@ In simple regression, R^2^ is actually the squared value of the Pearson
 correlation (*r*) between the outcome and predictor variable:
 
 
-```r
+``` r
 # load corrr package
 library(corrr)
 
@@ -490,7 +490,7 @@ To obtain the Bayes factor, use `lmBF()` in the `BayesFactor`
 package:
 
 
-```r
+``` r
 # load BayesFactor package
 library(BayesFactor)
 
@@ -568,7 +568,7 @@ the outcome variable (screen_time) on the y-axis.
 
 
 
-```r
+``` r
 mentalh %>% 
   ggplot(aes(x = age, y = screen_time)) + 
   geom_point() + 
@@ -586,9 +586,9 @@ mentalh %>%
 *Describe the relationship between age and screen time in the
 scatterplot* (pick one):
 
-<div class='webex-radiogroup' id='radio_KKNIZDHJDE'><label><input type="radio" autocomplete="off" name="radio_KKNIZDHJDE" value=""></input> <span>Older individuals tend to have higher screen time
-scores</span></label><label><input type="radio" autocomplete="off" name="radio_KKNIZDHJDE" value="answer"></input> <span>Older individuals tend to have lower screen time
-scores</span></label><label><input type="radio" autocomplete="off" name="radio_KKNIZDHJDE" value=""></input> <span>No association between age and screen time appears to be
+<div class='webex-radiogroup' id='radio_BLKJRXSZYR'><label><input type="radio" autocomplete="off" name="radio_BLKJRXSZYR" value=""></input> <span>Older individuals tend to have higher screen time
+scores</span></label><label><input type="radio" autocomplete="off" name="radio_BLKJRXSZYR" value="answer"></input> <span>Older individuals tend to have lower screen time
+scores</span></label><label><input type="radio" autocomplete="off" name="radio_BLKJRXSZYR" value=""></input> <span>No association between age and screen time appears to be
 present</span></label></div>
 
 
@@ -609,7 +609,7 @@ variable, and `age` as the predictor variable**
 
 
 
-```r
+``` r
 simple2 <- lm(screen_time ~ age, data = mentalh)
 simple2
 ```
@@ -628,7 +628,7 @@ What is the value of the slope b (to two decimal places)?
 
 What is the regression equation?
 
-<div class='webex-radiogroup' id='radio_SSRFXOLPGE'><label><input type="radio" autocomplete="off" name="radio_SSRFXOLPGE" value="answer"></input> <span>Predicted screen time = 7.48 - 0.10(age)</span></label><label><input type="radio" autocomplete="off" name="radio_SSRFXOLPGE" value=""></input> <span>Predicted screen time = 0.10 - 7.48(age)</span></label><label><input type="radio" autocomplete="off" name="radio_SSRFXOLPGE" value=""></input> <span>Predicted screen time =
+<div class='webex-radiogroup' id='radio_MJDITNQGWR'><label><input type="radio" autocomplete="off" name="radio_MJDITNQGWR" value="answer"></input> <span>Predicted screen time = 7.48 - 0.10(age)</span></label><label><input type="radio" autocomplete="off" name="radio_MJDITNQGWR" value=""></input> <span>Predicted screen time = 0.10 - 7.48(age)</span></label><label><input type="radio" autocomplete="off" name="radio_MJDITNQGWR" value=""></input> <span>Predicted screen time =
 7.48 + 0.10(age)</span></label></div>
 
 
@@ -647,7 +647,7 @@ results
 
 
 
-```r
+``` r
 glance(simple2)
 ```
 
@@ -676,7 +676,7 @@ decimal places: The adjusted R^2^ value is equal to <input class='webex-solveme 
 
 
 
-```r
+``` r
 simple2_BF <- lmBF(screen_time ~ age, data = data.frame(mentalh))
 simple2_BF
 ```
@@ -706,7 +706,7 @@ residuals**
 
 
 
-```r
+``` r
 augment(simple2) %>% 
   ggplot(aes(x = .fitted, y = .resid)) + 
   geom_point() + 
@@ -742,7 +742,7 @@ analysis).
 **6. On balance, does age seem to be a good predictor of a person's
 daily screen time use?**
 
-<div class='webex-radiogroup' id='radio_CZEMBAXEYZ'><label><input type="radio" autocomplete="off" name="radio_CZEMBAXEYZ" value=""></input> <span>No</span></label><label><input type="radio" autocomplete="off" name="radio_CZEMBAXEYZ" value="answer"></input> <span>Yes</span></label><label><input type="radio" autocomplete="off" name="radio_CZEMBAXEYZ" value=""></input> <span>Cannot determine</span></label></div>
+<div class='webex-radiogroup' id='radio_AAUCHFTLAH'><label><input type="radio" autocomplete="off" name="radio_AAUCHFTLAH" value=""></input> <span>No</span></label><label><input type="radio" autocomplete="off" name="radio_AAUCHFTLAH" value="answer"></input> <span>Yes</span></label><label><input type="radio" autocomplete="off" name="radio_AAUCHFTLAH" value=""></input> <span>Cannot determine</span></label></div>
 
 
 
@@ -792,7 +792,7 @@ On balance, does the `anxiety_score` seem to be predicted by
 
 
 
-```r
+``` r
 # scatterplot
 mentalh %>% 
   ggplot(aes(x = physical_activity, y = anxiety_score)) +
@@ -871,7 +871,7 @@ Frequentist methods of statistical inference, which rely on _p_-values, are stil
 To obtain the _p_-values for a simple regression, use `summary(model_name)`. For the first simple regression in the worksheet:
 
 
-```r
+``` r
 # obtain the p-values for the simple regression
 summary(simple1)
 ```

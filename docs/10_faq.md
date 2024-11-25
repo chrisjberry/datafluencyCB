@@ -39,7 +39,7 @@ If R prints "1.4e-4", in the output this actually means "$1.4 \times 10^{-4}$", 
 
 
 
-```r
+``` r
 1.4e-4
 ```
 

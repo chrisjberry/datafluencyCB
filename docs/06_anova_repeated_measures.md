@@ -68,14 +68,14 @@ Wide vs. long format
 
 * When the data are in _wide_ format, all of the data for a single participant is stored:
 
-<div class='webex-radiogroup' id='radio_KKWGFUFJGG'><label><input type="radio" autocomplete="off" name="radio_KKWGFUFJGG" value="answer"></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_KKWGFUFJGG" value=""></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
+<div class='webex-radiogroup' id='radio_MKNMVSNTXO'><label><input type="radio" autocomplete="off" name="radio_MKNMVSNTXO" value="answer"></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_MKNMVSNTXO" value=""></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
 
 
 \
 
 * When the data are in _long_ format, all of the data for a single participant is stored:
 
-<div class='webex-radiogroup' id='radio_JCPXTWJXPW'><label><input type="radio" autocomplete="off" name="radio_JCPXTWJXPW" value=""></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_JCPXTWJXPW" value="answer"></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
+<div class='webex-radiogroup' id='radio_WYSKEADIQH'><label><input type="radio" autocomplete="off" name="radio_WYSKEADIQH" value=""></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_WYSKEADIQH" value="answer"></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
 
 
 :::
@@ -116,7 +116,7 @@ Design check.
 ### Read in the data 
 
 
-```r
+``` r
 # library(tidyverse)
 
 # read in the data
@@ -173,7 +173,7 @@ Use `pivot_longer()` to convert the data to long format:
 
 
 
-```r
+``` r
 # The code below:
 # - stores the result in discriminate_long
 # - takes discriminate_wide and pipes it to
@@ -238,7 +238,7 @@ Importantly, in repeated measures designs, **the column of participant labels `p
 Because the levels of `time` are ordered, we can additionally specify the way the levels should be ordered by using `levels = c("level_1_name", "level_2_name", "level_3_name")` when using `factor()`.
 
 
-```r
+``` r
 # use mutate() to transform 
 # both ppt and time to factor
 # and overwrite existing variables
@@ -285,7 +285,7 @@ After using `mutate()` and `factor()` above:
 Look at the distribution of the dependent variable in each condition.
 
 
-```r
+``` r
 discriminate_long %>% 
   ggplot(aes(x = performance)) +
   facet_wrap(~ time) + 
@@ -303,7 +303,7 @@ The density plots look a little 'lumpy'. Remember that in our sample, there are 
 ### Plot the means
 
 
-```r
+``` r
 # load the ggpubr package
 library(ggpubr)
 
@@ -331,7 +331,7 @@ Previously, we used `desc_stat = "mean_se"` to add errorbars to the plot. Doing 
 
 
 
-```r
+``` r
 discriminate_long %>% 
   ggplot(aes(x = time , y = performance)) +
   stat_summary(fun = mean, geom = "point") +
@@ -366,7 +366,7 @@ Describe the trend shown in the line plot:
 Obtain the mean proportion correct at each time point using `summarise()`:
 
 
-```r
+``` r
 discriminate_long %>% 
   group_by(time) %>% 
   summarise(M = mean(performance))
@@ -398,7 +398,7 @@ The Bayes factors can be obtained with `anovaBF()` but can also be obtained (les
 Using `anovaBF()`:
 
 
-```r
+``` r
 # library(BayesFactor)
 
 anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(discriminate_long))
@@ -407,7 +407,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(discrim
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 331.3637 ±0.72%
+## [1] time + ppt : 331.7741 ±0.75%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -425,7 +425,7 @@ The Bayes factor for the effect of time on performance is <input class='webex-so
 
 This indicates that (select one):
 
-<div class='webex-radiogroup' id='radio_LBBLRKBHVD'><label><input type="radio" autocomplete="off" name="radio_LBBLRKBHVD" value="answer"></input> <span>it is approximately 300 times more likely that there is difference between the means of the three time conditions, compared to there being no difference.</span></label><label><input type="radio" autocomplete="off" name="radio_LBBLRKBHVD" value=""></input> <span>it is approximately 300 times more likely that there is no difference between the means of the three time conditions, compared to there being a difference.</span></label></div>
+<div class='webex-radiogroup' id='radio_DVOWZSRNHB'><label><input type="radio" autocomplete="off" name="radio_DVOWZSRNHB" value="answer"></input> <span>it is approximately 300 times more likely that there is difference between the means of the three time conditions, compared to there being no difference.</span></label><label><input type="radio" autocomplete="off" name="radio_DVOWZSRNHB" value=""></input> <span>it is approximately 300 times more likely that there is no difference between the means of the three time conditions, compared to there being a difference.</span></label></div>
 
 
 \
@@ -440,7 +440,7 @@ On the basis of the Bayes factor analysis, does neuro-feedback training affect p
 It is possible to obtain the same result as `anovaBF()` using `lmBF()`. Doing so can help us to understand what `anovaBF()` is doing. Again, we must tell `lmBF()` that `ppt` is a random factor, using `whichRandom = `.
 
 
-```r
+``` r
 # Equivalent results with lmBF()
 
 # model with time and ppt only
@@ -456,7 +456,7 @@ BF_time_ppt / BF_ppt_only
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 330.0359 ±0.56%
+## [1] time + ppt : 328.2954 ±0.46%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -482,7 +482,7 @@ To determine which conditions differ from which, filter the data for the conditi
 #### Pre vs. day3 conditions
 
 
-```r
+``` r
 # pre vs. day3 
 # filter the data for the relevant conditions
 pre_v_day3 <- discriminate_long %>% filter(time == "pre" | time == "day3")
@@ -494,7 +494,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(pre_v_d
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 79.96102 ±0.73%
+## [1] time + ppt : 79.84536 ±0.66%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -510,7 +510,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(pre_v_d
 
 #### Pre vs. month2 conditions
 
-```r
+``` r
 # pre vs. month2
 # filter the data for these conditions
 pre_v_month2 <- discriminate_long %>% filter(time == "pre" | time == "month2") 
@@ -522,7 +522,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(pre_v_m
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 54.2467 ±0.89%
+## [1] time + ppt : 54.35044 ±0.65%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -539,7 +539,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(pre_v_m
 #### day3 vs. month2 conditions
 
 
-```r
+``` r
 # day3 vs. month2
 # filter the data for these conditions
 day3_v_month2 <- discriminate_long %>% filter(time == "day3" | time == "month2") 
@@ -551,7 +551,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(day3_v_
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 0.4534745 ±1.47%
+## [1] time + ppt : 0.4880315 ±3.96%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -572,7 +572,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(day3_v_
 As before, it's possible to conduct the same comparisons and obtain the same BFs using `lmBF()`:
 
 
-```r
+``` r
 # pre vs. day3
 lmBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(pre_v_day3)) /
 lmBF(performance ~ ppt, whichRandom = "ppt", data = data.frame(pre_v_day3))
@@ -589,7 +589,7 @@ lmBF(performance ~ ppt, whichRandom = "ppt", data = data.frame(day3_v_month2))
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 83.16192 ±2.6%
+## [1] time + ppt : 80.35287 ±0.63%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -598,7 +598,7 @@ lmBF(performance ~ ppt, whichRandom = "ppt", data = data.frame(day3_v_month2))
 ## 
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 54.16511 ±0.8%
+## [1] time + ppt : 54.28283 ±0.98%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -607,7 +607,7 @@ lmBF(performance ~ ppt, whichRandom = "ppt", data = data.frame(day3_v_month2))
 ## 
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 0.4902542 ±5.23%
+## [1] time + ppt : 0.4529353 ±1.03%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -669,7 +669,7 @@ Read in the data from the link below:
 https://raw.githubusercontent.com/chrisjberry/Teaching/master/6_gaze_data.csv
 
 
-```r
+``` r
 gaze <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/6_gaze_data.csv')
 
 gaze %>% head()
@@ -719,7 +719,7 @@ The log transformed data are in the column `logRT`.
 To see the positive skew, inspect the (untransformed) RTs in `RT`:
 
 
-```r
+``` r
 gaze %>% 
   ggplot(aes(x=RT)) +
   facet_wrap(~ gaze_direction * agreement) + 
@@ -735,7 +735,7 @@ gaze %>%
 
 Now inspect the log transformed RTs in `logRT`:
 
-```r
+``` r
 gaze %>% 
   ggplot(aes(x = logRT)) +
   facet_wrap(~ gaze_direction * agreement) + 
@@ -757,7 +757,7 @@ gaze %>%
 `ggline()` in the `ggpubr` package can be used to plot the mean of each condition. 
 
 
-```r
+``` r
 # load the ggpubr package
 #library(ggpubr)
 
@@ -779,7 +779,7 @@ It appears as if people took longer to respond when the gaze was direct and they
 
 
 
-```r
+``` r
 gaze %>% 
   ggplot(aes(x = gaze_direction, y = logRT, color = agreement)) + 
   stat_summary(fun = mean, geom = "point") + 
@@ -806,7 +806,7 @@ To obtain the mean of each condition, use `group_by()` to group the results of `
 Since the log RT values are analysed, we'll obtain the mean of these.
 
 
-```r
+``` r
 # take the data in gaze
 # pipe to group_by()
 # group by the gaze_direction and agreement factors
@@ -840,7 +840,7 @@ The mean log RT when participants disagreed with a statement made by a face look
 Convert the `ppt`, `gaze_direction`, and `agreement` variables to factors so that R will treat them as such in the ANOVA.
  
 
-```r
+``` r
 # use mutate() to transform 
 # ppt, gaze_direction and agreement to factors
 # and overwrite existing variables
@@ -893,7 +893,7 @@ As before, add `ppt` to the model using `...+ ppt`, and tell R it is a random fa
 
 
 
-```r
+``` r
 # obtain BFs for the anova
 BFs_gaze <- 
   anovaBF(logRT ~ gaze_direction*agreement + ppt, 
@@ -907,10 +907,10 @@ BFs_gaze
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] gaze_direction + ppt                                        : 26.36845  ±0.77%
-## [2] agreement + ppt                                             : 0.2650302 ±0.96%
-## [3] gaze_direction + agreement + ppt                            : 7.405545  ±1.42%
-## [4] gaze_direction + agreement + gaze_direction:agreement + ppt : 43.07602  ±1.64%
+## [1] gaze_direction + ppt                                        : 25.88688  ±0.55%
+## [2] agreement + ppt                                             : 0.2735751 ±2.25%
+## [3] gaze_direction + agreement + ppt                            : 7.378033  ±2.38%
+## [4] gaze_direction + agreement + gaze_direction:agreement + ppt : 49.06062  ±5.84%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -927,14 +927,14 @@ Interpretation of the output is similar as with two-way between-subjects ANOVA (
 The main effect of gaze direction:
 
 
-```r
+``` r
 BFs_gaze[1]
 ```
 
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] gaze_direction + ppt : 26.36845 ±0.77%
+## [1] gaze_direction + ppt : 25.88688 ±0.55%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -949,14 +949,14 @@ BFs_gaze[1]
 #### The main effect of agreement
 
 
-```r
+``` r
 BFs_gaze[2]
 ```
 
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] agreement + ppt : 0.2650302 ±0.96%
+## [1] agreement + ppt : 0.2735751 ±2.25%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -972,14 +972,14 @@ BFs_gaze[2]
 #### The gaze_direction x agreement interaction
 
 
-```r
+``` r
 BFs_gaze[4] / BFs_gaze[3]
 ```
 
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] gaze_direction + agreement + gaze_direction:agreement + ppt : 5.816725 ±2.17%
+## [1] gaze_direction + agreement + gaze_direction:agreement + ppt : 6.649553 ±6.3%
 ## 
 ## Against denominator:
 ##   logRT ~ gaze_direction + agreement + ppt 
@@ -1004,7 +1004,7 @@ If there were no evidence for the interaction, we wouldn't conduct further compa
 #### averted_left
 
 
-```r
+``` r
 # filter data for averted_left condition
 averted_left <- 
   gaze %>% 
@@ -1017,7 +1017,7 @@ anovaBF(logRT ~ agreement + ppt, whichRandom = "ppt", data = data.frame(averted_
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] agreement + ppt : 0.249462 ±1.48%
+## [1] agreement + ppt : 0.2490369 ±1.01%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -1031,7 +1031,7 @@ There was substantial evidence for <select class='webex-select'><option value='b
 #### averted_right
 
 
-```r
+``` r
 # filter data for averted right condition
 averted_right <- 
   gaze %>% 
@@ -1044,7 +1044,7 @@ anovaBF(logRT ~ agreement + ppt, whichRandom = "ppt", data = data.frame(averted_
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] agreement + ppt : 0.347839 ±0.73%
+## [1] agreement + ppt : 0.3534678 ±0.92%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -1059,7 +1059,7 @@ The Bayes factor comparing the mean log RTs to "yes" and "no" responses in the `
 #### direct
 
 
-```r
+``` r
 # filter data for direct condition
 direct <- 
   gaze %>% 
@@ -1072,7 +1072,7 @@ anovaBF(logRT ~ agreement + ppt, whichRandom = "ppt", data = data.frame(direct))
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] agreement + ppt : 33.71397 ±0.84%
+## [1] agreement + ppt : 33.46626 ±1%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -1123,7 +1123,7 @@ https://raw.githubusercontent.com/chrisjberry/Teaching/master/6_improve_long.csv
 <div class='webex-solution'><button>Solution - code</button>
 
 
-```r
+``` r
 # read in the data
 balance <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/6_improve_long.csv')
 
@@ -1153,7 +1153,7 @@ Note. It may take a short while for `anovaBF()` to determine the BFs. The proces
 <div class='webex-solution'><button>Solution - code</button>
 
 
-```r
+``` r
 # convert ppt and independent variables to factors
 balance <- 
   balance %>% 
@@ -1221,7 +1221,7 @@ Conduct three one-way repeated measures ANOVAs, comparing `duration` across the 
 <div class='webex-solution'><button>Solution - code</button>
 
 
-```r
+``` r
 # filter rows corresponding to prefactual group
 prefactual <- balance %>% filter(group == "prefactual")
 #
@@ -1262,7 +1262,7 @@ Here I show you how to plot the means with within-subject error bars (following 
 I use `summarySEwithin()` from the `Rmisc` package for this. The functions from this package have similar names to other `tidyverse` functions, which can lead to problems/conflicts later. For that reason, I unload `Rmisc` after using the functions from it, then reload the `tidyverse.`  
 
 
-```r
+``` r
 # within-subjects error bars
 
 # load Rmisc package for the summarySEwithin() function
@@ -1323,7 +1323,7 @@ It's possible to obtain R^2^ for the ANOVA model as we have done previously, by 
 For the one-way repeated measures ANOVA:
 
 
-```r
+``` r
 # specify full model with ppt and time using lm()
 ppt_and_time <- lm(performance ~ ppt + time, data = discriminate_long)
 
@@ -1340,7 +1340,7 @@ This value of R^2^ is, however, for the _full_ ANOVA model, which includes the r
 To do this, obtain R^2^ for the model with `ppt` alone:
 
 
-```r
+``` r
 # specify model with ppt only using lm()
 ppt_alone <- lm(performance ~ ppt, data = discriminate_long)
 
@@ -1358,7 +1358,7 @@ glance(ppt_alone)
 The R^2^ associated with the `time` factor can be calculated as the difference in R^2^ values for the models:
 
 
-```r
+``` r
 glance(ppt_and_time)$r.squared - glance(ppt_alone)$r.squared
 ```
 
@@ -1382,7 +1382,7 @@ In the literature, this R^2^ value actually goes by the name _generalised eta-sq
 To calculate generalised eta-squared for each factor and the interaction term in a repeated measures ANOVA, each model in the design must be separately specified with `lm()`. The change in R^2^ value for each factor and the interaction must then be separately determined, by subtracting the relevant R^2^ value:
 
 
-```r
+``` r
 # specify each model in the design
 gaze_ppt_only <- lm(logRT ~ ppt, data = gaze)
 gaze_ppt_agreement <- lm(logRT ~ ppt + agreement, data = gaze)
@@ -1399,7 +1399,7 @@ glance(gaze_ppt_agreement_gaze_interaction)$r.squared - glance(gaze_ppt_agreemen
 This is clearly quite cumbersome, and potentially error prone. For this reason, you may wish to use a package that will determine generalised eta-squared automatically, such as the `afex` package, which stands for Analysis of Factorial EXperiments. The package performs an ANOVA using frequentist methods, but provides generalised eta squared by default in the output.
 
 
-```r
+``` r
 library(afex)
 
 # use the afex package to run a 2 x 2 ANOVA
@@ -1426,7 +1426,7 @@ The `afex` package can also be used to obtain generalised eta squared for one-wa
 
 For the one-way between-subjects ANOVA performed on the `affect_data` in [Session 3](https://chrisjberry.github.io/datafluencyCB/anova1.html):
 
-```r
+``` r
 # Read in the data
 affect_data <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_affect.csv')
 
@@ -1463,7 +1463,7 @@ The `afex` package can also be used to obtain generalised eta squared for two-wa
 For the two-way between-subjects ANOVA performed on the `resilience_data` in [Session 3](https://chrisjberry.github.io/datafluencyCB/anova1.html):
 
 
-```r
+``` r
 # read in the data
 resilience_data <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/3_resilience_data.csv')
 

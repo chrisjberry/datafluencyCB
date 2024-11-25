@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Session 4 Multiple regression: one continuous, one categorical | PSYC761 Data Analysis</title>
   <meta name="description" content="Course materials for PSYC761 2025" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Session 4 Multiple regression: one continuous, one categorical | PSYC761 Data Analysis" />
   <meta property="og:type" content="book" />
@@ -68,7 +68,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -631,7 +631,7 @@ Hint: rounding
 <span id="cb116-8"><a href="multiple2.html#cb116-8" tabindex="-1"></a>BF_without_interaction </span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] attitude + group : 0.1028322 ±1.59%
+## [1] attitude + group : 0.1030316 ±1.83%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -724,7 +724,7 @@ Meaning of ±number%
 <span id="cb119-7"><a href="multiple2.html#cb119-7" tabindex="-1"></a>BF_with_interaction </span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 34.01636 ±6.49%
+## [1] attitude + group + attitude * group : 33.16535 ±5.17%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -754,7 +754,7 @@ Meaning of ±number%
 <span id="cb121-3"><a href="multiple2.html#cb121-3" tabindex="-1"></a>BF_with_interaction <span class="sc">/</span> BF_without_interaction</span></code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 330.7947 ±6.69%
+## [1] attitude + group + attitude * group : 321.8949 ±5.48%
 ## 
 ## Against denominator:
 ##   trustworthiness ~ attitude + group 
@@ -786,8 +786,8 @@ calculatoR
 <ul>
 <li>According to comparison of BFs for the model with and without an interaction term included, which statement is true?</li>
 </ul>
-<div id="radio_AJGDSXRQXF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_AJGDSXRQXF" value=""></input> <span>There's substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_AJGDSXRQXF" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_AJGDSXRQXF" value="answer"></input> <span>There's substantial evidence for an interaction between attitude and group</span></label>
+<div id="radio_IROWOYQAUH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IROWOYQAUH" value=""></input> <span>There's substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_IROWOYQAUH" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_IROWOYQAUH" value="answer"></input> <span>There's substantial evidence for an interaction between attitude and group</span></label>
 </div>
 <div class="webex-solution">
 <button>

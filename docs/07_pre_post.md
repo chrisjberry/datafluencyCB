@@ -70,7 +70,7 @@ Design Check
 ### Read in the data
 
 
-```r
+``` r
 # read in
 diet <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/7_diet_depression.csv')
 
@@ -118,7 +118,7 @@ Each participant's data is on a separate row. There is a column to code the `gro
 To plot the means, we need the data to be in **long format**:
 
 
-```r
+``` r
 # The code below:
 # - stores the result in diet_long
 # - takes diet and pipes it to
@@ -154,7 +154,7 @@ diet_long %>% head()
 Now use `diet_long` with `ggdotplot()` in the `ggpubr` package. 
 
 
-```r
+``` r
 library(ggpubr)
 
 diet_long %>% 
@@ -184,7 +184,7 @@ One approach to analysing pre-post data is to compare the _change_ in symptom sc
 To calculate the change in severity score for each participant, it's simplest to use the wide format data since we can easily subtract scores in one column (`week3`) from another (`baseline`).
 
 
-```r
+``` r
 # using the wide format data
 # calculate the difference in baseline and week3 scores
 # store in a new column called 'change'
@@ -214,7 +214,7 @@ The column `change` now contains the change in symptom severity score from `base
 To compare the `change` scores between the two groups, use `anovaBF()`. The functions `lmBF()` or `ttestBF()` could also be used. They all give equivalent results because there are only two groups being compared.
 
 
-```r
+``` r
 # Convert the grouping variable 'group' to a factor
 diet <- 
   diet %>% 
@@ -239,7 +239,7 @@ anovaBF(change ~ group, data = data.frame(diet))
 <div class='webex-solution'><button>Alternatively with lmBF and ttest</button>
 
 
-```r
+``` r
 # lmBF(): between-subjects ANOVA
 lmBF(change ~ group, data = data.frame(diet)) 
 
@@ -287,7 +287,7 @@ Because one of the factors is manipulated within-subjects, we need to add `ppt` 
 As with repeated measures ANOVA in Session 6, the long format data needs to be used for the analysis.
 
 
-```r
+``` r
 # convert ppt and IVs to factors
 diet_long <- 
   diet_long %>% 
@@ -308,7 +308,7 @@ In this analysis, we are less interested in the main effects of `group` and `tim
 
 
 
-```r
+``` r
 # bf for the interaction
 bfs[4] / bfs[3]  
 ```
@@ -318,7 +318,7 @@ bfs[4] / bfs[3]
 The Bayes factor for the interaction should come out at around 2.25, but because `anovaBF()` calculates the BF using random sampling methods, your value may not match this exactly (note the large error associated with the BF in the output). For greater precision, it's possible to `recompute()` the Bayes factor with a greater number of random samples, e.g., 1,000,000 (note, this could take a short while):
 
 
-```r
+``` r
 # recompute bfs, but with a million iterations
 bfs_more <- recompute(bfs, 1000000)
 
@@ -345,7 +345,7 @@ Equivalently, the analysis can be conceptualised is a multiple regression of `we
 Note that because effects of `time` are not analysed in this approach, there is no repeated measures factor, and `ppt` does not need to be included as a random factor.
 
 
-```r
+``` r
 # The model with both group and baseline scores
 full <- lmBF(week3 ~ group + baseline, data = data.frame(diet))
 
@@ -378,7 +378,7 @@ full / baseline
 In Approach 3 R^2^ for the effect of `group` can be determined using methods from earlier sessions. The method is equivalent to obtaining R^2^ for the unique contribution of a predictor.
 
 
-```r
+``` r
 # ensure broom is loaded
 # library(broom) 
 
@@ -425,7 +425,7 @@ Re-plot the data, but with a horizontal line to indicate this criterion.
 
 
 
-```r
+``` r
 diet_long %>% 
   ggdotplot(x = "time", 
             y = "symptoms", 
@@ -482,7 +482,7 @@ https://raw.githubusercontent.com/chrisjberry/Teaching/master/7_diet_self_effica
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 # read in
 self_efficacy <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/7_diet_self_efficacy.csv')
 
@@ -558,7 +558,7 @@ Is there substantial evidence for an effect of the dietary intervention on self-
 <div class='webex-solution'><button>Solution - Approach 1</button>
 
 
-```r
+``` r
 # Approach 1 - difference
 self_efficacy <- 
   self_efficacy %>% 
@@ -583,7 +583,7 @@ ttestBF(self_efficacy$change[self_efficacy$group=="habitual_diet"],
 <div class='webex-solution'><button>Solution - Approach 2</button>
 
 
-```r
+``` r
 # Approach 2 - Mixed ANOVA
 
 # set factors
@@ -611,7 +611,7 @@ BFs2[4] / BFs2[3]
 <div class='webex-solution'><button>Solution - Approach 3</button>
 
 
-```r
+``` r
 # Approach 3 - ANCOVA
 
 # wide format
@@ -675,7 +675,7 @@ If RC > 1.96 (or RC < -1.96, depending on the way the difference is calculated),
 Thus, to calculate RC for each individual in the `diet_change` group:
 
 
-```r
+``` r
 # filter the data for the diet_change group only
 diet_change <-
   diet %>% filter(group == "diet_change")
@@ -712,7 +712,7 @@ diet_change %>% head()
 To see all the individuals who showed such a reduction:
 
 
-```r
+``` r
 improved_ppts <- diet_change %>% filter(RC < -1.96) 
 improved_ppts
 ```
@@ -741,7 +741,7 @@ improved_ppts
 All the data can be represented on a plot with bounds for reliable change as follows:
 
 
-```r
+``` r
 diet_change %>% 
   ggplot(aes(x = baseline, y = week3)) + 
   geom_point() +
@@ -773,7 +773,7 @@ The results obtained with RC index converge with those of the ANCOVA, and suppor
 <div class='webex-solution'><button>Habitual diet group</button>
 
 
-```r
+``` r
 # filter the data for the habitual_diet group only
 habitual_diet <-
   diet %>% filter(group == "habitual_diet")

@@ -60,7 +60,7 @@ If the outcome is **binary** (e.g., correct vs. incorrect), the model is called 
 Mixed models can be run using the `lme4` package (Bates et al., 2015).
 
 
-```r
+``` r
 # load lme4
 library(lme4)
 ```
@@ -81,7 +81,7 @@ The data is publicly avaialble via the Open Science Framework at https://osf.io/
 Load the data and store it in `rt_data`.
 
 
-```r
+``` r
 # load data from Brown (2021), located on OSF
 rt_data <- read_csv("https://osf.io/download/53wc4/")
 ```
@@ -90,7 +90,7 @@ rt_data <- read_csv("https://osf.io/download/53wc4/")
 Take a look at the first six rows of the data:
 
 
-```r
+``` r
 # preview the data using head()
 rt_data %>% head()
 ```
@@ -141,7 +141,7 @@ About the data in each column:
 A simple way to obtain the number of participants in long format data is as follows:
 
 
-```r
+``` r
 # n ppts
 # take rt_data, group_by ppt, then look at number of rows in tibble
 rt_data %>% 
@@ -153,7 +153,7 @@ rt_data %>%
  
 Likewise, for the number of items:
 
-```r
+``` r
 # n items
 # take rt_data, group_by item, then look at number of rows in tibble
 rt_data %>% 
@@ -315,7 +315,7 @@ As covered in the lecture, the first step is to specify the maximal (full) model
 
 
 
-```r
+``` r
 # Specify the full model and store in rt_full_model
 rt_full_model <- 
   lmer(RT ~ 1 + modality + (1 + modality|PID) + (1 + modality|stim), data = rt_data)
@@ -333,7 +333,7 @@ This "maximal" model for the data includes:
 For comparison, we need to specify the _reduced_ model, which is identical except it does not contain the fixed effect.  
 
 
-```r
+``` r
 # Specify the reduced model and store in rt_reduced_model
 rt_reduced_model <- lmer(RT ~ 1 + (1 + modality|PID) + (1 + modality|stim), data = rt_data)
 ```
@@ -342,7 +342,7 @@ rt_reduced_model <- lmer(RT ~ 1 + (1 + modality|PID) + (1 + modality|stim), data
 To compare the full and reduced models use `anova(model_1, model_2)`, that is,
 
 
-```r
+``` r
 # compare the reduced and full models
 anova(rt_reduced_model, rt_full_model)
 ```
@@ -363,7 +363,7 @@ anova(rt_reduced_model, rt_full_model)
 Now we know that we have evidence for the full model containing the fixed effect, we can look at it in detail:
 
 
-```r
+``` r
 # display results from the full model
 summary(rt_full_model)
 ```
@@ -462,7 +462,7 @@ Handily, this can be done for you automatically using the `allFit()` function in
  \
 
 
-```r
+``` r
 allFit(rt_full_model)
 ```
 
@@ -488,7 +488,7 @@ This will provide a list of the optimisers (e.g., `bobyqa`, `Nelder_Mead`) in `l
 An optimiser from this list can then be manually specified using `lmerControl` when running the model:
 
 
-```r
+``` r
 rt_full_model <- lmer(RT ~ 1 + modality + (1 + modality|PID) + (1 + modality|stim), 
                       data = rt_data,
                       control = lmerControl(optimizer = "bobyqa"))
@@ -513,7 +513,7 @@ Ideally, the random effects you include in the model should be psychologically p
 For learning purposes only, let's see for ourselves that each participant in the final model has their own estimate of the intercept and slope, using `coef()`
 
 
-```r
+``` r
 # get the random intercept and slope for each participant
 coef(rt_full_model)$PID %>% head()
 ```
@@ -536,7 +536,7 @@ coef(rt_full_model)$PID %>% head()
 See also the random intercepts and slopes for each item:
 
 
-```r
+``` r
 # get random intercept and slope for each stimulus
 coef(rt_full_model)$stim %>% head()
 ```
@@ -571,7 +571,7 @@ The `emmeans()` package can be used to obtain the means from the model for a fig
 Obtain the estimates of mean RT in the two modality conditions:
 
 
-```r
+``` r
 # load emmeans package
 library(emmeans)
 
@@ -586,7 +586,7 @@ If you get a warning that tells us that it can't calculate the degrees of freedo
 To see the EMMs:
 
 
-```r
+``` r
 emms
 ```
 
@@ -614,7 +614,7 @@ emms
 To create a figure showing these means in `ggplot()`:
 
 
-```r
+``` r
 # use emms, convert to tibble for ggplot, 
 # plot means and errorbars
 
@@ -643,7 +643,7 @@ These means in the figure are technically based on estimates of parameters from 
 For learning purposes only, let's compare what the means would have been when calculated in the traditional way (without accounting for the random effects).
 
 
-```r
+``` r
 # average RTs across participants in each condition
 # then work out the mean across participants
 rt_data %>% 
@@ -661,7 +661,7 @@ In this case, the means come out the same.
 Now see if the modality effect would be significant in a traditional paired _t_-test. Again, this is for learning purposes only - most LMMs would be more complex than only having a fixed factor with two levels!
 
 
-```r
+``` r
 Ms <- 
   rt_data %>% 
     group_by(PID, modality) %>% 
@@ -690,7 +690,7 @@ The analysis above was for a very simple scenario where the fixed factor had two
 Load the extended data from Brown (2021) at "https://osf.io/download/vkfzn/" and store in `rt_data_interaction`.
 
 
-```r
+``` r
 # load data with additional fixed factor
 rt_data_interaction <- read_csv("https://osf.io/download/vkfzn/") 
 ```
@@ -729,7 +729,7 @@ To specify the full model with the interaction between the two fixed factors:
 
 
 
-```r
+``` r
 # Specify the LMM with an interaction term
 rt_int.mod <- lmer(RT ~ 1 + modality + SNR + modality*SNR +
                      (1 + modality + SNR|stim) + (1 + modality + SNR|PID), 
@@ -752,7 +752,7 @@ The model failed to converge and is singular.
 Use `allFit()` from the `afex` package to see if another optimizer will work. 
 
 
-```r
+``` r
 # This code will take a while to run
 # as allFit() tries each different optimizer!
 allFit(rt_int.mod)
@@ -769,7 +769,7 @@ To help convergence, Brown (2021) removed components of the model relating to th
 Thus, their final model is:
 
 
-```r
+``` r
 rt_int.mod <- lmer(RT ~ 1 + modality + SNR + modality:SNR +
                      (0 + modality|stim) + (1|stim) + (1 + modality + SNR|PID), 
                    data = rt_data_interaction,
@@ -786,7 +786,7 @@ This model still doesn't converge here for us though!
 To help convergence, we'll try removing the ` + (0 + modality|stim)` term:
 
 
-```r
+``` r
 rt_int.mod <- lmer(RT ~ 1 + modality + SNR + modality:SNR +
                       (1|stim) + (1 + modality + SNR|PID), 
                    data = rt_data_interaction,
@@ -802,7 +802,7 @@ The model converges!
 Now we can look at the model results using `summary()`:
 
 
-```r
+``` r
 summary(rt_int.mod)
 ```
 
@@ -852,7 +852,7 @@ summary(rt_int.mod)
 It is possible to interpret the main effects and interaction by looking at the values of the coefficients (see Brown, 2021, p.14). An alternative way, however, is to obtain and then plot the EMMs of each condition:
 
 
-```r
+``` r
 # obtain the EMMs for each condition
 emms_interaction <- emmeans(rt_int.mod, ~modality*SNR)
 
@@ -875,7 +875,7 @@ emms_interaction
 Now plot the means using `ggplot()`:
 
 
-```r
+``` r
 # use ggplot to plot the emms as points, with line connectors, and errorbars
 as_tibble(emms_interaction) %>% 
   ggplot(aes(x = modality, y = emmean, color = SNR)) +

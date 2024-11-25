@@ -54,7 +54,7 @@ Read the data to R, and store in `pwb_data` (to stand for Psychological WellBein
 https://raw.githubusercontent.com/chrisjberry/Teaching/master/2_wellbeing_data.csv
 
 
-```r
+``` r
 # First ensure tidyverse is loaded, i.e., 'library(tidyverse)'
 
 # read in the data using read_csv(), store in pwb_data
@@ -66,7 +66,7 @@ pwb_data <- read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/mas
 Preview the data with `head()`:
 
 
-```r
+``` r
 pwb_data %>% head()
 ```
 
@@ -116,7 +116,7 @@ Outcome variables:
 There are a number of continuous variables in the dataset that we can visualise with density plots or histograms. We've done this individually, variable by variable in past worksheets. Here I'd like to show you a more advanced way of plotting. The code below  will create a density plot of every variable in a dataset that is numeric (continuous) in nature, using different facets:
 
 
-```r
+``` r
 # Plot density plots of all the numeric (continuous) variables
 # The code below:
 # -Keeps only the numeric columns in a data frame
@@ -145,7 +145,7 @@ With many variables being used in a multiple regression, it is good practice to 
 Obtain a correlation matrix of all of the numeric variables. Ensure the `corrr` package is loaded, then use `correlate()`:
 
 
-```r
+``` r
 # library(corrr) # ensure this is loaded
 
 # correlations of all numeric variables
@@ -189,7 +189,7 @@ Iani et al. (2019) wanted to explain variance in `wellbeing` (the outcome variab
 First, use `brooding` to predict `wellbeing`. Use `lm()` and `glance()` to obtain the R^2^ for the model, then use `lmBF()` to obtain the BF for the model. 
 
 
-```r
+``` r
 # specify the model in the step
 step1 <- lm(wellbeing ~ brooding, data = pwb_data)
 
@@ -237,7 +237,7 @@ Next, add `worry` to the model in Step 1, using `+ worry` and look at R^2^ again
 * whether there's evidence for a contribution of `worry` after controlling for `brooding`, by dividing the Bayes factor for the model in Step 2 by the BF for the model in Step 1
 
 
-```r
+``` r
 # specify the model in the step
 step2 <- lm(wellbeing ~ brooding + worry, data = pwb_data)
 
@@ -283,7 +283,7 @@ Did you know that R can function like a calculator too? Simply type the formula 
 
 Or use code in your script:
 
-```r
+``` r
 0.33 - 0.19
 ```
 
@@ -306,7 +306,7 @@ In reports and articles, you will often see the change in R^2^ written as $\Delt
 Next, add the variables associated with mindfulness to the model. The mindfulness measures are `observing`, `describing`, `acting`, `nonjudging`, and `nonreactivity`. Add these five variables to the model all in the same step. As before, note R^2^ for the model and the BF. To determine whether there's evidence for the addition of the mindfulness variables, compare the BF for the model in Step 3 and the BF of the model in Step 2.
 
 
-```r
+``` r
 # specify the model in the step
 step3 <- lm(wellbeing ~ brooding + worry + 
              observing + describing + acting + nonjudging + nonreactivity, 
@@ -363,7 +363,7 @@ The BF comparing the models in Steps 3 and 2 was BF = 34.59, indicating that the
 Next, add the variables associated with emotional intelligence to the model. The emotional intelligence variables are `attention`, `clarity`, and `repair`. These three variables are added to the model all in the same step. Once again, note R^2^ for the model and the BF. To determine whether there's evidence for the addition of the emotional intelligence variables, compare the BF for the model in Step 4 and the BF of the model in Step 3. 
 
 
-```r
+``` r
 # specify the model in step 4
 step4 <- lm(wellbeing ~ brooding + worry + 
               observing + describing + acting + nonjudging + nonreactivity + 
@@ -449,7 +449,7 @@ Rounding can sometimes be unclear when the last digit ends in a 5, and you are u
 If in doubt, it's better to round from the more precise value. For R^2^, this can be obtained as follows from the glance function:
 
 
-```r
+``` r
 # show R-squared to more decimal places, 
 # by calling value from function specifically
 glance(gad1)$r.squared
@@ -462,7 +462,7 @@ glance(gad1)$r.squared
 <div class='webex-solution'><button>Solution - code</button>
 
 
-```r
+``` r
 # specify the model in step 1, store in gad1
 gad1 <- lm(gad ~ brooding, data = pwb_data)
 
@@ -504,7 +504,7 @@ Next, add `worry` to the model, using `+ worry`. Look at R^2^ again and obtain t
 <div class='webex-solution'><button>Solution - code</button>
 
 
-```r
+``` r
 # specify the model in Step 2
 gad2 <- lm(gad ~ brooding + worry, data = pwb_data)
 
@@ -550,7 +550,7 @@ Add the variables associated with mindfulness to the model. The mindfulness meas
 
 
 
-```r
+``` r
 # specify the model in Step 3
 gad3 <- lm(gad ~ brooding + worry + 
               observing + describing + acting + 
@@ -600,7 +600,7 @@ Add the variables associated with emotional intelligence to the model. The emoti
 
 
 
-```r
+``` r
 # specify the model in Step 4
 gad4 <- lm(gad ~ brooding + worry + 
                   observing + describing + acting + nonjudging + nonreactivity + 
@@ -675,7 +675,7 @@ About the data:
 Inspect the distributions of the continuous variables: 
 
 
-```r
+``` r
 # Read in the data
 animal_data <- 
   read_csv('https://raw.githubusercontent.com/chrisjberry/Teaching/master/5_animal_data.csv')
@@ -706,7 +706,7 @@ animal_data %>%
 The code can be modified to obtain histograms of all of the categorical variables:
 
 
-```r
+``` r
 # Plot histograms of all the categorical vars (i.e. count data)
 # The code:
 # -Keeps only the character columns in the dataset
@@ -742,7 +742,7 @@ The scores on the `loneliness_pre` variable range from 3 to 9, so there are only
 The code below uses the `gridExtra` package to display two plots created with `ggplot()`. Each plot is stored in a separate variable `panel1` and `panel2`, then placed side-by-side using `grid.arrange()` from the `gridExtra` package:
 
 
-```r
+``` r
 # load library(gridExtra)
 # for displaying different plots on multiple panels
 library(gridExtra)
@@ -782,7 +782,7 @@ Using `geom_jitter()` instead of `geom_point()` means that the scores will be ra
 The next step isn't strictly necessary because the categorical variables are stored as character variables (i.e., `<chr>`), but it is good practice to convert the categorical variables to `factors` before the analysis.
 
 
-```r
+``` r
 # Convert categorical variables to factors
 # (remember, age is grouped, so is categorical here)
 animal_data <- 
@@ -824,7 +824,7 @@ The variables we want to control for can go into the model in the Step 1. Then w
 The number of participants is the same as the number of rows. One way of checking is as follows:
 
 
-```r
+``` r
 animal_data %>% count()
 ```
 
@@ -859,7 +859,7 @@ Run a regression to predict `mental_health_pre` from the covariates only. The co
 
 
 
-```r
+``` r
 # store model with covariates only
 step1_covariates <- 
   lm(mental_health_pre ~ gender + age + partner + species + loneliness_pre,
@@ -910,7 +910,7 @@ Run a regression to predict `mental_health_pre` from the covariates and `comfort
 
 
 
-```r
+``` r
 # covariates + comfort
 step2_full <- 
   lm(mental_health_pre ~ comfort + gender + age + partner + species + loneliness_pre, 
@@ -960,7 +960,7 @@ To compare the coefficients of predictor variables in a model, we need to compar
 To standardise all the numeric variables in the `pwb_data`:
 
 
-```r
+``` r
 # Store the result in std_pwb_data
 # Take pwb_data, pipe it to
 # mutate_if().
@@ -978,7 +978,7 @@ std_pwb_data <-
 Let's compare the mean and standard deviation before and after standardising the scores:
 
 
-```r
+``` r
 # use summarise() and across() to obtain 
 # the mean and sd of each column
 # see ?summarise()
@@ -1004,7 +1004,7 @@ std_pwb_data %>%
 Now re-run Step 4 (i.e., the final model) of the hierarchical regression in Iani et al. (2019), but with `std_pwb_data` instead of `pwb_data`:
 
 
-```r
+``` r
 # run the regression using standardised data
 std_step4 <- lm(wellbeing ~ brooding + worry + 
               observing + describing + acting + nonjudging + nonreactivity + 
@@ -1064,7 +1064,7 @@ Note, some of the beta coefficients differ slightly from those reported by Iani 
 The final model can be used to predict new data points (as in earlier sessions). For the model with continuous predictors:
 
 
-```r
+``` r
 # specify data for new ppt
 new_pwb <- tibble(  brooding = 6,
                     worry = 12,
@@ -1089,7 +1089,7 @@ The predicted value of wellbeing for the new participant in `new_pwb` is <input 
 For the model with categorical predictors:
 
 
-```r
+``` r
 # specify data for new ppt
 new_animal_dat <- tibble( comfort = 45,
                     gender = 'female',
@@ -1119,7 +1119,7 @@ The predicted value of `mental_health_pre` for the new participant in `new_anima
 As in earlier sessions, the residuals can be inspected in a plot of the predicted values vs. the residuals:
 
 
-```r
+``` r
 # scatterplot of the predicted outcome values vs. residuals
 augment(step4) %>% 
   ggplot(aes(x=.fitted, y=.resid)) + 
@@ -1129,7 +1129,7 @@ augment(step4) %>%
 We can also inspect the histogram of the residuals for normality:
 
 
-```r
+``` r
 # histogram of the residuals
 augment(step4) %>% 
   ggplot(aes(x=.resid)) + 
