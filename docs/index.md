@@ -53,7 +53,7 @@ These worksheets should be used in conjunction with the slides for each session.
 
 It also contains a link to the:
 
-- the [Analysis Assessment](#assessment2025) (50% of module grade)
+- the [Analysis Assessment](#assessment2025)
 
 - [FAQs](#faqs)
 

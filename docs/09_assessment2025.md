@@ -23,6 +23,6 @@ Answers to [FAQs](#faqs) are on the following page.
 \
 
 **Slides** for [Rmd support](slides/PSYC761_Rmd_Support.pptx)
-* **R Studio online** [Access here using University log-in](https://psyrstudio.plymouth.ac.uk/)
+**R Studio online** [Access here using University log-in](https://psyrstudio.plymouth.ac.uk/)
 
 

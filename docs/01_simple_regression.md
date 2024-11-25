@@ -141,7 +141,7 @@ mentalh %>%
 **Describe the relationship between screen time and anxiety evident in
 the scatterplot** (pick one option; green = correct):
 
-<div class='webex-radiogroup' id='radio_YUZOCRRLWL'><label><input type="radio" autocomplete="off" name="radio_YUZOCRRLWL" value=""></input> <span>Individuals with lower levels of screen time tend to have higher anxiety scores</span></label><label><input type="radio" autocomplete="off" name="radio_YUZOCRRLWL" value=""></input> <span>No association between screen time and anxiety scores is apparent</span></label><label><input type="radio" autocomplete="off" name="radio_YUZOCRRLWL" value="answer"></input> <span>Individuals with higher levels of screen time tend to have higher anxiety scores</span></label></div>
+<div class='webex-radiogroup' id='radio_KGLUBXXUOS'><label><input type="radio" autocomplete="off" name="radio_KGLUBXXUOS" value=""></input> <span>Individuals with lower levels of screen time tend to have higher anxiety scores</span></label><label><input type="radio" autocomplete="off" name="radio_KGLUBXXUOS" value=""></input> <span>No association between screen time and anxiety scores is apparent</span></label><label><input type="radio" autocomplete="off" name="radio_KGLUBXXUOS" value="answer"></input> <span>Individuals with higher levels of screen time tend to have higher anxiety scores</span></label></div>
 
 :::
 
@@ -196,7 +196,7 @@ simple1
 **The regression equation Predicted Outcome = a + b(Predictor) can
 therefore be written as what?**
 
-<div class='webex-radiogroup' id='radio_HTHQDHLIQF'><label><input type="radio" autocomplete="off" name="radio_HTHQDHLIQF" value=""></input> <span>Predicted screen time = 5.59 + 0.13(anxiety score)</span></label><label><input type="radio" autocomplete="off" name="radio_HTHQDHLIQF" value="answer"></input> <span>Predicted anxiety score = 5.59 + 0.13(screen time)</span></label><label><input type="radio" autocomplete="off" name="radio_HTHQDHLIQF" value=""></input> <span>Predicted
+<div class='webex-radiogroup' id='radio_PRVOHBLJCC'><label><input type="radio" autocomplete="off" name="radio_PRVOHBLJCC" value=""></input> <span>Predicted screen time = 5.59 + 0.13(anxiety score)</span></label><label><input type="radio" autocomplete="off" name="radio_PRVOHBLJCC" value="answer"></input> <span>Predicted anxiety score = 5.59 + 0.13(screen time)</span></label><label><input type="radio" autocomplete="off" name="radio_PRVOHBLJCC" value=""></input> <span>Predicted
 anxiety score = 0.13 + 5.59(screen time)</span></label></div>
 
 :::
@@ -586,9 +586,9 @@ mentalh %>%
 *Describe the relationship between age and screen time in the
 scatterplot* (pick one):
 
-<div class='webex-radiogroup' id='radio_SIEGGFDKOA'><label><input type="radio" autocomplete="off" name="radio_SIEGGFDKOA" value=""></input> <span>Older individuals tend to have higher screen time
-scores</span></label><label><input type="radio" autocomplete="off" name="radio_SIEGGFDKOA" value="answer"></input> <span>Older individuals tend to have lower screen time
-scores</span></label><label><input type="radio" autocomplete="off" name="radio_SIEGGFDKOA" value=""></input> <span>No association between age and screen time appears to be
+<div class='webex-radiogroup' id='radio_TBGPOHXTOP'><label><input type="radio" autocomplete="off" name="radio_TBGPOHXTOP" value=""></input> <span>Older individuals tend to have higher screen time
+scores</span></label><label><input type="radio" autocomplete="off" name="radio_TBGPOHXTOP" value="answer"></input> <span>Older individuals tend to have lower screen time
+scores</span></label><label><input type="radio" autocomplete="off" name="radio_TBGPOHXTOP" value=""></input> <span>No association between age and screen time appears to be
 present</span></label></div>
 
 
@@ -628,7 +628,7 @@ What is the value of the slope b (to two decimal places)?
 
 What is the regression equation?
 
-<div class='webex-radiogroup' id='radio_WCSVZYCEDS'><label><input type="radio" autocomplete="off" name="radio_WCSVZYCEDS" value="answer"></input> <span>Predicted screen time = 7.48 - 0.10(age)</span></label><label><input type="radio" autocomplete="off" name="radio_WCSVZYCEDS" value=""></input> <span>Predicted screen time = 0.10 - 7.48(age)</span></label><label><input type="radio" autocomplete="off" name="radio_WCSVZYCEDS" value=""></input> <span>Predicted screen time =
+<div class='webex-radiogroup' id='radio_BMRIDFHSQR'><label><input type="radio" autocomplete="off" name="radio_BMRIDFHSQR" value="answer"></input> <span>Predicted screen time = 7.48 - 0.10(age)</span></label><label><input type="radio" autocomplete="off" name="radio_BMRIDFHSQR" value=""></input> <span>Predicted screen time = 0.10 - 7.48(age)</span></label><label><input type="radio" autocomplete="off" name="radio_BMRIDFHSQR" value=""></input> <span>Predicted screen time =
 7.48 + 0.10(age)</span></label></div>
 
 
@@ -742,7 +742,7 @@ analysis).
 **6. On balance, does age seem to be a good predictor of a person's
 daily screen time use?**
 
-<div class='webex-radiogroup' id='radio_YXDGLNRXWG'><label><input type="radio" autocomplete="off" name="radio_YXDGLNRXWG" value=""></input> <span>No</span></label><label><input type="radio" autocomplete="off" name="radio_YXDGLNRXWG" value="answer"></input> <span>Yes</span></label><label><input type="radio" autocomplete="off" name="radio_YXDGLNRXWG" value=""></input> <span>Cannot determine</span></label></div>
+<div class='webex-radiogroup' id='radio_AFPWGQCIEW'><label><input type="radio" autocomplete="off" name="radio_AFPWGQCIEW" value=""></input> <span>No</span></label><label><input type="radio" autocomplete="off" name="radio_AFPWGQCIEW" value="answer"></input> <span>Yes</span></label><label><input type="radio" autocomplete="off" name="radio_AFPWGQCIEW" value=""></input> <span>Cannot determine</span></label></div>
 
 
 
