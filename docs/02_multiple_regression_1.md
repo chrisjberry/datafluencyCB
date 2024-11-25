@@ -2,7 +2,7 @@
 
 *Chris Berry*
 \
-*2024*
+*2025*
 
 
 
@@ -21,7 +21,8 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 \
 
 * **Slides** from the lecture part of the session: [Download](slides/PSYC761_L2_MultipleRegression1.pptx)
-
+* **R Studio online** [Access here using University log-in](https://psyrstudio.plymouth.ac.uk/)
+    
 \
 
 
@@ -31,7 +32,7 @@ This worksheet assumes you have gone through the previous one on [simple regress
 
 When we want to determine the extent to which an outcome variable (e.g., psychological wellbeing) is predicted by **multiple continuous predictors** (e.g., both *worry* **and** *mindfulness* scores), we can use **multiple regression**. 
 
-Adding multiple predictors to a model may serve to _improve_ the prediction of the outcome variable. It can also be a way to test specific theories or hypotheses.
+Having multiple predictors to a model may serve to _improve_ the prediction of the outcome variable. It can also be a way to test specific theories or hypotheses.
 
 \
 
@@ -173,6 +174,26 @@ wellbeing_data %>%
 * The correlation between `wellbeing` and `describing`  (to 2 decimal places) is _r_ = <input class='webex-solveme nospaces' size='4' data-answer='[".54","0.54"]'/>
 * The correlation between the two predictors (`worry` and `describing`)  (to 2 decimal places) is _r_ = <input class='webex-solveme nospaces' size='5' data-answer='["-.25","-0.25"]'/>
 
+
+
+<div class='webex-solution'><button>Alternative plot</button>
+
+The `describing` scores could alternatively be represented by the colour density of each point instead:
+
+
+```r
+wellbeing_data %>% 
+  ggplot(aes(x = worry, y = wellbeing, colour = describing)) +
+  geom_point(size = 5, alpha = 0.9)
+```
+
+<img src="02_multiple_regression_1_files/figure-html/unnamed-chunk-7-1.png" width="75%" style="display: block; margin: auto;" />
+
+
+
+</div>
+
+
 :::
 
 \
@@ -188,7 +209,7 @@ To include more than one predictor in a regression model, use the `+` symbol whe
 
 `lm(outcome ~ predictor_1 + predictor_2 + predictor_3.... , data = mydata)`
 
-This runs a model of the form:
+This specifies a model of the form:
 
 $Predicted \ outcome = a + b_1(Predictor \ 1) + b_2(Predictor \ 2) + b_3(Predictor \ 3) ...$ 
 
@@ -251,11 +272,11 @@ augment(multiple1) %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02_multiple_regression_1_files/figure-html/unnamed-chunk-8-1.png" alt="Scatterplot of the fitted (predicted) values vs. residuals" width="60%" />
-<p class="caption">(\#fig:unnamed-chunk-8)Scatterplot of the fitted (predicted) values vs. residuals</p>
+<img src="02_multiple_regression_1_files/figure-html/unnamed-chunk-9-1.png" alt="Scatterplot of the fitted (predicted) values vs. residuals" width="60%" />
+<p class="caption">(\#fig:unnamed-chunk-9)Scatterplot of the fitted (predicted) values vs. residuals</p>
 </div>
 
-The points seem randomly and evenly distributed around the horizontal, in line with assumptions of homoscedasticity (equal variance of residuals at each predicted value), and independence of residuals. 
+The points seem randomly and evenly distributed around the horizontal, in line with assumptions of homoscedasticity (equal variance of residuals at each predicted value), and independence of residuals. To add a (linear) trend line to the above, use `+ geom_smooth(method = "lm")`. The trend line is a flat line!
 
 \
 
@@ -272,7 +293,7 @@ The Bayes factor for a multiple regression model tells us how many more times li
 
 \
 
-Use `lmBF()` to obtain the Bayes Factor for the multiple regression model:
+Use `lmBF()` to obtain the Bayes factor for the multiple regression model:
 
 
 ```r
@@ -306,7 +327,7 @@ The Bayes factor for the model is <input class='webex-solveme nospaces' size='9'
 \
 
 :::{.tip}
-R^2^ tells us how much variance in the outcome variable is explained by the multiple regression model.
+As with simple regression, R^2^ is the proportion of variance in the outcome variable that is explained by the multiple regression model.
 :::
 
 \
@@ -320,40 +341,9 @@ glance(multiple1)
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> r.squared </th>
-   <th style="text-align:right;"> adj.r.squared </th>
-   <th style="text-align:right;"> sigma </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> df </th>
-   <th style="text-align:right;"> logLik </th>
-   <th style="text-align:right;"> AIC </th>
-   <th style="text-align:right;"> BIC </th>
-   <th style="text-align:right;"> deviance </th>
-   <th style="text-align:right;"> df.residual </th>
-   <th style="text-align:right;"> nobs </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 0.4653263 </td>
-   <td style="text-align:right;"> 0.4483526 </td>
-   <td style="text-align:right;"> 9.393314 </td>
-   <td style="text-align:right;"> 27.41444 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> -239.9547 </td>
-   <td style="text-align:right;"> 487.9093 </td>
-   <td style="text-align:right;"> 496.6679 </td>
-   <td style="text-align:right;"> 5558.763 </td>
-   <td style="text-align:right;"> 63 </td>
-   <td style="text-align:right;"> 66 </td>
-  </tr>
-</tbody>
-</table>
+| r.squared| adj.r.squared|    sigma| statistic| p.value| df|    logLik|      AIC|      BIC| deviance| df.residual| nobs|
+|---------:|-------------:|--------:|---------:|-------:|--:|---------:|--------:|--------:|--------:|-----------:|----:|
+| 0.4653263|     0.4483526| 9.393314|  27.41444|       0|  2| -239.9547| 487.9093| 496.6679| 5558.763|          63|   66|
 
 </div>
 
@@ -368,7 +358,7 @@ The adjusted R^2^ value is 0.4483, so in a report we could say that a model with
 ## Understanding the contribution of individual predictors
 
 :::{.tip}
-Because predictor variables are often correlated to a degree, some of the variance they explain in the outcome will be **shared**. A predictor's contribution to a model must therefore only be interpreted _after_ the other predictors in the model have been taken into account. This is explained in more detail below.
+Because predictor variables are often correlated to a degree, some of the variance they explain in the outcome will be **shared**. A predictor's contribution to a model must therefore only be interpreted _after_ the other predictors in the model have been taken into account. This is explored in more detail below.
 :::
 
 ### R^2^ in simple vs. multiple regression
@@ -384,40 +374,9 @@ glance(s1)
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> r.squared </th>
-   <th style="text-align:right;"> adj.r.squared </th>
-   <th style="text-align:right;"> sigma </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> df </th>
-   <th style="text-align:right;"> logLik </th>
-   <th style="text-align:right;"> AIC </th>
-   <th style="text-align:right;"> BIC </th>
-   <th style="text-align:right;"> deviance </th>
-   <th style="text-align:right;"> df.residual </th>
-   <th style="text-align:right;"> nobs </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 0.2936938 </td>
-   <td style="text-align:right;"> 0.2826578 </td>
-   <td style="text-align:right;"> 10.71152 </td>
-   <td style="text-align:right;"> 26.61226 </td>
-   <td style="text-align:right;"> 2.6e-06 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> -249.1416 </td>
-   <td style="text-align:right;"> 504.2832 </td>
-   <td style="text-align:right;"> 510.8522 </td>
-   <td style="text-align:right;"> 7343.15 </td>
-   <td style="text-align:right;"> 64 </td>
-   <td style="text-align:right;"> 66 </td>
-  </tr>
-</tbody>
-</table>
+| r.squared| adj.r.squared|    sigma| statistic| p.value| df|    logLik|      AIC|      BIC| deviance| df.residual| nobs|
+|---------:|-------------:|--------:|---------:|-------:|--:|---------:|--------:|--------:|--------:|-----------:|----:|
+| 0.2936938|     0.2826578| 10.71152|  26.61226| 2.6e-06|  1| -249.1416| 504.2832| 510.8522|  7343.15|          64|   66|
 
 </div>
 \
@@ -432,40 +391,9 @@ glance(s2)
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> r.squared </th>
-   <th style="text-align:right;"> adj.r.squared </th>
-   <th style="text-align:right;"> sigma </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> df </th>
-   <th style="text-align:right;"> logLik </th>
-   <th style="text-align:right;"> AIC </th>
-   <th style="text-align:right;"> BIC </th>
-   <th style="text-align:right;"> deviance </th>
-   <th style="text-align:right;"> df.residual </th>
-   <th style="text-align:right;"> nobs </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 0.286926 </td>
-   <td style="text-align:right;"> 0.2757842 </td>
-   <td style="text-align:right;"> 10.76272 </td>
-   <td style="text-align:right;"> 25.75226 </td>
-   <td style="text-align:right;"> 3.6e-06 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> -249.4563 </td>
-   <td style="text-align:right;"> 504.9126 </td>
-   <td style="text-align:right;"> 511.4816 </td>
-   <td style="text-align:right;"> 7413.512 </td>
-   <td style="text-align:right;"> 64 </td>
-   <td style="text-align:right;"> 66 </td>
-  </tr>
-</tbody>
-</table>
+| r.squared| adj.r.squared|    sigma| statistic| p.value| df|    logLik|      AIC|      BIC| deviance| df.residual| nobs|
+|---------:|-------------:|--------:|---------:|-------:|--:|---------:|--------:|--------:|--------:|-----------:|----:|
+|  0.286926|     0.2757842| 10.76272|  25.75226| 3.6e-06|  1| -249.4563| 504.9126| 511.4816| 7413.512|          64|   66|
 
 </div>
 
@@ -513,16 +441,16 @@ We'll now add `describing` to the model with `worry`. We could represent this on
 
 The correlation is represented as an *overlap* in the circles. Their total area (R^2^ for the multiple regression model = 46.56%) is _less_ than the area they'd explain if there were no overlap (58.06%). 
 
-**This highlights an important point**: Predictors are often correlated to some degree, so in multiple regression it only really makes sense to talk about the contribution a predictor makes _in the context of the other predictors in the model_. That is, a given predictor explains variance in the outcome variable only _after the other predictors in the model have been taken into account_. 
+**This highlights a crucial point**: Predictors are often correlated to some degree, so in multiple regression it only really makes sense to talk about the contribution a predictor makes _in the context of the other predictors in the model_. That is, **a given predictor explains variance in the outcome variable only _after the other predictors in the model have been taken into account_**. 
 
-Given that the **unique** contributions of `worry` and `describing` are lower in a multiple regression model, we must ask whether there's evidence that each predictor makes a unique contribution, over an above the other predictor. For example, is there sufficient evidence for a unique contribution of `worry`, once `describing` has been taken into account? If not, we probably wouldn't include it in the model. 
+Given that the **unique** contributions of `worry` and `describing` are lower in a multiple regression model, we must ask whether there's evidence that each predictor makes a unique contribution, over and above the other predictor. For example, is there sufficient evidence for a unique contribution of `worry`, once `describing` has been taken into account? If not, we probably wouldn't include it in the model. 
 
 \
 
 ### Using Bayes factors to assess the unique contribution of predictors
 
 :::{.tip}
-We can compare Bayes factors to determine whether a given predictor in a multiple regression model makes a unique contribution to the prediction of the outcome variable.
+We can compare Bayes factors of models to determine whether a given predictor in a multiple regression model makes a unique contribution to the prediction of the outcome variable.
 :::
 
 \
@@ -560,7 +488,7 @@ We can use the following general formula to determine whether there's evidence f
 
 `BF_more_complex_model / BF_simpler_model`
 
-That is, we divide the BF for the more complex model by the BF for the simpler one. This then tells us _how many more times more likely the more complex model is, relative to the simpler one._
+That is, we take the BF for the more complex model and divide it by the BF for the simpler one. This then tells us _how many more times more likely the more complex model is, relative to the simpler one._
 
 For example, if `BF_more_complex_model = 10` and `BF_simpler_model = 2`, then the more complex model is five times more likely than the simpler one (because 10 / 2 = 5). There'd be substantial evidence to prefer the more complex model.
 
@@ -568,7 +496,7 @@ For example, if `BF_more_complex_model = 10` and `BF_simpler_model = 2`, then th
 
 \
 
-In our case, we can compare Bayes factor of the full model (`worry_describing_BF`) with that of our simpler models (`describing_BF`) and (`worry_BF`) in order to determine whether each predictor makes a unique contribution to the full model or not.
+In our case, we can compare the Bayes factor of the full model (`worry_describing_BF`) with that of our simpler models (`describing_BF`) and (`worry_BF`) in order to determine whether each predictor makes a unique contribution to the full model or not.
 
 \
 
@@ -628,7 +556,7 @@ Thus, in a multiple regression model, there's substantial evidence that both `wo
 
 
 :::{.tip}
-If the correlation between predictors is very high (greater than _r_ = 0.8 or less than -0.8), this is known as **multicollinearity**. 
+If the correlation between predictors is very extreme (greater than _r_ = 0.8 or less than -0.8), this is known as **multicollinearity**. 
 :::
 
 \
@@ -699,8 +627,8 @@ wellbeing_data %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02_multiple_regression_1_files/figure-html/unnamed-chunk-17-1.png" alt="GAD vs. brooding and observing scores" width="50%" />
-<p class="caption">(\#fig:unnamed-chunk-17)GAD vs. brooding and observing scores</p>
+<img src="02_multiple_regression_1_files/figure-html/unnamed-chunk-18-1.png" alt="GAD vs. brooding and observing scores" width="50%" />
+<p class="caption">(\#fig:unnamed-chunk-18)GAD vs. brooding and observing scores</p>
 </div>
 
 In the scatterplot, `observing` could have also been swapped around with `brooding`. Try both ways.
@@ -789,7 +717,7 @@ What is the value of the coefficient for `observing` (to two decimal places)? <i
 
 What is the regression equation?
 
-<div class='webex-radiogroup' id='radio_HOZUNNOUWR'><label><input type="radio" autocomplete="off" name="radio_HOZUNNOUWR" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_HOZUNNOUWR" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_HOZUNNOUWR" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label></div>
+<div class='webex-radiogroup' id='radio_BSSBOVCFKM'><label><input type="radio" autocomplete="off" name="radio_BSSBOVCFKM" value=""></input> <span>Predicted GAD score = 0.07 - 0.89(brooding) + 0.02(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_BSSBOVCFKM" value=""></input> <span>Predicted GAD score = 0.07 + 0.02(brooding) - 0.89(observing)</span></label><label><input type="radio" autocomplete="off" name="radio_BSSBOVCFKM" value="answer"></input> <span>Predicted GAD score = 0.07 + 0.89(brooding) - 0.02(observing)</span></label></div>
 
 
 
@@ -815,7 +743,7 @@ glance(multiple2)
 </div>
 
 
-What proportion of variance in the GAD score is explained by the model containing `brooding` and `observing`? (Report the adjusted R-squared value as a proportion, to two decimal places) <input class='webex-solveme nospaces' size='4' data-answer='["0.34",".34"]'/>
+What proportion of variance in the GAD score is explained by the model containing `brooding` and `observing`? (Report the adjusted R-squared value as a proportion, to two decimal places) <input class='webex-solveme nospaces' size='4' data-answer='["0.34",".34","0.35",".35"]'/>
 
 Report the value of adjusted R-squared as a percentage, to two decimal places. Hint: multiply the proportion given in the output by 100 to obtain the percentage value. The adjusted R^2^ value is equal to <input class='webex-solveme nospaces' size='5' data-answer='["34.50"]'/>%
 
@@ -1096,22 +1024,9 @@ augment(multiple1, newdata = new_scores)
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> worry </th>
-   <th style="text-align:right;"> describing </th>
-   <th style="text-align:right;"> .fitted </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 15 </td>
-   <td style="text-align:right;"> 74.03992 </td>
-  </tr>
-</tbody>
-</table>
+| worry| describing|  .fitted|
+|-----:|----------:|--------:|
+|    20|         15| 74.03992|
 
 </div>
 
@@ -1133,27 +1048,10 @@ augment(multiple1, newdata = new_scores)
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> worry </th>
-   <th style="text-align:right;"> describing </th>
-   <th style="text-align:right;"> .fitted </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 15 </td>
-   <td style="text-align:right;"> 74.03992 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 25 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 63.94410 </td>
-  </tr>
-</tbody>
-</table>
+| worry| describing|  .fitted|
+|-----:|----------:|--------:|
+|    20|         15| 74.03992|
+|    25|         10| 63.94410|
 
 </div>
 
@@ -1306,6 +1204,68 @@ all_BFs[7] / all_BFs[4]
 :::
 
 \
+
+## Going further: _p_-values
+
+
+<div class='webex-solution'><button>_p_-values</button>
+ 
+
+As with simple regression, `summary(model_name)` can be used to obtain the results of the frequentist regression analyses. For the first model above:
+
+
+```r
+summary(multiple1)
+```
+
+```
+## 
+## Call:
+## lm(formula = wellbeing ~ worry + describing, data = wellbeing_data)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -18.8160  -5.0883  -0.9689   5.3367  23.7387 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  70.7306     7.6065   9.299 1.98e-13 ***
+## worry        -0.7708     0.1681  -4.585 2.21e-05 ***
+## describing    1.2484     0.2776   4.497 3.02e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 9.393 on 63 degrees of freedom
+## Multiple R-squared:  0.4653,	Adjusted R-squared:  0.4484 
+## F-statistic: 27.41 on 2 and 63 DF,  p-value: 2.721e-09
+```
+The *t*-tests on the coefficients in a multiple regression assess the **unique** contribution of each predictor in the model. That is, they test the variance a predictor explains in an outcome variable, **after** the variance explained by the other predictors has been taken into account.
+
+The _F_-statistic tests whether the variance explained by the model as a whole is statistically significant or not. 
+
+:::{.tip}
+
+It is possible to think of the _F_-statistic and _t_-value in multiple regression in terms of the Venn diagram:
+
+- The **_F_-statistic** compares the explained variance with the unexplained variance. The explained variance is represented by the **_outline_** of the two circles in the Venn diagram above. The unexplained variance is the remaining blue area of the rectangle.
+
+- The **_t_-value** compares the unique variance a predictor explains with the remaining unexplained variance. For example, for `project` in the Venn diagram above, this would be the area in the orange **_crescent_**, relative to the remaining blue area in the rectangle.
+
+:::
+
+\
+
+As with simple regression, the Bayes factors can be reported with the frequentist analyses as follows:
+
+"Together, worry and describing explain 44.83% of the variance in wellbeing scores (adjusted R^2^), and there was strong evidence for this model, compared to an intercept only model, _F_(2,63) = 27.41, _p_ < .001, BF~10~ = 4,190,994. There's also substantial evidence that worry, _b_ = -0.77, _t_(63) = -4.59, _p_ < .001, BF~10~ = 981.49 and describing, _b_ = 1.25, _t_(63) = 4.50, _p_ < .001, BF~10~ = 738.41 make unique contributions to this model. The sign on the coefficients indicate that greater worry is associated with lower wellbeing. Greater mindfulness (describing) is associated with greater wellbeing."
+
+
+
+</div>
+
+
+\
+
 
 ## Summary of key points
 

@@ -2,7 +2,7 @@
 
 *Chris Berry*
 \
-*2024*
+*2025*
 
 
 
@@ -24,6 +24,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 ## Overview
 
 * **Slides** from the lecture part of the session: [Download](slides/PSYC761_L3_ANOVA_1.pptx)
+* **R Studio online** [Access here using University log-in](https://psyrstudio.plymouth.ac.uk/)
 
 \
 
@@ -293,7 +294,38 @@ To see more types of plot: `help(package = ggpubr)`
 </div>
 
 
-\
+
+<div class='webex-solution'><button>The same plot in ggplot()</button>
+
+
+It is of course possible to create the same figure using `ggplot`:
+
+
+```r
+# pipe data to ggplot
+# use stat_summary() to plot the mean
+# and again to plot errorbars
+affect_data %>% 
+  ggplot(aes(x=group,y=score))+
+  stat_summary(fun="mean") +
+  stat_summary(fun.data = mean_se, geom = "errorbar") +
+  theme_classic()
+```
+
+```
+## Warning: Removed 3 rows containing missing values or values outside the scale range
+## (`geom_segment()`).
+```
+
+<div class="figure" style="text-align: center">
+<img src="03_anova_between_subjects_files/figure-html/unnamed-chunk-8-1.png" alt="Mean change in STAI score across aesthetic value groups (error bars indicate SE)" width="75%" />
+<p class="caption">(\#fig:unnamed-chunk-8)Mean change in STAI score across aesthetic value groups (error bars indicate SE)</p>
+</div>
+
+
+
+</div>
+
 
 ### Descriptives: Mean of each group
 
@@ -698,8 +730,8 @@ resilience_data %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03_anova_between_subjects_files/figure-html/unnamed-chunk-19-1.png" alt="Density plots showing distress scores in each group)" width="75%" />
-<p class="caption">(\#fig:unnamed-chunk-19)Density plots showing distress scores in each group)</p>
+<img src="03_anova_between_subjects_files/figure-html/unnamed-chunk-20-1.png" alt="Density plots showing distress scores in each group)" width="75%" />
+<p class="caption">(\#fig:unnamed-chunk-20)Density plots showing distress scores in each group)</p>
 </div>
 **Interpretation:** The data in each group appear positively skewed - the tail of the distribution goes towards the right (i.e., towards more positive values of distress). Beutel et al. (2017) took no further action and analysed the scores as they were.
 
@@ -725,9 +757,38 @@ resilience_data %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03_anova_between_subjects_files/figure-html/unnamed-chunk-20-1.png" alt="Distress as a function of adversity and resilience (error bars indicate SE of the mean)" width="75%" />
-<p class="caption">(\#fig:unnamed-chunk-20)Distress as a function of adversity and resilience (error bars indicate SE of the mean)</p>
+<img src="03_anova_between_subjects_files/figure-html/unnamed-chunk-21-1.png" alt="Distress as a function of adversity and resilience (error bars indicate SE of the mean)" width="75%" />
+<p class="caption">(\#fig:unnamed-chunk-21)Distress as a function of adversity and resilience (error bars indicate SE of the mean)</p>
 </div>
+
+\
+
+
+<div class='webex-solution'><button>Same plot using ggplot</button>
+
+
+
+```r
+resilience_data %>% 
+  ggplot(aes(x=resilience,y=distress,color=adversity))+
+  stat_summary(fun.data = mean_se,geom = "errorbar", position = position_dodge(width=0.5))+
+  stat_summary(fun="mean",  position = position_dodge(width=0.5)) +
+  theme_classic()
+```
+
+```
+## Warning: Removed 4 rows containing missing values or values outside the scale range
+## (`geom_segment()`).
+```
+
+<div class="figure" style="text-align: center">
+<img src="03_anova_between_subjects_files/figure-html/unnamed-chunk-22-1.png" alt="Distress as a function of adversity and resilience (error bars indicate SE of the mean)" width="75%" />
+<p class="caption">(\#fig:unnamed-chunk-22)Distress as a function of adversity and resilience (error bars indicate SE of the mean)</p>
+</div>
+
+
+</div>
+
 
 \
 
@@ -780,8 +841,8 @@ anova2x2_BF
 ## --------------
 ## [1] resilience                                    : 1.822053e+27 ±0%
 ## [2] adversity                                     : 7.870878e+25 ±0%
-## [3] resilience + adversity                        : 3.29781e+46  ±1.46%
-## [4] resilience + adversity + resilience:adversity : 3.243508e+49 ±1.02%
+## [3] resilience + adversity                        : 3.303448e+46 ±1.35%
+## [4] resilience + adversity + resilience:adversity : 3.18965e+49  ±4.21%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -819,7 +880,7 @@ anova2x2_BF[4] / anova2x2_BF[3]
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] resilience + adversity + resilience:adversity : 983.534 ±1.78%
+## [1] resilience + adversity + resilience:adversity : 965.5518 ±4.42%
 ## 
 ## Against denominator:
 ##   distress ~ resilience + adversity 

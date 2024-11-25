@@ -2,7 +2,7 @@
 
 *Chris Berry*
 \
-*2024*
+*2025*
 
 
 
@@ -18,10 +18,12 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 ## Overview
 
 * **Slides** from the lecture part of the session: [Download](slides/PSYC761_L5_MultipleRegression3.pptx)
+* **Slides** for [Rmd support](slides/PSYC761_Rmd_Support.pptx)
+* **R Studio online** [Access here using University log-in](https://psyrstudio.plymouth.ac.uk/)
 
 \
 
-**Hierarchical regression** is a form of multiple regression analysis and can be used when we want to add predictor variables to a model in discrete steps or stages. The technique allows the unique contribution of the variables on each step to be separately determined.
+**Hierarchical regression** is another form of multiple regression analysis and can be used when we want to add predictor variables to a model in discrete steps or stages. The technique allows the unique contribution of the variables on each step to be separately determined.
 
 We can use it when we want to know whether a predictor variable (e.g., `sense_of_belonging`) predicts an outcome (e.g., `social_interaction`) after controlling for background variables that are categorical (e.g., `gender`, `level of education`) or continuous (e.g., `age`, `score on a cognitive test`) in nature. The variables entered on each step can also be determined by theoretical considerations, to test specific hypotheses.
 
@@ -436,7 +438,7 @@ Repeat the analysis conducted above, but now with `gad` as the outcome variable.
 
 **Step 1: brooding**
 
-* The R^2^ (non-adjusted, to two decimal places) for the model in Step 1 = <input class='webex-solveme nospaces' data-tol='0.01' size='4' data-answer='["0.36",".36"]'/>
+* The R^2^ (non-adjusted, to two decimal places) for the model in Step 1 = <input class='webex-solveme nospaces' data-tol='0.011' size='4' data-answer='["0.36",".36"]'/>
 * The BF for the model in Step 1 = <input class='webex-solveme nospaces' data-tol='0.5' size='8' data-answer='["138455.1"]'/>
 
 
@@ -1080,7 +1082,7 @@ new_pwb <- tibble(  brooding = 6,
 augment(step4, newdata = new_pwb)
 ```
 
-The predicted value of wellbeing for the new participant in `new_pwb` is <input class='webex-solveme nospaces' size='5' data-answer='["73.29"]'/>.
+The predicted value of wellbeing for the new participant in `new_pwb` is <input class='webex-solveme nospaces' size='73.30' data-answer='["73.29"]'/>.
 
 \
 

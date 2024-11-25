@@ -7,7 +7,7 @@ editor_options:
 # Simple Regression {#simple1}
 
 *Chris Berry*\
-*2024*
+*2025*
 
 
 
@@ -87,6 +87,9 @@ association between **anxiety** and daily hours of **screen time**
 Read in the data from their study to R and store in `mentalh`. The data
 are located at
 <https://raw.githubusercontent.com/chrisjberry/Teaching/master/1_mental_health_data.csv>.
+
+\
+
 Type or copy-paste the code to R Studio (e.g., in an Rmd file) to keep a
 record for your studies.
 
@@ -136,9 +139,9 @@ mentalh %>%
 
 ::: exercise
 **Describe the relationship between screen time and anxiety evident in
-the scatterplot** (pick one; green = correct):
+the scatterplot** (pick one option; green = correct):
 
-<div class='webex-radiogroup' id='radio_THETYSQXCP'><label><input type="radio" autocomplete="off" name="radio_THETYSQXCP" value=""></input> <span>Individuals with lower levels of screen time tend to have higher anxiety scores</span></label><label><input type="radio" autocomplete="off" name="radio_THETYSQXCP" value=""></input> <span>No association between screen time and anxiety scores is apparent</span></label><label><input type="radio" autocomplete="off" name="radio_THETYSQXCP" value="answer"></input> <span>Individuals with higher levels of screen time tend to have higher anxiety scores</span></label></div>
+<div class='webex-radiogroup' id='radio_LJGWALTMZR'><label><input type="radio" autocomplete="off" name="radio_LJGWALTMZR" value=""></input> <span>Individuals with lower levels of screen time tend to have higher anxiety scores</span></label><label><input type="radio" autocomplete="off" name="radio_LJGWALTMZR" value=""></input> <span>No association between screen time and anxiety scores is apparent</span></label><label><input type="radio" autocomplete="off" name="radio_LJGWALTMZR" value="answer"></input> <span>Individuals with higher levels of screen time tend to have higher anxiety scores</span></label></div>
 
 :::
 
@@ -193,7 +196,7 @@ simple1
 **The regression equation Predicted Outcome = a + b(Predictor) can
 therefore be written as what?**
 
-<div class='webex-radiogroup' id='radio_LZBERXTEPR'><label><input type="radio" autocomplete="off" name="radio_LZBERXTEPR" value=""></input> <span>Predicted screen time = 5.59 + 0.13(anxiety score)</span></label><label><input type="radio" autocomplete="off" name="radio_LZBERXTEPR" value="answer"></input> <span>Predicted anxiety score = 5.59 + 0.13(screen time)</span></label><label><input type="radio" autocomplete="off" name="radio_LZBERXTEPR" value=""></input> <span>Predicted
+<div class='webex-radiogroup' id='radio_UGBAXVMOOD'><label><input type="radio" autocomplete="off" name="radio_UGBAXVMOOD" value=""></input> <span>Predicted screen time = 5.59 + 0.13(anxiety score)</span></label><label><input type="radio" autocomplete="off" name="radio_UGBAXVMOOD" value="answer"></input> <span>Predicted anxiety score = 5.59 + 0.13(screen time)</span></label><label><input type="radio" autocomplete="off" name="radio_UGBAXVMOOD" value=""></input> <span>Predicted
 anxiety score = 0.13 + 5.59(screen time)</span></label></div>
 
 :::
@@ -277,7 +280,7 @@ The **residual** for a given datapoint is its vertical distance from the
 regression line. It is the **error** in prediction of the outcome
 variable for that datapoint.
 
-**Residual = Observed - Predicted**
+**Residual = Observed Score - Predicted Score**
 
 or
 
@@ -289,7 +292,7 @@ where $Y$ is the observed data point, and $\hat{Y}$ is the predicted data point.
 \
 
 To view the residuals, again use the `augment()` function in the `broom`
-package (this time without including `newdata`). The residual for each
+package, this time without including `newdata`. The residual for each
 observation is given in the column `.resid`
 
 
@@ -335,8 +338,12 @@ the observed value of `anxiety_score`.
 \
 
 An assumption underlying regression is that the residuals are like
-random noise. When we plot the *residual* against the *predicted
-values*, there should be no trend evident in the datapoints in the plot.
+random noise. More specifically, the residuals are assumed to be normally distributed with a mean of zero, and not correlated with one another. 
+
+\
+
+When we plot the *residual* against the *predicted
+values*, there should also be no trend evident in the datapoints in the plot.
 We can use this plot for checking this assumption of regression.
 
 
@@ -391,7 +398,7 @@ augment(simple1) %>%
 <img src="01_simple_regression_files/figure-html/unnamed-chunk-11-1.png" alt="Histogram of the residuals" width="50%" />
 <p class="caption">(\#fig:unnamed-chunk-11)Histogram of the residuals</p>
 </div>
-**Explanation**: Inspection of the histogram of residuals reveals that the distribution is approximately normal. 
+**Explanation**: Inspection of the histogram of residuals reveals that the distribution is approximately normal, satisfying this assumption. 
 
 \
 
@@ -430,7 +437,7 @@ The column `r.squared` contains R^2^ for the model, and is equal to
 psychological research, this is a relatively small amount of variance to
 explain with a model. It may still be meaningful in some contexts though
 (e.g., where it may be better to have a model with some predictive power
-rather than none at all).
+rather than none at all, or if a theory predicts a presence vs. absence of a relation).
 
 In simple regression, R^2^ is actually the squared value of the Pearson
 correlation (*r*) between the outcome and predictor variable:
@@ -440,7 +447,7 @@ correlation (*r*) between the outcome and predictor variable:
 # load corrr package
 library(corrr)
 
-# calculate the Pearson correlation r between screen_time and anxiety_score
+# obtain the Pearson correlation r between screen_time and anxiety_score
 mentalh %>% 
   select(screen_time, anxiety_score) %>% 
   correlate(method = "pearson")
@@ -479,7 +486,7 @@ zero), and the predictor does not predict the outcome at all.
 
 \
 
-To compute the Bayes factor, we use `lmBF()` in the `BayesFactor`
+To obtain the Bayes factor, use `lmBF()` in the `BayesFactor`
 package:
 
 
@@ -522,8 +529,8 @@ reported greater levels of screen time also tended to have greater
 anxiety scores. The regression equation was "Predicted anxiety score =
 5.59 + 0.13(screen time)", indicating that every hour of screen time use
 was associated with an increase in 0.13 in the anxiety score. Screen
-time explained 1.30% of the variance in anxiety score (adjusted R^2^
-value). The Bayes factor, comparing the model against an intercept-only
+time explained only a small proportion of the variance in anxiety score, adjusted R^2^
+value = 1.30%. The Bayes factor, comparing the model against an intercept-only
 model, was BF ~10~ = 4.47, indicating moderate evidence for the model, with it
 being over four times more likely than an intercept-only model.
 :::
@@ -579,9 +586,9 @@ mentalh %>%
 *Describe the relationship between age and screen time in the
 scatterplot* (pick one):
 
-<div class='webex-radiogroup' id='radio_GOOZTLWETM'><label><input type="radio" autocomplete="off" name="radio_GOOZTLWETM" value=""></input> <span>Older individuals tend to have higher screen time
-scores</span></label><label><input type="radio" autocomplete="off" name="radio_GOOZTLWETM" value="answer"></input> <span>Older individuals tend to have lower screen time
-scores</span></label><label><input type="radio" autocomplete="off" name="radio_GOOZTLWETM" value=""></input> <span>No association between age and screen time appears to be
+<div class='webex-radiogroup' id='radio_KKNIZDHJDE'><label><input type="radio" autocomplete="off" name="radio_KKNIZDHJDE" value=""></input> <span>Older individuals tend to have higher screen time
+scores</span></label><label><input type="radio" autocomplete="off" name="radio_KKNIZDHJDE" value="answer"></input> <span>Older individuals tend to have lower screen time
+scores</span></label><label><input type="radio" autocomplete="off" name="radio_KKNIZDHJDE" value=""></input> <span>No association between age and screen time appears to be
 present</span></label></div>
 
 
@@ -621,7 +628,7 @@ What is the value of the slope b (to two decimal places)?
 
 What is the regression equation?
 
-<div class='webex-radiogroup' id='radio_SWJRESDQUU'><label><input type="radio" autocomplete="off" name="radio_SWJRESDQUU" value="answer"></input> <span>Predicted screen time = 7.48 - 0.10(age)</span></label><label><input type="radio" autocomplete="off" name="radio_SWJRESDQUU" value=""></input> <span>Predicted screen time = 0.10 - 7.48(age)</span></label><label><input type="radio" autocomplete="off" name="radio_SWJRESDQUU" value=""></input> <span>Predicted screen time =
+<div class='webex-radiogroup' id='radio_SSRFXOLPGE'><label><input type="radio" autocomplete="off" name="radio_SSRFXOLPGE" value="answer"></input> <span>Predicted screen time = 7.48 - 0.10(age)</span></label><label><input type="radio" autocomplete="off" name="radio_SSRFXOLPGE" value=""></input> <span>Predicted screen time = 0.10 - 7.48(age)</span></label><label><input type="radio" autocomplete="off" name="radio_SSRFXOLPGE" value=""></input> <span>Predicted screen time =
 7.48 + 0.10(age)</span></label></div>
 
 
@@ -735,7 +742,7 @@ analysis).
 **6. On balance, does age seem to be a good predictor of a person's
 daily screen time use?**
 
-<div class='webex-radiogroup' id='radio_SUOWHGNFOQ'><label><input type="radio" autocomplete="off" name="radio_SUOWHGNFOQ" value=""></input> <span>No</span></label><label><input type="radio" autocomplete="off" name="radio_SUOWHGNFOQ" value="answer"></input> <span>Yes</span></label><label><input type="radio" autocomplete="off" name="radio_SUOWHGNFOQ" value=""></input> <span>Cannot determine</span></label></div>
+<div class='webex-radiogroup' id='radio_CZEMBAXEYZ'><label><input type="radio" autocomplete="off" name="radio_CZEMBAXEYZ" value=""></input> <span>No</span></label><label><input type="radio" autocomplete="off" name="radio_CZEMBAXEYZ" value="answer"></input> <span>Yes</span></label><label><input type="radio" autocomplete="off" name="radio_CZEMBAXEYZ" value=""></input> <span>Cannot determine</span></label></div>
 
 
 
@@ -848,6 +855,85 @@ Hrafnkelsdottir et al., 2018).
 :::
 
 \
+
+## Going further: _p_-values
+
+An additional resource on using _p_-values in regression if you are curious (e.g., for your projects):
+
+
+<div class='webex-solution'><button>_p_-values</button>
+ 
+
+In keeping with our undergraduate curriculum, Bayes factors have been used as the main method of statistical inference here. 
+
+Frequentist methods of statistical inference, which rely on _p_-values, are still widely used in the psychological research literature, however.
+
+To obtain the _p_-values for a simple regression, use `summary(model_name)`. For the first simple regression in the worksheet:
+
+
+```r
+# obtain the p-values for the simple regression
+summary(simple1)
+```
+
+```
+## 
+## Call:
+## lm(formula = anxiety_score ~ screen_time, data = mentalh)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -7.5103 -2.7076 -0.1194  2.0782 13.0500 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  5.59230    0.23757  23.540  < 2e-16 ***
+## screen_time  0.13178    0.04683   2.814  0.00507 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 3.512 on 526 degrees of freedom
+## Multiple R-squared:  0.01483,	Adjusted R-squared:  0.01296 
+## F-statistic:  7.92 on 1 and 526 DF,  p-value: 0.005071
+```
+\
+
+**Explanation of the output**:
+
+\
+**`Residuals:`** provides an indication of the discrepancy between the values of `anxiety_score` predicted by the model (i.e., the regression equation) and the actual values of `anxiety_score`. Roughly speaking, if the model does a good job in predicting `anxiety_score`,  the residuals should be relatively small.
+
+  - The difference between `Min` and `Max` gives us some idea of the range of error in the prediction of `anxiety_Scores` scores. The difference in `3Q` and `1Q` is the interquartile range. The `median` of the residuals is -0.12.
+
+\
+**`Coefficients:`** contains tests of statistical significance for each of the coefficients. The values in the column headed `Pr(>|t|)` are the _p_-values associated with the _t_-values for the coefficients for each predictor. The _t_-values test a null hypothesis that the coefficients are equal to zero. A _p_-value less than .05 indicates that a predictor is statistically significant. More specifically, it is the probability of obtaining a _t_-statistic at least as extreme as the one observed, if the null hypothesis is true.
+
+  - The row for the `(intercept)` reports a _t_-test for whether the value of the intercept differs from zero. We're not usually interested in this test (so wouldn't report it). 
+
+  - The row for `screen_time` tests whether the value of its coefficient (0.13) differs from zero. A coefficient of zero would be expected if the predictor explained no variance in the outcome variable. The coefficient for `entrex` (0.13) is greater than zero in this case. We can report this by saying that `screen_time` is a statistically significant predictor of `anxiety_score`, _b_ = 0.13, _t_(526) = 2.81, _p_ < .01.
+
+\
+**`Multiple R-squared:`** This is $R^2$, which, as before, is the proportion of variance in `anxiety_score` explained by `screen_time`.  Here, $R^2$ = 0.0148, or 1.48%.
+
+\
+
+**`Adjusted R-squared:`** Again, this is an estimate of $R^2$, but adjusted for the population. Despite the usefulness of this statistic, most studies still tend to report only the (unadjusted) $R^2$ value. If reporting the `Adjusted R-squared` value, be sure to label it clearly as such. Here, Adjusted R-squared = 0.013, or 1.30%.
+
+\
+**`F-statistic:`** This compares the variance in `anxiety_score` explained by the model with the variance that it does not explain (i.e., explained variance divided by unexplained variance). Higher values of _F_ indicate that the model explains greater variance in an outcome variable. If the _p_-value associated with the _F_-statistic is less than .05, we can say that the model significantly predicts the outcome variable. 
+
+Hence, we can say that a model consisting of `screen_time` alone is a significant predictor of `anxiety_score`, _F_(1, 526) = 7.92, _p_ < .01. Higher `screen_time` scores tend to be associated with higher `anxiety_scores` scores. If our model did not explain any variance in `anxiety_score`, we wouldn't expect this to be statistically significant.
+
+  - In simple regression, the null hypothesis being tested on the _F_-statistic is that the slope of the regression line in the population is equal to zero. You'll notice that this is actually equivalent to the _t_-test on the `screen_time` coefficient. So in simple regression, report the _F_-statistic for the overall regression or the _t_-test on the coefficient (not both). This equivalence between _F_ and _t_ does not hold true for multiple regression, as we shall see later.
+  
+\
+  
+The results of the frequentist and Bayesian analyses can be reported together in an article, e.g., **"Hours of screen time significantly predicted anxiety score, _b_ = 0.13, _t_(526) = 2.81, _p_ < .01, BF~10~ = 4.47."** 
+
+
+
+</div>
+
 
 \
 

@@ -3,7 +3,7 @@
 
 *Chris Berry*
 \
-*2024*
+*2025*
 
 
 <!--
@@ -64,7 +64,24 @@ For any function in R, if you run `?function_name` in your code or at the consol
 
 ---
 
-<!--
+\
+
+## How do I import a data file to R Studio?
+
+Your data file should be in a suitable format (e.g., ".csv").
+
+In the "Files" panel (lower right window in R Studio online), click "Upload".
+
+Choose the file to upload. 
+
+It will then appear in the Files panel of R Studio online. 
+
+Tip: In some cases, zipping a file prior to uploading it can prevent errors. 
+
+\
+
+---
+
 
 \
 
@@ -72,7 +89,7 @@ For any function in R, if you run `?function_name` in your code or at the consol
 
 My guidance is to write this up in a similar style to that of a results section in an article, but you will obviously want to provide a bit of context to your analysis so you can explain what you’ve done. In the worksheets I’ve provided examples of interpretation of analyses, and reporting of statistics and you can use this to give you an idea of the kinds of things that could be mentioned when reporting the results. 
 
-In the [Rmd support lecture](slides/PSYC753_Rmd_Support.pptx) I provided guidance on how the knitted html document should look.
+In the [Rmd support lecture](slides/PSYC761_Rmd_Support.pptx) I provided guidance on how the knitted html document should look.
 
 \
 
@@ -101,7 +118,7 @@ To open an .Rmd file that you’ve downloaded from RStudio, you must first uploa
 
 ## On the word count, are figure captions included?
 
-If the text falls within the figure image or table, then it won’t be counted, otherwise it would be.  
+If the text falls within the figure image or table, then it won’t be counted, otherwise it will be.  
 
 \
 
@@ -111,7 +128,7 @@ If the text falls within the figure image or table, then it won’t be counted, 
 
 ## Should I make code visible in my html report?
 
-There's no need to include code in your report. (If you do choose to though, the code won't count towards the word limit.) Please also see the [Rmd support lecture](slides/PSYC753_Rmd_Support.pptx) for guidance on how the report should look (e.g., slide 16). 
+There's no need to include code in your report. (If you do choose to though, the code won't count towards the word limit.) Please also see the [Rmd support lecture](slides/PSYC761_Rmd_Support.pptx) for guidance on how the report should look (e.g., slide 16). 
 
 \
 
@@ -121,9 +138,9 @@ There's no need to include code in your report. (If you do choose to though, the
 
 ## Do I need to include references?
 
-It's not expected that you'd need to include references, but if you do cite something in your report, then it’s good practice to include the reference to the article in a References section. 
+If you do cite something in your report, then you should include the reference to the article in a References section. 
 
-There’s no expectation for you to consult the psychological literature concerning the topic of the questionnaire. Remember, this is primarily an assignment concerning data analysis and, as such, you aren’t expected to delve into the psychological literature, either in the formulation of your question or in the interpretation of your findings. Your analyses can be guided by what's said in assessment instructions and the Tips section of it. You may, of course, consult the psychological literature if you want to. Please also see the “How should I write up the report?” FAQ above.
+There’s no expectation for you to consult the psychological literature concerning the topic of the questionnaire. Remember, this is primarily an assignment concerning data analysis and, as such, you aren’t expected to delve into the psychological literature, either in the formulation of your question or in the interpretation of your findings. Your analyses can be guided by what's said in assessment instructions and the Tips section of it. You may, of course, consult the psychological literature if you want to. You may want to and are encouraged to look at statistical articles or textbooks to inform your analyses. Please also see the “How should I write up the report?” FAQ above.
 
 \
 
@@ -192,7 +209,7 @@ https://liveplymouthac.sharepoint.com/sites/x70/SitePages/Extenuating-circumstan
 
 If you're still stuck after going through the materials in the workbook, the assessment instructions, and these FAQs and want to make an appointment to speak to me, then you can book a slot during my office hours using the online booking system link below:
 
-https://dle.plymouth.ac.uk/mod/scheduler/view.php?id=1181545
+https://dle.plymouth.ac.uk/course/view.php?id=66067
 
-
+<!--
 -->

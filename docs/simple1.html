@@ -5,19 +5,19 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Session 1 Simple Regression | PSYC761 Data Analysis</title>
-  <meta name="description" content="Course materials for PSYC761 2024" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="description" content="Course materials for PSYC761 2025" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Session 1 Simple Regression | PSYC761 Data Analysis" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="Course materials for PSYC761 2024" />
+  <meta property="og:description" content="Course materials for PSYC761 2025" />
   <meta name="github-repo" content="datafluencyCB" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Session 1 Simple Regression | PSYC761 Data Analysis" />
   
-  <meta name="twitter:description" content="Course materials for PSYC761 2024" />
+  <meta name="twitter:description" content="Course materials for PSYC761 2025" />
   
 
 <meta name="author" content="Chris Berry" />
@@ -58,7 +58,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -184,8 +184,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6.1" data-path="multiple1.html"><a href="multiple1.html#regressionbf"><i class="fa fa-check"></i><b>2.6.1</b> <code>regressionBF()</code></a></li>
 <li class="chapter" data-level="2.6.2" data-path="multiple1.html"><a href="multiple1.html#predicting-new-data"><i class="fa fa-check"></i><b>2.6.2</b> Predicting new data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="multiple1.html"><a href="multiple1.html#summary-of-key-points"><i class="fa fa-check"></i><b>2.7</b> Summary of key points</a></li>
-<li class="chapter" data-level="2.8" data-path="multiple1.html"><a href="multiple1.html#references-1"><i class="fa fa-check"></i><b>2.8</b> References</a></li>
+<li class="chapter" data-level="2.7" data-path="multiple1.html"><a href="multiple1.html#going-further-p-values-1"><i class="fa fa-check"></i><b>2.7</b> Going further: <em>p</em>-values</a></li>
+<li class="chapter" data-level="2.8" data-path="multiple1.html"><a href="multiple1.html#summary-of-key-points"><i class="fa fa-check"></i><b>2.8</b> Summary of key points</a></li>
+<li class="chapter" data-level="2.9" data-path="multiple1.html"><a href="multiple1.html#references-1"><i class="fa fa-check"></i><b>2.9</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="anova1.html"><a href="anova1.html"><i class="fa fa-check"></i><b>3</b> ANOVA: between-subjects designs</a>
 <ul>
@@ -263,107 +264,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6" data-path="multiple3.html"><a href="multiple3.html#further-knowledge-and-exercises"><i class="fa fa-check"></i><b>5.6</b> Further knowledge and exercises</a>
 <ul>
 <li class="chapter" data-level="5.6.1" data-path="multiple3.html"><a href="multiple3.html#standardised-coefficients"><i class="fa fa-check"></i><b>5.6.1</b> Standardised Coefficients</a></li>
-<li class="chapter" data-level="5.6.2" data-path="multiple3.html"><a href="multiple3.html#prediction"><i class="fa fa-check"></i><b>5.6.2</b> Prediction</a></li>
-<li class="chapter" data-level="5.6.3" data-path="multiple3.html"><a href="multiple3.html#residuals-1"><i class="fa fa-check"></i><b>5.6.3</b> Residuals</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="multiple3.html"><a href="multiple3.html#summary-3"><i class="fa fa-check"></i><b>5.7</b> Summary</a></li>
-<li class="chapter" data-level="5.8" data-path="multiple3.html"><a href="multiple3.html#references-4"><i class="fa fa-check"></i><b>5.8</b> References</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="anova2.html"><a href="anova2.html"><i class="fa fa-check"></i><b>6</b> ANOVA: Repeated measures</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="anova2.html"><a href="anova2.html#overview-6"><i class="fa fa-check"></i><b>6.1</b> Overview</a></li>
-<li class="chapter" data-level="6.2" data-path="anova2.html"><a href="anova2.html#one-way-repeated-measures-anova"><i class="fa fa-check"></i><b>6.2</b> One-way repeated measures ANOVA</a></li>
-<li class="chapter" data-level="6.3" data-path="anova2.html"><a href="anova2.html#long-format-data"><i class="fa fa-check"></i><b>6.3</b> Long format data</a></li>
-<li class="chapter" data-level="6.4" data-path="anova2.html"><a href="anova2.html#worked-example-5"><i class="fa fa-check"></i><b>6.4</b> Worked Example</a>
-<ul>
-<li class="chapter" data-level="6.4.1" data-path="anova2.html"><a href="anova2.html#read-in-the-data-4"><i class="fa fa-check"></i><b>6.4.1</b> Read in the data</a></li>
-<li class="chapter" data-level="6.4.2" data-path="anova2.html"><a href="anova2.html#convert-the-data-to-long-format"><i class="fa fa-check"></i><b>6.4.2</b> Convert the data to long format</a></li>
-<li class="chapter" data-level="6.4.3" data-path="anova2.html"><a href="anova2.html#convert-the-participant-and-the-categorical-variable-to-factors"><i class="fa fa-check"></i><b>6.4.3</b> Convert the participant and the categorical variable to factors</a></li>
-<li class="chapter" data-level="6.4.4" data-path="anova2.html"><a href="anova2.html#visualise-the-data-3"><i class="fa fa-check"></i><b>6.4.4</b> Visualise the data</a></li>
-<li class="chapter" data-level="6.4.5" data-path="anova2.html"><a href="anova2.html#plot-the-means-2"><i class="fa fa-check"></i><b>6.4.5</b> Plot the means</a></li>
-<li class="chapter" data-level="6.4.6" data-path="anova2.html"><a href="anova2.html#descriptives-mean-of-each-condition"><i class="fa fa-check"></i><b>6.4.6</b> Descriptives: Mean of each condition</a></li>
-<li class="chapter" data-level="6.4.7" data-path="anova2.html"><a href="anova2.html#bayes-factor-2"><i class="fa fa-check"></i><b>6.4.7</b> Bayes factor</a></li>
-<li class="chapter" data-level="6.4.8" data-path="anova2.html"><a href="anova2.html#follow-up-tests-1"><i class="fa fa-check"></i><b>6.4.8</b> Follow-up tests</a></li>
-</ul></li>
-<li class="chapter" data-level="6.5" data-path="anova2.html"><a href="anova2.html#two-way-within-subjects-anova"><i class="fa fa-check"></i><b>6.5</b> Two-way within subjects ANOVA</a>
-<ul>
-<li class="chapter" data-level="6.5.1" data-path="anova2.html"><a href="anova2.html#worked-example-6"><i class="fa fa-check"></i><b>6.5.1</b> Worked Example</a></li>
-<li class="chapter" data-level="6.5.2" data-path="anova2.html"><a href="anova2.html#read-in-the-data-5"><i class="fa fa-check"></i><b>6.5.2</b> Read in the data</a></li>
-<li class="chapter" data-level="6.5.3" data-path="anova2.html"><a href="anova2.html#visualise-the-data-4"><i class="fa fa-check"></i><b>6.5.3</b> Visualise the data</a></li>
-<li class="chapter" data-level="6.5.4" data-path="anova2.html"><a href="anova2.html#plot-the-means-3"><i class="fa fa-check"></i><b>6.5.4</b> Plot the means</a></li>
-<li class="chapter" data-level="6.5.5" data-path="anova2.html"><a href="anova2.html#descriptive-statistics---mean"><i class="fa fa-check"></i><b>6.5.5</b> Descriptive statistics - mean</a></li>
-<li class="chapter" data-level="6.5.6" data-path="anova2.html"><a href="anova2.html#convert-participant-and-categorical-variables-to-factors"><i class="fa fa-check"></i><b>6.5.6</b> Convert participant and categorical variables to factors</a></li>
-<li class="chapter" data-level="6.5.7" data-path="anova2.html"><a href="anova2.html#bayes-factor-3"><i class="fa fa-check"></i><b>6.5.7</b> Bayes factor</a></li>
-<li class="chapter" data-level="6.5.8" data-path="anova2.html"><a href="anova2.html#follow-up-comparisons-1"><i class="fa fa-check"></i><b>6.5.8</b> Follow up comparisons</a></li>
-</ul></li>
-<li class="chapter" data-level="6.6" data-path="anova2.html"><a href="anova2.html#exercise-two-way-mixed-anova"><i class="fa fa-check"></i><b>6.6</b> Exercise: two-way mixed ANOVA</a></li>
-<li class="chapter" data-level="6.7" data-path="anova2.html"><a href="anova2.html#further-knowledge---within-subject-errorbars"><i class="fa fa-check"></i><b>6.7</b> Further knowledge - within-subject errorbars</a></li>
-<li class="chapter" data-level="6.8" data-path="anova2.html"><a href="anova2.html#further-knowledge---r-squared"><i class="fa fa-check"></i><b>6.8</b> Further knowledge - R-squared</a></li>
-<li class="chapter" data-level="6.9" data-path="anova2.html"><a href="anova2.html#summary-4"><i class="fa fa-check"></i><b>6.9</b> Summary</a></li>
-<li class="chapter" data-level="6.10" data-path="anova2.html"><a href="anova2.html#references-5"><i class="fa fa-check"></i><b>6.10</b> References</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="prepost.html"><a href="prepost.html"><i class="fa fa-check"></i><b>7</b> Pre-post data, clinically significant change</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="prepost.html"><a href="prepost.html#overview-7"><i class="fa fa-check"></i><b>7.1</b> Overview</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="prepost.html"><a href="prepost.html#worked-example-7"><i class="fa fa-check"></i><b>7.1.1</b> Worked example</a></li>
-<li class="chapter" data-level="7.1.2" data-path="prepost.html"><a href="prepost.html#read-in-the-data-6"><i class="fa fa-check"></i><b>7.1.2</b> Read in the data</a></li>
-<li class="chapter" data-level="7.1.3" data-path="prepost.html"><a href="prepost.html#plot-the-means-4"><i class="fa fa-check"></i><b>7.1.3</b> Plot the means</a></li>
-</ul></li>
-<li class="chapter" data-level="7.2" data-path="prepost.html"><a href="prepost.html#approach-1---difference-scores"><i class="fa fa-check"></i><b>7.2</b> Approach 1 - Difference scores</a></li>
-<li class="chapter" data-level="7.3" data-path="prepost.html"><a href="prepost.html#approach-2---mixed-anova"><i class="fa fa-check"></i><b>7.3</b> Approach 2 - Mixed ANOVA</a></li>
-<li class="chapter" data-level="7.4" data-path="prepost.html"><a href="prepost.html#approach-3---ancova"><i class="fa fa-check"></i><b>7.4</b> Approach 3 - ANCOVA</a></li>
-<li class="chapter" data-level="7.5" data-path="prepost.html"><a href="prepost.html#which-approach-should-you-use"><i class="fa fa-check"></i><b>7.5</b> Which approach should you use?</a></li>
-<li class="chapter" data-level="7.6" data-path="prepost.html"><a href="prepost.html#clinical-significance"><i class="fa fa-check"></i><b>7.6</b> Clinical Significance</a></li>
-<li class="chapter" data-level="7.7" data-path="prepost.html"><a href="prepost.html#exercises-1"><i class="fa fa-check"></i><b>7.7</b> Exercises</a></li>
-<li class="chapter" data-level="7.8" data-path="prepost.html"><a href="prepost.html#further-knowledge-1"><i class="fa fa-check"></i><b>7.8</b> Further Knowledge</a>
-<ul>
-<li class="chapter" data-level="7.8.1" data-path="prepost.html"><a href="prepost.html#reliable-change-rc-index"><i class="fa fa-check"></i><b>7.8.1</b> Reliable Change (RC) index</a></li>
-</ul></li>
-<li class="chapter" data-level="7.9" data-path="prepost.html"><a href="prepost.html#summary-5"><i class="fa fa-check"></i><b>7.9</b> Summary</a></li>
-<li class="chapter" data-level="7.10" data-path="prepost.html"><a href="prepost.html#references-6"><i class="fa fa-check"></i><b>7.10</b> References</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="mixed.html"><a href="mixed.html"><i class="fa fa-check"></i><b>8</b> Mixed Models</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="mixed.html"><a href="mixed.html#overview-8"><i class="fa fa-check"></i><b>8.1</b> Overview</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="mixed.html"><a href="mixed.html#worked-example-8"><i class="fa fa-check"></i><b>8.1.1</b> Worked example</a></li>
-<li class="chapter" data-level="8.1.2" data-path="mixed.html"><a href="mixed.html#read-in-the-data-7"><i class="fa fa-check"></i><b>8.1.2</b> Read in the data</a></li>
-<li class="chapter" data-level="8.1.3" data-path="mixed.html"><a href="mixed.html#plot-the-means-5"><i class="fa fa-check"></i><b>8.1.3</b> Plot the means</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="mixed.html"><a href="mixed.html#approach-1---difference-scores-1"><i class="fa fa-check"></i><b>8.2</b> Approach 1 - Difference scores</a></li>
-<li class="chapter" data-level="8.3" data-path="mixed.html"><a href="mixed.html#approach-2---mixed-anova-1"><i class="fa fa-check"></i><b>8.3</b> Approach 2 - Mixed ANOVA</a></li>
-<li class="chapter" data-level="8.4" data-path="mixed.html"><a href="mixed.html#approach-3---ancova-1"><i class="fa fa-check"></i><b>8.4</b> Approach 3 - ANCOVA</a></li>
-<li class="chapter" data-level="8.5" data-path="mixed.html"><a href="mixed.html#which-approach-should-you-use-1"><i class="fa fa-check"></i><b>8.5</b> Which approach should you use?</a></li>
-<li class="chapter" data-level="8.6" data-path="mixed.html"><a href="mixed.html#clinical-significance-1"><i class="fa fa-check"></i><b>8.6</b> Clinical Significance</a></li>
-<li class="chapter" data-level="8.7" data-path="mixed.html"><a href="mixed.html#exercises-2"><i class="fa fa-check"></i><b>8.7</b> Exercises</a></li>
-<li class="chapter" data-level="8.8" data-path="mixed.html"><a href="mixed.html#further-knowledge-2"><i class="fa fa-check"></i><b>8.8</b> Further Knowledge</a>
-<ul>
-<li class="chapter" data-level="8.8.1" data-path="mixed.html"><a href="mixed.html#reliable-change-rc-index-1"><i class="fa fa-check"></i><b>8.8.1</b> Reliable Change (RC) index</a></li>
-</ul></li>
-<li class="chapter" data-level="8.9" data-path="mixed.html"><a href="mixed.html#summary-6"><i class="fa fa-check"></i><b>8.9</b> Summary</a></li>
+<li class="chapter" data-level="8.9" data-path="mixed.html"><a href="mixed.html"><i class="fa fa-check"></i><b>8.9</b> Summary</a></li>
 <li class="chapter" data-level="8.10" data-path="mixed.html"><a href="mixed.html#references-7"><i class="fa fa-check"></i><b>8.10</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="assessment2024.html"><a href="assessment2024.html"><i class="fa fa-check"></i><b>9</b> Data Analysis Assessment 2024</a></li>
+<li class="chapter" data-level="9" data-path="assessment2025.html"><a href="assessment2025.html"><i class="fa fa-check"></i><b>9</b> Data Analysis Assessment 2025</a></li>
 <li class="chapter" data-level="10" data-path="faqs.html"><a href="faqs.html"><i class="fa fa-check"></i><b>10</b> FAQs</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="faqs.html"><a href="faqs.html#e-meaning"><i class="fa fa-check"></i><b>10.1</b> What does it mean if RStudio prints out "e-" next to a number?</a></li>
 <li class="chapter" data-level="10.2" data-path="faqs.html"><a href="faqs.html#how-can-i-find-out-more-about-a-particular-function-so-i-can-explore-its-settings-etc."><i class="fa fa-check"></i><b>10.2</b> How can I find out more about a particular function, so I can explore its settings etc.?</a></li>
-<li class="chapter" data-level="10.3" data-path="faqs.html"><a href="faqs.html#how-should-i-write-up-the-report"><i class="fa fa-check"></i><b>10.3</b> How should I write up the report?</a></li>
-<li class="chapter" data-level="10.4" data-path="faqs.html"><a href="faqs.html#after-downloading-my-.rmd-file-to-my-computer-how-do-i-open-it-again-in-rstudio"><i class="fa fa-check"></i><b>10.4</b> After downloading my .Rmd file to my computer, how do I open it again in RStudio?</a></li>
-<li class="chapter" data-level="10.5" data-path="faqs.html"><a href="faqs.html#on-the-word-count-are-figure-captions-included"><i class="fa fa-check"></i><b>10.5</b> On the word count, are figure captions included?</a></li>
-<li class="chapter" data-level="10.6" data-path="faqs.html"><a href="faqs.html#should-i-make-code-visible-in-my-html-report"><i class="fa fa-check"></i><b>10.6</b> Should I make code visible in my html report?</a></li>
-<li class="chapter" data-level="10.7" data-path="faqs.html"><a href="faqs.html#do-i-need-to-include-references"><i class="fa fa-check"></i><b>10.7</b> Do I need to include references?</a></li>
-<li class="chapter" data-level="10.8" data-path="faqs.html"><a href="faqs.html#can-there-be-overlap-in-the-variables-used-in-each-question"><i class="fa fa-check"></i><b>10.8</b> Can there be overlap in the variables used in each question?</a></li>
-<li class="chapter" data-level="10.9" data-path="faqs.html"><a href="faqs.html#do-we-have-to-include-a-certain-number-of-variables-to-achieve-a-good-grade"><i class="fa fa-check"></i><b>10.9</b> Do we have to include a certain number of variables to achieve a good grade?</a></li>
-<li class="chapter" data-level="10.10" data-path="faqs.html"><a href="faqs.html#can-i-include-more-than-one-figure"><i class="fa fa-check"></i><b>10.10</b> Can I include more than one figure?</a></li>
-<li class="chapter" data-level="10.11" data-path="faqs.html"><a href="faqs.html#can-i-include-categorical-predictor-variables-in-a-hierarchical-regression"><i class="fa fa-check"></i><b>10.11</b> Can I include categorical predictor variables in a hierarchical regression?</a></li>
-<li class="chapter" data-level="10.12" data-path="faqs.html"><a href="faqs.html#how-do-i-apply-for-extenuating-circumstances"><i class="fa fa-check"></i><b>10.12</b> How do I apply for extenuating circumstances?</a></li>
-<li class="chapter" data-level="10.13" data-path="faqs.html"><a href="faqs.html#can-a-book-a-slot-in-your-office-hours"><i class="fa fa-check"></i><b>10.13</b> Can a book a slot in your office hours?</a></li>
+<li class="chapter" data-level="10.3" data-path="faqs.html"><a href="faqs.html#how-do-i-import-a-data-file-to-r-studio"><i class="fa fa-check"></i><b>10.3</b> How do I import a data file to R Studio?</a></li>
+<li class="chapter" data-level="10.4" data-path="faqs.html"><a href="faqs.html#how-should-i-write-up-the-report"><i class="fa fa-check"></i><b>10.4</b> How should I write up the report?</a></li>
+<li class="chapter" data-level="10.5" data-path="faqs.html"><a href="faqs.html#after-downloading-my-.rmd-file-to-my-computer-how-do-i-open-it-again-in-rstudio"><i class="fa fa-check"></i><b>10.5</b> After downloading my .Rmd file to my computer, how do I open it again in RStudio?</a></li>
+<li class="chapter" data-level="10.6" data-path="faqs.html"><a href="faqs.html#on-the-word-count-are-figure-captions-included"><i class="fa fa-check"></i><b>10.6</b> On the word count, are figure captions included?</a></li>
+<li class="chapter" data-level="10.7" data-path="faqs.html"><a href="faqs.html#should-i-make-code-visible-in-my-html-report"><i class="fa fa-check"></i><b>10.7</b> Should I make code visible in my html report?</a></li>
+<li class="chapter" data-level="10.8" data-path="faqs.html"><a href="faqs.html#do-i-need-to-include-references"><i class="fa fa-check"></i><b>10.8</b> Do I need to include references?</a></li>
+<li class="chapter" data-level="10.9" data-path="faqs.html"><a href="faqs.html#can-there-be-overlap-in-the-variables-used-in-each-question"><i class="fa fa-check"></i><b>10.9</b> Can there be overlap in the variables used in each question?</a></li>
+<li class="chapter" data-level="10.10" data-path="faqs.html"><a href="faqs.html#do-we-have-to-include-a-certain-number-of-variables-to-achieve-a-good-grade"><i class="fa fa-check"></i><b>10.10</b> Do we have to include a certain number of variables to achieve a good grade?</a></li>
+<li class="chapter" data-level="10.11" data-path="faqs.html"><a href="faqs.html#can-i-include-more-than-one-figure"><i class="fa fa-check"></i><b>10.11</b> Can I include more than one figure?</a></li>
+<li class="chapter" data-level="10.12" data-path="faqs.html"><a href="faqs.html#can-i-include-categorical-predictor-variables-in-a-hierarchical-regression"><i class="fa fa-check"></i><b>10.12</b> Can I include categorical predictor variables in a hierarchical regression?</a></li>
+<li class="chapter" data-level="10.13" data-path="faqs.html"><a href="faqs.html#how-do-i-apply-for-extenuating-circumstances"><i class="fa fa-check"></i><b>10.13</b> How do I apply for extenuating circumstances?</a></li>
+<li class="chapter" data-level="10.14" data-path="faqs.html"><a href="faqs.html#can-a-book-a-slot-in-your-office-hours"><i class="fa fa-check"></i><b>10.14</b> Can a book a slot in your office hours?</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="reading.html"><a href="reading.html"><i class="fa fa-check"></i><b>11</b> Reading</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="reading.html"><a href="reading.html#recommended-texts-and-resources"><i class="fa fa-check"></i><b>11.1</b> Recommended texts and resources</a></li>
+<li class="chapter" data-level="11.1" data-path="reading.html"><a href="reading.html#recommended-texts-and-resources"><i class="fa fa-check"></i><b>11.1</b> Recommended texts and resources</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="reading.html"><a href="reading.html#library-books"><i class="fa fa-check"></i><b>11.1.1</b> Library books</a></li>
+<li class="chapter" data-level="11.1.2" data-path="reading.html"><a href="reading.html#electronic-resources-and-books"><i class="fa fa-check"></i><b>11.1.2</b> Electronic resources and books</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="reading.html"><a href="reading.html#data-preprocessing"><i class="fa fa-check"></i><b>11.2</b> Data preprocessing</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="divider"></li>
@@ -392,7 +322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="simple1" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Session 1</span> Simple Regression<a href="simple1.html#simple1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>Chris Berry</em><br />
-<em>2024</em></p>
+<em>2025</em></p>
 <style>
 div.exercise { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
@@ -503,8 +433,8 @@ Figure 1.1: Scatterplot of anxiety score according to screen time (hours per day
 <div class="exercise">
 <p><span id="exr:unlabeled-div-1" class="exercise"><strong>Exercise 1.1  </strong></span><strong>Describe the relationship between screen time and anxiety evident in
 the scatterplot</strong> (pick one option; green = correct):</p>
-<div id="radio_PKKUFXFPUE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PKKUFXFPUE" value=""></input> <span>Individuals with lower levels of screen time tend to have higher anxiety scores</span></label><label><input type="radio" autocomplete="off" name="radio_PKKUFXFPUE" value=""></input> <span>No association between screen time and anxiety scores is apparent</span></label><label><input type="radio" autocomplete="off" name="radio_PKKUFXFPUE" value="answer"></input> <span>Individuals with higher levels of screen time tend to have higher anxiety scores</span></label>
+<div id="radio_LJGWALTMZR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LJGWALTMZR" value=""></input> <span>Individuals with lower levels of screen time tend to have higher anxiety scores</span></label><label><input type="radio" autocomplete="off" name="radio_LJGWALTMZR" value=""></input> <span>No association between screen time and anxiety scores is apparent</span></label><label><input type="radio" autocomplete="off" name="radio_LJGWALTMZR" value="answer"></input> <span>Individuals with higher levels of screen time tend to have higher anxiety scores</span></label>
 </div>
 </div>
 <p><br />
@@ -541,8 +471,8 @@ stored in <code>simple1</code>:</p>
 <select class='webex-select'><option value='blank'></option><option value=''>5.59</option><option value='answer'>0.13</option></select></strong></p>
 <p><strong>The regression equation Predicted Outcome = a + b(Predictor) can
 therefore be written as what?</strong></p>
-<div id="radio_HFCDAXSYOV" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HFCDAXSYOV" value=""></input> <span>Predicted screen time = 5.59 + 0.13(anxiety score)</span></label><label><input type="radio" autocomplete="off" name="radio_HFCDAXSYOV" value="answer"></input> <span>Predicted anxiety score = 5.59 + 0.13(screen time)</span></label><label><input type="radio" autocomplete="off" name="radio_HFCDAXSYOV" value=""></input> <span>Predicted
+<div id="radio_UGBAXVMOOD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UGBAXVMOOD" value=""></input> <span>Predicted screen time = 5.59 + 0.13(anxiety score)</span></label><label><input type="radio" autocomplete="off" name="radio_UGBAXVMOOD" value="answer"></input> <span>Predicted anxiety score = 5.59 + 0.13(screen time)</span></label><label><input type="radio" autocomplete="off" name="radio_UGBAXVMOOD" value=""></input> <span>Predicted
 anxiety score = 0.13 + 5.59(screen time)</span></label>
 </div>
 </div>
@@ -1009,10 +939,10 @@ Solution
 </p>
 <p><em>Describe the relationship between age and screen time in the
 scatterplot</em> (pick one):</p>
-<div id="radio_SLWGEXSPAU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_SLWGEXSPAU" value=""></input> <span>Older individuals tend to have higher screen time
-scores</span></label><label><input type="radio" autocomplete="off" name="radio_SLWGEXSPAU" value="answer"></input> <span>Older individuals tend to have lower screen time
-scores</span></label><label><input type="radio" autocomplete="off" name="radio_SLWGEXSPAU" value=""></input> <span>No association between age and screen time appears to be
+<div id="radio_KKNIZDHJDE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KKNIZDHJDE" value=""></input> <span>Older individuals tend to have higher screen time
+scores</span></label><label><input type="radio" autocomplete="off" name="radio_KKNIZDHJDE" value="answer"></input> <span>Older individuals tend to have lower screen time
+scores</span></label><label><input type="radio" autocomplete="off" name="radio_KKNIZDHJDE" value=""></input> <span>No association between age and screen time appears to be
 present</span></label>
 </div>
 <p><br />
@@ -1039,8 +969,8 @@ Solution
 <p><br />
 </p>
 <p>What is the regression equation?</p>
-<div id="radio_BVQJGPYRMC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BVQJGPYRMC" value="answer"></input> <span>Predicted screen time = 7.48 - 0.10(age)</span></label><label><input type="radio" autocomplete="off" name="radio_BVQJGPYRMC" value=""></input> <span>Predicted screen time = 0.10 - 7.48(age)</span></label><label><input type="radio" autocomplete="off" name="radio_BVQJGPYRMC" value=""></input> <span>Predicted screen time =
+<div id="radio_SSRFXOLPGE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SSRFXOLPGE" value="answer"></input> <span>Predicted screen time = 7.48 - 0.10(age)</span></label><label><input type="radio" autocomplete="off" name="radio_SSRFXOLPGE" value=""></input> <span>Predicted screen time = 0.10 - 7.48(age)</span></label><label><input type="radio" autocomplete="off" name="radio_SSRFXOLPGE" value=""></input> <span>Predicted screen time =
 7.48 + 0.10(age)</span></label>
 </div>
 <p><br />
@@ -1127,8 +1057,8 @@ analysis).</p>
 </p>
 <p><strong>6. On balance, does age seem to be a good predictor of a person's
 daily screen time use?</strong></p>
-<div id="radio_CVECETHABR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CVECETHABR" value=""></input> <span>No</span></label><label><input type="radio" autocomplete="off" name="radio_CVECETHABR" value="answer"></input> <span>Yes</span></label><label><input type="radio" autocomplete="off" name="radio_CVECETHABR" value=""></input> <span>Cannot determine</span></label>
+<div id="radio_CZEMBAXEYZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CZEMBAXEYZ" value=""></input> <span>No</span></label><label><input type="radio" autocomplete="off" name="radio_CZEMBAXEYZ" value="answer"></input> <span>Yes</span></label><label><input type="radio" autocomplete="off" name="radio_CZEMBAXEYZ" value=""></input> <span>Cannot determine</span></label>
 </div>
 <div class="webex-solution">
 <button>

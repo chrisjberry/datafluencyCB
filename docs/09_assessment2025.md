@@ -1,9 +1,9 @@
-# Data Analysis Assessment 2024 {#assessment2024}
+# Data Analysis Assessment 2025 {#assessment2025}
 
 
 *Chris Berry*
 \
-*2024*
+*2025*
 
 <!--
 commented text
@@ -14,7 +14,7 @@ commented text
 
 \
 
-The instructions for the Analysis Assessment will be released in Session 3. They will appear in the "Assessment" section of the [PSYC761 2023-24 DLE page](https://dle.plymouth.ac.uk/course/view.php?id=71519).
+The instructions for the Analysis Assessment will be released in Session 3. They will appear in the "Assessment" section of the [PSYC761 2024-25 DLE page](https://dle.plymouth.ac.uk/course/view.php?id=77541).
 
 \
 

@@ -2,7 +2,7 @@
 
 *Chris Berry*
 \
-*2024*
+*2025*
 
 
 
@@ -23,7 +23,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 ## Overview
 
 * **Slides** from the lecture part of the session: [Download](slides/PSYC761_L4_MultipleRegression2.pptx)
-* **Slides** for [Rmd support](slides/PSYC761_Rmd_Support.pptx)
+* **R Studio online** [Access here using University log-in](https://psyrstudio.plymouth.ac.uk/)
 
 \
 
@@ -283,7 +283,7 @@ BF_without_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group : 0.1065504 ±2.62%
+## [1] attitude + group : 0.1028322 ±1.59%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -350,7 +350,7 @@ BF_with_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 31.92209 ±1.82%
+## [1] attitude + group + attitude * group : 34.01636 ±6.49%
 ## 
 ## Against denominator:
 ##   Intercept only 
@@ -396,7 +396,7 @@ BF_with_interaction / BF_without_interaction
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] attitude + group + attitude * group : 299.5962 ±3.19%
+## [1] attitude + group + attitude * group : 330.7947 ±6.69%
 ## 
 ## Against denominator:
 ##   trustworthiness ~ attitude + group 
@@ -440,7 +440,7 @@ Or use code in your script:
 
 * According to comparison of BFs for the model with and without an interaction term included, which statement is true?
 
-<div class='webex-radiogroup' id='radio_GDFQGMIKGF'><label><input type="radio" autocomplete="off" name="radio_GDFQGMIKGF" value=""></input> <span>There&apos;s substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_GDFQGMIKGF" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_GDFQGMIKGF" value="answer"></input> <span>There&apos;s substantial evidence for an interaction between attitude and group</span></label></div>
+<div class='webex-radiogroup' id='radio_AJGDSXRQXF'><label><input type="radio" autocomplete="off" name="radio_AJGDSXRQXF" value=""></input> <span>There&apos;s substantial evidence for an absence of an interaction between attitude and group</span></label><label><input type="radio" autocomplete="off" name="radio_AJGDSXRQXF" value=""></input> <span>The model with the interaction is as likely as the model without the interaction, given the data</span></label><label><input type="radio" autocomplete="off" name="radio_AJGDSXRQXF" value="answer"></input> <span>There&apos;s substantial evidence for an interaction between attitude and group</span></label></div>
 
 
 
@@ -655,8 +655,8 @@ BF_credibility_no_interaction <-
 
 **3. Obtain adjusted R^2^ and the BF for the model _with_ an interaction**
 
-* Adjusted R^2^ (as a _proportion_, to 2 decimal places) for the model without an interaction is: <input class='webex-solveme nospaces' size='4' data-answer='["0.21"]'/>
-* The BF for the model without an interaction is <input class='webex-solveme nospaces' data-tol='1.2' size='3' data-answer='["7.5"]'/> x 10^12^
+* Adjusted R^2^ (as a _proportion_, to 2 decimal places) for the model with an interaction is: <input class='webex-solveme nospaces' size='4' data-answer='["0.21"]'/>
+* The BF for the model with an interaction is <input class='webex-solveme nospaces' data-tol='1.2' size='3' data-answer='["7.5"]'/> x 10^12^
 
 
 <div class='webex-solution'><button>Hint</button>

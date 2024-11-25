@@ -2,7 +2,7 @@
 
 *Chris Berry*
 \
-*2024*
+*2025*
 
 
 
@@ -22,6 +22,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 ## Overview
 
 * **Slides** from the lecture part of the session: [Download](slides/PSYC761_L6_ANOVA_2.pptx)
+* **R Studio online** [Access here using University log-in](https://psyrstudio.plymouth.ac.uk/)
 
 \
 
@@ -67,14 +68,14 @@ Wide vs. long format
 
 * When the data are in _wide_ format, all of the data for a single participant is stored:
 
-<div class='webex-radiogroup' id='radio_EHZFDPZNVE'><label><input type="radio" autocomplete="off" name="radio_EHZFDPZNVE" value="answer"></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_EHZFDPZNVE" value=""></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
+<div class='webex-radiogroup' id='radio_KKWGFUFJGG'><label><input type="radio" autocomplete="off" name="radio_KKWGFUFJGG" value="answer"></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_KKWGFUFJGG" value=""></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
 
 
 \
 
 * When the data are in _long_ format, all of the data for a single participant is stored:
 
-<div class='webex-radiogroup' id='radio_ZALQUOENPK'><label><input type="radio" autocomplete="off" name="radio_ZALQUOENPK" value=""></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_ZALQUOENPK" value="answer"></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
+<div class='webex-radiogroup' id='radio_JCPXTWJXPW'><label><input type="radio" autocomplete="off" name="radio_JCPXTWJXPW" value=""></input> <span>on one row, across multiple columns</span></label><label><input type="radio" autocomplete="off" name="radio_JCPXTWJXPW" value="answer"></input> <span>on multiple rows, with each row representing a separate observation</span></label></div>
 
 
 :::
@@ -325,6 +326,31 @@ Previously, we used `desc_stat = "mean_se"` to add errorbars to the plot. Doing 
 </div>
 
 
+
+<div class='webex-solution'><button>the same plot with ggplot</button>
+
+
+
+```r
+discriminate_long %>% 
+  ggplot(aes(x = time , y = performance)) +
+  stat_summary(fun = mean, geom = "point") +
+  stat_summary(aes(group = 1), fun = mean, geom = "line") +
+  ylab("Performance") + 
+  ylim(c(0,1)) +
+  theme_classic()
+```
+
+<div class="figure" style="text-align: center">
+<img src="06_anova_repeated_measures_files/figure-html/unnamed-chunk-7-1.png" alt="Mean proportion correct at each time point" width="75%" />
+<p class="caption">(\#fig:unnamed-chunk-7)Mean proportion correct at each time point</p>
+</div>
+
+
+
+</div>
+
+
 :::{.exercise}
 Describe the trend shown in the line plot:
 
@@ -381,7 +407,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(discrim
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 336.1911 ±1.15%
+## [1] time + ppt : 331.3637 ±0.72%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -399,7 +425,7 @@ The Bayes factor for the effect of time on performance is <input class='webex-so
 
 This indicates that (select one):
 
-<div class='webex-radiogroup' id='radio_MKDPCRNWKK'><label><input type="radio" autocomplete="off" name="radio_MKDPCRNWKK" value="answer"></input> <span>it is approximately 300 times more likely that there is difference between the means of the three time conditions, compared to there being no difference.</span></label><label><input type="radio" autocomplete="off" name="radio_MKDPCRNWKK" value=""></input> <span>it is approximately 300 times more likely that there is no difference between the means of the three time conditions, compared to there being a difference.</span></label></div>
+<div class='webex-radiogroup' id='radio_LBBLRKBHVD'><label><input type="radio" autocomplete="off" name="radio_LBBLRKBHVD" value="answer"></input> <span>it is approximately 300 times more likely that there is difference between the means of the three time conditions, compared to there being no difference.</span></label><label><input type="radio" autocomplete="off" name="radio_LBBLRKBHVD" value=""></input> <span>it is approximately 300 times more likely that there is no difference between the means of the three time conditions, compared to there being a difference.</span></label></div>
 
 
 \
@@ -430,7 +456,7 @@ BF_time_ppt / BF_ppt_only
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 340.8888 ±2.49%
+## [1] time + ppt : 330.0359 ±0.56%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -468,7 +494,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(pre_v_d
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 81.8354 ±1.34%
+## [1] time + ppt : 79.96102 ±0.73%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -496,7 +522,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(pre_v_m
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 52.95435 ±0.54%
+## [1] time + ppt : 54.2467 ±0.89%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -525,7 +551,7 @@ anovaBF(performance ~ time + ppt, whichRandom = "ppt", data = data.frame(day3_v_
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 0.5000511 ±6.41%
+## [1] time + ppt : 0.4534745 ±1.47%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -563,7 +589,7 @@ lmBF(performance ~ ppt, whichRandom = "ppt", data = data.frame(day3_v_month2))
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 79.36412 ±0.55%
+## [1] time + ppt : 83.16192 ±2.6%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -572,7 +598,7 @@ lmBF(performance ~ ppt, whichRandom = "ppt", data = data.frame(day3_v_month2))
 ## 
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 57.68876 ±6.57%
+## [1] time + ppt : 54.16511 ±0.8%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -581,7 +607,7 @@ lmBF(performance ~ ppt, whichRandom = "ppt", data = data.frame(day3_v_month2))
 ## 
 ## Bayes factor analysis
 ## --------------
-## [1] time + ppt : 0.4566256 ±0.86%
+## [1] time + ppt : 0.4902542 ±5.23%
 ## 
 ## Against denominator:
 ##   performance ~ ppt 
@@ -701,8 +727,8 @@ gaze %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="06_anova_repeated_measures_files/figure-html/unnamed-chunk-15-1.png" alt="Mean RT according to gaze direction and agreement" width="75%" />
-<p class="caption">(\#fig:unnamed-chunk-15)Mean RT according to gaze direction and agreement</p>
+<img src="06_anova_repeated_measures_files/figure-html/unnamed-chunk-16-1.png" alt="Mean RT according to gaze direction and agreement" width="75%" />
+<p class="caption">(\#fig:unnamed-chunk-16)Mean RT according to gaze direction and agreement</p>
 </div>
 
 \
@@ -717,8 +743,8 @@ gaze %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="06_anova_repeated_measures_files/figure-html/unnamed-chunk-16-1.png" alt="Mean logRT according to gaze direction and agreement" width="75%" />
-<p class="caption">(\#fig:unnamed-chunk-16)Mean logRT according to gaze direction and agreement</p>
+<img src="06_anova_repeated_measures_files/figure-html/unnamed-chunk-17-1.png" alt="Mean logRT according to gaze direction and agreement" width="75%" />
+<p class="caption">(\#fig:unnamed-chunk-17)Mean logRT according to gaze direction and agreement</p>
 </div>
 
 * Does the positive skew in the distributions appear to be reduced by the log transformation? <select class='webex-select'><option value='blank'></option><option value=''>no</option><option value='answer'>yes</option></select>
@@ -742,11 +768,34 @@ gaze %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="06_anova_repeated_measures_files/figure-html/unnamed-chunk-17-1.png" alt="Mean logRT according to gaze direction and agreement" width="75%" />
-<p class="caption">(\#fig:unnamed-chunk-17)Mean logRT according to gaze direction and agreement</p>
+<img src="06_anova_repeated_measures_files/figure-html/unnamed-chunk-18-1.png" alt="Mean logRT according to gaze direction and agreement" width="75%" />
+<p class="caption">(\#fig:unnamed-chunk-18)Mean logRT according to gaze direction and agreement</p>
 </div>
 
 It appears as if people took longer to respond when the gaze was direct and they said 'no' to the statement that was made.
+
+
+<div class='webex-solution'><button>The same plot in ggplot</button>
+
+
+
+```r
+gaze %>% 
+  ggplot(aes(x = gaze_direction, y = logRT, color = agreement)) + 
+  stat_summary(fun = mean, geom = "point") + 
+  stat_summary(aes(group = agreement), fun = mean, geom = "line") +
+  theme_classic()
+```
+
+<div class="figure" style="text-align: center">
+<img src="06_anova_repeated_measures_files/figure-html/unnamed-chunk-19-1.png" alt="Mean logRT according to gaze direction and agreement" width="75%" />
+<p class="caption">(\#fig:unnamed-chunk-19)Mean logRT according to gaze direction and agreement</p>
+</div>
+
+
+
+</div>
+
 
 \
 
@@ -858,10 +907,10 @@ BFs_gaze
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] gaze_direction + ppt                                        : 26.48498  ±1.29%
-## [2] agreement + ppt                                             : 0.2659145 ±1.27%
-## [3] gaze_direction + agreement + ppt                            : 7.438576  ±1.53%
-## [4] gaze_direction + agreement + gaze_direction:agreement + ppt : 46.43286  ±4.02%
+## [1] gaze_direction + ppt                                        : 26.36845  ±0.77%
+## [2] agreement + ppt                                             : 0.2650302 ±0.96%
+## [3] gaze_direction + agreement + ppt                            : 7.405545  ±1.42%
+## [4] gaze_direction + agreement + gaze_direction:agreement + ppt : 43.07602  ±1.64%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -885,7 +934,7 @@ BFs_gaze[1]
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] gaze_direction + ppt : 26.48498 ±1.29%
+## [1] gaze_direction + ppt : 26.36845 ±0.77%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -907,7 +956,7 @@ BFs_gaze[2]
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] agreement + ppt : 0.2659145 ±1.27%
+## [1] agreement + ppt : 0.2650302 ±0.96%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -930,7 +979,7 @@ BFs_gaze[4] / BFs_gaze[3]
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] gaze_direction + agreement + gaze_direction:agreement + ppt : 6.24217 ±4.31%
+## [1] gaze_direction + agreement + gaze_direction:agreement + ppt : 5.816725 ±2.17%
 ## 
 ## Against denominator:
 ##   logRT ~ gaze_direction + agreement + ppt 
@@ -968,7 +1017,7 @@ anovaBF(logRT ~ agreement + ppt, whichRandom = "ppt", data = data.frame(averted_
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] agreement + ppt : 0.2535206 ±1.48%
+## [1] agreement + ppt : 0.249462 ±1.48%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -995,7 +1044,7 @@ anovaBF(logRT ~ agreement + ppt, whichRandom = "ppt", data = data.frame(averted_
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] agreement + ppt : 0.3601523 ±1.18%
+## [1] agreement + ppt : 0.347839 ±0.73%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -1023,7 +1072,7 @@ anovaBF(logRT ~ agreement + ppt, whichRandom = "ppt", data = data.frame(direct))
 ```
 ## Bayes factor analysis
 ## --------------
-## [1] agreement + ppt : 33.75359 ±0.86%
+## [1] agreement + ppt : 33.71397 ±0.84%
 ## 
 ## Against denominator:
 ##   logRT ~ ppt 
@@ -1095,7 +1144,7 @@ balance %>%
 **2. Bayes factors**
 
 * The main effect of group: BF = <input class='webex-solveme nospaces' data-tol='0.2' size='4' data-answer='["0.57",".57"]'/>
-* The main effect of trial: BF = <input class='webex-solveme nospaces' data-tol='20000' size='7' data-answer='["2019789"]'/>
+* The main effect of trial: BF = <input class='webex-solveme nospaces' data-tol='50000' size='7' data-answer='["2019789"]'/>
 * The `group` x `trial` interaction: <input class='webex-solveme nospaces' data-tol='0.5' size='3' data-answer='["0.6",".6"]'/>
 
 Note. It may take a short while for `anovaBF()` to determine the BFs. The processing time increases for more complex designs, especially those with repeated measures.
@@ -1254,8 +1303,8 @@ intervals_RM %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="06_anova_repeated_measures_files/figure-html/unnamed-chunk-30-1.png" alt="Mean proportion correct at each time point. Error bars represent within-subjects standard error of the mean" width="75%" />
-<p class="caption">(\#fig:unnamed-chunk-30)Mean proportion correct at each time point. Error bars represent within-subjects standard error of the mean</p>
+<img src="06_anova_repeated_measures_files/figure-html/unnamed-chunk-32-1.png" alt="Mean proportion correct at each time point. Error bars represent within-subjects standard error of the mean" width="75%" />
+<p class="caption">(\#fig:unnamed-chunk-32)Mean proportion correct at each time point. Error bars represent within-subjects standard error of the mean</p>
 </div>
 
 </div>
@@ -1310,7 +1359,7 @@ The R^2^ associated with the `time` factor can be calculated as the difference i
 
 
 ```r
-glance(ppt_and_time)$r.squared - glance(ppt)$r.squared
+glance(ppt_and_time)$r.squared - glance(ppt_alone)$r.squared
 ```
 
 * Thus, R^2^ for the `time` factor = <input class='webex-solveme nospaces' size='4' data-answer='["0.66"]'/>

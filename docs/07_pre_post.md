@@ -2,7 +2,7 @@
 
 *Chris Berry*
 \
-*2024*
+*2025*
 
 
 
@@ -23,6 +23,7 @@ div.tip { background-color:#D5F5E3; border-radius: 5px; padding: 20px;}
 ## Overview
 
 * **Slides** from the lecture part of the session: [Download](slides/PSYC761_L7_PrePostData.pptx)
+* **R Studio online** [Access here using University log-in](https://psyrstudio.plymouth.ac.uk/)
 
 \
 
